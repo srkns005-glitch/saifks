@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0f1a">
+<meta name="description" content="Bear Trap planning tool for KINGSHOT alliances.">
+<link rel="icon" href="assets/images/icon-192.png">
+<title>Bear Trap Planner | KINGSHOT Tools</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#090f19;--panel:#111b2b;--panel2:#172338;--text:#f7f8fb;--muted:#9fadc0;--gold:#f3c75f;--gold2:#c9922e;--green:#58d68d;--red:#ff7b7b;--line:rgba(255,255,255,.09);--shadow:0 22px 65px rgba(0,0,0,.35)}
+html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,rgba(243,199,95,.18),transparent 33%),linear-gradient(180deg,#0b1320,var(--bg));color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+button,input,select,textarea{font:inherit}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:17px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:950}.brand img{width:42px;height:42px;border-radius:13px;object-fit:cover;border:1px solid rgba(243,199,95,.4)}.nav-actions{display:flex;gap:9px}.nav-btn{border:1px solid var(--line);background:rgba(18,27,43,.82);color:var(--text);padding:10px 13px;border-radius:12px;font-weight:900;text-decoration:none;cursor:pointer}
+.hero{padding:46px 0 30px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(243,199,95,.35);background:rgba(243,199,95,.08);color:var(--gold);padding:8px 12px;border-radius:999px;font-size:.76rem;font-weight:950;letter-spacing:.12em}.hero h1{font-size:clamp(2.35rem,6vw,4.6rem);margin:18px 0 12px;line-height:1;letter-spacing:-.045em}.hero p{max-width:760px;color:var(--muted);line-height:1.7;margin:0;font-size:1.04rem}
+.grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(310px,.88fr);gap:18px;padding-bottom:56px}.stack{display:grid;gap:18px}.card{background:linear-gradient(155deg,rgba(23,35,56,.97),rgba(14,23,38,.97));border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 14px 42px rgba(0,0,0,.18)}.card h2{margin:0 0 6px;font-size:1.28rem}.sub{margin:0 0 18px;color:var(--muted);font-size:.91rem;line-height:1.55}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:.82rem;color:var(--muted);font-weight:850}.input,select,textarea{width:100%;border:1px solid var(--line);background:#0c1523;color:var(--text);border-radius:13px;padding:12px 13px;outline:none}.input:focus,select:focus,textarea:focus{border-color:rgba(243,199,95,.55);box-shadow:0 0 0 3px rgba(243,199,95,.08)}textarea{min-height:116px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:13px;padding:12px 15px;font-weight:950;cursor:pointer;min-height:46px}.btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#211705}.btn.secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line)}.btn.danger{background:rgba(255,123,123,.1);color:#ff9c9c;border:1px solid rgba(255,123,123,.2)}
+.wave-list{display:grid;gap:10px}.wave{border:1px solid var(--line);background:rgba(8,14,24,.48);border-radius:16px;padding:14px}.wave-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.wave-name{display:flex;align-items:center;gap:10px;font-weight:950}.wave-dot{width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(243,199,95,.1)}.wave-time{font-size:1.15rem;color:var(--gold);font-weight:950}.wave-meta{color:var(--muted);font-size:.82rem;margin-top:7px}.empty{border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center;color:var(--muted)}
+.rule-list{display:grid;gap:9px}.rule{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(8,14,24,.4)}.rule b{display:block;font-size:.92rem}.rule span{color:var(--muted);font-size:.82rem;line-height:1.45}.icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;background:rgba(243,199,95,.1);border:1px solid rgba(243,199,95,.2)}
+.hero-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.hero-chip{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(8,14,24,.42)}.hero-chip strong{display:block}.hero-chip small{color:var(--muted);line-height:1.35;display:block;margin-top:4px}.status{margin-top:12px;border-radius:14px;padding:12px;font-weight:850}.status.ok{background:rgba(88,214,141,.1);border:1px solid rgba(88,214,141,.24);color:#91e6b6}.status.warn{background:rgba(255,123,123,.09);border:1px solid rgba(255,123,123,.2);color:#ffaaaa}
+.wave-input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.wave-editor{border:1px solid var(--line);background:rgba(8,14,24,.45);border-radius:17px;padding:14px;display:grid;gap:10px}.wave-editor-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.wave-editor-title{font-weight:950}.wave-editor-time{color:var(--gold);font-weight:950;font-size:.88rem;white-space:nowrap}.wave-editor textarea{min-height:150px}.assignment{display:grid;gap:10px}.assign-row{display:grid;grid-template-columns:88px 1fr;gap:10px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(8,14,24,.42)}.assign-row strong{color:var(--gold)}.names{color:var(--text);line-height:1.55;word-break:break-word}.leader-name+ .leader-name{margin-top:5px}.leader-name{padding-inline-start:2px}.copy-note{font-size:.78rem;color:var(--muted);margin-top:9px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f5d06e;color:#211705;padding:11px 15px;border-radius:12px;font-weight:950;transition:.22s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}.footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted)}.footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.footer strong{color:var(--gold)}.youtube{color:var(--text);text-decoration:none;font-weight:900}
+html[dir="rtl"] body{text-align:right}html[dir="rtl"] .hero h1{letter-spacing:0}
+@media(max-width:880px){.grid{grid-template-columns:1fr}.hero{padding-top:28px}.wave-input-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.nav{padding:12px 0}.brand span{display:none}.nav-actions{gap:6px}.nav-btn{padding:9px 10px}.hero{padding:27px 0 24px}.hero h1{font-size:2.55rem}.hero p{font-size:.95rem}.card{padding:16px;border-radius:18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}.hero-grid{grid-template-columns:1fr}.assign-row{grid-template-columns:1fr}.footer-inner{justify-content:center;text-align:center}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav">
+<a class="brand" href="index.html" style="color:inherit;text-decoration:none"><img src="assets/images/logo.png" alt="Saif logo"><span data-i18n="brand">KINGSHOT Tools</span></a>
+<div class="nav-actions"><a class="nav-btn" href="index.html" data-i18n="home">Home</a><button id="langToggle" class="nav-btn" type="button">العربية</button></div>
+</nav>
+<header class="hero">
+<div class="eyebrow" data-i18n="eyebrow">ALLIANCE EVENT TOOL</div>
+<h1 data-i18n="title">Bear Trap Planner</h1>
+<p data-i18n="description">Prepare rally waves, organize leaders, set troop limits, and share one clear plan with your alliance before the event begins.</p>
+</header>
+
+<main class="grid">
+<section class="stack">
+<article class="card">
+<h2 data-i18n="setupTitle">Event Setup</h2><p class="sub" data-i18n="setupDesc">Set the event time and define how each wave should start.</p>
+<div class="form-grid">
+<div class="field"><label data-i18n="startLabel">Bear start time</label><input id="startTime" class="input" type="time" step="1" value="20:00:00"></div>
+<div class="field"><label data-i18n="timezoneLabel">Time label</label><select id="timezone"><option>UTC</option><option>Server Time</option><option>Local Time</option></select></div>
+<div class="field"><label data-i18n="wave1Label">Wave 1 delay</label><input id="wave1" class="input" type="number" min="0" step="0.5" value="0"></div>
+<div class="field"><label data-i18n="wave2Label">Wave 2 delay (minutes)</label><input id="wave2" class="input" type="number" min="0" step="0.5" value="1.5"></div>
+<div class="field"><label data-i18n="wave3Label">Wave 3 delay (minutes)</label><input id="wave3" class="input" type="number" min="0" step="0.5" value="3"></div>
+<div class="field"><label data-i18n="troopLabel">Join troop limit</label><input id="troopLimit" class="input" type="number" min="1" step="1000" value="100000"></div>
+</div>
+<div class="actions"><button id="generateBtn" class="btn primary" data-i18n="generate">Generate Plan</button><button id="copyPlanBtn" class="btn secondary" data-i18n="copyPlan">Copy Full Plan</button></div>
+</article>
+
+<article class="card">
+<h2 data-i18n="scheduleTitle">Rally Wave Schedule</h2><p class="sub" data-i18n="scheduleDesc">Each group starts according to its assigned delay.</p>
+<div id="waveList" class="wave-list"></div>
+</article>
+
+<article class="card">
+<h2 data-i18n="assignTitle">Leader Assignment</h2><p class="sub" data-i18n="assignDesc">Enter the rally leaders separately for each wave.</p>
+<div class="wave-input-grid">
+<div class="wave-editor"><div class="wave-editor-head"><span class="wave-editor-title" data-i18n="wave1Names">Wave 1 names</span><span id="editorTime1" class="wave-editor-time">20:00:00</span></div><textarea id="wave1Names" placeholder="Saif&#10;Leader 2"></textarea></div>
+<div class="wave-editor"><div class="wave-editor-head"><span class="wave-editor-title" data-i18n="wave2Names">Wave 2 names</span><span id="editorTime2" class="wave-editor-time">20:01:30</span></div><textarea id="wave2Names" placeholder="Leader 3&#10;Leader 4"></textarea></div>
+<div class="wave-editor"><div class="wave-editor-head"><span class="wave-editor-title" data-i18n="wave3Names">Wave 3 names</span><span id="editorTime3" class="wave-editor-time">20:03:00</span></div><textarea id="wave3Names" placeholder="Leader 5&#10;Leader 6"></textarea></div>
+</div>
+<div class="actions"><button id="saveNamesBtn" class="btn primary" data-i18n="saveNames">Save & Preview</button><button id="copyAssignBtn" class="btn secondary" data-i18n="copyAssignments">Copy Distribution + Times</button><button id="clearBtn" class="btn danger" data-i18n="clear">Clear</button></div>
+<div id="assignmentList" class="assignment" style="margin-top:14px"></div>
+</article>
+</section>
+
+<aside class="stack">
+<article class="card">
+<h2 data-i18n="rulesTitle">Recommended Alliance Rules</h2><p class="sub" data-i18n="rulesDesc">A simple plan that members can follow during the event.</p>
+<div class="rule-list">
+<div class="rule"><div class="icon">🚀</div><div><b data-i18n="rule1Title">Start your rally</b><span data-i18n="rule1Desc">Every member starts one rally using their best heroes.</span></div></div>
+<div class="rule"><div class="icon">⬆️</div><div><b data-i18n="rule2Title">Join the top rally</b><span data-i18n="rule2Desc">Always join the highest available rally in the rally list.</span></div></div>
+<div class="rule"><div class="icon">🪖</div><div><b data-i18n="rule3Title">Respect the troop limit</b><span id="ruleTroopText">Send no more than 100,000 troops when joining.</span></div></div>
+<div class="rule"><div class="icon">⏱️</div><div><b data-i18n="rule4Title">Follow your wave</b><span data-i18n="rule4Desc">Rally leaders start only at the time assigned to their wave.</span></div></div>
+</div>
+</article>
+
+<article class="card">
+<h2 data-i18n="heroesTitle">Join Hero Guide</h2><p class="sub" data-i18n="heroesDesc">Place the recommended join hero in the first slot so the rally skill can activate.</p>
+<div class="hero-grid">
+<div class="hero-chip"><strong>Chenko</strong><small data-i18n="chenko">Total Squad Lethality skill.</small></div>
+<div class="hero-chip"><strong>Yeonwoo</strong><small data-i18n="yeonwoo">Total Squad Lethality skill.</small></div>
+<div class="hero-chip"><strong>Amane</strong><small data-i18n="amane">Total Squad Attack skill.</small></div>
+<div class="hero-chip"><strong>Amadeus</strong><small data-i18n="amadeus">Use when available and properly upgraded.</small></div>
+</div>
+<div class="status ok" data-i18n="heroStatus">✓ The selected join hero must be placed in the first hero slot.</div>
+</article>
+
+<article class="card">
+<h2 data-i18n="quickTitle">Quick Join Check</h2><p class="sub" data-i18n="quickDesc">Confirm that your march follows the alliance limit.</p>
+<div class="field"><label data-i18n="yourTroops">Troops you plan to send</label><input id="joinTroops" class="input" type="number" min="0" step="1000" value="100000"></div>
+<div id="joinStatus" class="status ok"></div>
+</article>
+</aside>
+</main>
+<footer class="footer"><div class="footer-inner"><div><strong>Built by Saif</strong> | K1437</div><a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></div></footer>
+</div>
+<div id="toast" class="toast">Copied</div>
+<script>
+const T={
+en:{brand:"KINGSHOT Tools",home:"Home",eyebrow:"ALLIANCE EVENT TOOL",title:"Bear Trap Planner",description:"Prepare rally waves, organize leaders, set troop limits, and share one clear plan with your alliance before the event begins.",setupTitle:"Event Setup",setupDesc:"Set the event time and define how each wave should start.",startLabel:"Bear start time",timezoneLabel:"Time label",wave1Label:"Wave 1 delay (minutes)",wave2Label:"Wave 2 delay (minutes)",wave3Label:"Wave 3 delay (minutes)",troopLabel:"Join troop limit",generate:"Generate Plan",copyPlan:"Copy Full Plan",scheduleTitle:"Rally Wave Schedule",scheduleDesc:"Each group starts according to its assigned delay.",assignTitle:"Leader Assignment",assignDesc:"Enter the rally leaders separately for each wave.",wave1Names:"Wave 1 names",wave2Names:"Wave 2 names",wave3Names:"Wave 3 names",saveNames:"Save & Preview",copyAssignments:"Copy Distribution + Times",clear:"Clear",rulesTitle:"Recommended Alliance Rules",rulesDesc:"A simple plan that members can follow during the event.",rule1Title:"Start your rally",rule1Desc:"Every member starts one rally using their best heroes.",rule2Title:"Join the top rally",rule2Desc:"Always join the highest available rally in the rally list.",rule3Title:"Respect the troop limit",rule4Title:"Follow your wave",rule4Desc:"Rally leaders start only at the time assigned to their wave.",heroesTitle:"Join Hero Guide",heroesDesc:"Place the recommended join hero in the first slot so the rally skill can activate.",chenko:"Total Squad Lethality skill.",yeonwoo:"Total Squad Lethality skill.",amane:"Total Squad Attack skill.",amadeus:"Use when available and properly upgraded.",heroStatus:"✓ The selected join hero must be placed in the first hero slot.",quickTitle:"Quick Join Check",quickDesc:"Confirm that your march follows the alliance limit.",yourTroops:"Troops you plan to send",wave:"Wave",starts:"Starts",delay:"Delay",minutes:"min",immediately:"Immediately",noLeaders:"No leaders assigned yet.",withinLimit:"✓ Your march follows the alliance limit.",overLimit:"✕ Reduce your march by {n} troops.",copied:"Copied",nothing:"Nothing to copy yet.",fullPlan:"BEAR TRAP PLAN",joinLimit:"Join limit",leaders:"Leaders",rallyHeroNote:"Rally leaders: Use your best three heroes.",joinHeroNote:"Joiners: Use Chenko, Amane, or Yeonwoo in the first hero slot.",footer:"Built by Saif | K1437"},
+ar:{brand:"أدوات KINGSHOT",home:"الرئيسية",eyebrow:"أداة فعاليات التحالف",title:"مخطط فخ الدب",description:"جهّز موجات الحشود، ونظّم القادة، وحدد سقف الجنود، وشارك خطة واضحة مع التحالف قبل بدء الفعالية.",setupTitle:"إعداد الفعالية",setupDesc:"حدد وقت بداية الفخ ووقت انطلاق كل موجة.",startLabel:"وقت بداية فخ الدب",timezoneLabel:"نوع التوقيت",wave1Label:"تأخير الموجة الأولى (دقيقة)",wave2Label:"تأخير الموجة الثانية (دقيقة)",wave3Label:"تأخير الموجة الثالثة (دقيقة)",troopLabel:"الحد الأقصى للجنود عند الانضمام",generate:"إنشاء الخطة",copyPlan:"نسخ الخطة كاملة",scheduleTitle:"جدول موجات الحشود",scheduleDesc:"تبدأ كل مجموعة حسب التأخير المحدد لها.",assignTitle:"توزيع قادة الحشود",assignDesc:"سجّل أسماء قادة الحشود بشكل منفصل لكل موجة.",wave1Names:"أسماء الموجة الأولى",wave2Names:"أسماء الموجة الثانية",wave3Names:"أسماء الموجة الثالثة",saveNames:"حفظ ومعاينة",copyAssignments:"نسخ التوزيع مع التوقيت",clear:"مسح",rulesTitle:"قواعد مقترحة للتحالف",rulesDesc:"خطة سهلة يستطيع الأعضاء اتباعها أثناء الفعالية.",rule1Title:"ابدأ حشدك",rule1Desc:"يبدأ كل عضو حشدًا واحدًا باستخدام أفضل أبطاله.",rule2Title:"انضم لأعلى حشد",rule2Desc:"انضم دائمًا إلى أعلى حشد متاح في قائمة الحشود.",rule3Title:"التزم بحد الجنود",rule4Title:"التزم بموجتك",rule4Desc:"يبدأ قادة الحشود فقط في الوقت المحدد لموجتهم.",heroesTitle:"دليل أبطال الانضمام",heroesDesc:"ضع بطل الانضمام المناسب في الخانة الأولى حتى تتفعّل مهارة الحشد.",chenko:"مهارة فتك إجمالي القوات.",yeonwoo:"مهارة فتك إجمالي القوات.",amane:"مهارة هجوم إجمالي القوات.",amadeus:"استخدمه عند توفره ورفعه بالشكل المناسب.",heroStatus:"✓ يجب وضع بطل الانضمام المختار في الخانة الأولى.",quickTitle:"فحص سريع للانضمام",quickDesc:"تأكد أن مسيرتك ملتزمة بالحد الذي حدده التحالف.",yourTroops:"عدد الجنود الذي سترسله",wave:"الموجة",starts:"تبدأ",delay:"التأخير",minutes:"د",immediately:"فورًا",noLeaders:"لم يتم توزيع القادة بعد.",withinLimit:"✓ عدد جنودك ضمن الحد المسموح.",overLimit:"✕ قلل مسيرتك بمقدار {n} جندي.",copied:"تم النسخ",nothing:"لا يوجد شيء لنسخه بعد.",fullPlan:"خطة فخ الدب",joinLimit:"حد الانضمام",leaders:"القادة",rallyHeroNote:"أصحاب الراليات: استخدموا أفضل ثلاثة أبطال لديكم.",joinHeroNote:"المنضمون: استخدموا تشينكو أو أماني أو يونيو في خانة البطل الأولى.",footer:"Built by Saif | K1437"}}
+let lang=localStorage.getItem('saifRallyLang')||'en';let assignments=[[],[],[]];
+const $=id=>document.getElementById(id);const val=id=>$(id).value;
+function tr(k){return T[lang][k]||k}function number(n){return Number(n||0).toLocaleString(lang==='ar'?'ar-AE':'en-US')}
+function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=tr(el.dataset.i18n));$('langToggle').textContent=lang==='en'?'العربية':'English';localStorage.setItem('saifRallyLang',lang);renderAll()}
+function timeAfter(base,mins){const parts=base.split(':').map(Number);const h=parts[0]||0,m=parts[1]||0,s=parts[2]||0;const day=24*60*60;const total=((h*3600+m*60+s)+Math.round(Number(mins||0)*60)+day)%day;const hh=Math.floor(total/3600),mm=Math.floor((total%3600)/60),ss=total%60;return `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`}
+function waveData(){return [Number(val('wave1')||0),Number(val('wave2')||0),Number(val('wave3')||0)].map((delay,i)=>({i,delay,time:timeAfter(val('startTime')||'20:00:00',delay)}))}
+function renderWaves(){const tz=val('timezone'),waves=waveData();$('waveList').innerHTML=waves.map(w=>`<div class="wave"><div class="wave-top"><div class="wave-name"><span class="wave-dot"></span>${tr('wave')} ${w.i+1}</div><div class="wave-time">${w.time} ${tz}</div></div><div class="wave-meta">${tr('delay')}: ${w.delay===0?tr('immediately'):`${w.delay} ${tr('minutes')}`}</div></div>`).join('');waves.forEach(w=>{const el=$(`editorTime${w.i+1}`);if(el)el.textContent=`${w.time} ${tz}`})}
+function renderAssignments(){const box=$('assignmentList'),waves=waveData(),tz=val('timezone');if(!assignments.some(x=>x.length)){box.innerHTML=`<div class="empty">${tr('noLeaders')}</div>`;return}box.innerHTML=assignments.map((names,i)=>`<div class="assign-row"><strong>${tr('wave')} ${i+1}<br><span style="font-size:.78rem;color:var(--muted)">${waves[i].time} ${tz}</span></strong><div class="names">${names.length?names.map(n=>`<div class="leader-name">${escapeHtml(n)}</div>`).join(''):'—'}</div></div>`).join('')}
+function escapeHtml(s){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function saveNames(){assignments=['wave1Names','wave2Names','wave3Names'].map(id=>val(id).split(/\n|,/).map(s=>s.trim()).filter(Boolean));renderAssignments()}
+function updateLimit(){const limit=Math.max(1,Number(val('troopLimit')||0));$('ruleTroopText').textContent=lang==='ar'?`لا ترسل أكثر من ${number(limit)} جندي عند الانضمام.`:`Send no more than ${number(limit)} troops when joining.`;const sent=Math.max(0,Number(val('joinTroops')||0));const status=$('joinStatus');if(sent<=limit){status.className='status ok';status.textContent=tr('withinLimit')}else{status.className='status warn';status.textContent=tr('overLimit').replace('{n}',number(sent-limit))}}
+function copyNotes(){const limit=Math.max(1,Number(val('troopLimit')||0));if(lang==='ar'){return `- أصحاب الراليات: استخدموا أفضل ثلاثة أبطال لديكم.
+- المنضمون: استخدموا تشينكو أو أماني أو يونيو في خانة البطل الأولى.
+- الحد الأقصى لجنود الانضمام: ${number(limit)}
+- Built by Saif | K1437`}return `- Rally leaders: Use your best three heroes.
+- Joiners: Use Chenko, Amane, or Yeonwoo in the first hero slot.
+- Join troops limit: ${number(limit)}
+- Built by Saif | K1437`}
+function assignmentText(){const tz=val('timezone'),waves=waveData();const distribution=assignments.map((names,i)=>`${tr('wave')} ${i+1} — ${waves[i].time} ${tz}
+${names.length?names.map(n=>`- ${n}`).join('
+'):'—'}`).join('
+
+');return `${distribution}
+
+${copyNotes()}`}
+function planText(){const tz=val('timezone');const waves=waveData().map(w=>`${tr('wave')} ${w.i+1} — ${w.time} ${tz}${assignments[w.i]?.length?`
+${assignments[w.i].map(n=>`- ${n}`).join('
+')}`:'
+—'}`).join('
+
+');return `${tr('fullPlan')}
+
+${waves}
+
+${copyNotes()}`}
+async function copy(text){if(!text.trim()){toast(tr('nothing'));return}try{await navigator.clipboard.writeText(text)}catch{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}toast(tr('copied'))}
+function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),1600)}
+function renderAll(){renderWaves();renderAssignments();updateLimit()}
+$('langToggle').onclick=()=>{lang=lang==='en'?'ar':'en';applyLang()};$('generateBtn').onclick=renderAll;$('saveNamesBtn').onclick=saveNames;$('copyPlanBtn').onclick=()=>{saveNames();copy(planText())};$('copyAssignBtn').onclick=()=>{saveNames();copy(assignmentText())};$('clearBtn').onclick=()=>{['wave1Names','wave2Names','wave3Names'].forEach(id=>$(id).value='');assignments=[[],[],[]];renderAssignments()};['startTime','timezone','wave1','wave2','wave3','troopLimit','joinTroops'].forEach(id=>$(id).addEventListener('input',renderAll));['wave1Names','wave2Names','wave3Names'].forEach(id=>$(id).addEventListener('input',saveNames));applyLang();
+</script>
+</body>
+</html>
