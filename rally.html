@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
 <title>Rally Planner | KINGSHOT Tools</title>
 <style>
@@ -17,7 +17,7 @@ margin:0;min-height:100vh;
 background:radial-gradient(circle at top,rgba(245,196,81,.12),transparent 32%),var(--bg);
 color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
-button,input,select{font:inherit}
+button,input,select{font:inherit} input,select,textarea{font-size:16px;line-height:1.35} button{touch-action:manipulation}
 .container{width:min(100% - 20px,780px);margin:auto;padding:24px 0 50px}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
 .home-link{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid var(--border);border-radius:10px;background:var(--light);color:var(--text);font-weight:900;text-decoration:none}
@@ -73,7 +73,7 @@ html[dir="rtl"] .row-head,html[dir="rtl"] .title-row{direction:rtl}
 .team-card{margin-top:0}
 .team-title{font-size:1.35rem!important;color:var(--gold);text-align:center;margin-bottom:16px!important}
 @media(max-width:760px){.teams-grid{grid-template-columns:1fr}}
-@media(max-width:560px){
+@media(max-width:560px){input,select,textarea{font-size:16px!important}.input,.select{min-height:46px}.primary,.secondary,.discord-btn,.danger,.lang-btn,.home-link{font-size:16px}.team-card{padding:14px}.row{overflow:hidden}.player{word-break:break-word} 
 body{overflow-x:hidden}
 .container{width:100%;padding:14px 12px 32px}
 .topbar{margin-bottom:8px}
@@ -164,7 +164,7 @@ input{padding:12px 10px;min-width:0}
 </div>
 
 <footer class="footer">
-<strong>Built by Saif | K1437</strong>
+<strong>Powered by SaifKS.com</strong>
 </footer>
 </main>
 
@@ -190,7 +190,7 @@ const $=s=>document.querySelector(s);
 let currentLanguage=localStorage.getItem("saifRallyLang")||"en";
 const translations={en:{home:"Home",subtitle:"Create synchronized UTC rally schedules quickly and accurately.",prepTitle:"1. Preparation Time",prepDesc:"Choose how much time you need to copy and send the schedule.",minutes:"Minutes",seconds:"Seconds",addTitle:"2. Add Rally Leader",playerName:"Player Name",marchMinutes:"March Minutes",marchSeconds:"March Seconds",addPlayer:"+ Add Player",scheduleTitle:"3. UTC Schedule",clear:"Clear",generate:"Generate Schedule From UTC Now",firstStartsIn:"First rally starts in",copyAll:"Copy Team Times",copyDiscord:"Copy Discord Format",editPlayer:"Edit Player",cancel:"Cancel",saveChanges:"Save Changes",edit:"Edit",delete:"Delete",copy:"Copy",march:"March",updated:"Player updated",copied:"Copied",allCopied:"Team times copied",discordCopied:"Discord format copied"},ar:{home:"الرئيسية",subtitle:"أنشئ جدول حشود متزامن بتوقيت UTC بسرعة ودقة.",prepTitle:"1. وقت التحضير",prepDesc:"حدد المدة التي تحتاجها لنسخ الجدول وإرساله.",minutes:"الدقائق",seconds:"الثواني",addTitle:"2. إضافة قائد حشد",playerName:"اسم اللاعب",marchMinutes:"دقائق المسير",marchSeconds:"ثواني المسير",addPlayer:"+ إضافة لاعب",scheduleTitle:"3. جدول UTC",clear:"مسح الكل",generate:"إنشاء الجدول من الوقت العالمي الحالي",firstStartsIn:"يبدأ أول حشد بعد",copyAll:"نسخ أوقات الفريق",copyDiscord:"نسخ بتنسيق Discord",editPlayer:"تعديل اللاعب",cancel:"إلغاء",saveChanges:"حفظ التعديلات",edit:"تعديل",delete:"حذف",copy:"نسخ",march:"المسير",updated:"تم تحديث اللاعب",copied:"تم النسخ",allCopied:"تم نسخ أوقات الفريق",discordCopied:"تم نسخ تنسيق Discord"}};
 const t=k=>translations[currentLanguage][k]||k,pad=n=>String(n).padStart(2,"0"),dur=s=>`${pad(Math.floor(s/60))}:${pad(s%60)}`,utc=d=>`${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())} UTC`,sec=(m,s)=>Number(m)*60+Number(s),esc=v=>v.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
-function rights(){return `\n\nBuilt by Saif | K1437`}
+function rights(){return `\n\nPowered by SaifKS.com`}
 function showToast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1300)}
 async function copyText(text){try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove()}}
 class TeamTool{
