@@ -122,23 +122,24 @@ function copyNotes(){const limit=Math.max(1,Number(val('troopLimit')||0));if(lan
 - Joiners: Use Chenko, Amane, or Yeonwoo in the first hero slot.
 - Join troops limit: ${number(limit)}
 - Built by Saif | K1437`}
-function assignmentText(){const tz=val('timezone'),waves=waveData();const distribution=assignments.map((names,i)=>`${tr('wave')} ${i+1} — ${waves[i].time} ${tz}
-${names.length?names.map(n=>`- ${n}`).join('
-'):'—'}`).join('
-
-');return `${distribution}
-
-${copyNotes()}`}
-function planText(){const tz=val('timezone');const waves=waveData().map(w=>`${tr('wave')} ${w.i+1} — ${w.time} ${tz}${assignments[w.i]?.length?`
-${assignments[w.i].map(n=>`- ${n}`).join('
-')}`:'
-—'}`).join('
-
-');return `${tr('fullPlan')}
-
-${waves}
-
-${copyNotes()}`}
+function assignmentText(){
+  const tz=val('timezone');
+  const waves=waveData();
+  const distribution=assignments.map((names,i)=>{
+    const list=names.length ? names.map(n=>`- ${n}`).join('\n') : '—';
+    return `${tr('wave')} ${i+1} — ${waves[i].time} ${tz}\n${list}`;
+  }).join('\n\n');
+  return `${distribution}\n\n${copyNotes()}`;
+}
+function planText(){
+  const tz=val('timezone');
+  const waves=waveData().map(w=>{
+    const names=assignments[w.i]||[];
+    const list=names.length ? names.map(n=>`- ${n}`).join('\n') : '—';
+    return `${tr('wave')} ${w.i+1} — ${w.time} ${tz}\n${list}`;
+  }).join('\n\n');
+  return `${tr('fullPlan')}\n\n${waves}\n\n${copyNotes()}`;
+}
 async function copy(text){if(!text.trim()){toast(tr('nothing'));return}try{await navigator.clipboard.writeText(text)}catch{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}toast(tr('copied'))}
 function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),1600)}
 function renderAll(){renderWaves();renderAssignments();updateLimit()}
