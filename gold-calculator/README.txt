@@ -1,6 +1,6 @@
-Spacing v3:
-- Added fixed visual space between every result label and number.
-- Resource labels and values now use separate grid columns.
-- Works in English and Arabic.
-- CSS file was renamed to style-spacing-v3.css to bypass cache.
-- Upload and replace every file inside the gold-calculator folder.
+Results v4 fixes:
+- Resource names and values now appear on separate lines inside each card.
+- Numbers no longer overlap labels on iPad, desktop, or mobile.
+- Base -> 30-1 now shows power gained using the 30-1 power value.
+- CSS and JavaScript filenames were changed to bypass browser and Cloudflare cache.
+- Replace every file inside the gold-calculator folder.
