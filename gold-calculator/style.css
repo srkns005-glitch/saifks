@@ -251,3 +251,31 @@ html[dir="rtl"] .lang-toggle{
     grid-template-columns:1fr;
   }
 }
+
+.result-row{
+ display:grid !important;
+ grid-template-columns:1fr auto;
+ align-items:center;
+ column-gap:18px;
+}
+.result-row span{
+ display:block;
+ padding-inline-end:12px;
+ white-space:normal;
+}
+.result-row strong{
+ display:block;
+ min-width:120px;
+ text-align:end;
+}
+.resource-item{
+ display:grid;
+ grid-template-columns:1fr auto;
+ align-items:center;
+ column-gap:14px;
+}
+.resource-item span{margin:0;}
+.resource-item strong{
+ text-align:end;
+ min-width:90px;
+}
