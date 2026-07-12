@@ -58,16 +58,7 @@ input,select:focus{transform:scale(1.01)}
 input,select{height:48px;font-size:17px}
 }
 
-.lang{
-  border:1px solid var(--line);
-  background:rgba(18,27,43,.8);
-  color:var(--text);
-  padding:10px 13px;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
-  min-height:44px;
-}
+
 
 .header-row{
   display:flex;
@@ -77,24 +68,85 @@ input,select{height:48px;font-size:17px}
   text-align:start;
 }
 .brand-block h1{margin-bottom:6px}
-.lang{
-  flex:0 0 auto;
-  width:auto;
-  min-width:112px;
-  padding:0 20px;
-  height:54px;
-  border:1px solid rgba(255,213,79,.45);
-  border-radius:16px;
-  background:#102038;
-  color:#fff;
-  font-size:18px;
-  font-weight:800;
-}
+
 html[dir="rtl"] .header-row{flex-direction:row-reverse}
 html[dir="rtl"] body{text-align:right}
 html[dir="rtl"] .building-title,
 html[dir="rtl"] .check-line{justify-content:flex-start}
 @media(max-width:699px){
   .header-row{align-items:center}
-  .lang{min-width:108px;height:50px}
+  
+}
+
+.lang-toggle{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-width:132px;
+  height:54px;
+  padding:0 18px;
+  border:1px solid rgba(255,213,79,.42);
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(20,39,66,.96),rgba(12,27,48,.96));
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.1px;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  cursor:pointer;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.lang-toggle:hover{
+  border-color:rgba(255,213,79,.75);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.28),
+    0 0 0 3px rgba(255,213,79,.08);
+}
+
+.lang-toggle:active{
+  transform:scale(.97);
+}
+
+.lang-toggle:focus-visible{
+  outline:3px solid rgba(255,213,79,.28);
+  outline-offset:3px;
+}
+
+.lang-icon{
+  display:grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  font-size:20px;
+  line-height:1;
+}
+
+html[dir="rtl"] .lang-toggle{
+  flex-direction:row-reverse;
+}
+
+@media(max-width:699px){
+  .lang-toggle{
+    min-width:122px;
+    height:50px;
+    padding:0 16px;
+    border-radius:15px;
+    font-size:17px;
+  }
+
+  .lang-icon{
+    width:24px;
+    height:24px;
+    font-size:19px;
+  }
 }

@@ -184,8 +184,8 @@ function applyLanguage(language){
   document.documentElement.lang=language;
   document.documentElement.dir=language==="ar"?"rtl":"ltr";
   document.title=`${text.title} | SaifKS`;
-  document.getElementById("langToggle").textContent=language==="en"?"العربية":"English";
-  localStorage.setItem("saifRallyLang",language);
+  document.getElementById("langToggleText").textContent=language==="en"?"العربية":"English";
+  localStorage.setItem("saifRallyLang",language); document.getElementById("langToggle").setAttribute("aria-label", language==="en" ? "Switch to Arabic" : "التبديل إلى الإنجليزية");
 
   document.querySelectorAll("[data-i18n]").forEach(element=>{
     const key=element.dataset.i18n;
