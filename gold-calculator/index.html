@@ -93,49 +93,58 @@
     </label>
   </section>
 
-  <section class="card">
+  <section class="card results-card">
     <h2 data-i18n="results">Results</h2>
 
-    <div class="result-group">
-      <h3 data-i18n="temperedGold">Tempered True Gold</h3>
-      <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTemperedGold">0</strong></div>
-      <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTemperedGold">0</strong></div>
-      <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTemperedGold">0</strong></div>
-    </div>
+    <div class="results-grid">
+      <div class="result-panel gold-panel">
+        <h3 data-i18n="temperedGold">Tempered True Gold</h3>
+        <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTemperedGold">0</strong></div>
+        <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTemperedGold">0</strong></div>
+        <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTemperedGold">0</strong></div>
+      </div>
 
-    <div class="result-group">
-      <h3 data-i18n="trueGold">True Gold</h3>
-      <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTrueGold">0</strong></div>
-      <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTrueGold">0</strong></div>
-      <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTrueGold">0</strong></div>
-    </div>
+      <div class="result-panel gold-panel">
+        <h3 data-i18n="trueGold">True Gold</h3>
+        <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTrueGold">0</strong></div>
+        <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTrueGold">0</strong></div>
+        <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTrueGold">0</strong></div>
+      </div>
 
-    <div class="result-group">
-      <h3 data-i18n="timeSummary">Time Summary</h3>
-      <div class="result-row"><span data-i18n="originalTime">Original Time</span><strong id="originalTime">0</strong></div>
-      <div class="result-row"><span data-i18n="afterBonuses">After Bonuses</span><strong id="reducedTime">0</strong></div>
-      <div class="result-row"><span data-i18n="remainingTime">Remaining Time</span><strong id="remainingTime">0</strong></div>
-    </div>
+      <div class="result-panel time-panel">
+        <h3 data-i18n="timeSummary">Time Summary</h3>
+        <div class="result-row"><span data-i18n="originalTime">Original Time</span><strong id="originalTime">0</strong></div>
+        <div class="result-row"><span data-i18n="afterBonuses">After Bonuses</span><strong id="reducedTime">0</strong></div>
+        <div class="result-row"><span data-i18n="remainingTime">Remaining Time</span><strong id="remainingTime">0</strong></div>
+      </div>
 
-    <div class="result-group">
-      <h3 data-i18n="resources">Resources</h3>
-      <div class="result-row"><span data-i18n="food">Food</span><strong id="food">0</strong></div>
-      <div class="result-row"><span data-i18n="wood">Wood</span><strong id="wood">0</strong></div>
-      <div class="result-row"><span data-i18n="stone">Stone</span><strong id="stone">0</strong></div>
-      <div class="result-row"><span data-i18n="iron">Iron</span><strong id="iron">0</strong></div>
-    </div>
+      <div class="result-panel power-panel">
+        <h3 data-i18n="power">Power</h3>
+        <div class="power-value">
+          <span data-i18n="powerGained">Total Power Gained</span>
+          <strong id="powerGain">0</strong>
+        </div>
+      </div>
 
-    <div class="result-group">
-      <h3 data-i18n="resourcesAfterSaul">Resources After Saul</h3>
-      <div class="result-row"><span data-i18n="food">Food</span><strong id="foodAfterSaul">0</strong></div>
-      <div class="result-row"><span data-i18n="wood">Wood</span><strong id="woodAfterSaul">0</strong></div>
-      <div class="result-row"><span data-i18n="stone">Stone</span><strong id="stoneAfterSaul">0</strong></div>
-      <div class="result-row"><span data-i18n="iron">Iron</span><strong id="ironAfterSaul">0</strong></div>
-    </div>
+      <div class="result-panel resource-panel">
+        <h3 data-i18n="resources">Resources</h3>
+        <div class="resource-grid">
+          <div class="resource-item"><span data-i18n="food">Food</span><strong id="food">0</strong></div>
+          <div class="resource-item"><span data-i18n="wood">Wood</span><strong id="wood">0</strong></div>
+          <div class="resource-item"><span data-i18n="stone">Stone</span><strong id="stone">0</strong></div>
+          <div class="resource-item"><span data-i18n="iron">Iron</span><strong id="iron">0</strong></div>
+        </div>
+      </div>
 
-    <div class="result-group">
-      <h3 data-i18n="power">Power</h3>
-      <div class="result-row"><span data-i18n="powerGained">Total Power Gained</span><strong id="powerGain">0</strong></div>
+      <div class="result-panel resource-panel">
+        <h3 data-i18n="resourcesAfterSaul">Resources After Saul</h3>
+        <div class="resource-grid">
+          <div class="resource-item"><span data-i18n="food">Food</span><strong id="foodAfterSaul">0</strong></div>
+          <div class="resource-item"><span data-i18n="wood">Wood</span><strong id="woodAfterSaul">0</strong></div>
+          <div class="resource-item"><span data-i18n="stone">Stone</span><strong id="stoneAfterSaul">0</strong></div>
+          <div class="resource-item"><span data-i18n="iron">Iron</span><strong id="ironAfterSaul">0</strong></div>
+        </div>
+      </div>
     </div>
   </section>
 
