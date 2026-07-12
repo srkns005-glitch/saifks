@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>True Gold Calculator | SaifKS</title>
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <header class="header">
@@ -157,9 +157,22 @@
   </div>
 </main>
 
-<footer>SaifKS.com <small class="version">Mobile Power v6</small></footer>
+
+<div id="resetDialog" class="reset-dialog" hidden>
+  <div class="reset-dialog-backdrop"></div>
+  <div class="reset-dialog-box" role="dialog" aria-modal="true" aria-labelledby="resetDialogTitle">
+    <h3 id="resetDialogTitle" data-i18n="resetConfirmTitle">Reset saved data?</h3>
+    <p data-i18n="resetConfirmText">Are you sure you want to delete all saved calculator data?</p>
+    <div class="reset-dialog-actions">
+      <button id="confirmReset" class="danger" type="button" data-i18n="yes">Yes</button>
+      <button id="cancelReset" class="secondary" type="button" data-i18n="cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<footer>SaifKS.com <small class="version">Auto Save v7</small></footer>
 
 <script src="building-data-mobile-v6.js?v=6"></script>
-<script src="app-mobile-v6.js?v=6"></script>
+<script src="app-autosave-v7.js?v=7"></script>
 </body>
 </html>
