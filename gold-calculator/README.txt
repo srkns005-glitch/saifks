@@ -1,5 +1,6 @@
-Corrected Base behavior:
-- Current Level visibly starts at Base instead of —.
-- Target Level still starts at —.
-- Base cannot be selected as a target.
-- Base -> 30-1 calculates gold, resources, and time.
+Cache-proof Base fix:
+- Current Level visibly starts with Base.
+- Target Level starts with —.
+- JavaScript files were renamed to force GitHub/Cloudflare/browser to load the new version.
+- Footer shows Base v2 so you can confirm the new files are live.
+- Upload and replace ALL files inside gold-calculator.

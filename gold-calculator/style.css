@@ -150,3 +150,10 @@ html[dir="rtl"] .lang-toggle{
     font-size:19px;
   }
 }
+
+.version{
+  margin-inline-start:8px;
+  color:#ffd54f;
+  font-size:11px;
+  opacity:.8;
+}
