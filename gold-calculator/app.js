@@ -273,9 +273,9 @@ function calculate(){
       totals.time+=row.time;
     }
 
-    if(current!=="Base"){
-      totals.power+=BUILDING_DATA[name][target].power-BUILDING_DATA[name][current].power;
-    }
+    totals.power+=
+      BUILDING_DATA[name][target].power-
+      BUILDING_DATA[name][current].power;
   });
 
   const constructionSpeed=
