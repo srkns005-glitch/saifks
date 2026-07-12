@@ -124,7 +124,7 @@ buildingNames.forEach(name=>{
     <div class="building-grid">
       <div>
         <label for="${name}Current" class="current-label"></label>
-        <select id="${name}Current" disabled><option value="">—</option></select>
+        <select id="${name}Current" disabled><option value="Base" selected>Base</option></select>
       </div>
       <div>
         <label for="${name}Target" class="target-label"></label>
@@ -139,6 +139,7 @@ buildingNames.forEach(name=>{
   const check=document.getElementById(name);
 
   availableLevels.forEach(level=>{
+    if(level==="Base") return;
     current.add(new Option(level,level));
     target.add(new Option(level,level));
   });
@@ -146,8 +147,12 @@ buildingNames.forEach(name=>{
   function refreshTargetOptions(){
     const currentIndex=current.value ? availableLevels.indexOf(current.value) : -1;
 
-    Array.from(target.options).forEach((option,index)=>{
-      option.disabled=index>0 && currentIndex>=0 && (index-1)<=currentIndex;
+    Array.from(target.options).forEach(option=>{
+      if(!option.value){
+        option.disabled=false;
+        return;
+      }
+      option.disabled=availableLevels.indexOf(option.value)<=currentIndex;
     });
 
     if(target.value && availableLevels.indexOf(target.value)<=currentIndex){
@@ -161,7 +166,7 @@ buildingNames.forEach(name=>{
     target.disabled=!check.checked;
 
     if(!check.checked){
-      current.value="";
+      current.value="Base";
       target.value="";
     }
 
@@ -324,9 +329,14 @@ document.getElementById("resetCalculator").addEventListener("click",()=>{
   document.querySelectorAll(".building").forEach(element=>element.classList.remove("active"));
 
   document.querySelectorAll("select").forEach(element=>{
-    element.value="";
-    if(element.id.endsWith("Current")||element.id.endsWith("Target")){
+    if(element.id.endsWith("Current")){
+      element.value="Base";
       element.disabled=true;
+    }else if(element.id.endsWith("Target")){
+      element.value="";
+      element.disabled=true;
+    }else{
+      element.value="0";
     }
     Array.from(element.options).forEach(option=>option.disabled=false);
   });
