@@ -15,7 +15,7 @@ const levels=window.LEVEL_ORDER;
 const box=document.getElementById("buildings");
 
 buildingNames.forEach(name=>{
-  const availableLevels=levels.filter(level=>BUILDING_DATA[name][level]);
+  const availableLevels=levels.filter(level=>level==="Base"?Boolean(BUILDING_DATA[name]["30-1"]):Boolean(BUILDING_DATA[name][level]));
   const block=document.createElement("div");
   block.className="building";
 
@@ -153,9 +153,7 @@ function calculate(){
       totals.time+=row.time;
     }
 
-    totals.power+=
-      BUILDING_DATA[name][target].power-
-      BUILDING_DATA[name][current].power;
+    if(current!=="Base"){totals.power+=BUILDING_DATA[name][target].power-BUILDING_DATA[name][current].power;}
   });
 
   const constructionSpeed=
@@ -227,7 +225,7 @@ document.querySelectorAll("input,select").forEach(element=>{
 
 document.getElementById("resetCalculator").addEventListener("click",()=>{
   document.querySelectorAll('input[type="number"]').forEach(element=>{
-    element.value=0;
+    element.value="";
   });
 
   document.querySelectorAll('input[type="checkbox"]').forEach(element=>{
