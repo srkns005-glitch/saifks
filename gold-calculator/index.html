@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-  <title>حاسبة الذهب / الذهب الخالص / True Gold Calculator | SaifKS</title>
+  <title>True Gold Calculator | SaifKS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="header">
-  <div class="container">
-    <h1>حاسبة الذهب / الذهب الخالص / True Gold Calculator</h1>
-    <p>SaifKS.com</p>
+  <div class="container header-inner">
+    <div>
+      <h1 data-i18n="title">True Gold Calculator</h1>
+      <p>SaifKS.com</p>
+    </div>
+
+    <div class="language-box">
+      <label for="languageSelect" data-i18n="language">Language</label>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
   </div>
 </header>
 
 <main class="container">
   <section class="card">
-    <h2>المباني / Buildings</h2>
+    <h2 data-i18n="buildings">Buildings</h2>
     <div id="buildings"></div>
   </section>
 
   <section class="card">
-    <h2>المخزون / Inventory</h2>
+    <h2 data-i18n="inventory">Inventory</h2>
     <div class="grid grid-3">
       <div class="field">
-        <label for="temperedGold">الذهب المعدل / Tempered الذهب الخالص / True Gold</label>
+        <label for="temperedGold" data-i18n="temperedGold">Tempered True Gold</label>
         <input type="number" id="temperedGold" min="0" placeholder="0" value="">
       </div>
       <div class="field">
-        <label for="trueGold">الذهب الخالص / True Gold</label>
+        <label for="trueGold" data-i18n="trueGold">True Gold</label>
         <input type="number" id="trueGold" min="0" placeholder="0" value="">
       </div>
       <div class="field">
-        <label for="speedups">إجمالي التسريعات (يوم) / Total Speedups (Days)</label>
+        <label for="speedups" data-i18n="speedups">Total Speedups (Days)</label>
         <input type="number" id="speedups" min="0" step="0.01" placeholder="0" value="">
       </div>
     </div>
   </section>
 
   <section class="card">
-    <h2>المكافآت / Bonuses</h2>
+    <h2 data-i18n="bonuses">Bonuses</h2>
     <div class="grid grid-2">
       <div class="field">
-        <label for="constructionBonus">سرعة البناء % / Construction Speed %</label>
+        <label for="constructionBonus" data-i18n="construction">Construction Speed %</label>
         <input type="number" id="constructionBonus" min="0" step="0.1" placeholder="0" value="">
       </div>
       <div class="field">
-        <label for="wolfSkill">مهارة الذئب / Wolf Skill</label>
+        <label for="wolfSkill" data-i18n="wolf">Wolf Skill</label>
         <select id="wolfSkill">
           <option value="0">—</option>
           <option value="5">Lv.1 (5%)</option>
@@ -57,11 +67,11 @@
         </select>
       </div>
       <div class="field">
-        <label for="positionBonus">مكافأة المنصب % / Position Bonus %</label>
+        <label for="positionBonus" data-i18n="position">Position Bonus %</label>
         <input type="number" id="positionBonus" min="0" step="0.1" placeholder="0" value="">
       </div>
       <div class="field">
-        <label for="saulSkill">مهارة شاول / Saul Skill</label>
+        <label for="saulSkill" data-i18n="saul">Saul Skill</label>
         <select id="saulSkill">
           <option value="0">—</option>
           <option value="3">Lv.1 (3%)</option>
@@ -72,72 +82,70 @@
         </select>
       </div>
       <div class="field">
-        <label for="kingBonus">مكافأة الملك % / King Bonus %</label>
+        <label for="kingBonus" data-i18n="king">King Bonus %</label>
         <input type="number" id="kingBonus" min="0" step="0.1" placeholder="0" value="">
       </div>
       <div class="field">
-        <label for="prepBonus">مكافأة التحضير % / Kingdom Preparation %</label>
+        <label for="prepBonus" data-i18n="preparation">Kingdom Preparation %</label>
         <input type="number" id="prepBonus" min="0" step="0.1" placeholder="0" value="">
       </div>
     </div>
 
     <label class="check-line">
       <input type="checkbox" id="doubleTime">
-      الوقت المزدوج (+20%) / Double Time (+20%)
+      <span data-i18n="doubleTime">Double Time (20%)</span>
     </label>
   </section>
 
   <section class="card">
-    <h2>النتائج / Results</h2>
+    <h2 data-i18n="results">Results</h2>
 
     <div class="result-group">
-      <h3>الذهب المعدل / Tempered الذهب الخالص / True Gold</h3>
-      <div class="result-row"><span>المطلوب / Required</span><strong id="requiredTemperedGold">0</strong></div>
-      <div class="result-row"><span>الموجود / Available</span><strong id="availableTemperedGold">0</strong></div>
-      <div class="result-row"><span>المتبقي / Remaining</span><strong id="remainingTemperedGold">0</strong></div>
+      <h3 data-i18n="temperedGold">Tempered True Gold</h3>
+      <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTemperedGold">0</strong></div>
+      <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTemperedGold">0</strong></div>
+      <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTemperedGold">0</strong></div>
     </div>
 
     <div class="result-group">
-      <h3>الذهب الخالص / True Gold</h3>
-      <div class="result-row"><span>المطلوب / Required</span><strong id="requiredTrueGold">0</strong></div>
-      
-      <div class="result-row"><span>الموجود / Available</span><strong id="availableTrueGold">0</strong></div>
-      <div class="result-row"><span>المتبقي / Remaining</span><strong id="remainingTrueGold">0</strong></div>
-      
+      <h3 data-i18n="trueGold">True Gold</h3>
+      <div class="result-row"><span data-i18n="required">Required</span><strong id="requiredTrueGold">0</strong></div>
+      <div class="result-row"><span data-i18n="available">Available</span><strong id="availableTrueGold">0</strong></div>
+      <div class="result-row"><span data-i18n="remaining">Remaining</span><strong id="remainingTrueGold">0</strong></div>
     </div>
 
     <div class="result-group">
-      <h3>ملخص الوقت / Time Summary</h3>
-      <div class="result-row"><span>الوقت الأصلي / Original Time</span><strong id="originalTime">0</strong></div>
-      <div class="result-row"><span>بعد المكافآت / After Bonuses</span><strong id="reducedTime">0</strong></div>
-      <div class="result-row"><span>المتبقي / Remaining Time</span><strong id="remainingTime">0</strong></div>
+      <h3 data-i18n="timeSummary">Time Summary</h3>
+      <div class="result-row"><span data-i18n="originalTime">Original Time</span><strong id="originalTime">0</strong></div>
+      <div class="result-row"><span data-i18n="afterBonuses">After Bonuses</span><strong id="reducedTime">0</strong></div>
+      <div class="result-row"><span data-i18n="remainingTime">Remaining Time</span><strong id="remainingTime">0</strong></div>
     </div>
 
     <div class="result-group">
-      <h3>الموارد / Resources</h3>
-      <div class="result-row"><span>Food</span><strong id="food">0</strong></div>
-      <div class="result-row"><span>Wood</span><strong id="wood">0</strong></div>
-      <div class="result-row"><span>Stone</span><strong id="stone">0</strong></div>
-      <div class="result-row"><span>Iron</span><strong id="iron">0</strong></div>
+      <h3 data-i18n="resources">Resources</h3>
+      <div class="result-row"><span data-i18n="food">Food</span><strong id="food">0</strong></div>
+      <div class="result-row"><span data-i18n="wood">Wood</span><strong id="wood">0</strong></div>
+      <div class="result-row"><span data-i18n="stone">Stone</span><strong id="stone">0</strong></div>
+      <div class="result-row"><span data-i18n="iron">Iron</span><strong id="iron">0</strong></div>
     </div>
 
     <div class="result-group">
-      <h3>الموارد / الموارد بعد شاول / Resources After Saul</h3>
-      <div class="result-row"><span>Food</span><strong id="foodAfterSaul">0</strong></div>
-      <div class="result-row"><span>Wood</span><strong id="woodAfterSaul">0</strong></div>
-      <div class="result-row"><span>Stone</span><strong id="stoneAfterSaul">0</strong></div>
-      <div class="result-row"><span>Iron</span><strong id="ironAfterSaul">0</strong></div>
+      <h3 data-i18n="resourcesAfterSaul">Resources After Saul</h3>
+      <div class="result-row"><span data-i18n="food">Food</span><strong id="foodAfterSaul">0</strong></div>
+      <div class="result-row"><span data-i18n="wood">Wood</span><strong id="woodAfterSaul">0</strong></div>
+      <div class="result-row"><span data-i18n="stone">Stone</span><strong id="stoneAfterSaul">0</strong></div>
+      <div class="result-row"><span data-i18n="iron">Iron</span><strong id="ironAfterSaul">0</strong></div>
     </div>
 
     <div class="result-group">
-      <h3>القوة / Power</h3>
-      <div class="result-row"><span>Total القوة / Power Gained</span><strong id="powerGain">0</strong></div>
+      <h3 data-i18n="power">Power</h3>
+      <div class="result-row"><span data-i18n="powerGained">Total Power Gained</span><strong id="powerGain">0</strong></div>
     </div>
   </section>
 
   <div class="actions">
-    <button id="copySummary" class="primary">نسخ الملخص / Copy Summary</button>
-    <button id="resetCalculator" class="secondary">إعادة تعيين / Reset</button>
+    <button id="copySummary" class="primary" data-i18n="copy">Copy Summary</button>
+    <button id="resetCalculator" class="secondary" data-i18n="reset">Reset</button>
   </div>
 </main>
 
