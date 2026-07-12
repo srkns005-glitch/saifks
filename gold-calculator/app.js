@@ -107,10 +107,7 @@ const levels=window.LEVEL_ORDER;
 const box=document.getElementById("buildings");
 
 buildingNames.forEach(name=>{
-  const availableLevels=levels.filter(level=>{
-    if(level==="Base") return Boolean(BUILDING_DATA[name]["30-1"]);
-    return Boolean(BUILDING_DATA[name][level]);
-  });
+  const availableLevels=levels.filter(level=>Boolean(BUILDING_DATA[name][level]));
 
   const block=document.createElement("div");
   block.className="building";
@@ -144,7 +141,7 @@ buildingNames.forEach(name=>{
   });
 
   function refreshTargetOptions(){
-    const currentIndex=availableLevels.indexOf(current.value);
+    const currentIndex=current.value ? availableLevels.indexOf(current.value) : -1;
 
     Array.from(target.options).forEach((option,index)=>{
       option.disabled=index>0 && currentIndex>=0 && (index-1)<=currentIndex;
@@ -243,14 +240,14 @@ function calculate(){
 
     const current=document.getElementById(`${name}Current`).value;
     const target=document.getElementById(`${name}Target`).value;
-    if(!current||!target) return;
+    if(!target) return;
 
     const available=levels.filter(level=>{
       if(level==="Base") return Boolean(BUILDING_DATA[name]["30-1"]);
       return Boolean(BUILDING_DATA[name][level]);
     });
 
-    const start=available.indexOf(current);
+    const start=current ? available.indexOf(current) : -1;
     const end=available.indexOf(target);
     if(start<0||end<=start) return;
 
@@ -268,7 +265,7 @@ function calculate(){
       totals.time+=row.time;
     }
 
-    if(current!=="Base"){
+    if(current){
       totals.power+=BUILDING_DATA[name][target].power-BUILDING_DATA[name][current].power;
     }
   });
@@ -343,8 +340,8 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
     const current=document.getElementById(`${name}Current`).value;
     const target=document.getElementById(`${name}Target`).value;
 
-    if(current&&target){
-      selected.push(`${buildingLabels[currentLanguage][name]}: ${current} → ${target}`);
+    if(target){
+      selected.push(`${buildingLabels[currentLanguage][name]}: ${current||"—"} → ${target}`);
     }
   });
 
