@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <title>True Gold Calculator | SaifKS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <h1>True Gold Calculator</h1>
+    <p>Powered by SaifKS.com</p>
+  </div>
+</header>
 
+<main class="container">
+  <section class="card">
+    <h2>Buildings</h2>
+    <div id="buildings"></div>
+  </section>
+
+  <section class="card">
+    <h2>Inventory</h2>
+    <div class="grid grid-3">
+      <div class="field">
+        <label for="temperedGold">Tempered True Gold</label>
+        <input type="number" id="temperedGold" min="0" value="0">
+      </div>
+      <div class="field">
+        <label for="trueGold">True Gold</label>
+        <input type="number" id="trueGold" min="0" value="0">
+      </div>
+      <div class="field">
+        <label for="speedups">Total Speedups (Days)</label>
+        <input type="number" id="speedups" min="0" step="0.01" value="0">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Bonuses</h2>
+    <div class="grid grid-2">
+      <div class="field">
+        <label for="constructionBonus">Construction Speed %</label>
+        <input type="number" id="constructionBonus" min="0" step="0.1" value="0">
+      </div>
+      <div class="field">
+        <label for="wolfSkill">Wolf Skill</label>
+        <select id="wolfSkill">
+          <option value="0">—</option>
+          <option value="5">Lv.1 (5%)</option>
+          <option value="7">Lv.2 (7%)</option>
+          <option value="9">Lv.3 (9%)</option>
+          <option value="12">Lv.4 (12%)</option>
+          <option value="15">Lv.5 (15%)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="positionBonus">Position Bonus %</label>
+        <input type="number" id="positionBonus" min="0" step="0.1" value="0">
+      </div>
+      <div class="field">
+        <label for="saulSkill">Saul Skill</label>
+        <select id="saulSkill">
+          <option value="0">—</option>
+          <option value="3">Lv.1 (3%)</option>
+          <option value="6">Lv.2 (6%)</option>
+          <option value="9">Lv.3 (9%)</option>
+          <option value="12">Lv.4 (12%)</option>
+          <option value="15">Lv.5 (15%)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="kingBonus">King Bonus %</label>
+        <input type="number" id="kingBonus" min="0" step="0.1" value="0">
+      </div>
+      <div class="field">
+        <label for="prepBonus">Kingdom Preparation %</label>
+        <input type="number" id="prepBonus" min="0" step="0.1" value="0">
+      </div>
+    </div>
+
+    <label class="check-line">
+      <input type="checkbox" id="doubleTime">
+      Double Time (+20%)
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>Results</h2>
+
+    <div class="result-group">
+      <h3>Tempered True Gold</h3>
+      <div class="result-row"><span>Required</span><strong id="requiredTemperedGold">0</strong></div>
+      <div class="result-row"><span>Available</span><strong id="availableTemperedGold">0</strong></div>
+      <div class="result-row"><span>Remaining</span><strong id="remainingTemperedGold">0</strong></div>
+    </div>
+
+    <div class="result-group">
+      <h3>True Gold</h3>
+      <div class="result-row"><span>Required</span><strong id="requiredTrueGold">0</strong></div>
+      <div class="result-row"><span>Adjusted Required (Gold Is Not Reduced)</span><strong id="adjustedTrueGold">0</strong></div>
+      <div class="result-row"><span>Available</span><strong id="availableTrueGold">0</strong></div>
+      <div class="result-row"><span>Remaining</span><strong id="remainingTrueGold">0</strong></div>
+      <div class="result-row"><span>Adjusted Remaining (Gold Is Not Reduced)</span><strong id="adjustedRemainingTrueGold">0</strong></div>
+    </div>
+
+    <div class="result-group">
+      <h3>Time Summary</h3>
+      <div class="result-row"><span>Original Time</span><strong id="originalTime">0</strong></div>
+      <div class="result-row"><span>After Bonuses</span><strong id="reducedTime">0</strong></div>
+      <div class="result-row"><span>Remaining Time</span><strong id="remainingTime">0</strong></div>
+    </div>
+
+    <div class="result-group">
+      <h3>Resources</h3>
+      <div class="result-row"><span>Food</span><strong id="food">0</strong></div>
+      <div class="result-row"><span>Wood</span><strong id="wood">0</strong></div>
+      <div class="result-row"><span>Stone</span><strong id="stone">0</strong></div>
+      <div class="result-row"><span>Iron</span><strong id="iron">0</strong></div>
+    </div>
+
+    <div class="result-group">
+      <h3>Resources After Saul</h3>
+      <div class="result-row"><span>Food</span><strong id="foodAfterSaul">0</strong></div>
+      <div class="result-row"><span>Wood</span><strong id="woodAfterSaul">0</strong></div>
+      <div class="result-row"><span>Stone</span><strong id="stoneAfterSaul">0</strong></div>
+      <div class="result-row"><span>Iron</span><strong id="ironAfterSaul">0</strong></div>
+    </div>
+
+    <div class="result-group">
+      <h3>Power</h3>
+      <div class="result-row"><span>Total Power Gained</span><strong id="powerGain">0</strong></div>
+    </div>
+  </section>
+
+  <div class="actions">
+    <button id="copySummary" class="primary">Copy Summary</button>
+    <button id="resetCalculator" class="secondary">Reset</button>
+  </div>
+</main>
+
+<footer>Powered by SaifKS.com</footer>
+
+<script src="building-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
