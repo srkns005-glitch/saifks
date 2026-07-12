@@ -1,5 +1,5 @@
-Step 2 corrected:
-- The default dash (—) is now the virtual starting point before 30-1.
-- Selecting a building and choosing Target = 30-1 while Current = — now counts the full 30-1 row.
-- Gold, resources, and time are calculated from — to 30-1.
-- Power remains 0 for this first step because the source data has no power value before 30-1.
+Base update completed:
+- Current Level now contains —, Base, 30-1, 30-2 ... TG8.
+- — means no selection and performs no calculation.
+- Base -> 30-1 calculates both gold types, resources, and time from the 30-1 row.
+- Power gain for Base -> 30-1 remains 0 because Base power is not available in the source tables.

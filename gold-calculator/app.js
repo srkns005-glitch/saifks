@@ -107,7 +107,10 @@ const levels=window.LEVEL_ORDER;
 const box=document.getElementById("buildings");
 
 buildingNames.forEach(name=>{
-  const availableLevels=levels.filter(level=>Boolean(BUILDING_DATA[name][level]));
+  const availableLevels=levels.filter(level=>{
+    if(level==="Base") return Boolean(BUILDING_DATA[name]["30-1"]);
+    return Boolean(BUILDING_DATA[name][level]);
+  });
 
   const block=document.createElement("div");
   block.className="building";
@@ -240,14 +243,14 @@ function calculate(){
 
     const current=document.getElementById(`${name}Current`).value;
     const target=document.getElementById(`${name}Target`).value;
-    if(!target) return;
+    if(!current||!target) return;
 
     const available=levels.filter(level=>{
       if(level==="Base") return Boolean(BUILDING_DATA[name]["30-1"]);
       return Boolean(BUILDING_DATA[name][level]);
     });
 
-    const start=current ? available.indexOf(current) : -1;
+    const start=available.indexOf(current);
     const end=available.indexOf(target);
     if(start<0||end<=start) return;
 
@@ -265,7 +268,7 @@ function calculate(){
       totals.time+=row.time;
     }
 
-    if(current){
+    if(current!=="Base"){
       totals.power+=BUILDING_DATA[name][target].power-BUILDING_DATA[name][current].power;
     }
   });
@@ -340,8 +343,8 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
     const current=document.getElementById(`${name}Current`).value;
     const target=document.getElementById(`${name}Target`).value;
 
-    if(target){
-      selected.push(`${buildingLabels[currentLanguage][name]}: ${current||"—"} → ${target}`);
+    if(current&&target){
+      selected.push(`${buildingLabels[currentLanguage][name]}: ${current} → ${target}`);
     }
   });
 
