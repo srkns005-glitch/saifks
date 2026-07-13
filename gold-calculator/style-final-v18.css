@@ -652,3 +652,56 @@ html[dir="rtl"] select.lang-toggle{
     font-size:14px;
   }
 }
+
+
+/* Equal Home and Language control sizes */
+.home-header-button,
+#languageSelect,
+#langToggle,
+.lang{
+  box-sizing:border-box !important;
+  width:96px !important;
+  min-width:96px !important;
+  max-width:96px !important;
+  height:40px !important;
+  min-height:40px !important;
+  padding:0 10px !important;
+  border-radius:10px !important;
+  font-size:14px !important;
+  line-height:1 !important;
+  vertical-align:middle !important;
+}
+
+#languageSelect{
+  text-align:center !important;
+  text-align-last:center !important;
+}
+
+@media(max-width:699px){
+  .home-header-button,
+  #languageSelect,
+  #langToggle,
+  .lang{
+    width:88px !important;
+    min-width:88px !important;
+    max-width:88px !important;
+    height:38px !important;
+    min-height:38px !important;
+    font-size:13px !important;
+    padding:0 8px !important;
+  }
+}
+
+@media(min-width:1025px){
+  .home-header-button,
+  #languageSelect,
+  #langToggle,
+  .lang{
+    width:104px !important;
+    min-width:104px !important;
+    max-width:104px !important;
+    height:42px !important;
+    min-height:42px !important;
+    font-size:14px !important;
+  }
+}
