@@ -1,6 +1,6 @@
-Copy Summary v8.1 cache-proof:
-- Renamed CSS, app JavaScript, and building data files.
-- Added version query parameters.
-- Added no-cache meta tags.
-- Footer shows Copy v8.1 so you can confirm the new version is active.
-- Replace every file inside the gold-calculator folder.
+Complete v10.1:
+- Includes all approved buildings.
+- Keeps dotted level format such as 30.1 and TG1.1.
+- Includes the full building data file.
+- Uses renamed assets and version parameters to prevent cache.
+- Upload and replace every file inside gold-calculator.
