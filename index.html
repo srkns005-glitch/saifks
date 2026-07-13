@@ -39,6 +39,7 @@ a,button{font:inherit}
 .brand-sub{margin-top:6px;color:var(--gold);font-size:.68rem;font-weight:900;letter-spacing:.13em}
 .lang{border:1px solid var(--line);background:rgba(13,28,47,.8);color:var(--text);padding:11px 15px;border-radius:13px;font-weight:900;cursor:pointer;backdrop-filter:blur(14px);transition:.2s ease}
 .lang:hover{transform:translateY(-2px);border-color:rgba(255,212,107,.45)}
+select.lang{max-width:170px;text-align:center;text-align-last:center}
 .hero{padding:42px 0 70px}
 .hero-shell{display:block;max-width:860px;margin:0 auto;min-height:0;text-align:center}
 .hero-copy{position:relative;z-index:2}
@@ -95,7 +96,17 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
       <span class="brand-sub" data-i18n="brandSub">KINGSHOT TOOLS</span>
     </span>
   </a>
-  <button id="langToggle" class="lang" type="button">العربية</button>
+  <select id="languageSelect" class="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+    <option value="fr">Français</option>
+    <option value="es">Español</option>
+    <option value="de">Deutsch</option>
+    <option value="tr">Türkçe</option>
+    <option value="ko">한국어</option>
+    <option value="ja">日本語</option>
+    <option value="zh">简体中文</option>
+  </select>
 </nav>
 
 <main>
@@ -131,6 +142,13 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
       <p data-i18n="bearDesc">Build rally waves, assign leaders, set join limits, and share a clear event plan with your alliance.</p>
       <a class="tool-link" href="bear.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
     </article>
+    <article class="tool">
+      <div class="tool-top"><div class="tool-icon">🪙</div><div class="tool-number">03</div></div>
+      <h3 data-i18n="goldTitle">True Gold Calculator</h3>
+      <p data-i18n="goldDesc">Calculate building upgrades, True Gold, resources, construction time, power, and automatic upgrade requirements.</p>
+      <a class="tool-link" href="gold-calculator/index.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
+    </article>
+
   </div>
 </section>
 </main>
@@ -144,13 +162,36 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
 </div>
 
 <script>
-const translations={
-  en:{brandSub:"KINGSHOT TOOLS",eyebrow:"PRACTICAL TOOLS FOR KINGSHOT",title:'Smarter tools.<span>Better rallies.</span>',description:"Simple, reliable tools designed to help KINGSHOT players and alliance leaders organize activities, coordinate teams, and save time.",explore:"Explore Tools",youtubeCta:"Visit YouTube",toolsTitle:"Player Tools",toolsText:"Choose a tool and get started.",rallyTitle:"Rally Planner",rallyDesc:"Create independent schedules for Team A and Team B, adjust march times, and copy UTC timings instantly.",launch:"Launch Tool",bearTitle:"Bear Trap Planner",bearDesc:"Build rally waves, assign leaders, set join limits, and share a clear event plan with your alliance."},
-  ar:{brandSub:"أدوات KINGSHOT",eyebrow:"أدوات عملية للعبة KINGSHOT",title:'أدوات أذكى.<span>حشود أفضل.</span>',description:"أدوات بسيطة وموثوقة تساعد لاعبي KINGSHOT وقادة التحالفات على تنظيم الأنشطة وتنسيق الفرق وتوفير الوقت.",explore:"استكشف الأدوات",youtubeCta:"زيارة يوتيوب",toolsTitle:"أدوات اللاعبين",toolsText:"اختر الأداة وابدأ مباشرة.",rallyTitle:"مخطط الحشود",rallyDesc:"أنشئ جداول مستقلة للفريق A والفريق B، وعدّل أوقات المسير وانسخ توقيت UTC فورًا.",launch:"فتح الأداة",bearTitle:"مخطط فخ الدب",bearDesc:"أنشئ موجات الحشود، ووزّع القادة، وحدد سقف الانضمام، وشارك خطة واضحة مع التحالف."}
-};
+
+const translations={"en":{"brandSub":"KINGSHOT TOOLS","eyebrow":"PRACTICAL TOOLS FOR KINGSHOT","title":"Smarter tools.<span>Better rallies.</span>","description":"Simple, reliable tools designed to help KINGSHOT players and alliance leaders organize activities, coordinate teams, and save time.","explore":"Explore Tools","youtubeCta":"Visit YouTube","toolsTitle":"Player Tools","toolsText":"Choose a tool and get started.","rallyTitle":"Rally Planner","rallyDesc":"Create independent schedules for Team A and Team B, adjust march times, and copy UTC timings instantly.","launch":"Launch Tool","bearTitle":"Bear Trap Planner","bearDesc":"Build rally waves, assign leaders, set join limits, and share a clear event plan with your alliance.","goldTitle":"True Gold Calculator","goldDesc":"Calculate building upgrades, True Gold, resources, construction time, power, and automatic upgrade requirements."},"ar":{"brandSub":"أدوات KINGSHOT","eyebrow":"أدوات عملية للعبة KINGSHOT","title":"أدوات أذكى.<span>حشود أفضل.</span>","description":"أدوات بسيطة وموثوقة تساعد لاعبي KINGSHOT وقادة التحالفات على تنظيم الأنشطة وتنسيق الفرق وتوفير الوقت.","explore":"استكشف الأدوات","youtubeCta":"زيارة يوتيوب","toolsTitle":"أدوات اللاعبين","toolsText":"اختر الأداة وابدأ مباشرة.","rallyTitle":"مخطط الحشود","rallyDesc":"أنشئ جداول مستقلة للفريق A والفريق B، وعدّل أوقات المسير وانسخ توقيت UTC فورًا.","launch":"فتح الأداة","bearTitle":"مخطط فخ الدب","bearDesc":"أنشئ موجات الحشود، ووزّع القادة، وحدد سقف الانضمام، وشارك خطة واضحة مع التحالف.","goldTitle":"حاسبة الذهب","goldDesc":"احسب ترقيات المباني والذهب الخالص والموارد ووقت البناء والقوة ومتطلبات الترقية التلقائية."},"fr":{"brandSub":"OUTILS KINGSHOT","eyebrow":"OUTILS PRATIQUES POUR KINGSHOT","title":"Des outils plus intelligents.<span>De meilleurs rallyes.</span>","description":"Des outils simples et fiables pour aider les joueurs de KINGSHOT et les chefs d’alliance à organiser les activités, coordonner les équipes et gagner du temps.","explore":"Découvrir les outils","youtubeCta":"Visiter YouTube","toolsTitle":"Outils des joueurs","toolsText":"Choisissez un outil et commencez.","rallyTitle":"Planificateur de rallyes","rallyDesc":"Créez des horaires indépendants pour l’équipe A et l’équipe B, ajustez les temps de marche et copiez instantanément les horaires UTC.","launch":"Ouvrir l’outil","bearTitle":"Planificateur du piège à ours","bearDesc":"Créez des vagues de rallyes, attribuez les chefs, définissez les limites de participation et partagez un plan clair avec votre alliance.","goldTitle":"Calculateur d’or véritable","goldDesc":"Calculez les améliorations de bâtiments, l’or véritable, les ressources, le temps de construction, la puissance et les prérequis automatiques."},"es":{"brandSub":"HERRAMIENTAS KINGSHOT","eyebrow":"HERRAMIENTAS PRÁCTICAS PARA KINGSHOT","title":"Herramientas más inteligentes.<span>Mejores rallies.</span>","description":"Herramientas simples y fiables para ayudar a los jugadores de KINGSHOT y líderes de alianzas a organizar actividades, coordinar equipos y ahorrar tiempo.","explore":"Explorar herramientas","youtubeCta":"Visitar YouTube","toolsTitle":"Herramientas del jugador","toolsText":"Elige una herramienta y comienza.","rallyTitle":"Planificador de rallies","rallyDesc":"Crea horarios independientes para el Equipo A y el Equipo B, ajusta los tiempos de marcha y copia los horarios UTC al instante.","launch":"Abrir herramienta","bearTitle":"Planificador de trampa para osos","bearDesc":"Crea oleadas de rallies, asigna líderes, establece límites de unión y comparte un plan claro con tu alianza.","goldTitle":"Calculadora de oro verdadero","goldDesc":"Calcula mejoras de edificios, oro verdadero, recursos, tiempo de construcción, poder y requisitos automáticos de mejora."},"de":{"brandSub":"KINGSHOT-WERKZEUGE","eyebrow":"PRAKTISCHE WERKZEUGE FÜR KINGSHOT","title":"Intelligentere Werkzeuge.<span>Bessere Rallyes.</span>","description":"Einfache und zuverlässige Werkzeuge, die KINGSHOT-Spielern und Allianzleitern helfen, Aktivitäten zu organisieren, Teams zu koordinieren und Zeit zu sparen.","explore":"Werkzeuge entdecken","youtubeCta":"YouTube besuchen","toolsTitle":"Spieler-Werkzeuge","toolsText":"Wähle ein Werkzeug und lege los.","rallyTitle":"Rallye-Planer","rallyDesc":"Erstelle unabhängige Zeitpläne für Team A und Team B, passe Marschzeiten an und kopiere UTC-Zeiten sofort.","launch":"Werkzeug öffnen","bearTitle":"Bärenfallen-Planer","bearDesc":"Erstelle Rallye-Wellen, weise Anführer zu, lege Beitrittslimits fest und teile einen klaren Plan mit deiner Allianz.","goldTitle":"Echtgold-Rechner","goldDesc":"Berechne Gebäudeausbauten, Echtgold, Ressourcen, Bauzeit, Macht und automatische Ausbauvoraussetzungen."},"tr":{"brandSub":"KINGSHOT ARAÇLARI","eyebrow":"KINGSHOT İÇİN PRATİK ARAÇLAR","title":"Daha akıllı araçlar.<span>Daha iyi ralliler.</span>","description":"KINGSHOT oyuncularının ve ittifak liderlerinin etkinlikleri düzenlemesine, ekipleri koordine etmesine ve zaman kazanmasına yardımcı olan basit ve güvenilir araçlar.","explore":"Araçları keşfet","youtubeCta":"YouTube'u ziyaret et","toolsTitle":"Oyuncu araçları","toolsText":"Bir araç seçin ve başlayın.","rallyTitle":"Ralli Planlayıcı","rallyDesc":"A Takımı ve B Takımı için bağımsız programlar oluşturun, yürüyüş sürelerini ayarlayın ve UTC saatlerini anında kopyalayın.","launch":"Aracı aç","bearTitle":"Ayı Tuzağı Planlayıcı","bearDesc":"Ralli dalgaları oluşturun, liderleri atayın, katılım sınırlarını belirleyin ve ittifakınızla net bir plan paylaşın.","goldTitle":"Gerçek Altın Hesaplayıcı","goldDesc":"Bina yükseltmelerini, Gerçek Altını, kaynakları, inşaat süresini, gücü ve otomatik yükseltme gereksinimlerini hesaplayın."},"ko":{"brandSub":"KINGSHOT 도구","eyebrow":"KINGSHOT 실용 도구","title":"더 스마트한 도구.<span>더 나은 집결.</span>","description":"KINGSHOT 플레이어와 연맹 리더가 활동을 구성하고 팀을 조율하며 시간을 절약할 수 있도록 만든 간단하고 신뢰할 수 있는 도구입니다.","explore":"도구 보기","youtubeCta":"YouTube 방문","toolsTitle":"플레이어 도구","toolsText":"도구를 선택하고 시작하세요.","rallyTitle":"집결 플래너","rallyDesc":"A팀과 B팀의 일정을 따로 만들고, 행군 시간을 조정하며, UTC 시간을 즉시 복사하세요.","launch":"도구 열기","bearTitle":"곰 함정 플래너","bearDesc":"집결 웨이브를 구성하고, 리더를 배정하고, 참여 제한을 설정하여 연맹과 명확한 계획을 공유하세요.","goldTitle":"진금 계산기","goldDesc":"건물 업그레이드, 진금, 자원, 건설 시간, 전투력과 자동 업그레이드 요구 사항을 계산하세요."},"ja":{"brandSub":"KINGSHOTツール","eyebrow":"KINGSHOT向け実用ツール","title":"よりスマートなツール。<span>より良い集結。</span>","description":"KINGSHOTのプレイヤーと同盟リーダーが、活動を整理し、チームを調整し、時間を節約するためのシンプルで信頼できるツールです。","explore":"ツールを見る","youtubeCta":"YouTubeを見る","toolsTitle":"プレイヤーツール","toolsText":"ツールを選んで開始してください。","rallyTitle":"集結プランナー","rallyDesc":"チームAとチームBの予定を個別に作成し、行軍時間を調整してUTC時刻をすぐにコピーできます。","launch":"ツールを開く","bearTitle":"熊罠プランナー","bearDesc":"集結ウェーブを作成し、リーダーを割り当て、参加上限を設定して同盟と明確な計画を共有できます。","goldTitle":"真金計算機","goldDesc":"建物のアップグレード、真金、資源、建設時間、戦力、自動アップグレード要件を計算します。"},"zh":{"brandSub":"KINGSHOT 工具","eyebrow":"KINGSHOT 实用工具","title":"更智能的工具。<span>更高效的集结。</span>","description":"简单可靠的工具，帮助 KINGSHOT 玩家和联盟管理者组织活动、协调团队并节省时间。","explore":"浏览工具","youtubeCta":"访问 YouTube","toolsTitle":"玩家工具","toolsText":"选择一个工具并开始使用。","rallyTitle":"集结规划器","rallyDesc":"为 A 队和 B 队创建独立时间表，调整行军时间，并立即复制 UTC 时间。","launch":"打开工具","bearTitle":"熊陷阱规划器","bearDesc":"创建集结波次、分配队长、设置加入上限，并与联盟分享清晰的活动计划。","goldTitle":"真金计算器","goldDesc":"计算建筑升级、真金、资源、建造时间、战力和自动升级要求。"}};
 let lang=localStorage.getItem('saifRallyLang')||'en';
-function apply(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=translations[lang][el.dataset.i18n]);document.querySelectorAll('[data-i18n-html]').forEach(el=>el.innerHTML=translations[lang][el.dataset.i18nHtml]);document.getElementById('langToggle').textContent=lang==='en'?'العربية':'English';localStorage.setItem('saifRallyLang',lang)}
-document.getElementById('langToggle').onclick=()=>{lang=lang==='en'?'ar':'en';apply()};apply();
+if(!translations[lang]) lang='en';
+
+function apply(){
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const value=translations[lang][el.dataset.i18n];
+    if(value!==undefined) el.textContent=value;
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const value=translations[lang][el.dataset.i18nHtml];
+    if(value!==undefined) el.innerHTML=value;
+  });
+
+  document.getElementById('languageSelect').value=lang;
+  localStorage.setItem('saifRallyLang',lang);
+}
+
+document.getElementById('languageSelect').addEventListener('change',function(){
+  lang=this.value;
+  apply();
+});
+
+apply();
+
 </script>
 </body>
 </html>
