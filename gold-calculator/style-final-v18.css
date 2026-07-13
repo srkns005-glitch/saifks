@@ -615,34 +615,40 @@ html[dir="rtl"] select.lang-toggle{
 .final-footer a:hover{text-decoration:underline}
 
 
-.home-button{
-position:fixed;
-top:16px;
-left:16px;
-z-index:9999;
-display:inline-flex;
-align-items:center;
-gap:6px;
-padding:10px 14px;
-border-radius:12px;
-background:#1f2b3d;
-color:#fff;
-text-decoration:none;
-font-weight:700;
-border:1px solid rgba(255,215,0,.35);
-box-shadow:0 6px 18px rgba(0,0,0,.18);
+/* Stable compact Home button */
+.home-header-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  min-width:72px;
+  height:38px;
+  min-height:38px;
+  padding:0 10px;
+  margin-inline-end:8px;
+  border:1px solid rgba(255,213,79,.42);
+  border-radius:10px;
+  background:#102038;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+  white-space:nowrap;
+  vertical-align:middle;
 }
-.home-button:hover{transform:translateY(-1px);}
-html[dir="rtl"] .home-button{
-left:auto;
-right:16px;
+
+.home-header-button:hover{
+  border-color:rgba(255,213,79,.7);
+  background:#142842;
 }
-@media(max-width:700px){
-.home-button{
-top:10px;
-left:10px;
-padding:8px 12px;
-font-size:14px;
-}
-html[dir="rtl"] .home-button{right:10px;}
+
+@media(min-width:700px){
+  .home-header-button{
+    min-width:78px;
+    height:40px;
+    min-height:40px;
+    padding:0 12px;
+    font-size:14px;
+  }
 }

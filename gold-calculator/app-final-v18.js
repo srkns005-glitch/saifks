@@ -357,7 +357,6 @@ const STORAGE_KEY="saifksGoldCalculatorV7";
 
 function collectState(){
   const state={
-    language:currentLanguage,
     doubleTime:document.getElementById("doubleTime").checked,
     fields:{},
     buildings:{},planner:{current:document.getElementById("plannerCurrent")?.value||"Base",target:document.getElementById("plannerTarget")?.value||""}
@@ -389,10 +388,6 @@ function restoreState(){
 
   try{
     const state=JSON.parse(raw);
-
-    if(state.language){
-      currentLanguage=state.language;
-    }
 
     Object.entries(state.fields||{}).forEach(([id,value])=>{
       const element=document.getElementById(id);
@@ -630,5 +625,13 @@ try{
 
 setupPlanner();
 restoreState();
-refreshPlannerTargetOptions();
+if(typeof refreshPlannerTargetOptions==="function") refreshPlannerTargetOptions();
+currentLanguage=localStorage.getItem("saifRallyLang")||"en";
 applyLanguage(currentLanguage);
+
+
+window.addEventListener("storage",function(event){
+  if(event.key==="saifRallyLang" && event.newValue && translations[event.newValue]){
+    applyLanguage(event.newValue);
+  }
+});

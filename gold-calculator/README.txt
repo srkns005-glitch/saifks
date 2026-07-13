@@ -1,6 +1,7 @@
-Shared Language v4
-- Uses the same localStorage language key as the main page: saifRallyLang.
-- Calculator autosave no longer overrides the language selected on the main page.
-- Opening the calculator now uses the language chosen on the main page.
-- Changing language in the calculator also updates the main page preference.
-- Existing design and calculator features are unchanged.
+Stable Home + Shared Language
+- Built from the last stable multilingual calculator.
+- Preserves original CSS/JS filenames to avoid missing-style problems.
+- Adds only a compact Home button beside the existing language control.
+- Uses the shared language key saifRallyLang with the main page.
+- Calculator autosave no longer overrides the main-page language.
+- Existing calculator design and features remain unchanged.
