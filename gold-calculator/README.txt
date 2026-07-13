@@ -1,7 +1,7 @@
-Auto Planner v13 fixes:
-- Reset no longer disables the Auto Upgrade Planner fields.
-- Planner Current and Target both start with —.
-- Target levels equal to or lower than Current are hidden.
-- Example: choosing TG2 hides Base through TG2 from Target.
-- Generate Plan requires both fields to be selected.
-- Includes new asset filenames and v13.0.0 cache prevention.
+Auto Planner v14 fixes:
+- Reset works again; the previous error came from a planner function being scoped incorrectly.
+- Planner Current starts at Base, not dash.
+- Planner Target starts at dash.
+- Reset and Clear Plan return to Base / dash and keep both planner fields enabled.
+- Target still hides every level equal to or below Current.
+- New filenames and v14.0.0 prevent cache.
