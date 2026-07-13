@@ -1,7 +1,8 @@
-Language Fix v20
-- Fixed the JavaScript syntax error that stopped Arabic translation.
-- English remains the default language.
-- Arabic now translates all data-i18n text and building names.
-- Added a cleaner responsive language selector without flags.
-- Language remains saved and Reset does not change it.
-- New filenames and v20.0.0 prevent cache.
+Multilingual v17
+- Built directly on the original working mobile v16.
+- No page redesign or layout restructuring.
+- English remains the default.
+- Added Arabic, French, Spanish, and German.
+- Language choice is saved and Reset preserves it.
+- Copy Summary supports all five languages.
+- New filenames bypass cache.
