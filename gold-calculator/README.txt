@@ -1,6 +1,7 @@
-Planner Fix v15
-- Reset leaves Auto Upgrade Planner fields enabled.
-- Current Town Center starts at Base.
-- Target Town Center starts at —.
-- Selecting TG2 hides Base through TG2 from Target.
-- New asset filenames and version 15.0.0 bypass cache.
+Mobile Planner v16
+- Fixed Auto Planner target filtering on mobile by rebuilding options instead of hiding them.
+- Removed Base completely from Target Town Center.
+- Current Town Center keeps Base as the default.
+- Target Town Center starts with —.
+- Reset keeps both planner fields enabled.
+- New filenames and v16.0.0 bypass cache.
