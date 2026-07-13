@@ -1,7 +1,6 @@
-Language v17
-- English default
-- English and Arabic dropdown without flags
-- Language saved
-- Reset preserves language
-- Separate lang/en.js and lang/ar.js
-- Cache busting v17
+Arabic Fix v19
+- Arabic translation now loads before the main app.
+- Switching to Arabic updates all data-i18n elements and building labels.
+- RTL direction is applied to the complete page.
+- Language choice remains saved.
+- New asset filenames and v19.0.0 bypass cache.
