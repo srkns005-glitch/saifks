@@ -613,3 +613,36 @@ html[dir="rtl"] select.lang-toggle{
   text-decoration:none;
 }
 .final-footer a:hover{text-decoration:underline}
+
+
+.home-button{
+position:fixed;
+top:16px;
+left:16px;
+z-index:9999;
+display:inline-flex;
+align-items:center;
+gap:6px;
+padding:10px 14px;
+border-radius:12px;
+background:#1f2b3d;
+color:#fff;
+text-decoration:none;
+font-weight:700;
+border:1px solid rgba(255,215,0,.35);
+box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.home-button:hover{transform:translateY(-1px);}
+html[dir="rtl"] .home-button{
+left:auto;
+right:16px;
+}
+@media(max-width:700px){
+.home-button{
+top:10px;
+left:10px;
+padding:8px 12px;
+font-size:14px;
+}
+html[dir="rtl"] .home-button{right:10px;}
+}
