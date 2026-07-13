@@ -1,6 +1,6 @@
-Auto Save v7:
-- Automatically saves language, buildings, levels, inventory, bonuses, skills, and Double Time.
-- Restores all saved values when the page opens again.
-- Reset now shows a bilingual confirmation dialog.
-- Confirmed reset deletes the saved browser data.
-- New JavaScript filename forces mobile and iPad browsers to load this version.
+Copy Summary v8.1 cache-proof:
+- Renamed CSS, app JavaScript, and building data files.
+- Added version query parameters.
+- Added no-cache meta tags.
+- Footer shows Copy v8.1 so you can confirm the new version is active.
+- Replace every file inside the gold-calculator folder.
