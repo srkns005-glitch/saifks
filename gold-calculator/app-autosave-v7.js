@@ -452,41 +452,25 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
   });
 
   const text=translations[currentLanguage];
-  const summary=currentLanguage==="ar"
-    ?`حاسبة الذهب
-
-المباني
-${selected.length?selected.join("\n"):text.none}
-
-الذهب الخالص المعدل المطلوب: ${document.getElementById("requiredTemperedGold").textContent}
-الذهب الخالص المعدل المتبقي: ${document.getElementById("remainingTemperedGold").textContent}
-
-الذهب الخالص المطلوب: ${document.getElementById("requiredTrueGold").textContent}
-الذهب الخالص المتبقي: ${document.getElementById("remainingTrueGold").textContent}
-
-الوقت الأصلي: ${document.getElementById("originalTime").textContent}
-الوقت بعد المكافآت: ${document.getElementById("reducedTime").textContent}
-الوقت المتبقي: ${document.getElementById("remainingTime").textContent}
-
-SaifKS.com`
-    :`True Gold Calculator
-
-Buildings
-${selected.length?selected.join("\n"):text.none}
-
-Tempered True Gold Required: ${document.getElementById("requiredTemperedGold").textContent}
-Tempered True Gold Remaining: ${document.getElementById("remainingTemperedGold").textContent}
-
-True Gold Required: ${document.getElementById("requiredTrueGold").textContent}
-True Gold Remaining: ${document.getElementById("remainingTrueGold").textContent}
-
-Original Time: ${document.getElementById("originalTime").textContent}
-Time After Bonuses: ${document.getElementById("reducedTime").textContent}
-Remaining Time: ${document.getElementById("remainingTime").textContent}
-
-SaifKS.com`;
-
-  try{
+  const lines=[];
+const add=(label,id)=>{const v=document.getElementById(id).textContent.trim();if(v!=="0"&&v!=="0d 0h 0m"&&v!=="0ي 0س 0د"){lines.push("",label,v);}};
+if(currentLanguage==="ar"){
+lines.push("حاسبة الذهب","","المباني");if(selected.length)lines.push(...selected);
+add("الذهب الخالص المعدل المطلوب","requiredTemperedGold");
+add("الذهب الخالص المطلوب","requiredTrueGold");
+let hdr=false;[["الطعام","food"],["الخشب","wood"],["الحجر","stone"],["الحديد","iron"]].forEach(r=>{const v=document.getElementById(r[1]).textContent.trim();if(v!=="0"){if(!hdr){lines.push("","الموارد المطلوبة");hdr=true;}lines.push(r[0]+": "+v);}});
+add("القوة","powerGain");add("الوقت المتبقي","remainingTime");
+lines.push("","SaifKS.com");
+}else{
+lines.push("True Gold Calculator","","Buildings");if(selected.length)lines.push(...selected);
+add("Tempered True Gold Required","requiredTemperedGold");
+add("True Gold Required","requiredTrueGold");
+let hdr=false;[["Food","food"],["Wood","wood"],["Stone","stone"],["Iron","iron"]].forEach(r=>{const v=document.getElementById(r[1]).textContent.trim();if(v!=="0"){if(!hdr){lines.push("","Resources");hdr=true;}lines.push(r[0]+": "+v);}});
+add("Power","powerGain");add("Remaining Time","remainingTime");
+lines.push("","SaifKS.com");
+}
+const summary=lines.join("\n");
+try{
     await navigator.clipboard.writeText(summary);
     const button=document.getElementById("copySummary");
     button.textContent=text.copied;
