@@ -1,0 +1,1 @@
+Standalone SaifKS Event Center prototype with 10 events, search, filters, responsive cards, details modal, and English/Arabic UI.
