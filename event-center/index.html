@@ -1,5 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><title>Event Center | SaifKS</title><link rel="stylesheet" href="event-center-v1.3-wiki.css?v=1301"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><title>Event Center | SaifKS</title><link rel="stylesheet" href="event-center-v1.4.css?v=1401"></head><body>
 <header><div class="head"><a class="small-btn" href="../index.html">Home</a><div class="brand"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div><select id="lang"><option value="en">English</option><option value="ar">العربية</option></select></div></header>
 <main><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
-<div id="modal" class="hidden"><div class="shade" data-close></div><article><div class="hero"><div id="mIcon"></div><div><span id="mCat"></span><h2 id="mTitle"></h2><div id="mStars"></div></div></div><div class="quick"><div><small>Duration</small><b id="mDuration"></b></div><div><small>Frequency</small><b id="mFrequency"></b></div><div><small>F2P</small><b id="mF2p"></b></div></div><h3>Overview</h3><p id="mSummary"></p><h3>Main Rewards</h3><p id="mRewards"></p><h3>Best Tips</h3><ul id="mTips"></ul><h3>Preparation</h3><div id="mPrep" class="prep"></div><button id="closeEventBtn" class="close-event" type="button">Close Event</button></article></div>
-<footer>SaifKS.com | Built by Saif</footer><script src="event-center-v1.3-wiki.js?v=1301"></script></body></html>
+<div id="modal" class="hidden"><div class="shade" data-close></div><article><div id="modalBanner" class="modal-banner">
+      <div class="banner-glow"></div>
+      <div id="modalBannerIcon" class="modal-banner-icon"></div>
+      <span id="mCat" class="pill"></span>
+    </div>
+    <div class="modal-title-wrap"><h2 id="mTitle"></h2><div id="modalTags" class="modal-tags"></div></div><div class="quick"><div><small>Duration</small><b id="mDuration"></b></div><div><small>Frequency</small><b id="mFrequency"></b></div><div><small>F2P</small><b id="mF2p"></b></div></div><h3 data-label="Overview">Overview</h3><p id="mSummary"></p>
+    <h3 data-label="Main Rewards">Main Rewards</h3><p id="mRewards"></p>
+    <h3 data-label="Best Tips">Best Tips</h3><ul id="mTips"></ul>
+    <h3 data-label="Preparation">Preparation</h3><div id="mPrep" class="prep"></div>
+    <section class="saif-tip-box"><h3 data-label="Saif Tip">Saif Tip</h3><p id="saifTipText"></p></section>
+    <section class="related-section"><h3 data-label="Related Events">Related Events</h3><div id="relatedEvents" class="related-events"></div></section>
+    <button id="closeEventBtn" class="close-event" type="button">Close Event</button></article></div>
+<footer>SaifKS.com | Built by Saif</footer><script src="event-center-v1.4.js?v=1401"></script></body></html>
