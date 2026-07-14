@@ -587,7 +587,12 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
   const lines=[];
   const zeroTimes=["0d 0h 0m","0ي 0س 0د","0j 0h 0min","0d 0h 0min","0T 0Std 0Min"];
   const add=(label,id)=>{
-    const value=document.getElementById(id).textContent.trim();
+    let e=document.getElementById(id);
+let value=e?e.textContent.trim():"0";
+if((!value||value==="0")&&id.endsWith("AfterSaul")){
+ const b=document.getElementById(id.replace("AfterSaul",""));
+ value=b?b.textContent.trim():"0";
+}
     if(value!=="0"&&!zeroTimes.includes(value)) lines.push("",label,value);
   };
 
@@ -598,7 +603,7 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
   add(text.requiredTrue,"requiredTrueGold");
 
   let resourceHeaderAdded=false;
-  [["food","food"],["wood","wood"],["stone","stone"],["iron","iron"]].forEach(([key,id])=>{
+  [["food","foodAfterSaul"],["wood","woodAfterSaul"],["stone","stoneAfterSaul"],["iron","ironAfterSaul"]].forEach(([key,id])=>{
     const value=document.getElementById(id).textContent.trim();
     if(value!=="0"){
       if(!resourceHeaderAdded){
