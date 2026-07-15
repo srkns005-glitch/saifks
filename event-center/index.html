@@ -1,4 +1,356 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><title>Event Center | SaifKS</title><link rel="stylesheet" href="event-center-v1.7-stable.css?v=1702"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="saifks-build" content="events-30-v1801"><title>Event Center | SaifKS</title><style id="event-center-styles">
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#102844 0,#07121f 45%,#050d17 100%);color:#f4f7fb;font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}header,main{width:min(1180px,100%);margin:auto;padding:18px 16px}.head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}.brand{text-align:center}.brand span{color:#ffd86b;font-weight:900;letter-spacing:.15em;font-size:.8rem}.brand h1{font-size:clamp(2rem,6vw,3.5rem);margin:.2rem 0}.brand p{color:#95a7bb;margin:0}.small-btn,#lang{height:40px;min-width:92px;border:1px solid rgba(255,216,107,.3);border-radius:11px;background:#0d2036;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;padding:0 12px;font-weight:800}.tools{position:sticky;top:0;padding:8px 0 18px;background:linear-gradient(#07121f 70%,transparent);z-index:5}#search{width:100%;height:52px;border-radius:15px;border:1px solid rgba(255,216,107,.3);background:#0b1b2d;color:white;padding:0 16px}#filters{display:flex;gap:8px;overflow:auto;padding-top:10px}.filter{border:1px solid #26394d;background:#0b1b2d;color:#95a7bb;border-radius:999px;padding:8px 13px;white-space:nowrap;font-weight:800}.filter.active{background:#ffd86b;color:#172033}#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(#10253f,#0b1b2d);border:1px solid #23374b;border-radius:20px;padding:18px;min-height:255px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between}.icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;background:#172f4c}.pill{font-size:.75rem;color:#95a7bb;border:1px solid #2c4054;border-radius:999px;padding:5px 9px;height:max-content}.card h2{margin:18px 0 6px}.meta{color:#95a7bb;font-size:.9rem}.stars{color:#ffd86b;margin:10px 0}.card p{color:#c5d0dc;line-height:1.5;margin:0 0 18px}.open{margin-top:auto;height:42px;border:0;border-radius:12px;background:#ffd86b;color:#172033;font-weight:900}.hidden{display:none!important}#modal{position:fixed;inset:0;display:grid;place-items:center;padding:18px;z-index:20}.shade{position:absolute;inset:0;background:#02070dcc;backdrop-filter:blur(8px)}#modal article{position:relative;width:min(760px,100%);max-height:90vh;overflow:auto;background:linear-gradient(#112640,#081827);border:1px solid rgba(255,216,107,.3);border-radius:24px;padding:22px}.close{position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:12px;border:1px solid #2b3e52;background:#0b1b2d;color:white;font-size:1.4rem}.hero{display:flex;gap:14px;align-items:center}.hero #mIcon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:2rem;background:#172f4c}.hero h2{margin:6px 0}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.quick div,.prep div{background:#0a1a2b;border:1px solid #22364a;border-radius:14px;padding:12px}.quick small{display:block;color:#95a7bb}.prep{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.prep div{display:flex;justify-content:space-between}.yes{color:#6bd9a8}.no{color:#ff8f8f}h3{color:#ffd86b}footer{text-align:center;color:#95a7bb;padding:22px}.rtl{direction:rtl}@media(max-width:900px){#grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.head{grid-template-columns:auto auto}.brand{grid-column:1/-1;grid-row:2;text-align:left}.rtl .brand{text-align:right}#grid{grid-template-columns:1fr}.quick,.prep{grid-template-columns:1fr}.card{min-height:230px}}
+
+/* Compact Home and language controls */
+.small-btn,
+#lang{
+  min-width:74px !important;
+  width:auto !important;
+  height:34px !important;
+  padding:0 9px !important;
+  border-radius:9px !important;
+  font-size:12px !important;
+}
+
+#lang{
+  max-width:100px !important;
+  text-align:center !important;
+  text-align-last:center !important;
+}
+
+/* Keep close button clear of the event image */
+#modal article{
+  padding-top:58px !important;
+}
+
+.close{
+  top:12px !important;
+  right:12px !important;
+  left:auto !important;
+  width:34px !important;
+  height:34px !important;
+  border-radius:10px !important;
+  display:grid !important;
+  place-items:center !important;
+  z-index:5 !important;
+  line-height:1 !important;
+  font-size:22px !important;
+}
+
+.rtl .close{
+  right:auto !important;
+  left:12px !important;
+}
+
+@media(max-width:620px){
+  .small-btn,
+  #lang{
+    min-width:68px !important;
+    height:32px !important;
+    padding:0 8px !important;
+    font-size:11px !important;
+  }
+
+  #lang{
+    max-width:92px !important;
+  }
+
+  #modal article{
+    padding-top:54px !important;
+  }
+}
+
+
+/* v1.2 exact compact controls */
+.small-btn,
+#lang{
+  box-sizing:border-box !important;
+  min-width:0 !important;
+  width:76px !important;
+  max-width:76px !important;
+  height:32px !important;
+  min-height:32px !important;
+  padding:0 6px !important;
+  border-radius:8px !important;
+  font-size:11px !important;
+  line-height:1 !important;
+}
+
+#lang{
+  text-align:center !important;
+  text-align-last:center !important;
+}
+
+/* No X over the event icon */
+.close{display:none !important}
+#modal article{
+  padding:20px !important;
+}
+
+.close-event{
+  width:100%;
+  height:44px;
+  margin-top:20px;
+  border:1px solid rgba(255,216,107,.45);
+  border-radius:12px;
+  background:#ffd86b;
+  color:#172033;
+  font-weight:900;
+  cursor:pointer;
+}
+
+@media(max-width:620px){
+  .small-btn,
+  #lang{
+    width:70px !important;
+    max-width:70px !important;
+    height:30px !important;
+    min-height:30px !important;
+    padding:0 5px !important;
+    font-size:10px !important;
+  }
+}
+
+
+/* v1.4 banners, tags, Saif Tip and related events */
+.card{padding:0!important;overflow:hidden}
+.card-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.event-banner,.modal-banner{
+  position:relative;
+  min-height:128px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:14px;
+  background:
+    radial-gradient(circle at 78% 25%,rgba(255,255,255,.18),transparent 25%),
+    linear-gradient(135deg,#1c4268,#0b1b2d);
+}
+.banner-glow{
+  position:absolute;
+  width:170px;height:170px;border-radius:50%;
+  right:-45px;top:-85px;background:rgba(255,216,107,.16);
+}
+.banner-icon,.modal-banner-icon{
+  position:relative;
+  z-index:1;
+  width:66px;height:66px;border-radius:20px;
+  display:grid;place-items:center;
+  font-size:2.35rem;
+  background:rgba(5,13,23,.46);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(8px);
+}
+.event-banner .pill,.modal-banner .pill{position:relative;z-index:1;background:rgba(5,13,23,.55);color:#fff}
+.banner-strongest-governor{background:linear-gradient(135deg,#553c13,#172f4c)}
+.banner-kingdom-transfer{background:linear-gradient(135deg,#234f67,#14243a)}
+.banner-roulette-hero{background:linear-gradient(135deg,#66385e,#202443)}
+.banner-mystic-divination{background:linear-gradient(135deg,#493d7e,#17243c)}
+.banner-windward-voyage{background:linear-gradient(135deg,#1c6176,#123149)}
+.banner-treasure-raiders{background:linear-gradient(135deg,#66501f,#263044)}
+.banner-eternitys-reach{background:linear-gradient(135deg,#34447b,#182238)}
+.banner-fishing-tournament{background:linear-gradient(135deg,#14728a,#17384c)}
+.banner-hall-of-governors{background:linear-gradient(135deg,#604822,#1a3049)}
+.banner-champions-way{background:linear-gradient(135deg,#7b4a22,#23334b)}
+.card-tags,.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.card-tags span,.modal-tags span{
+  font-size:.72rem;font-weight:800;color:#c8d5e2;
+  background:#13283f;border:1px solid #2b4156;border-radius:999px;padding:5px 8px
+}
+.reading-time{font-size:.8rem;color:#95a7bb;margin-bottom:10px}
+.modal-banner{min-height:150px;border-radius:17px;margin-bottom:16px}
+.modal-title-wrap{margin-bottom:8px}
+.modal-title-wrap h2{margin:0}
+.quick div:last-child b{font-size:.8rem;color:#ffd86b}
+.saif-tip-box{
+  margin-top:18px!important;
+  padding:15px;
+  border:1px solid rgba(255,216,107,.35)!important;
+  border-radius:15px;
+  background:rgba(255,216,107,.07);
+}
+.saif-tip-box h3{margin-top:0!important}
+.saif-tip-box p{margin-bottom:0}
+.related-events{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.related-btn{
+  border:1px solid #2b4156;background:#0a1a2b;color:#fff;
+  border-radius:12px;padding:10px;display:flex;align-items:center;gap:7px;
+  text-align:left;font-weight:800;cursor:pointer
+}
+.related-btn:hover{border-color:#ffd86b}
+.related-btn span{font-size:1.2rem}
+@media(max-width:620px){
+  .event-banner{min-height:112px}
+  .related-events{grid-template-columns:1fr}
+  .modal-banner{min-height:128px}
+}
+
+.nav-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
+.nav-btn{height:42px;border:1px solid rgba(255,216,107,.35);background:#0f2338;color:#fff;border-radius:12px;font-weight:700}
+.prep-empty{padding:12px;text-align:center;color:#95a7bb}
+@media(max-width:620px){.nav-actions{grid-template-columns:1fr}}
+
+
+/* v1.6 quick facts, mistakes, heroes and tools */
+.quick-facts-section,
+.mistakes-section,
+.heroes-section,
+.tool-section{
+  margin-top:18px!important;
+  padding-top:15px!important;
+  border-top:1px solid rgba(255,255,255,.08)!important;
+}
+.quick-facts-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.quick-facts-grid div{
+  background:#0a1a2b;
+  border:1px solid #22364a;
+  border-radius:13px;
+  padding:11px;
+}
+.quick-facts-grid span{
+  display:block;
+  color:#95a7bb;
+  font-size:.76rem;
+  margin-bottom:4px;
+}
+.quick-facts-grid b{
+  color:#f4f7fb;
+  font-size:.9rem;
+}
+.mistakes-section li{
+  color:#d8c6c6;
+}
+.mistakes-section li::marker{
+  color:#ff8f8f;
+}
+.hero-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.hero-list span{
+  border:1px solid rgba(255,216,107,.35);
+  background:rgba(255,216,107,.08);
+  color:#ffd86b;
+  border-radius:999px;
+  padding:7px 11px;
+  font-weight:800;
+  font-size:.82rem;
+}
+.tool-coming{
+  width:100%;
+  min-height:44px;
+  border:1px dashed rgba(255,216,107,.5);
+  border-radius:12px;
+  background:rgba(255,216,107,.06);
+  color:#ffd86b;
+  font-weight:900;
+}
+@media(max-width:620px){
+  .quick-facts-grid{grid-template-columns:1fr}
+}
+
+
+/* v1.7 stable additions */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.header-actions .small-btn,
+.header-actions #lang{
+  width:88px !important;
+  min-width:88px !important;
+  max-width:88px !important;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 8px !important;
+  border-radius:9px !important;
+  font-size:12px !important;
+}
+.header-actions #lang{
+  display:block;
+  text-align:center;
+  text-align-last:center;
+}
+.site-footer{
+  width:100%;
+  border-top:1px solid rgba(255,216,107,.25);
+  padding:24px 16px 36px;
+  color:#95a7bb;
+}
+.footer-inner{
+  width:min(1180px,100%);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.footer-inner a{
+  color:#ffd86b;
+  text-decoration:none;
+  font-weight:900;
+}
+.banner-hall-of-heroes{background:linear-gradient(135deg,#40506d,#172b43)}
+.banner-desert-trial{background:linear-gradient(135deg,#6b4a2d,#243247)}
+.banner-dawn-expedition{background:linear-gradient(135deg,#9a582c,#283e59)}
+.banner-truegold-refinement{background:linear-gradient(135deg,#8a6918,#2d3a4c)}
+.banner-armament-competition{background:linear-gradient(135deg,#5f4d3a,#25364d)}
+.banner-champagne-fair{background:linear-gradient(135deg,#8d6576,#273851)}
+.banner-buccaneer-bounty{background:linear-gradient(135deg,#56401f,#15384d)}
+.banner-all-out{background:linear-gradient(135deg,#7d2c2c,#273247)}
+.banner-call-of-the-sovereign{background:linear-gradient(135deg,#75562a,#27384e)}
+.banner-beast-whisperer{background:linear-gradient(135deg,#3f6b45,#26394b)}
+@media(max-width:620px){
+  .head{
+    grid-template-columns:1fr !important;
+  }
+  .header-actions{
+    justify-content:center;
+    grid-column:1/-1;
+  }
+  .brand{
+    grid-column:1/-1 !important;
+    grid-row:auto !important;
+    text-align:center !important;
+  }
+  .header-actions .small-btn,
+  .header-actions #lang{
+    width:82px !important;
+    min-width:82px !important;
+    max-width:82px !important;
+    height:34px !important;
+  }
+  .footer-inner{
+    justify-content:center;
+    text-align:center;
+  }
+}
+
+
+.banner-arcane-trove{background:linear-gradient(135deg,#4d385e,#263148)}
+.banner-burst-of-life{background:linear-gradient(135deg,#3e7b4a,#233a4d)}
+.banner-city-development{background:linear-gradient(135deg,#785a32,#26394d)}
+.banner-defeat-nearby-beasts{background:linear-gradient(135deg,#6d4a2d,#25374b)}
+.banner-develop-new-tech{background:linear-gradient(135deg,#356981,#25364d)}
+.banner-golden-glaives{background:linear-gradient(135deg,#8a6c20,#29394c)}
+.banner-grow-your-heroes{background:linear-gradient(135deg,#61457a,#26344a)}
+.banner-hero-rally{background:linear-gradient(135deg,#3c5878,#24364c)}
+.banner-imperial-consortium{background:linear-gradient(135deg,#6e533a,#29384b)}
+.banner-moonlit-promise{background:linear-gradient(135deg,#4b4c8a,#202d49)}
+
+</style></head><body>
 <header><div class="head"><div class="header-actions"><a class="small-btn" href="../index.html">Home</a><select id="lang"><option value="en">English</option>
 <option value="ar">العربية</option>
 <option value="fr">Français</option>
@@ -33,4 +385,111 @@
     <section class="saif-tip-box"><h3 data-label="Saif Tip">Saif Tip</h3><p id="saifTipText"></p></section>
     <section class="related-section"><h3 data-label="Related Events">Related Events</h3><div id="relatedEvents" class="related-events"></div></section>
     <div class="nav-actions"><button id="prevEventBtn" class="nav-btn">← Previous</button><button id="copyTipsBtn" class="nav-btn">Copy Tips</button><button id="nextEventBtn" class="nav-btn">Next →</button></div><button id="closeEventBtn" class="close-event" type="button">Close Event</button></article></div>
-<footer class="site-footer"><div class="footer-inner"><span>SaifKS.com | Built by Saif</span><a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></div></footer><script src="event-center-v1.7-stable.js?v=1702"></script></body></html>
+<footer class="site-footer"><div class="footer-inner"><span>SaifKS.com | Built by Saif</span><a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></div></footer><script id="event-center-script">
+const events=[{"id":"strongest-governor","icon":"👑","title":"Strongest Governor","duration":"7 Days","frequency":"Monthly","category":"Competitive","rating":5,"f2p":4,"summary":"A recurring seven-day competitive event with daily stages for city growth, heroes, skills, troop training, gathering, and ranking.","rewards":"Hero shards, resources, speedups, gems, Truegold, cosmetics, and daily, kingdom, and cross-kingdom ranking rewards.","tips":["Save important materials and speedups before the event.","Use materials only on the matching daily stage.","Choose whether you are aiming for milestones or leaderboard rank."],"prep":{"Gems":true,"Speedups":true,"Hero Shards":true,"Widgets":true,"Resources":true},"tags":["Solo","Ranking","Monthly"],"saifTip":"Save your major upgrades until the matching daily stage.","readingTime":"1 min","related":["roulette-hero","hall-of-governors","kingdom-transfer"],"difficulty":"Advanced","mode":"Solo Ranking","generation":"After First KvK","mistakes":["Spending speedups before checking the current daily stage.","Chasing leaderboard rank without enough saved materials.","Using rare resources on a low-value scoring day."],"heroes":[],"tool":"Strongest Governor Point Planner"},{"id":"kingdom-transfer","icon":"🔄","title":"Kingdom Transfer","duration":"7 Days","frequency":"Around Every 30–45 Days","category":"Kingdom","rating":5,"f2p":5,"summary":"A seven-day transfer event that allows eligible players to move to another kingdom inside their assigned transfer group.","rewards":"The event’s purpose is account relocation through a 3-day Pre-Transfer phase, 2-day Invitational phase, and 2-day Open Transfer phase.","tips":["Leave your alliance before transferring.","Meet the power cap and Transfer Pass requirement.","Recall all deployed troops and squads before transferring."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Kingdom","Transfer","Planning"],"saifTip":"Confirm the power cap and Transfer Pass cost before leaving your alliance.","readingTime":"1 min","related":["strongest-governor","hall-of-governors","champions-way"],"difficulty":"Intermediate","mode":"Kingdom Transfer","generation":"Server-Dependent","mistakes":["Leaving the alliance before confirming the destination kingdom.","Ignoring the destination power cap.","Forgetting deployed troops or the Transfer Pass requirement."],"heroes":[],"tool":"Kingdom Transfer Planner"},{"id":"roulette-hero","icon":"🎡","title":"Roulette Hero","duration":"3 Days","frequency":"Every 2 Weeks","category":"Hero","rating":5,"f2p":5,"summary":"A recurring wheel event featuring one Mythic hero from the current generation, with random spin rewards and guaranteed milestones.","rewards":"Featured Mythic hero shards, Mythic Expedition books, Mythic Conquest books, and milestones at 5, 15, 35, 70, and 120 spins.","tips":["Save Gems and Lucky Chips between cycles.","Use 10-spin pulls for better gem value.","Plan spins around the linked progression event."],"prep":{"Gems":true,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Hero","Gems","Biweekly"],"saifTip":"Save enough Gems to reach a guaranteed milestone instead of doing random spins.","readingTime":"1 min","related":["strongest-governor","hall-of-governors","mystic-divination"],"difficulty":"Easy","mode":"Solo Hero Event","generation":"Generation-Based","mistakes":["Spending Gems without targeting a milestone.","Using Lucky Chips outside the best scoring days.","Stopping just before a guaranteed milestone."],"heroes":["Featured Roulette Hero"],"tool":"Roulette Spin Calculator"},{"id":"mystic-divination","icon":"🔮","title":"Mystic Divination","duration":"2 Days","frequency":"Every 4 Weeks","category":"Luck","rating":5,"f2p":4,"summary":"Choose a Wish Reward and flip shuffled cards with Fortune Tokens to find it as efficiently as possible.","rewards":"Wish Rewards, multipliers, Gems, speedups, hammers, Truegold, charms, and token milestones.","tips":["Save Fortune Tokens between events.","Inspect side rewards before committing.","Reset after finding the Wish Reward unless the remaining rewards are unusually valuable."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Solo","Tokens","Luck"],"saifTip":"Do not spend heavily unless the side rewards in the current board are valuable.","readingTime":"1 min","related":["roulette-hero","treasure-raiders","windward-voyage"],"difficulty":"Intermediate","mode":"Solo Luck Event","generation":"Server-Dependent","mistakes":["Starting a board without enough Fortune Tokens.","Ignoring valuable side rewards.","Continuing after the Wish Reward when the remaining board is weak."],"heroes":[],"tool":"Mystic Token Planner"},{"id":"windward-voyage","icon":"⛵","title":"Windward Voyage","duration":"5 Days + 1 Collection Day","frequency":"Regular Event","category":"Governor Gear","rating":4,"f2p":4,"summary":"Send Voyager Teams on eight-hour trips to collect treasure chests containing mainly Governor Gear materials.","rewards":"Common and Premium Tidal Treasure Chests, Governor Gear materials, and higher-tier merged chests.","tips":["Keep Voyager Teams sailing continuously.","Use the collection day to open or merge remaining chests.","Three Common chests merge into one Premium chest."],"prep":{"Gems":true,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Governor Gear","Voyage","Recurring"],"saifTip":"Keep every available Voyager Team active to maximize chest returns.","readingTime":"1 min","related":["treasure-raiders","fishing-tournament","mystic-divination"],"difficulty":"Easy","mode":"Solo Voyage","generation":"Server-Dependent","mistakes":["Leaving Voyager Teams idle.","Forgetting the final collection day.","Merging chests without checking the reward goal."],"heroes":[],"tool":"Voyage Chest Planner"},{"id":"treasure-raiders","icon":"⛏️","title":"Treasure Raiders","duration":"3 Days","frequency":"Irregular","category":"Treasure","rating":4,"f2p":5,"summary":"Use pickaxes to mine tiles, find the selected Ultimate Treasure, and advance through increasingly valuable floors.","rewards":"Ultimate Treasures, Gems, speedups, Hero Gear XP, Hero XP, resources, and floor milestones.","tips":["You can earn up to 26 pickaxes per day.","A normal floor guarantees the Ultimate Treasure within 14 tiles.","Save pickaxes if you cannot reach the next valuable floor."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Treasure","Pickaxes","Solo"],"saifTip":"Save your pickaxes when you cannot safely reach the next premium floor.","readingTime":"1 min","related":["mystic-divination","windward-voyage","fishing-tournament"],"difficulty":"Easy","mode":"Solo Treasure","generation":"Server-Dependent","mistakes":["Using pickaxes when the next premium floor is unreachable.","Ignoring floors 5, 10, 15, and later premium floors.","Forgetting that saved pickaxes carry over."],"heroes":[],"tool":"Pickaxe Calculator"},{"id":"eternitys-reach","icon":"♾️","title":"Eternity’s Reach","duration":"30 Minutes","frequency":"Every 2 Weeks","category":"Competitive","rating":5,"f2p":4,"summary":"A timed solo battlefield where players hunt Cesare units, gather Copper, occupy veins, and compete against matched players.","rewards":"Milestone rewards, ranking rewards, occupation rewards, and Copper-based battlefield progression.","tips":["Register at least 15 minutes before your timeslot.","Use the recommended RRLLR skill path.","Prioritize Fractured Veins and keep every march active."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Solo","Competitive","30 Minutes"],"saifTip":"Avoid wasting time fighting for the center unless you can hold it efficiently.","readingTime":"2 min","related":["strongest-governor","champions-way","hall-of-governors"],"difficulty":"Advanced","mode":"Solo Battlefield","generation":"Matchmaking-Based","mistakes":["Letting marches remain idle.","Fighting for the center without a clear advantage.","Using Skill 5 at the wrong time."],"heroes":["Your strongest marches"],"tool":"Eternity Route Planner"},{"id":"fishing-tournament","icon":"🎣","title":"Fishing Tournament","duration":"Limited-Time Event","frequency":"Not Specified","category":"Mini Game","rating":5,"f2p":5,"summary":"Fish with Baits or Treasure Charts, collect Fishing Points and Tokens, upgrade gear, and compete in rankings.","rewards":"Fishing Points, Fishing Tokens, Ocean Chests, collection rewards, leaderboard rewards, and event shop items.","tips":["You start with 5 Baits and gain 1 every 3 hours.","Do not let Baits remain capped at 10.","Upgrade fishing gear early because upgrades reset each season."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Mini Game","Fishing","Limited"],"saifTip":"Never leave Baits capped at 10, and upgrade your gear early.","readingTime":"2 min","related":["windward-voyage","treasure-raiders","mystic-divination"],"difficulty":"Intermediate","mode":"Solo Mini Game","generation":"Limited Event","mistakes":["Leaving Baits capped at 10.","Delaying fishing gear upgrades.","Using Power Cast without planning multipliers and vouchers."],"heroes":[],"tool":"Fishing Bait Calculator"},{"id":"hall-of-governors","icon":"🏛️","title":"Hall of Governors","duration":"Multi-Day","frequency":"Every 2 Weeks","category":"Competitive","rating":5,"f2p":3,"summary":"An early-kingdom competitive event in Generations 1 and 2 with changing daily stages and featured hero rewards.","rewards":"Amadeus shards in the first three editions, Hilde shards in later editions, plus milestone and leaderboard rewards.","tips":["Save development materials for the correct stage.","The featured hero and ranking requirements depend on the edition.","Check daily tasks before spending materials."],"prep":{"Gems":true,"Speedups":true,"Hero Shards":true,"Widgets":true,"Resources":true},"tags":["Ranking","Hero","Biweekly"],"saifTip":"Check the daily stage before using shards, speedups, or gear materials.","readingTime":"1 min","related":["strongest-governor","roulette-hero","champions-way"],"difficulty":"Advanced","mode":"Solo Ranking","generation":"Gen 1–2","mistakes":["Spending development items before the correct stage.","Assuming every edition has the same featured hero.","Competing for rank without checking the reward threshold."],"heroes":["Amadeus","Hilde"],"tool":"Hall of Governors Planner"},{"id":"champions-way","icon":"🏆","title":"Champion’s Way","duration":"3 Days","frequency":"Every 2 Weeks","category":"Hero","rating":5,"f2p":5,"summary":"A Generation 4 event replacing Desert Trial. Hunt beasts for Weapon Scraps, summon Elite Rebels, and unlock milestone chests.","rewards":"Mythic Hero Shards, Hero XP, Lucky Hero Gear Chests, Forgehammers, Gems, Stamina, and speedups.","tips":["Use Diana to reduce stamina cost.","Complete 10 Elite Rebel rallies for all five milestone chests.","Weapon Scraps do not expire and can be saved."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Hero","PvE","Biweekly"],"saifTip":"Finish the 10 milestone rallies, then save extra Weapon Scraps for later.","readingTime":"1 min","related":["hall-of-governors","eternitys-reach","roulette-hero"],"difficulty":"Easy","mode":"PvE Hero Event","generation":"Gen 4+","mistakes":["Continuing rallies after milestones without a clear goal.","Forgetting the daily rally joiner rewards.","Spending all Weapon Scraps instead of saving extras."],"heroes":["Diana"],"tool":"Weapon Scrap Tracker"},{"id":"hall-of-heroes","icon":"🛡️","title":"Hall of Heroes","duration":"3 Days","frequency":"Weekly","category":"Hero","rating":4,"f2p":4,"summary":"A weekly hero shop event where Marks of Valor can be exchanged for hero shards, widgets, and generation-specific items.","rewards":"Hero shards, widgets, hero materials, and generation shop items.","tips":["Check which generation of Marks you own.","Prioritize heroes or widgets for your main formation.","Marks do not expire, but they do not convert to the next generation."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Hero","Weekly","Shop"],"saifTip":"Spend Marks only on heroes or widgets that strengthen your main march.","readingTime":"1 min","related":["roulette-hero","hall-of-governors","champions-way"],"difficulty":"Easy","mode":"Hero Shop","generation":"Generation-Based","mistakes":["Buying low-priority heroes without a plan.","Assuming Marks convert to the next generation.","Ignoring useful older-generation widgets."],"heroes":[],"tool":""},{"id":"desert-trial","icon":"🐺","title":"Desert Trial","duration":"3 Days","frequency":"Every 2 Weeks","category":"Hero","rating":4,"f2p":5,"summary":"A biweekly PvE event before Generation 4 where Clawshards summon Dreadwolves and unlock Diana-related rewards.","rewards":"Diana shards, Hero XP, gear chests, speedups, stamina, and rally rewards.","tips":["Start 10 Dreadwolf rallies to complete milestones.","Use Diana to reduce stamina cost when possible.","Save extra Clawshards when you no longer need rallies."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["PvE","Hero","Biweekly"],"saifTip":"Finish the 10 required rallies first, then decide whether extra rallies are worth the stamina.","readingTime":"1 min","related":["champions-way","hall-of-heroes","roulette-hero"],"difficulty":"Easy","mode":"PvE Hero Event","generation":"Before Gen 4","mistakes":["Joining rallies without starting your required rallies.","Using all stamina before milestones.","Forgetting Champion’s Way replaces it later."],"heroes":["Diana"],"tool":""},{"id":"dawn-expedition","icon":"🌅","title":"Dawn Expedition","duration":"7 Days","frequency":"Early Kingdom","category":"Growth","rating":4,"f2p":4,"summary":"An early seven-day progression event where daily missions grant Dawn Points and unlock rewards along an expedition path.","rewards":"Resources, speedups, Gems, progression materials, and pass rewards.","tips":["Complete daily missions consistently.","Claim unlocked rewards before the event ends.","Avoid buying levels with Gems unless the final value is worthwhile."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Growth","Early Game","7 Days"],"saifTip":"Daily consistency gives better value than buying levels with Gems.","readingTime":"1 min","related":["beast-whisperer","hall-of-governors","strongest-governor"],"difficulty":"Easy","mode":"Growth Pass","generation":"Early Kingdom","mistakes":["Missing daily missions.","Forgetting to claim rewards.","Buying levels without checking the remaining value."],"heroes":[],"tool":""},{"id":"truegold-refinement","icon":"🪙","title":"Truegold Refinement","duration":"Irregular","frequency":"Matches All Out","category":"Truegold","rating":4,"f2p":4,"summary":"An Age of Truegold event where Lesser Truegold is collected and exchanged for different Truegold packs.","rewards":"Truegold packs, Truegold Chests, and additional Truegold opportunities.","tips":["Gather 25 million resources for the free objective.","Spend 50 Stamina for the second free objective.","Lesser Truegold can be saved between events."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":true},"tags":["Truegold","Growth","Irregular"],"saifTip":"Save Lesser Truegold until the exchange pack matches your account needs.","readingTime":"1 min","related":["all-out","strongest-governor","hall-of-governors"],"difficulty":"Easy","mode":"Resource Exchange","generation":"Age of Truegold","mistakes":["Missing the free gathering and stamina objectives.","Using Lesser Truegold on a weak pack.","Expecting the event in the normal calendar."],"heroes":[],"tool":""},{"id":"armament-competition","icon":"⚒️","title":"Armament Competition","duration":"2 Days","frequency":"Every 2 Weeks","category":"Growth","rating":4,"f2p":4,"summary":"A repeated Age of Truegold growth event with alternating mission sets that can overlap with alliance events.","rewards":"Growth materials, milestone rewards, resources, and leaderboard rewards.","tips":["Check whether the current version is Type 1 or Type 2.","Stack scoring with alliance events when possible.","Use only materials that score in the active mission set."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":true,"Widgets":true,"Resources":false},"tags":["Growth","Biweekly","Ranking"],"saifTip":"Always verify the active Armament mission type before spending materials.","readingTime":"1 min","related":["strongest-governor","hall-of-governors","truegold-refinement"],"difficulty":"Intermediate","mode":"Growth Ranking","generation":"Age of Truegold","mistakes":["Confusing the two mission types.","Using materials that do not score.","Ignoring overlapping alliance events."],"heroes":[],"tool":""},{"id":"champagne-fair","icon":"🥂","title":"Champagne Fair","duration":"2 Days","frequency":"About Monthly","category":"Exchange","rating":5,"f2p":5,"summary":"A two-day exchange event where extra shards, widgets, and skill books become Fair Vouchers for valuable materials.","rewards":"Widgets, Mithril, Forgehammers, pet materials, charms, Artisan’s Visions, and shop items.","tips":["Save Fair Vouchers if the current shop is weak.","Prioritize rare upgrade materials.","Avoid spending vouchers on basic resources unless needed."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":true,"Widgets":true,"Resources":false},"tags":["Exchange","Monthly","F2P"],"saifTip":"Use vouchers on rare materials that directly improve your account.","readingTime":"1 min","related":["hall-of-heroes","armament-competition","treasure-raiders"],"difficulty":"Easy","mode":"Item Exchange","generation":"After Third HoG","mistakes":["Exchanging useful shards too early.","Buying low-value resources first.","Forgetting Fair Vouchers do not expire."],"heroes":[],"tool":""},{"id":"buccaneer-bounty","icon":"🏴‍☠️","title":"Buccaneer Bounty","duration":"7 Days","frequency":"Every 4–6 Weeks","category":"Treasure","rating":5,"f2p":5,"summary":"A seven-day treasure event with Harbor Drill missions, chest openings, and a shop using Pearls of Enigma.","rewards":"Widgets, skins, Truegold, pet materials, and server-age-dependent shop rewards.","tips":["Complete Harbor Drill missions daily.","Use Pearls of Enigma before the shop closes.","Choose your target reward before spending Corsair Keys."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Treasure","7 Days","F2P"],"saifTip":"Choose your target reward first, then decide how many Corsair Keys to spend.","readingTime":"2 min","related":["treasure-raiders","windward-voyage","champagne-fair"],"difficulty":"Intermediate","mode":"Treasure Event","generation":"Server-Dependent","mistakes":["Missing daily Harbor Drill missions.","Spending keys without a target.","Forgetting the shop remains open after missions end."],"heroes":[],"tool":""},{"id":"all-out","icon":"⚔️","title":"All Out","duration":"2 Days","frequency":"Every Few Weeks","category":"PvP","rating":4,"f2p":2,"summary":"A two-day Kill Event where points come from defeating or severely wounding enemy troops through attack or defense.","rewards":"Milestone rewards and leaderboard rewards.","tips":["Follow kingdom and alliance rules before attacking.","Use a shield when not participating.","Keep enough infirmary space before risky battles."],"prep":{"Gems":true,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["PvP","Kill Event","Ranking"],"saifTip":"Do not chase points when troop losses are worth more than the rewards.","readingTime":"2 min","related":["truegold-refinement","strongest-governor","kingdom-transfer"],"difficulty":"Advanced","mode":"PvP Ranking","generation":"All Kingdoms","mistakes":["Attacking without scouting.","Ignoring alliance rules.","Filling the infirmary before major fights."],"heroes":["Your strongest PvP formation"],"tool":""},{"id":"call-of-the-sovereign","icon":"📯","title":"Call of the Sovereign","duration":"3 Days","frequency":"Recurring","category":"Growth","rating":4,"f2p":3,"summary":"A three-day task event where daily activities grant Glory Points and unlock milestone chests.","rewards":"Hero XP, skill books, speedups, resources, Gems, stamina, and milestone rewards.","tips":["Complete free daily tasks before reset.","Combine gathering, beasts, Terrors, and training efficiently.","The final chest may require the purchase task."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":true},"tags":["Tasks","3 Days","Growth"],"saifTip":"Finish every free task before deciding whether the last chest is worth spending for.","readingTime":"1 min","related":["dawn-expedition","all-out","strongest-governor"],"difficulty":"Easy","mode":"Daily Tasks","generation":"Generation-Based","mistakes":["Missing the daily reset.","Ignoring easy tasks.","Assuming every chest is fully free-to-play."],"heroes":[],"tool":""},{"id":"beast-whisperer","icon":"🐾","title":"Beast Whisperer","duration":"7 Days","frequency":"One-Time Event","category":"Pet","rating":4,"f2p":5,"summary":"A one-time seven-day event unlocked around Generation 1 pets, with daily pet tasks and progression rewards.","rewards":"Pet Refinement Stones, Pet Food, advancement materials, Nutrient Potions, Growth Manuals, and Gems.","tips":["Complete every task day before the event ends.","Focus materials on the pets you actively use.","Claim all token chest rewards."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Pet","One-Time","7 Days"],"saifTip":"Use rewards on the pets that give the strongest immediate benefit.","readingTime":"1 min","related":["dawn-expedition","champions-way","hall-of-heroes"],"difficulty":"Easy","mode":"Pet Growth","generation":"Gen 1 Pets","mistakes":["Ignoring early task days.","Spreading materials across too many pets.","Forgetting token chests."],"heroes":[],"tool":""},{"id":"arcane-trove","icon":"🔐","title":"Arcane Trove","duration":"5 Days","frequency":"Special Deal","category":"Deal","rating":2,"f2p":1,"summary":"A paid deal event with five linked packs. Buying each pack opens its matching pipe, and purchasing all five reveals the Grand Prize.","rewards":"Paid pack rewards and a Grand Prize. Contents can vary depending on server age and progression.","tips":["Check every pack before starting the purchase chain.","The full five-pack route costs $35 in the Wiki example.","Do not start unless the Grand Prize matches your needs."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Paid","Deal","5 Days"],"saifTip":"Review the full reward path before buying the first pack.","readingTime":"1 min","related":["imperial-consortium","moonlit-promise","hero-rally"],"difficulty":"Easy","mode":"Paid Deal","generation":"Server-Dependent","mistakes":["Buying the first pack without checking the Grand Prize.","Assuming rewards are identical on every server.","Ignoring the total cost of the full route."],"heroes":[],"tool":""},{"id":"burst-of-life","icon":"🌿","title":"Burst of Life","duration":"7 Days","frequency":"Early Kingdom","category":"Growth","rating":4,"f2p":5,"summary":"An early seven-day power growth event. Increase account power through troops, heroes, research, and buildings to unlock milestones.","rewards":"Gems, resources, construction speedups, an action emote, and the exclusive Burst of Life City Skin at the final milestone.","tips":["Plan building, research, hero, and troop upgrades together.","Aim for steady power growth across all seven days.","Check the final power target before using major speedups."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":true,"Widgets":false,"Resources":true},"tags":["Growth","Early Game","City Skin"],"saifTip":"Combine several upgrade types instead of relying on one expensive source of power.","readingTime":"1 min","related":["dawn-expedition","city-development","develop-new-tech"],"difficulty":"Intermediate","mode":"Power Growth","generation":"Early Kingdom","mistakes":["Using all speedups on the first day.","Ignoring cheaper power sources.","Missing the final City Skin milestone by a small amount."],"heroes":[],"tool":""},{"id":"city-development","icon":"🏗️","title":"City Development","duration":"2 Days","frequency":"Irregular","category":"Growth","rating":3,"f2p":4,"summary":"A Generation 1 small-scale event that rewards early city development. It appears irregularly and does not continue into Generation 2.","rewards":"Milestone rewards and kingdom leaderboard rewards for completing the listed development missions.","tips":["Save city-development materials for the event.","Check the active mission list before upgrading.","Avoid competing for rank unless the rewards justify the cost."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":false,"Widgets":false,"Resources":true},"tags":["Gen 1","Growth","Ranking"],"saifTip":"Use planned city upgrades during the event instead of creating unnecessary upgrades for rank.","readingTime":"1 min","related":["develop-new-tech","burst-of-life"],"difficulty":"Easy","mode":"City Growth","generation":"Gen 1","mistakes":["Upgrading before checking the missions.","Overspending for a low-value rank.","Expecting the event after Generation 1."],"heroes":[],"tool":""},{"id":"defeat-nearby-beasts","icon":"🐗","title":"Defeat Nearby Beasts","duration":"2 Days","frequency":"Recurring","category":"PvE","rating":3,"f2p":5,"summary":"A two-day PvE event where beasts give 1 point and Terrors defeated through rallies give 3 points.","rewards":"Resources, Hero XP, construction, research and training speedups, Epic Recruitment Keys, and Mythic skill books.","tips":["One Terror gives the same points as three beasts while using less stamina.","Start Terror rallies when alliance participation is available.","Stop after milestones if ranking rewards are not worth more stamina."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["PvE","Beasts","Terrors"],"saifTip":"For equal points, one Terror rally is more stamina-efficient than three beasts.","readingTime":"1 min","related":["call-of-the-sovereign","golden-glaives","champions-way"],"difficulty":"Easy","mode":"PvE Milestones","generation":"All Kingdoms","mistakes":["Spending more stamina on beasts for the same points.","Forgetting Terrors give three points.","Chasing rank after completing useful milestones."],"heroes":[],"tool":""},{"id":"develop-new-tech","icon":"🔬","title":"Develop New Tech","duration":"2 Days","frequency":"Irregular","category":"Growth","rating":3,"f2p":4,"summary":"A Generation 1 research event that awards 1 point for every minute of Research Speedup used.","rewards":"Milestone rewards and additional kingdom leaderboard rewards.","tips":["Upgrade Yeonwoo’s second Expedition skill before major research.","Use Research Speedups only after confirming the event is active.","Coordinate research with other scoring events when possible."],"prep":{"Gems":false,"Speedups":true,"Hero Shards":false,"Widgets":false,"Resources":true},"tags":["Research","Gen 1","Ranking"],"saifTip":"Save Research Speedups for this event and overlapping scoring opportunities.","readingTime":"1 min","related":["city-development","burst-of-life"],"difficulty":"Easy","mode":"Research Growth","generation":"Gen 1","mistakes":["Using research speedups before the event.","Ignoring cost and time reductions.","Expecting the event after Generation 1."],"heroes":["Yeonwoo"],"tool":""},{"id":"golden-glaives","icon":"🗡️","title":"Golden Glaives","duration":"3 Days","frequency":"With SG or KvK","category":"PvE","rating":3,"f2p":5,"summary":"A three-day PvE exchange event. Complete Intel Missions during the first two days to earn Goldstones and exchange them before the event ends.","rewards":"Exchange-shop rewards; unspent Goldstones are converted to Bread after the event.","tips":["Complete every available Intel Mission during the first two days.","Prioritize high-value materials over basic resources.","Spend all Goldstones before automatic conversion."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["PvE","Intel","Exchange"],"saifTip":"Claim Intel regularly and spend Goldstones before they convert to Bread.","readingTime":"1 min","related":["defeat-nearby-beasts","strongest-governor","call-of-the-sovereign"],"difficulty":"Easy","mode":"Intel Exchange","generation":"Server-Dependent","mistakes":["Letting Intel refreshes go unused.","Buying basic resources before rare materials.","Forgetting to exchange Goldstones on day three."],"heroes":[],"tool":""},{"id":"grow-your-heroes","icon":"🦸","title":"Grow Your Heroes","duration":"2 Days","frequency":"Irregular","category":"Hero","rating":3,"f2p":4,"summary":"A Generation 1 hero-growth event that scores Rare, Epic, and Mythic Hero Shards. It disappears after Generation 1.","rewards":"Milestone rewards and kingdom leaderboard rewards.","tips":["General Hero Shards count.","Use Mythic Shards only if the milestone or rank is worthwhile.","Save hero upgrades to overlap with other hero events."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":true,"Widgets":false,"Resources":false},"tags":["Hero","Gen 1","Shards"],"saifTip":"Do not spend valuable Mythic Shards only for a small ranking improvement.","readingTime":"1 min","related":["hero-rally","hall-of-heroes","roulette-hero"],"difficulty":"Easy","mode":"Hero Growth","generation":"Gen 1","mistakes":["Using shards before the event.","Forgetting General Shards count.","Overspending Mythic Shards for weak rewards."],"heroes":[],"tool":""},{"id":"hero-rally","icon":"📜","title":"Hero Rally","duration":"Not Specified","frequency":"Every 2 Weeks","category":"Hero","rating":3,"f2p":4,"summary":"A biweekly 31-level progression event with a free path and a paid Path of Honor. Daily missions or Gems advance the levels.","rewards":"Free speedups, resources, Epic skill books and Hero XP; the paid path can include current-generation Mythic Hero Shards, Truegold, stamina, keys, and Mythic skill books.","tips":["Complete daily missions before spending Gems.","Review the featured hero before buying the paid path.","Each purchased level costs 2,160 Gems according to the Wiki."],"prep":{"Gems":true,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Hero","Pass","Biweekly"],"saifTip":"Use Gems to finish levels only after completing all free daily progress.","readingTime":"1 min","related":["hall-of-heroes","roulette-hero","grow-your-heroes"],"difficulty":"Easy","mode":"Progression Pass","generation":"Generation-Based","mistakes":["Buying levels before finishing missions.","Buying the pass without checking the hero.","Ignoring the total Gem cost of skipped levels."],"heroes":["Featured Generation Hero"],"tool":""},{"id":"imperial-consortium","icon":"💼","title":"Imperial Consortium","duration":"2 Days","frequency":"Special Deal","category":"Deal","rating":2,"f2p":1,"summary":"A two-day paid pack-ladder event with two routes: Governor Gear and Charms, or Truegold, speedups, decoration components, and Hero Gear materials.","rewards":"Paid packs from low to high tiers, with route-specific materials and free unlock rewards between purchases.","tips":["Compare both routes before buying.","Calculate the full ladder cost.","Choose the route that supports your current priority."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Paid","Packs","2 Days"],"saifTip":"Choose one upgrade route and compare its full value before starting.","readingTime":"1 min","related":["arcane-trove","moonlit-promise","champagne-fair"],"difficulty":"Easy","mode":"Paid Pack Ladder","generation":"Server-Dependent","mistakes":["Buying the first pack without checking later tiers.","Splitting spending between routes.","Assuming packs are identical on every server."],"heroes":[],"tool":""},{"id":"moonlit-promise","icon":"🌙","title":"Moonlit Promise","duration":"1 Month","frequency":"Ramadan Special","category":"Seasonal","rating":4,"f2p":5,"summary":"A month-long Ramadan PvE event with Radiant Wishes and the Crescent Bazaar. Light lanterns to earn Crescent Emblems and spend them in the event shop.","rewards":"Mythic and Lucky Hero Gear, Governor Gear chests, Forgehammers, Charm Designs and Guides, speedups, emotes, and other rewards.","tips":["Complete all eight daily missions for Crescent Seekers.","Use the free daily lantern and collect alliance blessings.","Spend all Emblems and Seekers before they convert to Bread."],"prep":{"Gems":false,"Speedups":false,"Hero Shards":false,"Widgets":false,"Resources":false},"tags":["Ramadan","Seasonal","Exchange"],"saifTip":"Complete daily missions consistently and spend all event currency before the month ends.","readingTime":"2 min","related":["arcane-trove","imperial-consortium","mystic-divination"],"difficulty":"Easy","mode":"Seasonal PvE","generation":"All Kingdoms","mistakes":["Missing the free daily lantern.","Ignoring alliance blessings.","Keeping currency until automatic conversion."],"heroes":[],"tool":""}];
+const ar={"Event Center":"مركز الأحداث","Everything you need for every Kingshot event.":"كل ما تحتاجه لأحداث Kingshot.","Search events...":"ابحث عن حدث...","All":"الكل","Open":"فتح","No events found":"لا توجد أحداث","Home":"الرئيسية","Duration":"المدة","Frequency":"التكرار","F2P":"مجاني","Overview":"نظرة عامة","Main Rewards":"أهم الجوائز","Best Tips":"أفضل النصائح","Preparation":"التحضير","Yes":"نعم","No":"لا","Close Event":"الخروج من الحدث","Competitive":"تنافسي","Kingdom":"المملكة","Hero":"الأبطال","Luck":"الحظ","Governor Gear":"عتاد الحاكم","Treasure":"الكنوز","Mini Game":"لعبة مصغرة","Gems":"الجواهر","Speedups":"التسريعات","Hero Shards":"شظايا الأبطال","Widgets":"القطع الحصرية","Resources":"الموارد","View Guide →":"عرض الدليل ←","Reading Time":"وقت القراءة","Saif Tip":"نصيحة سيف","Related Events":"أحداث مرتبطة","Tags":"التصنيفات","Quick Facts":"معلومات سريعة","Difficulty":"الصعوبة","Mode":"النوع","Generation":"الجيل","Common Mistakes":"أخطاء شائعة","Recommended Heroes":"الأبطال المقترحون","Related Tool":"الأداة المرتبطة","Coming Soon":"قريبًا","Easy":"سهل","Intermediate":"متوسط","Advanced":"متقدم","Solo Ranking":"تصنيف فردي","Kingdom Transfer":"نقل المملكة","Solo Hero Event":"حدث أبطال فردي","Solo Luck Event":"حدث حظ فردي","Solo Voyage":"رحلة فردية","Solo Treasure":"كنوز فردية","Solo Battlefield":"ساحة فردية","Solo Mini Game":"لعبة فردية","PvE Hero Event":"حدث أبطال PvE","Generation-Based":"حسب الجيل","Server-Dependent":"حسب السيرفر","Matchmaking-Based":"حسب المطابقة","Limited Event":"حدث محدود","After First KvK":"بعد أول KvK","Gen 1–2":"الجيل 1–2","Gen 4+":"الجيل 4+","Your strongest marches":"أقوى مسيراتك","Featured Roulette Hero":"بطل الروليت الحالي"};
+const eventAr={"strongest-governor":{"duration":"7 أيام","frequency":"شهريًا","summary":"حدث تنافسي متكرر لمدة سبعة أيام بمراحل يومية للبناء والأبطال والمهارات وتدريب الجنود والجمع والتصنيف.","rewards":"شظايا أبطال وموارد وتسريعات وجواهر وذهب خالص ومظاهر وجوائز تصنيف.","tips":["ادخر المواد المهمة والتسريعات.","استخدم المواد في المرحلة اليومية المناسبة.","حدد هل هدفك الجوائز أم التصنيف."]},"kingdom-transfer":{"duration":"7 أيام","frequency":"تقريبًا كل 30–45 يومًا","summary":"حدث نقل لمدة سبعة أيام يسمح للاعبين المؤهلين بالانتقال داخل مجموعة النقل المحددة.","rewards":"هدف الحدث نقل الحساب عبر 3 أيام قبل النقل ويومين للدعوات ويومين للنقل المفتوح.","tips":["اخرج من التحالف.","التزم بحد القوة والتصاريح.","أعد جميع الجنود والمسيرات."]},"roulette-hero":{"duration":"3 أيام","frequency":"كل أسبوعين","summary":"روليت متكرر يقدم بطلًا أسطوريًا من الجيل الحالي مع جوائز عشوائية ومراحل مضمونة.","rewards":"شظايا البطل وكتب أسطورية ومكافآت عند 5 و15 و35 و70 و120 لفة.","tips":["ادخر الجواهر وLucky Chips.","استخدم 10 لفات لقيمة أفضل.","خطط للفات مع الحدث المرتبط."]},"mystic-divination":{"duration":"يومان","frequency":"كل 4 أسابيع","summary":"اختر جائزة الأمنية واقلب البطاقات باستخدام Fortune Tokens للعثور عليها بأفضل كفاءة.","rewards":"جائزة الأمنية ومضاعفات وجواهر وتسريعات ومطارق وذهب خالص وتمائم.","tips":["ادخر Fortune Tokens.","راجع الجوائز الجانبية.","أعد الجولة بعد العثور على الجائزة غالبًا."]},"windward-voyage":{"duration":"5 أيام + يوم جمع","frequency":"حدث دوري","summary":"أرسل فرق الرحلات في رحلات مدتها 8 ساعات للحصول على صناديق مواد عتاد الحاكم.","rewards":"صناديق عادية ومميزة ومواد عتاد الحاكم وصناديق أعلى بالدمج.","tips":["حافظ على استمرار الرحلات.","استخدم يوم الجمع للفتح والدمج.","كل 3 صناديق عادية تعطي صندوقًا مميزًا."]},"treasure-raiders":{"duration":"3 أيام","frequency":"غير منتظم","summary":"استخدم المعاول لكشف المربعات والعثور على الكنز النهائي والتقدم في الطوابق.","rewards":"كنوز وجواهر وتسريعات وخبرة وموارد ومكافآت مراحل.","tips":["حتى 26 معولًا يوميًا.","الكنز مضمون خلال 14 مربعًا بالطابق العادي.","ادخر المعاول عند الحاجة."]},"eternitys-reach":{"duration":"30 دقيقة","frequency":"كل أسبوعين","summary":"ساحة فردية محددة بالوقت لجمع النحاس واحتلال المناجم ومنافسة اللاعبين.","rewards":"جوائز مراحل وتصنيف واحتلال وتقدم داخل الساحة.","tips":["سجل قبل الموعد بـ15 دقيقة.","استخدم RRLLR.","ركز على Fractured Veins ولا توقف المسيرات."]},"fishing-tournament":{"duration":"حدث محدود","frequency":"غير محدد","summary":"اصطد بالطُعم أو خرائط الكنوز واجمع النقاط والعملات وطوّر المعدات.","rewards":"نقاط وعملات وصناديق محيط وجوائز مجموعات وتصنيف ومتجر.","tips":["تبدأ بـ5 طعوم وتحصل على واحد كل 3 ساعات.","لا تترك الطُعم عند 10.","طور المعدات مبكرًا."]},"hall-of-governors":{"duration":"عدة أيام","frequency":"كل أسبوعين","summary":"حدث تنافسي مبكر في الجيلين الأول والثاني بمراحل يومية متغيرة وجوائز أبطال.","rewards":"شظايا Amadeus في أول 3 نسخ وشظايا Hilde لاحقًا مع جوائز المراحل والتصنيف.","tips":["ادخر المواد للمرحلة الصحيحة.","البطل والمتطلبات تختلف حسب النسخة.","راجع المهام اليومية."]},"champions-way":{"duration":"3 أيام","frequency":"كل أسبوعين","summary":"حدث من الجيل الرابع يحل محل Desert Trial ويعتمد على Weapon Scraps وElite Rebels.","rewards":"شظايا أبطال وخبرة وصناديق عتاد ومطارق وجواهر وطاقة وتسريعات.","tips":["استخدم Diana لتقليل الطاقة.","أكمل 10 حشود.","Weapon Scraps لا تنتهي."]},"hall-of-heroes":{"duration":"3 أيام","frequency":"أسبوعيًا","summary":"متجر أبطال أسبوعي تستبدل فيه Marks of Valor بشظايا وWidgets وعناصر حسب الجيل.","rewards":"شظايا أبطال وWidgets ومواد أبطال وعناصر متجر.","tips":["راجع نوع Marks قبل الصرف.","ركز على ما يقوي تشكيلتك الأساسية.","Marks لا تنتهي لكنها لا تتحول للجيل التالي."]},"desert-trial":{"duration":"3 أيام","frequency":"كل أسبوعين","summary":"حدث PvE قبل الجيل الرابع تستخدم فيه Clawshards لاستدعاء Dreadwolves وكسب شظايا Diana.","rewards":"شظايا Diana وخبرة وصناديق عتاد وتسريعات وطاقة.","tips":["ابدأ 10 حشود.","استخدم Diana لتقليل الطاقة.","ادخر Clawshards الإضافية."]},"dawn-expedition":{"duration":"7 أيام","frequency":"بداية المملكة","summary":"حدث تطوير مبكر لمدة سبعة أيام يعتمد على المهام اليومية ومسار المكافآت.","rewards":"موارد وتسريعات وجواهر ومواد تطوير.","tips":["أكمل المهام يوميًا.","استلم المكافآت قبل النهاية.","لا تشترِ المستويات دون حساب القيمة."]},"truegold-refinement":{"duration":"غير منتظم","frequency":"يتزامن مع All Out","summary":"حدث تجمع فيه Lesser Truegold وتستبدله بحزم ذهب خالص.","rewards":"حزم وصناديق ذهب خالص.","tips":["اجمع 25 مليون مورد.","استخدم 50 طاقة.","يمكن ادخار Lesser Truegold."]},"armament-competition":{"duration":"يومان","frequency":"كل أسبوعين","summary":"حدث تطوير بنوعين متناوبين من المهام وقد يتزامن مع أحداث التحالف.","rewards":"مواد تطوير وموارد ومكافآت مراحل وتصنيف.","tips":["تأكد من نوع المهمة الحالية.","ادمج النقاط مع أحداث التحالف.","استخدم المواد التي تعطي نقاطًا فقط."]},"champagne-fair":{"duration":"يومان","frequency":"تقريبًا شهريًا","summary":"حدث استبدال تحول فيه المواد الزائدة إلى Fair Vouchers لشراء مواد قيمة.","rewards":"Widgets وMithril ومطارق وتمائم ومواد تطوير.","tips":["ادخر القسائم إذا كان المتجر ضعيفًا.","ركز على المواد النادرة.","لا تبدأ بالموارد العادية."]},"buccaneer-bounty":{"duration":"7 أيام","frequency":"كل 4–6 أسابيع","summary":"حدث كنوز يتضمن Harbor Drill وفتح الصناديق ومتجر Pearls of Enigma.","rewards":"Widgets ومظاهر وذهب خالص ومواد حيوانات.","tips":["أكمل المهام يوميًا.","استخدم Pearls قبل إغلاق المتجر.","حدد جائزتك قبل صرف المفاتيح."]},"all-out":{"duration":"يومان","frequency":"كل عدة أسابيع","summary":"حدث قتل تكسب فيه النقاط بهزيمة أو إصابة جنود الخصوم.","rewards":"مكافآت مراحل وتصنيف.","tips":["اتبع قوانين المملكة والتحالف.","استخدم الدرع إذا لم تشارك.","اترك مساحة في المستشفى."]},"call-of-the-sovereign":{"duration":"3 أيام","frequency":"دوري","summary":"حدث مهام يومية تمنح Glory Points وصناديق مراحل.","rewards":"خبرة وكتب مهارات وتسريعات وموارد وجواهر وطاقة.","tips":["أكمل المهام المجانية.","ادمج المهام المتشابهة.","قد يحتاج الصندوق الأخير للشراء."]},"beast-whisperer":{"duration":"7 أيام","frequency":"مرة واحدة","summary":"حدث حيوانات لمدة سبعة أيام يظهر مع حيوانات الجيل الأول.","rewards":"مواد تطوير الحيوانات وطعام وجواهر.","tips":["أكمل جميع الأيام.","ركز على الحيوانات المستخدمة.","استلم جميع الصناديق."]},"arcane-trove":{"duration":"5 أيام","frequency":"عرض خاص","summary":"حدث عروض مدفوعة بخمس حزم مترابطة، وشراء جميعها يفتح الجائزة الكبرى.","rewards":"مكافآت مدفوعة وجائزة كبرى تختلف حسب السيرفر.","tips":["راجع الحزم قبل البدء.","التكلفة الكاملة 35 دولارًا في مثال الويكي.","لا تبدأ إذا لم تناسبك الجائزة الكبرى."]},"burst-of-life":{"duration":"7 أيام","frequency":"بداية المملكة","summary":"حدث تطوير مبكر لزيادة القوة عبر الجنود والأبطال والبحوث والمباني.","rewards":"جواهر وموارد وتسريعات وإيموت ومظهر مدينة حصري.","tips":["اجمع بين أنواع التطوير.","وزع القوة على أيام الحدث.","راجع هدف القوة النهائي."]},"city-development":{"duration":"يومان","frequency":"غير منتظم","summary":"حدث تطوير مدينة في الجيل الأول مع مكافآت مراحل وتصنيف.","rewards":"مكافآت مراحل وتصنيف داخل المملكة.","tips":["ادخر مواد التطوير.","راجع المهام قبل الترقية.","لا تنافس إذا لم تستحق الجوائز."]},"defeat-nearby-beasts":{"duration":"يومان","frequency":"دوري","summary":"حدث PvE يمنح نقطة للوحش وثلاث نقاط للإرهاب الذي يهزم بحشد.","rewards":"موارد وخبرة وتسريعات ومفاتيح وكتب مهارات.","tips":["الإرهاب أكثر كفاءة في الطاقة.","ابدأ حشودًا عند توفر الأعضاء.","توقف بعد المراحل إذا لم تستحق جوائز التصنيف."]},"develop-new-tech":{"duration":"يومان","frequency":"غير منتظم","summary":"حدث بحوث في الجيل الأول يمنح نقطة لكل دقيقة تسريع بحث.","rewards":"مكافآت مراحل وتصنيف.","tips":["طور مهارة Yeonwoo الثانية.","استخدم التسريعات بعد بدء الحدث.","ادمج البحوث مع أحداث أخرى."]},"golden-glaives":{"duration":"3 أيام","frequency":"مع SG أو KvK","summary":"حدث Intel تجمع فيه Goldstones خلال أول يومين وتستبدلها قبل النهاية.","rewards":"مكافآت متجر، والعملات غير المستخدمة تتحول إلى خبز.","tips":["أكمل مهام Intel.","اختر المواد القيمة.","استخدم جميع Goldstones."]},"grow-your-heroes":{"duration":"يومان","frequency":"غير منتظم","summary":"حدث أبطال في الجيل الأول يمنح نقاطًا عند استخدام الشظايا.","rewards":"مكافآت مراحل وتصنيف.","tips":["الشظايا العامة تحتسب.","لا تهدر الشظايا الأسطورية.","ادمج التطوير مع أحداث أخرى."]},"hero-rally":{"duration":"غير محدد","frequency":"كل أسبوعين","summary":"حدث من 31 مستوى بمسار مجاني ومدفوع والتقدم عبر المهام أو الجواهر.","rewards":"تسريعات وموارد وكتب وخبرة، والمسار المدفوع يقدم شظايا وذهب وطاقة ومفاتيح.","tips":["أكمل المهام أولًا.","راجع البطل المميز.","شراء المستوى يكلف 2160 جوهرة حسب الويكي."]},"imperial-consortium":{"duration":"يومان","frequency":"عرض خاص","summary":"حدث حزم مدفوعة بمسارين للعتاد والتمائم أو الذهب والتسريعات والمواد.","rewards":"حزم متعددة المراحل ومكافآت مجانية بين مستويات الشراء.","tips":["قارن المسارين.","احسب التكلفة كاملة.","اختر مسار أولويتك."]},"moonlit-promise":{"duration":"شهر واحد","frequency":"حدث رمضان","summary":"حدث رمضاني شهري يتضمن الفوانيس ومتجر Crescent Bazaar.","rewards":"عتاد أبطال وحاكم ومطارق وتمائم وتسريعات وإيموتات.","tips":["أكمل المهام الثمانية.","استخدم الفانوس المجاني.","اصرف العملات قبل تحولها إلى خبز."]}};
+
+const mistakesAr={"strongest-governor":["استخدام التسريعات قبل مراجعة مرحلة اليوم.","المنافسة على التصنيف دون مواد كافية.","استخدام الموارد النادرة في يوم نقاط ضعيف."],"kingdom-transfer":["الخروج من التحالف قبل تأكيد المملكة الجديدة.","تجاهل حد القوة في المملكة المستهدفة.","نسيان الجنود خارج المدينة أو متطلبات التصاريح."],"roulette-hero":["صرف الجواهر دون استهداف مرحلة مضمونة.","استخدام Lucky Chips خارج أفضل أيام النقاط.","التوقف قبل الوصول إلى مرحلة مضمونة بقليل."],"mystic-divination":["بدء الجولة دون Fortune Tokens كافية.","تجاهل الجوائز الجانبية القيّمة.","الاستمرار بعد جائزة الأمنية رغم ضعف الجوائز المتبقية."],"windward-voyage":["ترك فرق الرحلات متوقفة.","نسيان يوم الجمع الأخير.","دمج الصناديق دون تحديد هدف المكافآت."],"treasure-raiders":["استخدام المعاول مع عدم القدرة على بلوغ الطابق المميز التالي.","تجاهل الطوابق 5 و10 و15 وما بعدها.","نسيان أن المعاول تنتقل للحدث القادم."],"eternitys-reach":["ترك المسيرات دون عمل.","القتال على المركز دون أفضلية واضحة.","استخدام المهارة الخامسة في توقيت خاطئ."],"fishing-tournament":["ترك الطُعم عند الحد الأقصى 10.","تأخير تطوير معدات الصيد.","استخدام Power Cast دون تخطيط للمضاعفات والقسائم."],"hall-of-governors":["استخدام مواد التطوير قبل المرحلة المناسبة.","افتراض أن كل نسخة لها البطل نفسه.","المنافسة دون مراجعة حد الجوائز المطلوبة."],"champions-way":["الاستمرار في الحشود بعد المراحل دون هدف واضح.","نسيان مكافآت الانضمام اليومية.","استخدام جميع Weapon Scraps بدل ادخار جزء منها."],"hall-of-heroes":["Buying low-priority heroes without a plan.","Assuming Marks convert to the next generation.","Ignoring useful older-generation widgets."],"desert-trial":["Joining rallies without starting your required rallies.","Using all stamina before milestones.","Forgetting Champion’s Way replaces it later."],"dawn-expedition":["Missing daily missions.","Forgetting to claim rewards.","Buying levels without checking the remaining value."],"truegold-refinement":["Missing the free gathering and stamina objectives.","Using Lesser Truegold on a weak pack.","Expecting the event in the normal calendar."],"armament-competition":["Confusing the two mission types.","Using materials that do not score.","Ignoring overlapping alliance events."],"champagne-fair":["Exchanging useful shards too early.","Buying low-value resources first.","Forgetting Fair Vouchers do not expire."],"buccaneer-bounty":["Missing daily Harbor Drill missions.","Spending keys without a target.","Forgetting the shop remains open after missions end."],"all-out":["Attacking without scouting.","Ignoring alliance rules.","Filling the infirmary before major fights."],"call-of-the-sovereign":["Missing the daily reset.","Ignoring easy tasks.","Assuming every chest is fully free-to-play."],"beast-whisperer":["Ignoring early task days.","Spreading materials across too many pets.","Forgetting token chests."],"arcane-trove":["Buying the first pack without checking the Grand Prize.","Assuming rewards are identical on every server.","Ignoring the total cost of the full route."],"burst-of-life":["Using all speedups on the first day.","Ignoring cheaper power sources.","Missing the final City Skin milestone by a small amount."],"city-development":["Upgrading before checking the missions.","Overspending for a low-value rank.","Expecting the event after Generation 1."],"defeat-nearby-beasts":["Spending more stamina on beasts for the same points.","Forgetting Terrors give three points.","Chasing rank after completing useful milestones."],"develop-new-tech":["Using research speedups before the event.","Ignoring cost and time reductions.","Expecting the event after Generation 1."],"golden-glaives":["Letting Intel refreshes go unused.","Buying basic resources before rare materials.","Forgetting to exchange Goldstones on day three."],"grow-your-heroes":["Using shards before the event.","Forgetting General Shards count.","Overspending Mythic Shards for weak rewards."],"hero-rally":["Buying levels before finishing missions.","Buying the pass without checking the hero.","Ignoring the total Gem cost of skipped levels."],"imperial-consortium":["Buying the first pack without checking later tiers.","Splitting spending between routes.","Assuming packs are identical on every server."],"moonlit-promise":["Missing the free daily lantern.","Ignoring alliance blessings.","Keeping currency until automatic conversion."]};
+const saifTipAr={"strongest-governor":"ادخر الترقيات الكبيرة حتى المرحلة اليومية المناسبة.","kingdom-transfer":"تأكد من حد القوة وتكلفة تصاريح النقل قبل الخروج من التحالف.","roulette-hero":"ادخر جواهر تكفي للوصول إلى مرحلة مضمونة بدل اللفات العشوائية.","mystic-divination":"لا تصرف بكثرة إلا إذا كانت الجوائز الجانبية في الجولة قوية.","windward-voyage":"حافظ على عمل جميع فرق الرحلات المتاحة لزيادة الصناديق.","treasure-raiders":"ادخر المعاول إذا لم تكن قادرًا على الوصول للطابق المميز التالي.","eternitys-reach":"لا تضيع الوقت على المركز إلا إذا كنت قادرًا على الاحتفاظ به بكفاءة.","fishing-tournament":"لا تترك الطُعم عند الحد الأقصى 10، وطوّر المعدات مبكرًا.","hall-of-governors":"راجع مرحلة اليوم قبل استخدام الشظايا أو التسريعات أو مواد العتاد.","champions-way":"أكمل حشود المراحل العشرة ثم ادخر Weapon Scraps الإضافية.","hall-of-heroes":"Spend Marks only on heroes or widgets that strengthen your main march.","desert-trial":"Finish the 10 required rallies first, then decide whether extra rallies are worth the stamina.","dawn-expedition":"Daily consistency gives better value than buying levels with Gems.","truegold-refinement":"Save Lesser Truegold until the exchange pack matches your account needs.","armament-competition":"Always verify the active Armament mission type before spending materials.","champagne-fair":"Use vouchers on rare materials that directly improve your account.","buccaneer-bounty":"Choose your target reward first, then decide how many Corsair Keys to spend.","all-out":"Do not chase points when troop losses are worth more than the rewards.","call-of-the-sovereign":"Finish every free task before deciding whether the last chest is worth spending for.","beast-whisperer":"Use rewards on the pets that give the strongest immediate benefit.","arcane-trove":"Review the full reward path before buying the first pack.","burst-of-life":"Combine several upgrade types instead of relying on one expensive source of power.","city-development":"Use planned city upgrades during the event instead of creating unnecessary upgrades for rank.","defeat-nearby-beasts":"For equal points, one Terror rally is more stamina-efficient than three beasts.","develop-new-tech":"Save Research Speedups for this event and overlapping scoring opportunities.","golden-glaives":"Claim Intel regularly and spend Goldstones before they convert to Bread.","grow-your-heroes":"Do not spend valuable Mythic Shards only for a small ranking improvement.","hero-rally":"Use Gems to finish levels only after completing all free daily progress.","imperial-consortium":"Choose one upgrade route and compare its full value before starting.","moonlit-promise":"Complete daily missions consistently and spend all event currency before the month ends."};
+const eventMetaAr={"strongest-governor":{"duration":"7 أيام","frequency":"شهريًا"},"kingdom-transfer":{"duration":"7 أيام","frequency":"تقريبًا كل 30–45 يومًا"},"roulette-hero":{"duration":"3 أيام","frequency":"كل أسبوعين"},"mystic-divination":{"duration":"يومان","frequency":"كل 4 أسابيع"},"windward-voyage":{"duration":"5 أيام + يوم جمع","frequency":"حدث دوري"},"treasure-raiders":{"duration":"3 أيام","frequency":"غير منتظم"},"eternitys-reach":{"duration":"30 دقيقة","frequency":"كل أسبوعين"},"fishing-tournament":{"duration":"حدث محدود","frequency":"غير محدد"},"hall-of-governors":{"duration":"عدة أيام","frequency":"كل أسبوعين"},"champions-way":{"duration":"3 أيام","frequency":"كل أسبوعين"},"hall-of-heroes":{"duration":"3 أيام","frequency":"أسبوعيًا"},"desert-trial":{"duration":"3 أيام","frequency":"كل أسبوعين"},"dawn-expedition":{"duration":"7 أيام","frequency":"بداية المملكة"},"truegold-refinement":{"duration":"غير منتظم","frequency":"يتزامن مع All Out"},"armament-competition":{"duration":"يومان","frequency":"كل أسبوعين"},"champagne-fair":{"duration":"يومان","frequency":"تقريبًا شهريًا"},"buccaneer-bounty":{"duration":"7 أيام","frequency":"كل 4–6 أسابيع"},"all-out":{"duration":"يومان","frequency":"كل عدة أسابيع"},"call-of-the-sovereign":{"duration":"3 أيام","frequency":"دوري"},"beast-whisperer":{"duration":"7 أيام","frequency":"مرة واحدة"},"arcane-trove":{"duration":"5 أيام","frequency":"عرض خاص"},"burst-of-life":{"duration":"7 أيام","frequency":"بداية المملكة"},"city-development":{"duration":"يومان","frequency":"غير منتظم"},"defeat-nearby-beasts":{"duration":"يومان","frequency":"دوري"},"develop-new-tech":{"duration":"يومان","frequency":"غير منتظم"},"golden-glaives":{"duration":"3 أيام","frequency":"مع SG أو KvK"},"grow-your-heroes":{"duration":"يومان","frequency":"غير منتظم"},"hero-rally":{"duration":"غير محدد","frequency":"كل أسبوعين"},"imperial-consortium":{"duration":"يومان","frequency":"عرض خاص"},"moonlit-promise":{"duration":"شهر واحد","frequency":"حدث رمضان"}};
+const uiTranslations={"fr":{"Home":"Accueil","Event Center":"Centre des événements","Everything you need for every Kingshot event.":"Tout ce qu’il faut pour les événements Kingshot.","Search events...":"Rechercher un événement...","All":"Tous","View Guide →":"Voir le guide →","Reading Time":"Temps de lecture","Duration":"Durée","Frequency":"Fréquence","Overview":"Aperçu","Main Rewards":"Récompenses principales","Best Tips":"Meilleurs conseils","Preparation":"Préparation","Quick Facts":"Infos rapides","Difficulty":"Difficulté","Mode":"Mode","Generation":"Génération","Common Mistakes":"Erreurs fréquentes","Recommended Heroes":"Héros recommandés","Saif Tip":"Conseil de Saif","Related Events":"Événements liés","Close Event":"Fermer","Previous":"Précédent","Next":"Suivant","Copy Tips":"Copier les conseils","No events found":"Aucun événement trouvé"},"de":{"Home":"Startseite","Event Center":"Event-Center","Everything you need for every Kingshot event.":"Alles für Kingshot-Events.","Search events...":"Event suchen...","All":"Alle","View Guide →":"Guide ansehen →","Reading Time":"Lesezeit","Duration":"Dauer","Frequency":"Häufigkeit","Overview":"Übersicht","Main Rewards":"Hauptbelohnungen","Best Tips":"Beste Tipps","Preparation":"Vorbereitung","Quick Facts":"Schnellinfos","Difficulty":"Schwierigkeit","Mode":"Modus","Generation":"Generation","Common Mistakes":"Häufige Fehler","Recommended Heroes":"Empfohlene Helden","Saif Tip":"Saifs Tipp","Related Events":"Ähnliche Events","Close Event":"Schließen","Previous":"Zurück","Next":"Weiter","Copy Tips":"Tipps kopieren","No events found":"Keine Events gefunden"},"es":{"Home":"Inicio","Event Center":"Centro de eventos","Everything you need for every Kingshot event.":"Todo para los eventos de Kingshot.","Search events...":"Buscar evento...","All":"Todos","View Guide →":"Ver guía →","Reading Time":"Tiempo de lectura","Duration":"Duración","Frequency":"Frecuencia","Overview":"Resumen","Main Rewards":"Recompensas principales","Best Tips":"Mejores consejos","Preparation":"Preparación","Quick Facts":"Datos rápidos","Difficulty":"Dificultad","Mode":"Modo","Generation":"Generación","Common Mistakes":"Errores comunes","Recommended Heroes":"Héroes recomendados","Saif Tip":"Consejo de Saif","Related Events":"Eventos relacionados","Close Event":"Cerrar","Previous":"Anterior","Next":"Siguiente","Copy Tips":"Copiar consejos","No events found":"No se encontraron eventos"},"tr":{"Home":"Ana Sayfa","Event Center":"Etkinlik Merkezi","Everything you need for every Kingshot event.":"Kingshot etkinlik bilgileri.","Search events...":"Etkinlik ara...","All":"Tümü","View Guide →":"Rehberi Gör →","Reading Time":"Okuma süresi","Duration":"Süre","Frequency":"Sıklık","Overview":"Genel Bakış","Main Rewards":"Ana Ödüller","Best Tips":"En İyi İpuçları","Preparation":"Hazırlık","Quick Facts":"Hızlı Bilgiler","Difficulty":"Zorluk","Mode":"Mod","Generation":"Nesil","Common Mistakes":"Yaygın Hatalar","Recommended Heroes":"Önerilen Kahramanlar","Saif Tip":"Saif’in İpucu","Related Events":"İlgili Etkinlikler","Close Event":"Kapat","Previous":"Önceki","Next":"Sonraki","Copy Tips":"İpuçlarını Kopyala","No events found":"Etkinlik bulunamadı"},"ko":{"Home":"홈","Event Center":"이벤트 센터","Everything you need for every Kingshot event.":"Kingshot 이벤트 정보.","Search events...":"이벤트 검색...","All":"전체","View Guide →":"가이드 보기 →","Reading Time":"읽는 시간","Duration":"기간","Frequency":"주기","Overview":"개요","Main Rewards":"주요 보상","Best Tips":"핵심 팁","Preparation":"준비","Quick Facts":"빠른 정보","Difficulty":"난이도","Mode":"유형","Generation":"세대","Common Mistakes":"흔한 실수","Recommended Heroes":"추천 영웅","Saif Tip":"Saif 팁","Related Events":"관련 이벤트","Close Event":"닫기","Previous":"이전","Next":"다음","Copy Tips":"팁 복사","No events found":"이벤트가 없습니다"},"ja":{"Home":"ホーム","Event Center":"イベントセンター","Everything you need for every Kingshot event.":"Kingshotイベント情報。","Search events...":"イベントを検索...","All":"すべて","View Guide →":"ガイドを見る →","Reading Time":"読了時間","Duration":"期間","Frequency":"頻度","Overview":"概要","Main Rewards":"主な報酬","Best Tips":"おすすめのコツ","Preparation":"準備","Quick Facts":"基本情報","Difficulty":"難易度","Mode":"モード","Generation":"世代","Common Mistakes":"よくあるミス","Recommended Heroes":"おすすめ英雄","Saif Tip":"Saifのヒント","Related Events":"関連イベント","Close Event":"閉じる","Previous":"前へ","Next":"次へ","Copy Tips":"ヒントをコピー","No events found":"イベントが見つかりません"},"zh":{"Home":"主页","Event Center":"活动中心","Everything you need for every Kingshot event.":"Kingshot 活动信息。","Search events...":"搜索活动...","All":"全部","View Guide →":"查看攻略 →","Reading Time":"阅读时间","Duration":"持续时间","Frequency":"频率","Overview":"概览","Main Rewards":"主要奖励","Best Tips":"最佳技巧","Preparation":"准备","Quick Facts":"快速信息","Difficulty":"难度","Mode":"类型","Generation":"代数","Common Mistakes":"常见错误","Recommended Heroes":"推荐英雄","Saif Tip":"Saif 提示","Related Events":"相关活动","Close Event":"关闭","Previous":"上一个","Next":"下一个","Copy Tips":"复制技巧","No events found":"未找到活动"}};let lang=localStorage.getItem("saifRallyLang")||"en";const supportedLangs=["en","ar","fr","de","es","tr","ko","ja","zh"];if(!supportedLangs.includes(lang))lang="en";let cat="All";const q=s=>document.querySelector(s),grid=q("#grid"),filters=q("#filters"),search=q("#search"),modal=q("#modal");const t=k=>lang==="ar"?(ar[k]||k):((uiTranslations[lang]&&uiTranslations[lang][k])||k);const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
+function renderFilters(){const cats=["All",...new Set(events.map(e=>e.category))];filters.innerHTML=cats.map(c=>`<button class="filter ${cat===c?"active":""}" data-cat="${c}">${t(c)}</button>`).join("")}
+function render(){
+  const s=search.value.toLowerCase();
+  const list=events.filter(e=>(cat==="All"||e.category===cat)&&(e.title.toLowerCase().includes(s)||e.summary.toLowerCase().includes(s)));
+  grid.innerHTML=list.map(e=>{
+    const localized=(lang==="ar"&&eventAr[e.id])?eventAr[e.id]:e;
+    const meta=(lang==="ar"&&eventMetaAr[e.id])?eventMetaAr[e.id]:e;
+    return `<article class="card">
+      <div class="event-banner banner-${e.id}">
+        <div class="banner-glow"></div>
+        <div class="banner-icon">${e.icon}</div>
+        <span class="pill">${t(e.category)}</span>
+      </div>
+      <div class="card-body">
+        <h2>${e.title}</h2>
+        <div class="meta">${meta.duration} · ${meta.frequency}</div>
+        <div class="card-tags">${e.tags.map(tag=>`<span>${t(tag)}</span>`).join("")}</div>
+        <div class="reading-time">⏱ ${t("Reading Time")}: ${e.readingTime}</div>
+        <p>${localized.summary}</p>
+        <button class="open" data-id="${e.id}">${t("View Guide →")}</button>
+      </div>
+    </article>`;
+  }).join("");
+  q("#empty").hidden=!!list.length;
+}
+function openEvent(id){
+  const e=events.find(x=>x.id===id);
+  const localized=(lang==="ar"&&eventAr[e.id])?eventAr[e.id]:e;
+  const meta=(lang==="ar"&&eventMetaAr[e.id])?eventMetaAr[e.id]:e;
+  q("#modalBanner").className=`modal-banner banner-${e.id}`;
+  q("#modalBannerIcon").textContent=e.icon;
+  q("#mCat").textContent=t(e.category);
+  q("#mTitle").textContent=e.title;
+  q("#mDuration").textContent=meta.duration;
+  q("#mFrequency").textContent=meta.frequency;
+  q("#mF2p").textContent=`⏱ ${t("Reading Time")}: ${e.readingTime}`;
+  q("#mSummary").textContent=localized.summary;
+  q("#mRewards").textContent=localized.rewards;
+  q("#mTips").innerHTML=localized.tips.map(x=>`<li>${x}</li>`).join("");
+  const prep=Object.entries(e.prep).filter(([,v])=>v);
+q("#mPrep").innerHTML=prep.length?prep.map(([k])=>`<div><span>✔ ${t(k)}</span></div>`).join(""):`<div class="prep-empty">No special preparation required.</div>`;
+  q("#modalTags").innerHTML=e.tags.map(tag=>`<span>${t(tag)}</span>`).join("");
+  q("#quickFacts").innerHTML=`
+  <div><span>${t("Duration")}</span><b>${meta.duration}</b></div>
+  <div><span>${t("Frequency")}</span><b>${meta.frequency}</b></div>
+  <div><span>${t("Difficulty")}</span><b>${t(e.difficulty)}</b></div>
+  <div><span>${t("Mode")}</span><b>${t(e.mode)}</b></div>
+  <div><span>${t("Generation")}</span><b>${t(e.generation)}</b></div>`;
+const mistakes=(lang==="ar"&&mistakesAr[e.id])?mistakesAr[e.id]:e.mistakes;
+q("#commonMistakes").innerHTML=mistakes.map(x=>`<li>${x}</li>`).join("");
+q("#heroesSection").classList.toggle("hidden",!e.heroes.length);
+q("#recommendedHeroes").innerHTML=e.heroes.map(x=>`<span>${t(x)}</span>`).join("");
+q("#saifTipText").textContent=(lang==="ar"&&saifTipAr[e.id])?saifTipAr[e.id]:e.saifTip;
+  q("#relatedEvents").innerHTML=e.related.map(relId=>{
+    const rel=events.find(x=>x.id===relId);
+    return `<button type="button" class="related-btn" data-related="${rel.id}"><span>${rel.icon}</span>${rel.title}</button>`;
+  }).join("");
+  q("#closeEventBtn").textContent=t("Close Event");
+  modal.classList.remove("hidden");
+  document.body.style.overflow="hidden";
+}
+function closeModal(){modal.classList.add("hidden");document.body.style.overflow=""}
+function applyLang(){document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
+q(".brand p").textContent=t("Everything you need for every Kingshot event.");
+search.placeholder=t("Search events...");
+q("#empty").textContent=t("No events found");
+document.querySelectorAll("#modal h3[data-label]").forEach(el=>el.textContent=t(el.dataset.label));
+const quickLabels=[t("Duration"),t("Frequency"),t("F2P")];
+document.querySelectorAll(".quick small").forEach((el,i)=>el.textContent=quickLabels[i]);const prevBtn=q("#prevEventBtn"),nextBtn=q("#nextEventBtn"),copyBtn=q("#copyTipsBtn");
+if(prevBtn)prevBtn.textContent="← "+t("Previous");
+if(nextBtn)nextBtn.textContent=t("Next")+" →";
+if(copyBtn)copyBtn.textContent=t("Copy Tips");localStorage.setItem("saifRallyLang",lang);renderFilters();render();if(!modal.classList.contains("hidden"))closeModal()}
+filters.onclick=e=>{const b=e.target.closest("[data-cat]");if(b){cat=b.dataset.cat;renderFilters();render()}};grid.onclick=e=>{const b=e.target.closest("[data-id]");if(b)openEvent(b.dataset.id)};search.oninput=render;q("#lang").onchange=e=>{lang=e.target.value;applyLang()};modal.onclick=e=>{if(e.target.closest("[data-close]"))closeModal()};if(q("#closeEventBtn")) q("#closeEventBtn").onclick=closeModal;
+if(q("#relatedEvents")) q("#relatedEvents").onclick=e=>{const b=e.target.closest("[data-related]");if(b)openEvent(b.dataset.related)};
+document.onkeydown=e=>{if(e.key==="Escape")closeModal()};
+try{applyLang();}catch(err){
+  console.error(err);
+  try{renderFilters();render();}catch(inner){console.error(inner);}
+}
+(function(){
+const byId=id=>document.getElementById(id);
+function currentIndex(){const t=byId("mTitle");return events.findIndex(e=>e.title===t.textContent)}
+setTimeout(()=>{
+const copy=byId("copyTipsBtn"),prev=byId("prevEventBtn"),next=byId("nextEventBtn");
+if(copy)copy.onclick=()=>{
+      const title=byId("mTitle").textContent;
+      const tips=[...document.querySelectorAll("#mTips li")]
+        .map(li=>"• "+li.textContent)
+        .join("\n");
+      navigator.clipboard.writeText(
+        title+"\n"+tips+"\n\nSaifKS.com | Built by Saif"
+      );
+    };
+if(prev)prev.onclick=()=>{let i=currentIndex();if(i>0)openEvent(events[i-1].id);}
+if(next)next.onclick=()=>{let i=currentIndex();if(i<events.length-1)openEvent(events[i+1].id);}
+},100);
+})();
+
+</script></body></html>
