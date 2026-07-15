@@ -2,7 +2,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="saifks-build" content="alliance-tabs-v2202"><title>Event Center | SaifKS</title><style id="event-center-styles">
+<meta name="saifks-build" content="ui-v3-v2301"><title>Event Center | SaifKS</title><style id="event-center-styles">
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#102844 0,#07121f 45%,#050d17 100%);color:#f4f7fb;font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}header,main{width:min(1180px,100%);margin:auto;padding:18px 16px}.head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}.brand{text-align:center}.brand span{color:#ffd86b;font-weight:900;letter-spacing:.15em;font-size:.8rem}.brand h1{font-size:clamp(2rem,6vw,3.5rem);margin:.2rem 0}.brand p{color:#95a7bb;margin:0}.small-btn,#lang{height:40px;min-width:92px;border:1px solid rgba(255,216,107,.3);border-radius:11px;background:#0d2036;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;padding:0 12px;font-weight:800}.tools{position:sticky;top:0;padding:8px 0 18px;background:linear-gradient(#07121f 70%,transparent);z-index:5}#search{width:100%;height:52px;border-radius:15px;border:1px solid rgba(255,216,107,.3);background:#0b1b2d;color:white;padding:0 16px}#filters{display:flex;gap:8px;overflow:auto;padding-top:10px}.filter{border:1px solid #26394d;background:#0b1b2d;color:#95a7bb;border-radius:999px;padding:8px 13px;white-space:nowrap;font-weight:800}.filter.active{background:#ffd86b;color:#172033}#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(#10253f,#0b1b2d);border:1px solid #23374b;border-radius:20px;padding:18px;min-height:255px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between}.icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;background:#172f4c}.pill{font-size:.75rem;color:#95a7bb;border:1px solid #2c4054;border-radius:999px;padding:5px 9px;height:max-content}.card h2{margin:18px 0 6px}.meta{color:#95a7bb;font-size:.9rem}.stars{color:#ffd86b;margin:10px 0}.card p{color:#c5d0dc;line-height:1.5;margin:0 0 18px}.open{margin-top:auto;height:42px;border:0;border-radius:12px;background:#ffd86b;color:#172033;font-weight:900}.hidden{display:none!important}#modal{position:fixed;inset:0;display:grid;place-items:center;padding:18px;z-index:20}.shade{position:absolute;inset:0;background:#02070dcc;backdrop-filter:blur(8px)}#modal article{position:relative;width:min(760px,100%);max-height:90vh;overflow:auto;background:linear-gradient(#112640,#081827);border:1px solid rgba(255,216,107,.3);border-radius:24px;padding:22px}.close{position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:12px;border:1px solid #2b3e52;background:#0b1b2d;color:white;font-size:1.4rem}.hero{display:flex;gap:14px;align-items:center}.hero #mIcon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:2rem;background:#172f4c}.hero h2{margin:6px 0}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.quick div,.prep div{background:#0a1a2b;border:1px solid #22364a;border-radius:14px;padding:12px}.quick small{display:block;color:#95a7bb}.prep{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.prep div{display:flex;justify-content:space-between}.yes{color:#6bd9a8}.no{color:#ff8f8f}h3{color:#ffd86b}footer{text-align:center;color:#95a7bb;padding:22px}.rtl{direction:rtl}@media(max-width:900px){#grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.head{grid-template-columns:auto auto}.brand{grid-column:1/-1;grid-row:2;text-align:left}.rtl .brand{text-align:right}#grid{grid-template-columns:1fr}.quick,.prep{grid-template-columns:1fr}.card{min-height:230px}}
 
 /* Compact Home and language controls */
@@ -380,6 +380,98 @@
 .banner-tri-alliance-clash{background:linear-gradient(135deg,#287f91,#4b3d84)}
 .banner-viking-vengeance{background:linear-gradient(135deg,#476f87,#3f4a56)}
 
+
+/* ===== SaifKS Event Center V3 ===== */
+.event-tabs{
+  position:sticky;top:10px;z-index:12;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  background:rgba(7,20,35,.82);
+  box-shadow:0 14px 38px rgba(0,0,0,.28);
+}
+.event-tab{display:flex;align-items:center;justify-content:center;gap:9px}
+.tab-count{
+  min-width:28px;height:28px;padding:0 8px;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.08);color:inherit;font-size:.78rem;font-weight:900
+}
+.event-tab.active .tab-count{background:rgba(23,32,51,.14)}
+.card{
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 16px 34px rgba(0,0,0,.22);
+  transform:translateY(0);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+  overflow:hidden
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(0,0,0,.30);border-color:rgba(255,216,107,.34)}
+.card-body{position:relative}
+.card-body h2{padding-right:82px}
+.card-stats{
+  display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 2px
+}
+.stat-chip{
+  display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:999px;
+  background:#0b2035;border:1px solid #28425b;color:#b8c9d9;font-size:.74rem;font-weight:800
+}
+.stat-chip.gold{color:#ffd86b}
+.open{
+  min-height:44px;border-radius:12px;font-weight:900;
+  box-shadow:0 8px 18px rgba(0,0,0,.18)
+}
+.modal-panel{
+  background:linear-gradient(180deg,#0c2035 0%,#0a1b2e 100%);
+}
+.modal-banner{
+  min-height:220px;display:flex;align-items:flex-end;padding:24px;
+  position:relative;overflow:hidden
+}
+.modal-banner::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(3,8,15,.08),rgba(3,8,15,.72))
+}
+.modal-banner > *{position:relative;z-index:1}
+#modalBannerIcon{
+  width:78px;height:78px;border-radius:22px;display:grid;place-items:center;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+  font-size:2.5rem;box-shadow:0 16px 35px rgba(0,0,0,.28)
+}
+.accordion-section{padding:0;overflow:hidden}
+.accordion-section summary{
+  list-style:none;display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;padding:18px 18px;font-size:1.08rem;font-weight:900;color:#ffd86b;
+  background:rgba(255,255,255,.018)
+}
+.accordion-section summary::-webkit-details-marker{display:none}
+.accordion-section .chev{transition:transform .2s ease}
+.accordion-section[open] .chev{transform:rotate(180deg)}
+.accordion-content{padding:0 18px 18px}
+.prep-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.prep-grid>div{
+  min-height:60px;border-radius:14px;background:#091a2b;border:1px solid #294259;
+  display:flex;align-items:center;padding:0 14px;font-weight:800
+}
+.quick-facts{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.related-events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.related-btn{
+  min-height:64px;border-radius:14px;background:#0a1d30;border:1px solid #294259;
+  justify-content:flex-start;text-align:left;padding:10px 12px
+}
+.modal-actions{
+  position:sticky;bottom:0;z-index:5;
+  background:rgba(8,24,42,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid #274158;padding:12px
+}
+#copyGuideBtn{background:#142a40;color:#fff;border:1px solid #31506d}
+@media(max-width:620px){
+  .event-tabs{top:6px}
+  .card-body h2{padding-right:0}
+  .modal-panel{border-radius:0}
+  .modal-banner{min-height:190px;padding:18px}
+  .accordion-section summary{padding:16px}
+  .accordion-content{padding:0 16px 16px}
+  .modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .modal-actions button{width:100%;min-height:46px}
+}
+
 </style></head><body>
 <header><div class="head"><div class="header-actions"><a class="small-btn" href="../index.html">Home</a><select id="lang"><option value="en">English</option>
 <option value="ar">العربية</option>
@@ -390,7 +482,7 @@
 <option value="ko">한국어</option>
 <option value="ja">日本語</option>
 <option value="zh">简体中文</option></select></div><div class="brand"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div></div></header>
-<main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button">Solo Events</button><button id="allianceTab" class="event-tab" data-group="alliance" type="button">Alliance Events</button></div><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
+<main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button"><span class="tab-label">Solo Events</span><span class="tab-count">40</span></button><button id="allianceTab" class="event-tab" data-group="alliance" type="button"><span class="tab-label">Alliance Events</span><span class="tab-count">12</span></button></div><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
 <div id="modal" class="hidden"><div class="shade" data-close></div><article><div id="modalBanner" class="modal-banner">
       <div class="banner-glow"></div>
       <div id="modalBannerIcon" class="modal-banner-icon"></div>
@@ -475,7 +567,12 @@ function render(){
         <h2>${x.title}</h2>
         <div class="meta">${x.duration} · ${x.frequency}</div>
         <div class="card-tags">${(x.tags||e.tags).map(tag=>`<span>${t(tag)}</span>`).join("")}</div>
-        <div class="reading-time">⏱ ${t("Reading Time")}: ${e.readingTime}</div>
+        <div class="card-stats">
+          <span class="stat-chip gold">★ ${e.rating}/5</span>
+          <span class="stat-chip">🛡 ${t(x.difficulty)}</span>
+          <span class="stat-chip">🌱 F2P ${e.f2p}/5</span>
+          <span class="stat-chip">⏱ ${e.readingTime}</span>
+        </div>
         <p>${x.summary}</p>
         <button class="open" data-id="${e.id}">${t("View Guide →")}</button>
       </div>
@@ -517,9 +614,39 @@ function openEvent(id){
   modal.classList.remove("hidden");
   document.body.style.overflow="hidden";
 }
+
+  const copyGuide=q("#copyGuideBtn");
+  if(copyGuide)copyGuide.onclick=()=>{
+    const e=events.find(x=>x.id===currentId);
+    if(!e)return;
+    const x=eventText(e);
+    const text=[
+      x.title,
+      "",
+      t("Overview")+":",
+      x.summary,
+      "",
+      t("Main Rewards")+":",
+      x.rewards,
+      "",
+      t("Best Tips")+":",
+      ...x.tips.map(v=>"• "+v),
+      "",
+      t("Common Mistakes")+":",
+      ...(x.mistakes||[]).map(v=>"• "+v),
+      "",
+      "Saif Tip:",
+      x.saifTip,
+      "",
+      "Source: SaifKS.com",
+      "Built by Saif | K1437"
+    ].join("\n");
+    navigator.clipboard.writeText(text);
+  };
+
 function closeModal(){modal.classList.add("hidden");document.body.style.overflow=""}
 function applyLang(){document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
-q(".brand p").textContent=t("Everything you need for every Kingshot event.");q("#soloTab").textContent=t("Solo Events");q("#allianceTab").textContent=t("Alliance Events");
+q(".brand p").textContent=t("Everything you need for every Kingshot event.");q("#soloTab .tab-label").textContent=t("Solo Events");q("#allianceTab .tab-label").textContent=t("Alliance Events");
 search.placeholder=t("Search events...");
 q("#empty").textContent=t("No events found");
 document.querySelectorAll("#modal h3[data-label]").forEach(el=>el.textContent=t(el.dataset.label));
@@ -546,7 +673,7 @@ if(copy)copy.onclick=()=>{
         .map(li=>"• "+li.textContent)
         .join("\n");
       navigator.clipboard.writeText(
-        title+"\n"+tips+"\n\nSaifKS.com | Built by Saif"
+        title+"\n"+tips+"\n\nSource: SaifKS.com\nBuilt by Saif | K1437"
       );
     };
 if(prev)prev.onclick=()=>{let i=currentIndex();if(i>0)openEvent(events[i-1].id);}
