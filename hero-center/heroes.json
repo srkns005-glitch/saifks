@@ -104,6 +104,102 @@
     "analysis": {
       "en": "A strong early defensive Infantry option. Her squad damage reduction, Attack, and Lethality make her useful in garrison and rally support. Her first-purchase access is easy, but long-term star investment can depend on paid packs.",
       "ar": "خيار دفاعي قوي للمشاة في بداية اللعبة. تقليل الضرر مع زيادة الهجوم والفتك يجعلها مفيدة للحامية ودعم الحشود. فتحها سهل من أول شراء، لكن تطوير نجومها على المدى الطويل قد يعتمد على الباقات المدفوعة."
+    },
+    "status": {
+      "en": "Strong Early Defense",
+      "ar": "دفاع قوي في البداية"
+    },
+    "bestFor": {
+      "en": [
+        "Castle Defense",
+        "Garrison",
+        "Rally Support"
+      ],
+      "ar": [
+        "دفاع القلعة",
+        "الحامية",
+        "دعم الحشود"
+      ]
+    },
+    "lessEffective": {
+      "en": [
+        "Bear Hunt",
+        "Long-Term F2P Investment"
+      ],
+      "ar": [
+        "صيد الدب",
+        "الاستثمار الطويل للاعب المجاني"
+      ]
+    },
+    "investment": {
+      "F2P": 3,
+      "Low Spender": 4,
+      "Whale": 4
+    },
+    "modes": {
+      "Expedition": 4,
+      "Arena": 4,
+      "Castle Attack": 4,
+      "Castle Defense": 5,
+      "Bear Hunt": 3
+    },
+    "strengths": {
+      "en": [
+        "Strong squad damage reduction",
+        "Good Attack and Lethality buffs",
+        "Useful rally support skill",
+        "Solid early Infantry defense"
+      ],
+      "ar": [
+        "تقليل قوي للضرر لجميع القوات",
+        "تعزيز جيد للهجوم والفتك",
+        "مهارة مفيدة لدعم الحشود",
+        "دفاع مشاة قوي في بداية اللعبة"
+      ]
+    },
+    "weaknesses": {
+      "en": [
+        "Star growth can depend on paid packs",
+        "Less valuable for Bear Hunt",
+        "Power drops as newer Infantry heroes arrive"
+      ],
+      "ar": [
+        "تطوير النجوم قد يعتمد على الباقات المدفوعة",
+        "قيمتها أقل في صيد الدب",
+        "تنخفض قوتها مع وصول أبطال مشاة أحدث"
+      ]
+    },
+    "priority": {
+      "Skills": 5,
+      "Stars": 4,
+      "Exclusive Gear": 4,
+      "Widgets": 3
+    },
+    "verdict": {
+      "en": "Recommended for players who need an early defensive Infantry hero and reliable garrison support.",
+      "ar": "موصى بها لمن يحتاج إلى بطل مشاة دفاعي في بداية اللعبة ودعم قوي للحامية."
+    },
+    "perfectFor": {
+      "en": [
+        "Defenders",
+        "Garrison Players",
+        "Early-Generation Fighters"
+      ],
+      "ar": [
+        "المدافعين",
+        "لاعبو الحامية",
+        "مقاتلو الأجيال الأولى"
+      ]
+    },
+    "skipIf": {
+      "en": [
+        "You avoid paid shard sources",
+        "You are saving heavily for Generation 2"
+      ],
+      "ar": [
+        "لا تريد الاعتماد على مصادر شظايا مدفوعة",
+        "تدخر بقوة للجيل الثاني"
+      ]
     }
   },
   {
@@ -211,6 +307,102 @@
     "analysis": {
       "en": "The strongest all-round Generation 1 Infantry investment when fully developed. He combines Attack, Lethality, damage amplification, Rally Attack, and damage reduction, but access becomes expensive after Generation 1.",
       "ar": "أقوى استثمار شامل للمشاة في الجيل الأول عند تطويره بالكامل. يجمع بين الهجوم والفتك وزيادة الضرر وهجوم الحشد وتقليل الضرر، لكن الحصول على شظاياه يصبح مكلفًا بعد انتهاء الجيل الأول."
+    },
+    "status": {
+      "en": "Excellent Premium Investment",
+      "ar": "استثمار ممتاز للاعب المدفوع"
+    },
+    "bestFor": {
+      "en": [
+        "Rally",
+        "Castle Attack",
+        "Castle Defense",
+        "Expedition"
+      ],
+      "ar": [
+        "الحشود",
+        "هجوم القلعة",
+        "دفاع القلعة",
+        "Expedition"
+      ]
+    },
+    "lessEffective": {
+      "en": [
+        "Strict F2P Progression"
+      ],
+      "ar": [
+        "التطوير كلاعب مجاني بالكامل"
+      ]
+    },
+    "investment": {
+      "F2P": 1,
+      "Low Spender": 4,
+      "Whale": 5
+    },
+    "modes": {
+      "Expedition": 5,
+      "Arena": 5,
+      "Castle Attack": 5,
+      "Castle Defense": 5,
+      "Bear Hunt": 5
+    },
+    "strengths": {
+      "en": [
+        "Excellent Attack and Lethality buffs",
+        "Strong damage amplification",
+        "High Infantry survivability",
+        "Exclusive gear boosts Rally Attack"
+      ],
+      "ar": [
+        "تعزيز ممتاز للهجوم والفتك",
+        "زيادة قوية للضرر",
+        "قدرة عالية على صمود المشاة",
+        "السلاح الخاص يرفع هجوم الحشد"
+      ]
+    },
+    "weaknesses": {
+      "en": [
+        "Very expensive to maximize",
+        "Shard access becomes limited after Generation 1",
+        "Poor value for strict F2P players"
+      ],
+      "ar": [
+        "مكلف جدًا عند التطوير الكامل",
+        "تقل مصادر الشظايا بعد انتهاء الجيل الأول",
+        "قيمته ضعيفة للاعب المجاني بالكامل"
+      ]
+    },
+    "priority": {
+      "Skills": 5,
+      "Stars": 5,
+      "Exclusive Gear": 5,
+      "Widgets": 4
+    },
+    "verdict": {
+      "en": "One of the strongest all-round Generation 1 heroes. Highly recommended for spenders who lead rallies or fight for castles.",
+      "ar": "من أقوى أبطال الجيل الأول بشكل شامل. موصى به بشدة للاعبين المدفوعين وقادة الحشود ومقاتلي القلعة."
+    },
+    "perfectFor": {
+      "en": [
+        "Rally Leaders",
+        "Castle Fighters",
+        "High-Activity Spenders"
+      ],
+      "ar": [
+        "قادة الحشود",
+        "مقاتلو القلعة",
+        "اللاعبون المدفوعون والنشطون"
+      ]
+    },
+    "skipIf": {
+      "en": [
+        "You are fully F2P",
+        "You are saving every resource for Generation 2"
+      ],
+      "ar": [
+        "أنت لاعب مجاني بالكامل",
+        "تدخر كل الموارد للجيل الثاني"
+      ]
     }
   },
   {
@@ -315,6 +507,102 @@
     "analysis": {
       "en": "A valuable development and defense hero. His construction bonuses remain useful outside combat, while his Defender Troops Attack and squad Defense/Health make him more suited to garrison support than offensive rallies.",
       "ar": "بطل مهم للتطوير والدفاع. مكافآت البناء تبقى مفيدة خارج المعارك، بينما زيادة هجوم قوات الدفاع ودفاع وصحة القوات تجعله أنسب لدعم الحامية من قيادة الحشود الهجومية."
+    },
+    "status": {
+      "en": "Excellent Development & Defense",
+      "ar": "ممتاز للتطوير والدفاع"
+    },
+    "bestFor": {
+      "en": [
+        "Construction",
+        "Castle Defense",
+        "Garrison Support"
+      ],
+      "ar": [
+        "البناء",
+        "دفاع القلعة",
+        "دعم الحامية"
+      ]
+    },
+    "lessEffective": {
+      "en": [
+        "Offensive Rally",
+        "Bear Hunt"
+      ],
+      "ar": [
+        "الحشود الهجومية",
+        "صيد الدب"
+      ]
+    },
+    "investment": {
+      "F2P": 5,
+      "Low Spender": 5,
+      "Whale": 4
+    },
+    "modes": {
+      "Expedition": 4,
+      "Arena": 4,
+      "Castle Attack": 2,
+      "Castle Defense": 5,
+      "Bear Hunt": 2
+    },
+    "strengths": {
+      "en": [
+        "Construction speed and cost reduction",
+        "Strong Defender Troops Attack",
+        "Good squad Defense and Health buffs",
+        "Easy long-term shard access"
+      ],
+      "ar": [
+        "زيادة سرعة البناء وتقليل تكلفته",
+        "رفع قوي لهجوم قوات الدفاع",
+        "تعزيز جيد لدفاع وصحة القوات",
+        "مصادر شظايا مناسبة على المدى الطويل"
+      ]
+    },
+    "weaknesses": {
+      "en": [
+        "Weak offensive rally value",
+        "Limited Bear Hunt contribution",
+        "Lower direct battlefield pressure than premium heroes"
+      ],
+      "ar": [
+        "قيمته ضعيفة في الحشود الهجومية",
+        "مساهمته محدودة في صيد الدب",
+        "ضغطه المباشر في المعركة أقل من الأبطال المميزين"
+      ]
+    },
+    "priority": {
+      "Skills": 5,
+      "Stars": 5,
+      "Exclusive Gear": 3,
+      "Widgets": 3
+    },
+    "verdict": {
+      "en": "A very efficient investment for F2P and low spenders because he supports both city development and defensive combat.",
+      "ar": "استثمار ممتاز للاعب المجاني وقليل الصرف لأنه يفيد في تطوير المدينة والدفاع في المعارك."
+    },
+    "perfectFor": {
+      "en": [
+        "F2P Players",
+        "Builders",
+        "Garrison Defenders"
+      ],
+      "ar": [
+        "اللاعبون المجانيون",
+        "مطورو المدينة",
+        "مدافعو الحامية"
+      ]
+    },
+    "skipIf": {
+      "en": [
+        "You only want offensive rally heroes",
+        "Your construction is already complete"
+      ],
+      "ar": [
+        "تبحث فقط عن أبطال حشود هجومية",
+        "أنهيت أغلب تطويرات البناء"
+      ]
     }
   },
   {
@@ -422,6 +710,102 @@
     "analysis": {
       "en": "An excellent accessible Generation 1 Cavalry choice. Her broad availability makes star progression easier, while damage reduction and Defender Lethality make her especially useful for early garrison defense.",
       "ar": "خيار ممتاز وسهل الوصول للفرسان في الجيل الأول. تعدد مصادر شظاياها يجعل تطوير النجوم أسهل، بينما تقليل الضرر وفتك قوات الدفاع يجعلانها مفيدة جدًا للدفاع المبكر عن الحامية."
+    },
+    "status": {
+      "en": "High-Value F2P Cavalry",
+      "ar": "فرسان ممتازة للاعب المجاني"
+    },
+    "bestFor": {
+      "en": [
+        "Castle Defense",
+        "Garrison",
+        "Arena",
+        "Early Cavalry"
+      ],
+      "ar": [
+        "دفاع القلعة",
+        "الحامية",
+        "الساحة",
+        "الفرسان في البداية"
+      ]
+    },
+    "lessEffective": {
+      "en": [
+        "Late-Generation Competitive Play"
+      ],
+      "ar": [
+        "المنافسات في الأجيال المتقدمة"
+      ]
+    },
+    "investment": {
+      "F2P": 5,
+      "Low Spender": 5,
+      "Whale": 3
+    },
+    "modes": {
+      "Expedition": 4,
+      "Arena": 4,
+      "Castle Attack": 3,
+      "Castle Defense": 5,
+      "Bear Hunt": 4
+    },
+    "strengths": {
+      "en": [
+        "Easy Mythic shard access",
+        "Strong damage reduction",
+        "Good offensive damage chance",
+        "Defender Troops Lethality support"
+      ],
+      "ar": [
+        "سهولة الحصول على الشظايا الأسطورية",
+        "تقليل قوي للضرر",
+        "فرصة جيدة لزيادة الضرر",
+        "دعم فتك قوات الدفاع"
+      ]
+    },
+    "weaknesses": {
+      "en": [
+        "Less specialized than premium Cavalry heroes",
+        "Power falls with newer generations",
+        "Not the best main rally leader"
+      ],
+      "ar": [
+        "أقل تخصصًا من أبطال الفرسان المدفوعين",
+        "تنخفض قوتها مع الأجيال الجديدة",
+        "ليست أفضل قائد رئيسي للحشود"
+      ]
+    },
+    "priority": {
+      "Skills": 5,
+      "Stars": 5,
+      "Exclusive Gear": 3,
+      "Widgets": 3
+    },
+    "verdict": {
+      "en": "A safe and efficient Generation 1 Cavalry investment, especially for F2P players who want strong early defense.",
+      "ar": "استثمار آمن وفعال للفرسان في الجيل الأول، خصوصًا للاعب المجاني الذي يريد دفاعًا قويًا في البداية."
+    },
+    "perfectFor": {
+      "en": [
+        "F2P Players",
+        "Early Garrison Defense",
+        "Balanced Cavalry Users"
+      ],
+      "ar": [
+        "اللاعبون المجانيون",
+        "الدفاع المبكر عن الحامية",
+        "مستخدمو الفرسان المتوازنون"
+      ]
+    },
+    "skipIf": {
+      "en": [
+        "You already own a stronger premium Cavalry hero",
+        "You are building only for late generations"
+      ],
+      "ar": [
+        "لديك بطل فرسان مدفوع أقوى",
+        "تبني حسابك فقط للأجيال المتقدمة"
+      ]
     }
   }
 ]
