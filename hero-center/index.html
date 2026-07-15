@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-center-v2705-20260715213417">
+<meta name="saifks-build" content="hero-center-v2706-20260715220329">
 <title>SaifKS Hero Center</title>
 <style>
 *{box-sizing:border-box}:root{--bg:#06101c;--panel:#0d1c2f;--panel2:#122640;--text:#f8fbff;--muted:#a9b7ca;--gold:#ffd46b;--line:rgba(255,255,255,.11)}
@@ -43,6 +43,35 @@ footer{text-align:center;color:#91a4b8;padding:22px}
 .copy.copy-success{background:#1f9a5f!important;box-shadow:0 10px 24px rgba(31,154,95,.30)}
 @media(max-width:560px){.footer-inner{min-height:104px;flex-direction:column;justify-content:center;text-align:center}.youtube{width:100%}.modal-topbar{padding:calc(8px + env(safe-area-inset-top)) 10px 8px}.back-heroes{max-width:72%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.modal-bottom-actions{padding-inline:10px}.hero-banner{padding-top:18px}}
 
+
+/* ===== v2706 modal scroll fix ===== */
+.modal{position:fixed;inset:0;z-index:9999;display:flex;justify-content:center;align-items:stretch;padding:0;background:rgba(1,7,13,.84)}
+.modal.hidden{display:none}
+.panel{width:min(780px,100%);height:100dvh;max-height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;background:#0b1e32;border-inline:1px solid #304962}
+.modal-topbar{position:relative;flex:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(9px + env(safe-area-inset-top)) 12px 9px;background:#071320;border-bottom:1px solid #294159}
+.modal-scroll{position:relative;flex:1 1 0;min-height:0;height:0;overflow-y:auto!important;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scroll-behavior:smooth}
+.modal-bottom-actions{position:relative;flex:0 0 auto;z-index:20;display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#071320;border-top:1px solid #294159}
+.top-btn,.copy-fixed{min-height:48px;border-radius:13px;font-weight:950;cursor:pointer}
+.top-btn{border:1px solid #425c74;background:#10263b;color:#fff}
+.copy-fixed{border:1px solid #36a46c;background:#208f59;color:#fff;font-size:1rem}
+.copy-fixed.copy-success{background:#1aaa68;border-color:#50d492;box-shadow:0 10px 24px rgba(31,154,95,.30)}
+.copy-fixed:disabled{opacity:1;cursor:default}
+body.modal-open{overflow:hidden;position:fixed;width:100%}
+@supports not (height:100dvh){.panel{height:100vh;max-height:100vh}}
+
+
+/* ===== Footer matching main website ===== */
+.footer{margin-top:34px;background:#07111e;border-top:1px solid rgba(255,255,255,.10)}
+.footer-inner{width:min(1120px,calc(100% - 28px));min-height:142px;margin:auto;display:flex;align-items:center;justify-content:center;gap:22px;border-top:1px solid rgba(255,255,255,.10);color:#9fb0c3;font-size:1.05rem}
+.youtube-link{color:#fff;text-decoration:none;font-weight:950}
+.footer-brand strong{color:#ffd46b}
+.footer-sep{color:#74879b;margin:0 4px}
+@media(max-width:560px){
+ .footer-inner{min-height:136px;gap:13px;font-size:.92rem;white-space:nowrap}
+ .youtube-link{font-size:.95rem}
+ .modal-bottom-actions{grid-template-columns:86px minmax(0,1fr);padding-inline:10px}
+}
+
 </style>
 </head>
 <body>
@@ -59,8 +88,8 @@ footer{text-align:center;color:#91a4b8;padding:22px}
 </main>
 <footer class="footer">
   <div class="footer-inner">
-    <div><strong>SaifKS.com</strong> | Built by Saif</div>
-    <a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a>
+    <a class="youtube-link" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">YouTube ▶</a>
+    <span class="footer-brand"><strong>SaifKS.com</strong> <span class="footer-sep">|</span> Built by Saif</span>
   </div>
 </footer>
 <div id="modal" class="modal hidden">
@@ -89,7 +118,7 @@ const TOP_LABELS={en:"Top",ar:"الأعلى",fr:"Haut",de:"Nach oben",es:"Arriba
 const params=new URLSearchParams(location.search);
 let lang=params.get("lang")||localStorage.getItem("saifRallyLang")||"en";
 if(!supported.includes(lang))lang="en";
-let activeClass="All",current=null;
+let activeClass="All",current=null,pageScrollY=0;
 const q=s=>document.querySelector(s);
 const text=(h,key)=>(h[key]&&h[key][lang])||h[key]?.en||"";
 const u=k=>UI[lang][k]||UI.en[k]||k;
@@ -149,16 +178,30 @@ function openHero(id){
  const g=h.gear;html+=`<details><summary>${u("gear")} — ${g.name}</summary><div class="content"><div class="gear-stats">${Object.entries(g.stats).map(([k,v])=>`<div class="stat"><small>${k}</small><b>${v}</b></div>`).join("")}</div><div class="skill"><h4>${g.conquestSkill.name}</h4><div>${g.conquestSkill[lang]||g.conquestSkill.en}</div><div class="levels">${g.conquestSkill.levels}</div></div><div class="skill"><h4>${g.expeditionSkill.name}</h4><div>${g.expeditionSkill[lang]||g.expeditionSkill.en}</div><div class="levels">${g.expeditionSkill.levels}</div></div></div></details>`;
  html+=`<details><summary>${u("ratings")}</summary><div class="content"><div class="ratings">${Object.entries(h.ratings).map(([k,v])=>`<div class="stat"><small>${k}</small><b class="rating">${stars(v)}</b></div>`).join("")}</div></div></details>`;
  html+=`<details open><summary>👑 ${u("analysis")}</summary><div class="content">${text(h,"analysis")}</div></details>`;
- q("#sections").innerHTML=html;q("#modal").classList.remove("hidden");q("#modalScroll").scrollTop=0;document.body.style.overflow="hidden";
+ q("#sections").innerHTML=html;
+ pageScrollY=window.scrollY||document.documentElement.scrollTop||0;
+ q("#modal").classList.remove("hidden");
+ q("#modalScroll").scrollTop=0;
+ document.body.classList.add("modal-open");
+ document.body.style.top=`-${pageScrollY}px`;
  
 }
-function closeHero(){q("#modal").classList.add("hidden");document.body.style.overflow=""}
+function closeHero(){
+ q("#modal").classList.add("hidden");
+ document.body.classList.remove("modal-open");
+ document.body.style.top="";
+ window.scrollTo(0,pageScrollY);
+}
 q("#filters").onclick=e=>{const b=e.target.closest("[data-class]");if(b){activeClass=b.dataset.class;renderFilters();render()}};
 q("#grid").onclick=e=>{const b=e.target.closest("[data-id]");if(b)openHero(b.dataset.id)};
 q("#search").oninput=render;
 q("#closeTop").onclick=closeHero;
 q("#backHeroesBtn").onclick=closeHero;
-q("#topBtn").onclick=()=>q("#modalScroll").scrollTo({top:0,behavior:"smooth"});
+q("#topBtn").onclick=()=>{
+ const scroller=q("#modalScroll");
+ if(scroller.scrollTo)scroller.scrollTo({top:0,behavior:"smooth"});
+ else scroller.scrollTop=0;
+};
 q("#copyBtn").onclick=async()=>{
   if(!current)return;
   const content=`${current.name}\n${text(current,"analysis")}\n\nSource: SaifKS.com\nBuilt by Saif`;
@@ -174,10 +217,11 @@ q("#copyBtn").onclick=async()=>{
   }
 };
 q("#modal").onclick=e=>{if(e.target.id==="modal")closeHero()};
+q("#modalScroll").addEventListener("touchmove",()=>{}, {passive:true});
 q("#langSelect").onchange=e=>{lang=e.target.value;applyLang()};
 window.addEventListener("storage",e=>{if(e.key==="saifRallyLang"&&supported.includes(e.newValue)){lang=e.newValue;applyLang()}});
 applyLang();
 </script>
 
-<!-- Build: hero-center-v2705-20260715213417 -->
+<!-- Build: hero-center-v2706-20260715220329 -->
 </body></html>
