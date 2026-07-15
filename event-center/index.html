@@ -2,7 +2,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="saifks-build" content="ui-v3-v2301"><title>Event Center | SaifKS</title><style id="event-center-styles">
+<meta name="saifks-build" content="quick-close-v2401"><title>Event Center | SaifKS</title><style id="event-center-styles">
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#102844 0,#07121f 45%,#050d17 100%);color:#f4f7fb;font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}header,main{width:min(1180px,100%);margin:auto;padding:18px 16px}.head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}.brand{text-align:center}.brand span{color:#ffd86b;font-weight:900;letter-spacing:.15em;font-size:.8rem}.brand h1{font-size:clamp(2rem,6vw,3.5rem);margin:.2rem 0}.brand p{color:#95a7bb;margin:0}.small-btn,#lang{height:40px;min-width:92px;border:1px solid rgba(255,216,107,.3);border-radius:11px;background:#0d2036;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;padding:0 12px;font-weight:800}.tools{position:sticky;top:0;padding:8px 0 18px;background:linear-gradient(#07121f 70%,transparent);z-index:5}#search{width:100%;height:52px;border-radius:15px;border:1px solid rgba(255,216,107,.3);background:#0b1b2d;color:white;padding:0 16px}#filters{display:flex;gap:8px;overflow:auto;padding-top:10px}.filter{border:1px solid #26394d;background:#0b1b2d;color:#95a7bb;border-radius:999px;padding:8px 13px;white-space:nowrap;font-weight:800}.filter.active{background:#ffd86b;color:#172033}#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(#10253f,#0b1b2d);border:1px solid #23374b;border-radius:20px;padding:18px;min-height:255px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between}.icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;background:#172f4c}.pill{font-size:.75rem;color:#95a7bb;border:1px solid #2c4054;border-radius:999px;padding:5px 9px;height:max-content}.card h2{margin:18px 0 6px}.meta{color:#95a7bb;font-size:.9rem}.stars{color:#ffd86b;margin:10px 0}.card p{color:#c5d0dc;line-height:1.5;margin:0 0 18px}.open{margin-top:auto;height:42px;border:0;border-radius:12px;background:#ffd86b;color:#172033;font-weight:900}.hidden{display:none!important}#modal{position:fixed;inset:0;display:grid;place-items:center;padding:18px;z-index:20}.shade{position:absolute;inset:0;background:#02070dcc;backdrop-filter:blur(8px)}#modal article{position:relative;width:min(760px,100%);max-height:90vh;overflow:auto;background:linear-gradient(#112640,#081827);border:1px solid rgba(255,216,107,.3);border-radius:24px;padding:22px}.close{position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:12px;border:1px solid #2b3e52;background:#0b1b2d;color:white;font-size:1.4rem}.hero{display:flex;gap:14px;align-items:center}.hero #mIcon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:2rem;background:#172f4c}.hero h2{margin:6px 0}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.quick div,.prep div{background:#0a1a2b;border:1px solid #22364a;border-radius:14px;padding:12px}.quick small{display:block;color:#95a7bb}.prep{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.prep div{display:flex;justify-content:space-between}.yes{color:#6bd9a8}.no{color:#ff8f8f}h3{color:#ffd86b}footer{text-align:center;color:#95a7bb;padding:22px}.rtl{direction:rtl}@media(max-width:900px){#grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.head{grid-template-columns:auto auto}.brand{grid-column:1/-1;grid-row:2;text-align:left}.rtl .brand{text-align:right}#grid{grid-template-columns:1fr}.quick,.prep{grid-template-columns:1fr}.card{min-height:230px}}
 
 /* Compact Home and language controls */
@@ -472,6 +472,49 @@
   .modal-actions button{width:100%;min-height:46px}
 }
 
+
+/* ===== Quick exit controls ===== */
+.quick-close{
+  position:absolute;top:14px;right:14px;z-index:4;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(5,14,24,.72);color:#fff;
+  display:grid;place-items:center;
+  font-size:1.15rem;font-weight:900;cursor:pointer;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  transition:transform .18s ease,background .18s ease
+}
+.quick-close:hover{transform:scale(1.06);background:rgba(190,45,45,.86)}
+[dir="rtl"] .quick-close{right:auto;left:14px}
+
+.floating-modal-controls{
+  position:fixed;right:18px;bottom:86px;z-index:999;
+  display:flex;flex-direction:column;gap:10px;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .2s ease,transform .2s ease
+}
+.floating-modal-controls.show{
+  opacity:1;pointer-events:auto;transform:translateY(0)
+}
+.floating-modal-controls button{
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid #31506d;background:#0d2236;color:#fff;
+  font-size:1.15rem;font-weight:900;cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,.28);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+}
+#floatingCloseBtn{background:#8e2f36;border-color:#b54e55}
+#scrollTopBtn{background:#c79a32;color:#172033;border-color:#e5bc59}
+[dir="rtl"] .floating-modal-controls{right:auto;left:18px}
+
+@media(max-width:620px){
+  .quick-close{top:10px;right:10px;width:42px;height:42px}
+  [dir="rtl"] .quick-close{right:auto;left:10px}
+  .floating-modal-controls{right:12px;bottom:92px}
+  [dir="rtl"] .floating-modal-controls{right:auto;left:12px}
+}
+
 </style></head><body>
 <header><div class="head"><div class="header-actions"><a class="small-btn" href="../index.html">Home</a><select id="lang"><option value="en">English</option>
 <option value="ar">العربية</option>
@@ -483,7 +526,7 @@
 <option value="ja">日本語</option>
 <option value="zh">简体中文</option></select></div><div class="brand"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div></div></header>
 <main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button"><span class="tab-label">Solo Events</span><span class="tab-count">40</span></button><button id="allianceTab" class="event-tab" data-group="alliance" type="button"><span class="tab-label">Alliance Events</span><span class="tab-count">12</span></button></div><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
-<div id="modal" class="hidden"><div class="shade" data-close></div><article><div id="modalBanner" class="modal-banner">
+<div id="modal" class="hidden"><div class="shade" data-close></div><article><div id="modalBanner" class="modal-banner"><button id="quickCloseBtn" class="quick-close" type="button" aria-label="Close event">✕</button>
       <div class="banner-glow"></div>
       <div id="modalBannerIcon" class="modal-banner-icon"></div>
       <span id="mCat" class="pill"></span>
@@ -611,7 +654,7 @@ function openEvent(id){
     return `<button type="button" class="related-btn" data-related="${rel.id}"><span>${rel.icon}</span>${relatedTitle(rel.id)}</button>`;
   }).join("");
   q("#closeEventBtn").textContent=t("Close Event");
-  modal.classList.remove("hidden");
+  modal.classList.remove("hidden");floatingModalControls?.classList.remove("show");
   document.body.style.overflow="hidden";
 }
 
@@ -644,7 +687,29 @@ function openEvent(id){
     navigator.clipboard.writeText(text);
   };
 
-function closeModal(){modal.classList.add("hidden");document.body.style.overflow=""}
+
+const quickCloseBtn=q("#quickCloseBtn");
+const floatingCloseBtn=q("#floatingCloseBtn");
+const scrollTopBtn=q("#scrollTopBtn");
+const floatingModalControls=q("#floatingModalControls");
+
+function modalScrollContainer(){
+  return q(".modal-panel") || q(".modal-content") || modal;
+}
+function updateFloatingControls(){
+  const scroller=modalScrollContainer();
+  const y=scroller ? scroller.scrollTop : 0;
+  floatingModalControls?.classList.toggle("show",y>420 && !modal.classList.contains("hidden"));
+}
+quickCloseBtn?.addEventListener("click",closeModal);
+floatingCloseBtn?.addEventListener("click",closeModal);
+scrollTopBtn?.addEventListener("click",()=>{
+  const scroller=modalScrollContainer();
+  if(scroller?.scrollTo) scroller.scrollTo({top:0,behavior:"smooth"});
+});
+modalScrollContainer()?.addEventListener("scroll",updateFloatingControls,{passive:true});
+
+function closeModal(){modal.classList.add("hidden");floatingModalControls?.classList.remove("show");document.body.style.overflow=""}
 function applyLang(){document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
 q(".brand p").textContent=t("Everything you need for every Kingshot event.");q("#soloTab .tab-label").textContent=t("Solo Events");q("#allianceTab .tab-label").textContent=t("Alliance Events");
 search.placeholder=t("Search events...");
