@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="all-heroes-v2-20260716003538">
+<meta name="saifks-build" content="all-heroes-v3-20260716004719">
 <title>SaifKS Hero Center</title>
 <style>
 *{box-sizing:border-box}:root{--bg:#06101c;--panel:#0d1d31;--panel2:#102740;--text:#f7fbff;--muted:#9fb0c3;--gold:#ffd46b;--line:#29425b;--mythic:#d6a432;--epic:#a96df2;--rare:#50c786}
@@ -33,14 +33,64 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 @media(max-width:860px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr);gap:11px}.cardbody{padding:11px}.card h3{font-size:1.08rem}.banner{grid-template-columns:92px 1fr;padding:17px;gap:12px}.banner img{width:92px;height:92px;border-radius:18px}.banner h2{font-size:1.55rem}.stats{grid-template-columns:1fr 1fr}.footer-inner{font-size:clamp(.72rem,3.4vw,.9rem);gap:8px}}
 
-.home-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;border:1px solid var(--line);background:#0d1d31;color:#fff;text-decoration:none;font-size:1.55rem;font-weight:950;line-height:1}.lang-select{min-height:44px;border-radius:13px;border:1px solid var(--line);background:#0d1d31;color:#fff;padding:0 12px;font-weight:900}.class-badge{background:linear-gradient(180deg,#183b59,#10263b)!important;border-color:#47728f!important;color:#fff!important}
+
+
+/* Header controls matched to Event Center */
+.event-controls{display:flex;align-items:center;gap:10px}
+.event-home-btn,.event-lang-select{
+  height:40px;
+  border:1px solid rgba(255,216,107,.30);
+  border-radius:11px;
+  background:#0d2036;
+  color:#fff;
+  font-weight:800;
+}
+.event-home-btn{
+  width:44px;min-width:44px;
+  display:grid;place-items:center;
+  text-decoration:none;padding:0;
+}
+.event-home-btn svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linejoin:round}
+.event-lang-select{min-width:112px;padding:0 12px}
+@media(max-width:560px){
+  .event-controls{gap:8px}
+  .event-lang-select{min-width:104px;max-width:126px}
+}
+
+/* Officially separated troop-class identity */
+.class-badge{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  color:#fff!important;
+}
+.class-logo{
+  width:23px;height:23px;object-fit:contain;
+  flex:0 0 23px;
+}
+.class-identity{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:999px;
+  background:rgba(5,18,30,.45);
+  border:1px solid rgba(255,255,255,.23);
+  font-weight:900;
+}
+.class-identity .class-logo{width:27px;height:27px;flex-basis:27px}
+
 </style>
 </head>
 <body>
 <header><div class="wrap"><nav>
 <div class="brand"><div class="logo">👑</div><div><b>SaifKS Hero Center</b><small id="brandSub">All Heroes Database</small></div></div>
-<div class="actions"><a class="home-icon" href="../index.html" id="homeBtn" aria-label="Home" title="Home">⌂</a><select class="lang-select" id="langSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option></select></div>
-</nav></div></header>
+<div class="actions event-controls">
+<a class="event-home-btn" href="../index.html" id="homeBtn" aria-label="Home" title="Home">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2v8.3a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5z"/></svg>
+</a>
+<select class="event-lang-select" id="langSelect" aria-label="Language">
+<option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option>
+<option value="de">Deutsch</option><option value="es">Español</option><option value="tr">Türkçe</option>
+<option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option>
+</select></div></nav></div></header>
 <main class="wrap">
 <section class="hero"><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></section>
 <section class="toolbar">
@@ -64,6 +114,16 @@ const T={"en":{"brandSub":"All Heroes Database","home":"Home","title":"Hero Cent
 const LANGS=["en","ar","fr","de","es","tr","ko","ja","zh"];
 let lang=LANGS.includes(localStorage.getItem("saifks-lang"))?localStorage.getItem("saifks-lang"):"en",rarity="Mythic",sub="All",query="",current=null;
 const $=s=>document.querySelector(s), tr=k=>T[lang][k]||k;
+
+function classIconPath(c){
+  return c==="Infantry"?"assets/classes/infantry.svg":
+         c==="Archer"?"assets/classes/archer.svg":
+         "assets/classes/cavalry.svg";
+}
+function classBadgeHTML(c){
+  return `<span class="badge class-badge"><img class="class-logo" src="${classIconPath(c)}" alt="">${clsLabel(c)}</span>`;
+}
+
 function clsLabel(c){return tr(c.toLowerCase())||c}
 function applyLanguage(){
  document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
@@ -94,7 +154,7 @@ function render(){
  $("#grid").innerHTML=list.length?list.map(h=>`<article class="card" data-rarity="${h.rarity}">
  <span class="badge rarity">${lang==="ar"?(h.rarity==="Mythic"?tr("mythic"):h.rarity):h.rarity}</span>
  <img src="${h.image}" alt="${h.name}" loading="lazy"><div class="cardbody"><h3>${h.name}</h3><div class="badges">
- <span class="badge class-badge">⚔ ${clsLabel(h.class)}</span>${h.generation?`<span class="badge">${tr("generation")} ${h.generation}</span>`:""}</div>
+ ${classBadgeHTML(h.class)}${h.generation?`<span class="badge">${tr("generation")} ${h.generation}</span>`:""}</div>
  <button class="open" data-id="${h.id}">${tr("view")}</button></div></article>`).join(""):`<div class="empty">${tr("none")}</div>`;
  $("#grid").querySelectorAll(".open").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
 }
@@ -106,7 +166,7 @@ function details(title,body,open=false){return `<details ${open?"open":""}><summ
 function openHero(id){
  current=heroes.find(h=>h.id===id);if(!current)return;
  $("#mImg").src=current.image;$("#mName").textContent=current.name;
- $("#mMeta").textContent=`${current.generation?`${tr("generation")} ${current.generation} · `:""}${tr("class")}: ${clsLabel(current.class)} · ${lang==="ar"&&current.rarity==="Mythic"?tr("mythic"):current.rarity}`;
+ $("#mMeta").innerHTML=`<span class="class-identity"><img class="class-logo" src="${classIconPath(current.class)}" alt="">${tr("class")}: ${clsLabel(current.class)}</span> ${current.generation?` · ${tr("generation")} ${current.generation}`:""} · ${lang==="ar"&&current.rarity==="Mythic"?tr("mythic"):current.rarity}`;
  $("#mStars").textContent=current.rarity==="Mythic"?"★★★★★":current.rarity==="Epic"?"★★★★":"★★★";
  let stats=Object.entries(current.stats||{}).map(([k,v])=>`<div class="stat"><small>${k}</small><b>${v}</b></div>`).join("");
  let src=current.sources?.length?`<div class="sourcechips">${current.sources.map(x=>`<span>${x}</span>`).join("")}</div>`:"<p>—</p>";
@@ -132,5 +192,5 @@ $("#copyBtn").onclick=async()=>{
 };
 applyLanguage();
 </script>
-<!-- Build: all-heroes-v2-20260716003538 -->
+<!-- Build: all-heroes-v3-20260716004719 -->
 </body></html>
