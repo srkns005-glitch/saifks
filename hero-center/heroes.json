@@ -2,810 +2,2427 @@
   {
     "id": "helga",
     "name": "Helga",
+    "rarity": "Mythic",
     "generation": 1,
-    "class": "Infantry",
+    "class": "Unknown",
     "image": "assets/heroes/helga.webp",
-    "source": [
+    "overview": "Helga is a Mythic-quality Generation 1 hero in Kingshot. She belongs to the Infantry class, making her a melee hero specializing in close combat. You can unlock Helga by making your ﬁrst purchase in the game.",
+    "sources": [
       "1st Purchase",
       "VIP Special Packs"
     ],
-    "overview": {
-      "en": "A Mythic Generation 1 Infantry hero focused on close combat, squad protection, Attack, and Lethality. Helga is unlocked through the first purchase and later VIP Special Packs.",
-      "ar": "بطلة أسطورية من الجيل الأول تنتمي إلى المشاة، وتركز على القتال القريب وحماية القوات وزيادة الهجوم والفتك. يتم فتح Helga من أول عملية شراء ثم عبر باقات VIP الخاصة."
-    },
-    "talent": {
-      "name": "Power of the Deer",
-      "en": "Boosts Attack and Defense for all deployed soldiers by 10%, even when Helga is absent.",
-      "ar": "ترفع هجوم ودفاع جميع الجنود المنتشرين بنسبة 10% حتى عند عدم وجود Helga.",
-      "levels": "2% / 4% / 6% / 8% / 10%"
-    },
-    "conquestStats": {
+    "stats": {
       "Attack": "1,873",
       "Defense": "2,220",
       "Health": "36,630"
     },
     "conquest": [
-      {
-        "name": "Antler Assault",
-        "en": "Deals 224% area damage, knocks targets back, and stuns them for 1 second.",
-        "ar": "تسبب ضررًا جماعيًا بنسبة 224%، وتدفع الأهداف للخلف وتُصيبهم بالشلل لمدة ثانية.",
-        "levels": "160% / 176% / 192% / 208% / 224%"
-      },
-      {
-        "name": "Spear Charge",
-        "en": "Deals 210% Attack damage to the target.",
-        "ar": "تسبب ضررًا للهدف يعادل 210% من الهجوم.",
-        "levels": "150% / 165% / 180% / 195% / 210%"
-      },
-      {
-        "name": "Fury",
-        "en": "When taking damage, has a 10% chance to increase Attack by 12% for 3 seconds, stacking up to 5 times.",
-        "ar": "عند تلقي الضرر توجد فرصة 10% لزيادة الهجوم 12% لمدة 3 ثوانٍ، وتتراكم حتى 5 مرات.",
-        "levels": "4% / 6% / 8% / 10% / 12%"
-      }
+      "Hero Attack: 1,873",
+      "Hero Defense: 2,220",
+      "Hero Health: 36,630",
+      "Antler Assault",
+      "Performs an antler charge, dealing Attack * 224% area of eﬀect",
+      "damage, knocking the targets back, and stunning them for 1s.",
+      "Area of Eﬀect Damage Up: 160% / 176% / 192% / 208% / 224%",
+      "Spear Charge",
+      "Deals Attack * 210% damage to the target.",
+      "Damage Up: 150% / 165% / 180% / 195% / 210%",
+      "Fury",
+      "When taking damage, there is a 10% chance of increasing",
+      "Attack by 12% for 3s. Stacks up to 5 times.",
+      "Attack Up: 4% / 6% / 8% / 10% / 12%"
     ],
-    "expeditionStats": {
-      "Infantry Attack": "+200.16%",
-      "Infantry Defense": "+200.16%"
-    },
     "expedition": [
-      {
-        "name": "Oath of Guardian",
-        "en": "Has a 40% chance to reduce damage taken by 50% for all squads.",
-        "ar": "لديها فرصة 40% لتقليل الضرر المستلم لجميع القوات بنسبة 50%.",
-        "levels": "8% / 16% / 24% / 32% / 40%"
-      },
-      {
-        "name": "Echoes of Valhalla",
-        "en": "Increases total squads' Attack by 25%.",
-        "ar": "ترفع هجوم جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      },
-      {
-        "name": "Nature’s Balance",
-        "en": "Increases total squads' Lethality by 25%.",
-        "ar": "ترفع فتك جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      }
+      "Infantry Attack: +200.16%",
+      "Infantry Defense: +200.16%",
+      "Oath of Guardian",
+      "Helga has a 40% chance of reducing damage taken by 50% for",
+      "all squads.",
+      "Damage Taken Chance Down: 8% / 16% / 24% / 32% / 40%",
+      "Echoes of Valhalla",
+      "Helga blows the horn to motivate the squad, increasing the",
+      "total Squads’ Attack by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Nature’s Balance",
+      "Helga invites everyone to embrace nature, increasing the total",
+      "Squads’ Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%"
     ],
-    "gear": {
-      "name": "Bands of Tyre",
-      "stats": {
-        "Power": "247,500",
-        "Hero Attack": "379",
-        "Hero Defense": "495",
-        "Hero Health": "7,425",
-        "Escort Attack": "126",
-        "Escort Defense": "165",
-        "Escort Health": "2,475",
-        "Infantry Lethality": "+55.50%",
-        "Infantry Health": "+55.50%"
-      },
-      "conquestSkill": {
-        "name": "Valiant Fury",
-        "en": "Increases damage dealt by 30%.",
-        "ar": "ترفع الضرر الذي تسببه بنسبة 30%.",
-        "levels": "10% / 15% / 20% / 25% / 30%"
-      },
-      "expeditionSkill": {
-        "name": "Zeal",
-        "en": "When joining a rally, increases Rally Troops' Lethality by 15%.",
-        "ar": "عند الانضمام للحشد ترفع فتك جنود الحشد بنسبة 15%.",
-        "levels": "5% / 7.5% / 10% / 12.5% / 15%"
-      }
-    },
-    "ratings": {
-      "Rally": 4,
-      "Defense": 5,
-      "Arena": 4,
-      "Bear": 3,
-      "F2P": 3
-    },
-    "analysis": {
-      "en": "A strong early defensive Infantry option. Her squad damage reduction, Attack, and Lethality make her useful in garrison and rally support. Her first-purchase access is easy, but long-term star investment can depend on paid packs.",
-      "ar": "خيار دفاعي قوي للمشاة في بداية اللعبة. تقليل الضرر مع زيادة الهجوم والفتك يجعلها مفيدة للحامية ودعم الحشود. فتحها سهل من أول شراء، لكن تطوير نجومها على المدى الطويل قد يعتمد على الباقات المدفوعة."
-    },
-    "status": {
-      "en": "Strong Early Defense",
-      "ar": "دفاع قوي في البداية"
-    },
-    "bestFor": {
-      "en": [
-        "Castle Defense",
-        "Garrison",
-        "Rally Support"
-      ],
-      "ar": [
-        "دفاع القلعة",
-        "الحامية",
-        "دعم الحشود"
-      ]
-    },
-    "lessEffective": {
-      "en": [
-        "Bear Hunt",
-        "Long-Term F2P Investment"
-      ],
-      "ar": [
-        "صيد الدب",
-        "الاستثمار الطويل للاعب المجاني"
-      ]
-    },
-    "investment": {
-      "F2P": 3,
-      "Low Spender": 4,
-      "Whale": 4
-    },
-    "modes": {
-      "Expedition": 4,
-      "Arena": 4,
-      "Castle Attack": 4,
-      "Castle Defense": 5,
-      "Bear Hunt": 3
-    },
-    "strengths": {
-      "en": [
-        "Strong squad damage reduction",
-        "Good Attack and Lethality buffs",
-        "Useful rally support skill",
-        "Solid early Infantry defense"
-      ],
-      "ar": [
-        "تقليل قوي للضرر لجميع القوات",
-        "تعزيز جيد للهجوم والفتك",
-        "مهارة مفيدة لدعم الحشود",
-        "دفاع مشاة قوي في بداية اللعبة"
-      ]
-    },
-    "weaknesses": {
-      "en": [
-        "Star growth can depend on paid packs",
-        "Less valuable for Bear Hunt",
-        "Power drops as newer Infantry heroes arrive"
-      ],
-      "ar": [
-        "تطوير النجوم قد يعتمد على الباقات المدفوعة",
-        "قيمتها أقل في صيد الدب",
-        "تنخفض قوتها مع وصول أبطال مشاة أحدث"
-      ]
-    },
-    "priority": {
-      "Skills": 5,
-      "Stars": 4,
-      "Exclusive Gear": 4,
-      "Widgets": 3
-    },
-    "verdict": {
-      "en": "Recommended for players who need an early defensive Infantry hero and reliable garrison support.",
-      "ar": "موصى بها لمن يحتاج إلى بطل مشاة دفاعي في بداية اللعبة ودعم قوي للحامية."
-    },
-    "perfectFor": {
-      "en": [
-        "Defenders",
-        "Garrison Players",
-        "Early-Generation Fighters"
-      ],
-      "ar": [
-        "المدافعين",
-        "لاعبو الحامية",
-        "مقاتلو الأجيال الأولى"
-      ]
-    },
-    "skipIf": {
-      "en": [
-        "You avoid paid shard sources",
-        "You are saving heavily for Generation 2"
-      ],
-      "ar": [
-        "لا تريد الاعتماد على مصادر شظايا مدفوعة",
-        "تدخر بقوة للجيل الثاني"
-      ]
-    }
+    "gear": [
+      "Bands of Tyre",
+      "Max Level Stats",
+      "Power: 247,500",
+      "Hero Attack: 379",
+      "Hero Defense: 495",
+      "Hero Health: 7,425",
+      "Escort Attack: 126",
+      "Escort Defense: 165",
+      "Escort Health: 2,475",
+      "Infantry Lethality: +55.50%",
+      "Infantry Health: +55.50%",
+      "Valiant Fury – Conquest Skill",
+      "Fueled by fury, Helga increases her damage dealt by 30%.",
+      "Damage Dealt Up: 10% / 15% / 20% / 25% / 30%",
+      "Zeal – Expedition Skill",
+      "Helga joins the rally, increasing Rally Troops’ Lethality by 15%.",
+      "Rally Troops’ Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
   },
   {
     "id": "amadeus",
     "name": "Amadeus",
+    "rarity": "Mythic",
     "generation": 1,
-    "class": "Infantry",
+    "class": "Unknown",
     "image": "assets/heroes/amadeus.webp",
-    "source": [
+    "overview": "Amadeus is a Mythic hero in Kingshot.",
+    "sources": [
       "Hall of Governors (Generation 1)",
-      "VIP Special Packs"
+      "VIP packs"
     ],
-    "overview": {
-      "en": "A premium Generation 1 Infantry hero with strong squad-wide offensive buffs, damage amplification, survivability, and Rally Attack support.",
-      "ar": "بطل مشاة مميز من الجيل الأول يمتلك تعزيزات هجومية قوية لجميع القوات وزيادة للضرر وقدرة عالية على الصمود ودعم هجوم الحشد."
-    },
-    "talent": {
-      "name": "Born Leader",
-      "en": "Boosts Lethality and Health for all deployed soldiers by 15%, even when absent.",
-      "ar": "يرفع الفتك والصحة لجميع الجنود المنتشرين بنسبة 15% حتى عند غيابه.",
-      "levels": "3% / 6% / 9% / 12% / 15%"
-    },
-    "conquestStats": {
+    "stats": {
       "Attack": "2,128",
       "Defense": "2,220",
       "Health": "41,624"
     },
     "conquest": [
-      {
-        "name": "Combo Slash",
-        "en": "Launches enemies upward and performs three slashes, each dealing 224% Attack damage.",
-        "ar": "يرفع الأعداء للأعلى ثم ينفذ ثلاث ضربات، كل ضربة تسبب ضررًا يعادل 224% من الهجوم.",
-        "levels": "160% / 176% / 192% / 208% / 224%"
-      },
-      {
-        "name": "Arcane Swordship",
-        "en": "Each sword slash releases arcane energy, dealing 23% Attack damage to frontal enemies.",
-        "ar": "كل ضربة سيف تطلق طاقة سحرية تسبب ضررًا أماميًا يعادل 23% من الهجوم.",
-        "levels": "15% / 17% / 19% / 21% / 23%"
-      },
-      {
-        "name": "Onslaught",
-        "en": "Increases Attack by 48% when Health is below 50%.",
-        "ar": "يرفع الهجوم بنسبة 48% عندما تنخفض الصحة عن 50%.",
-        "levels": "16% / 24% / 32% / 40% / 48%"
-      }
+      "Hero Attack: 2,128",
+      "Hero Defense: 2,220",
+      "Hero Health: 41,624",
+      "Combo Slash",
+      "Amadeus casts enemies in the target area upward followed by",
+      "three powerful slashes, each dealing Attack * 224% damage.",
+      "Damage Up: 160% / 176% / 192% / 208% / 224%",
+      "Arcane Swordship",
+      "Amadeus releases a burst of arcane energy with each sword",
+      "slash, dealing Attack * 23% damage to frontal foes.",
+      "Defense Up: 15% / 17% / 19% / 21% / 23%",
+      "Onslaught",
+      "Amadeus is a master at pressing his advantage, increasing",
+      "Attack by 48% when Health is below 50%.",
+      "Attack Up: 16% / 24% / 32% / 40% / 48%"
     ],
-    "expeditionStats": {
-      "Infantry Attack": "+260.20%",
-      "Infantry Defense": "+260.20%"
-    },
     "expedition": [
-      {
-        "name": "Battle Ready",
-        "en": "Increases total squads' Lethality by 25%.",
-        "ar": "يرفع فتك جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      },
-      {
-        "name": "Way of the Blade",
-        "en": "Increases total squads' Attack by 25%.",
-        "ar": "يرفع هجوم جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      },
-      {
-        "name": "Unrighteous Strike",
-        "en": "Has a 40% chance to increase damage dealt by 50% for all squads.",
-        "ar": "لديه فرصة 40% لزيادة الضرر الذي تسببه جميع القوات بنسبة 50%.",
-        "levels": "8% / 16% / 24% / 32% / 40%"
-      }
+      "Infantry Attack: +260.20%",
+      "Infantry Defense: +260.20%",
+      "Battle Ready",
+      "Young ranger Amadeus excels in boosting morale, increasing",
+      "the total Squads’ Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%",
+      "Way of the Blade",
+      "Amadeus imparts the secrets of swordsmanship, increasing",
+      "the total Squads’ Attack by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Unrighteous Strike",
+      "Amadeus’ unique swordplay has a 40% chance of increasing",
+      "damage dealt by 50% for all squads.",
+      "Damage Dealt Chance Up: 8% / 16% / 24% / 32% / 40%"
     ],
-    "gear": {
-      "name": "Aegis of Fate",
-      "stats": {
-        "Power": "281,250",
-        "Hero Attack": "431",
-        "Hero Defense": "562",
-        "Hero Health": "8,437",
-        "Escort Attack": "143",
-        "Escort Defense": "187",
-        "Escort Health": "2,812",
-        "Infantry Lethality": "+62.50%",
-        "Infantry Health": "+62.50%"
-      },
-      "conquestSkill": {
-        "name": "Double Parry",
-        "en": "Reduces damage taken by 30%.",
-        "ar": "يقلل الضرر المستلم بنسبة 30%.",
-        "levels": "10% / 15% / 20% / 25% / 30%"
-      },
-      "expeditionSkill": {
-        "name": "Discernment",
-        "en": "Increases Rally Attack by 15%.",
-        "ar": "يرفع هجوم الحشد بنسبة 15%.",
-        "levels": "5% / 7.5% / 10% / 12.5% / 15%"
-      }
-    },
-    "ratings": {
-      "Rally": 5,
-      "Defense": 5,
-      "Arena": 5,
-      "Bear": 5,
-      "F2P": 1
-    },
-    "analysis": {
-      "en": "The strongest all-round Generation 1 Infantry investment when fully developed. He combines Attack, Lethality, damage amplification, Rally Attack, and damage reduction, but access becomes expensive after Generation 1.",
-      "ar": "أقوى استثمار شامل للمشاة في الجيل الأول عند تطويره بالكامل. يجمع بين الهجوم والفتك وزيادة الضرر وهجوم الحشد وتقليل الضرر، لكن الحصول على شظاياه يصبح مكلفًا بعد انتهاء الجيل الأول."
-    },
-    "status": {
-      "en": "Excellent Premium Investment",
-      "ar": "استثمار ممتاز للاعب المدفوع"
-    },
-    "bestFor": {
-      "en": [
-        "Rally",
-        "Castle Attack",
-        "Castle Defense",
-        "Expedition"
-      ],
-      "ar": [
-        "الحشود",
-        "هجوم القلعة",
-        "دفاع القلعة",
-        "Expedition"
-      ]
-    },
-    "lessEffective": {
-      "en": [
-        "Strict F2P Progression"
-      ],
-      "ar": [
-        "التطوير كلاعب مجاني بالكامل"
-      ]
-    },
-    "investment": {
-      "F2P": 1,
-      "Low Spender": 4,
-      "Whale": 5
-    },
-    "modes": {
-      "Expedition": 5,
-      "Arena": 5,
-      "Castle Attack": 5,
-      "Castle Defense": 5,
-      "Bear Hunt": 5
-    },
-    "strengths": {
-      "en": [
-        "Excellent Attack and Lethality buffs",
-        "Strong damage amplification",
-        "High Infantry survivability",
-        "Exclusive gear boosts Rally Attack"
-      ],
-      "ar": [
-        "تعزيز ممتاز للهجوم والفتك",
-        "زيادة قوية للضرر",
-        "قدرة عالية على صمود المشاة",
-        "السلاح الخاص يرفع هجوم الحشد"
-      ]
-    },
-    "weaknesses": {
-      "en": [
-        "Very expensive to maximize",
-        "Shard access becomes limited after Generation 1",
-        "Poor value for strict F2P players"
-      ],
-      "ar": [
-        "مكلف جدًا عند التطوير الكامل",
-        "تقل مصادر الشظايا بعد انتهاء الجيل الأول",
-        "قيمته ضعيفة للاعب المجاني بالكامل"
-      ]
-    },
-    "priority": {
-      "Skills": 5,
-      "Stars": 5,
-      "Exclusive Gear": 5,
-      "Widgets": 4
-    },
-    "verdict": {
-      "en": "One of the strongest all-round Generation 1 heroes. Highly recommended for spenders who lead rallies or fight for castles.",
-      "ar": "من أقوى أبطال الجيل الأول بشكل شامل. موصى به بشدة للاعبين المدفوعين وقادة الحشود ومقاتلي القلعة."
-    },
-    "perfectFor": {
-      "en": [
-        "Rally Leaders",
-        "Castle Fighters",
-        "High-Activity Spenders"
-      ],
-      "ar": [
-        "قادة الحشود",
-        "مقاتلو القلعة",
-        "اللاعبون المدفوعون والنشطون"
-      ]
-    },
-    "skipIf": {
-      "en": [
-        "You are fully F2P",
-        "You are saving every resource for Generation 2"
-      ],
-      "ar": [
-        "أنت لاعب مجاني بالكامل",
-        "تدخر كل الموارد للجيل الثاني"
-      ]
-    }
+    "gear": [
+      "Aegis of Fate",
+      "Max Level Stats",
+      "Power: 281,250",
+      "Hero Attack: 431",
+      "Hero Defense: 562",
+      "Hero Health: 8,437",
+      "Escort Attack: 143",
+      "Escort Defense: 187",
+      "Escort Health: 2,812",
+      "Infantry Lethality: +62.50%",
+      "Infantry Health: +62.50%",
+      "Double Parry – Conquest Skill",
+      "Amadeus is a skillful parrier, reducing damage taken by 30%.",
+      "Damage Taken Down: 10% / 15% / 20% / 25% / 30%",
+      "Discernment – Expedition Skill",
+      "Amadeus attacks in a sword-tailored formation, increasing",
+      "Rally Attack by 15%.",
+      "Rally Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Town Center"
+    ]
   },
   {
     "id": "saul",
     "name": "Saul",
+    "rarity": "Mythic",
     "generation": 1,
-    "class": "Archer",
+    "class": "Unknown",
     "image": "assets/heroes/saul.webp",
-    "source": [
+    "overview": "Saul is a Mythic-quality Generation 1 hero in Kingshot. He belongs to the Archer class, making him a ranged hero. You can unlock Saul through Daily Deals, Hero Roulette, Hall of Heroes, and the Swordland Shop.",
+    "sources": [
       "Daily Deals",
       "Hero Roulette",
       "Hall of Heroes",
       "Swordland Shop"
     ],
-    "overview": {
-      "en": "A Mythic Generation 1 Archer hero who mixes ranged damage, stun control, defensive support, construction bonuses, and Defender Troops Attack.",
-      "ar": "بطل رماة أسطوري من الجيل الأول يجمع بين الضرر البعيد والشلل والدعم الدفاعي ومكافآت البناء وزيادة هجوم قوات الدفاع."
-    },
-    "talent": null,
-    "conquestStats": {
+    "stats": {
       "Attack": "2,697",
       "Defense": "2,220",
       "Health": "16,650"
     },
     "conquest": [
-      {
-        "name": "Rapidfire",
-        "en": "Deals multiple hits, each at 75% Attack damage, and stuns the target for 2 seconds.",
-        "ar": "ينفذ عدة ضربات، كل منها تسبب ضررًا يعادل 75% من الهجوم، ويشل الهدف لمدة ثانيتين.",
-        "levels": "55% / 60% / 65% / 70% / 75%"
-      },
-      {
-        "name": "Final Prayer",
-        "en": "When Health falls below 50%, increases Defense by 150%.",
-        "ar": "عندما تنخفض الصحة عن 50% يرفع الدفاع بنسبة 150%.",
-        "levels": "50% / 75% / 100% / 125% / 150%"
-      },
-      {
-        "name": "Superior Techniques",
-        "en": "Increases Attack Speed by 30%.",
-        "ar": "يرفع سرعة الهجوم بنسبة 30%.",
-        "levels": "10% / 15% / 20% / 25% / 30%"
-      }
+      "Hero Attack: 2,697",
+      "Hero Defense: 2,220",
+      "Hero Health: 16,650",
+      "Rapidﬁre",
+      "Delivers multiple hits, each dealing Attack * 75% damage each",
+      "and stunning the target for 2s.",
+      "Damage Up: 55% / 60% / 65% / 70% / 75%",
+      "Final Prayer",
+      "When Health is below 50%, Saul’s Defense is increased by 150%.",
+      "Defense Up: 50% / 75% / 100% / 125% / 150%",
+      "Superior Techniques",
+      "Increases Attack Speed by 30%",
+      "Attack Up: 10% / 15% / 20% / 25% / 30%"
     ],
-    "expeditionStats": {
-      "Archer Attack": "+200.16%",
-      "Archer Defense": "+200.16%"
-    },
     "expedition": [
-      {
-        "name": "Taskforce Training",
-        "en": "Increases total squads' Defense by 10% and Health by 15%.",
-        "ar": "يرفع دفاع جميع القوات بنسبة 10% وصحتها بنسبة 15%.",
-        "levels": "Defense 2% / 4% / 6% / 8% / 10% · Health 3% / 6% / 9% / 12% / 15%"
-      },
-      {
-        "name": "Resourceful",
-        "en": "Increases Construction Speed by 15% and reduces Construction Cost by 15%.",
-        "ar": "يرفع سرعة البناء بنسبة 15% ويخفض تكلفة البناء بنسبة 15%.",
-        "levels": "3% / 6% / 9% / 12% / 15%"
-      },
-      {
-        "name": "Positional Batter",
-        "en": "Increases total squads' Lethality by 25%.",
-        "ar": "يرفع فتك جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      }
+      "Archer Attack: +200.16%",
+      "Archer Defense: +200.16%",
+      "Taskforce Training",
+      "As a member of the task force, Saul’s unique training program",
+      "is highly empowering, increasing the total Squads’ Defense and",
+      "Health by 10% and 15%.",
+      "Defense Up: 2% / 4% / 6% / 8% / 10%",
+      "Health Up: 3% / 6% / 9% / 12% / 15%",
+      "Resourceful",
+      "Saul’s eﬃcient construction management increases",
+      "Construction Speed by 15%, and his proﬁciency in maximizing",
+      "resource utilization reduces Construction Costs by 15%.",
+      "Construction Speed Up: 3% / 6% / 9% / 12% / 15%",
+      "Construction Cost Down: 3% / 6% / 9% / 12% / 15%",
+      "Positional Batter",
+      "Sault masterfully manipulates the battleﬁeld, increasing the",
+      "total Squads’ Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%"
     ],
-    "gear": {
-      "name": "Rabbitgear Cannon",
-      "stats": {
-        "Power": "225,000",
-        "Hero Attack": "546",
-        "Hero Defense": "450",
-        "Hero Health": "3,375",
-        "Escort Attack": "182",
-        "Escort Defense": "150",
-        "Escort Health": "1,125",
-        "Archer Lethality": "+50.00%",
-        "Archer Health": "+50.00%"
-      },
-      "conquestSkill": {
-        "name": "Fearless Advance",
-        "en": "Increases Saul's Attack by 24%.",
-        "ar": "يرفع هجوم Saul بنسبة 24%.",
-        "levels": "6% / 12% / 16% / 20% / 24%"
-      },
-      "expeditionSkill": {
-        "name": "Defend to Attack",
-        "en": "Increases Defender Troops' Attack by 15%.",
-        "ar": "يرفع هجوم قوات الدفاع بنسبة 15%.",
-        "levels": "5% / 7.5% / 10% / 12.5% / 15%"
-      }
-    },
-    "ratings": {
-      "Rally": 2,
-      "Defense": 5,
-      "Arena": 4,
-      "Bear": 2,
-      "F2P": 5
-    },
-    "analysis": {
-      "en": "A valuable development and defense hero. His construction bonuses remain useful outside combat, while his Defender Troops Attack and squad Defense/Health make him more suited to garrison support than offensive rallies.",
-      "ar": "بطل مهم للتطوير والدفاع. مكافآت البناء تبقى مفيدة خارج المعارك، بينما زيادة هجوم قوات الدفاع ودفاع وصحة القوات تجعله أنسب لدعم الحامية من قيادة الحشود الهجومية."
-    },
-    "status": {
-      "en": "Excellent Development & Defense",
-      "ar": "ممتاز للتطوير والدفاع"
-    },
-    "bestFor": {
-      "en": [
-        "Construction",
-        "Castle Defense",
-        "Garrison Support"
-      ],
-      "ar": [
-        "البناء",
-        "دفاع القلعة",
-        "دعم الحامية"
-      ]
-    },
-    "lessEffective": {
-      "en": [
-        "Offensive Rally",
-        "Bear Hunt"
-      ],
-      "ar": [
-        "الحشود الهجومية",
-        "صيد الدب"
-      ]
-    },
-    "investment": {
-      "F2P": 5,
-      "Low Spender": 5,
-      "Whale": 4
-    },
-    "modes": {
-      "Expedition": 4,
-      "Arena": 4,
-      "Castle Attack": 2,
-      "Castle Defense": 5,
-      "Bear Hunt": 2
-    },
-    "strengths": {
-      "en": [
-        "Construction speed and cost reduction",
-        "Strong Defender Troops Attack",
-        "Good squad Defense and Health buffs",
-        "Easy long-term shard access"
-      ],
-      "ar": [
-        "زيادة سرعة البناء وتقليل تكلفته",
-        "رفع قوي لهجوم قوات الدفاع",
-        "تعزيز جيد لدفاع وصحة القوات",
-        "مصادر شظايا مناسبة على المدى الطويل"
-      ]
-    },
-    "weaknesses": {
-      "en": [
-        "Weak offensive rally value",
-        "Limited Bear Hunt contribution",
-        "Lower direct battlefield pressure than premium heroes"
-      ],
-      "ar": [
-        "قيمته ضعيفة في الحشود الهجومية",
-        "مساهمته محدودة في صيد الدب",
-        "ضغطه المباشر في المعركة أقل من الأبطال المميزين"
-      ]
-    },
-    "priority": {
-      "Skills": 5,
-      "Stars": 5,
-      "Exclusive Gear": 3,
-      "Widgets": 3
-    },
-    "verdict": {
-      "en": "A very efficient investment for F2P and low spenders because he supports both city development and defensive combat.",
-      "ar": "استثمار ممتاز للاعب المجاني وقليل الصرف لأنه يفيد في تطوير المدينة والدفاع في المعارك."
-    },
-    "perfectFor": {
-      "en": [
-        "F2P Players",
-        "Builders",
-        "Garrison Defenders"
-      ],
-      "ar": [
-        "اللاعبون المجانيون",
-        "مطورو المدينة",
-        "مدافعو الحامية"
-      ]
-    },
-    "skipIf": {
-      "en": [
-        "You only want offensive rally heroes",
-        "Your construction is already complete"
-      ],
-      "ar": [
-        "تبحث فقط عن أبطال حشود هجومية",
-        "أنهيت أغلب تطويرات البناء"
-      ]
-    }
+    "gear": [
+      "Rabbitgear Cannon",
+      "Max Level Stats",
+      "Power: 225,000",
+      "Hero Attack: 546",
+      "Hero Defense: 450",
+      "Hero Health: 3,375",
+      "Escort Attack: 182",
+      "Escort Defense: 150",
+      "Escort Health: 1,125",
+      "Archer Lethality: +50.00%",
+      "Archer Health: +50.00%",
+      "Fearless Advance – Conquest Skill",
+      "Saul’s brust of strong determination under extreme situation",
+      "increases his attack by 24%.",
+      "Attack Up: 6% / 12% / 16% / 20% / 24%",
+      "Defend to Attack – Expedition Skill",
+      "Increases Defender Troops Attack by 15%.",
+      "Defender Troops’ Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
   },
   {
     "id": "jabel",
     "name": "Jabel",
+    "rarity": "Mythic",
     "generation": 1,
-    "class": "Cavalry",
+    "class": "Unknown",
     "image": "assets/heroes/jabel.webp",
-    "source": [
-      "7-day Sign-in Gift",
-      "Path of Growth",
-      "Hero Recruitment",
+    "overview": "Jabel is a Mythic-quality Generation 1 hero in Kingshot, belonging to the Cavalry class. She is the easiest Mythic hero to unlock in Generation 1 since there are multiple ways to obtain her. The main methods include the 7-day sign-in gift for new players and hero",
+    "sources": [
+      "7-day sign-in gift",
+      "Path of Growth (Event)",
       "Watchtower Intel",
       "Hall of Heroes",
-      "Swordland Shop",
-      "Jabel’s Courage Pack"
+      "Swordland Shop"
     ],
-    "overview": {
-      "en": "A Mythic Generation 1 Cavalry hero and one of the easiest Mythic heroes to obtain. She offers damage reduction, offensive damage chances, and Defender Troops Lethality.",
-      "ar": "بطلة فرسان أسطورية من الجيل الأول ومن أسهل الأبطال الأسطوريين في الحصول عليها. تقدم تقليلًا للضرر وفرص زيادة هجومية ورفع فتك قوات الدفاع."
-    },
-    "talent": null,
-    "conquestStats": {
+    "stats": {
       "Attack": "2,220",
       "Defense": "2,220",
       "Health": "22,200"
     },
     "conquest": [
-      {
-        "name": "Gallant Throw",
-        "en": "Deals 252% area damage and pins targets for 1.5 seconds.",
-        "ar": "تسبب ضررًا جماعيًا بنسبة 252% وتثبت الأهداف لمدة 1.5 ثانية.",
-        "levels": "180% / 198% / 216% / 234% / 252%"
-      },
-      {
-        "name": "Brave the Storm",
-        "en": "Deals 210% Attack damage to the target.",
-        "ar": "تسبب ضررًا للهدف يعادل 210% من الهجوم.",
-        "levels": "150% / 165% / 180% / 195% / 210%"
-      },
-      {
-        "name": "Persistence",
-        "en": "Increases Attack Speed by 60% when Health is below 50%.",
-        "ar": "ترفع سرعة الهجوم بنسبة 60% عندما تنخفض الصحة عن 50%.",
-        "levels": "20% / 30% / 40% / 50% / 60%"
-      }
+      "Hero Attack: 2,220",
+      "Hero Defense: 2,220",
+      "Hero Health: 22,200",
+      "Gallant Throw",
+      "Throws a spear that pierces defenses, dealing Attack * 252%",
+      "area of eﬀect damage and pinning the targets for 1.5s.",
+      "Area of Eﬀect Damage Up: 180% / 198% / 216% / 234% / 252%",
+      "Brave the Storm",
+      "A true knight bravely confronts enemies, dealing Attack * 210%",
+      "damage to the target.",
+      "Damage Up: 150% / 165% / 180% / 195% / 210%",
+      "Persistence",
+      "Adversity ignites endless potential, increasing Attack Speed by",
+      "60% when Health is below 50%.",
+      "Attack Speed Up: 20% / 30% / 40% / 50% / 60%"
     ],
-    "expeditionStats": {
-      "Cavalry Attack": "+200.16%",
-      "Cavalry Defense": "+200.16%"
-    },
     "expedition": [
-      {
-        "name": "Rally Flag",
-        "en": "Has a 40% chance to reduce damage taken by 50% for all squads.",
-        "ar": "لديها فرصة 40% لتقليل الضرر المستلم لجميع القوات بنسبة 50%.",
-        "levels": "8% / 16% / 24% / 32% / 40%"
-      },
-      {
-        "name": "Hero’s Domain",
-        "en": "Gives all squads a 50% chance to deal 50% more damage when attacking.",
-        "ar": "تمنح جميع القوات فرصة 50% لإحداث ضرر إضافي بنسبة 50% عند الهجوم.",
-        "levels": "10% / 20% / 30% / 40% / 50%"
-      },
-      {
-        "name": "Youthful Rage",
-        "en": "Increases damage dealt by all squads by 25%.",
-        "ar": "ترفع الضرر الذي تسببه جميع القوات بنسبة 25%.",
-        "levels": "5% / 10% / 15% / 20% / 25%"
-      }
+      "Cavalry Attack: +200.16%",
+      "Cavalry Defense: +200.16%",
+      "Rally Flag",
+      "Jabel with her banner-like red armor, has a 40% chance of",
+      "reducing damage taken by 50% for all squads.",
+      "Damage Taken Chance Down: 8% / 16% / 24% / 32% / 40%",
+      "Hero’s Domain",
+      "Jabel, a fearless knight, grants all squads a 50% chance of",
+      "dealing 50% more damage when attacking.",
+      "Damage Up: 10% / 20% / 30% / 40% / 50%",
+      "Youthful Rage",
+      "Jabel’s valiant spirit inspires everyone increasing damage dealt",
+      "by 25% for all squads.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%"
     ],
-    "gear": {
-      "name": "Greaves of Faith",
-      "stats": {
-        "Power": "225,000",
-        "Hero Attack": "450",
-        "Hero Defense": "450",
-        "Hero Health": "4,500",
-        "Escort Attack": "150",
-        "Escort Defense": "150",
-        "Escort Health": "1,500",
-        "Cavalry Lethality": "+50.00%",
-        "Cavalry Health": "+50.00%"
-      },
-      "conquestSkill": {
-        "name": "Crimson Spirit",
-        "en": "Increases damage dealt by 30%.",
-        "ar": "ترفع الضرر الذي تسببه بنسبة 30%.",
-        "levels": "10% / 15% / 20% / 25% / 30%"
-      },
-      "expeditionSkill": {
-        "name": "Divine Strength",
-        "en": "Increases Defender Troops' Lethality by 15%.",
-        "ar": "ترفع فتك قوات الدفاع بنسبة 15%.",
-        "levels": "5% / 7.5% / 10% / 12.5% / 15%"
-      }
+    "gear": [
+      "Greaves of Faith",
+      "Max Level Stats",
+      "Power: 225,000",
+      "Hero Attack: 450",
+      "Hero Defense: 450",
+      "Hero Health: 4,500",
+      "Escort Attack: 150",
+      "Escort Defense: 150",
+      "Escort Health: 1,500",
+      "Cavalry Lethality: +50.00%",
+      "Cavalry Health: +50.00%",
+      "Crimson Spirit – Conquest Skill",
+      "Jabel’s will to win helps breakthrough her limitation, increasing",
+      "damage dealt by 30%.",
+      "Damage Dealt Up: 10% / 15% / 20% / 25% / 30%",
+      "Divine Strength – Expedition Skill",
+      "Based on steadfast faith, Defender Troops’ Lethality is",
+      "increased by 15%.",
+      "Defender Troops’ Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "zoe",
+    "name": "Zoe",
+    "rarity": "Mythic",
+    "generation": 2,
+    "class": "Infantry",
+    "image": "assets/heroes/zoe.webp",
+    "overview": "Zoe is a Mythic-quality Generation 2 hero in Kingshot, classiﬁed under the Infantry class. You can unlock her through Hero Roulette.",
+    "sources": [
+      "Hero Roulette",
+      "Daily Deals (Gen 3 and higher)",
+      "Hall of Heroes (Gen 3 and higher)"
+    ],
+    "stats": {
+      "Attack": "2,043",
+      "Defense": "2,664",
+      "Health": "39,960"
     },
-    "ratings": {
-      "Rally": 3,
-      "Defense": 5,
-      "Arena": 4,
-      "Bear": 4,
-      "F2P": 5
+    "conquest": [
+      "Hero Attack: 2,043",
+      "Hero Defense: 2,664",
+      "Hero Health: 39,960",
+      "Shield Strike",
+      "Zoe’s unpredictable attacks easily enweb foes, dealing Attack *",
+      "84% damage every 0.5s and amplifying damage taken by the",
+      "target by 30% for 2s.",
+      "Damage Up: 60% / 66% / 72% / 78% / 84%",
+      "Enemy Damage Taken Up: 10% / 15% / 20% / 25% / 30%",
+      "Agony Rush",
+      "Zoe requires pain to reach peak physical performance. She",
+      "immediately regains 40% of max Health under 50% Health. Can",
+      "only activate once per battle.",
+      "Heal Up: 20% / 25% / 30% / 35% / 40%",
+      "Holy Might",
+      "Zoe inspires her fellow warriors to battle, boosting your heroes’",
+      "Attack Speed by 7%.",
+      "Attack Speed Up: 3% / 4% / 5% / 6% / 7%"
+    ],
+    "expedition": [
+      "Infantry Attack: +240.19%",
+      "Infantry Defense: +240.19%",
+      "Sundering Wound",
+      "Your squads’ attacks gain a 20% chance of inﬂicting Sunder,",
+      "dealing 40% damage per turn for 3 turns.",
+      "Damage Up: 8% / 16% / 24% / 32% / 40%",
+      "Stoic",
+      "Zoe is a gifted female orator, and her rousing battle speeches",
+      "increase the total Squads’ Attack by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Inﬁnite Arsenal",
+      "Zoe strikes the enemy so completely and utterly that your",
+      "squads’ attacks gain a 50% chance of amplifying enemy",
+      "squads’ damage taken by 50%.",
+      "Enemy Damage Taken Up: 10% / 20% / 30% / 40% / 50%"
+    ],
+    "gear": [
+      "The Unrighteous",
+      "Max Level Stats",
+      "Power: 270,000",
+      "Hero Attack: 414",
+      "Hero Defense: 540",
+      "Hero Health: 8,100",
+      "Escort Attack: 138",
+      "Escort Defense: 180",
+      "Escort Health: 2,700",
+      "Infantry Lethality: +60.00%",
+      "Infantry Health: +60.00%",
+      "Death or Glory – Conquest Skill",
+      "Zoe’s inner demon is awakened only by pain. Gaining a 24%",
+      "increased Attack until the end of the Battle once ‘Agony Rush’",
+      "is triggered.",
+      "Attack Up: 8% / 12% / 16% / 20% / 24%",
+      "Dark Lady – Expedition Skill",
+      "Zoe is a relentlessly demanding garrison commander,",
+      "increasing Defender Squads’ Attack by 15%.",
+      "Defender Troops’ Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Mystic Divination Event",
+      "Gilded Threads"
+    ]
+  },
+  {
+    "id": "hilde",
+    "name": "Hilde",
+    "rarity": "Mythic",
+    "generation": 2,
+    "class": "Cavalry",
+    "image": "assets/heroes/hilde.webp",
+    "overview": "Hilde is a Mythic-quality Generation 2 hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through Daily Deals or the Hall of Governors event.",
+    "sources": [
+      "Hall of Governors",
+      "Strongest Governor Event",
+      "Daily Deals",
+      "Hero Rally",
+      "Hall of Heroes (Gen 3 and higher)"
+    ],
+    "stats": {
+      "Attack": "2,664",
+      "Defense": "2,220",
+      "Health": "26,640"
     },
-    "analysis": {
-      "en": "An excellent accessible Generation 1 Cavalry choice. Her broad availability makes star progression easier, while damage reduction and Defender Lethality make her especially useful for early garrison defense.",
-      "ar": "خيار ممتاز وسهل الوصول للفرسان في الجيل الأول. تعدد مصادر شظاياها يجعل تطوير النجوم أسهل، بينما تقليل الضرر وفتك قوات الدفاع يجعلانها مفيدة جدًا للدفاع المبكر عن الحامية."
+    "conquest": [
+      "Hero Attack: 2,664",
+      "Hero Defense: 2,220",
+      "Hero Health: 26,640",
+      "Rejuvenating Plea",
+      "Immediately restores Health equal to her Attack * 280% to all",
+      "friendly heroes.",
+      "Heal Up: 200% / 220% / 240% / 260% / 280%",
+      "Redeemer",
+      "Injury is no match for Hilde’s redeeming invocations.",
+      "Immediately restores Health equal to her Attack * 140% to the",
+      "weakest friendly hero.",
+      "Heal Up: 100% / 110% / 120% / 130% / 140%",
+      "Intimidation",
+      "Psychological warfare is an age-old tactic. Disables the enemy",
+      "target for 1s while dealing Attack * 196% damage.",
+      "Damage Up: 140% / 154% / 168% / 182% / 196%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +240.19%",
+      "Cavalry Defense: +240.19%",
+      "Noble Path",
+      "Hilde’s exhaustive discipline develops soldiers into true",
+      "weapons, increasing the total squads’ Attack and Defense by",
+      "15% and 10%.",
+      "Attack Up: 3% / 6% / 9% / 12% / 15%",
+      "Defense Up: 2% / 4% / 6% / 8% / 10%",
+      "Elixir of Strength",
+      "Hilde uses her secret tonic to enhance the warriors’ strength,",
+      "granting all squads’ attack a 25% chance of dealing 200%",
+      "damage.",
+      "Damage Up: 120% / 140% / 160% / 180% / 200%",
+      "Trial by Fire",
+      "Hilde’s devout prayer has a 40% chance of reducing damage",
+      "taken by 50% for all squads.",
+      "Damage Taken Chance Down: 8% / 16% / 24% / 32% / 40%"
+    ],
+    "gear": [
+      "Revelation",
+      "Max Level Stats",
+      "Power: 270,000",
+      "Hero Attack: 540",
+      "Hero Defense: 540",
+      "Hero Health: 5,400",
+      "Escort Attack: 180",
+      "Escort Defense: 180",
+      "Escort Health: 1,800",
+      "Cavalry Lethality: +60.00%",
+      "Cavalry Health: +60.00%",
+      "Holy Invocation – Conquest Skill",
+      "Soldiers swear by Hilde’s everyday miracles, increasing her",
+      "healing eﬀects by 70%.",
+      "Healing Eﬀects Up: 30% / 40% / 50% / 60% / 70%",
+      "Fortitude – Expedition Skill",
+      "Hilde’s pious conﬁdence in her cause is infectious, increasing",
+      "Defender Squads’ Health by 15%.",
+      "Defender Squads’ Health Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "marlin",
+    "name": "Marlin",
+    "rarity": "Mythic",
+    "generation": 2,
+    "class": "Archer",
+    "image": "assets/heroes/marlin.webp",
+    "overview": "Marlin is a Mythic-quality Generation 2 hero in Kingshot, classiﬁed under the Archer class. You can unlock him through the Hall of Heroes.",
+    "sources": [
+      "Hall of Heroes",
+      "Daily Deals (Gen 3 and higher)"
+    ],
+    "stats": {
+      "Attack": "3,235",
+      "Defense": "2,220",
+      "Health": "19,980"
     },
-    "status": {
-      "en": "High-Value F2P Cavalry",
-      "ar": "فرسان ممتازة للاعب المجاني"
+    "conquest": [
+      "Hero Attack: 3,235",
+      "Hero Defense: 2,220",
+      "Hero Health: 19,980",
+      "Tidal Rush",
+      "Marlin is a tidal force on the battleﬁeld, literally and ﬁguratively,",
+      "when he unleashes a pulse dealing 280% Area of Eﬀect",
+      "damage and immobilizing the enemy for 1.5s.",
+      "Damage Up: 200% / 220% / 240% / 260% / 280%",
+      "Fermented Blow",
+      "Marlin’s deadly airborne concoction deals Attack * 70% Area of",
+      "Eﬀect damage.",
+      "Area of Eﬀect Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Lucky Hit",
+      "Good fortune inevitably follows bad. Marlin stuns targets for",
+      "0.5s after every 5 strikes.",
+      "No. of Attacks: 8 / 7 / 7 / 6 / 5",
+      "Stun Time: 0.2s / 0.2s / 0.4s / 0.4s / 0.5s"
+    ],
+    "expedition": [
+      "Archer Attack: +240.19%",
+      "Archer Defense: +240.19%",
+      "Wild Card",
+      "Marlin, being unpredictable, has a 40% chance of increasing",
+      "damage dealt by 50% for all squads.",
+      "Damage Dealt Chance Up: 8% / 16% / 24% / 32% / 40%",
+      "Rumhead",
+      "“Stiﬀ rum can drown most any battleﬁeld sorrow”. Marlin grants",
+      "all squads a 20% chance of reducing the total Enemy Squads’",
+      "Lethality by 50% for 2 turns when attacking.",
+      "Enemy Lethality Down: 10% / 20% / 30% / 40% / 50%",
+      "Dynamo",
+      "Grants your squads’ attack a 50% chance of increasing damage",
+      "dealt by 50%.",
+      "Damage Up: 10% / 20% / 30% / 40% / 50%"
+    ],
+    "gear": [
+      "Mistweaver",
+      "Max Level Stats",
+      "Power: 270,000",
+      "Hero Attack: 655",
+      "Hero Defense: 540",
+      "Hero Health: 4,050",
+      "Escort Attack: 218",
+      "Escort Defense: 180",
+      "Escort Health: 1,350",
+      "Archer Lethality: +60.00%",
+      "Archer Health: +60.00%",
+      "Servant of Wine – Conquest Skill",
+      "There’s no battleﬁeld pick-me-up like Marlin’s special brew,",
+      "healing your weakest hero by Attack * 15% with each basic",
+      "attack.",
+      "Weakest Hero Health Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Admiral of the Line – Expedition Skill",
+      "A true admiral leads from the front. Increases Rally Squads’",
+      "Lethality by 15%.",
+      "Rally Squads’ Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Charm Design",
+      "Generation 2 Heroes"
+    ]
+  },
+  {
+    "id": "eric",
+    "name": "Eric",
+    "rarity": "Mythic",
+    "generation": 3,
+    "class": "Infantry",
+    "image": "assets/heroes/eric.webp",
+    "overview": "Eric is a Mythic-quality Generation 3 Hero in Kingshot, classiﬁed under the Infantry class. You can unlock him through the Hall of Heroes.",
+    "sources": [
+      "Hall of Heroes",
+      "Swordland Shop"
+    ],
+    "stats": {
+      "Attack": "2,554",
+      "Defense": "3,330",
+      "Health": "49,950"
     },
-    "bestFor": {
-      "en": [
-        "Castle Defense",
-        "Garrison",
-        "Arena",
-        "Early Cavalry"
-      ],
-      "ar": [
-        "دفاع القلعة",
-        "الحامية",
-        "الساحة",
-        "الفرسان في البداية"
-      ]
+    "conquest": [
+      "Hero Attack: 2,554",
+      "Hero Defense: 3,330",
+      "Hero Health: 49,950",
+      "Ground Shock",
+      "Eric imperils the ground with an almighty smash of his blessed",
+      "hammer, dealing Attack * 168% damage to the target ahead",
+      "while reducing targets’ Attack Speed by 50% for 4s.",
+      "Damage Up: 120% / 132% / 144% / 156% / 168%",
+      "Veterancy",
+      "Battle blows and armor scars are naught but glory for a paladin.",
+      "Attacks against Eric have a 16% chance of increasing Defense",
+      "by 20% for 2 seconds (max 5 stacks).",
+      "Probability Up: 8% / 10% / 12% / 14% / 16%",
+      "Defense Up: 8% / 11% / 14% / 17% / 20%",
+      "Hammer of Justice",
+      "Eric casts his warhammer into the ground, dealing Attack *",
+      "112% damage in a fan-shaped arc with a 30% chance of",
+      "stunning the targets for 1s.",
+      "Damage Up: 80% / 88% / 96% / 104% / 112%"
+    ],
+    "expedition": [
+      "Infantry Attack: +290.23%",
+      "Infantry Defense: +290.23%",
+      "Holy Warrior",
+      "The purity of Eric’s faith can cause even his enemies to",
+      "stumble, reducing the total Enemy Squads’ Attack by 20%.",
+      "Enemy Troop Attack Down: 4% / 8% / 12% / 16% / 20%",
+      "Conviction",
+      "Conviction is a shield for the righteous, reducing Squads’",
+      "Damage Taken by 20%.",
+      "Damage Taken Down: 4% / 8% / 12% / 16% / 20%",
+      "Exhortation",
+      "An inspiring leader can unlock new reserves of vitality. Eric",
+      "increases the total Squads’ Health by 25%.",
+      "Health Up: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Anvil of Truth",
+      "Max Level Stats",
+      "Power: 315,000",
+      "Hero Attack: 482",
+      "Hero Defense: 630",
+      "Hero Health: 9,450",
+      "Escort Attack: 161",
+      "Escort Defense: 210",
+      "Escort Health: 3,150",
+      "Infantry Lethality: +70.00%",
+      "Infantry Health: +70.00%",
+      "Blessed Hammer – Conquest Skill",
+      "Eric trusts not himself but his blessed warhammer, increasing",
+      "damage by 30%.",
+      "Damage Up: 10% / 15% / 20% / 25% / 30%",
+      "Vanguard – Expedition Skill",
+      "A paladin must always lead by example from the front. Eric",
+      "increases Defender Squad Defense by 15%.",
+      "Defender Defense Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Jaeger",
+      "Petra"
+    ]
+  },
+  {
+    "id": "jaeger",
+    "name": "Jaeger",
+    "rarity": "Mythic",
+    "generation": 3,
+    "class": "Archer",
+    "image": "assets/heroes/jaeger.webp",
+    "overview": "Jaeger is a Mythic-quality Generation 3 hero in Kingshot, classiﬁed under the Archer class. You can unlock him through the Daily Deals and the Strongest Governor Event.",
+    "sources": [
+      "Daily Deals",
+      "Hero Rally",
+      "Swordland Shop",
+      "Strongest Governor Event"
+    ],
+    "stats": {
+      "Attack": "4,045",
+      "Defense": "3,330",
+      "Health": "24,974"
     },
-    "lessEffective": {
-      "en": [
-        "Late-Generation Competitive Play"
-      ],
-      "ar": [
-        "المنافسات في الأجيال المتقدمة"
-      ]
+    "conquest": [
+      "Hero Attack: 4,045",
+      "Hero Defense: 3,330",
+      "Hero Health: 24,974",
+      "Fatal Attraction",
+      "Like a siren’s deadly song, Jaeger deals Attack * 224% damage",
+      "to enemies in the target area and stuns them for 2s.",
+      "Area of Eﬀect Damage Up: 160% / 176% / 192% / 208% / 224%",
+      "Game of Chance",
+      "Jaeger’s deadliest performances are also his most",
+      "unpredictable. If successful, Jaeger deals Attack * 300%",
+      "damage or else restores the target’s Health equal to his Attack",
+      "* 50%.",
+      "Damage Up: 220% / 240% / 260% / 280% / 300%",
+      "Rumormonger",
+      "A wandering bard’s knows how to take advantage of loose lips,",
+      "increasing Enemy Damage Taken by 30% for 3s.",
+      "Enemy Damage Taken Up: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Archer Attack: +290.23%",
+      "Archer Defense: +290.23%",
+      "The Tempest",
+      "Jaeger’s triumphant music is a ﬁne tool of intimidation,",
+      "granting a 20% chance of increasing Squad’s damage dealt by",
+      "40% for 3 turns.",
+      "Damage Up: 8% / 16% / 24% / 32% / 40%",
+      "The Resistance",
+      "Music focuses the soldier’s mind. Jaeger grants all squads a",
+      "20% chance of reducing the total Enemy Squad’s Lethality by",
+      "50% for 2 turns when attacking.",
+      "Enemy Lethality Down: 10% / 20% / 30% / 40% / 50%",
+      "The Celebration",
+      "A rousing song unlocks new reserves of strength. Increases the",
+      "total Squad’s Health by 25%.",
+      "Health Up: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Wanderwail",
+      "Max Level Stats",
+      "Power: 315,000",
+      "Hero Attack: 764",
+      "Hero Defense: 630",
+      "Hero Health: 4,725",
+      "Escort Attack: 254",
+      "Escort Defense: 210",
+      "Escort Health: 1,575",
+      "Archer Lethality: +70.00%",
+      "Archer Health: +70.00%",
+      "Sound of Silence – Conquest Skill",
+      "“Hush now and watch the master work”. Jaeger silences and",
+      "prevents the target from using skills for 5s (skills already cast",
+      "are not aﬀected), dealing Attack * 300% damage.",
+      "Skill Prevention Duration: 3s / 3.5s / 4s / 4.5s / 5s",
+      "Damage Up: 220% / 240% / 260% / 280% / 300%",
+      "Hymn to Survival – Expedition Skill",
+      "No ease or luxury can be enjoyed unless the lives of soldiers are",
+      "well-guarded. Jaeger increases Defender Squads’ Health by",
+      "15%.",
+      "Defender Squads’ Health Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "petra",
+    "name": "Petra",
+    "rarity": "Mythic",
+    "generation": 3,
+    "class": "Cavalry",
+    "image": "assets/heroes/petra.webp",
+    "overview": "Petra is a Mythic-quality Generation 3 Hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through Hero Roulette.",
+    "sources": [
+      "Hero Roulette",
+      "Swordland Showdown"
+    ],
+    "stats": {
+      "Attack": "3,330",
+      "Defense": "3,330",
+      "Health": "33,300"
     },
-    "investment": {
-      "F2P": 5,
-      "Low Spender": 5,
-      "Whale": 3
+    "conquest": [
+      "Hero Attack: 3,330",
+      "Hero Defense: 3,330",
+      "Hero Health: 33,300",
+      "Dichotomoy",
+      "Petra throws a tarot card at an enemy, dealing Attack * 378%",
+      "damage and inﬂicting one of the following eﬀects: reducing the",
+      "target’s Attack by 20% for 2s or stunning the target for 1.5s.",
+      "Damage Up: 270% / 297% / 324% / 351% / 378%",
+      "Change of Fate",
+      "Petra curses an enemy, dealing ﬂoating damage based on the",
+      "base value of Petra’s Attack * 70%. The ﬁnal damage is a",
+      "random amount between 5% and 600% of that base value.",
+      "Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Turn Card",
+      "Petra reverses misfortune by healing a friendly hero with the",
+      "lowest percentage of Health remaining based on the base value",
+      "of Petra’s Attack * 140%. The ﬁnal Health restored is a random",
+      "amount ranging between 5% and 400% of that base value.",
+      "Heal Up: 100% / 110% / 120% / 130% / 140%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +290.23%",
+      "Cavalry Defense: +290.23%",
+      "Evil Eye",
+      "Grants all Squads’ Attack a 50% chance of cursing the target,",
+      "increasing their damage taken by 50%.",
+      "Enemy Damage Taken Up: 10% / 20% / 30% / 40% / 50%",
+      "The Favor",
+      "Petra is known as a lucky fortune-teller to her soldiers, granting",
+      "a 50% chance of increasing the Squads’ Attack by 50%.",
+      "Damage Up: 10% / 20% / 30% / 40% / 50%",
+      "The Shield",
+      "Petra’s divination navigates bad outcomes with a 40% chance",
+      "of reducing damage taken by 50% for all squads.",
+      "Damage Taken Down: 10% / 20% / 30% / 40% / 50%"
+    ],
+    "gear": [
+      "Fate’s Writ",
+      "Max Level Stats",
+      "Power: 315,000",
+      "Hero Attack: 630",
+      "Hero Defense: 630",
+      "Hero Health: 6,300",
+      "Escort Attack: 210",
+      "Escort Defense: 210",
+      "Escort Health: 2,100",
+      "Cavalry Lethality: +70.00%",
+      "Cavalry Health: +70.00%",
+      "Weighted Deck – Conquest Skill",
+      "Petra has become more skilled at weighting the cards of fate in",
+      "her favor, increasing the upper and lower limit of her ﬂuctuating",
+      "skills by 150%.",
+      "Fluctuating Skills’ Eﬀects Up: 30% / 60% / 90% / 120% / 150%",
+      "Cosmic Eye – Expedition Skill",
+      "“Strike!” The cards never fail to inform Petra of the right time to",
+      "act. Petra increases Rally Squad Attack by 15%.",
+      "Rally Squad Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Eric",
+      "Lion"
+    ]
+  },
+  {
+    "id": "alcar",
+    "name": "Alcar",
+    "rarity": "Mythic",
+    "generation": 4,
+    "class": "Infantry",
+    "image": "assets/heroes/alcar.webp",
+    "overview": "Alcar is a Mythic-quality Generation 4 Hero in Kingshot, classiﬁed under the Infantry class. You can unlock him through the Hero Rally, Daily Deals, Strongest Governor, and Kingdom of Power event.",
+    "sources": [
+      "Hero Rally",
+      "Daily Deals",
+      "Strongest Governor Event",
+      "Kingdom of Power Event",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "3,150",
+      "Defense": "4,106",
+      "Health": "61,604"
     },
-    "modes": {
-      "Expedition": 4,
-      "Arena": 4,
-      "Castle Attack": 3,
-      "Castle Defense": 5,
-      "Bear Hunt": 4
+    "conquest": [
+      "Hero Attack: 3,150",
+      "Hero Defense: 4,106",
+      "Hero Health: 61,604",
+      "Glorious Mark",
+      "A Praetorian’s glory is his strength. Alcar enters an invulnerable",
+      "state (unable to move or cast skills, immune to control eﬀects)",
+      "and reduces Damage Taken by 70% for nearby friendly squads",
+      "for 2s.",
+      "Friendly Damage Taken Down: 30% / 40% / 50% / 60% / 70%",
+      "Boneshatter",
+      "Alcar spears a line of enemies, dealing Attack * 98% damage",
+      "and increases the Damage Taken for enemies hit by 20% for 2s.",
+      "Damage Up: 70% / 77% / 84% / 91% / 98%",
+      "Second Wind",
+      "Alcar’s loyalty to the old ways gives him strength. “Glorious",
+      "Mark” restores Attack * 42% Health every second for 5s.",
+      "Heal Up: 30% / 33% / 36% / 39% / 42%"
+    ],
+    "expedition": [
+      "Infantry Attack: +370.29%",
+      "Infantry Defense: +370.29%",
+      "Rescuing Hands",
+      "Alcar’s utter dedication to keeping his men safe is well-proved.",
+      "Reduces Infantry and Archer’s Damage Taken by 70% every 5",
+      "turns for 2 turns.",
+      "Damage Taken Down: 14% / 28% / 42% / 56% / 70%",
+      "Praetorian Will",
+      "The ﬁghting belligerence of a Praetorian is something for",
+      "others to study. Increases Infantry Damage Dealt by 100% and",
+      "Cavalry and Archer’s Damage Dealt by 10%.",
+      "Infantry Damage Up: 20% / 40% / 60% / 80% / 100%",
+      "Cavalry & Archer Damage Up: 2% / 4% / 6% / 8% / 10%",
+      "Capre Diem",
+      "Years of training have taught Alcar how to exploit enemy",
+      "weakness, increasing Infantry Damage Dealt per attack by 60%",
+      "and target Damage Taken by 25% for 1 turn.",
+      "Extra Damage Up: 12% / 24% / 36% / 48% / 60%",
+      "Enemy Damage Taken Up: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Praetorian Guard",
+      "Max Level Stats",
+      "Power: 416,250",
+      "Hero Attack: 638",
+      "Hero Defense: 832",
+      "Hero Health: 12,487",
+      "Escort Attack: 212",
+      "Escort Defense: 277",
+      "Escort Health: 4,162",
+      "Infantry Lethality: +92.50%",
+      "Infantry Health: +92.50%",
+      "Flagbearer – Conquest Skill",
+      "Glory is best shared. ‘Glorious Mark’ increases friendly Squads’",
+      "Attack by 42% for 2.5s.",
+      "Attack Up: 30% / 33% / 36% / 39% / 42%",
+      "Vow of Honor – Expedition Skill",
+      "There is power in the steadfast vow. Alcar increases Defender",
+      "Squads’ Health by 15%.",
+      "Defender Health Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "rosa",
+    "name": "Rosa",
+    "rarity": "Mythic",
+    "generation": 4,
+    "class": "Archer",
+    "image": "assets/heroes/rosa.webp",
+    "overview": "Rosa is a Mythic-quality Generation 4 hero in Kingshot, classiﬁed under the Archer class. You can unlock her through the Hero Roulette and Swordland Showdown Shop.",
+    "sources": [
+      "Hero Roulette",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "4,989",
+      "Defense": "4,106",
+      "Health": "30,802"
     },
-    "strengths": {
-      "en": [
-        "Easy Mythic shard access",
-        "Strong damage reduction",
-        "Good offensive damage chance",
-        "Defender Troops Lethality support"
-      ],
-      "ar": [
-        "سهولة الحصول على الشظايا الأسطورية",
-        "تقليل قوي للضرر",
-        "فرصة جيدة لزيادة الضرر",
-        "دعم فتك قوات الدفاع"
-      ]
+    "conquest": [
+      "Hero Attack: 4,989",
+      "Hero Defense: 4,106",
+      "Hero Health: 30,802",
+      "Battle Focus",
+      "A voluptuous ﬁgure, Rosa is used to drawing battleﬁeld",
+      "attention. Rosa clears all debuﬀs (control eﬀects, etc.) for all",
+      "squads and increases their Attack by 7% for 5s, during which",
+      "they remain immune to debuﬀs.",
+      "Attack Up: 3% / 4% / 5% / 6% / 7%",
+      "Eﬀect Duration: 3s / 3.5s / 4s / 4.5s / 5s",
+      "Flutterfang",
+      "Rosa spins her fan blade out with dazzling ferocity, dealing",
+      "Attack * 300% damage to enemies in its path.",
+      "Damage Up: 220% / 240% / 260% / 280% / 300%",
+      "Swoon Chakra",
+      "Rosa’s dancing is a wonderful distraction from the tyranny of",
+      "the battleﬁeld, reducing Attack Speed by 3% and healing",
+      "eﬀects by 60% for all enemy squads.",
+      "Enemy Attack Speed Down: 1% / 1.5% / 2% / 2.5% / 3%",
+      "Reduces enemy healing: 40% / 45% / 50% / 55% / 60%"
+    ],
+    "expedition": [
+      "Archer Attack: +370.29%",
+      "Archer Defense: +370.29%",
+      "Chaos Gambit",
+      "Well-placed chaos is prologue to success. Rosa grants a 40%",
+      "chance of increasing all Squads’ Damage Dealt by 50%.",
+      "Damage Up: 10% / 20% / 30% / 40% / 50%",
+      "Rose of War",
+      "No soldier wishes to harm this wild rose of war, reducing",
+      "damage dealt by 20% for all enemy squads.",
+      "Enemy Damage Down: 4% / 8% / 12% / 16% / 20%",
+      "Golden Rhythm",
+      "A dance of distraction is the perfect complement to archer ﬁre,",
+      "increasing Archers’ total Attack by 30%.",
+      "Attack Up: 6% / 12% / 18% / 24% / 30%"
+    ],
+    "gear": [
+      "Aeolian",
+      "Max Level Stats",
+      "Power: 416,250",
+      "Hero Attack: 1010",
+      "Hero Defense: 832",
+      "Hero Health: 6,243",
+      "Escort Attack: 336",
+      "Escort Defense: 277",
+      "Escort Health: 2,081",
+      "Archer Lethality: +92.50%",
+      "Archer Health: +92.50%",
+      "Night Reverie – Conquest Skill",
+      "Upon casting Battle Focus, Rosa increases her Attack by 15%",
+      "until the end of the battle.",
+      "Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Perihelion – Expedition Skill",
+      "Rosa’s performances greatly increase your soldiers’ willingness",
+      "to ﬁght, increasing Rally Squad’s Lethality by 15%.",
+      "Rally Squads’ Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Alcar",
+      "Margot"
+    ]
+  },
+  {
+    "id": "margot",
+    "name": "Margot",
+    "rarity": "Mythic",
+    "generation": 4,
+    "class": "Cavalry",
+    "image": "assets/heroes/margot.webp",
+    "overview": "Margot is a Mythic-quality Generation 4 Hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through the Hall of Heroes and Swordland Showdown Shop.",
+    "sources": [
+      "Hall of Heroes",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "4,106",
+      "Defense": "4,106",
+      "Health": "41,070"
     },
-    "weaknesses": {
-      "en": [
-        "Less specialized than premium Cavalry heroes",
-        "Power falls with newer generations",
-        "Not the best main rally leader"
-      ],
-      "ar": [
-        "أقل تخصصًا من أبطال الفرسان المدفوعين",
-        "تنخفض قوتها مع الأجيال الجديدة",
-        "ليست أفضل قائد رئيسي للحشود"
-      ]
+    "conquest": [
+      "Hero Attack: 4,106",
+      "Hero Defense: 4,106",
+      "Hero Health: 41,070",
+      "Ambush",
+      "Margot ambushes an enemy with bombs, dealing Attack * 420%",
+      "Area of Eﬀect damage.",
+      "Area of Eﬀect Damage Up: 300% / 330% / 360% / 390% / 420%",
+      "Parry",
+      "Swords can be used oﬀensively and defensively. Margot has",
+      "25% chance of parrying, avoiding all damage from enemy",
+      "attacks.",
+      "Dodge Probability Up: 5% / 10% / 15% / 20% / 25%",
+      "Stiletto",
+      "Margot head-gouges the enemy (heroes ﬁrst), dealing Attack *",
+      "140% damage and immobilizing them for 1.5s.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +370.29%",
+      "Cavalry Defense: +370.29%",
+      "Warbringer",
+      "Margot’s focus on armor-penetration increases total Squads’",
+      "Attack by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Subterfuge",
+      "Within Margot’s haphazard positioning lies careful strategy. Her",
+      "presents grants all Squads a 20% chance of dodging Normal",
+      "Attacks.",
+      "Dodge Probability Up: 4% / 8% / 12% / 16% / 20%",
+      "Sleight Hand",
+      "Margot’s Cavalry have a 25% chance of performing an extra",
+      "attack, dealing 200% damage.",
+      "Damage Up: 120% / 140% / 160% / 180% / 200%"
+    ],
+    "gear": [
+      "Revel Fang",
+      "Max Level Stats",
+      "Power: 416,250",
+      "Hero Attack: 832",
+      "Hero Defense: 832",
+      "Hero Health: 8,325",
+      "Escort Attack: 277",
+      "Escort Defense: 277",
+      "Escort Health: 2,775",
+      "Cavalry Lethality: +92.50%",
+      "Cavalry Health: +92.50%",
+      "Indefensible – Conquest Skill",
+      "“You can’t duck both blades”. Margot has a 40% chance of",
+      "launching a second attack with each Normal Attack, dealing",
+      "Attack * 45% damage.",
+      "Damage Up: 25% / 30% / 35% / 40% / 45%",
+      "Pugilist – Expedition Skill",
+      "Margot never lets her guard down on the battlements even for",
+      "a moment, increasing Defender Squads’ Lethality by 15%.",
+      "Defender Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Rosa",
+      "Generation 4 Heroes"
+    ]
+  },
+  {
+    "id": "long-fei",
+    "name": "Long Fei",
+    "rarity": "Mythic",
+    "generation": 5,
+    "class": "Infantry",
+    "image": "assets/heroes/long-fei.webp",
+    "overview": "Long Fei is a Mythic-quality Generation 5 hero in Kingshot, classiﬁed under the Infantry class. You can unlock him through the Hero Roulette and Swordland Showdown Shop.",
+    "sources": [
+      "Hero Roulette",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "3,780",
+      "Defense": "4,928",
+      "Health": "73,926"
     },
-    "priority": {
-      "Skills": 5,
-      "Stars": 5,
-      "Exclusive Gear": 3,
-      "Widgets": 3
+    "conquest": [
+      "Hero Attack: 3,780",
+      "Hero Defense: 4,928",
+      "Hero Health: 73,926",
+      "Ambrosia",
+      "Long Fei becomes one with the battleﬁeld upon drinking his",
+      "signature ambrosia, gaining 120% Attack Speed and Immunity",
+      "to control eﬀects for 4s.",
+      "Attack Speed Up: 80% / 90% / 100% / 110% / 120%",
+      "Above and Beyond",
+      "The overconﬁdence of Long Fei’s enemies is their weakness.",
+      "Damage taken by Long Fei reduces by 60% when under 50%",
+      "health.",
+      "Damage Taken Down: 20% / 30% / 40% / 50% / 60%",
+      "Mountain Mover",
+      "The warriors of the ancient way have taught Long Fei many",
+      "secrets to survival. Long Fei gains 48% Attack when under 50%",
+      "health.",
+      "Attack Up: 16% / 24% / 32% / 40% / 48%"
+    ],
+    "expedition": [
+      "Infantry Attack: +444.35%",
+      "Infantry Defense: +444.35%",
+      "Mighty Paragon",
+      "Long Fei’s courage in the teeth of the enemy points the way",
+      "toward the warrior within, granting a 40% chance of reducing",
+      "damage taken by all squads by 50%.",
+      "Damage Taken Down: 10% / 20% / 30% / 40% / 50%",
+      "Celestial Sustenance",
+      "The sweet nectar of Long Fei’s potions have born fruit in",
+      "soldiers’ vitality, increasing total Squads’ Defense by 25%.",
+      "Defense Up: 5% / 10% / 15% / 20% / 25%",
+      "Art of War",
+      "“All warfare is based on deception”. Long Fei’s war wisdom is",
+      "ingrained in his soldiers, granting all squads’ attacks a 25%",
+      "chance of dealing 200% damage.",
+      "Damage Up: 120% / 140% / 160% / 180% / 200%"
+    ],
+    "gear": [
+      "Immortal’s Flask",
+      "Max Level Stats",
+      "Power: 499,500",
+      "Hero Attack: 765",
+      "Hero Defense: 999",
+      "Hero Health: 14,985",
+      "Escort Attack: 255",
+      "Escort Defense: 333",
+      "Escort Health: 4,995",
+      "Infantry Lethality: +111.00%",
+      "Infantry Health: +111.00%",
+      "Strong Brew – Conquest Skill",
+      "Extends Ambrosia by 1.5s and restores Long Fei’s health by 15%",
+      "of damage dealt.",
+      "Health Up: 7% / 9% / 11% / 13% / 15%",
+      "Strategic Strike – Expedition Skill",
+      "“Appear unable when able; appear inactive when active.” Long",
+      "Fei’s war wisdom increases Defender Squads’ Attack by 15%.",
+      "Defender Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Thrud",
+      "Vivian"
+    ]
+  },
+  {
+    "id": "vivian",
+    "name": "Vivian",
+    "rarity": "Mythic",
+    "generation": 5,
+    "class": "Archer",
+    "image": "assets/heroes/vivian.webp",
+    "overview": "Vivian is a Mythic-quality Generation 5 Hero in Kingshot, classiﬁed under the Archer class. You can unlock her through the Hall of Heroes and Swordland Showdown Shop.",
+    "sources": [
+      "Hall of Heroes",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "5,987",
+      "Defense": "4,928",
+      "Health": "36,962"
     },
-    "verdict": {
-      "en": "A safe and efficient Generation 1 Cavalry investment, especially for F2P players who want strong early defense.",
-      "ar": "استثمار آمن وفعال للفرسان في الجيل الأول، خصوصًا للاعب المجاني الذي يريد دفاعًا قويًا في البداية."
+    "conquest": [
+      "Hero Attack: 5,987",
+      "Hero Defense: 4,928",
+      "Hero Health: 36,962",
+      "Gilded Barrage",
+      "Vivian ﬁres a coin bullet at the enemy back row (heroes ﬁrst),",
+      "dealing Attack * 252% Area of Eﬀect damage and reducing the",
+      "targets’ Attack Speed by 50% for 2 seconds.",
+      "Area of Eﬀect Damage Up: 180% / 198% / 216% / 234% / 252%",
+      "Lucky Strike",
+      "Luck can turn the tide. Vivian ﬁres at an enemy (heroes ﬁrst),",
+      "dealing Attack * 140% damage with a 50% chance of dealing",
+      "double damage.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Priceless Shot",
+      "Vivian unleashes a devastating hail of massive coin bullets,",
+      "dealing Attack * 49% damage per second to enemies within",
+      "range for 3s.",
+      "Damage Up: 35% / 38.5% / 42% / 45.5% / 49%"
+    ],
+    "expedition": [
+      "Archer Attack: +444.35%",
+      "Archer Defense: +444.35%",
+      "Crouching Tiger",
+      "Vivian is a patient commander willing to wait for just the right",
+      "moment to strike. All squads’ attacks increase enemy damage",
+      "taken by 25%.",
+      "Enemy Damage Taken Up: 5% / 10% / 15% / 20% / 25%",
+      "Focus Fire",
+      "Vivian’s sharp focus exposes enemy weaknesses, granting all",
+      "squads’ attack 100% extra damage after every four attacks, and",
+      "causes the target to receive 15% extra damage for its next",
+      "attack received.",
+      "Extra Damage Up: 20% / 40% / 60% / 80% / 100%",
+      "Enemy Damage Taken Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Trap of Greed",
+      "Vivian equips her Archers with custom coin traps, dealing 60%",
+      "extra damage to all enemies on the next attack of every 4",
+      "attacks.",
+      "Extra Damage Up: 12% / 24% / 36% / 48% / 60%"
+    ],
+    "gear": [
+      "Lucky Spinner",
+      "Max Level Stats",
+      "Power: 499,500",
+      "Hero Attack: 1,212",
+      "Hero Defense: 999",
+      "Hero Health: 7,494",
+      "Escort Attack: 404",
+      "Escort Defense: 333",
+      "Escort Health: 2,497",
+      "Archer Lethality: +111.00%",
+      "Archer Health: +111.00%",
+      "Reﬁned Gunplay – Conquest Skill",
+      "Vivian’s reﬁned shooting style lets her deal Attack * 70%",
+      "damage to a random enemy each time she casts a skill (heroes",
+      "ﬁrst).",
+      "Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Money Driven – Expedition Skill",
+      "Big rewards fuel great bravery, increasing Defender Squad",
+      "Defense by 15%.",
+      "Defender Squads’ Defense Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "thrud",
+    "name": "Thrud",
+    "rarity": "Mythic",
+    "generation": 5,
+    "class": "Cavalry",
+    "image": "assets/heroes/thrud.webp",
+    "overview": "Thrud is a Mythic-quality Generation 5 Hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through Daily Deals, Hero Rally, Strongest Governor, and the Kingdom of Power event.",
+    "sources": [
+      "Hero Rally",
+      "Daily Deals",
+      "Strongest Governor Event",
+      "Kingdom of Power Event",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "4,928",
+      "Defense": "4,928",
+      "Health": "49,284"
     },
-    "perfectFor": {
-      "en": [
-        "F2P Players",
-        "Early Garrison Defense",
-        "Balanced Cavalry Users"
-      ],
-      "ar": [
-        "اللاعبون المجانيون",
-        "الدفاع المبكر عن الحامية",
-        "مستخدمو الفرسان المتوازنون"
-      ]
+    "conquest": [
+      "Hero Attack: 4,928",
+      "Hero Defense: 4,928",
+      "Hero Health: 49,284",
+      "Axe Flurry",
+      "Thrud hurls ﬁve axes at random targets (heroes ﬁrst), dealing",
+      "Attack * 84% Area of Eﬀect damage.",
+      "Area of Eﬀect Damage Up: 60% / 66% / 72% / 78% / 84%",
+      "Brutal Throw",
+      "Thrud throws a spinning axe, dealing Attack * 70% damage to",
+      "enemies within range and stunning them for 1.5s.",
+      "Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Feast of the Pack",
+      "Thrud lets out a primal howl, increasing all squads’ attack by",
+      "5%.",
+      "Attack Up: 3% / 3.5% / 4% / 4.5% / 5%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +444.35%",
+      "Cavalry Defense: +444.35%",
+      "Battle Hunger",
+      "Thrud’s battle fever inspires her Infantry and Archers, reducing",
+      "their damage taken by 15% and increasing their damage dealt",
+      "by 15%.",
+      "Damage Taken Down: 3% / 6% / 9% / 12% / 15%",
+      "Damage Up: 3% / 6% / 9% / 12% / 15%",
+      "Reckless Charge",
+      "No plans. No ﬁnesse. Just brutally charging into battle. Thrud’s",
+      "Cavalry has a 20% chance of dealing 100% extra damage to all",
+      "enemies on attack.",
+      "Extra Damage Up: 20% / 40% / 60% / 80% / 100%",
+      "Ancestral Guidance",
+      "Ancestral spirits guide the brave to Valhalla. For every 4 attacks",
+      "made by Cavalry, all squads’ damage dealt is increased by 25%",
+      "and damage taken is reduced by 25% for 2 turns.",
+      "Damage Up: 5% / 10% / 15% / 20% / 25%",
+      "Damage Taken Down: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Bloodfang",
+      "Max Level Stats",
+      "Power: 499,500",
+      "Hero Attack: 999",
+      "Hero Defense: 999",
+      "Hero Health: 9,990",
+      "Escort Attack: 333",
+      "Escort Defense: 333",
+      "Escort Health: 3,330",
+      "Cavalry Lethality: +111.00%",
+      "Cavalry Health: +111.00%",
+      "Berserker’s Edge – Conquest Skill",
+      "While releasing Axe Flurry, Thrud has 35% chance of stunning",
+      "the targets for 1s.",
+      "Stun Chance Up: 25% / 27.5% / 30% / 32.5% / 35%",
+      "Stun Duration: 0.6s / 0.7s / 0.8s / 0.9s / 1s",
+      "Wolf-Kissed – Expedition Skill",
+      "Thrud lives up to her title, “Wolf-Kissed.” Increases rally squads’",
+      "lethality by 15%.",
+      "Rally Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "triton",
+    "name": "Triton",
+    "rarity": "Mythic",
+    "generation": 6,
+    "class": "Infantry",
+    "image": "assets/heroes/triton.webp",
+    "overview": "Triton is a Mythic-quality Generation 6 Hero in Kingshot, classiﬁed under the Infantry class. You can unlock him through the Hall of Heroes and Swordland Showdown Shop.",
+    "sources": [
+      "Hall of Heroes",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "4,546",
+      "Defense": "5,926",
+      "Health": "99,910"
     },
-    "skipIf": {
-      "en": [
-        "You already own a stronger premium Cavalry hero",
-        "You are building only for late generations"
-      ],
-      "ar": [
-        "لديك بطل فرسان مدفوع أقوى",
-        "تبني حسابك فقط للأجيال المتقدمة"
-      ]
-    }
+    "conquest": [
+      "Hero Attack: 4,546",
+      "Hero Defense: 5,926",
+      "Hero Health: 99,910",
+      "Tidewill",
+      "Triton surrounds himself with a barrier of waves that surges",
+      "forward, gaining invulnerability for 2s before dealing Attack *",
+      "140% Area of Eﬀect damage.",
+      "Area of Eﬀect Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Regal Wrath",
+      "Triton channels the rage of the ruler within, increasing Attack",
+      "by 24% and Defense by 48% for 4s.",
+      "Attack Up: 8% / 12% / 16% / 20% / 24%",
+      "Defense Up: 16% / 24% / 32% / 40% / 48%",
+      "Striking Hit",
+      "Triton lashes the disobedient with shattering violence, dealing",
+      "Attack * 28% damage to a random enemy with every normal",
+      "attack.",
+      "Damage Up: 20% / 22% / 24% / 26% / 28%"
+    ],
+    "expedition": [
+      "Infantry Attack: +540.43%",
+      "Infantry Defense: +540.43%",
+      "Command of Power",
+      "Acceptance of Triton’s authority enables the fruits to be shared",
+      "thereof, increasing total Squads’ Defense by 25%.",
+      "Defense Up: 5% / 10% / 15% / 20% / 25%",
+      "Warfare of Power",
+      "The power of warfare lies in shared fearlessness in the face of",
+      "battle, increasing total Squads’ skill damage dealt by 30%.",
+      "Skill Damage Up: 6% / 12% / 18% / 24% / 30%",
+      "Oath of Power",
+      "Great power stems from a willingness to keep oaths, increasing",
+      "Infantry Health by 20% as well as Cavalry and Archer Health by",
+      "30%.",
+      "Infantry Health Up: 4% / 8% / 12% / 16% / 20%",
+      "Cavalry & Archer Health Up: 6% / 12% / 18% / 24% / 30%"
+    ],
+    "gear": [
+      "Tidal Scepter",
+      "Max Level Stats",
+      "Power: 600,750",
+      "Hero Attack: 921",
+      "Hero Defense: 1,201",
+      "Hero Health: 18,022",
+      "Escort Attack: 307",
+      "Escort Defense: 400",
+      "Escort Health: 6,007",
+      "Infantry Lethality: +133.50%",
+      "Infantry Health: +133.50%",
+      "Magnetic Reformation – Conquest Skill",
+      "An artiﬁce of ancient modiﬁcation, the scepter grants Triton",
+      "30% increased damage.",
+      "Damage Up: 10% / 15% / 20% / 25% / 30%",
+      "Whale Call – Expedition Skill",
+      "Triton’s ancient whale-calls echo through the barricades, ﬁlling",
+      "soldiers with unshakable resolve and increasing Defender",
+      "Squad Defense by 15%.",
+      "Defender Defense Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "yang",
+    "name": "Yang",
+    "rarity": "Mythic",
+    "generation": 6,
+    "class": "Archer",
+    "image": "assets/heroes/yang.webp",
+    "overview": "Yang is a Mythic-quality Generation 6 Hero in Kingshot, classiﬁed under the Archer class. You can unlock him through Daily Deals, Hero Rally, Strongest Governor, and the Kingdom of Power event.",
+    "sources": [
+      "Hero Rally",
+      "Daily Deals",
+      "Strongest Governor Event",
+      "Kingdom of Power Event",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "7,200",
+      "Defense": "5,926",
+      "Health": "44,454"
+    },
+    "conquest": [
+      "Hero Attack: 7,200",
+      "Hero Defense: 5,926",
+      "Hero Health: 44,454",
+      "Kin Throw",
+      "Yang delivers a rip-roaring Frostkin in a straight line against",
+      "enemies, dealing Attack * 140% area of eﬀect damage plus the",
+      "same amount on its return path.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Combo",
+      "Yang’s special ﬁrearm has a 35% chance of inﬂicting a combo",
+      "shot, dealing another round of damage to enemies.",
+      "Extra Attack Chance: 15% / 20% / 25% / 30% / 35%",
+      "Deadshot",
+      "Any bullet can inﬂict the critical blow to a hunter’s prey when",
+      "aimed just right. Yang enjoys a 15% Crit Rate when dealing",
+      "damage.",
+      "Crit Rate: 3% / 6% / 9% / 12% / 15%"
+    ],
+    "expedition": [
+      "Archer Attack: +540.43%",
+      "Archer Defense: +540.43%",
+      "Avalanche",
+      "An avalanche for Yang is just another weapon in his arsenal,",
+      "resulting in an additional strike against a target by all Squads",
+      "every 4 turns for 100% damage.",
+      "Damage Up: 20% / 40% / 60% / 80% / 100%",
+      "Ice Zone",
+      "Years of arctic adversity have taught Yang to seize advantages.",
+      "Yang’s Archers have a 40% chance of dealing 100% extra",
+      "damage with every attack.",
+      "Extra Damage Up: 20% / 40% / 60% / 80% / 100%",
+      "Ambush",
+      "Yang is an advanced thinker who can easily grasp the principles",
+      "of almost any phenomena, giving all Squads a 40% chance of",
+      "dealing increased damage every turn.",
+      "Probability Up: 8% / 16% / 24% / 32% / 40%"
+    ],
+    "gear": [
+      "Frostkin",
+      "Max Level Stats",
+      "Power: 600,750",
+      "Hero Attack: 1457",
+      "Hero Defense: 1201",
+      "Hero Health: 9,011",
+      "Escort Attack: 485",
+      "Escort Defense: 400",
+      "Escort Health: 3,003",
+      "Archer Lethality: +133.50%",
+      "Archer Health: +133.50%",
+      "Quick Draw – Conquest Skill",
+      "Yang’s impressive muscle memory enables a ﬁve-shot barrage,",
+      "dealing Attack * 56% damage to a random enemy. If the target",
+      "is an Escort, there is a 100% chance of instantly knocking them",
+      "down.",
+      "Damage Up: 40% / 44% / 48% / 52% / 56%",
+      "Chance Up: 40% / 55% / 70% / 85% / 100%",
+      "Offenseive Defense – Expedition Skill",
+      "Yang puts the maxim that the best defense is a good oﬀense to",
+      "good use, increasing Rally Squad’s Lethality by 15%.",
+      "Rally Squads’ Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "sophia",
+    "name": "Sophia",
+    "rarity": "Mythic",
+    "generation": 6,
+    "class": "Cavalry",
+    "image": "assets/heroes/sophia.webp",
+    "overview": "Sophia is a Mythic-quality Generation 6 hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through the Hero Roulette and Swordland Showdown Shop.",
+    "sources": [
+      "Hero Roulette",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "5,926",
+      "Defense": "5,926",
+      "Health": "59,274"
+    },
+    "conquest": [
+      "Hero Attack: 5,926",
+      "Hero Defense: 5,926",
+      "Hero Health: 59,274",
+      "Puppet Master",
+      "Sophia’s subtle rose-magic saps enemy soldiers’ resolve,",
+      "dealing Attack * 140% Area of Eﬀect damage to enemies and",
+      "confuses them for 1s. Confused enemies attacks all",
+      "surrounding targets, friend and foe.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Scalding Mark",
+      "Sophia attacks with her enchanted rose, dealing Attack * 70%",
+      "damage to targets and applies Scalding Mark, increasing",
+      "target’s damage taken by 6% for 4s.",
+      "Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Enemy Damage Taken Up: 2% / 3% / 4% / 5% / 6%",
+      "Scalding Mark – Lash",
+      "Scalding Marks boost Sophia’s Attack by 24% and allows her to",
+      "Lash aﬄicted targets, dealing 12% increased damage.",
+      "Attack Up: 8% / 12% / 16% / 20% / 24%",
+      "Damage Up: 4% / 6% / 8% / 10% / 12%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +540.43%",
+      "Cavalry Defense: +540.43%",
+      "Arcane Pact",
+      "The arcane pact grants Sophia the protection of night, and a",
+      "40% chance of reducing all squad damage received by 50%",
+      "every turn.",
+      "Probability Up: 8% / 16% / 24% / 32% / 40%",
+      "Terror – Deathblow",
+      "Sophia radiates a fearsome aura that has a chance to inﬂict",
+      "Terror on enemy targets. Enemy targets suﬀer the eﬀects of",
+      "Terror every 2 turns and will receive 200% increased Cavalry",
+      "damage on the following turn. Terror lasts 1 turn.",
+      "Extra Damage Up: 40% / 80% / 120% / 160% / 200%",
+      "Terror – Annihilation",
+      "Terror increases fragility. All Squads deal 75% increased",
+      "damage to Terriﬁed targets.",
+      "Damage Up: 15% / 30% / 45% / 60% / 75%"
+    ],
+    "gear": [
+      "Scarlet Rose",
+      "Max Level Stats",
+      "Power: 600,750",
+      "Hero Attack: 1201",
+      "Hero Defense: 1201",
+      "Hero Health: 12,015",
+      "Escort Attack: 400",
+      "Escort Defense: 400",
+      "Escort Health: 4,005",
+      "Cavalry Lethality: +133.50%",
+      "Cavalry Health: +133.50%",
+      "Eyes of Obedience – Conquest Skill",
+      "“Loyalty to our Queen is your one and only purpose.” Sophia’s",
+      "attacks have a 8% chance of confusing the target for 1s.",
+      "Confused enemies attack all surrounding targets, friend and",
+      "foe.",
+      "Chance to Confuse: 2% / 3.5% / 5% / 6.5% / 8%",
+      "Queen of Night – Expedition Skill",
+      "Sophia draws upon her avatar as Queen of the Night to",
+      "enhance soldiers’ Attack, increasing Defender Squad’s Lethality",
+      "by 15%.",
+      "Defender Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "charles",
+    "name": "Charles",
+    "rarity": "Mythic",
+    "generation": 7,
+    "class": "Infantry",
+    "image": "assets/heroes/charles.webp",
+    "overview": "Charles is a Mythic-quality Generation 7 Hero in Kingshot, classiﬁed under the Infantry class. You can unlock him through Daily Deals, Hero Rally, Strongest Governor, and the Kingdom of Power event.",
+    "sources": [
+      "Hero Rally",
+      "Daily Deals",
+      "Strongest Governor Event",
+      "Kingdom of Power Event",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "5,466",
+      "Defense": "7,126",
+      "Health": "106,892"
+    },
+    "conquest": [
+      "Hero Attack: 5,466",
+      "Hero Defense: 7,126",
+      "Hero Health: 106,892",
+      "Vengeance",
+      "Charles unleashes a Vengeance strike from the Angel of",
+      "Justice against enemies in a fan-shaped area ahead, dealing",
+      "Attack * 140% damage and stunning targets for 1s while",
+      "increasing his own Attack by 100% for 2s.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Attack Up: 20% / 40% / 60% / 80% / 100%",
+      "Parting Gift",
+      "Charles mineﬁelds the area after his mech’s destruction,",
+      "dealing Attack * 280% Area of Eﬀect damage to nearby",
+      "enemies as a parting gift.",
+      "Damage Up: 200% / 220% / 240% / 260% / 280%",
+      "Nimble Soul",
+      "Charles has always been gifted with lightning-fast reactions,",
+      "granting a 50% chance of reducing damage taken by 50%.",
+      "Probability Up: 10% / 20% / 30% / 40% / 50%"
+    ],
+    "expedition": [
+      "Infantry Attack: +650.52%",
+      "Infantry Defense: +650.52%",
+      "Intimidation",
+      "The terrifying presence of the massive Angel of Justice on the",
+      "battleﬁeld reduces enemy Squad’s Total Lethality by 20%.",
+      "Enemy Lethality Down: 4% / 8% / 12% / 16% / 20%",
+      "Iron Bodies",
+      "Superior metal armor forging blunts the impact of conventional",
+      "weapons, reducing Squad’s Damage Taken by 20%.",
+      "Damage Taken Down: 4% / 8% / 12% / 16% / 20%",
+      "Great Justice",
+      "The Angel of Justice comes outﬁtted with state-of-the-art",
+      "battleﬁeld medkits, increasing Squad’s total Health by 25%.",
+      "Health Up: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Justice Fist",
+      "Max Level Stats",
+      "Power: 722,250",
+      "Hero Attack: 1,107",
+      "Hero Defense: 1,444",
+      "Hero Health: 21,667",
+      "Escort Attack: 369",
+      "Escort Defense: 481",
+      "Escort Health: 7,222",
+      "Infantry Lethality: +160.50%",
+      "Infantry Health: +160.50%",
+      "Mechanic – Conquest Skill",
+      "Charles takes good care of Angel and restores a certain amount",
+      "of health (35% of Max Health) when ﬁrst under 50% Health",
+      "while increasing Defense by 30% until the end of battle. This",
+      "skill can only be triggered once per battle.",
+      "Shock and Awe – Expedition Skill",
+      "Charles knows how to make a roaring entrance worthy of the",
+      "massive Angel of Justice mech, increasing Defender Squad’s",
+      "Health by 15%.",
+      "Heroes",
+      "Roman",
+      "Wee & Woo",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game."
+    ]
+  },
+  {
+    "id": "wee-woo",
+    "name": "Wee & Woo",
+    "rarity": "Mythic",
+    "generation": 7,
+    "class": "Archer",
+    "image": "assets/heroes/wee-woo.webp",
+    "overview": "Wee & Woo is a Mythic-quality Generation 7 Hero in Kingshot, classiﬁed under the Archer class. You can unlock them through the Hero Roulette and Swordland Showdown Shop.",
+    "sources": [
+      "Hero Roulette",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "8,656",
+      "Defense": "7,126",
+      "Health": "53,446"
+    },
+    "conquest": [
+      "Hero Attack: 8,656",
+      "Hero Defense: 7,126",
+      "Hero Health: 53,446",
+      "High Ground",
+      "Wee & Woo follow the artillery principle of “high ground, long",
+      "shots” to the letter, dealing Attack * 420% Area of Eﬀect",
+      "damage.",
+      "Damage Up: 300% / 330% / 360% / 390% / 420%",
+      "Incendiaries",
+      "Wee & Woo ﬁre a special incendiary round from the Royal",
+      "Foundry, dealing Attack * 84% Area of Eﬀect damage. The",
+      "ﬂaming crater in its wake also deals Attack * 25% damage to",
+      "nearby enemies every 0.5s for 2s.",
+      "Damage Up: 60% / 66% / 72% / 78% / 84%",
+      "Damage Up: 17% / 19% / 21% / 23% / 25%",
+      "Frontal Support",
+      "Article 30 of the artilleryman’s code provides a role for non-",
+      "essential personnel at the front when necessary, increasing",
+      "Attack by 26%.",
+      "Attack Up: 10% / 14% / 18% / 22% / 26%"
+    ],
+    "expedition": [
+      "Archer Attack: +650.52%",
+      "Archer Defense: +650.52%",
+      "Artillerymen",
+      "The inclusion of the artillerymen has an overall helpful eﬀect of",
+      "increasing Squad’s total Attack by 15% and total Lethality by",
+      "10%.",
+      "Attack Up: 3% / 6% / 9% / 12% / 15%",
+      "Lethality Up: 2% / 4% / 6% / 8% / 10%",
+      "Chain Shelling",
+      "Wee & Woo’s devastating back-to-back rounds tear shreds",
+      "through the enemy lines, increasing Squad’s Damage Dealt to",
+      "Archer by 30% and to Infantry by 25%.",
+      "Damage to Archer Up: 6% / 12% / 18% / 24% / 30%",
+      "Damage to Infantry Up: 5% / 10% / 15% / 20% / 25%",
+      "Boom Boom",
+      "“There’s always someone in every cannon duo who can aim",
+      "well.” Wee & Woo’s presence gives Squad’s Attack a 50% chance",
+      "of dealing 50% extra damage.",
+      "Probability Up: 10% / 20% / 30% / 40% / 50%"
+    ],
+    "gear": [
+      "Mortar",
+      "Max Level Stats",
+      "Power: 722,250",
+      "Hero Attack: 1752",
+      "Hero Defense: 1444",
+      "Hero Health: 10833",
+      "Archer Lethality: +160.50%",
+      "Archer Health: +160.50%",
+      "Zero Sympathy – Conquest Skill",
+      "Truly, Wee & Woo’s knowledge of modern ranged techniques",
+      "has boosted morale. Wee & Woo also increase the Attack",
+      "Speeds by 14% for Heroes and Escorts for 5s.",
+      "Attack Speed Up: 6% / 8% / 10% / 12% / 14%",
+      "Landmines – Expedition Skill",
+      "Smart artillerymen always keep mines in reserve in case of",
+      "unwelcomed friends. Wee & Woo increase Defender Squads’",
+      "Attack by 15%.",
+      "Defender Squads’ Attack Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes"
+    ]
+  },
+  {
+    "id": "ava",
+    "name": "Ava",
+    "rarity": "Mythic",
+    "generation": 7,
+    "class": "Cavalry",
+    "image": "assets/heroes/ava.webp",
+    "overview": "Ava is a Mythic-quality Generation 7 Hero in Kingshot, classiﬁed under the Cavalry class. You can unlock her through the Hall of Heroes and Swordland Showdown Shop.",
+    "sources": [
+      "Hall of Heroes",
+      "Swordland Showdown Shop"
+    ],
+    "stats": {
+      "Attack": "7,126",
+      "Defense": "7,126",
+      "Health": "71,262"
+    },
+    "conquest": [
+      "Hero Attack: 7,126",
+      "Hero Defense: 7,126",
+      "Hero Health: 71,262",
+      "Color Bomb",
+      "Some of the most visible colors can be the most poisonous.",
+      "Ava’s color bomb envelops an area, dealing Attack* 70%",
+      "damage to nearby enemies every 0.5s for 3s.",
+      "Area of Eﬀect Damage Up: 50% / 55% / 60% / 65% / 70%",
+      "Corruption Bomb",
+      "Ava detonates a corrosive pigment combo in the target’s face,",
+      "dealing Attack * 35% damage every 0.5s and increasing the",
+      "target’s damage taken by 25% for 2s.",
+      "Damage Up: 25% / 27.5% / 30% / 32.5% / 35%",
+      "Enemy Damage Taken Up: 5% / 10% / 15% / 20% / 25%",
+      "Disguise Pigment",
+      "The right color combo will confuse enemies, granting Ava 75%",
+      "increased Defense.",
+      "Defense Up: 25% / 37.5% / 50% / 62.5% / 75%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +650.52%",
+      "Cavalry Defense: +650.52%",
+      "Dissolution",
+      "An artist sees what others cannot. Ava’s deconstructive gaze",
+      "sees vulnerabilities, reducing total Enemy Squad’s Defense by",
+      "25%.",
+      "Enemy Defense Down: 5% / 10% / 15% / 20% / 25%",
+      "Chiaroscuro",
+      "Bright light and dark shadow can blind enemies who do not",
+      "expect it. All enemy soldiers receive 50% increased damage for",
+      "2 turns every 4 turns.",
+      "Enemy Damage Taken Up: 10% / 20% / 30% / 40% / 50%",
+      "Light and Cold",
+      "Ava’s weapons are like twin beacons for all to follow, increasing",
+      "soldiers’ Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%"
+    ],
+    "gear": [
+      "Chameleos",
+      "Max Level Stats",
+      "Power: 722,250",
+      "Hero Attack: 1444",
+      "Hero Defense: 1444",
+      "Hero Health: 14,445",
+      "Cavalry Lethality: +160.50%",
+      "Cavalry Health: +160.50%",
+      "Irradiance – Conquest Skill",
+      "Young Ava’s pigment arsenal increases her damage dealt by",
+      "25% and reduces the Attack of aﬀected targets by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Color Storm – Expedition Skill",
+      "Ava’s unique color dispatching system increases Rally Squads’",
+      "Lethality by 15% when initiating a rally.",
+      "Rally Lethality Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Heroes",
+      "Wee & Woo",
+      "Generation 7 Heroes",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here."
+    ]
+  },
+  {
+    "id": "yeonwoo",
+    "name": "Yeonwoo",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/yeonwoo.webp",
+    "overview": "Yeonwoo is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "2,157",
+      "Defense": "2,220",
+      "Health": "13,320"
+    },
+    "conquest": [
+      "Hero Attack: 2,157",
+      "Hero Defense: 2,220",
+      "Hero Health: 13,320",
+      "Petalbloom",
+      "Yeonwoo arcs Petalbloom outward in three waves, dealing",
+      "Attack * 100%, Attack * 175%, and Attack * 210% damage",
+      "respectively, with the third being area of eﬀect damage.",
+      "2nd Wave Damage Up: 125% / 137.5% / 150% / 162.5% / 175%",
+      "3rd Wave Damage Up: 150% / 165% / 180% / 195% / 210%",
+      "Falling Swallow",
+      "The Falling Swallow technique weaves confusion in enemy",
+      "ranks, dealing Attack * 140% damage and reducing the target’s",
+      "Attack Speed by 50% for 2s.",
+      "Damage Up: 100% / 110% / 120% / 130% / 140%",
+      "Enemy Attack Speed Down: 30% / 35% / 40% / 45% / 50%",
+      "Twin Fangs",
+      "Yeonwoo’s unusual duel form is devilishly diﬃcult to defend",
+      "against, increasing Attack by 24%.",
+      "Attack Up: 8% / 12% / 16% / 20% / 24%"
+    ],
+    "expedition": [
+      "Archer Attack: +140.11%",
+      "Archer Defense: +140.11%",
+      "On Guard",
+      "“My blade and I are one”. Yeonwoo’s sword skills increase all",
+      "Squads’ total Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%",
+      "Well-Traveled",
+      "Yeonwoo’s travels have secured a technological edge,",
+      "increasing Research Speed by 15%.",
+      "Increases Research Speed: 3% / 6% / 9% / 12% / 15%",
+      "Heroes",
+      "Fahd",
+      "Amane",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "diana",
+    "name": "Diana",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/diana.webp",
+    "overview": "Diana is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "2,157",
+      "Defense": "2,220",
+      "Health": "13,320"
+    },
+    "conquest": [
+      "Hero Attack: 2,157",
+      "Hero Defense: 2,220",
+      "Hero Health: 13,320",
+      "Incendiary Arrows",
+      "Diana ﬁres an Incendiary Shot, dealing Attack * 290% damage",
+      "to the target and Attack * 98% damage to nearby enemies.",
+      "Damage Up: 210% / 230% / 250% / 270% / 290%",
+      "Area of Eﬀect Damage Up: 70% / 77% / 84% / 91% / 98%",
+      "Sharpshooter",
+      "Increases Attack Speed by 30%.",
+      "Attack Speed Up: 10% / 15% / 20% / 25% / 30%",
+      "Deadly Strike",
+      "With a sharp eye for vulnerabilities, Diana increases her Crit",
+      "Rate by 20%.",
+      "Crit Rate: 7% / 10% / 13% / 16% / 20%"
+    ],
+    "expedition": [
+      "Archer Attack: +110.08%",
+      "Archer Defense: +110.08%",
+      "Iron Constitution",
+      "The unique arts of the wilderness rangers reduce Governor",
+      "Stamina Cost by 20%.",
+      "Stamina Cost Down: 10% / 12% / 15% / 18% / 20%",
+      "Quick Paced",
+      "Increases March Speed by 100%.",
+      "Wilderness March Speed: 20% / 40% / 60% / 80% / 100%",
+      "Heroes",
+      "Widgets",
+      "Desert Trial Event",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "quinn",
+    "name": "Quinn",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/quinn.webp",
+    "overview": "Quinn is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "2,157",
+      "Defense": "2,220",
+      "Health": "13,320"
+    },
+    "conquest": [
+      "Hero Attack: 2,157",
+      "Hero Defense: 2,220",
+      "Hero Health: 13,320",
+      "Headshot",
+      "The upgraded Crossbow deals Attack * 560% damage.",
+      "Damage Up: 400% / 440% / 480% / 520% / 560%",
+      "Quick Shot",
+      "Years of training increases Quinn’s Attack Speed by 30%.",
+      "Attack Speed Up: 10% / 15% / 20% / 25% / 30%",
+      "Natural Selection",
+      "Quinn’s expert survival skills increase his damage dealt by 30%.",
+      "Damage Up: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Archer Attack: +140.11%",
+      "Archer Defense: +140.11%",
+      "Sixth Sense",
+      "Senses for dangers ahead, reducing damage taken by 20% for",
+      "all troops.",
+      "Damage Taken Down: 4% / 8% / 12% / 16% / 20%",
+      "Precision Shot",
+      "Quinn grants all soldiers a 50% chance of dealing 50% more",
+      "damage when attacking.",
+      "Damage Up: 10% / 20% / 30% / 40% / 50%",
+      "Heroes",
+      "Gordon",
+      "Howard",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "howard",
+    "name": "Howard",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/howard.webp",
+    "overview": "Howard is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,361",
+      "Defense": "2,220",
+      "Health": "26,640"
+    },
+    "conquest": [
+      "Hero Attack: 1,361",
+      "Hero Defense: 2,220",
+      "Hero Health: 26,640",
+      "Shielded Strike",
+      "Howard gives an enemy a solid whack with his heavy shield,",
+      "knocking the target back while dealing Attack * 280% Area of",
+      "Eﬀect damage.",
+      "Area of Eﬀect Damage Up: 200% / 220% / 240% / 260% / 280%",
+      "Joint Defense",
+      "Howard leads the eﬀort to fortify defenses, increasing Defense",
+      "by 15% for all heroes",
+      "Defense Up: 5% / 7.5% / 10% / 12.5% / 15%",
+      "Shield Block",
+      "Howard trades in his shield for an upgraded model, reducing",
+      "damage taken by 30%.",
+      "Damage Taken Down: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Infantry Attack: +140.11%",
+      "Infantry Defense: +140.11%",
+      "Defenders’ Edge",
+      "Howard guards our troops with his shield, reducing damage",
+      "taken by 20% for all troops.",
+      "Damage Taken Down: 4% / 8% / 12% / 16% / 20%",
+      "Weaken",
+      "Howard’s intimidating presence reduces the total Enemy",
+      "Squads’ Attack by 20%.",
+      "Enemy Troops Attack Down: 4% / 8% / 12% / 16% / 20%",
+      "Heroes",
+      "Quinn",
+      "Forrest",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "gordon",
+    "name": "Gordon",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/gordon.webp",
+    "overview": "Gordon is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,776",
+      "Defense": "2,220",
+      "Health": "17,760"
+    },
+    "conquest": [
+      "Hero Attack: 1,776",
+      "Hero Defense: 2,220",
+      "Hero Health: 17,760",
+      "BBQ Feast",
+      "Gordon prepares a lavish feast, restoring Health by Attack *",
+      "280% to all troops and increasing Attack by 7% for all troops for",
+      "4s.",
+      "Health Up: 200% / 220% / 240% / 260% / 280%",
+      "Attack Up: 5% / 5.5% / 6% / 6.5% / 7%",
+      "Culinary Chaos",
+      "Gordon’s life in a chaotic kitchen reduces his damage taken by",
+      "30%.",
+      "Damage Taken Down: 10% / 15% / 20% / 25% / 30%",
+      "Emergency Snack",
+      "Gordon’s regular snacking restores Health equal to Attack *",
+      "70% every 5s.",
+      "Health Up: 50% / 55% / 60% / 65% / 70%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +140.11%",
+      "Cavalry Defense: +140.11%",
+      "Super Nutrients",
+      "Gordon’s culinary masterpieces invigorate our soldiers,",
+      "increasing total Squads’ Health by 25%.",
+      "Health Up: 5% / 10% / 15% / 20% / 25%",
+      "Trash Talk",
+      "Beyond delicious meals, Gordon’s trash talk increases the total",
+      "Squads’ Attack by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Heroes",
+      "Truegold Crucible",
+      "Quinn",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "fahd",
+    "name": "Fahd",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/fahd.webp",
+    "overview": "Fahd is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,776",
+      "Defense": "2,220",
+      "Health": "17,760"
+    },
+    "conquest": [
+      "Hero Attack: 1,776",
+      "Hero Defense: 2,220",
+      "Hero Health: 17,760",
+      "Sandstorm",
+      "The blinding sandstorm reduces Enemy Squads’ Attack by 5%",
+      "for 2s.",
+      "Reduces enemy Attack: 1% / 2% / 3% / 4% / 5%",
+      "Eagle Wings",
+      "After unleashing the “Sandstorm”, Fahd’s eagle directs allies’",
+      "attack, increasing his and nearby friendly Squads’ Attack by",
+      "35% for 2s.",
+      "Attack Up: 15% / 20% / 25% / 30% / 35%",
+      "Dune General",
+      "The harsh desert has given Fahd a strong sense for when to",
+      "pounce, increasing his Attack Speed by 30%.",
+      "Attack Speed Up: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +140.11%",
+      "Cavalry Defense: +140.11%",
+      "Desert Eclipse",
+      "A rising cloud of sand is terrible for visibility, reducing all Enemy",
+      "Squads’ Damage Dealt by 20%.",
+      "Enemy Damage Down: 4% / 8% / 12% / 16% / 20%",
+      "Pathﬁnder",
+      "Fahd has always been a pathﬁnder for his warriors, increasing",
+      "Solo Hunting March Speed by 100%.",
+      "Hunting March Speed: 20% / 40% / 60% / 80% / 100%",
+      "Heroes",
+      "Generation 3 Heroes",
+      "Yeonwoo",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "amane",
+    "name": "Amane",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/amane.webp",
+    "overview": "Amane is a Epic hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "2,157",
+      "Defense": "2,220",
+      "Health": "13,320"
+    },
+    "conquest": [
+      "Hero Attack: 2,157",
+      "Hero Defense: 2,220",
+      "Hero Health: 13,320",
+      "Sakura Blossom",
+      "Amane summons a protective enchantment, increasing all Hero",
+      "and Escorts’ Attack by 3.5% and Attack Speed by 4.5% for 4s.",
+      "Attack Up: 1.5% / 2% / 2.5% / 3% / 3.5%",
+      "Attack Speed Up: 2.5% / 3% / 3.5% / 4% / 4.5%",
+      "Fire Sigil",
+      "Amane lobs a ﬁery sigil against the enemy, dealing Attack *",
+      "210% damage.",
+      "Damage Up: 150% / 165% / 180% / 195% / 210%",
+      "Divine Melody",
+      "The dance of the umbrella is the dance of the Blade. Every 3",
+      "basic attacks increases Amane’s Attack Speed by 5% until the",
+      "end of the battle.",
+      "Attack Speed Up: 1% / 2% / 3% / 4% / 5%"
+    ],
+    "expedition": [
+      "Archer Attack: +140.11%",
+      "Archer Defense: +140.11%",
+      "Tri-Phalanx",
+      "Amane’s trademark formation increases all Squads’ total Attack",
+      "by 25%.",
+      "Attack Up: 5% / 10% / 15% / 20% / 25%",
+      "Exorcism",
+      "Amane’s skill at warding oﬀ evil increases Inﬁrmary Healing",
+      "Speed by 50%.",
+      "Healing Speed Up: 10% / 20% / 30% / 40% / 50%",
+      "Heroes",
+      "Yeonwoo",
+      "Alliance Brawl Event",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "chenko",
+    "name": "Chenko",
+    "rarity": "Epic",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/chenko.webp",
+    "overview": "Chenko is a Epic hero in Kingshot.",
+    "sources": [
+      "Path of Growth Event"
+    ],
+    "stats": {
+      "Attack": "1,776",
+      "Defense": "2,220",
+      "Health": "17,760"
+    },
+    "conquest": [
+      "Hero Attack: 1,776",
+      "Hero Defense: 2,220",
+      "Hero Health: 17,760",
+      "Burst Fire",
+      "Unleashes a rapid barrage, dealing Attack * 75% damage to",
+      "enemies in front every 0.5s for 2s.",
+      "Area of Eﬀect Damage Up: 55% / 60% / 65% / 70% / 75%",
+      "Defense Upgrade",
+      "Chenko upgrades her armor, increasing Defense by 70%.",
+      "Defense Up: 25% / 37.5% / 50% / 62.5% / 70%",
+      "Weapon Upgrade",
+      "Chenko’s upgraded weapon boosts Attack by 24%.",
+      "Attack Up: 8% / 12% / 16% / 20% / 24%"
+    ],
+    "expedition": [
+      "Cavalry Attack: +140.11%",
+      "Cavalry Defense: +140.11%",
+      "Stand of Arms",
+      "Chenko implements advanced weaponry for our soldiers,",
+      "increasing the total Squads’ Lethality by 25%.",
+      "Lethality Up: 5% / 10% / 15% / 20% / 25%",
+      "Shield Wall",
+      "Enhances troop armor with a keen engineering eye, reducing",
+      "damage taken by 20% for all troops.",
+      "Damage Taken Down: 4% / 8% / 12% / 16% / 20%",
+      "Heroes",
+      "Grow Your Heroes Event",
+      "Truegold",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "seth",
+    "name": "Seth",
+    "rarity": "Rare",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/seth.webp",
+    "overview": "Seth is a Rare hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,106",
+      "Defense": "2,220",
+      "Health": "21,644"
+    },
+    "conquest": [
+      "Hero Attack: 1,106",
+      "Hero Defense: 2,220",
+      "Hero Health: 21,644",
+      "Hammer Burn",
+      "Seth swings his hammer forward in a devastating arc, dealing",
+      "Attack * 280% damage.",
+      "Area of Eﬀect Damage Up: 200% / 220% / 240% / 260% / 280%",
+      "Armor Enhancement",
+      "Seth upgrades his armor to reduce damage taken by 30%.",
+      "Damage Taken Down: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Infantry Attack: +90.07%",
+      "Infantry Defense: +90.07%",
+      "Burnished Iron",
+      "Seth passes on his passion for iron mining to everyone,",
+      "increasing the Town’s Iron Output by 25%.",
+      "Iron Mine Income: 5% / 10% / 15% / 20% / 25%",
+      "Craftsmanship",
+      "Seth has a special bond with Iron, increasing his Iron Mining",
+      "Speed in the Wilderness by 25%.",
+      "Iron Mining Speed: 5% / 10% / 15% / 20% / 25%",
+      "Heroes",
+      "Forrest",
+      "Edwin",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server",
+      "About Us",
+      "Privacy Policy"
+    ],
+    "gear": []
+  },
+  {
+    "id": "forrest",
+    "name": "Forrest",
+    "rarity": "Rare",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/forrest.webp",
+    "overview": "Forrest is a Rare hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,106",
+      "Defense": "2,220",
+      "Health": "21,644"
+    },
+    "conquest": [
+      "Hero Attack: 1,106",
+      "Hero Defense: 2,220",
+      "Hero Health: 21,644",
+      "Axe Whirl",
+      "Forrest’s axe pirouette deals damage of Attack * 110% per 0.5s",
+      "to nearby enemies for 3s.",
+      "Area of Eﬀect Damage Up: 80% / 88% / 96% / 104% / 110%",
+      "Razor Sharp",
+      "Forrest’s sharpened axe deals 30% more damage per second.",
+      "Damage Up: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Infantry Attack: +90.07%",
+      "Infantry Defense: +90.07%",
+      "Woodland Inheritor",
+      "Forrest’s expert lumberjack skills increase the Town’s Sawmill",
+      "Output by 25%.",
+      "Logging Income: 5% / 10% / 15% / 20% / 25%",
+      "Master Woodcutter",
+      "Forrest utilizes his logging expertise, increasing Wood",
+      "Gathering Speed in the Wilderness by 25%.",
+      "Wood Gathering Speed: 5% / 10% / 15% / 20% / 25%",
+      "Heroes",
+      "Howard",
+      "Seth",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server",
+      "About Us",
+      "Privacy Policy"
+    ],
+    "gear": []
+  },
+  {
+    "id": "edwin",
+    "name": "Edwin",
+    "rarity": "Rare",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/edwin.webp",
+    "overview": "Edwin is a Rare hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,442",
+      "Defense": "2,220",
+      "Health": "14,430"
+    },
+    "conquest": [
+      "Hero Attack: 1,442",
+      "Hero Defense: 2,220",
+      "Hero Health: 14,430",
+      "Shrapnel Load",
+      "Edwin throws out a homemade explosive, dealing Attack * 196%",
+      "Area of Eﬀect Damage to the target and its nearby enemies.",
+      "Area of Eﬀect Damage Up: 140% / 154% / 168% / 182% / 196%",
+      "Detonate",
+      "Edwin’s explosives have a 20% chance of stunning the targets",
+      "for 1.5s.",
+      "Stun Chance: 10% / 15% / 15% / 20% / 20%",
+      "Stun Time: 0.5s / 0.5s / 1s / 1s / 1.5s"
+    ],
+    "expedition": [
+      "Cavalry Attack: +90.07%",
+      "Cavalry Defense: +90.07%",
+      "Demolitions Expert",
+      "Edwin uses his knowledge of minerals, increasing the Town’s",
+      "Quarry Output by 25%.",
+      "Quarry Income: 5% / 10% / 15% / 20% / 25%",
+      "Stone Mining",
+      "Edwin’s expert quarrying techniques increase his Stone Mining",
+      "Speed in the Wilderness by 25%.",
+      "Stone Gathering Speed: 5% / 10% / 15% / 20% / 25%",
+      "Heroes",
+      "Seth",
+      "Olive",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "About Us",
+      "Privacy Policy",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "Join Discord Server"
+    ],
+    "gear": []
+  },
+  {
+    "id": "olive",
+    "name": "Olive",
+    "rarity": "Rare",
+    "generation": null,
+    "class": "Unknown",
+    "image": "assets/heroes/olive.webp",
+    "overview": "Olive is a Rare hero in Kingshot.",
+    "sources": [],
+    "stats": {
+      "Attack": "1,752",
+      "Defense": "2,220",
+      "Health": "10,822"
+    },
+    "conquest": [
+      "Hero Attack: 1,752",
+      "Hero Defense: 2,220",
+      "Hero Health: 10,822",
+      "Rain of Arrows",
+      "Olive launches a hail of arrows, dealing Attack * 252% Area of",
+      "Eﬀect Damage around the target.",
+      "Area of Eﬀect Damage Up: 180% / 198% / 216% / 234% / 252%",
+      "Target Lock",
+      "Olive paints a bullseye on a target, raising damage inﬂicted on",
+      "the target by 30% for this attack.",
+      "Damage Up: 10% / 15% / 20% / 25% / 30%"
+    ],
+    "expedition": [
+      "Archer Attack: +90.07%",
+      "Archer Defense: +90.07%",
+      "Green Thumb",
+      "Olive’s unmatched baking skills increase the Town’s Mill Output",
+      "by 25%.",
+      "Mill Income: 5% / 10% / 15% / 20% / 25%",
+      "Forager’s Luck",
+      "Olive’s expertise in logistics increases her Resource Gathering",
+      "Speed in the Wilderness by 25%.",
+      "Bread Gathering Speed: 5% / 10% / 15% / 20% / 25%",
+      "Heroes",
+      "Edwin",
+      "Alcar",
+      "Kingshot Data is a wiki site with all the important info for the Kingshot mobile game.",
+      "You'll ﬁnd charts, requirements, and other useful game details here.",
+      "Ironclad War Bear",
+      "Cassia",
+      "Generation 7 Heroes",
+      "Join our Discord Server to chat with other players, ask questions and discuss strategies.",
+      "About Us",
+      "Privacy Policy",
+      "Join Discord Server"
+    ],
+    "gear": []
   }
 ]
