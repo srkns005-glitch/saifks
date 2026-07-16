@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-v9.1-mobile-20260717">
+<meta name="saifks-build" content="hero-gear-v9.2-mobile-final-20260717">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style>
 *{box-sizing:border-box}
@@ -137,6 +137,66 @@ nav{height:72px;position:sticky;top:0;z-index:30;padding:0 4px;background:rgba(5
   .actions{grid-template-columns:1fr}
 }
 
+
+
+/* Definitive mobile layout — v9.2 */
+@media (max-width: 900px){
+  .layout{grid-template-columns:minmax(0,1fr)!important}
+  .right{position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important}
+  .selection{grid-template-columns:minmax(0,1fr)!important}
+}
+@media (max-width: 640px){
+  html{width:100%;overflow-x:clip}
+  body{width:100%;min-width:0;overflow-x:clip;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+  body *{min-width:0}
+  img,svg,canvas,video{max-width:100%;height:auto}
+  .wrap{width:100%!important;max-width:100%!important;margin:0!important;padding-inline:12px!important}
+  nav{width:auto!important;max-width:none!important;height:58px!important;margin-inline:-12px!important;padding-inline:12px!important;display:grid!important;grid-template-columns:72px minmax(0,1fr) 94px!important;gap:6px!important}
+  .home,.lang{width:100%!important;max-width:100%!important;min-width:0!important;padding-inline:6px!important;font-size:.68rem!important}
+  .brand{width:100%;min-width:0;overflow:hidden}
+  .brand b{font-size:.88rem!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:22px 0 14px!important}
+  .hero:before{max-width:100%;white-space:normal;text-align:center;line-height:1.25}
+  .hero h1{font-size:clamp(1.65rem,8.5vw,2.05rem)!important;overflow-wrap:anywhere}
+  .hero p{max-width:34rem;font-size:.8rem!important}
+  .workflow{grid-template-columns:minmax(0,1fr)!important;gap:6px!important}
+  .workflow-step{justify-content:flex-start!important;text-align:start!important;font-size:.68rem!important;padding:9px 10px!important}
+  .workflow-step i{width:25px!important;height:25px!important;flex-basis:25px!important}
+  .layout,.stack,.right{width:100%!important;max-width:100%!important;gap:10px!important}
+  .card,.result-card,.box,.upgrade,.item,.table{width:100%!important;max-width:100%!important}
+  .head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:6px!important;padding:12px 11px 9px!important}
+  .head span{max-width:105px;white-space:normal!important;text-align:end;line-height:1.2}
+  .pad{padding:10px!important}
+  .segments.three{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .segments.four{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .segments button{width:100%!important;min-width:0!important;padding:7px 2px!important}
+  .pair{grid-template-columns:minmax(0,1fr)!important;gap:7px!important}
+  .arrow{transform:rotate(90deg)!important;padding:0!important;line-height:1!important}
+  .field label{min-height:0!important}
+  .quick{width:100%;max-width:100%;overflow-x:auto!important;overscroll-behavior-inline:contain}
+  .xp-grid,.resource-inputs,.resources,.gains{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  .item label,.item small{min-height:0!important}
+  .resource-inputs .item{min-height:0!important}
+  .stat-compare{grid-template-columns:minmax(0,1fr)!important;gap:6px!important}
+  .stat-compare>.arrow{transform:rotate(90deg)!important;padding:0!important}
+  .table{overflow:visible!important;border:0!important;background:transparent!important}
+  .table .row.head{display:none!important}
+  .table .row{min-width:0!important;width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:6px 10px!important;margin-bottom:7px!important;padding:10px!important;border:1px solid rgba(89,137,174,.22)!important;border-radius:10px!important;background:#0b2135!important;font-size:.65rem!important}
+  .table .row span:first-child{grid-column:1/-1;color:var(--gold);font-weight:900;font-size:.72rem}
+  .table .row span:not(:first-child){overflow-wrap:anywhere}
+  .mile{grid-template-columns:40px minmax(0,1fr)!important}
+  .actions{position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;padding:0!important;border:0!important;background:none!important;backdrop-filter:none!important}
+  .copy,.reset{width:100%!important}
+}
+@media (max-width: 360px){
+  .wrap{padding-inline:8px!important}
+  nav{margin-inline:-8px!important;padding-inline:8px!important;grid-template-columns:62px minmax(0,1fr) 86px!important}
+  .hero h1{font-size:1.58rem!important}
+  .xp-grid,.resource-inputs,.resources,.gains{grid-template-columns:minmax(0,1fr)!important}
+  .segments.three{grid-template-columns:minmax(0,1fr)!important}
+  .segments.four{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
 </style>
 </head>
 <body><div class="wrap">
@@ -194,4 +254,4 @@ function applyLang(){document.documentElement.lang=lang;document.documentElement
 [['#levelC','levelC'],['#levelT','levelT'],['#masteryC','masteryC'],['#masteryT','masteryT'],['#widgetC','widgetC'],['#widgetT','widgetT']].forEach(([id,key])=>$(id).onchange=e=>{S[key]=+e.target.value;render()});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).oninput=render);
 document.querySelectorAll('.troop').forEach(b=>b.onclick=()=>{troop=b.dataset.troop;document.querySelectorAll('.troop').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelectorAll('.piece').forEach(b=>b.onclick=()=>{piece=b.dataset.piece;document.querySelectorAll('.piece').forEach(x=>x.classList.toggle('active',x===b));render()});$('#lang').onchange=e=>{lang=e.target.value;applyLang()};$('#reset').onclick=()=>{Object.assign(S,{levelC:0,levelT:0,masteryC:0,masteryT:0,widgetC:0,widgetT:0});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).value=0);render()};
 $('#copy').onclick=async()=>{const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),text=`${tr('plannerTitle')}\n${tr(troop)} · ${tr(piece)}\n${tr('gearUpgrade')}: ${S.levelC} → ${S.levelT}\n${tr('masteryForge')}: ${S.masteryC} → ${S.masteryT}\n${tr('exclusiveGear')}: ${S.widgetC} → ${S.widgetT}\n${tr('xpRequired')}: ${ec.xp}\n${tr('xpAvailable')}: ${o.xp}\n${tr('mithril')}: ${ec.mi}\n${tr('mythic')}: ${ec.my+mc.my}\n${tr('hammers')}: ${mc.ha}\n${tr('widgets')}: ${wc}\n${tr('absoluteGain')}: ${$('#statIncrease').textContent}\nSaifKS.com`;try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}$('#copy').textContent=tr('copied');setTimeout(()=>$('#copy').textContent=tr('copyPlan'),1300)};applyLang();
-</script><!-- Build: hero-gear-v9.1-mobile-20260717 --></body></html>
+</script><!-- Build: hero-gear-v9.2-mobile-final-20260717 --></body></html>
