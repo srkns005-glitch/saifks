@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-v9-professional-20260717">
+<meta name="saifks-build" content="hero-gear-v9.1-mobile-20260717">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style>
 *{box-sizing:border-box}
@@ -55,6 +55,87 @@ nav{height:72px;position:sticky;top:0;z-index:30;padding:0 4px;background:rgba(5
 .footer{padding:34px 0 40px;font-size:.78rem;letter-spacing:.03em}.footer:before{content:"";display:block;width:80px;height:1px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 @media(max-width:850px){.right{position:static}.workflow{grid-template-columns:1fr 1fr 1fr}.hero{padding-top:34px}}
 @media(max-width:600px){.wrap{width:calc(100% - 14px)}nav{margin:0 -7px;padding:0 9px}.hero{padding:28px 4px 20px}.hero:before{font-size:.58rem}.hero h1{font-size:2.18rem}.hero p{font-size:.86rem}.workflow{grid-template-columns:1fr;gap:6px}.workflow-step{padding:9px 11px}.layout{gap:10px}.card,.result-card{border-radius:16px}.pad{padding:11px}.selection{gap:7px}.segments button{min-height:48px}.xp-grid,.resource-inputs{gap:6px}.row{grid-template-columns:1fr .65fr .65fr .72fr;padding:8px 6px}.actions{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:20;padding:7px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(5,14,24,.83);backdrop-filter:blur(14px)}}
+
+
+/* Mobile-first compatibility patch — v9.1 */
+@media (max-width:600px){
+  html,body{max-width:100%;overflow-x:hidden}
+  body{padding-bottom:calc(24px + env(safe-area-inset-bottom));background-attachment:scroll}
+  body:before{background-size:24px 24px}
+  .wrap{width:100%;padding:0 10px}
+  nav{height:60px;margin:0 -10px;padding:0 10px;gap:8px}
+  .home{flex:0 0 auto;max-width:76px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand{min-width:0;flex:1}
+  .brand b{font-size:.95rem;white-space:nowrap}
+  .brand small{display:none}
+  .lang{flex:0 0 104px;max-width:104px;padding:0 7px;font-size:.72rem}
+  .hero{padding:24px 2px 16px}
+  .hero:before{margin-bottom:10px;padding:6px 9px;font-size:.52rem;letter-spacing:.09em}
+  .hero h1{font-size:clamp(1.75rem,9vw,2.15rem);line-height:1.08;letter-spacing:-.035em;overflow-wrap:anywhere}
+  .hero p{font-size:.82rem;line-height:1.5;padding:0 4px}
+  .zero-pill{margin-top:11px;font-size:.64rem}
+  .workflow{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-bottom:10px}
+  .workflow-step{min-width:0;justify-content:center;padding:7px 4px;gap:5px;text-align:center;font-size:.59rem;line-height:1.2}
+  .workflow-step i{width:22px;height:22px;flex:0 0 22px;border-radius:7px}
+  .layout,.stack{gap:10px}
+  .card,.result-card{border-radius:15px;box-shadow:0 14px 36px rgba(0,0,0,.24)}
+  .head{padding:13px 12px 10px;align-items:flex-start}
+  .head h2,.head h3{font-size:.9rem;line-height:1.25}
+  .head span{font-size:.58rem;white-space:nowrap}
+  .pad{padding:10px}
+  .selection{grid-template-columns:1fr;gap:8px}
+  .box,.upgrade{padding:10px;border-radius:12px}
+  .segments.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .segments.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .segments button{min-width:0;min-height:48px;padding:6px 3px;font-size:.62rem;overflow:hidden}
+  .segments span{font-size:1.2rem}
+  .segments b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.61rem}
+  .pair{grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:5px;align-items:end}
+  .arrow{transform:none;padding-bottom:9px;font-size:.85rem}
+  .field label{min-height:2.35em;font-size:.59rem;line-height:1.18}
+  .field select,.field input{height:42px;padding:0 6px;font-size:.78rem}
+  .quick{margin-right:-2px;padding-bottom:4px;scrollbar-width:none}
+  .quick::-webkit-scrollbar{display:none}
+  .quick button{height:31px;min-width:43px;font-size:.68rem}
+  .hint{font-size:.6rem}
+  .xp-grid,.resource-inputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .item{min-width:0;padding:8px;border-radius:10px}
+  .item label{font-size:.62rem;line-height:1.2;min-height:2.4em}
+  .item small{font-size:.55rem;line-height:1.2;min-height:2.4em}
+  .item input{height:38px;font-size:.82rem}
+  .xp-total{padding:10px}
+  .xp-total b{font-size:1.05rem}
+  .resources{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .res{min-width:0;padding:9px}
+  .res small{font-size:.56rem;line-height:1.2}
+  .res b{font-size:1rem;overflow-wrap:anywhere}
+  .stat-compare{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);gap:5px}
+  .stat{padding:9px 4px}
+  .stat b{font-size:1.05rem;overflow-wrap:anywhere}
+  .gains{gap:5px}
+  .gain{padding:8px 4px}
+  .gain small{font-size:.55rem}
+  .gain b{font-size:.82rem;overflow-wrap:anywhere}
+  .table{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .row{min-width:430px;grid-template-columns:1.25fr .7fr .7fr .78fr;padding:8px;font-size:.62rem}
+  .row.head{font-size:.55rem}
+  .mile{padding:8px}
+  .actions{position:static;grid-template-columns:1fr 1fr;padding:0;border:0;background:none;backdrop-filter:none;gap:7px}
+  .copy,.reset{height:44px;font-size:.75rem;padding:0 8px}
+  .footer{padding:24px 0 18px;font-size:.67rem}
+}
+@media (max-width:380px){
+  .wrap{padding:0 7px}
+  nav{margin:0 -7px;padding:0 7px}
+  .lang{flex-basis:92px;max-width:92px}
+  .home{max-width:64px;font-size:.66rem}
+  .hero h1{font-size:1.72rem}
+  .workflow-step span{display:none}
+  .workflow-step i{width:27px;height:27px;flex-basis:27px}
+  .segments.four{grid-template-columns:repeat(2,1fr)}
+  .xp-grid,.resource-inputs{grid-template-columns:1fr 1fr}
+  .actions{grid-template-columns:1fr}
+}
 
 </style>
 </head>
@@ -113,4 +194,4 @@ function applyLang(){document.documentElement.lang=lang;document.documentElement
 [['#levelC','levelC'],['#levelT','levelT'],['#masteryC','masteryC'],['#masteryT','masteryT'],['#widgetC','widgetC'],['#widgetT','widgetT']].forEach(([id,key])=>$(id).onchange=e=>{S[key]=+e.target.value;render()});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).oninput=render);
 document.querySelectorAll('.troop').forEach(b=>b.onclick=()=>{troop=b.dataset.troop;document.querySelectorAll('.troop').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelectorAll('.piece').forEach(b=>b.onclick=()=>{piece=b.dataset.piece;document.querySelectorAll('.piece').forEach(x=>x.classList.toggle('active',x===b));render()});$('#lang').onchange=e=>{lang=e.target.value;applyLang()};$('#reset').onclick=()=>{Object.assign(S,{levelC:0,levelT:0,masteryC:0,masteryT:0,widgetC:0,widgetT:0});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).value=0);render()};
 $('#copy').onclick=async()=>{const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),text=`${tr('plannerTitle')}\n${tr(troop)} · ${tr(piece)}\n${tr('gearUpgrade')}: ${S.levelC} → ${S.levelT}\n${tr('masteryForge')}: ${S.masteryC} → ${S.masteryT}\n${tr('exclusiveGear')}: ${S.widgetC} → ${S.widgetT}\n${tr('xpRequired')}: ${ec.xp}\n${tr('xpAvailable')}: ${o.xp}\n${tr('mithril')}: ${ec.mi}\n${tr('mythic')}: ${ec.my+mc.my}\n${tr('hammers')}: ${mc.ha}\n${tr('widgets')}: ${wc}\n${tr('absoluteGain')}: ${$('#statIncrease').textContent}\nSaifKS.com`;try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}$('#copy').textContent=tr('copied');setTimeout(()=>$('#copy').textContent=tr('copyPlan'),1300)};applyLang();
-</script><!-- Build: hero-gear-v9-professional-20260717 --></body></html>
+</script><!-- Build: hero-gear-v9.1-mobile-20260717 --></body></html>
