@@ -2,15 +2,15 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-v9.2-mobile-final-20260717">
+<meta name="saifks-build" content="hero-gear-v9.4-fixed-inputs-20260717">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style>
 *{box-sizing:border-box}
 :root{--bg:#06101c;--panel:#0b1e31;--panel2:#10263e;--line:#29465f;--text:#f7fbff;--muted:#9fb0c2;--gold:#ffd46b;--green:#44d091;--red:#ff7d85;--blue:#5caaff}
 body{margin:0;min-height:100vh;padding-bottom:calc(95px + env(safe-area-inset-bottom));font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 12% 0,rgba(77,157,239,.12),transparent 28%),radial-gradient(circle at 88% 0,rgba(255,212,107,.08),transparent 25%),linear-gradient(180deg,#0a1727,var(--bg))}
-button,input,select{font:inherit}.wrap{width:min(1080px,calc(100% - 18px));margin:auto}
+button,input,select{font:inherit} input::placeholder{color:rgba(174,190,204,.42);opacity:1;font-weight:800}.wrap{width:min(1080px,calc(100% - 18px));margin:auto}
 nav{height:64px;display:flex;align-items:center;justify-content:space-between}.home,.lang{height:37px;border:1px solid var(--line);border-radius:10px;background:#0d2238;color:#fff;padding:0 11px;text-decoration:none;font-weight:900}.brand{text-align:center}.brand b{display:block}.brand small{color:var(--gold);font-size:.68rem;font-weight:900}
 .hero{text-align:center;padding:22px 0 18px}.hero h1{margin:0 0 7px;font-size:clamp(2.35rem,6vw,4.2rem)}.hero p{margin:auto;max-width:720px;color:var(--muted);line-height:1.58}.zero-pill{display:inline-flex;margin-top:10px;padding:7px 10px;border:1px solid rgba(255,212,107,.24);border-radius:999px;background:rgba(255,212,107,.07);color:var(--gold);font-size:.72rem;font-weight:900}
 .layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:12px}.stack{display:grid;gap:12px}
@@ -188,6 +188,9 @@ nav{height:72px;position:sticky;top:0;z-index:30;padding:0 4px;background:rgba(5
   .actions{position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;padding:0!important;border:0!important;background:none!important;backdrop-filter:none!important}
   .copy,.reset{width:100%!important}
 }
+@media (max-width: 640px){
+  input,select,textarea{font-size:16px!important;touch-action:manipulation}
+}
 @media (max-width: 360px){
   .wrap{padding-inline:8px!important}
   nav{margin-inline:-8px!important;padding-inline:8px!important;grid-template-columns:62px minmax(0,1fr) 86px!important}
@@ -212,18 +215,18 @@ nav{height:72px;position:sticky;top:0;z-index:30;padding:0 4px;background:rgba(5
 <div class="upgrade"><h4 data-t="exclusiveGear"></h4><div class="pair"><div class="field"><label data-t="currentWidget"></label><select id="widgetC"></select></div><div class="arrow">→</div><div class="field"><label data-t="targetWidget"></label><select id="widgetT"></select></div></div><p class="hint" data-t="exclusiveOptional"></p></div>
 </div></div></div>
 <div class="card"><div class="head"><h3 data-t="xpItems"></h3><span data-t="automatic"></span></div><div class="pad"><div class="xp-grid">
-<div class="item"><label data-t="purplePart"></label><small data-value="100"></small><input id="purplePart" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="greenPart"></label><small data-value="10"></small><input id="greenPart" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="greyGear"></label><small data-value="10"></small><input id="greyGear" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="greenGear"></label><small data-value="30"></small><input id="greenGear" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="blueGear"></label><small data-value="60"></small><input id="blueGear" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="purpleGear"></label><small data-value="150"></small><input id="purpleGear" type="number" min="0" value="0"></div>
+<div class="item"><label data-t="purplePart"></label><small data-value="100"></small><input id="purplePart" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="greenPart"></label><small data-value="10"></small><input id="greenPart" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="greyGear"></label><small data-value="10"></small><input id="greyGear" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="greenGear"></label><small data-value="30"></small><input id="greenGear" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="blueGear"></label><small data-value="60"></small><input id="blueGear" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="purpleGear"></label><small data-value="150"></small><input id="purpleGear" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
 </div><div class="xp-total"><span data-t="totalXP"></span><b id="totalXP">0</b></div></div></div>
 <div class="card"><div class="head"><h3 data-t="myResources"></h3><span data-t="zeroHint"></span></div><div class="pad"><div class="resource-inputs">
-<div class="item"><label data-t="ownedMithril"></label><input id="ownMithril" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="ownedMythic"></label><input id="ownMythic" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="ownedHammers"></label><input id="ownHammers" type="number" min="0" value="0"></div>
-<div class="item"><label data-t="ownedWidgets"></label><input id="ownWidgets" type="number" min="0" value="0"></div>
+<div class="item"><label data-t="ownedMithril"></label><input id="ownMithril" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="ownedMythic"></label><input id="ownMythic" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="ownedHammers"></label><input id="ownHammers" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
+<div class="item"><label data-t="ownedWidgets"></label><input id="ownWidgets" type="number" min="0" inputmode="numeric" placeholder="0" value=""></div>
 </div></div></div>
 </section>
 <section class="stack right">
@@ -252,6 +255,6 @@ function renderQuick(){$('#quick').innerHTML=[20,40,60,80,100,120,140,160,180,20
 function render(){normalize();fill('#levelC',200,S.levelC);fill('#levelT',200,S.levelT);fill('#masteryC',20,S.masteryC);fill('#masteryT',20,S.masteryT);fill('#widgetC',10,S.widgetC);fill('#widgetT',10,S.widgetT);renderQuick();document.querySelectorAll('[data-value]').forEach(e=>e.textContent=tr('itemValue').replace('{value}',e.dataset.value));const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),totalMy=ec.my+mc.my;$('#totalXP').textContent=fmt(o.xp);$('#needXP').textContent=fmt(ec.xp);$('#needMithril').textContent=fmt(ec.mi);$('#needMythic').textContent=fmt(totalMy);$('#needHammers').textContent=fmt(mc.ha);$('#needWidgets').textContent=fmt(wc);const cur=effective(S.levelC,S.masteryC),tar=effective(S.levelT,S.masteryT),inc=tar-cur,rel=cur?inc/cur*100:0;$('#statCurrent').textContent=fmt(cur)+'%';$('#statTarget').textContent=fmt(tar)+'%';$('#statIncrease').textContent='+'+fmt(inc)+'%';$('#relativeIncrease').textContent='+'+fmt(rel)+'%';$('#affectedStat').textContent=statLabel(statKey());const rows=[[tr('xp'),ec.xp,o.xp],[tr('mithril'),ec.mi,o.mi],[tr('mythic'),totalMy,o.my],[tr('hammers'),mc.ha,o.ha],[tr('widgets'),wc,o.w]];$('#status').innerHTML=`<div class="row head"><span>${tr('resource')}</span><span>${tr('needed')}</span><span>${tr('available')}</span><span>${tr('remaining')}</span></div>`+rows.map(([n,need,have])=>{const miss=Math.max(0,need-have);return `<div class="row"><span>${n}</span><span>${fmt(need)}</span><span>${fmt(have)}</span><span class="${miss?'bad':'ok'}">${miss?fmt(miss):tr('enough')}</span></div>`}).join('');const ms=milestoneRows();$('#milestones').innerHTML=ms.length?ms.map(x=>`<div class="mile"><div class="lv">+${x.imbuement_plus}</div><div><b>${statLabel(x.stat)} +${fmt(x.bonus_percent)}%</b><small>${x.scope==='expedition'?tr('expedition'):tr('conquest')}</small></div></div>`).join(''):`<div class="empty">${tr('noMilestones')}</div>`}
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-t]').forEach(e=>e.textContent=tr(e.dataset.t));$('#lang').value=lang;$('#home').textContent=tr('home');$('#home').href='../index.html?lang='+lang;localStorage.setItem('saifRallyLang',lang);render()}
 [['#levelC','levelC'],['#levelT','levelT'],['#masteryC','masteryC'],['#masteryT','masteryT'],['#widgetC','widgetC'],['#widgetT','widgetT']].forEach(([id,key])=>$(id).onchange=e=>{S[key]=+e.target.value;render()});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).oninput=render);
-document.querySelectorAll('.troop').forEach(b=>b.onclick=()=>{troop=b.dataset.troop;document.querySelectorAll('.troop').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelectorAll('.piece').forEach(b=>b.onclick=()=>{piece=b.dataset.piece;document.querySelectorAll('.piece').forEach(x=>x.classList.toggle('active',x===b));render()});$('#lang').onchange=e=>{lang=e.target.value;applyLang()};$('#reset').onclick=()=>{Object.assign(S,{levelC:0,levelT:0,masteryC:0,masteryT:0,widgetC:0,widgetT:0});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).value=0);render()};
+document.querySelectorAll('.troop').forEach(b=>b.onclick=()=>{troop=b.dataset.troop;document.querySelectorAll('.troop').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelectorAll('.piece').forEach(b=>b.onclick=()=>{piece=b.dataset.piece;document.querySelectorAll('.piece').forEach(x=>x.classList.toggle('active',x===b));render()});$('#lang').onchange=e=>{lang=e.target.value;applyLang()};$('#reset').onclick=()=>{Object.assign(S,{levelC:0,levelT:0,masteryC:0,masteryT:0,widgetC:0,widgetT:0});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).value='');render()};
 $('#copy').onclick=async()=>{const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),text=`${tr('plannerTitle')}\n${tr(troop)} · ${tr(piece)}\n${tr('gearUpgrade')}: ${S.levelC} → ${S.levelT}\n${tr('masteryForge')}: ${S.masteryC} → ${S.masteryT}\n${tr('exclusiveGear')}: ${S.widgetC} → ${S.widgetT}\n${tr('xpRequired')}: ${ec.xp}\n${tr('xpAvailable')}: ${o.xp}\n${tr('mithril')}: ${ec.mi}\n${tr('mythic')}: ${ec.my+mc.my}\n${tr('hammers')}: ${mc.ha}\n${tr('widgets')}: ${wc}\n${tr('absoluteGain')}: ${$('#statIncrease').textContent}\nSaifKS.com`;try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}$('#copy').textContent=tr('copied');setTimeout(()=>$('#copy').textContent=tr('copyPlan'),1300)};applyLang();
-</script><!-- Build: hero-gear-v9.2-mobile-final-20260717 --></body></html>
+</script><!-- Build: hero-gear-v9.4-fixed-inputs-20260717 --></body></html>
