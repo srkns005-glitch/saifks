@@ -253,7 +253,7 @@ nav{height:72px;position:sticky;top:0;z-index:30;padding:0 4px;background:rgba(5
 .selected-gear-card{margin-top:12px;display:grid;grid-template-columns:112px minmax(0,1fr);gap:13px;align-items:center;padding:12px;border:1px solid rgba(244,201,107,.27);border-radius:16px;background:linear-gradient(145deg,rgba(19,46,69,.94),rgba(7,23,37,.97));overflow:hidden}.selected-gear-image-wrap{aspect-ratio:1;border-radius:15px;padding:5px;background:linear-gradient(145deg,rgba(255,186,52,.28),rgba(255,255,255,.04));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}.selected-gear-image{width:100%;height:100%;object-fit:contain;border-radius:11px;display:block;animation:gearFade .24s ease}.selected-gear-info{min-width:0}.selected-gear-info>small{display:block;color:var(--muted);font-size:.64rem;font-weight:850}.selected-gear-info>b{display:block;margin-top:3px;color:#fff;font-size:1rem}.selected-gear-info .gear-type-banner{margin-top:9px;justify-content:flex-start;padding:9px 11px}.selected-gear-info .gear-type-banner small{display:none}@keyframes gearFade{from{opacity:.25;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 @media(max-width:600px){.gear-piece-buttons{grid-template-columns:repeat(2,1fr)!important}.gear-piece-buttons .piece{min-height:86px}.piece-thumb{width:54px;height:54px}.selected-gear-card{grid-template-columns:92px minmax(0,1fr);padding:10px}.selected-gear-info>b{font-size:.88rem}}
 
-/* v12.0 mobile-only archer glove fix */
+/* v12.1 mobile-only archer glove fix */
 @media (max-width: 768px){
 img[src*="D7911D6D-6830-4516-BA55-73B6F24D55C7.png"]{
   transform:scale(1.08)!important;
@@ -261,9 +261,149 @@ img[src*="D7911D6D-6830-4516-BA55-73B6F24D55C7.png"]{
 }
 }
 
+
+/* v12.1 Gear Overview */
+.gear-overview{
+  margin:18px 0 22px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+.gear-overview-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.gear-overview-title{
+  margin:0;
+  font-size:clamp(18px,2.4vw,24px);
+  font-weight:800;
+}
+.gear-overview-sub{
+  opacity:.7;
+  font-size:13px;
+}
+.gear-overview-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.gear-overview-group{
+  min-width:0;
+}
+.gear-overview-group-title{
+  margin:0 0 9px;
+  font-size:14px;
+  font-weight:800;
+  opacity:.88;
+}
+.gear-overview-items{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.gear-overview-card{
+  appearance:none;
+  width:100%;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  padding:9px;
+  background:rgba(0,0,0,.16);
+  color:inherit;
+  cursor:pointer;
+  text-align:start;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.gear-overview-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.24);
+}
+.gear-overview-card.active{
+  border-color:rgba(255,207,92,.85);
+  background:rgba(255,207,92,.08);
+}
+.gear-overview-card.complete{
+  box-shadow:inset 0 0 0 1px rgba(92,220,138,.4);
+}
+.gear-overview-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.gear-overview-img{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  object-fit:contain;
+}
+.gear-overview-meta{
+  min-width:0;
+  flex:1;
+}
+.gear-overview-piece{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.gear-overview-levels{
+  display:block;
+  margin-top:2px;
+  font-size:11px;
+  opacity:.75;
+}
+.gear-overview-progress{
+  height:5px;
+  margin-top:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.1);
+  overflow:hidden;
+}
+.gear-overview-progress > span{
+  display:block;
+  height:100%;
+  width:0;
+  background:currentColor;
+  opacity:.72;
+}
+.gear-overview-status{
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+  margin-top:6px;
+  font-size:10px;
+  opacity:.72;
+}
+@media (max-width:900px){
+  .gear-overview-grid{grid-template-columns:1fr}
+  .gear-overview-items{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .gear-overview{padding:12px}
+  .gear-overview-head{align-items:flex-start;flex-direction:column}
+  .gear-overview-items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gear-overview-img{width:44px;height:44px;flex-basis:44px}
+}
+
 </style>
 </head>
-<body><div class="wrap">
+<body>
+
+<section class="gear-overview" id="gearOverview">
+  <div class="gear-overview-head">
+    <div>
+      <h2 class="gear-overview-title">Gear Overview</h2>
+      <div class="gear-overview-sub">Tap any piece to edit it instantly.</div>
+    </div>
+  </div>
+  <div class="gear-overview-grid" id="gearOverviewGrid"></div>
+</section>
+<div class="wrap">
 <nav class="site-header"><a id="home" class="header-action home" href="../index.html" aria-label="Home" title="Home"><span class="header-icon" aria-hidden="true">⌂</span></a><div class="brand"><b>SaifKS</b><small>HERO GEAR CALCULATOR</small></div><div class="language-control"><select id="lang" class="header-action lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option></select></div></nav>
 <section class="hero"><h1 data-t="plannerTitle"></h1><p data-t="plannerSubtitle"></p><span class="zero-pill" data-t="allZero"></span></section>
 <div class="workflow" aria-label="Calculator workflow"><div class="workflow-step"><i>1</i><span data-t="step1"></span></div><div class="workflow-step"><i>2</i><span data-t="step2"></span></div><div class="workflow-step"><i>3</i><span data-t="step3"></span></div></div>
@@ -329,7 +469,7 @@ function milestoneRows(){return DB.imbuement_bonuses.filter(x=>x.troop_type===tr
 function renderQuick(){$('#quick').innerHTML=[20,40,60,80,100,120,140,160,180,200].map(v=>`<button data-v="${v}" class="${S.levelT===v?'active':''}">${v}</button>`).join('');$('#quick').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.levelT=+b.dataset.v;render()})}
 const GEAR_GOLD_IMAGE_BASE='assets/gear-v108-transparent';
 const GEAR_RED_IMAGE_BASE='assets/gear-red-v117-matched-512';
-const GEAR_ASSET_VERSION='20260718-120';
+const GEAR_ASSET_VERSION='20260718-121';
 const GEAR_RED_FILE_MAP={"infantry": {"helm": "5CA7D3F6-6FDC-4F4B-81BA-EE2DA973279B.png", "chest": "E1CFDA1B-298C-4084-BBEF-311FDD21FB6B.png", "gloves": "1B77AC7E-ED01-48DD-A2C8-BE1ECF2895E9.png", "boots": "27B0B841-2787-4FEE-BAC8-77AA5860E35A.png"}, "cavalry": {"helm": "70F0B961-6B2D-4D09-A665-EEB51107E174.png", "chest": "FBBEA479-25B3-468B-877C-CFDA1A01418D.png", "gloves": "46164213-1B12-4ED1-8530-BEB38BBD7C1D.png", "boots": "358012ED-693C-49F2-BE67-F3D22DF00072.png"}, "archer": {"helm": "59170B9D-5EA4-4F9D-9F85-67FD994B183B.png", "chest": "F1309F8C-9C28-4E24-8B6E-7C0C181CFA73.png", "gloves": "D7911D6D-6830-4516-BA55-73B6F24D55C7.png", "boots": "46609331-5B4E-4488-841C-227BA2ABD1CE.png"}};
 function gearImagePath(t=troop,p=piece,level=S.levelT){
  const isRed=Number(level)>=101;
@@ -339,14 +479,56 @@ function gearImagePath(t=troop,p=piece,level=S.levelT){
  }
  return `${GEAR_GOLD_IMAGE_BASE}/${t}/${p}.png?v=${GEAR_ASSET_VERSION}`;
 }
+
+function gearProgress(profile){
+  const current=Math.max(0,+profile.levelC||0),target=Math.max(0,+profile.levelT||0);
+  if(target<=0)return 0;
+  if(current>=target)return 100;
+  return Math.max(0,Math.min(100,Math.round((current/target)*100)));
+}
+function renderGearOverview(){
+  const grid=$('#gearOverviewGrid');
+  if(!grid)return;
+  grid.innerHTML=GEAR_TROOPS.map(t=>{
+    const cards=GEAR_PIECES.map(p=>{
+      const profile=gearProfiles[t][p],progress=gearProgress(profile);
+      const current=+profile.levelC||0,target=+profile.levelT||0;
+      const complete=target>0&&current>=target;
+      const active=t===troop&&p===piece;
+      const levelText=target>0?`${current} → ${target}`:`${current}`;
+      const status=complete?'✓ Complete':`${progress}%`;
+      return `<button class="gear-overview-card${active?' active':''}${complete?' complete':''}" data-overview-troop="${t}" data-overview-piece="${p}" type="button">
+        <div class="gear-overview-top">
+          <img class="gear-overview-img" src="${gearImagePath(t,p,target)}" alt="${tr(t)} ${tr(p)}">
+          <span class="gear-overview-meta">
+            <span class="gear-overview-piece">${tr(p)}</span>
+            <span class="gear-overview-levels">${levelText}</span>
+          </span>
+        </div>
+        <div class="gear-overview-progress"><span style="width:${progress}%"></span></div>
+        <div class="gear-overview-status"><span>${target>=101?'Red':'Gold'}</span><span>${status}</span></div>
+      </button>`;
+    }).join('');
+    return `<div class="gear-overview-group">
+      <h3 class="gear-overview-group-title">${tr(t)}</h3>
+      <div class="gear-overview-items">${cards}</div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('[data-overview-troop]').forEach(btn=>{
+    btn.onclick=()=>switchSelectedGear(btn.dataset.overviewTroop,btn.dataset.overviewPiece);
+  });
+}
+
 function updateGearVisual(){
  saveCurrentGearProfile();
+ renderGearOverview();
  document.querySelectorAll('.piece').forEach(btn=>{const p=btn.dataset.piece,img=btn.querySelector('.piece-thumb'),level=gearProfiles[troop][p].levelT;if(img){img.src=gearImagePath(troop,p,level);img.alt=`${tr(troop)} ${tr(p)}`}});
  const heroImg=$('#selectedGearImage');if(heroImg){heroImg.src=gearImagePath(troop,piece,gearProfiles[troop][piece].levelT);heroImg.alt=`${tr(troop)} ${tr(piece)}`;heroImg.style.animation='none';void heroImg.offsetWidth;heroImg.style.animation='gearFade .24s ease'}
  if($('#selectedGearTroop')) $('#selectedGearTroop').textContent=tr(troop);
  if($('#selectedGearName')) $('#selectedGearName').textContent=tr(piece);
 }
-function render(){normalize();fill('#levelC',200,S.levelC);fill('#levelT',200,S.levelT);fill('#masteryC',20,S.masteryC);fill('#masteryT',20,S.masteryT);fill('#widgetC',10,S.widgetC);fill('#widgetT',10,S.widgetT);renderQuick();document.querySelectorAll('[data-value]').forEach(e=>e.textContent=tr('itemValue').replace('{value}',e.dataset.value));const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),totalMy=ec.my+mc.my;$('#totalXP').textContent=fmt(o.xp);$('#needXP').textContent=fmt(ec.xp);$('#needMithril').textContent=fmt(ec.mi);$('#needMythic').textContent=fmt(totalMy);$('#needHammers').textContent=fmt(mc.ha);$('#needWidgets').textContent=fmt(wc);$('#simpleXP').textContent=fmt(ec.xp);$('#simpleHammers').textContent=fmt(mc.ha);$('#simpleMithril').textContent=fmt(ec.mi);$('#simpleMythic').textContent=fmt(totalMy);$('#targetGearResult').textContent='Lv '+S.levelT;$('#targetForgeResult').textContent='Lv '+S.masteryT;const cur=effective(S.levelC,S.masteryC),tar=effective(S.levelT,S.masteryT),inc=tar-cur,rel=cur?inc/cur*100:0;$('#statCurrent').textContent=fmt(cur)+'%';$('#statTarget').textContent=fmt(tar)+'%';$('#statIncrease').textContent='+'+fmt(inc)+'%';$('#relativeIncrease').textContent='+'+fmt(rel)+'%';$('#affectedStat').textContent=statLabel(statKey());const selectedStat=statKey(),gtw=gearTypeWords(),typeBanner=$('#gearTypeBanner');typeBanner.className='gear-type-banner '+selectedStat;$('#gearTypeIcon').textContent=selectedStat==='health'?'💚':'⚔️';$('#gearTypeCaption').textContent=gtw.caption;$('#gearTypeText').textContent=gtw[selectedStat];let rows=[['✨',tr('xp'),ec.xp,o.xp],['🔹',tr('mithril'),ec.mi,o.mi],['🛡️',tr('mythic'),totalMy,o.my],['🔨',tr('hammers'),mc.ha,o.ha],['⚙️',tr('widgets'),wc,o.w]].filter(([, ,need])=>Number(need)>0);[['#simpleXP',ec.xp],['#simpleHammers',mc.ha],['#simpleMithril',ec.mi],['#simpleMythic',totalMy]].forEach(([sel,val])=>$(sel).closest('.simple-number').classList.toggle('is-zero',Number(val)<=0));const hasTarget=S.levelT>S.levelC||S.masteryT>S.masteryC||S.widgetT>S.widgetC;const inventoryEntered=Object.values(o).some(v=>v>0);const completedCount=inventoryEntered?rows.filter(([, ,need,have])=>have>=need).length:0;const missingCount=inventoryEntered?rows.length-completedCount:rows.length;const progress=inventoryEntered&&rows.length?Math.round(rows.reduce((sum,[,,need,have])=>sum+Math.min(1,have/need),0)/rows.length*100):0;$('#progressRing').style.setProperty('--progress',progress);$('#progressPercent').textContent=progress+'%';$('#completedCount').textContent=completedCount;$('#remainingCount').textContent=missingCount;$('#materialsCount').textContent=rows.length;const rs=$('#resultState');rs.className='result-state';if(!hasTarget){rs.textContent=lang==='ar'?'اختر المستوى':'Choose levels'}else if(inventoryEntered&&missingCount===0){rs.textContent=lang==='ar'?'جاهز للترقية':'Ready to upgrade';rs.classList.add('ready')}else if(inventoryEntered){rs.textContent=(lang==='ar'?'ناقص ':'Missing ')+missingCount;rs.classList.add('missing')}else{rs.textContent=lang==='ar'?'المطلوب للترقية':'Upgrade cost'}if(inventoryEntered)rows.sort((a,b)=>{const ar=Math.max(0,a[2]-a[3])/a[2],br=Math.max(0,b[2]-b[3])/b[2];return br-ar});let visibleRows=rows;if(resultFilter==='remaining'&&inventoryEntered)visibleRows=rows.filter(([, ,need,have])=>have<need);if(resultFilter==='completed'&&inventoryEntered)visibleRows=rows.filter(([, ,need,have])=>have>=need);$('#requirementList').innerHTML=visibleRows.map(([icon,n,need,have])=>{const miss=Math.max(0,need-have),entered=inventoryEntered,pct=entered?Math.min(100,Math.round(have/need*100)):0,state=entered?(miss?(pct>=80?'near':'missing'):'ready'):'';const completeText=lang==='ar'?'مكتمل ✓':'Complete ✓';const requiredText=lang==='ar'?'المطلوب':'Required';const availableText=lang==='ar'?'المتوفر':'Available';const remainingText=lang==='ar'?'المتبقي':'Remaining';const detail=entered?`${requiredText}: ${fmt(need)} · ${availableText}: ${fmt(have)}`:(lang==='ar'?'إجمالي الكمية المطلوبة':'Total amount required');const mainValue=entered?(miss?fmt(miss):completeText):fmt(need);const bottom=entered?(miss?remainingText:availableText):requiredText;return `<div class="requirement-item ${state}"><div class="requirement-name"><div class="requirement-icon">${icon}</div><div class="requirement-copy"><b>${n}</b><small>${detail}</small>${entered?`<div class="requirement-progress"><i style="width:${pct}%"></i></div>`:''}</div></div><div class="requirement-values"><b>${mainValue}</b><small>${bottom}${entered?` · <span class="requirement-percent">${pct}%</span>`:''}</small></div></div>`}).join('')||`<div class="empty">${resultFilter==='completed'?(lang==='ar'?'لا توجد مواد مكتملة بعد.':'No completed materials yet.'):(resultFilter==='remaining'?(lang==='ar'?'لا توجد مواد متبقية.':'No remaining materials.'):(lang==='ar'?'اختر مستوى أعلى لعرض المتطلبات.':'Choose a higher target level to see requirements.'))}</div>`;const ms=milestoneRows();$('#milestones').innerHTML=ms.length?ms.map(x=>`<div class="mile"><div class="lv">+${x.imbuement_plus}</div><div><b>${statLabel(x.stat)} +${fmt(x.bonus_percent)}%</b><small>${x.scope==='expedition'?tr('expedition'):tr('conquest')}</small></div></div>`).join(''):`<div class="empty">${tr('noMilestones')}</div>`;syncActiveSelections();updateGearVisual();saveState()}
+function render(){
+ renderGearOverview();normalize();fill('#levelC',200,S.levelC);fill('#levelT',200,S.levelT);fill('#masteryC',20,S.masteryC);fill('#masteryT',20,S.masteryT);fill('#widgetC',10,S.widgetC);fill('#widgetT',10,S.widgetT);renderQuick();document.querySelectorAll('[data-value]').forEach(e=>e.textContent=tr('itemValue').replace('{value}',e.dataset.value));const ec=enhancementCost(),mc=masteryCost(),wc=widgetCost(),o=owned(),totalMy=ec.my+mc.my;$('#totalXP').textContent=fmt(o.xp);$('#needXP').textContent=fmt(ec.xp);$('#needMithril').textContent=fmt(ec.mi);$('#needMythic').textContent=fmt(totalMy);$('#needHammers').textContent=fmt(mc.ha);$('#needWidgets').textContent=fmt(wc);$('#simpleXP').textContent=fmt(ec.xp);$('#simpleHammers').textContent=fmt(mc.ha);$('#simpleMithril').textContent=fmt(ec.mi);$('#simpleMythic').textContent=fmt(totalMy);$('#targetGearResult').textContent='Lv '+S.levelT;$('#targetForgeResult').textContent='Lv '+S.masteryT;const cur=effective(S.levelC,S.masteryC),tar=effective(S.levelT,S.masteryT),inc=tar-cur,rel=cur?inc/cur*100:0;$('#statCurrent').textContent=fmt(cur)+'%';$('#statTarget').textContent=fmt(tar)+'%';$('#statIncrease').textContent='+'+fmt(inc)+'%';$('#relativeIncrease').textContent='+'+fmt(rel)+'%';$('#affectedStat').textContent=statLabel(statKey());const selectedStat=statKey(),gtw=gearTypeWords(),typeBanner=$('#gearTypeBanner');typeBanner.className='gear-type-banner '+selectedStat;$('#gearTypeIcon').textContent=selectedStat==='health'?'💚':'⚔️';$('#gearTypeCaption').textContent=gtw.caption;$('#gearTypeText').textContent=gtw[selectedStat];let rows=[['✨',tr('xp'),ec.xp,o.xp],['🔹',tr('mithril'),ec.mi,o.mi],['🛡️',tr('mythic'),totalMy,o.my],['🔨',tr('hammers'),mc.ha,o.ha],['⚙️',tr('widgets'),wc,o.w]].filter(([, ,need])=>Number(need)>0);[['#simpleXP',ec.xp],['#simpleHammers',mc.ha],['#simpleMithril',ec.mi],['#simpleMythic',totalMy]].forEach(([sel,val])=>$(sel).closest('.simple-number').classList.toggle('is-zero',Number(val)<=0));const hasTarget=S.levelT>S.levelC||S.masteryT>S.masteryC||S.widgetT>S.widgetC;const inventoryEntered=Object.values(o).some(v=>v>0);const completedCount=inventoryEntered?rows.filter(([, ,need,have])=>have>=need).length:0;const missingCount=inventoryEntered?rows.length-completedCount:rows.length;const progress=inventoryEntered&&rows.length?Math.round(rows.reduce((sum,[,,need,have])=>sum+Math.min(1,have/need),0)/rows.length*100):0;$('#progressRing').style.setProperty('--progress',progress);$('#progressPercent').textContent=progress+'%';$('#completedCount').textContent=completedCount;$('#remainingCount').textContent=missingCount;$('#materialsCount').textContent=rows.length;const rs=$('#resultState');rs.className='result-state';if(!hasTarget){rs.textContent=lang==='ar'?'اختر المستوى':'Choose levels'}else if(inventoryEntered&&missingCount===0){rs.textContent=lang==='ar'?'جاهز للترقية':'Ready to upgrade';rs.classList.add('ready')}else if(inventoryEntered){rs.textContent=(lang==='ar'?'ناقص ':'Missing ')+missingCount;rs.classList.add('missing')}else{rs.textContent=lang==='ar'?'المطلوب للترقية':'Upgrade cost'}if(inventoryEntered)rows.sort((a,b)=>{const ar=Math.max(0,a[2]-a[3])/a[2],br=Math.max(0,b[2]-b[3])/b[2];return br-ar});let visibleRows=rows;if(resultFilter==='remaining'&&inventoryEntered)visibleRows=rows.filter(([, ,need,have])=>have<need);if(resultFilter==='completed'&&inventoryEntered)visibleRows=rows.filter(([, ,need,have])=>have>=need);$('#requirementList').innerHTML=visibleRows.map(([icon,n,need,have])=>{const miss=Math.max(0,need-have),entered=inventoryEntered,pct=entered?Math.min(100,Math.round(have/need*100)):0,state=entered?(miss?(pct>=80?'near':'missing'):'ready'):'';const completeText=lang==='ar'?'مكتمل ✓':'Complete ✓';const requiredText=lang==='ar'?'المطلوب':'Required';const availableText=lang==='ar'?'المتوفر':'Available';const remainingText=lang==='ar'?'المتبقي':'Remaining';const detail=entered?`${requiredText}: ${fmt(need)} · ${availableText}: ${fmt(have)}`:(lang==='ar'?'إجمالي الكمية المطلوبة':'Total amount required');const mainValue=entered?(miss?fmt(miss):completeText):fmt(need);const bottom=entered?(miss?remainingText:availableText):requiredText;return `<div class="requirement-item ${state}"><div class="requirement-name"><div class="requirement-icon">${icon}</div><div class="requirement-copy"><b>${n}</b><small>${detail}</small>${entered?`<div class="requirement-progress"><i style="width:${pct}%"></i></div>`:''}</div></div><div class="requirement-values"><b>${mainValue}</b><small>${bottom}${entered?` · <span class="requirement-percent">${pct}%</span>`:''}</small></div></div>`}).join('')||`<div class="empty">${resultFilter==='completed'?(lang==='ar'?'لا توجد مواد مكتملة بعد.':'No completed materials yet.'):(resultFilter==='remaining'?(lang==='ar'?'لا توجد مواد متبقية.':'No remaining materials.'):(lang==='ar'?'اختر مستوى أعلى لعرض المتطلبات.':'Choose a higher target level to see requirements.'))}</div>`;const ms=milestoneRows();$('#milestones').innerHTML=ms.length?ms.map(x=>`<div class="mile"><div class="lv">+${x.imbuement_plus}</div><div><b>${statLabel(x.stat)} +${fmt(x.bonus_percent)}%</b><small>${x.scope==='expedition'?tr('expedition'):tr('conquest')}</small></div></div>`).join(''):`<div class="empty">${tr('noMilestones')}</div>`;syncActiveSelections();updateGearVisual();saveState()}
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-t]').forEach(e=>e.textContent=tr(e.dataset.t));$('#lang').value=lang;$('#home').setAttribute('aria-label',tr('home'));$('#home').setAttribute('title',tr('home'));$('#home').href='../index.html?lang='+lang;$('#simpleTitle').textContent=lang==='ar'?'نتيجة الترقية':'Your upgrade result';$('#simpleGuide').textContent=lang==='ar'?'اختر المستوى الحالي ثم المستوى المطلوب، وستظهر جميع المواد تلقائيًا.':'Select the current level and target level. All required resources appear automatically.';$('#simpleXpLabel').textContent=lang==='ar'?'نقاط الخبرة المطلوبة':'XP Required';$('#simpleHammerLabel').textContent=lang==='ar'?'المطارق':'Forgehammers';$('#simpleMithrilLabel').textContent=lang==='ar'?'الميثريل':'Mithril';$('#simpleMythicLabel').textContent=lang==='ar'?'العتاد الأسطوري':'Mythic Gear';$('#targetGearLabel').textContent=lang==='ar'?'مستوى العتاد المطلوب':'Target gear level';$('#targetForgeLabel').textContent=lang==='ar'?'مستوى الصياغة المطلوب':'Required forging level';$('#requirementsTitle').textContent=lang==='ar'?'قائمة متطلبات الترقية':'Upgrade Requirements';$('#requirementsGuide').textContent=lang==='ar'?'كل سطر يوضح الكمية الإجمالية المطلوبة. أضف موادك لمعرفة الناقص مباشرة.':'Each row shows the total required amount. Add your inventory to see what is missing.';$('#optionalToggle').textContent=$('#optionalWrap').classList.contains('open')?(lang==='ar'?'إخفاء مواردي':'Hide my resources'):(lang==='ar'?'أضف المواد التي أملكها (اختياري)':'Add my resources (optional)');$('#advancedToggle').textContent=$('#advancedBlock').classList.contains('open')?(lang==='ar'?'إخفاء الإعدادات المتقدمة':'Hide advanced settings'):(lang==='ar'?'إعدادات متقدمة (اختياري)':'Advanced settings (optional)');$('#progressTitle').textContent=lang==='ar'?'تقدم عتاد البطل':'Hero Gear Progress';$('#progressHint').textContent=lang==='ar'?'أضف موادك لمتابعة نسبة الإنجاز':'Add your resources to track completion';$('#progressLabel').textContent=lang==='ar'?'الإنجاز':'Complete';$('#completedLabel').textContent=lang==='ar'?'مكتمل':'Completed';$('#remainingLabel').textContent=lang==='ar'?'متبقي':'Remaining';$('#materialsLabel').textContent=lang==='ar'?'المواد':'Materials';$('#filterAll').textContent=lang==='ar'?'الكل':'All';$('#filterRemaining').textContent=lang==='ar'?'المتبقي':'Remaining';$('#filterCompleted').textContent=lang==='ar'?'المكتمل':'Completed';localStorage.setItem('saifRallyLang',lang);render()}
 [['#levelC','levelC'],['#levelT','levelT'],['#masteryC','masteryC'],['#masteryT','masteryT'],['#widgetC','widgetC'],['#widgetT','widgetT']].forEach(([id,key])=>$(id).onchange=e=>{S[key]=+e.target.value;render()});['#purplePart','#greenPart','#greyGear','#greenGear','#blueGear','#purpleGear','#ownMithril','#ownMythic','#ownHammers','#ownWidgets'].forEach(id=>$(id).oninput=render);
 document.querySelectorAll('.troop').forEach(b=>b.onclick=()=>switchSelectedGear(b.dataset.troop,piece));document.querySelectorAll('.piece').forEach(b=>b.onclick=()=>switchSelectedGear(troop,b.dataset.piece));$('#lang').onchange=e=>{lang=e.target.value;applyLang()};$('#optionalToggle').onclick=()=>{$('#optionalWrap').classList.toggle('open');applyLang()};$('#advancedToggle').onclick=()=>{document.querySelectorAll('.advanced-block').forEach(x=>x.classList.toggle('open'));applyLang()};$('#reset').onclick=()=>{GEAR_TROOPS.forEach(t=>GEAR_PIECES.forEach(p=>Object.assign(gearProfiles[t][p],{levelC:0,levelT:0,masteryC:0,masteryT:0,widgetC:0,widgetT:0})));troop='infantry';piece='helm';loadCurrentGearProfile();resultFilter='all';INPUT_IDS.forEach(id=>$('#'+id).value='');$('#optionalWrap').classList.remove('open');document.querySelectorAll('.advanced-block').forEach(x=>x.classList.remove('open'));localStorage.removeItem(STORAGE_KEY);render()};
