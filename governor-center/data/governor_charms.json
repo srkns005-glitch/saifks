@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0.0",
+  "game": "Kingshot",
+  "dataset": "governor_charms",
+  "generated_for": "SaifKS",
+  "source_note": "Transcribed from the user-provided Kingshot Wiki PDF/screenshots dated 2026-07-19.",
+  "cost_interpretation": "Each level stores the material quantities displayed for upgrading to that level. Planner logic should sum levels after the current level through the target level.",
+  "materials": {
+    "charm_guides": {
+      "name": "Charm Guides"
+    },
+    "charm_designs": {
+      "name": "Charm Designs"
+    }
+  },
+  "types": [
+    {
+      "id": "keenness",
+      "name": "Keenness Charm",
+      "troop": "cavalry",
+      "stats": [
+        "health",
+        "lethality"
+      ]
+    },
+    {
+      "id": "protection",
+      "name": "Protection Charm",
+      "troop": "infantry",
+      "stats": [
+        "health",
+        "lethality"
+      ]
+    },
+    {
+      "id": "vision",
+      "name": "Vision Charm",
+      "troop": "archer",
+      "stats": [
+        "health",
+        "lethality"
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "id": "charm_01",
+      "materials": {
+        "charm_guides": 5,
+        "charm_designs": 5
+      },
+      "stat_total_percent": 9.0,
+      "power_total": 205700
+    },
+    {
+      "level": 2,
+      "id": "charm_02",
+      "materials": {
+        "charm_guides": 40,
+        "charm_designs": 15
+      },
+      "stat_total_percent": 12.0,
+      "power_total": 288000
+    },
+    {
+      "level": 3,
+      "id": "charm_03",
+      "materials": {
+        "charm_guides": 60,
+        "charm_designs": 40
+      },
+      "stat_total_percent": 16.0,
+      "power_total": 370000
+    },
+    {
+      "level": 4,
+      "id": "charm_04",
+      "materials": {
+        "charm_guides": 80,
+        "charm_designs": 100
+      },
+      "stat_total_percent": 19.0,
+      "power_total": 452000
+    },
+    {
+      "level": 5,
+      "id": "charm_05",
+      "materials": {
+        "charm_guides": 100,
+        "charm_designs": 200
+      },
+      "stat_total_percent": 25.0,
+      "power_total": 576000
+    },
+    {
+      "level": 6,
+      "id": "charm_06",
+      "materials": {
+        "charm_guides": 120,
+        "charm_designs": 300
+      },
+      "stat_total_percent": 30.0,
+      "power_total": 700000
+    },
+    {
+      "level": 7,
+      "id": "charm_07",
+      "materials": {
+        "charm_guides": 140,
+        "charm_designs": 400
+      },
+      "stat_total_percent": 35.0,
+      "power_total": 824000
+    },
+    {
+      "level": 8,
+      "id": "charm_08",
+      "materials": {
+        "charm_guides": 200,
+        "charm_designs": 400
+      },
+      "stat_total_percent": 40.0,
+      "power_total": 948000
+    },
+    {
+      "level": 9,
+      "id": "charm_09",
+      "materials": {
+        "charm_guides": 300,
+        "charm_designs": 400
+      },
+      "stat_total_percent": 45.0,
+      "power_total": 1072000
+    },
+    {
+      "level": 10,
+      "id": "charm_10",
+      "materials": {
+        "charm_guides": 420,
+        "charm_designs": 420
+      },
+      "stat_total_percent": 50.0,
+      "power_total": 1196000
+    },
+    {
+      "level": 11,
+      "id": "charm_11",
+      "materials": {
+        "charm_guides": 560,
+        "charm_designs": 420
+      },
+      "stat_total_percent": 55.0,
+      "power_total": 1320000
+    },
+    {
+      "level": 12,
+      "id": "charm_12",
+      "materials": {
+        "charm_guides": 580,
+        "charm_designs": 600
+      },
+      "stat_total_percent": 59.0,
+      "power_total": 1416000
+    },
+    {
+      "level": 13,
+      "id": "charm_13",
+      "materials": {
+        "charm_guides": 610,
+        "charm_designs": 780
+      },
+      "stat_total_percent": 63.0,
+      "power_total": 1512000
+    },
+    {
+      "level": 14,
+      "id": "charm_14",
+      "materials": {
+        "charm_guides": 645,
+        "charm_designs": 960
+      },
+      "stat_total_percent": 67.0,
+      "power_total": 1608000
+    },
+    {
+      "level": 15,
+      "id": "charm_15",
+      "materials": {
+        "charm_guides": 685,
+        "charm_designs": 1140
+      },
+      "stat_total_percent": 71.0,
+      "power_total": 1704000
+    },
+    {
+      "level": 16,
+      "id": "charm_16",
+      "materials": {
+        "charm_guides": 730,
+        "charm_designs": 1320
+      },
+      "stat_total_percent": 75.0,
+      "power_total": 1800000
+    },
+    {
+      "level": 17,
+      "id": "charm_17",
+      "materials": {
+        "charm_guides": 780,
+        "charm_designs": 1500
+      },
+      "stat_total_percent": 79.0,
+      "power_total": 1896000
+    },
+    {
+      "level": 18,
+      "id": "charm_18",
+      "materials": {
+        "charm_guides": 835,
+        "charm_designs": 1680
+      },
+      "stat_total_percent": 83.0,
+      "power_total": 1992000
+    },
+    {
+      "level": 19,
+      "id": "charm_19",
+      "materials": {
+        "charm_guides": 895,
+        "charm_designs": 1860
+      },
+      "stat_total_percent": 87.0,
+      "power_total": 2088000
+    },
+    {
+      "level": 20,
+      "id": "charm_20",
+      "materials": {
+        "charm_guides": 960,
+        "charm_designs": 2040
+      },
+      "stat_total_percent": 91.0,
+      "power_total": 2184000
+    },
+    {
+      "level": 21,
+      "id": "charm_21",
+      "materials": {
+        "charm_guides": 1030,
+        "charm_designs": 2220
+      },
+      "stat_total_percent": 95.0,
+      "power_total": 2280000
+    },
+    {
+      "level": 22,
+      "id": "charm_22",
+      "materials": {
+        "charm_guides": 1105,
+        "charm_designs": 2400
+      },
+      "stat_total_percent": 99.0,
+      "power_total": 2376000
+    }
+  ]
+}

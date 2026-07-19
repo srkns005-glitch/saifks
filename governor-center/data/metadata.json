@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "project": "SaifKS Governor Center",
+  "independent_database": true,
+  "external_runtime_dependencies": [],
+  "unlock_requirements": {
+    "governor_gear_town_center_level": 22,
+    "governor_charms_town_center_level": 25
+  },
+  "files": [
+    "governor_gear.json",
+    "governor_charms.json"
+  ]
+}
