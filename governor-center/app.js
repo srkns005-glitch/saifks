@@ -94,26 +94,40 @@ function charmOptions(selected, includeZero=true){
   return html;
 }
 function buildGearCards(){
-  const wrap=document.getElementById("gearCards"); wrap.innerHTML="";
+  const wrap=document.getElementById("gearCards");
+  wrap.innerHTML="";
   gearDB.slots.forEach(slot=>{
     if(!state.gear[slot.id]) state.gear[slot.id]={enabled:false,current:-1,target:-1};
     const s=state.gear[slot.id];
-    const card=document.createElement("article"); card.className="item-card"; card.dataset.id=slot.id;
+    const card=document.createElement("section");
+    card.className="gear-compact-card";
+    card.dataset.id=slot.id;
     card.innerHTML=`
-      <div class="item-top">
-        <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${tr(slot.troop)} · ${slot.stats.map(tr).join(" & ")}</p></div>
-        <label class="switch"><input class="enable" type="checkbox" ${s.enabled?"checked":""}><span class="slider"></span></label>
+      <div class="gear-compact-head">
+        <div class="item-icon small" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
+        <div class="item-title">
+          <h3>${nameOf(slot.id,slot.name)}</h3>
+          <p>${tr(slot.troop)} · ${slot.stats.map(tr).join(" & ")}</p>
+        </div>
       </div>
-      <div class="stage-grid">
-        <label><span>${tr("current")}</span><select class="stage-select current">${gearOptions(s.current)}</select></label>
-        <label><span>${tr("target")}</span><select class="stage-select target">${gearOptions(s.target)}</select></label>
-      </div>
-      <div class="item-result"></div>`;
+      <div class="gear-compact-row">
+        <label class="gear-level-box"><span>${tr("current")}</span><select class="stage-select current">${gearOptions(s.current)}</select></label>
+        <label class="gear-level-box"><span>${tr("target")}</span><select class="stage-select target">${gearOptions(s.target)}</select></label>
+        <div class="gear-inline-result"></div>
+      </div>`;
     wrap.appendChild(card);
-    card.querySelector(".enable").addEventListener("change",e=>{s.enabled=e.target.checked;saveState();renderGear();});
-    card.querySelector(".current").addEventListener("change",e=>{s.current=+e.target.value;saveState();renderGear();});
-    card.querySelector(".target").addEventListener("change",e=>{s.target=+e.target.value;saveState();renderGear();});
+    card.querySelector(".current").addEventListener("change",e=>{
+      s.current=+e.target.value;
+      s.target=-1;
+      s.enabled=false;
+      card.querySelector(".target").value="-1";
+      saveState();renderGear();
+    });
+    card.querySelector(".target").addEventListener("change",e=>{
+      s.target=+e.target.value;
+      s.enabled=s.target>s.current;
+      saveState();renderGear();
+    });
   });
 }
 function buildCharmCards(){
@@ -173,7 +187,7 @@ function bindOwnedInputs(){
   });
 }
 function gearCalc(s){
-  if(!s.enabled || s.target<0 || s.target<=s.current) return null;
+  if(s.target<0 || s.target<=s.current) return null;
   const rows=gearDB.levels.slice(s.current+1,s.target+1);
   const req=rows.reduce((a,x)=>({
     satin:a.satin+x.materials.satin,threads:a.threads+x.materials.gilded_threads,vision:a.vision+x.materials.artisans_vision
@@ -197,14 +211,23 @@ function summaryDetailed(label,remaining,total,complete=false){
 }
 function renderGear(){
   let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#gearCards .item-card").forEach(card=>{
+  document.querySelectorAll("#gearCards .gear-compact-card").forEach(card=>{
     const s=state.gear[card.dataset.id],calc=gearCalc(s);
-    card.classList.toggle("enabled",s.enabled);
-    const box=card.querySelector(".item-result");
-    if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
-    if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
-    total.count++; Object.keys(calc.req).forEach(k=>total[k]+=calc.req[k]); total.power+=calc.power; total.stat+=calc.stat;
-    box.innerHTML=metric(tr("satin"),fmt(calc.req.satin))+metric(tr("threads"),fmt(calc.req.threads))+metric(tr("visionMaterial"),fmt(calc.req.vision))+metric(tr("powerGain"),fmt(calc.power));
+    const active=s.target>s.current&&s.target>=0;
+    s.enabled=active;
+    card.classList.toggle("enabled",active);
+    const box=card.querySelector(".gear-inline-result");
+    if(s.target<0){box.innerHTML="";return;}
+    if(!calc){box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`;return;}
+    total.count++;Object.keys(calc.req).forEach(k=>total[k]+=calc.req[k]);total.power+=calc.power;total.stat+=calc.stat;
+    box.innerHTML=`
+      <span class="gear-result-title">${tr("required")}</span>
+      <div class="gear-result-metrics">
+        ${metric(tr("satin"),fmt(calc.req.satin))}
+        ${metric(tr("threads"),fmt(calc.req.threads))}
+        ${metric(tr("visionMaterial"),fmt(calc.req.vision))}
+        ${metric(tr("powerGain"),fmt(calc.power))}
+      </div>`;
   });
   document.getElementById("gearSelectedCount").textContent=`${total.count} ${tr("pieces")}`;
   const rem={
@@ -213,9 +236,9 @@ function renderGear(){
     vision:Math.max(0,total.vision-state.gearOwned.vision)
   };
   document.getElementById("gearSummary").innerHTML=
-    summaryBox(tr("satin"),`${fmt(rem.satin)} / ${fmt(total.satin)}`,rem.satin===0&&total.satin>0)+
-    summaryBox(tr("threads"),`${fmt(rem.threads)} / ${fmt(total.threads)}`,rem.threads===0&&total.threads>0)+
-    summaryBox(tr("visionMaterial"),`${fmt(rem.vision)} / ${fmt(total.vision)}`,rem.vision===0&&total.vision>0)+
+    summaryDetailed(tr("satin"),rem.satin,total.satin,rem.satin===0&&total.satin>0)+
+    summaryDetailed(tr("threads"),rem.threads,total.threads,rem.threads===0&&total.threads>0)+
+    summaryDetailed(tr("visionMaterial"),rem.vision,total.vision,rem.vision===0&&total.vision>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
     summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
 }
