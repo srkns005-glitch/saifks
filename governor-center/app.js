@@ -117,7 +117,7 @@ function buildCharmCards(){
   gearDB.slots.forEach(slot=>{
     if(!state.charms[slot.id]) state.charms[slot.id]={};
     charmDB.types.forEach(type=>{
-      if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={enabled:false,current:0,target:0};
+      if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={current:0,target:0};
     });
 
     const group=document.createElement("section");
@@ -137,19 +137,12 @@ function buildCharmCards(){
       row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <label class="charm-check" aria-label="${nameOf(type.id,type.name)}">
-          <input class="enable" type="checkbox" ${s.enabled?"checked":""}>
-          <span>✓</span>
-        </label>
         <strong class="charm-simple-name">${tr("charm")} ${index+1}</strong>
         <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
         <label class="charm-level-box"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
         <div class="charm-inline-result"></div>`;
       list.appendChild(row);
 
-      row.querySelector(".enable").addEventListener("change",e=>{
-        s.enabled=e.target.checked; saveState(); renderCharms();
-      });
       row.querySelector(".current").addEventListener("change",e=>{
         s.current=+e.target.value; saveState(); renderCharms();
       });
@@ -181,7 +174,7 @@ function gearCalc(s){
   return {req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent};
 }
 function charmCalc(s){
-  if(!s.enabled || s.target<=s.current) return null;
+  if(s.target<=s.current) return null;
   const rows=charmDB.levels.filter(x=>x.level>s.current&&x.level<=s.target);
   const req=rows.reduce((a,x)=>({guides:a.guides+x.materials.charm_guides,designs:a.designs+x.materials.charm_designs}),{guides:0,designs:0});
   const cur=s.current>0?charmDB.levels.find(x=>x.level===s.current):{power_total:0,stat_total_percent:0};
@@ -216,18 +209,18 @@ function renderGear(){
 }
 function renderCharms(){
   let total={guides:0,designs:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#charmCards .charm-suite-row").forEach(card=>{
+  document.querySelectorAll("#charmCards .charm-compact-row").forEach(card=>{
     const group=card.closest(".charm-equipment-card");
     const s=state.charms[group.dataset.slot][card.dataset.type],calc=charmCalc(s);
-    card.classList.toggle("enabled",s.enabled);
+    card.classList.toggle("enabled",s.target>s.current);
     const box=card.querySelector(".charm-inline-result");
-    if(!s.enabled){ box.innerHTML=`<span class="charm-status muted">${tr("disabled")}</span>`; return; }
+    if(s.target===s.current){ box.innerHTML=""; return; }
     if(!calc){ box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`; return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
     box.innerHTML=`<span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
   });
   document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
-    const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].enabled).length;
+    const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].target>state.charms[group.dataset.slot][type.id].current).length;
     const badge=group.querySelector(".charm-active-count");
     if(badge) badge.textContent=`${active} / 3`;
   });
@@ -273,7 +266,7 @@ function copyCharms(){
   navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
 }
 document.getElementById("enableAllGear").addEventListener("click",()=>{Object.values(state.gear).forEach(s=>s.enabled=true);saveState();buildGearCards();renderGear()});
-document.getElementById("enableAllCharms").addEventListener("click",()=>{gearDB.slots.forEach(slot=>charmDB.types.forEach(type=>state.charms[slot.id][type.id].enabled=true));saveState();buildCharmCards();renderCharms()});
+document.getElementById("enableAllCharms").addEventListener("click",()=>{gearDB.slots.forEach(slot=>charmDB.types.forEach(type=>{const s=state.charms[slot.id][type.id]; if(s.target<=s.current) s.target=Math.min(16,s.current+1)}));saveState();buildCharmCards();renderCharms()});
 document.getElementById("copyGear").addEventListener("click",copyGear);
 document.getElementById("copyCharms").addEventListener("click",copyCharms);
 document.getElementById("resetGear").addEventListener("click",()=>{state.gear={};state.gearOwned={satin:0,threads:0,vision:0};saveState();location.reload()});

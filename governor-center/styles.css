@@ -254,3 +254,37 @@ footer{margin-top:auto;padding:22px;text-align:center;color:#7f8998;border-top:1
   .charm-simple-name{font-size:12px}
   .charm-compact-head .charm-active-count{inset-inline-end:9px}
 }
+
+
+/* V8 compact charms fixes */
+.language-select{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  text-align:center!important;text-align-last:center!important;
+  padding-inline:8px 22px!important;
+}
+.charm-compact-card{border-radius:14px!important}
+.charm-compact-head{min-height:44px!important;padding:8px 52px!important}
+.charm-compact-head h3{font-size:16px!important}
+.charm-compact-head .charm-active-count{font-size:10px!important;padding:4px 7px!important;min-width:auto!important}
+.charm-compact-row{
+  grid-template-columns:minmax(68px,.8fr) minmax(78px,1fr) minmax(78px,1fr) minmax(110px,.9fr)!important;
+  gap:7px!important;padding:8px 10px!important;
+}
+.charm-simple-name{font-size:12px!important}
+.charm-level-box span{font-size:8px!important;margin-bottom:3px!important}
+.charm-level-box .stage-select{height:34px!important;min-height:34px!important;font-size:12px!important;padding-inline:8px!important}
+.charm-inline-result{min-height:28px!important;gap:5px!important}
+.inline-material{min-width:54px!important;padding:4px 6px!important;border-radius:7px!important}
+.inline-material strong{font-size:10px!important}.inline-material small{font-size:7px!important}
+@media(max-width:760px){
+  .charm-compact-head{min-height:42px!important;padding:7px 48px!important}
+  .charm-compact-head h3{font-size:15px!important}
+  .charm-compact-row{grid-template-columns:60px minmax(70px,1fr) minmax(70px,1fr)!important;gap:6px!important;padding:7px 8px!important}
+  .charm-compact-row .charm-inline-result{grid-column:2/-1!important;margin-top:0!important}
+  .charm-level-box .stage-select{height:32px!important;min-height:32px!important}
+}
+@media(max-width:420px){
+  .language-select{width:96px!important;min-width:96px!important;height:38px!important;font-size:11px!important}
+  .charm-compact-row{grid-template-columns:54px minmax(66px,1fr) minmax(66px,1fr)!important;padding:6px 7px!important}
+  .charm-simple-name{font-size:11px!important}
+}
