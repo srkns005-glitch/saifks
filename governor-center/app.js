@@ -64,6 +64,7 @@ function applyLanguage(){
   document.documentElement.lang=state.language;
   document.documentElement.dir=state.language==="ar"?"rtl":"ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>el.setAttribute("aria-label",tr(el.dataset.i18nAria)));
   document.title=`${tr("title")} | SaifKS`;
 }
 function setupTabs(){
@@ -120,44 +121,53 @@ function buildCharmCards(){
     });
 
     const group=document.createElement("section");
-    group.className="charm-equipment-card charm-unified-card";
+    group.className="charm-equipment-card charm-suite-card";
     group.dataset.slot=slot.id;
     group.innerHTML=`
-      <div class="charm-equipment-head">
-        <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${tr(slot.troop)} · ${tr("charmsCount")}</p></div>
-        <span class="charm-active-count">0 / 3</span>
-        <button class="secondary-btn compact toggle-group" type="button" aria-label="${tr("toggle")}">⌄</button>
+      <div class="charm-suite-head">
+        <div class="charm-suite-title">
+          <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
+          <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${tr(slot.troop)} · ${tr("charmsCount")}</p></div>
+        </div>
+        <div class="charm-suite-tools">
+          <span class="charm-active-count">0 / 3</span>
+          <button class="suite-toggle" type="button" aria-label="${tr("toggle")}">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="charm-quick-controls compact-controls">
+      <div class="charm-bulk-bar">
+        <div class="bulk-label"><strong>${tr("applyTo3")}</strong><span>${tr("charmsCount")}</span></div>
         <label><span>${tr("current")}</span><select class="stage-select group-current">${charmOptions(0)}</select></label>
         <label><span>${tr("target")}</span><select class="stage-select group-target">${charmOptions(0)}</select></label>
         <button class="secondary-btn apply-group" type="button">${tr("applyTo3")}</button>
       </div>
 
-      <div class="charms-unified-list"></div>`;
+      <div class="charm-column-heads">
+        <span></span><span></span><span></span><span>${tr("current")}</span><span>${tr("target")}</span>
+      </div>
+      <div class="charm-suite-list"></div>`;
 
-    const list=group.querySelector(".charms-unified-list");
-    charmDB.types.forEach(type=>{
+    const list=group.querySelector(".charm-suite-list");
+    charmDB.types.forEach((type,index)=>{
       const s=state.charms[slot.id][type.id];
       const row=document.createElement("article");
-      row.className="charm-row";
+      row.className="charm-suite-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <label class="charm-enable-box">
+        <label class="charm-select-tile" title="${nameOf(type.id,type.name)}">
           <input class="enable" type="checkbox" ${s.enabled?"checked":""}>
-          <span class="checkmark">✓</span>
+          <span class="select-indicator"><span>✓</span></span>
         </label>
-        <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
-        <div class="charm-row-name">
-          <strong>${nameOf(type.id,type.name)}</strong>
-          <span>${nameOf(slot.id,slot.name)}</span>
+        <div class="charm-number">${index+1}</div>
+        <div class="charm-identity">
+          <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
+          <div><strong>${nameOf(type.id,type.name)}</strong><span>${nameOf(slot.id,slot.name)}</span></div>
         </div>
-        <label class="charm-level-field"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
-        <span class="level-arrow">→</span>
-        <label class="charm-level-field"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
-        <div class="item-result charm-row-result"></div>`;
+        <label class="mobile-level-label"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
+        <label class="mobile-level-label"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
+        <div class="charm-inline-result"></div>`;
       list.appendChild(row);
 
       row.querySelector(".enable").addEventListener("change",e=>{
@@ -174,7 +184,7 @@ function buildCharmCards(){
       });
     });
 
-    group.querySelector(".toggle-group").addEventListener("click",()=>group.classList.toggle("collapsed"));
+    group.querySelector(".suite-toggle").addEventListener("click",()=>group.classList.toggle("collapsed"));
     group.querySelector(".apply-group").addEventListener("click",()=>{
       const cur=+group.querySelector(".group-current").value;
       const tar=+group.querySelector(".group-target").value;
@@ -240,15 +250,15 @@ function renderGear(){
 }
 function renderCharms(){
   let total={guides:0,designs:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#charmCards .charm-row").forEach(card=>{
+  document.querySelectorAll("#charmCards .charm-suite-row").forEach(card=>{
     const group=card.closest(".charm-equipment-card");
     const s=state.charms[group.dataset.slot][card.dataset.type],calc=charmCalc(s);
     card.classList.toggle("enabled",s.enabled);
-    const box=card.querySelector(".item-result");
-    if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
-    if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
+    const box=card.querySelector(".charm-inline-result");
+    if(!s.enabled){ box.innerHTML=`<span class="charm-status muted">${tr("disabled")}</span>`; return; }
+    if(!calc){ box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`; return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
-    box.innerHTML=metric(tr("guides"),fmt(calc.req.guides))+metric(tr("designs"),fmt(calc.req.designs))+metric(tr("powerGain"),fmt(calc.power))+metric(tr("statGain"),`${calc.stat.toFixed(2)}%`);
+    box.innerHTML=`<span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
   });
   document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
     const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].enabled).length;
