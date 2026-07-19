@@ -132,3 +132,16 @@ footer{margin-top:auto;padding:22px;text-align:center;color:var(--muted);border-
   .summary-actions{flex-direction:column}
   .stage-grid{grid-template-columns:1fr}
 }
+
+.charm-equipment-list{display:grid;gap:14px;margin:14px 0}
+.charm-equipment-card{border:1px solid var(--line);border-radius:20px;background:rgba(18,25,37,.92);padding:16px;box-shadow:var(--shadow)}
+.charm-equipment-head{display:flex;align-items:center;gap:13px}
+.charm-equipment-head .item-title{flex:1}
+.secondary-btn.compact{min-width:44px;padding:0;font-size:20px}
+.charm-quick-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin:14px 0;padding:12px;border-radius:14px;background:rgba(7,10,15,.32);border:1px dashed var(--line)}
+.three-charms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.item-icon.small{width:46px;height:46px;flex-basis:46px;font-size:22px}
+.charm-mini{padding:13px;box-shadow:none}
+.charm-equipment-card.collapsed .three-charms,.charm-equipment-card.collapsed .charm-quick-controls{display:none}
+@media(max-width:900px){.three-charms{grid-template-columns:1fr}.charm-quick-controls{grid-template-columns:1fr 1fr}.charm-quick-controls .apply-group{grid-column:1/-1}}
+@media(max-width:520px){.charm-quick-controls{grid-template-columns:1fr}.charm-quick-controls .apply-group{grid-column:auto}.charm-equipment-card{padding:12px}.item-result{grid-template-columns:1fr 1fr}}
