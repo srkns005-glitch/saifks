@@ -104,47 +104,70 @@ function buildGearCards(){
   });
 }
 function buildCharmCards(){
-  const wrap=document.getElementById("charmCards"); wrap.innerHTML="";
+  const wrap=document.getElementById("charmCards");
+  wrap.innerHTML="";
+
   gearDB.slots.forEach(slot=>{
     if(!state.charms[slot.id]) state.charms[slot.id]={};
     charmDB.types.forEach(type=>{
       if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={enabled:false,current:0,target:0};
     });
+
     const group=document.createElement("section");
-    group.className="charm-equipment-card";
+    group.className="charm-equipment-card charm-unified-card";
     group.dataset.slot=slot.id;
     group.innerHTML=`
       <div class="charm-equipment-head">
         <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
         <div class="item-title"><h3>${slot.name}</h3><p>${slot.troop} · 3 Charms</p></div>
-        <button class="secondary-btn compact toggle-group" type="button">⌄</button>
+        <span class="charm-active-count">0 / 3</span>
+        <button class="secondary-btn compact toggle-group" type="button" aria-label="Toggle">⌄</button>
       </div>
-      <div class="charm-quick-controls">
+
+      <div class="charm-quick-controls compact-controls">
         <label><span>${tr("current")}</span><select class="stage-select group-current">${charmOptions(0)}</select></label>
         <label><span>${tr("target")}</span><select class="stage-select group-target">${charmOptions(0)}</select></label>
         <button class="secondary-btn apply-group" type="button">Apply to 3</button>
       </div>
-      <div class="three-charms"></div>`;
-    const inner=group.querySelector(".three-charms");
+
+      <div class="charms-unified-list"></div>`;
+
+    const list=group.querySelector(".charms-unified-list");
     charmDB.types.forEach(type=>{
       const s=state.charms[slot.id][type.id];
-      const card=document.createElement("article"); card.className="item-card charm-mini"; card.dataset.type=type.id;
-      card.innerHTML=`
-        <div class="item-top">
-          <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
-          <div class="item-title"><h3>${type.name}</h3><p>${slot.name}</p></div>
-          <label class="switch"><input class="enable" type="checkbox" ${s.enabled?"checked":""}><span class="slider"></span></label>
+      const row=document.createElement("article");
+      row.className="charm-row";
+      row.dataset.type=type.id;
+      row.innerHTML=`
+        <label class="charm-enable-box">
+          <input class="enable" type="checkbox" ${s.enabled?"checked":""}>
+          <span class="checkmark">✓</span>
+        </label>
+        <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
+        <div class="charm-row-name">
+          <strong>${type.name}</strong>
+          <span>${slot.name}</span>
         </div>
-        <div class="stage-grid">
-          <label><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
-          <label><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
-        </div>
-        <div class="item-result"></div>`;
-      inner.appendChild(card);
-      card.querySelector(".enable").addEventListener("change",e=>{s.enabled=e.target.checked;saveState();renderCharms();});
-      card.querySelector(".current").addEventListener("change",e=>{s.current=+e.target.value;saveState();renderCharms();});
-      card.querySelector(".target").addEventListener("change",e=>{s.target=+e.target.value;saveState();renderCharms();});
+        <label class="charm-level-field"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
+        <span class="level-arrow">→</span>
+        <label class="charm-level-field"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
+        <div class="item-result charm-row-result"></div>`;
+      list.appendChild(row);
+
+      row.querySelector(".enable").addEventListener("change",e=>{
+        s.enabled=e.target.checked;
+        saveState(); renderCharms();
+      });
+      row.querySelector(".current").addEventListener("change",e=>{
+        s.current=+e.target.value;
+        saveState(); renderCharms();
+      });
+      row.querySelector(".target").addEventListener("change",e=>{
+        s.target=+e.target.value;
+        saveState(); renderCharms();
+      });
     });
+
     group.querySelector(".toggle-group").addEventListener("click",()=>group.classList.toggle("collapsed"));
     group.querySelector(".apply-group").addEventListener("click",()=>{
       const cur=+group.querySelector(".group-current").value;
@@ -211,7 +234,7 @@ function renderGear(){
 }
 function renderCharms(){
   let total={guides:0,designs:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#charmCards .charm-mini").forEach(card=>{
+  document.querySelectorAll("#charmCards .charm-row").forEach(card=>{
     const group=card.closest(".charm-equipment-card");
     const s=state.charms[group.dataset.slot][card.dataset.type],calc=charmCalc(s);
     card.classList.toggle("enabled",s.enabled);
@@ -220,6 +243,11 @@ function renderCharms(){
     if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
     box.innerHTML=metric("Charm Guides",fmt(calc.req.guides))+metric("Charm Designs",fmt(calc.req.designs))+metric(tr("powerGain"),fmt(calc.power))+metric(tr("statGain"),`${calc.stat.toFixed(2)}%`);
+  });
+  document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
+    const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].enabled).length;
+    const badge=group.querySelector(".charm-active-count");
+    if(badge) badge.textContent=`${active} / 3`;
   });
   document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
   const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
