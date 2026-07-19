@@ -51,14 +51,20 @@ async function init(){
   renderAll();
 }
 function setupLanguage(){
-  const select=document.getElementById("languageSelect");
-  select.value=state.language;
-  select.addEventListener("change",()=>{
-    state.language=select.value;
+  const picker=document.getElementById("languagePicker");
+  const button=document.getElementById("languageButton");
+  const menu=document.getElementById("languageMenu");
+  const labels={en:"English",ar:"العربية",tr:"Türkçe",fr:"Français",es:"Español",de:"Deutsch",ko:"한국어",ja:"日本語",zh:"简体中文"};
+  const closeMenu=()=>{menu.hidden=true;button.setAttribute("aria-expanded","false")};
+  const updateLabel=()=>{document.getElementById("languageButtonText").textContent=labels[state.language]||labels.en};
+  button.addEventListener("click",e=>{e.stopPropagation();const open=menu.hidden;menu.hidden=!open;button.setAttribute("aria-expanded",String(open))});
+  menu.querySelectorAll("[data-lang]").forEach(option=>option.addEventListener("click",()=>{
+    state.language=option.dataset.lang;
     localStorage.setItem(langKey,state.language);
-    saveState(); applyLanguage(); buildGearCards(); buildCharmCards(); renderAll();
-  });
-  applyLanguage();
+    saveState();updateLabel();closeMenu();applyLanguage();buildGearCards();buildCharmCards();renderAll();
+  }));
+  document.addEventListener("click",e=>{if(!picker.contains(e.target))closeMenu()});
+  updateLabel();applyLanguage();
 }
 function applyLanguage(){
   document.documentElement.lang=state.language;
@@ -265,8 +271,6 @@ function copyCharms(){
   if(!rem.guides&&!rem.designs)lines.push(tr("completed"));
   navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
 }
-document.getElementById("enableAllGear").addEventListener("click",()=>{Object.values(state.gear).forEach(s=>s.enabled=true);saveState();buildGearCards();renderGear()});
-document.getElementById("enableAllCharms").addEventListener("click",()=>{gearDB.slots.forEach(slot=>charmDB.types.forEach(type=>{const s=state.charms[slot.id][type.id]; if(s.target<=s.current) s.target=Math.min(16,s.current+1)}));saveState();buildCharmCards();renderCharms()});
 document.getElementById("copyGear").addEventListener("click",copyGear);
 document.getElementById("copyCharms").addEventListener("click",copyCharms);
 document.getElementById("resetGear").addEventListener("click",()=>{state.gear={};state.gearOwned={satin:0,threads:0,vision:0};saveState();location.reload()});

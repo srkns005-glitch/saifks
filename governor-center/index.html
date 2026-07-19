@@ -15,21 +15,14 @@
       </a>
       <div class="top-actions">
         <button id="homeBtn" class="hero-home-icon" type="button" data-i18n-aria="home" aria-label="Home">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3.5 10.8 12 3.9l8.5 6.9v8.1a1.6 1.6 0 0 1-1.6 1.6h-4.7v-6.1H9.8v6.1H5.1a1.6 1.6 0 0 1-1.6-1.6z"/>
-          </svg>
+          <img src="assets/home.png" alt="" aria-hidden="true">
         </button>
-        <select id="languageSelect" class="language-select" aria-label="Language">
-          <option value="en">English</option>
-          <option value="ar">العربية</option>
-          <option value="tr">Türkçe</option>
-          <option value="fr">Français</option>
-          <option value="es">Español</option>
-          <option value="de">Deutsch</option>
-          <option value="ko">한국어</option>
-          <option value="ja">日本語</option>
-          <option value="zh">简体中文</option>
-        </select>
+        <div class="language-picker" id="languagePicker">
+          <button id="languageButton" class="language-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="languageButtonText">English</span><span class="language-chevron">⌄</span></button>
+          <div id="languageMenu" class="language-menu" role="listbox" hidden>
+            <button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button><button type="button" data-lang="tr">Türkçe</button><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="de">Deutsch</button><button type="button" data-lang="ko">한국어</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="zh">简体中文</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -57,7 +50,6 @@
             <h2 data-i18n="gearPlanner">Governor Gear Planner</h2>
             <p data-i18n="gearDesc">Enable the pieces you want to calculate, then select the current and target stages.</p>
           </div>
-          <button class="secondary-btn" id="enableAllGear" type="button" data-i18n="enableAll">Enable all</button>
         </div>
 
         <div class="resource-card">
@@ -90,7 +82,6 @@
             <h2 data-i18n="charmPlanner">Governor Charm Planner</h2>
             <p data-i18n="charmDesc">Each Governor Gear piece has three independent charms. Plan all 18 charms easily.</p>
           </div>
-          <button class="secondary-btn" id="enableAllCharms" type="button" data-i18n="enableAll">Enable all</button>
         </div>
 
         <div class="resource-card">
