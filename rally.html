@@ -174,6 +174,20 @@ input{padding:12px 10px;min-width:0}
 <button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
 <div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
 <div data-role="list" class="list"></div><div class="button-grid"><button data-role="copyAll" class="primary hidden" type="button" data-i18n="copyAll">Copy All Times</button><button data-role="copyDiscord" class="discord-btn hidden" type="button" data-i18n="copyDiscord">Copy Discord Format</button></div>
+</section><section class="card team-card" data-team="D">
+<h2 class="team-title">Team D</h2>
+<h2 data-i18n="prepTitle">1. Preparation Time</h2>
+<p class="muted" data-i18n="prepDesc">Choose how much time you need to copy and send the schedule.</p>
+<div class="quick-buttons">
+<button data-buffer="20">20 sec</button><button data-buffer="30" class="selected">30 sec</button><button data-buffer="60">1 min</button><button data-buffer="120">2 min</button>
+</div>
+<div class="two-cols"><label><span data-i18n="minutes">Minutes</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">Seconds</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
+<h2 data-i18n="addTitle">2. Add Rally Leader</h2>
+<form data-role="form"><label><span data-i18n="playerName">Player Name</span><input data-role="name" type="text" placeholder="Saif" required></label><div class="two-cols"><label><span data-i18n="marchMinutes">March Minutes</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">March Seconds</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ Add Player</button></form>
+<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. UTC Schedule</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">Clear</button></div>
+<button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
+<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
+<div data-role="list" class="list"></div><div class="button-grid"><button data-role="copyAll" class="primary hidden" type="button" data-i18n="copyAll">Copy All Times</button><button data-role="copyDiscord" class="discord-btn hidden" type="button" data-i18n="copyDiscord">Copy Discord Format</button></div>
 </section>
 </div>
 
@@ -214,7 +228,13 @@ class TeamTool{
  bind(){
   this.root.querySelectorAll("[data-buffer]").forEach(b=>b.onclick=()=>{this.root.querySelectorAll("[data-buffer]").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");const n=Number(b.dataset.buffer);this.q('[data-role="bufferMin"]').value=Math.floor(n/60);this.q('[data-role="bufferSec"]').value=n%60});
   this.q('[data-role="form"]').onsubmit=e=>{e.preventDefault();const name=this.q('[data-role="name"]').value.trim(),march=sec(this.q('[data-role="marchMin"]').value,this.q('[data-role="marchSec"]').value);if(!name||march<=0){alert("Enter a valid name and march time.");return}this.players.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),name,march});this.save();this.q('[data-role="name"]').value="";this.q('[data-role="marchMin"]').value=0;this.q('[data-role="marchSec"]').value=30;this.schedule=[];this.render()};
-  this.q('[data-role="generate"]').onclick=()=>this.recalculate(true);
+  this.q('[data-role="generate"]').onclick=async()=>{
+    this.recalculate(true);
+    if(this.schedule.length){
+      await copyText(this.schedule.map(p=>`${p.name}: ${utc(p.start)}`).join("\n")+rights());
+      showToast(t("allCopied"));
+    }
+  };
   this.q('[data-role="clear"]').onclick=()=>{this.players=[];this.schedule=[];this.firstStartTime=null;this.save();this.render()};
   this.q('[data-role="copyAll"]').onclick=async()=>{await copyText(this.schedule.map(p=>`${p.name}: ${utc(p.start)}`).join("\n")+rights());showToast(t("allCopied"))};
   this.q('[data-role="copyDiscord"]').onclick=async()=>{const lines=this.schedule.map((p,i)=>`**${i+1}. ${p.name}** — \`${utc(p.start)}\``).join("\n");await copyText(`👑 **Team ${this.id} — Saif Rally Tools**\n\n${lines}${rights()}`);showToast(t("discordCopied"))};
