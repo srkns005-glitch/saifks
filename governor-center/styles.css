@@ -197,3 +197,60 @@ footer{margin-top:auto;padding:22px;text-align:center;color:#7f8998;border-top:1
   .charm-suite-title .item-icon{width:43px;height:43px;flex-basis:43px}.charm-suite-title h3{font-size:15px}.charm-active-count{min-width:48px;padding:6px 8px}
   .charm-suite-row{grid-template-columns:29px 23px minmax(0,1fr) 86px;padding:11px 9px}.charm-identity .item-icon.small{display:none}.charm-inline-result{padding-inline-start:58px}
 }
+
+/* V7 compact header controls and one-box charm layout */
+.hero-home-icon{
+  width:42px!important;height:42px!important;border-radius:13px!important;
+}
+.hero-home-icon svg{width:23px!important;height:23px!important}
+.language-select{
+  height:42px!important;min-width:108px!important;width:108px!important;
+  padding:0 24px 0 10px!important;text-align:center!important;text-align-last:center!important;
+  font-size:13px!important;font-weight:800!important;border-radius:11px!important;
+}
+
+.charm-compact-card{
+  padding:0!important;overflow:hidden;border:1px solid rgba(228,184,87,.30)!important;
+  border-radius:18px!important;background:linear-gradient(180deg,rgba(20,31,44,.98),rgba(12,20,30,.98))!important;
+}
+.charm-compact-head{
+  display:flex;align-items:center;justify-content:center;position:relative;
+  min-height:58px;padding:13px 64px;border-bottom:1px solid var(--line);
+}
+.charm-compact-head h3{margin:0;color:var(--gold-soft);font-size:20px;text-align:center}
+.charm-compact-head .charm-active-count{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%)}
+.charm-compact-list{display:grid}
+.charm-compact-row{
+  display:grid;grid-template-columns:34px minmax(90px,1fr) minmax(100px,130px) minmax(100px,130px) minmax(140px,.8fr);
+  gap:10px;align-items:end;padding:13px 15px;border-top:1px solid var(--line);
+}
+.charm-compact-row:first-child{border-top:0}
+.charm-compact-row.enabled{background:linear-gradient(90deg,rgba(228,184,87,.07),transparent 60%)}
+.charm-check{width:31px;height:31px;align-self:center;cursor:pointer}
+.charm-check input{position:absolute;opacity:0;pointer-events:none}
+.charm-check span{width:31px;height:31px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.17);border-radius:9px;background:#101923;color:transparent;font-weight:950;transition:.18s}
+.charm-check input:checked+span{color:#151006;border-color:var(--gold);background:linear-gradient(180deg,var(--gold-soft),var(--gold))}
+.charm-simple-name{align-self:center;font-size:14px}
+.charm-level-box span{display:block;margin:0 0 5px;color:var(--muted);font-size:10px;font-weight:750}
+.charm-level-box .stage-select{height:40px;min-height:40px}
+.charm-compact-row .charm-inline-result{align-self:center;justify-content:flex-end}
+
+@media(max-width:760px){
+  .hero-home-icon{width:40px!important;height:40px!important}.hero-home-icon svg{width:22px!important;height:22px!important}
+  .language-select{height:40px!important;min-width:102px!important;width:102px!important;font-size:12px!important}
+  .charm-compact-head{min-height:52px;padding:11px 56px}.charm-compact-head h3{font-size:18px}
+  .charm-compact-row{
+    grid-template-columns:30px minmax(64px,.8fr) minmax(78px,1fr) minmax(78px,1fr);
+    gap:7px;padding:11px 10px;align-items:end;
+  }
+  .charm-simple-name{font-size:13px}
+  .charm-level-box span{font-size:9px;margin-bottom:4px}
+  .charm-level-box .stage-select{height:38px;min-height:38px;padding-inline:9px}
+  .charm-compact-row .charm-inline-result{grid-column:2/-1;justify-content:flex-start;padding:0;margin-top:2px}
+}
+@media(max-width:420px){
+  .charm-compact-row{grid-template-columns:28px 58px minmax(72px,1fr) minmax(72px,1fr);gap:6px;padding:10px 8px}
+  .charm-check,.charm-check span{width:28px;height:28px}
+  .charm-simple-name{font-size:12px}
+  .charm-compact-head .charm-active-count{inset-inline-end:9px}
+}

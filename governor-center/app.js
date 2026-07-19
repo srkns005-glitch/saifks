@@ -121,75 +121,41 @@ function buildCharmCards(){
     });
 
     const group=document.createElement("section");
-    group.className="charm-equipment-card charm-suite-card";
+    group.className="charm-equipment-card charm-compact-card";
     group.dataset.slot=slot.id;
     group.innerHTML=`
-      <div class="charm-suite-head">
-        <div class="charm-suite-title">
-          <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-          <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${tr(slot.troop)} · ${tr("charmsCount")}</p></div>
-        </div>
-        <div class="charm-suite-tools">
-          <span class="charm-active-count">0 / 3</span>
-          <button class="suite-toggle" type="button" aria-label="${tr("toggle")}">
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
-          </button>
-        </div>
+      <div class="charm-compact-head">
+        <h3>${nameOf(slot.id,slot.name)}</h3>
+        <span class="charm-active-count">0 / 3</span>
       </div>
+      <div class="charm-compact-list"></div>`;
 
-      <div class="charm-bulk-bar">
-        <div class="bulk-label"><strong>${tr("applyTo3")}</strong><span>${tr("charmsCount")}</span></div>
-        <label><span>${tr("current")}</span><select class="stage-select group-current">${charmOptions(0)}</select></label>
-        <label><span>${tr("target")}</span><select class="stage-select group-target">${charmOptions(0)}</select></label>
-        <button class="secondary-btn apply-group" type="button">${tr("applyTo3")}</button>
-      </div>
-
-      <div class="charm-column-heads">
-        <span></span><span></span><span></span><span>${tr("current")}</span><span>${tr("target")}</span>
-      </div>
-      <div class="charm-suite-list"></div>`;
-
-    const list=group.querySelector(".charm-suite-list");
+    const list=group.querySelector(".charm-compact-list");
     charmDB.types.forEach((type,index)=>{
       const s=state.charms[slot.id][type.id];
       const row=document.createElement("article");
-      row.className="charm-suite-row";
+      row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <label class="charm-select-tile" title="${nameOf(type.id,type.name)}">
+        <label class="charm-check" aria-label="${nameOf(type.id,type.name)}">
           <input class="enable" type="checkbox" ${s.enabled?"checked":""}>
-          <span class="select-indicator"><span>✓</span></span>
+          <span>✓</span>
         </label>
-        <div class="charm-number">${index+1}</div>
-        <div class="charm-identity">
-          <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
-          <div><strong>${nameOf(type.id,type.name)}</strong><span>${nameOf(slot.id,slot.name)}</span></div>
-        </div>
-        <label class="mobile-level-label"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
-        <label class="mobile-level-label"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
+        <strong class="charm-simple-name">${tr("charm")} ${index+1}</strong>
+        <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
+        <label class="charm-level-box"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
         <div class="charm-inline-result"></div>`;
       list.appendChild(row);
 
       row.querySelector(".enable").addEventListener("change",e=>{
-        s.enabled=e.target.checked;
-        saveState(); renderCharms();
+        s.enabled=e.target.checked; saveState(); renderCharms();
       });
       row.querySelector(".current").addEventListener("change",e=>{
-        s.current=+e.target.value;
-        saveState(); renderCharms();
+        s.current=+e.target.value; saveState(); renderCharms();
       });
       row.querySelector(".target").addEventListener("change",e=>{
-        s.target=+e.target.value;
-        saveState(); renderCharms();
+        s.target=+e.target.value; saveState(); renderCharms();
       });
-    });
-
-    group.querySelector(".suite-toggle").addEventListener("click",()=>group.classList.toggle("collapsed"));
-    group.querySelector(".apply-group").addEventListener("click",()=>{
-      const cur=+group.querySelector(".group-current").value;
-      const tar=+group.querySelector(".group-target").value;
-      charmDB.types.forEach(type=>Object.assign(state.charms[slot.id][type.id],{enabled:true,current:cur,target:tar}));
-      saveState(); buildCharmCards(); renderCharms();
     });
     wrap.appendChild(group);
   });
