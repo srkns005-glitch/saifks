@@ -1,38 +1,8 @@
-# SaifKS Governor Center Prototype
+# Governor Center
 
-واجهة أولية مستقلة تعمل بقاعدة البيانات المحلية الموجودة داخل مجلد `data`.
+Updated from the stable V3 build.
 
-## التشغيل
-يفضل تشغيل المجلد من خادم محلي بسيط لأن المتصفح قد يمنع `fetch()` من ملفات JSON عند فتح `index.html` مباشرة:
-
-```bash
-python3 -m http.server 8080
-```
-
-ثم افتح:
-`http://localhost:8080`
-
-## إضافة الصور لاحقًا
-المجلدات مجهزة:
-- `assets/gear/`
-- `assets/charms/`
-
-يمكن استبدال الرموز داخل `.item-icon` بصور PNG دون تغيير قاعدة البيانات.
-
-## المميزات الحالية
-- 6 قطع عتاد حاكم.
-- 3 أنواع تمائم.
-- المستوى الحالي والهدف.
-- جمع المواد المطلوبة.
-- خصم المواد الموجودة.
-- حساب القوة والإحصائيات المكتسبة.
-- حفظ تلقائي في LocalStorage.
-- نسخ الملخص.
-- واجهة متجاوبة للموبايل والآيباد والكمبيوتر.
-- مزامنة اللغة عبر مفتاح `saifksLanguage`.
-
-
-## تحديث v2
-- تصحيح نظام التمائم: 3 تمائم مستقلة لكل قطعة من قطع العتاد الست (18 تميمة).
-- أدوات سريعة لتطبيق المستوى الحالي والهدف على تمائم القطعة الثلاث.
-- أقسام قابلة للطي لتسهيل الاستخدام على الهاتف.
+- Home button now matches the Hero Center button style.
+- Complete interface translation for all 9 supported languages.
+- Dynamic gear names, charm names, troop types, stats, copied summaries, document title, and error text all change with the selected language.
+- Existing calculations, database, charms layout, and saved state remain unchanged.
