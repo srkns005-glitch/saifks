@@ -2,14 +2,7 @@
 const stateKey = "saifksGovernorCenterStateV1";
 const langKey = "saifksLanguage";
 
-const i18n = {
-  en:{eyebrow:"Independent SaifKS Database",title:"Governor Center",subtitle:"Plan Governor Gear and Charms, calculate remaining materials, and save your progress locally.",gearStages:"Gear stages",charmLevels:"Charm levels",gearTab:"Governor Gear",charmsTab:"Governor Charms",gearPlanner:"Governor Gear Planner",gearDesc:"Enable the pieces you want to calculate, then select the current and target stages.",charmPlanner:"Governor Charm Planner",charmDesc:"Plan Keenness, Protection, and Vision Charm upgrades.",enableAll:"Enable all",ownedMaterials:"Materials you own",summary:"Summary",copySummary:"Copy summary",reset:"Reset",databaseNote:"All calculations run locally from SaifKS JSON files. No external API or website connection is used.",current:"Current",target:"Target",disabled:"Disabled",pieces:"pieces",remaining:"Remaining",required:"Required",powerGain:"Power gained",statGain:"Stat gained",copied:"Summary copied",invalidTarget:"Target must be higher than current",completed:"Completed"},
-  ar:{eyebrow:"قاعدة بيانات SaifKS مستقلة",title:"مركز الحاكم",subtitle:"خطط عتاد الحاكم والتمائم، واحسب المواد المتبقية، واحفظ تقدمك محليًا.",gearStages:"مرحلة للعتاد",charmLevels:"مستوى للتمائم",gearTab:"عتاد الحاكم",charmsTab:"تمائم الحاكم",gearPlanner:"مخطط عتاد الحاكم",gearDesc:"فعّل القطع المطلوبة ثم اختر المستوى الحالي والمستوى الهدف.",charmPlanner:"مخطط تمائم الحاكم",charmDesc:"خطط لتطوير تمائم الحدة والحماية والرؤية.",enableAll:"تفعيل الكل",ownedMaterials:"المواد الموجودة لديك",summary:"الملخص",copySummary:"نسخ الملخص",reset:"إعادة ضبط",databaseNote:"تعمل جميع الحسابات محليًا من ملفات JSON الخاصة بـ SaifKS من دون أي اتصال بموقع أو API خارجي.",current:"الحالي",target:"الهدف",disabled:"غير مفعّل",pieces:"قطع",remaining:"المتبقي",required:"المطلوب",powerGain:"القوة المكتسبة",statGain:"الإحصائيات المكتسبة",copied:"تم نسخ الملخص",invalidTarget:"يجب أن يكون الهدف أعلى من الحالي",completed:"مكتمل"},
-  tr:{title:"Vali Merkezi",gearTab:"Vali Ekipmanı",charmsTab:"Vali Tılsımları",summary:"Özet",copySummary:"Özeti kopyala",reset:"Sıfırla",current:"Mevcut",target:"Hedef",remaining:"Kalan",required:"Gerekli",completed:"Tamamlandı"},
-  ko:{title:"총독 센터",gearTab:"총독 장비",charmsTab:"총독 부적",summary:"요약",copySummary:"요약 복사",reset:"초기화",current:"현재",target:"목표",remaining:"남음",required:"필요",completed:"완료"},
-  ja:{title:"総督センター",gearTab:"総督装備",charmsTab:"総督チャーム",summary:"概要",copySummary:"概要をコピー",reset:"リセット",current:"現在",target:"目標",remaining:"残り",required:"必要",completed:"完了"},
-  zh:{title:"执政官中心",gearTab:"执政官装备",charmsTab:"执政官饰品",summary:"汇总",copySummary:"复制汇总",reset:"重置",current:"当前",target:"目标",remaining:"剩余",required:"需要",completed:"已完成"}
-};
+const i18n = {"en":{"eyebrow":"KINGSHOT · SAIFKS","title":"Governor Center","subtitle":"Plan Governor Gear and Charms, calculate remaining materials, and save your progress.","gearStages":"Gear stages","charmLevels":"Charm levels","gearTab":"Governor Gear","charmsTab":"Governor Charms","gearPlanner":"Governor Gear Planner","gearDesc":"Enable the pieces you want to calculate, then select the current and target stages.","charmPlanner":"Governor Charm Planner","charmDesc":"Each gear piece has three independent charms in one simple panel.","enableAll":"Enable all","ownedMaterials":"Materials you own","summary":"Summary","copySummary":"Copy summary","reset":"Reset","current":"Current","target":"Target","disabled":"None","pieces":"pieces","remaining":"Remaining","required":"Required","powerGain":"Power gained","statGain":"Stat gained","copied":"Summary copied","invalidTarget":"Target must be higher than current","completed":"Completed","applyTo3":"Apply to 3","charmsCount":"3 Charms","satin":"Satin","threads":"Gilded Threads","visionMaterial":"Artisan's Vision","guides":"Charm Guides","designs":"Charm Designs"},"ar":{"eyebrow":"KINGSHOT · SAIFKS","title":"مركز الحاكم","subtitle":"خطط عتاد الحاكم والتمائم، واحسب المواد المتبقية، واحفظ تقدمك.","gearStages":"مراحل العتاد","charmLevels":"مستويات التمائم","gearTab":"عتاد الحاكم","charmsTab":"تمائم الحاكم","gearPlanner":"مخطط عتاد الحاكم","gearDesc":"فعّل القطع المطلوبة ثم اختر المستوى الحالي والمستوى الهدف.","charmPlanner":"مخطط تمائم الحاكم","charmDesc":"تحتوي كل قطعة عتاد على ثلاث تمائم مستقلة داخل قالب واحد سهل.","enableAll":"تفعيل الكل","ownedMaterials":"المواد الموجودة لديك","summary":"الملخص","copySummary":"نسخ الملخص","reset":"إعادة ضبط","current":"الحالي","target":"الهدف","disabled":"بدون","pieces":"قطع","remaining":"المتبقي","required":"المطلوب","powerGain":"القوة المكتسبة","statGain":"الإحصائيات المكتسبة","copied":"تم نسخ الملخص","invalidTarget":"يجب أن يكون الهدف أعلى من الحالي","completed":"مكتمل","applyTo3":"تطبيق على الثلاث","charmsCount":"3 تمائم","satin":"الساتان","threads":"الخيوط المذهبة","visionMaterial":"رؤية الحرفي","guides":"أدلة التمائم","designs":"تصاميم التمائم"},"tr":{"eyebrow":"KINGSHOT · SAIFKS","title":"Vali Merkezi","subtitle":"Vali ekipmanı ve tılsımlarını planlayın, kalan malzemeleri hesaplayın ve ilerlemenizi kaydedin.","gearStages":"Ekipman aşaması","charmLevels":"Tılsım seviyesi","gearTab":"Vali Ekipmanı","charmsTab":"Vali Tılsımları","gearPlanner":"Vali Ekipmanı Planlayıcı","gearDesc":"Hesaplamak istediğiniz parçaları etkinleştirin, ardından mevcut ve hedef aşamaları seçin.","charmPlanner":"Vali Tılsımı Planlayıcı","charmDesc":"Her ekipman parçasında tek panelde üç bağımsız tılsım bulunur.","enableAll":"Tümünü etkinleştir","ownedMaterials":"Sahip olduğunuz malzemeler","summary":"Özet","copySummary":"Özeti kopyala","reset":"Sıfırla","current":"Mevcut","target":"Hedef","disabled":"Yok","pieces":"parça","remaining":"Kalan","required":"Gerekli","powerGain":"Kazanılan güç","statGain":"Kazanılan özellik","copied":"Özet kopyalandı","invalidTarget":"Hedef mevcut seviyeden yüksek olmalı","completed":"Tamamlandı","applyTo3":"Üçüne uygula","charmsCount":"3 Tılsım","satin":"Saten","threads":"Yaldızlı İplikler","visionMaterial":"Zanaatkârın Vizyonu","guides":"Tılsım Kılavuzları","designs":"Tılsım Tasarımları"},"fr":{"eyebrow":"KINGSHOT · SAIFKS","title":"Centre du Gouverneur","subtitle":"Planifiez l’équipement et les charmes du gouverneur, calculez les matériaux restants et sauvegardez votre progression.","gearStages":"Niveaux d’équipement","charmLevels":"Niveaux de charme","gearTab":"Équipement du Gouverneur","charmsTab":"Charmes du Gouverneur","gearPlanner":"Planificateur d’équipement","gearDesc":"Activez les pièces à calculer, puis choisissez les niveaux actuel et cible.","charmPlanner":"Planificateur de charmes","charmDesc":"Chaque pièce possède trois charmes indépendants réunis dans un seul panneau.","enableAll":"Tout activer","ownedMaterials":"Matériaux possédés","summary":"Résumé","copySummary":"Copier le résumé","reset":"Réinitialiser","current":"Actuel","target":"Cible","disabled":"Aucun","pieces":"pièces","remaining":"Restant","required":"Requis","powerGain":"Puissance gagnée","statGain":"Statistiques gagnées","copied":"Résumé copié","invalidTarget":"La cible doit être supérieure au niveau actuel","completed":"Terminé","applyTo3":"Appliquer aux 3","charmsCount":"3 Charmes","satin":"Satin","threads":"Fils dorés","visionMaterial":"Vision de l'artisan","guides":"Guides de charme","designs":"Plans de charme"},"es":{"eyebrow":"KINGSHOT · SAIFKS","title":"Centro del Gobernador","subtitle":"Planifica el equipo y los amuletos del gobernador, calcula los materiales restantes y guarda tu progreso.","gearStages":"Etapas de equipo","charmLevels":"Niveles de amuleto","gearTab":"Equipo del Gobernador","charmsTab":"Amuletos del Gobernador","gearPlanner":"Planificador de equipo","gearDesc":"Activa las piezas que deseas calcular y elige las etapas actual y objetivo.","charmPlanner":"Planificador de amuletos","charmDesc":"Cada pieza tiene tres amuletos independientes dentro de un solo panel.","enableAll":"Activar todo","ownedMaterials":"Materiales que tienes","summary":"Resumen","copySummary":"Copiar resumen","reset":"Restablecer","current":"Actual","target":"Objetivo","disabled":"Ninguno","pieces":"piezas","remaining":"Restante","required":"Necesario","powerGain":"Poder ganado","statGain":"Estadísticas ganadas","copied":"Resumen copiado","invalidTarget":"El objetivo debe ser mayor que el nivel actual","completed":"Completado","applyTo3":"Aplicar a los 3","charmsCount":"3 Amuletos","satin":"Satén","threads":"Hilos dorados","visionMaterial":"Visión del artesano","guides":"Guías de amuletos","designs":"Diseños de amuletos"},"de":{"eyebrow":"KINGSHOT · SAIFKS","title":"Gouverneurszentrum","subtitle":"Plane Gouverneursausrüstung und Talismane, berechne fehlende Materialien und speichere deinen Fortschritt.","gearStages":"Ausrüstungsstufen","charmLevels":"Talismanstufen","gearTab":"Gouverneursausrüstung","charmsTab":"Gouverneurstalismane","gearPlanner":"Ausrüstungsplaner","gearDesc":"Aktiviere die gewünschten Teile und wähle aktuelle sowie Zielstufe.","charmPlanner":"Talismanplaner","charmDesc":"Jedes Ausrüstungsteil enthält drei unabhängige Talismane in einem Panel.","enableAll":"Alle aktivieren","ownedMaterials":"Vorhandene Materialien","summary":"Zusammenfassung","copySummary":"Zusammenfassung kopieren","reset":"Zurücksetzen","current":"Aktuell","target":"Ziel","disabled":"Keine","pieces":"Teile","remaining":"Verbleibend","required":"Benötigt","powerGain":"Gewonnene Stärke","statGain":"Gewonnene Werte","copied":"Zusammenfassung kopiert","invalidTarget":"Das Ziel muss höher als die aktuelle Stufe sein","completed":"Abgeschlossen","applyTo3":"Auf alle 3 anwenden","charmsCount":"3 Talismane","satin":"Satin","threads":"Vergoldete Fäden","visionMaterial":"Vision des Handwerkers","guides":"Talismanführer","designs":"Talismandesigns"},"ko":{"eyebrow":"KINGSHOT · SAIFKS","title":"총독 센터","subtitle":"총독 장비와 부적을 계획하고 남은 재료를 계산하며 진행 상황을 저장하세요.","gearStages":"장비 단계","charmLevels":"부적 레벨","gearTab":"총독 장비","charmsTab":"총독 부적","gearPlanner":"총독 장비 플래너","gearDesc":"계산할 장비를 활성화한 뒤 현재 단계와 목표 단계를 선택하세요.","charmPlanner":"총독 부적 플래너","charmDesc":"각 장비에는 하나의 패널 안에 독립된 부적 3개가 있습니다.","enableAll":"모두 활성화","ownedMaterials":"보유 재료","summary":"요약","copySummary":"요약 복사","reset":"초기화","current":"현재","target":"목표","disabled":"없음","pieces":"개","remaining":"남음","required":"필요","powerGain":"획득 전투력","statGain":"획득 능력치","copied":"요약이 복사되었습니다","invalidTarget":"목표가 현재보다 높아야 합니다","completed":"완료","applyTo3":"3개 모두 적용","charmsCount":"부적 3개","satin":"새틴","threads":"도금 실","visionMaterial":"장인의 비전","guides":"부적 가이드","designs":"부적 도안"},"ja":{"eyebrow":"KINGSHOT · SAIFKS","title":"総督センター","subtitle":"総督装備とチャームを計画し、残りの素材を計算して進行状況を保存します。","gearStages":"装備段階","charmLevels":"チャームレベル","gearTab":"総督装備","charmsTab":"総督チャーム","gearPlanner":"総督装備プランナー","gearDesc":"計算する装備を有効にし、現在と目標の段階を選択してください。","charmPlanner":"総督チャームプランナー","charmDesc":"各装備には1つのパネル内に独立した3つのチャームがあります。","enableAll":"すべて有効","ownedMaterials":"所持素材","summary":"概要","copySummary":"概要をコピー","reset":"リセット","current":"現在","target":"目標","disabled":"なし","pieces":"個","remaining":"残り","required":"必要","powerGain":"獲得戦力","statGain":"獲得ステータス","copied":"概要をコピーしました","invalidTarget":"目標は現在より高く設定してください","completed":"完了","applyTo3":"3つに適用","charmsCount":"チャーム3個","satin":"サテン","threads":"金糸","visionMaterial":"職人のビジョン","guides":"チャームガイド","designs":"チャーム設計図"},"zh":{"eyebrow":"KINGSHOT · SAIFKS","title":"执政官中心","subtitle":"规划执政官装备与饰品，计算剩余材料并保存进度。","gearStages":"装备阶段","charmLevels":"饰品等级","gearTab":"执政官装备","charmsTab":"执政官饰品","gearPlanner":"执政官装备规划","gearDesc":"启用需要计算的装备，然后选择当前阶段和目标阶段。","charmPlanner":"执政官饰品规划","charmDesc":"每件装备在同一面板中拥有三个独立饰品。","enableAll":"全部启用","ownedMaterials":"已有材料","summary":"汇总","copySummary":"复制汇总","reset":"重置","current":"当前","target":"目标","disabled":"无","pieces":"件","remaining":"剩余","required":"需要","powerGain":"提升战力","statGain":"提升属性","copied":"汇总已复制","invalidTarget":"目标必须高于当前等级","completed":"已完成","applyTo3":"应用到3个","charmsCount":"3个饰品","satin":"缎料","threads":"镀金线","visionMaterial":"工匠之眼","guides":"饰品指南","designs":"饰品设计图"}};
 
 const defaultState = {
   activeTab:"gear",
@@ -32,6 +25,18 @@ function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
 function n(v){ return Number(v||0); }
 function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
 function tr(k){ return (i18n[state.language]||i18n.en)[k] ?? i18n.en[k] ?? k; }
+const names={
+hood:{en:"Hood",ar:"غطاء الرأس",tr:"Başlık",fr:"Capuche",es:"Capucha",de:"Kapuze",ko:"후드",ja:"フード",zh:"兜帽"},
+necklace:{en:"Necklace",ar:"القلادة",tr:"Kolye",fr:"Collier",es:"Collar",de:"Halskette",ko:"목걸이",ja:"ネックレス",zh:"项链"},
+cloak:{en:"Cloak",ar:"العباءة",tr:"Pelerin",fr:"Cape",es:"Capa",de:"Umhang",ko:"망토",ja:"マント",zh:"披风"},
+breeches:{en:"Breeches",ar:"السروال",tr:"Pantolon",fr:"Culotte",es:"Calzones",de:"Beinkleid",ko:"바지",ja:"ズボン",zh:"马裤"},
+ring:{en:"Ring",ar:"الخاتم",tr:"Yüzük",fr:"Anneau",es:"Anillo",de:"Ring",ko:"반지",ja:"指輪",zh:"戒指"},
+staff:{en:"Staff",ar:"العصا",tr:"Asa",fr:"Bâton",es:"Bastón",de:"Stab",ko:"지팡이",ja:"杖",zh:"法杖"},
+keenness:{en:"Keenness",ar:"الحدة",tr:"Keskinlik",fr:"Acuité",es:"Agudeza",de:"Schärfe",ko:"예리함",ja:"鋭敏",zh:"敏锐"},
+protection:{en:"Protection",ar:"الحماية",tr:"Koruma",fr:"Protection",es:"Protección",de:"Schutz",ko:"보호",ja:"防護",zh:"防护"},
+vision:{en:"Vision",ar:"الرؤية",tr:"Görüş",fr:"Vision",es:"Visión",de:"Vision",ko:"통찰",ja:"視野",zh:"洞察"}
+};
+function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||fallback||id;}
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
@@ -51,7 +56,7 @@ function setupLanguage(){
   select.addEventListener("change",()=>{
     state.language=select.value;
     localStorage.setItem(langKey,state.language);
-    saveState(); applyLanguage(); renderAll();
+    saveState(); applyLanguage(); buildGearCards(); buildCharmCards(); renderAll();
   });
   applyLanguage();
 }
@@ -89,7 +94,7 @@ function buildGearCards(){
     card.innerHTML=`
       <div class="item-top">
         <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${slot.name}</h3><p>${slot.troop} · ${slot.stats.join(" & ")}</p></div>
+        <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${slot.troop} · ${slot.stats.join(" & ")}</p></div>
         <label class="switch"><input class="enable" type="checkbox" ${s.enabled?"checked":""}><span class="slider"></span></label>
       </div>
       <div class="stage-grid">
@@ -119,7 +124,7 @@ function buildCharmCards(){
     group.innerHTML=`
       <div class="charm-equipment-head">
         <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${slot.name}</h3><p>${slot.troop} · 3 Charms</p></div>
+        <div class="item-title"><h3>${nameOf(slot.id,slot.name)}</h3><p>${slot.troop} · ${tr("charmsCount")}</p></div>
         <span class="charm-active-count">0 / 3</span>
         <button class="secondary-btn compact toggle-group" type="button" aria-label="Toggle">⌄</button>
       </div>
@@ -127,7 +132,7 @@ function buildCharmCards(){
       <div class="charm-quick-controls compact-controls">
         <label><span>${tr("current")}</span><select class="stage-select group-current">${charmOptions(0)}</select></label>
         <label><span>${tr("target")}</span><select class="stage-select group-target">${charmOptions(0)}</select></label>
-        <button class="secondary-btn apply-group" type="button">Apply to 3</button>
+        <button class="secondary-btn apply-group" type="button">${tr("applyTo3")}</button>
       </div>
 
       <div class="charms-unified-list"></div>`;
@@ -145,8 +150,8 @@ function buildCharmCards(){
         </label>
         <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
         <div class="charm-row-name">
-          <strong>${type.name}</strong>
-          <span>${slot.name}</span>
+          <strong>${nameOf(type.id,type.name)}</strong>
+          <span>${nameOf(slot.id,slot.name)}</span>
         </div>
         <label class="charm-level-field"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
         <span class="level-arrow">→</span>
@@ -217,7 +222,7 @@ function renderGear(){
     if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
     if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
     total.count++; Object.keys(calc.req).forEach(k=>total[k]+=calc.req[k]); total.power+=calc.power; total.stat+=calc.stat;
-    box.innerHTML=metric("Satin",fmt(calc.req.satin))+metric("Threads",fmt(calc.req.threads))+metric("Vision",fmt(calc.req.vision))+metric(tr("powerGain"),fmt(calc.power));
+    box.innerHTML=metric(tr("satin"),fmt(calc.req.satin))+metric(tr("threads"),fmt(calc.req.threads))+metric(tr("visionMaterial"),fmt(calc.req.vision))+metric(tr("powerGain"),fmt(calc.power));
   });
   document.getElementById("gearSelectedCount").textContent=`${total.count} ${tr("pieces")}`;
   const rem={
@@ -226,9 +231,9 @@ function renderGear(){
     vision:Math.max(0,total.vision-state.gearOwned.vision)
   };
   document.getElementById("gearSummary").innerHTML=
-    summaryBox("Satin",`${fmt(rem.satin)} / ${fmt(total.satin)}`,rem.satin===0&&total.satin>0)+
-    summaryBox("Gilded Threads",`${fmt(rem.threads)} / ${fmt(total.threads)}`,rem.threads===0&&total.threads>0)+
-    summaryBox("Artisan's Vision",`${fmt(rem.vision)} / ${fmt(total.vision)}`,rem.vision===0&&total.vision>0)+
+    summaryBox(tr("satin"),`${fmt(rem.satin)} / ${fmt(total.satin)}`,rem.satin===0&&total.satin>0)+
+    summaryBox(tr("threads"),`${fmt(rem.threads)} / ${fmt(total.threads)}`,rem.threads===0&&total.threads>0)+
+    summaryBox(tr("visionMaterial"),`${fmt(rem.vision)} / ${fmt(total.vision)}`,rem.vision===0&&total.vision>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
     summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
 }
@@ -242,7 +247,7 @@ function renderCharms(){
     if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
     if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
-    box.innerHTML=metric("Charm Guides",fmt(calc.req.guides))+metric("Charm Designs",fmt(calc.req.designs))+metric(tr("powerGain"),fmt(calc.power))+metric(tr("statGain"),`${calc.stat.toFixed(2)}%`);
+    box.innerHTML=metric(tr("guides"),fmt(calc.req.guides))+metric(tr("designs"),fmt(calc.req.designs))+metric(tr("powerGain"),fmt(calc.power))+metric(tr("statGain"),`${calc.stat.toFixed(2)}%`);
   });
   document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
     const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].enabled).length;
@@ -252,8 +257,8 @@ function renderCharms(){
   document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
   const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
   document.getElementById("charmSummary").innerHTML=
-    summaryBox("Charm Guides",`${fmt(rem.guides)} / ${fmt(total.guides)}`,rem.guides===0&&total.guides>0)+
-    summaryBox("Charm Designs",`${fmt(rem.designs)} / ${fmt(total.designs)}`,rem.designs===0&&total.designs>0)+
+    summaryBox(tr("guides"),`${fmt(rem.guides)} / ${fmt(total.guides)}`,rem.guides===0&&total.guides>0)+
+    summaryBox(tr("designs"),`${fmt(rem.designs)} / ${fmt(total.designs)}`,rem.designs===0&&total.designs>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
     summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
 }
