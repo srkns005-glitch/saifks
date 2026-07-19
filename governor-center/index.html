@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10141d">
+  <title>Governor Center | SaifKS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="SaifKS Home">
+        <span class="brand-mark">♛</span><span>SaifKS</span>
+      </a>
+      <div class="top-actions">
+        <button id="homeBtn" class="icon-btn" type="button" title="Home" aria-label="Home">⌂</button>
+        <select id="languageSelect" class="language-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+          <option value="tr">Türkçe</option>
+          <option value="ko">한국어</option>
+          <option value="ja">日本語</option>
+          <option value="zh">简体中文</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">Independent SaifKS Database</p>
+          <h1 data-i18n="title">Governor Center</h1>
+          <p data-i18n="subtitle">Plan Governor Gear and Charms, calculate remaining materials, and save your progress locally.</p>
+        </div>
+        <div class="hero-badge">
+          <strong>58</strong><span data-i18n="gearStages">Gear stages</span>
+          <strong>22</strong><span data-i18n="charmLevels">Charm levels</span>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Governor Center sections">
+        <button class="tab active" data-tab="gear" type="button" data-i18n="gearTab">Governor Gear</button>
+        <button class="tab" data-tab="charms" type="button" data-i18n="charmsTab">Governor Charms</button>
+      </nav>
+
+      <section id="gearPanel" class="panel active">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="gearPlanner">Governor Gear Planner</h2>
+            <p data-i18n="gearDesc">Enable the pieces you want to calculate, then select the current and target stages.</p>
+          </div>
+          <button class="secondary-btn" id="enableAllGear" type="button" data-i18n="enableAll">Enable all</button>
+        </div>
+
+        <div class="resource-card">
+          <h3 data-i18n="ownedMaterials">Materials you own</h3>
+          <div class="resource-grid">
+            <label><span>Satin</span><input id="ownedSatin" inputmode="numeric" type="number" min="0" placeholder="0"></label>
+            <label><span>Gilded Threads</span><input id="ownedThreads" inputmode="numeric" type="number" min="0" placeholder="0"></label>
+            <label><span>Artisan's Vision</span><input id="ownedVision" inputmode="numeric" type="number" min="0" placeholder="0"></label>
+          </div>
+        </div>
+
+        <div id="gearCards" class="cards-grid"></div>
+
+        <div class="summary-card">
+          <div class="summary-head">
+            <h3 data-i18n="summary">Summary</h3>
+            <span id="gearSelectedCount" class="pill">0</span>
+          </div>
+          <div id="gearSummary" class="summary-grid"></div>
+          <div class="summary-actions">
+            <button id="copyGear" class="primary-btn" type="button" data-i18n="copySummary">Copy summary</button>
+            <button id="resetGear" class="danger-btn" type="button" data-i18n="reset">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="charmsPanel" class="panel">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="charmPlanner">Governor Charm Planner</h2>
+            <p data-i18n="charmDesc">Plan Keenness, Protection, and Vision Charm upgrades.</p>
+          </div>
+          <button class="secondary-btn" id="enableAllCharms" type="button" data-i18n="enableAll">Enable all</button>
+        </div>
+
+        <div class="resource-card">
+          <h3 data-i18n="ownedMaterials">Materials you own</h3>
+          <div class="resource-grid two">
+            <label><span>Charm Guides</span><input id="ownedGuides" inputmode="numeric" type="number" min="0" placeholder="0"></label>
+            <label><span>Charm Designs</span><input id="ownedDesigns" inputmode="numeric" type="number" min="0" placeholder="0"></label>
+          </div>
+        </div>
+
+        <div id="charmCards" class="cards-grid charm-grid"></div>
+
+        <div class="summary-card">
+          <div class="summary-head">
+            <h3 data-i18n="summary">Summary</h3>
+            <span id="charmSelectedCount" class="pill">0</span>
+          </div>
+          <div id="charmSummary" class="summary-grid"></div>
+          <div class="summary-actions">
+            <button id="copyCharms" class="primary-btn" type="button" data-i18n="copySummary">Copy summary</button>
+            <button id="resetCharms" class="danger-btn" type="button" data-i18n="reset">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="database-note" data-i18n="databaseNote">All calculations run locally from SaifKS JSON files. No external API or website connection is used.</p>
+    </main>
+
+    <footer>SaifKS.com | Built by Saif &nbsp; ▶ YouTube</footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
