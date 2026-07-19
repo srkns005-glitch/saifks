@@ -222,7 +222,7 @@ function rights(){return ``}
 function showToast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1300)}
 async function copyText(text){try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove()}}
 class TeamTool{
- constructor(root,id){this.root=root;this.id=id;this.players=JSON.parse(localStorage.getItem(`saifRallyTeam${id}`)||"[]");this.schedule=[];this.firstStartTime=null;this.timer=null;this.editingId=null;this.bind();this.render()}
+ constructor(root,id){this.root=root;this.id=id;this.players=JSON.parse(localStorage.getItem(`saifRallyTeam${id}`)||"[]");this.schedule=[];this.firstStartTime=null;this.arrivalTime=null;this.timer=null;this.editingId=null;this.bind();this.render()}
  q(s){return this.root.querySelector(s)}
  save(){localStorage.setItem(`saifRallyTeam${this.id}`,JSON.stringify(this.players))}
  bind(){
@@ -235,13 +235,87 @@ class TeamTool{
       showToast(t("allCopied"));
     }
   };
-  this.q('[data-role="clear"]').onclick=()=>{this.players=[];this.schedule=[];this.firstStartTime=null;this.save();this.render()};
+  this.q('[data-role="clear"]').onclick=()=>{this.players=[];this.schedule=[];this.firstStartTime=null;this.arrivalTime=null;this.save();this.render()};
   this.q('[data-role="copyAll"]').onclick=async()=>{await copyText(this.schedule.map(p=>`${p.name}: ${utc(p.start)}`).join("\n")+rights());showToast(t("allCopied"))};
   this.q('[data-role="copyDiscord"]').onclick=async()=>{const lines=this.schedule.map((p,i)=>`**${i+1}. ${p.name}** — \`${utc(p.start)}\``).join("\n");await copyText(`👑 **Team ${this.id} — Saif Rally Tools**\n\n${lines}${rights()}`);showToast(t("discordCopied"))};
-  this.q('[data-role="list"]').onclick=async e=>{const del=e.target.closest("[data-del]");if(del){this.players=this.players.filter(p=>p.id!==del.dataset.del);this.save();this.schedule=[];this.render();return}const a=e.target.closest("[data-adjust]");if(a){const p=this.players.find(x=>x.id===a.dataset.adjust);if(p){p.march=Math.max(1,p.march+Number(a.dataset.delta));this.save();this.schedule.length?this.recalculate(false):this.render()}return}const ed=e.target.closest("[data-edit]");if(ed){this.openEdit(ed.dataset.edit);return}const c=e.target.closest("[data-copy]");if(c){await copyText(decodeURIComponent(c.dataset.copy));showToast(t("copied"))}};
+  this.q('[data-role="list"]').onclick=async e=>{
+    const del=e.target.closest("[data-del]");
+    if(del){
+      const hadSchedule=this.schedule.length>0;
+      this.players=this.players.filter(p=>p.id!==del.dataset.del);
+      this.save();
+      if(hadSchedule&&this.players.length>=2){
+        this.recalculate(false);
+      }else{
+        this.schedule=[];
+        this.firstStartTime=null;
+        this.arrivalTime=null;
+        this.render();
+      }
+      return;
+    }
+    const a=e.target.closest("[data-adjust]");
+    if(a){
+      const p=this.players.find(x=>x.id===a.dataset.adjust);
+      if(p){
+        p.march=Math.max(1,p.march+Number(a.dataset.delta));
+        this.save();
+        this.schedule.length?this.recalculate(false):this.render();
+      }
+      return;
+    }
+    const ed=e.target.closest("[data-edit]");
+    if(ed){this.openEdit(ed.dataset.edit);return}
+    const c=e.target.closest("[data-copy]");
+    if(c){await copyText(decodeURIComponent(c.dataset.copy));showToast(t("copied"))}
+  };
  }
  render(){const gen=this.q('[data-role="generate"]'),list=this.q('[data-role="list"]');gen.disabled=this.players.length<2;if(this.schedule.length){this.recalculate(false);return}this.q('[data-role="summary"]').classList.add("hidden");this.q('[data-role="countdownBox"]').classList.add("hidden");this.q('[data-role="copyAll"]').classList.add("hidden");this.q('[data-role="copyDiscord"]').classList.add("hidden");list.innerHTML=this.players.map(p=>`<div class="row"><div class="row-head"><div><div class="player">${esc(p.name)}</div><div class="small">${t("march")}: ${dur(p.march)}</div></div><div class="actions"><button class="minus-btn" data-adjust="${p.id}" data-delta="-1">-1s</button><button class="plus-btn" data-adjust="${p.id}" data-delta="1">+1s</button><button class="edit-btn" data-edit="${p.id}">${t("edit")}</button><button class="danger" data-del="${p.id}">${t("delete")}</button></div></div></div>`).join("")}
- recalculate(reset=true){const buffer=sec(this.q('[data-role="bufferMin"]').value,this.q('[data-role="bufferSec"]').value);if(buffer<=0||this.players.length<2)return;if(reset||!this.firstStartTime)this.firstStartTime=new Date(Date.now()+buffer*1000);const longest=Math.max(...this.players.map(p=>p.march)),arrival=new Date(this.firstStartTime.getTime()+longest*1000);this.schedule=this.players.map(p=>({...p,start:new Date(arrival.getTime()-p.march*1000)})).sort((a,b)=>a.start-b.start);const sum=this.q('[data-role="summary"]');sum.innerHTML=`${t("firstStartsIn")}: <b>${dur(buffer)}</b>`;sum.classList.remove("hidden");this.q('[data-role="countdownBox"]').classList.remove("hidden");this.q('[data-role="copyAll"]').classList.remove("hidden");this.q('[data-role="copyDiscord"]').classList.remove("hidden");this.q('[data-role="list"]').innerHTML=this.schedule.map(p=>`<div class="row"><div class="row-head"><div><div class="player">${esc(p.name)}</div><div class="launch">${utc(p.start)}</div></div><div class="actions"><button class="copy-one" data-copy="${encodeURIComponent(`${p.name}: ${utc(p.start)}${rights()}`)}">${t("copy")}</button><button class="minus-btn" data-adjust="${p.id}" data-delta="-1">-1s</button><button class="plus-btn" data-adjust="${p.id}" data-delta="1">+1s</button><button class="edit-btn" data-edit="${p.id}">${t("edit")}</button></div></div></div>`).join("");this.startCountdown()}
+ recalculate(reset=true){
+  const buffer=sec(this.q('[data-role="bufferMin"]').value,this.q('[data-role="bufferSec"]').value);
+  if(buffer<=0||this.players.length<2)return;
+
+  if(reset||!this.firstStartTime||!this.arrivalTime){
+    this.firstStartTime=new Date(Date.now()+buffer*1000);
+    const longest=Math.max(...this.players.map(p=>p.march));
+    this.arrivalTime=new Date(this.firstStartTime.getTime()+longest*1000);
+  }
+
+  this.schedule=this.players.map(p=>({
+    ...p,
+    start:new Date(this.arrivalTime.getTime()-p.march*1000)
+  }));
+
+  const earliest=Math.min(...this.schedule.map(p=>p.start.getTime()));
+  this.firstStartTime=new Date(earliest);
+
+  const sum=this.q('[data-role="summary"]');
+  sum.innerHTML=`${t("firstStartsIn")}: <b>${dur(Math.max(0,Math.ceil((this.firstStartTime-Date.now())/1000)))}</b>`;
+  sum.classList.remove("hidden");
+  this.q('[data-role="countdownBox"]').classList.remove("hidden");
+  this.q('[data-role="copyAll"]').classList.remove("hidden");
+  this.q('[data-role="copyDiscord"]').classList.remove("hidden");
+
+  this.q('[data-role="list"]').innerHTML=this.schedule.map(p=>`
+    <div class="row">
+      <div class="row-head">
+        <div>
+          <div class="player">${esc(p.name)}</div>
+          <div class="launch">${utc(p.start)}</div>
+          <div class="small">${t("march")}: ${dur(p.march)}</div>
+        </div>
+        <div class="actions">
+          <button class="copy-one" data-copy="${encodeURIComponent(`${p.name}: ${utc(p.start)}${rights()}`)}">${t("copy")}</button>
+          <button class="minus-btn" data-adjust="${p.id}" data-delta="-1">-1s</button>
+          <button class="plus-btn" data-adjust="${p.id}" data-delta="1">+1s</button>
+          <button class="edit-btn" data-edit="${p.id}">${t("edit")}</button>
+          <button class="danger" data-del="${p.id}">${t("delete")}</button>
+        </div>
+      </div>
+    </div>`).join("");
+
+  this.startCountdown();
+ }
  startCountdown(){if(this.timer)clearInterval(this.timer);const update=()=>{const r=Math.max(0,Math.ceil((this.firstStartTime-Date.now())/1000));this.q('[data-role="countdown"]').textContent=dur(r);if(r<=0)clearInterval(this.timer)};update();this.timer=setInterval(update,250)}
  openEdit(id){const p=this.players.find(x=>x.id===id);if(!p)return;activeTeam=this;this.editingId=id;$("#editName").value=p.name;$("#editMarchMin").value=Math.floor(p.march/60);$("#editMarchSec").value=p.march%60;$("#editModal").classList.remove("hidden")}
  saveEdit(){const p=this.players.find(x=>x.id===this.editingId);if(!p)return;const name=$("#editName").value.trim(),march=sec($("#editMarchMin").value,$("#editMarchSec").value);if(!name||march<=0){alert("Enter a valid name and march time.");return}p.name=name;p.march=march;this.save();closeEdit();this.schedule.length?this.recalculate(false):this.render();showToast(t("updated"))}
