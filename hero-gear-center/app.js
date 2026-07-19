@@ -344,8 +344,28 @@ function copyCharms(){
 }
 document.getElementById("copyGear").addEventListener("click",copyGear);
 document.getElementById("copyCharms").addEventListener("click",copyCharms);
-document.getElementById("resetGear").addEventListener("click",()=>{state.gear={};state.gearOwned={satin:0,threads:0,vision:0};saveState();location.reload()});
-document.getElementById("resetCharms").addEventListener("click",()=>{state.charms={};state.charmOwned={guides:0,designs:0};saveState();location.reload()});
+document.getElementById("resetGear").addEventListener("click",()=>{
+  state.gear={};
+  state.gearOwned={satin:0,threads:0,vision:0};
+  ["ownedSatin","ownedThreads","ownedVision"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value="";
+  });
+  buildGearCards();
+  renderGear();
+  saveState();
+});
+document.getElementById("resetCharms").addEventListener("click",()=>{
+  state.charms={};
+  state.charmOwned={guides:0,designs:0};
+  ["ownedGuides","ownedDesigns"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value="";
+  });
+  buildCharmCards();
+  renderCharms();
+  saveState();
+});
 document.getElementById("homeBtn").addEventListener("click",()=>history.length>1?history.back():location.href="../index.html");
 
 init().catch(err=>{
