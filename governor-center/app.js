@@ -150,7 +150,10 @@ function buildCharmCards(){
       list.appendChild(row);
 
       row.querySelector(".current").addEventListener("change",e=>{
-        s.current=+e.target.value; saveState(); renderCharms();
+        s.current=+e.target.value;
+        s.target=0;
+        row.querySelector(".target").value="0";
+        saveState(); renderCharms();
       });
       row.querySelector(".target").addEventListener("change",e=>{
         s.target=+e.target.value; saveState(); renderCharms();
@@ -189,6 +192,9 @@ function charmCalc(s){
 }
 function metric(label,value){return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`}
 function summaryBox(label,value,complete=false){return `<div class="summary-box ${complete?"complete":""}"><span>${label}</span><strong>${value}</strong></div>`}
+function summaryDetailed(label,remaining,total,complete=false){
+  return `<div class="summary-box summary-detailed ${complete?"complete":""}"><span>${label}</span><strong>${fmt(remaining)}</strong><small>${tr("remaining")} · ${tr("required")}: ${fmt(total)}</small></div>`;
+}
 function renderGear(){
   let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};
   document.querySelectorAll("#gearCards .item-card").forEach(card=>{
@@ -223,7 +229,7 @@ function renderCharms(){
     if(s.target===s.current){ box.innerHTML=""; return; }
     if(!calc){ box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`; return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
-    box.innerHTML=`<span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
+    box.innerHTML=`<span class="result-label">${tr("required")}</span><span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
   });
   document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
     const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].target>state.charms[group.dataset.slot][type.id].current).length;
@@ -233,8 +239,8 @@ function renderCharms(){
   document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
   const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
   document.getElementById("charmSummary").innerHTML=
-    summaryBox(tr("guides"),`${fmt(rem.guides)} / ${fmt(total.guides)}`,rem.guides===0&&total.guides>0)+
-    summaryBox(tr("designs"),`${fmt(rem.designs)} / ${fmt(total.designs)}`,rem.designs===0&&total.designs>0)+
+    summaryDetailed(tr("guides"),rem.guides,total.guides,rem.guides===0&&total.guides>0)+
+    summaryDetailed(tr("designs"),rem.designs,total.designs,rem.designs===0&&total.designs>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
     summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
 }

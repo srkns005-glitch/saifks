@@ -363,3 +363,15 @@ footer{margin-top:auto;padding:22px;text-align:center;color:#7f8998;border-top:1
   .charm-simple-name{font-size:10px!important}
   .charm-level-box .stage-select{font-size:10.5px!important;padding-inline:4px!important}
 }
+
+
+/* V10 — reset charm target after current change and clearer results */
+.result-label{display:inline-flex;align-items:center;justify-content:center;padding:3px 6px;border-radius:6px;background:rgba(228,184,87,.12);color:var(--gold-soft);font-size:8px;font-weight:900;white-space:nowrap}
+.summary-detailed strong{font-size:20px!important}.summary-detailed small{display:block;margin-top:3px;color:var(--muted);font-size:9px;font-weight:700}
+.charm-inline-result{align-items:center!important}
+@media(max-width:620px){
+  .result-label{font-size:7px!important;padding:2px 5px!important}
+  .summary-detailed strong{font-size:17px!important}
+  .summary-detailed small{font-size:8px!important}
+  .charm-inline-result{padding-top:2px!important}
+}
