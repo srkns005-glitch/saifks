@@ -1,22 +1,38 @@
-# Saif KINGSHOT
+# SaifKS Governor Center Prototype
 
-KINGSHOT tools website by Saif.
+واجهة أولية مستقلة تعمل بقاعدة البيانات المحلية الموجودة داخل مجلد `data`.
 
-## Pages
-- `index.html` — Home page
-- `rally.html` — Rally Planner
-- `bear.html` — Bear Trap Planner
+## التشغيل
+يفضل تشغيل المجلد من خادم محلي بسيط لأن المتصفح قد يمنع `fetch()` من ملفات JSON عند فتح `index.html` مباشرة:
 
-## Assets
-- `assets/images/logo.png` — Header logo
-- `assets/images/icon-192.png` — Browser/app icon
-- `assets/css/` — Reserved for shared styles
-- `assets/js/` — Reserved for shared scripts
+```bash
+python3 -m http.server 8080
+```
 
-## Deploy on Netlify
-1. Import this GitHub repository in Netlify.
-2. Leave the build command empty.
-3. Set the publish directory to `.`
-4. Deploy.
+ثم افتح:
+`http://localhost:8080`
 
-Every GitHub commit will then deploy automatically.
+## إضافة الصور لاحقًا
+المجلدات مجهزة:
+- `assets/gear/`
+- `assets/charms/`
+
+يمكن استبدال الرموز داخل `.item-icon` بصور PNG دون تغيير قاعدة البيانات.
+
+## المميزات الحالية
+- 6 قطع عتاد حاكم.
+- 3 أنواع تمائم.
+- المستوى الحالي والهدف.
+- جمع المواد المطلوبة.
+- خصم المواد الموجودة.
+- حساب القوة والإحصائيات المكتسبة.
+- حفظ تلقائي في LocalStorage.
+- نسخ الملخص.
+- واجهة متجاوبة للموبايل والآيباد والكمبيوتر.
+- مزامنة اللغة عبر مفتاح `saifksLanguage`.
+
+
+## تحديث v2
+- تصحيح نظام التمائم: 3 تمائم مستقلة لكل قطعة من قطع العتاد الست (18 تميمة).
+- أدوات سريعة لتطبيق المستوى الحالي والهدف على تمائم القطعة الثلاث.
+- أقسام قابلة للطي لتسهيل الاستخدام على الهاتف.
