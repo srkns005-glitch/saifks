@@ -1,276 +1,60 @@
+const STORAGE_KEY='saifksGovernorCenterStateV5';
+const LANGUAGE_KEY='saifksLanguage';
 
-const stateKey = "saifksGovernorCenterStateV1";
-const langKey = "saifksLanguage";
-
-const i18n = {
-  en:{title:"Governor Center",subtitle:"Plan every Governor Gear piece and all 18 Governor Charms in one clear workspace.",gearPieces:"Gear pieces",totalCharms:"Independent charms",planners:"Smart planners",planner:"PLANNER",results:"RESULTS",gearTab:"Governor Gear",charmsTab:"Governor Charms",gearPlanner:"Governor Gear Planner",gearDesc:"Choose the pieces you are upgrading, then set the current and target stage.",charmPlanner:"Governor Charm Planner",charmDesc:"Each gear piece has three separate charms. Plan all 18 without confusion.",enableAll:"Enable all",ownedMaterials:"Materials you own",ownedHint:"Enter your inventory to see only what is still missing.",summary:"Summary",copySummary:"Copy summary",reset:"Reset",current:"Current",target:"Target",disabled:"Disabled",pieces:"pieces",remaining:"Remaining",required:"Required",powerGain:"Power gained",statGain:"Stat gained",copied:"Summary copied",invalidTarget:"Target must be higher than current",completed:"Completed"},
-  ar:{title:"مركز الحاكم",subtitle:"خطط جميع قطع عتاد الحاكم والتمائم الثماني عشرة في واجهة واحدة واضحة.",gearPieces:"قطع عتاد",totalCharms:"تميمة مستقلة",planners:"مخططان ذكيان",planner:"المخطط",results:"النتائج",gearTab:"عتاد الحاكم",charmsTab:"تمائم الحاكم",gearPlanner:"مخطط عتاد الحاكم",gearDesc:"اختر القطع التي تريد تطويرها، ثم حدد المرحلة الحالية والمرحلة الهدف.",charmPlanner:"مخطط تمائم الحاكم",charmDesc:"لكل قطعة عتاد ثلاث تمائم مستقلة. خطط للتمائم الثماني عشرة بسهولة.",enableAll:"تفعيل الكل",ownedMaterials:"المواد الموجودة لديك",ownedHint:"أدخل مخزونك ليظهر لك المتبقي فقط.",summary:"الملخص",copySummary:"نسخ الملخص",reset:"إعادة ضبط",current:"الحالي",target:"الهدف",disabled:"غير مفعّل",pieces:"قطع",remaining:"المتبقي",required:"المطلوب",powerGain:"القوة المكتسبة",statGain:"الإحصائيات المكتسبة",copied:"تم نسخ الملخص",invalidTarget:"يجب أن يكون الهدف أعلى من الحالي",completed:"مكتمل"},
-  tr:{title:"Vali Merkezi",subtitle:"Tüm Vali Ekipmanlarını ve 18 bağımsız tılsımı tek bir net çalışma alanında planlayın.",gearPieces:"Ekipman parçası",totalCharms:"Bağımsız tılsım",planners:"Akıllı planlayıcı",planner:"PLANLAYICI",results:"SONUÇLAR",gearTab:"Vali Ekipmanı",charmsTab:"Vali Tılsımları",gearPlanner:"Vali Ekipmanı Planlayıcısı",gearDesc:"Yükselteceğiniz parçaları seçin, ardından mevcut ve hedef aşamayı belirleyin.",charmPlanner:"Vali Tılsımı Planlayıcısı",charmDesc:"Her ekipman parçasında üç ayrı tılsım bulunur. 18 tılsımın tamamını kolayca planlayın.",enableAll:"Tümünü etkinleştir",ownedMaterials:"Sahip olduğunuz malzemeler",ownedHint:"Yalnızca eksik miktarı görmek için envanterinizi girin.",summary:"Özet",copySummary:"Özeti kopyala",reset:"Sıfırla",current:"Mevcut",target:"Hedef",disabled:"Devre dışı",pieces:"parça",remaining:"Kalan",required:"Gerekli",powerGain:"Kazanılan güç",statGain:"Kazanılan istatistik",copied:"Özet kopyalandı",invalidTarget:"Hedef mevcut seviyeden yüksek olmalı",completed:"Tamamlandı"},
-  ko:{title:"총독 센터",subtitle:"모든 총독 장비와 18개의 독립 부적을 하나의 명확한 화면에서 계획하세요.",gearPieces:"장비 부위",totalCharms:"독립 부적",planners:"스마트 플래너",planner:"플래너",results:"결과",gearTab:"총독 장비",charmsTab:"총독 부적",gearPlanner:"총독 장비 플래너",gearDesc:"업그레이드할 장비를 선택하고 현재 단계와 목표 단계를 설정하세요.",charmPlanner:"총독 부적 플래너",charmDesc:"각 장비에는 독립된 부적 3개가 있습니다. 총 18개를 쉽게 계획하세요.",enableAll:"모두 활성화",ownedMaterials:"보유 재료",ownedHint:"보유량을 입력하면 부족한 수량만 표시됩니다.",summary:"요약",copySummary:"요약 복사",reset:"초기화",current:"현재",target:"목표",disabled:"비활성",pieces:"개",remaining:"남음",required:"필요",powerGain:"획득 전투력",statGain:"획득 능력치",copied:"요약이 복사되었습니다",invalidTarget:"목표는 현재보다 높아야 합니다",completed:"완료"},
-  ja:{title:"総督センター",subtitle:"すべての総督装備と18個の独立チャームを、ひとつの見やすい画面で計画できます。",gearPieces:"装備部位",totalCharms:"独立チャーム",planners:"スマートプランナー",planner:"プランナー",results:"結果",gearTab:"総督装備",charmsTab:"総督チャーム",gearPlanner:"総督装備プランナー",gearDesc:"強化する装備を選び、現在段階と目標段階を設定してください。",charmPlanner:"総督チャームプランナー",charmDesc:"各装備には3つの独立チャームがあります。全18個を簡単に計画できます。",enableAll:"すべて有効",ownedMaterials:"所持素材",ownedHint:"在庫を入力すると不足分だけが表示されます。",summary:"概要",copySummary:"概要をコピー",reset:"リセット",current:"現在",target:"目標",disabled:"無効",pieces:"個",remaining:"残り",required:"必要",powerGain:"獲得戦力",statGain:"獲得能力値",copied:"概要をコピーしました",invalidTarget:"目標は現在より高くする必要があります",completed:"完了"},
-  zh:{title:"执政官中心",subtitle:"在一个清晰的工作区中规划全部执政官装备和18个独立饰品。",gearPieces:"装备部位",totalCharms:"独立饰品",planners:"智能规划器",planner:"规划器",results:"结果",gearTab:"执政官装备",charmsTab:"执政官饰品",gearPlanner:"执政官装备规划器",gearDesc:"选择要升级的装备，然后设置当前阶段和目标阶段。",charmPlanner:"执政官饰品规划器",charmDesc:"每件装备都有三个独立饰品，可轻松规划全部18个。",enableAll:"全部启用",ownedMaterials:"你拥有的材料",ownedHint:"输入库存后仅显示仍缺少的数量。",summary:"汇总",copySummary:"复制汇总",reset:"重置",current:"当前",target:"目标",disabled:"未启用",pieces:"件",remaining:"剩余",required:"需要",powerGain:"获得战力",statGain:"获得属性",copied:"汇总已复制",invalidTarget:"目标必须高于当前",completed:"已完成"}
+const languages={
+ en:{title:'Governor Center',subtitle:'Plan Governor Gear and all 18 Charms with a clean, fast workflow.',gearPieces:'Gear Pieces',charms:'Charms',planner:'PLANNER',results:'RESULTS',gearTab:'Governor Gear',charmsTab:'Governor Charms',gearPlanner:'Governor Gear Planner',gearDesc:'Select a gear piece and set its current and target stage.',charmPlanner:'Governor Charm Planner',charmDesc:'Every gear piece has three independent Charms.',enableAll:'Enable all',ownedMaterials:'Materials you own',ownedHint:'Your inventory is deducted from the final requirement.',summary:'Summary',copySummary:'Copy summary',reset:'Reset',current:'Current',target:'Target',disabled:'Disabled',remaining:'Remaining',required:'Required',powerGain:'Power gained',statGain:'Stat gained',copied:'Summary copied',invalidTarget:'Target must be higher',completed:'Completed',applyThree:'Apply to all 3',pieces:'pieces',satin:'Satin',threads:'Gilded Threads',artisanVision:"Artisan's Vision",guides:'Charm Guides',designs:'Charm Designs',threeCharms:'3 Charms',none:'None',attack:'Attack',defense:'Defense',health:'Health',lethality:'Lethality',infantry:'Infantry',cavalry:'Cavalry',archer:'Archer',hood:'Hood',necklace:'Necklace',cloak:'Cloak',breeches:'Breeches',ring:'Ring',staff:'Staff',keenness:'Keenness Charm',protection:'Protection Charm',vision:'Vision Charm'},
+ ar:{title:'مركز الحاكم',subtitle:'خطط عتاد الحاكم وجميع التمائم الـ18 بسهولة ووضوح.',gearPieces:'قطع العتاد',charms:'التمائم',planner:'المخطط',results:'النتائج',gearTab:'عتاد الحاكم',charmsTab:'تمائم الحاكم',gearPlanner:'مخطط عتاد الحاكم',gearDesc:'اختر قطعة العتاد وحدد مرحلتها الحالية والهدف.',charmPlanner:'مخطط تمائم الحاكم',charmDesc:'تحتوي كل قطعة عتاد على ثلاث تمائم مستقلة.',enableAll:'تفعيل الكل',ownedMaterials:'المواد الموجودة لديك',ownedHint:'يتم خصم مخزونك من إجمالي المطلوب.',summary:'الملخص',copySummary:'نسخ الملخص',reset:'إعادة ضبط',current:'الحالي',target:'الهدف',disabled:'غير مفعّل',remaining:'المتبقي',required:'المطلوب',powerGain:'القوة المكتسبة',statGain:'الإحصائيات المكتسبة',copied:'تم نسخ الملخص',invalidTarget:'الهدف يجب أن يكون أعلى',completed:'مكتمل',applyThree:'تطبيق على الثلاث',pieces:'قطع',satin:'الساتان',threads:'الخيوط المذهبة',artisanVision:'رؤية الحرفي',guides:'أدلة التمائم',designs:'تصاميم التمائم',threeCharms:'3 تمائم',none:'لا شيء',attack:'الهجوم',defense:'الدفاع',health:'الصحة',lethality:'الفتك',infantry:'المشاة',cavalry:'الفرسان',archer:'الرماة',hood:'غطاء الرأس',necklace:'القلادة',cloak:'العباءة',breeches:'السروال',ring:'الخاتم',staff:'العصا',keenness:'تميمة الحدة',protection:'تميمة الحماية',vision:'تميمة الرؤية'},
+ tr:{title:'Vali Merkezi',subtitle:'Vali Ekipmanını ve 18 Tılsımı hızlı ve düzenli biçimde planlayın.',gearPieces:'Ekipman Parçası',charms:'Tılsım',planner:'PLANLAYICI',results:'SONUÇLAR',gearTab:'Vali Ekipmanı',charmsTab:'Vali Tılsımları',gearPlanner:'Vali Ekipmanı Planlayıcısı',gearDesc:'Bir ekipman seçin, mevcut ve hedef aşamasını belirleyin.',charmPlanner:'Vali Tılsımı Planlayıcısı',charmDesc:'Her ekipman parçasında üç bağımsız tılsım bulunur.',enableAll:'Tümünü etkinleştir',ownedMaterials:'Sahip olduğunuz malzemeler',ownedHint:'Envanteriniz toplam gereksinimden düşülür.',summary:'Özet',copySummary:'Özeti kopyala',reset:'Sıfırla',current:'Mevcut',target:'Hedef',disabled:'Devre dışı',remaining:'Kalan',required:'Gerekli',powerGain:'Kazanılan güç',statGain:'Kazanılan özellik',copied:'Özet kopyalandı',invalidTarget:'Hedef daha yüksek olmalı',completed:'Tamamlandı',applyThree:'Üçüne uygula',pieces:'parça',satin:'Saten',threads:'Yaldızlı İplikler',artisanVision:'Zanaatkârın Görüsü',guides:'Tılsım Rehberleri',designs:'Tılsım Tasarımları',threeCharms:'3 Tılsım',none:'Yok',attack:'Saldırı',defense:'Savunma',health:'Sağlık',lethality:'Öldürücülük',infantry:'Piyade',cavalry:'Süvari',archer:'Okçu',hood:'Başlık',necklace:'Kolye',cloak:'Pelerin',breeches:'Pantolon',ring:'Yüzük',staff:'Asa',keenness:'Keskinlik Tılsımı',protection:'Koruma Tılsımı',vision:'Görüş Tılsımı'},
+ fr:{title:'Centre du Gouverneur',subtitle:'Planifiez l’équipement du Gouverneur et les 18 charmes rapidement.',gearPieces:'Pièces d’équipement',charms:'Charmes',planner:'PLANIFICATEUR',results:'RÉSULTATS',gearTab:'Équipement du Gouverneur',charmsTab:'Charmes du Gouverneur',gearPlanner:'Planificateur d’équipement',gearDesc:'Choisissez une pièce puis définissez son niveau actuel et cible.',charmPlanner:'Planificateur de charmes',charmDesc:'Chaque pièce possède trois charmes indépendants.',enableAll:'Tout activer',ownedMaterials:'Matériaux possédés',ownedHint:'Votre inventaire est déduit du besoin total.',summary:'Résumé',copySummary:'Copier le résumé',reset:'Réinitialiser',current:'Actuel',target:'Cible',disabled:'Désactivé',remaining:'Restant',required:'Requis',powerGain:'Puissance gagnée',statGain:'Statistiques gagnées',copied:'Résumé copié',invalidTarget:'La cible doit être supérieure',completed:'Terminé',applyThree:'Appliquer aux 3',pieces:'pièces',satin:'Satin',threads:'Fils dorés',artisanVision:'Vision de l’artisan',guides:'Guides de charme',designs:'Plans de charme',threeCharms:'3 charmes',none:'Aucun',attack:'Attaque',defense:'Défense',health:'Santé',lethality:'Létalité',infantry:'Infanterie',cavalry:'Cavalerie',archer:'Archer',hood:'Capuche',necklace:'Collier',cloak:'Cape',breeches:'Braies',ring:'Anneau',staff:'Bâton',keenness:'Charme d’acuité',protection:'Charme de protection',vision:'Charme de vision'},
+ es:{title:'Centro del Gobernador',subtitle:'Planifica el equipo del Gobernador y los 18 amuletos con rapidez.',gearPieces:'Piezas de equipo',charms:'Amuletos',planner:'PLANIFICADOR',results:'RESULTADOS',gearTab:'Equipo del Gobernador',charmsTab:'Amuletos del Gobernador',gearPlanner:'Planificador de equipo',gearDesc:'Selecciona una pieza y define su nivel actual y objetivo.',charmPlanner:'Planificador de amuletos',charmDesc:'Cada pieza tiene tres amuletos independientes.',enableAll:'Activar todo',ownedMaterials:'Materiales disponibles',ownedHint:'Tu inventario se descuenta del requisito total.',summary:'Resumen',copySummary:'Copiar resumen',reset:'Restablecer',current:'Actual',target:'Objetivo',disabled:'Desactivado',remaining:'Restante',required:'Necesario',powerGain:'Poder obtenido',statGain:'Estadísticas obtenidas',copied:'Resumen copiado',invalidTarget:'El objetivo debe ser mayor',completed:'Completado',applyThree:'Aplicar a los 3',pieces:'piezas',satin:'Satén',threads:'Hilos dorados',artisanVision:'Visión del artesano',guides:'Guías de amuleto',designs:'Diseños de amuleto',threeCharms:'3 amuletos',none:'Ninguno',attack:'Ataque',defense:'Defensa',health:'Salud',lethality:'Letalidad',infantry:'Infantería',cavalry:'Caballería',archer:'Arquero',hood:'Capucha',necklace:'Collar',cloak:'Capa',breeches:'Calzones',ring:'Anillo',staff:'Bastón',keenness:'Amuleto de agudeza',protection:'Amuleto de protección',vision:'Amuleto de visión'},
+ de:{title:'Gouverneurszentrum',subtitle:'Plane Gouverneursausrüstung und alle 18 Talismane schnell und übersichtlich.',gearPieces:'Ausrüstungsteile',charms:'Talismane',planner:'PLANER',results:'ERGEBNISSE',gearTab:'Gouverneursausrüstung',charmsTab:'Gouverneurstalismane',gearPlanner:'Ausrüstungsplaner',gearDesc:'Wähle ein Teil und lege aktuelle sowie Zielstufe fest.',charmPlanner:'Talisman-Planer',charmDesc:'Jedes Ausrüstungsteil besitzt drei unabhängige Talismane.',enableAll:'Alle aktivieren',ownedMaterials:'Vorhandene Materialien',ownedHint:'Dein Bestand wird vom Gesamtbedarf abgezogen.',summary:'Übersicht',copySummary:'Übersicht kopieren',reset:'Zurücksetzen',current:'Aktuell',target:'Ziel',disabled:'Deaktiviert',remaining:'Fehlend',required:'Benötigt',powerGain:'Gewonnene Kraft',statGain:'Gewonnene Werte',copied:'Übersicht kopiert',invalidTarget:'Ziel muss höher sein',completed:'Abgeschlossen',applyThree:'Auf alle 3 anwenden',pieces:'Teile',satin:'Satin',threads:'Vergoldete Fäden',artisanVision:'Vision des Handwerkers',guides:'Talisman-Leitfäden',designs:'Talisman-Entwürfe',threeCharms:'3 Talismane',none:'Keine',attack:'Angriff',defense:'Verteidigung',health:'Gesundheit',lethality:'Tödlichkeit',infantry:'Infanterie',cavalry:'Kavallerie',archer:'Bogenschütze',hood:'Kapuze',necklace:'Halskette',cloak:'Umhang',breeches:'Beinkleid',ring:'Ring',staff:'Stab',keenness:'Schärfe-Talisman',protection:'Schutz-Talisman',vision:'Sicht-Talisman'},
+ ko:{title:'총독 센터',subtitle:'총독 장비와 18개의 부적을 빠르고 깔끔하게 계획하세요.',gearPieces:'장비 부위',charms:'부적',planner:'플래너',results:'결과',gearTab:'총독 장비',charmsTab:'총독 부적',gearPlanner:'총독 장비 플래너',gearDesc:'장비를 선택하고 현재 단계와 목표 단계를 설정하세요.',charmPlanner:'총독 부적 플래너',charmDesc:'각 장비에는 독립된 부적 3개가 있습니다.',enableAll:'모두 활성화',ownedMaterials:'보유 재료',ownedHint:'보유량은 전체 필요량에서 차감됩니다.',summary:'요약',copySummary:'요약 복사',reset:'초기화',current:'현재',target:'목표',disabled:'비활성',remaining:'부족',required:'필요',powerGain:'획득 전투력',statGain:'획득 능력치',copied:'요약이 복사되었습니다',invalidTarget:'목표가 더 높아야 합니다',completed:'완료',applyThree:'3개 모두 적용',pieces:'개',satin:'새틴',threads:'도금 실',artisanVision:'장인의 비전',guides:'부적 가이드',designs:'부적 설계도',threeCharms:'부적 3개',none:'없음',attack:'공격',defense:'방어',health:'체력',lethality:'치명타',infantry:'보병',cavalry:'기병',archer:'궁병',hood:'후드',necklace:'목걸이',cloak:'망토',breeches:'바지',ring:'반지',staff:'지팡이',keenness:'예리함 부적',protection:'보호 부적',vision:'통찰 부적'},
+ ja:{title:'総督センター',subtitle:'総督装備と18個のチャームをすばやく分かりやすく計画できます。',gearPieces:'装備部位',charms:'チャーム',planner:'プランナー',results:'結果',gearTab:'総督装備',charmsTab:'総督チャーム',gearPlanner:'総督装備プランナー',gearDesc:'装備を選び、現在段階と目標段階を設定してください。',charmPlanner:'総督チャームプランナー',charmDesc:'各装備には独立したチャームが3個あります。',enableAll:'すべて有効',ownedMaterials:'所持素材',ownedHint:'所持数は合計必要数から差し引かれます。',summary:'概要',copySummary:'概要をコピー',reset:'リセット',current:'現在',target:'目標',disabled:'無効',remaining:'不足',required:'必要',powerGain:'獲得戦力',statGain:'獲得能力値',copied:'概要をコピーしました',invalidTarget:'目標を高くしてください',completed:'完了',applyThree:'3個すべてに適用',pieces:'個',satin:'サテン',threads:'金糸',artisanVision:'職人の洞察',guides:'チャームガイド',designs:'チャーム設計図',threeCharms:'チャーム3個',none:'なし',attack:'攻撃',defense:'防御',health:'体力',lethality:'殺傷力',infantry:'歩兵',cavalry:'騎兵',archer:'弓兵',hood:'フード',necklace:'ネックレス',cloak:'クローク',breeches:'ズボン',ring:'リング',staff:'杖',keenness:'鋭敏チャーム',protection:'防護チャーム',vision:'洞察チャーム'},
+ zh:{title:'执政官中心',subtitle:'快速、清晰地规划执政官装备和全部18个饰品。',gearPieces:'装备部位',charms:'饰品',planner:'规划器',results:'结果',gearTab:'执政官装备',charmsTab:'执政官饰品',gearPlanner:'执政官装备规划器',gearDesc:'选择装备并设置当前阶段和目标阶段。',charmPlanner:'执政官饰品规划器',charmDesc:'每件装备都有三个独立饰品。',enableAll:'全部启用',ownedMaterials:'你拥有的材料',ownedHint:'库存将从总需求中扣除。',summary:'汇总',copySummary:'复制汇总',reset:'重置',current:'当前',target:'目标',disabled:'未启用',remaining:'缺少',required:'需要',powerGain:'获得战力',statGain:'获得属性',copied:'汇总已复制',invalidTarget:'目标必须更高',completed:'已完成',applyThree:'应用到全部3个',pieces:'件',satin:'缎料',threads:'镀金线',artisanVision:'工匠之眼',guides:'饰品指南',designs:'饰品设计图',threeCharms:'3个饰品',none:'无',attack:'攻击',defense:'防御',health:'生命',lethality:'杀伤力',infantry:'步兵',cavalry:'骑兵',archer:'弓兵',hood:'兜帽',necklace:'项链',cloak:'斗篷',breeches:'马裤',ring:'戒指',staff:'法杖',keenness:'敏锐饰品',protection:'防护饰品',vision:'洞察饰品'}
 };
 
-const defaultState = {
-  activeTab:"gear",
-  language: localStorage.getItem(langKey) || "en",
-  gearOwned:{satin:0,threads:0,vision:0},
-  charmOwned:{guides:0,designs:0},
-  gear:{}, charms:{}
-};
-let state = loadState();
-let gearDB, charmDB;
-
-const gearIcons = {hood:"♜",necklace:"◈",cloak:"◆",breeches:"▥",ring:"◉",staff:"⚚"};
-const charmIcons = {keenness:"✦",protection:"⬢",vision:"◉"};
-
-function loadState(){
-  try { return {...defaultState, ...JSON.parse(localStorage.getItem(stateKey)||"{}")}; }
-  catch { return structuredClone(defaultState); }
-}
-function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
-function n(v){ return Number(v||0); }
-function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
-function tr(k){ return (i18n[state.language]||i18n.en)[k] ?? i18n.en[k] ?? k; }
+const defaultState={activeTab:'gear',language:localStorage.getItem(LANGUAGE_KEY)||'en',gearOwned:{satin:0,threads:0,vision:0},charmOwned:{guides:0,designs:0},gear:{},charms:{}};
+let state=loadState(),gearDB,charmDB;
+const gearIcons={hood:'♜',necklace:'◇',cloak:'◆',breeches:'▥',ring:'◉',staff:'⚚'};
+const charmIcons={keenness:'✦',protection:'⬢',vision:'◉'};
+function loadState(){try{return {...defaultState,...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}}catch{return structuredClone(defaultState)}}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+function tr(key){return (languages[state.language]||languages.en)[key]??languages.en[key]??key}
+function num(v){return Number(v||0)}
+function fmt(v){return Math.max(0,Math.round(v)).toLocaleString(state.language)}
+function itemName(id){return tr(id)}
+function statsText(slot){return `${tr(slot.troop)} · ${slot.stats.map(tr).join(' + ')}`}
+function gearOptions(selected){let out=`<option value="-1">${tr('disabled')}</option>`;gearDB.levels.forEach((x,i)=>out+=`<option value="${i}" ${i===selected?'selected':''}>${x.display_name}</option>`);return out}
+function charmOptions(selected){let out='<option value="0">0</option>';charmDB.levels.forEach(x=>out+=`<option value="${x.level}" ${x.level===selected?'selected':''}>${x.level}</option>`);return out}
 
 async function init(){
-  [gearDB,charmDB] = await Promise.all([
-    fetch("data/governor_gear.json").then(r=>r.json()),
-    fetch("data/governor_charms.json").then(r=>r.json())
-  ]);
-  setupLanguage();
-  setupTabs();
-  buildGearCards();
-  buildCharmCards();
-  bindOwnedInputs();
-  renderAll();
+ [gearDB,charmDB]=await Promise.all([fetch('data/governor_gear.json').then(r=>r.json()),fetch('data/governor_charms.json').then(r=>r.json())]);
+ setupLanguage();setupTabs();bindOwned();bindActions();rebuild();
 }
-function setupLanguage(){
-  const select=document.getElementById("languageSelect");
-  select.value=state.language;
-  select.addEventListener("change",()=>{
-    state.language=select.value;
-    localStorage.setItem(langKey,state.language);
-    saveState(); applyLanguage(); renderAll();
-  });
-  applyLanguage();
+function setupLanguage(){const sel=document.getElementById('languageSelect');if(!languages[state.language])state.language='en';sel.value=state.language;sel.addEventListener('change',()=>{state.language=sel.value;localStorage.setItem(LANGUAGE_KEY,state.language);save();rebuild()})}
+function applyLanguage(){document.documentElement.lang=state.language;document.documentElement.dir=state.language==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=tr(el.dataset.i18n))}
+function setupTabs(){document.querySelectorAll('.mode-button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));setTab(state.activeTab)}
+function setTab(tab){state.activeTab=tab;save();document.querySelectorAll('.mode-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.getElementById('gearPanel').classList.toggle('active',tab==='gear');document.getElementById('charmsPanel').classList.toggle('active',tab==='charms')}
+function bindOwned(){[['ownedSatin','gearOwned','satin'],['ownedThreads','gearOwned','threads'],['ownedVision','gearOwned','vision'],['ownedGuides','charmOwned','guides'],['ownedDesigns','charmOwned','designs']].forEach(([id,g,k])=>{const el=document.getElementById(id);el.value=state[g][k]||'';el.addEventListener('input',()=>{state[g][k]=num(el.value);save();renderAll()})})}
+function bindActions(){
+ document.getElementById('enableAllGear').onclick=()=>{gearDB.slots.forEach(s=>{state.gear[s.id]??={current:-1,target:-1};state.gear[s.id].enabled=true});save();buildGear();renderGear()};
+ document.getElementById('enableAllCharms').onclick=()=>{gearDB.slots.forEach(slot=>{state.charms[slot.id]??={};charmDB.types.forEach(t=>{state.charms[slot.id][t.id]??={current:0,target:0};state.charms[slot.id][t.id].enabled=true})});save();buildCharms();renderCharms()};
+ document.getElementById('copyGear').onclick=copyGear;document.getElementById('copyCharms').onclick=copyCharms;
+ document.getElementById('resetGear').onclick=()=>{state.gear={};state.gearOwned={satin:0,threads:0,vision:0};save();location.reload()};
+ document.getElementById('resetCharms').onclick=()=>{state.charms={};state.charmOwned={guides:0,designs:0};save();location.reload()};
 }
-function applyLanguage(){
-  document.documentElement.lang=state.language;
-  document.documentElement.dir=state.language==="ar"?"rtl":"ltr";
-  document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));
-}
-function setupTabs(){
-  document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>setTab(btn.dataset.tab)));
-  setTab(state.activeTab||"gear");
-}
-function setTab(tab){
-  state.activeTab=tab; saveState();
-  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
-  document.getElementById("gearPanel").classList.toggle("active",tab==="gear");
-  document.getElementById("charmsPanel").classList.toggle("active",tab==="charms");
-}
-function gearOptions(selected){
-  let html=`<option value="-1">${tr("disabled")}</option>`;
-  gearDB.levels.forEach((x,i)=> html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`);
-  return html;
-}
-function charmOptions(selected, includeZero=true){
-  let html=includeZero?`<option value="0">0</option>`:"";
-  charmDB.levels.forEach(x=>html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`);
-  return html;
-}
-function buildGearCards(){
-  const wrap=document.getElementById("gearCards"); wrap.innerHTML="";
-  gearDB.slots.forEach(slot=>{
-    if(!state.gear[slot.id]) state.gear[slot.id]={enabled:false,current:-1,target:-1};
-    const s=state.gear[slot.id];
-    const card=document.createElement("article"); card.className="item-card"; card.dataset.id=slot.id;
-    card.innerHTML=`
-      <div class="item-top">
-        <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${slot.name}</h3><p>${slot.troop} · ${slot.stats.join(" & ")}</p></div>
-        <label class="switch"><input class="enable" type="checkbox" ${s.enabled?"checked":""}><span class="slider"></span></label>
-      </div>
-      <div class="stage-grid">
-        <label><span>${tr("current")}</span><select class="stage-select current">${gearOptions(s.current)}</select></label>
-        <label><span>${tr("target")}</span><select class="stage-select target">${gearOptions(s.target)}</select></label>
-      </div>
-      <div class="item-result"></div>`;
-    wrap.appendChild(card);
-    card.querySelector(".enable").addEventListener("change",e=>{s.enabled=e.target.checked;saveState();renderGear();});
-    card.querySelector(".current").addEventListener("change",e=>{s.current=+e.target.value;saveState();renderGear();});
-    card.querySelector(".target").addEventListener("change",e=>{s.target=+e.target.value;saveState();renderGear();});
-  });
-}
-function buildCharmCards(){
-  const wrap=document.getElementById("charmCards"); wrap.innerHTML="";
-  gearDB.slots.forEach(slot=>{
-    if(!state.charms[slot.id]) state.charms[slot.id]={};
-    charmDB.types.forEach(type=>{
-      if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={enabled:false,current:0,target:0};
-    });
-    const group=document.createElement("section");
-    group.className="charm-equipment-card";
-    group.dataset.slot=slot.id;
-    group.innerHTML=`
-      <div class="charm-equipment-head">
-        <div class="item-icon" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
-        <div class="item-title"><h3>${slot.name}</h3><p>${slot.troop} · 3 Charms</p></div>
-        <button class="secondary-btn compact toggle-group" type="button">⌄</button>
-      </div>
-      <div class="charm-quick-controls">
-        <label><span>${tr("current")}</span><select class="stage-select group-current">${charmOptions(0)}</select></label>
-        <label><span>${tr("target")}</span><select class="stage-select group-target">${charmOptions(0)}</select></label>
-        <button class="secondary-btn apply-group" type="button">Apply to 3</button>
-      </div>
-      <div class="three-charms"></div>`;
-    const inner=group.querySelector(".three-charms");
-    charmDB.types.forEach(type=>{
-      const s=state.charms[slot.id][type.id];
-      const card=document.createElement("article"); card.className="item-card charm-mini"; card.dataset.type=type.id;
-      card.innerHTML=`
-        <div class="item-top">
-          <div class="item-icon small" data-image-slot="${slot.id}-${type.id}">${charmIcons[type.id]||"✦"}</div>
-          <div class="item-title"><h3>${type.name}</h3><p>${slot.name}</p></div>
-          <label class="switch"><input class="enable" type="checkbox" ${s.enabled?"checked":""}><span class="slider"></span></label>
-        </div>
-        <div class="stage-grid">
-          <label><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
-          <label><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
-        </div>
-        <div class="item-result"></div>`;
-      inner.appendChild(card);
-      card.querySelector(".enable").addEventListener("change",e=>{s.enabled=e.target.checked;saveState();renderCharms();});
-      card.querySelector(".current").addEventListener("change",e=>{s.current=+e.target.value;saveState();renderCharms();});
-      card.querySelector(".target").addEventListener("change",e=>{s.target=+e.target.value;saveState();renderCharms();});
-    });
-    group.querySelector(".toggle-group").addEventListener("click",()=>group.classList.toggle("collapsed"));
-    group.querySelector(".apply-group").addEventListener("click",()=>{
-      const cur=+group.querySelector(".group-current").value;
-      const tar=+group.querySelector(".group-target").value;
-      charmDB.types.forEach(type=>Object.assign(state.charms[slot.id][type.id],{enabled:true,current:cur,target:tar}));
-      saveState(); buildCharmCards(); renderCharms();
-    });
-    wrap.appendChild(group);
-  });
-}
-function bindOwnedInputs(){
-  const ids=[
-    ["ownedSatin","gearOwned","satin"],["ownedThreads","gearOwned","threads"],["ownedVision","gearOwned","vision"],
-    ["ownedGuides","charmOwned","guides"],["ownedDesigns","charmOwned","designs"]
-  ];
-  ids.forEach(([id,group,key])=>{
-    const el=document.getElementById(id); el.value=state[group][key]||"";
-    el.addEventListener("input",()=>{state[group][key]=n(el.value);saveState();renderAll();});
-  });
-}
-function gearCalc(s){
-  if(!s.enabled || s.target<0 || s.target<=s.current) return null;
-  const rows=gearDB.levels.slice(s.current+1,s.target+1);
-  const req=rows.reduce((a,x)=>({
-    satin:a.satin+x.materials.satin,threads:a.threads+x.materials.gilded_threads,vision:a.vision+x.materials.artisans_vision
-  }),{satin:0,threads:0,vision:0});
-  const cur=s.current>=0?gearDB.levels[s.current]:{power_total:0,stat_total_percent:0};
-  const tar=gearDB.levels[s.target];
-  return {req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent};
-}
-function charmCalc(s){
-  if(!s.enabled || s.target<=s.current) return null;
-  const rows=charmDB.levels.filter(x=>x.level>s.current&&x.level<=s.target);
-  const req=rows.reduce((a,x)=>({guides:a.guides+x.materials.charm_guides,designs:a.designs+x.materials.charm_designs}),{guides:0,designs:0});
-  const cur=s.current>0?charmDB.levels.find(x=>x.level===s.current):{power_total:0,stat_total_percent:0};
-  const tar=charmDB.levels.find(x=>x.level===s.target);
-  return {req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent};
-}
-function metric(label,value){return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`}
-function summaryBox(label,value,complete=false){return `<div class="summary-box ${complete?"complete":""}"><span>${label}</span><strong>${value}</strong></div>`}
-function renderGear(){
-  let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#gearCards .item-card").forEach(card=>{
-    const s=state.gear[card.dataset.id],calc=gearCalc(s);
-    card.classList.toggle("enabled",s.enabled);
-    const box=card.querySelector(".item-result");
-    if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
-    if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
-    total.count++; Object.keys(calc.req).forEach(k=>total[k]+=calc.req[k]); total.power+=calc.power; total.stat+=calc.stat;
-    box.innerHTML=metric("Satin",fmt(calc.req.satin))+metric("Threads",fmt(calc.req.threads))+metric("Vision",fmt(calc.req.vision))+metric(tr("powerGain"),fmt(calc.power));
-  });
-  document.getElementById("gearSelectedCount").textContent=`${total.count} ${tr("pieces")}`;
-  const rem={
-    satin:Math.max(0,total.satin-state.gearOwned.satin),
-    threads:Math.max(0,total.threads-state.gearOwned.threads),
-    vision:Math.max(0,total.vision-state.gearOwned.vision)
-  };
-  document.getElementById("gearSummary").innerHTML=
-    summaryBox("Satin",`${fmt(rem.satin)} / ${fmt(total.satin)}`,rem.satin===0&&total.satin>0)+
-    summaryBox("Gilded Threads",`${fmt(rem.threads)} / ${fmt(total.threads)}`,rem.threads===0&&total.threads>0)+
-    summaryBox("Artisan's Vision",`${fmt(rem.vision)} / ${fmt(total.vision)}`,rem.vision===0&&total.vision>0)+
-    summaryBox(tr("powerGain"),fmt(total.power))+
-    summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
-}
-function renderCharms(){
-  let total={guides:0,designs:0,power:0,stat:0,count:0};
-  document.querySelectorAll("#charmCards .charm-mini").forEach(card=>{
-    const group=card.closest(".charm-equipment-card");
-    const s=state.charms[group.dataset.slot][card.dataset.type],calc=charmCalc(s);
-    card.classList.toggle("enabled",s.enabled);
-    const box=card.querySelector(".item-result");
-    if(!s.enabled){ box.innerHTML=metric(tr("remaining"),"—"); return; }
-    if(!calc){ box.innerHTML=metric(tr("invalidTarget"),"—"); return; }
-    total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
-    box.innerHTML=metric("Charm Guides",fmt(calc.req.guides))+metric("Charm Designs",fmt(calc.req.designs))+metric(tr("powerGain"),fmt(calc.power))+metric(tr("statGain"),`${calc.stat.toFixed(2)}%`);
-  });
-  document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
-  const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
-  document.getElementById("charmSummary").innerHTML=
-    summaryBox("Charm Guides",`${fmt(rem.guides)} / ${fmt(total.guides)}`,rem.guides===0&&total.guides>0)+
-    summaryBox("Charm Designs",`${fmt(rem.designs)} / ${fmt(total.designs)}`,rem.designs===0&&total.designs>0)+
-    summaryBox(tr("powerGain"),fmt(total.power))+
-    summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
-}
-function renderAll(){applyLanguage();renderGear();renderCharms()}
-function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1700)}
-function copyGear(){
-  const lines=["SaifKS.com | Governor Gear"];
-  let req={satin:0,threads:0,vision:0};
-  gearDB.slots.forEach(slot=>{
-    const s=state.gear[slot.id],c=gearCalc(s); if(!c)return;
-    Object.keys(req).forEach(k=>req[k]+=c.req[k]);
-    lines.push(`${slot.name}: ${s.current<0?"None":gearDB.levels[s.current].display_name} → ${gearDB.levels[s.target].display_name}`);
-  });
-  const rem={satin:Math.max(0,req.satin-state.gearOwned.satin),threads:Math.max(0,req.threads-state.gearOwned.threads),vision:Math.max(0,req.vision-state.gearOwned.vision)};
-  if(rem.satin)lines.push(`Satin: ${fmt(rem.satin)}`);
-  if(rem.threads)lines.push(`Gilded Threads: ${fmt(rem.threads)}`);
-  if(rem.vision)lines.push(`Artisan's Vision: ${fmt(rem.vision)}`);
-  if(!rem.satin&&!rem.threads&&!rem.vision)lines.push(tr("completed"));
-  navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
-}
-function copyCharms(){
-  const lines=["SaifKS.com | Governor Charms"];
-  let req={guides:0,designs:0};
-  gearDB.slots.forEach(slot=>{
-    charmDB.types.forEach(type=>{
-      const s=state.charms?.[slot.id]?.[type.id],c=s?charmCalc(s):null; if(!c)return;
-      req.guides+=c.req.guides;req.designs+=c.req.designs;
-      lines.push(`${slot.name} - ${type.name}: ${s.current} → ${s.target}`);
-    });
-  });
-  const rem={guides:Math.max(0,req.guides-state.charmOwned.guides),designs:Math.max(0,req.designs-state.charmOwned.designs)};
-  if(rem.guides)lines.push(`Charm Guides: ${fmt(rem.guides)}`);
-  if(rem.designs)lines.push(`Charm Designs: ${fmt(rem.designs)}`);
-  if(!rem.guides&&!rem.designs)lines.push(tr("completed"));
-  navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
-}
-document.getElementById("enableAllGear").addEventListener("click",()=>{Object.values(state.gear).forEach(s=>s.enabled=true);saveState();buildGearCards();renderGear()});
-document.getElementById("enableAllCharms").addEventListener("click",()=>{gearDB.slots.forEach(slot=>charmDB.types.forEach(type=>state.charms[slot.id][type.id].enabled=true));saveState();buildCharmCards();renderCharms()});
-document.getElementById("copyGear").addEventListener("click",copyGear);
-document.getElementById("copyCharms").addEventListener("click",copyCharms);
-document.getElementById("resetGear").addEventListener("click",()=>{state.gear={};state.gearOwned={satin:0,threads:0,vision:0};saveState();location.reload()});
-document.getElementById("resetCharms").addEventListener("click",()=>{state.charms={};state.charmOwned={guides:0,designs:0};saveState();location.reload()});
-document.getElementById("homeBtn").addEventListener("click",()=>history.length>1?history.back():location.href="../index.html");
-
-init().catch(err=>{
-  console.error(err);
-  document.body.innerHTML="<main style='padding:30px;color:white'>Failed to load local database files.</main>";
-});
+function rebuild(){applyLanguage();buildGear();buildCharms();renderAll();document.getElementById('languageSelect').value=state.language}
+function buildGear(){const root=document.getElementById('gearCards');root.innerHTML='';gearDB.slots.forEach(slot=>{state.gear[slot.id]??={enabled:false,current:-1,target:-1};const s=state.gear[slot.id],card=document.createElement('article');card.className='gear-card';card.dataset.id=slot.id;card.innerHTML=`<div class="card-head"><div class="item-avatar">${gearIcons[slot.id]}</div><div class="item-copy"><h3>${itemName(slot.id)}</h3><p>${statsText(slot)}</p></div><label class="switch"><input class="enable" type="checkbox" ${s.enabled?'checked':''}><span class="switch-track"></span></label></div><div class="level-row"><label class="field"><span>${tr('current')}</span><select class="current">${gearOptions(s.current)}</select></label><div class="level-arrow">→</div><label class="field"><span>${tr('target')}</span><select class="target">${gearOptions(s.target)}</select></label></div><div class="card-result"></div>`;root.appendChild(card);card.querySelector('.enable').onchange=e=>{s.enabled=e.target.checked;save();renderGear()};card.querySelector('.current').onchange=e=>{s.current=+e.target.value;save();renderGear()};card.querySelector('.target').onchange=e=>{s.target=+e.target.value;save();renderGear()}})}
+function buildCharms(){const root=document.getElementById('charmCards');root.innerHTML='';gearDB.slots.forEach(slot=>{state.charms[slot.id]??={};charmDB.types.forEach(t=>state.charms[slot.id][t.id]??={enabled:false,current:0,target:0});const group=document.createElement('section');group.className='charm-group';group.dataset.slot=slot.id;group.innerHTML=`<div class="charm-group-head"><div class="item-avatar">${gearIcons[slot.id]}</div><div class="item-copy"><h3>${itemName(slot.id)}</h3><p>${statsText(slot)} · ${tr('threeCharms')}</p></div><div class="group-tools"><button class="collapse-button" type="button">⌄</button></div></div><div class="quick-apply"><label class="field"><span>${tr('current')}</span><select class="group-current">${charmOptions(0)}</select></label><div class="level-arrow">→</div><label class="field"><span>${tr('target')}</span><select class="group-target">${charmOptions(0)}</select></label><button class="apply-button" type="button">${tr('applyThree')}</button></div><div class="charm-cards"></div>`;const inner=group.querySelector('.charm-cards');charmDB.types.forEach(type=>{const s=state.charms[slot.id][type.id],card=document.createElement('article');card.className='charm-card';card.dataset.type=type.id;card.innerHTML=`<div class="card-head"><div class="item-avatar small">${charmIcons[type.id]}</div><div class="item-copy"><h3>${itemName(type.id)}</h3><p>${tr(type.troop)}</p></div><label class="switch"><input class="enable" type="checkbox" ${s.enabled?'checked':''}><span class="switch-track"></span></label></div><div class="level-row"><label class="field"><span>${tr('current')}</span><select class="current">${charmOptions(s.current)}</select></label><div class="level-arrow">→</div><label class="field"><span>${tr('target')}</span><select class="target">${charmOptions(s.target)}</select></label></div><div class="card-result"></div>`;inner.appendChild(card);card.querySelector('.enable').onchange=e=>{s.enabled=e.target.checked;save();renderCharms()};card.querySelector('.current').onchange=e=>{s.current=+e.target.value;save();renderCharms()};card.querySelector('.target').onchange=e=>{s.target=+e.target.value;save();renderCharms()}});group.querySelector('.collapse-button').onclick=()=>group.classList.toggle('collapsed');group.querySelector('.apply-button').onclick=()=>{const current=+group.querySelector('.group-current').value,target=+group.querySelector('.group-target').value;charmDB.types.forEach(t=>Object.assign(state.charms[slot.id][t.id],{enabled:true,current,target}));save();buildCharms();renderCharms()};root.appendChild(group)})}
+function gearCalc(s){if(!s.enabled||s.target<0||s.target<=s.current)return null;const rows=gearDB.levels.slice(s.current+1,s.target+1),req=rows.reduce((a,x)=>({satin:a.satin+x.materials.satin,threads:a.threads+x.materials.gilded_threads,vision:a.vision+x.materials.artisans_vision}),{satin:0,threads:0,vision:0}),cur=s.current>=0?gearDB.levels[s.current]:{power_total:0,stat_total_percent:0},tar=gearDB.levels[s.target];return{req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent}}
+function charmCalc(s){if(!s.enabled||s.target<=s.current)return null;const rows=charmDB.levels.filter(x=>x.level>s.current&&x.level<=s.target),req=rows.reduce((a,x)=>({guides:a.guides+x.materials.charm_guides,designs:a.designs+x.materials.charm_designs}),{guides:0,designs:0}),cur=s.current?charmDB.levels.find(x=>x.level===s.current):{power_total:0,stat_total_percent:0},tar=charmDB.levels.find(x=>x.level===s.target);return{req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent}}
+function metric(label,value,warning=false){return `<div class="mini-metric ${warning?'warning':''}"><span>${label}</span><b>${value}</b></div>`}
+function summary(label,value,complete=false){return `<div class="summary-row ${complete?'complete':''}"><span>${label}</span><b>${value}</b></div>`}
+function renderGear(){let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};document.querySelectorAll('.gear-card').forEach(card=>{const s=state.gear[card.dataset.id],c=gearCalc(s);card.classList.toggle('enabled',s.enabled);const box=card.querySelector('.card-result');if(!s.enabled){box.innerHTML=metric(tr('remaining'),'—');return}if(!c){box.innerHTML=metric(tr('invalidTarget'),'—',true);return}total.count++;Object.keys(c.req).forEach(k=>total[k]+=c.req[k]);total.power+=c.power;total.stat+=c.stat;box.innerHTML=metric(tr('satin'),fmt(c.req.satin))+metric(tr('threads'),fmt(c.req.threads))+metric(tr('artisanVision'),fmt(c.req.vision))+metric(tr('powerGain'),fmt(c.power))});const rem={satin:Math.max(0,total.satin-state.gearOwned.satin),threads:Math.max(0,total.threads-state.gearOwned.threads),vision:Math.max(0,total.vision-state.gearOwned.vision)};document.getElementById('gearSelectedCount').textContent=`${total.count} ${tr('pieces')}`;document.getElementById('gearSummary').innerHTML=summary(tr('satin'),`${fmt(rem.satin)} / ${fmt(total.satin)}`,rem.satin===0&&total.satin>0)+summary(tr('threads'),`${fmt(rem.threads)} / ${fmt(total.threads)}`,rem.threads===0&&total.threads>0)+summary(tr('artisanVision'),`${fmt(rem.vision)} / ${fmt(total.vision)}`,rem.vision===0&&total.vision>0)+summary(tr('powerGain'),fmt(total.power))+summary(tr('statGain'),`${total.stat.toFixed(2)}%`)}
+function renderCharms(){let total={guides:0,designs:0,power:0,stat:0,count:0};document.querySelectorAll('.charm-card').forEach(card=>{const group=card.closest('.charm-group'),s=state.charms[group.dataset.slot][card.dataset.type],c=charmCalc(s);card.classList.toggle('enabled',s.enabled);const box=card.querySelector('.card-result');if(!s.enabled){box.innerHTML=metric(tr('remaining'),'—');return}if(!c){box.innerHTML=metric(tr('invalidTarget'),'—',true);return}total.count++;total.guides+=c.req.guides;total.designs+=c.req.designs;total.power+=c.power;total.stat+=c.stat;box.innerHTML=metric(tr('guides'),fmt(c.req.guides))+metric(tr('designs'),fmt(c.req.designs))+metric(tr('powerGain'),fmt(c.power))+metric(tr('statGain'),`${c.stat.toFixed(2)}%`)});const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};document.getElementById('charmSelectedCount').textContent=`${total.count} / 18`;document.getElementById('charmSummary').innerHTML=summary(tr('guides'),`${fmt(rem.guides)} / ${fmt(total.guides)}`,rem.guides===0&&total.guides>0)+summary(tr('designs'),`${fmt(rem.designs)} / ${fmt(total.designs)}`,rem.designs===0&&total.designs>0)+summary(tr('powerGain'),fmt(total.power))+summary(tr('statGain'),`${total.stat.toFixed(2)}%`)}
+function renderAll(){renderGear();renderCharms()}
+function toast(text){const el=document.getElementById('toast');el.textContent=text;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),1700)}
+async function copyText(text){try{await navigator.clipboard.writeText(text)}catch{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}toast(tr('copied'))}
+function copyGear(){const lines=[`SaifKS.com | ${tr('gearTab')}`];gearDB.slots.forEach(slot=>{const s=state.gear[slot.id],c=gearCalc(s);if(!c)return;lines.push(`${itemName(slot.id)}: ${s.current<0?tr('none'):gearDB.levels[s.current].display_name} → ${gearDB.levels[s.target].display_name}`)});copyText(lines.join('\n'))}
+function copyCharms(){const lines=[`SaifKS.com | ${tr('charmsTab')}`];gearDB.slots.forEach(slot=>charmDB.types.forEach(type=>{const s=state.charms[slot.id]?.[type.id],c=s&&charmCalc(s);if(c)lines.push(`${itemName(slot.id)} · ${itemName(type.id)}: ${s.current} → ${s.target}`)}));copyText(lines.join('\n'))}
+init().catch(err=>{console.error(err);document.body.insertAdjacentHTML('beforeend','<p style="padding:20px">Unable to load data.</p>')});
