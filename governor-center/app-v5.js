@@ -344,27 +344,33 @@ function copyCharms(){
 }
 document.getElementById("copyGear").addEventListener("click",copyGear);
 document.getElementById("copyCharms").addEventListener("click",copyCharms);
-document.getElementById("resetGear").addEventListener("click",()=>{
+document.getElementById("resetGear").addEventListener("click",(event)=>{
+  event.preventDefault();
+  const y=window.scrollY;
   state.gear={};
   state.gearOwned={satin:0,threads:0,vision:0};
   ["ownedSatin","ownedThreads","ownedVision"].forEach(id=>{
     const el=document.getElementById(id);
-    if(el) el.value="";
+    if(el){ el.value=""; el.blur(); }
   });
   buildGearCards();
   renderGear();
   saveState();
+  requestAnimationFrame(()=>window.scrollTo({top:y,left:0,behavior:"instant"}));
 });
-document.getElementById("resetCharms").addEventListener("click",()=>{
+document.getElementById("resetCharms").addEventListener("click",(event)=>{
+  event.preventDefault();
+  const y=window.scrollY;
   state.charms={};
   state.charmOwned={guides:0,designs:0};
   ["ownedGuides","ownedDesigns"].forEach(id=>{
     const el=document.getElementById(id);
-    if(el) el.value="";
+    if(el){ el.value=""; el.blur(); }
   });
   buildCharmCards();
   renderCharms();
   saveState();
+  requestAnimationFrame(()=>window.scrollTo({top:y,left:0,behavior:"instant"}));
 });
 document.getElementById("homeBtn").addEventListener("click",()=>history.length>1?history.back():location.href="../index.html");
 
@@ -372,3 +378,17 @@ init().catch(err=>{
   console.error(err);
   document.body.innerHTML=`<main style="padding:30px;color:white">${tr("loadError")}</main>`;
 });
+
+// V5: prevent focus zoom / accidental number changes on every device.
+document.querySelectorAll('input, select, textarea').forEach((el)=>{
+  el.style.fontSize='16px';
+  el.addEventListener('focus',()=>{ el.style.fontSize='16px'; },{passive:true});
+});
+document.addEventListener('gesturestart',(e)=>e.preventDefault(),{passive:false});
+document.addEventListener('dblclick',(e)=>{
+  if(e.target.closest('input,select,textarea')) e.preventDefault();
+},{passive:false});
+document.addEventListener('wheel',(e)=>{
+  const active=document.activeElement;
+  if(active && active.matches('input[type="number"]')) active.blur();
+},{passive:true});
