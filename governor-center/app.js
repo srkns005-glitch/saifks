@@ -40,8 +40,8 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetch("data/governor_gear.json").then(r=>r.json()),
-    fetch("data/governor_charms.json").then(r=>r.json())
+    fetch("data/governor_gear.json?v=20260719-1", {cache:"no-store"}).then(r=>r.json()),
+    fetch("data/governor_charms.json?v=20260719-1", {cache:"no-store"}).then(r=>r.json())
   ]);
   setupLanguage();
   setupTabs();
