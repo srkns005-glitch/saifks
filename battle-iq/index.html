@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Battle IQ | SaifKS</title>
+  <meta name="description" content="Battle IQ — AI-powered Kingshot battle report analyzer by SaifKS." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="SaifKS Home">
+      <div class="brand-mark">S</div>
+      <div>
+        <strong>SaifKS</strong>
+        <span>Battle Intelligence</span>
+      </div>
+    </a>
+
+    <div class="top-actions">
+      <button class="icon-btn" id="homeBtn" type="button" title="Home" aria-label="Home">⌂</button>
+      <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">AR</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">KINGS​HOT BATTLE ANALYZER</span></div>
+        <h1><span>Battle</span> <em>IQ</em></h1>
+        <p data-i18n="heroText">
+          Upload your battle report screenshots and receive a clear breakdown of your heroes,
+          troops, stats, weaknesses, and the strongest formation for your next fight.
+        </p>
+
+        <div class="hero-badges">
+          <span data-i18n="badge1">Hero Analysis</span>
+          <span data-i18n="badge2">Troop Ratio</span>
+          <span data-i18n="badge3">Stat Comparison</span>
+          <span data-i18n="badge4">Smart Recommendations</span>
+        </div>
+      </div>
+
+      <div class="iq-orb" aria-hidden="true">
+        <div class="orb-ring ring-one"></div>
+        <div class="orb-ring ring-two"></div>
+        <div class="orb-core">
+          <span>IQ</span>
+          <small>AI</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="steps-card">
+        <div class="section-title">
+          <span class="mini-icon">✦</span>
+          <div>
+            <h2 data-i18n="processTitle">Analysis Process</h2>
+            <p data-i18n="processSub">Four simple steps</p>
+          </div>
+        </div>
+
+        <ol class="steps">
+          <li class="active">
+            <span class="step-number">1</span>
+            <div>
+              <strong data-i18n="step1">Upload Reports</strong>
+              <small data-i18n="step1Sub">Add all battle screenshots</small>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <div>
+              <strong data-i18n="step2">Verify Data</strong>
+              <small data-i18n="step2Sub">Confirm extracted values</small>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <div>
+              <strong data-i18n="step3">Battle Analysis</strong>
+              <small data-i18n="step3Sub">Compare heroes, troops and stats</small>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">4</span>
+            <div>
+              <strong data-i18n="step4">Recommendations</strong>
+              <small data-i18n="step4Sub">Receive the strongest setup</small>
+            </div>
+          </li>
+        </ol>
+
+        <div class="privacy-note">
+          <span>🔒</span>
+          <p data-i18n="privacy">Your screenshots stay on this device in this design prototype.</p>
+        </div>
+      </aside>
+
+      <section class="upload-card">
+        <div class="card-head">
+          <div>
+            <span class="label" data-i18n="newAnalysis">NEW ANALYSIS</span>
+            <h2 data-i18n="uploadTitle">Upload Battle Reports</h2>
+            <p data-i18n="uploadSub">Add clear, complete screenshots for the most accurate analysis.</p>
+          </div>
+          <span class="report-count"><b id="reportCount">0</b><span data-i18n="reports"> reports</span></span>
+        </div>
+
+        <input type="file" id="fileInput" accept="image/*" multiple hidden />
+
+        <button class="drop-zone" id="dropZone" type="button">
+          <div class="upload-icon">
+            <span>⇧</span>
+          </div>
+          <strong data-i18n="dropTitle">Drop screenshots here</strong>
+          <p data-i18n="dropSub">or tap to browse your device</p>
+          <span class="formats">PNG · JPG · WEBP</span>
+        </button>
+
+        <div class="preview-grid" id="previewGrid"></div>
+
+        <div class="required-box">
+          <div class="required-head">
+            <strong data-i18n="requiredTitle">Recommended report pages</strong>
+            <span data-i18n="requiredTag">For highest accuracy</span>
+          </div>
+          <div class="requirements">
+            <label><input type="checkbox" checked /><span data-i18n="req1">Battle overview</span></label>
+            <label><input type="checkbox" /><span data-i18n="req2">Troop details</span></label>
+            <label><input type="checkbox" /><span data-i18n="req3">Battle statistics</span></label>
+            <label><input type="checkbox" /><span data-i18n="req4">Heroes and skills</span></label>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="secondary-btn" id="clearBtn" type="button" disabled>
+            <span>↻</span><span data-i18n="clear">Clear</span>
+          </button>
+          <button class="primary-btn" id="analyzeBtn" type="button" disabled>
+            <span data-i18n="analyze">Analyze Battle</span><span>➜</span>
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <section class="demo-results" id="resultsSection" hidden>
+      <div class="results-header">
+        <div>
+          <span class="label" data-i18n="previewLabel">INTERFACE PREVIEW</span>
+          <h2 data-i18n="resultsTitle">Battle IQ Results</h2>
+        </div>
+        <div class="confidence">
+          <span data-i18n="confidence">Confidence</span>
+          <strong>96%</strong>
+        </div>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card score-card">
+          <div class="score-ring">
+            <strong>84</strong>
+            <span>/100</span>
+          </div>
+          <div>
+            <span class="result-kicker" data-i18n="battleScore">BATTLE SCORE</span>
+            <h3 data-i18n="strongPerformance">Strong Performance</h3>
+            <p data-i18n="scoreText">Your formation performed well, but the frontline needs more durability.</p>
+          </div>
+        </article>
+
+        <article class="result-card diagnosis-card">
+          <span class="result-kicker" data-i18n="mainDiagnosis">MAIN DIAGNOSIS</span>
+          <h3 data-i18n="diagnosisTitle">Infantry health was the key weakness</h3>
+          <p data-i18n="diagnosisText">Your infantry lost the frontline too early, exposing marksmen before they could deliver full damage.</p>
+          <div class="impact"><span data-i18n="impact">Impact</span><b data-i18n="high">High</b></div>
+        </article>
+
+        <article class="result-card formation-card">
+          <div class="result-card-head">
+            <div>
+              <span class="result-kicker" data-i18n="recommendedFormation">RECOMMENDED FORMATION</span>
+              <h3>60 / 20 / 20</h3>
+            </div>
+            <span class="best-tag" data-i18n="bestChoice">BEST CHOICE</span>
+          </div>
+
+          <div class="troop-bars">
+            <div>
+              <span><b>Infantry</b><em>60%</em></span>
+              <i><u style="width:60%"></u></i>
+            </div>
+            <div>
+              <span><b>Marksmen</b><em>20%</em></span>
+              <i><u style="width:20%"></u></i>
+            </div>
+            <div>
+              <span><b>Cavalry</b><em>20%</em></span>
+              <i><u style="width:20%"></u></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-card priority-card">
+          <span class="result-kicker" data-i18n="upgradePriority">UPGRADE PRIORITY</span>
+          <ol>
+            <li><span>1</span><div><b data-i18n="priority1">Infantry Health</b><small data-i18n="priority1Sub">Highest battle impact</small></div></li>
+            <li><span>2</span><div><b data-i18n="priority2">Infantry Defense</b><small data-i18n="priority2Sub">Improve frontline survival</small></div></li>
+            <li><span>3</span><div><b data-i18n="priority3">Hero Skill Levels</b><small data-i18n="priority3Sub">Increase formation efficiency</small></div></li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="prototype-warning" data-i18n="prototypeWarning">
+        This is a visual prototype. The current version does not yet read or analyze report data with AI.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>SaifKS.com | Built by Saif</span>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener">▶ YouTube</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
