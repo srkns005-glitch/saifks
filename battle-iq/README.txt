@@ -1,26 +1,23 @@
-Battle IQ — SaifKS
-====================
+Battle IQ v2 — SaifKS
+========================
 
-This package contains a complete responsive front-end prototype for the Battle IQ page.
-
-Files:
-- index.html
-- style.css
-- app.js
-
-Current functionality:
-- English/Arabic language switching
-- Mobile, tablet, and desktop layout
-- Multiple image upload
-- Drag and drop
-- Screenshot previews and removal
-- Demo analysis results interface
-- Language preference saved in localStorage
+Stage 2 completed:
+- Image upload and preview
+- Data verification form
+- Troop ratio validation
+- Infantry / Marksmen / Cavalry statistics
+- Attack / Defense / Health / Lethality comparison
+- Losses and wounded inputs
+- Rule-based analysis engine
+- Battle score and confidence estimate
+- Main weakness diagnosis
+- Recommended troop formation
+- Upgrade priorities
+- Evidence and largest stat gaps
+- Arabic / English support
+- Local form persistence
+- Copy summary
 
 Important:
-The current version is a visual and interactive front-end prototype only.
-It does not perform OCR or AI battle analysis yet.
-
-Integration:
-Place the battle-iq folder inside the main website and link to:
- /battle-iq/
+This stage does not yet perform OCR or identify heroes from images.
+Those features belong to the next backend/AI stage.

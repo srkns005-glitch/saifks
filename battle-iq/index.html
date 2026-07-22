@@ -1,233 +1,187 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#08111f">
   <title>Battle IQ | SaifKS</title>
-  <meta name="description" content="Battle IQ — AI-powered Kingshot battle report analyzer by SaifKS." />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
+<div class="glow g1"></div><div class="glow g2"></div>
+<header class="topbar">
+  <a class="brand" href="../index.html"><span class="brand-mark">S</span><span><b>SaifKS</b><small>Battle Intelligence</small></span></a>
+  <div class="top-actions"><button id="homeBtn" class="small-btn">⌂</button><button id="langBtn" class="small-btn">AR</button></div>
+</header>
 
-  <header class="topbar">
-    <a class="brand" href="../index.html" aria-label="SaifKS Home">
-      <div class="brand-mark">S</div>
-      <div>
-        <strong>SaifKS</strong>
-        <span>Battle Intelligence</span>
-      </div>
-    </a>
-
-    <div class="top-actions">
-      <button class="icon-btn" id="homeBtn" type="button" title="Home" aria-label="Home">⌂</button>
-      <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">AR</button>
+<main class="shell">
+  <section class="hero">
+    <div>
+      <span class="eyebrow">✦ <span data-t="eyebrow">KINGSHOT BATTLE ANALYZER</span></span>
+      <h1>Battle <em>IQ</em></h1>
+      <p data-t="hero">Upload the report, verify the extracted values, then receive a rule-based battle diagnosis and formation recommendation.</p>
     </div>
-  </header>
+    <div class="stage-badge"><span>V2</span><small data-t="stage2">Analysis Engine</small></div>
+  </section>
 
-  <main class="page-shell">
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">KINGS​HOT BATTLE ANALYZER</span></div>
-        <h1><span>Battle</span> <em>IQ</em></h1>
-        <p data-i18n="heroText">
-          Upload your battle report screenshots and receive a clear breakdown of your heroes,
-          troops, stats, weaknesses, and the strongest formation for your next fight.
-        </p>
+  <nav class="progress" id="progress">
+    <button class="active" data-step="1"><b>1</b><span data-t="p1">Upload</span></button>
+    <button data-step="2"><b>2</b><span data-t="p2">Verify</span></button>
+    <button data-step="3"><b>3</b><span data-t="p3">Analyze</span></button>
+    <button data-step="4"><b>4</b><span data-t="p4">Results</span></button>
+  </nav>
 
-        <div class="hero-badges">
-          <span data-i18n="badge1">Hero Analysis</span>
-          <span data-i18n="badge2">Troop Ratio</span>
-          <span data-i18n="badge3">Stat Comparison</span>
-          <span data-i18n="badge4">Smart Recommendations</span>
+  <section class="panel active" data-panel="1">
+    <div class="panel-head">
+      <div><span class="kicker" data-t="newAnalysis">NEW ANALYSIS</span><h2 data-t="uploadTitle">Upload Battle Reports</h2><p data-t="uploadText">Add clear screenshots, then continue to verify the important values.</p></div>
+      <span class="counter"><b id="reportCount">0</b><span data-t="reports"> reports</span></span>
+    </div>
+    <input id="fileInput" type="file" accept="image/*" multiple hidden>
+    <button id="dropZone" class="drop-zone" type="button">
+      <span class="upload-icon">⇧</span>
+      <strong data-t="dropTitle">Drop screenshots here</strong>
+      <small data-t="dropText">or tap to browse your device</small>
+      <i>PNG · JPG · WEBP</i>
+    </button>
+    <div id="previewGrid" class="preview-grid"></div>
+    <div class="footer-actions">
+      <button id="clearBtn" class="btn ghost" disabled><span data-t="clear">Clear</span></button>
+      <button id="toVerifyBtn" class="btn primary" disabled><span data-t="continue">Continue to verification</span> →</button>
+    </div>
+  </section>
+
+  <section class="panel" data-panel="2">
+    <div class="panel-head">
+      <div><span class="kicker" data-t="verification">DATA VERIFICATION</span><h2 data-t="verifyTitle">Confirm Battle Data</h2><p data-t="verifyText">Enter values exactly as shown in the report. Percentages accept decimals.</p></div>
+      <span class="safe-tag">✓ <span data-t="local">Saved locally</span></span>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-card wide">
+        <h3 data-t="battleInfo">Battle Information</h3>
+        <div class="fields four">
+          <label><span data-t="battleType">Battle type</span><select id="battleType"><option value="city">City / Rally</option><option value="castle">King Castle</option><option value="fortress">Fortress</option><option value="other">Other</option></select></label>
+          <label><span data-t="result">Your result</span><select id="battleResult"><option value="win">Victory</option><option value="loss">Defeat</option></select></label>
+          <label><span data-t="yourTroops">Your total troops</span><input id="yourTotal" type="number" inputmode="numeric" min="0" placeholder="0"></label>
+          <label><span data-t="enemyTroops">Enemy total troops</span><input id="enemyTotal" type="number" inputmode="numeric" min="0" placeholder="0"></label>
         </div>
       </div>
 
-      <div class="iq-orb" aria-hidden="true">
-        <div class="orb-ring ring-one"></div>
-        <div class="orb-ring ring-two"></div>
-        <div class="orb-core">
-          <span>IQ</span>
-          <small>AI</small>
+      <div class="form-card">
+        <div class="side-title you"><span></span><h3 data-t="yourSide">Your Side</h3></div>
+        <div class="ratio-fields">
+          <label><span>Infantry %</span><input id="yInfRatio" type="number" min="0" max="100" step="0.1" value="50"></label>
+          <label><span>Marksmen %</span><input id="yMarkRatio" type="number" min="0" max="100" step="0.1" value="20"></label>
+          <label><span>Cavalry %</span><input id="yCavRatio" type="number" min="0" max="100" step="0.1" value="30"></label>
         </div>
-      </div>
-    </section>
-
-    <section class="workspace">
-      <aside class="steps-card">
-        <div class="section-title">
-          <span class="mini-icon">✦</span>
-          <div>
-            <h2 data-i18n="processTitle">Analysis Process</h2>
-            <p data-i18n="processSub">Four simple steps</p>
-          </div>
-        </div>
-
-        <ol class="steps">
-          <li class="active">
-            <span class="step-number">1</span>
-            <div>
-              <strong data-i18n="step1">Upload Reports</strong>
-              <small data-i18n="step1Sub">Add all battle screenshots</small>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">2</span>
-            <div>
-              <strong data-i18n="step2">Verify Data</strong>
-              <small data-i18n="step2Sub">Confirm extracted values</small>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">3</span>
-            <div>
-              <strong data-i18n="step3">Battle Analysis</strong>
-              <small data-i18n="step3Sub">Compare heroes, troops and stats</small>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">4</span>
-            <div>
-              <strong data-i18n="step4">Recommendations</strong>
-              <small data-i18n="step4Sub">Receive the strongest setup</small>
-            </div>
-          </li>
-        </ol>
-
-        <div class="privacy-note">
-          <span>🔒</span>
-          <p data-i18n="privacy">Your screenshots stay on this device in this design prototype.</p>
-        </div>
-      </aside>
-
-      <section class="upload-card">
-        <div class="card-head">
-          <div>
-            <span class="label" data-i18n="newAnalysis">NEW ANALYSIS</span>
-            <h2 data-i18n="uploadTitle">Upload Battle Reports</h2>
-            <p data-i18n="uploadSub">Add clear, complete screenshots for the most accurate analysis.</p>
-          </div>
-          <span class="report-count"><b id="reportCount">0</b><span data-i18n="reports"> reports</span></span>
-        </div>
-
-        <input type="file" id="fileInput" accept="image/*" multiple hidden />
-
-        <button class="drop-zone" id="dropZone" type="button">
-          <div class="upload-icon">
-            <span>⇧</span>
-          </div>
-          <strong data-i18n="dropTitle">Drop screenshots here</strong>
-          <p data-i18n="dropSub">or tap to browse your device</p>
-          <span class="formats">PNG · JPG · WEBP</span>
-        </button>
-
-        <div class="preview-grid" id="previewGrid"></div>
-
-        <div class="required-box">
-          <div class="required-head">
-            <strong data-i18n="requiredTitle">Recommended report pages</strong>
-            <span data-i18n="requiredTag">For highest accuracy</span>
-          </div>
-          <div class="requirements">
-            <label><input type="checkbox" checked /><span data-i18n="req1">Battle overview</span></label>
-            <label><input type="checkbox" /><span data-i18n="req2">Troop details</span></label>
-            <label><input type="checkbox" /><span data-i18n="req3">Battle statistics</span></label>
-            <label><input type="checkbox" /><span data-i18n="req4">Heroes and skills</span></label>
-          </div>
-        </div>
-
-        <div class="action-row">
-          <button class="secondary-btn" id="clearBtn" type="button" disabled>
-            <span>↻</span><span data-i18n="clear">Clear</span>
-          </button>
-          <button class="primary-btn" id="analyzeBtn" type="button" disabled>
-            <span data-i18n="analyze">Analyze Battle</span><span>➜</span>
-          </button>
-        </div>
-      </section>
-    </section>
-
-    <section class="demo-results" id="resultsSection" hidden>
-      <div class="results-header">
-        <div>
-          <span class="label" data-i18n="previewLabel">INTERFACE PREVIEW</span>
-          <h2 data-i18n="resultsTitle">Battle IQ Results</h2>
-        </div>
-        <div class="confidence">
-          <span data-i18n="confidence">Confidence</span>
-          <strong>96%</strong>
-        </div>
+        <div class="ratio-total"><span data-t="total">Total</span><b id="yourRatioTotal">100%</b></div>
       </div>
 
-      <div class="result-grid">
-        <article class="result-card score-card">
-          <div class="score-ring">
-            <strong>84</strong>
-            <span>/100</span>
-          </div>
-          <div>
-            <span class="result-kicker" data-i18n="battleScore">BATTLE SCORE</span>
-            <h3 data-i18n="strongPerformance">Strong Performance</h3>
-            <p data-i18n="scoreText">Your formation performed well, but the frontline needs more durability.</p>
-          </div>
-        </article>
-
-        <article class="result-card diagnosis-card">
-          <span class="result-kicker" data-i18n="mainDiagnosis">MAIN DIAGNOSIS</span>
-          <h3 data-i18n="diagnosisTitle">Infantry health was the key weakness</h3>
-          <p data-i18n="diagnosisText">Your infantry lost the frontline too early, exposing marksmen before they could deliver full damage.</p>
-          <div class="impact"><span data-i18n="impact">Impact</span><b data-i18n="high">High</b></div>
-        </article>
-
-        <article class="result-card formation-card">
-          <div class="result-card-head">
-            <div>
-              <span class="result-kicker" data-i18n="recommendedFormation">RECOMMENDED FORMATION</span>
-              <h3>60 / 20 / 20</h3>
-            </div>
-            <span class="best-tag" data-i18n="bestChoice">BEST CHOICE</span>
-          </div>
-
-          <div class="troop-bars">
-            <div>
-              <span><b>Infantry</b><em>60%</em></span>
-              <i><u style="width:60%"></u></i>
-            </div>
-            <div>
-              <span><b>Marksmen</b><em>20%</em></span>
-              <i><u style="width:20%"></u></i>
-            </div>
-            <div>
-              <span><b>Cavalry</b><em>20%</em></span>
-              <i><u style="width:20%"></u></i>
-            </div>
-          </div>
-        </article>
-
-        <article class="result-card priority-card">
-          <span class="result-kicker" data-i18n="upgradePriority">UPGRADE PRIORITY</span>
-          <ol>
-            <li><span>1</span><div><b data-i18n="priority1">Infantry Health</b><small data-i18n="priority1Sub">Highest battle impact</small></div></li>
-            <li><span>2</span><div><b data-i18n="priority2">Infantry Defense</b><small data-i18n="priority2Sub">Improve frontline survival</small></div></li>
-            <li><span>3</span><div><b data-i18n="priority3">Hero Skill Levels</b><small data-i18n="priority3Sub">Increase formation efficiency</small></div></li>
-          </ol>
-        </article>
+      <div class="form-card">
+        <div class="side-title enemy"><span></span><h3 data-t="enemySide">Enemy Side</h3></div>
+        <div class="ratio-fields">
+          <label><span>Infantry %</span><input id="eInfRatio" type="number" min="0" max="100" step="0.1" value="50"></label>
+          <label><span>Marksmen %</span><input id="eMarkRatio" type="number" min="0" max="100" step="0.1" value="20"></label>
+          <label><span>Cavalry %</span><input id="eCavRatio" type="number" min="0" max="100" step="0.1" value="30"></label>
+        </div>
+        <div class="ratio-total"><span data-t="total">Total</span><b id="enemyRatioTotal">100%</b></div>
       </div>
 
-      <div class="prototype-warning" data-i18n="prototypeWarning">
-        This is a visual prototype. The current version does not yet read or analyze report data with AI.
+      <div class="form-card stats-card">
+        <div class="side-title you"><span></span><h3 data-t="yourStats">Your Statistics</h3></div>
+        <div id="yourStats" class="stats-table"></div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <span>SaifKS.com | Built by Saif</span>
-    <a href="https://www.youtube.com/" target="_blank" rel="noopener">▶ YouTube</a>
-  </footer>
+      <div class="form-card stats-card">
+        <div class="side-title enemy"><span></span><h3 data-t="enemyStats">Enemy Statistics</h3></div>
+        <div id="enemyStats" class="stats-table"></div>
+      </div>
 
-  <div class="toast" id="toast" role="status"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+      <div class="form-card wide">
+        <h3 data-t="losses">Battle Losses / Wounded</h3>
+        <div class="fields four">
+          <label><span data-t="yourLoss">Your losses</span><input id="yourLosses" type="number" min="0" placeholder="0"></label>
+          <label><span data-t="enemyLoss">Enemy losses</span><input id="enemyLosses" type="number" min="0" placeholder="0"></label>
+          <label><span data-t="yourWounded">Your wounded</span><input id="yourWounded" type="number" min="0" placeholder="0"></label>
+          <label><span data-t="enemyWounded">Enemy wounded</span><input id="enemyWounded" type="number" min="0" placeholder="0"></label>
+        </div>
+      </div>
+    </div>
+
+    <div id="validationBox" class="validation" hidden></div>
+    <div class="footer-actions split">
+      <button class="btn ghost backBtn">← <span data-t="back">Back</span></button>
+      <button id="runAnalysisBtn" class="btn primary"><span data-t="run">Run Battle Analysis</span> ✦</button>
+    </div>
+  </section>
+
+  <section class="panel" data-panel="3">
+    <div class="loading-panel">
+      <div class="scanner"><span></span><i></i></div>
+      <h2 data-t="analyzing">Analyzing Battle Data</h2>
+      <p id="analysisStatus" data-t="analysisStatus">Comparing troop ratios, combat statistics, and losses...</p>
+      <div class="analysis-list">
+        <span>✓ <i data-t="check1">Troop ratio checked</i></span>
+        <span>✓ <i data-t="check2">Statistics compared</i></span>
+        <span>✓ <i data-t="check3">Weaknesses ranked</i></span>
+        <span>✓ <i data-t="check4">Formation generated</i></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" data-panel="4">
+    <div class="results-top">
+      <div><span class="kicker" data-t="results">BATTLE IQ RESULTS</span><h2 id="resultHeadline">Battle analysis complete</h2></div>
+      <div class="confidence"><span data-t="confidence">Confidence</span><b id="confidenceValue">--%</b></div>
+    </div>
+
+    <div class="results-grid">
+      <article class="result-card score">
+        <div class="score-ring" id="scoreRing"><strong id="scoreValue">0</strong><small>/100</small></div>
+        <div><span class="kicker" data-t="battleScore">BATTLE SCORE</span><h3 id="scoreLabel">--</h3><p id="scoreDescription">--</p></div>
+      </article>
+
+      <article class="result-card diagnosis">
+        <span class="kicker" data-t="mainDiagnosis">MAIN DIAGNOSIS</span>
+        <h3 id="diagnosisTitle">--</h3>
+        <p id="diagnosisText">--</p>
+        <div class="impact-row"><span data-t="impact">Impact</span><b id="impactValue">--</b></div>
+      </article>
+
+      <article class="result-card formation">
+        <div class="card-row"><div><span class="kicker" data-t="recommendedFormation">RECOMMENDED FORMATION</span><h3 id="formationValue">-- / -- / --</h3></div><span class="best">BEST</span></div>
+        <div class="bars">
+          <div><span><b>Infantry</b><em id="fInfText">0%</em></span><i><u id="fInfBar"></u></i></div>
+          <div><span><b>Marksmen</b><em id="fMarkText">0%</em></span><i><u id="fMarkBar"></u></i></div>
+          <div><span><b>Cavalry</b><em id="fCavText">0%</em></span><i><u id="fCavBar"></u></i></div>
+        </div>
+      </article>
+
+      <article class="result-card priority">
+        <span class="kicker" data-t="priorities">TOP PRIORITIES</span>
+        <ol id="priorityList"></ol>
+      </article>
+
+      <article class="result-card wide comparison">
+        <div class="card-row"><div><span class="kicker" data-t="statComparison">STAT COMPARISON</span><h3 data-t="largestGaps">Largest performance gaps</h3></div></div>
+        <div id="gapList" class="gap-list"></div>
+      </article>
+
+      <article class="result-card wide evidence">
+        <span class="kicker" data-t="evidence">ANALYSIS EVIDENCE</span>
+        <div id="evidenceList" class="evidence-list"></div>
+      </article>
+    </div>
+
+    <div class="note" data-t="ruleNote">This version uses a transparent rule-based engine. It does not yet identify heroes or read numbers directly from screenshots.</div>
+    <div class="footer-actions split">
+      <button class="btn ghost" id="editDataBtn">← <span data-t="edit">Edit Data</span></button>
+      <div><button class="btn ghost" id="copyBtn"><span data-t="copy">Copy Summary</span></button><button class="btn primary" id="newBtn"><span data-t="new">New Analysis</span></button></div>
+    </div>
+  </section>
+</main>
+
+<footer><span>SaifKS.com | Built by Saif</span><a href="https://www.youtube.com/" target="_blank">▶ YouTube</a></footer>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>

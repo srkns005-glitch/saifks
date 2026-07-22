@@ -1,163 +1,49 @@
-const translations = {
-  en: {
-    eyebrow:"KINGSHOT BATTLE ANALYZER",
-    heroText:"Upload your battle report screenshots and receive a clear breakdown of your heroes, troops, stats, weaknesses, and the strongest formation for your next fight.",
-    badge1:"Hero Analysis", badge2:"Troop Ratio", badge3:"Stat Comparison", badge4:"Smart Recommendations",
-    processTitle:"Analysis Process", processSub:"Four simple steps",
-    step1:"Upload Reports", step1Sub:"Add all battle screenshots",
-    step2:"Verify Data", step2Sub:"Confirm extracted values",
-    step3:"Battle Analysis", step3Sub:"Compare heroes, troops and stats",
-    step4:"Recommendations", step4Sub:"Receive the strongest setup",
-    privacy:"Your screenshots stay on this device in this design prototype.",
-    newAnalysis:"NEW ANALYSIS", uploadTitle:"Upload Battle Reports",
-    uploadSub:"Add clear, complete screenshots for the most accurate analysis.",
-    reports:" reports", dropTitle:"Drop screenshots here", dropSub:"or tap to browse your device",
-    requiredTitle:"Recommended report pages", requiredTag:"For highest accuracy",
-    req1:"Battle overview", req2:"Troop details", req3:"Battle statistics", req4:"Heroes and skills",
-    clear:"Clear", analyze:"Analyze Battle",
-    previewLabel:"INTERFACE PREVIEW", resultsTitle:"Battle IQ Results", confidence:"Confidence",
-    battleScore:"BATTLE SCORE", strongPerformance:"Strong Performance",
-    scoreText:"Your formation performed well, but the frontline needs more durability.",
-    mainDiagnosis:"MAIN DIAGNOSIS", diagnosisTitle:"Infantry health was the key weakness",
-    diagnosisText:"Your infantry lost the frontline too early, exposing marksmen before they could deliver full damage.",
-    impact:"Impact", high:"High", recommendedFormation:"RECOMMENDED FORMATION", bestChoice:"BEST CHOICE",
-    upgradePriority:"UPGRADE PRIORITY", priority1:"Infantry Health", priority1Sub:"Highest battle impact",
-    priority2:"Infantry Defense", priority2Sub:"Improve frontline survival",
-    priority3:"Hero Skill Levels", priority3Sub:"Increase formation efficiency",
-    prototypeWarning:"This is a visual prototype. The current version does not yet read or analyze report data with AI.",
-    uploadToast:"Screenshots added successfully", clearToast:"All screenshots cleared",
-    demoToast:"Demo results displayed"
-  },
-  ar: {
-    eyebrow:"محلل معارك KINGSHOT",
-    heroText:"ارفع صور تقرير المعركة واحصل على تحليل واضح للأبطال والجنود والإحصائيات ونقاط الضعف وأقوى تشكيلة لمعركتك القادمة.",
-    badge1:"تحليل الأبطال", badge2:"نسبة الجنود", badge3:"مقارنة الإحصائيات", badge4:"توصيات ذكية",
-    processTitle:"مراحل التحليل", processSub:"أربع خطوات بسيطة",
-    step1:"رفع التقارير", step1Sub:"أضف جميع صور المعركة",
-    step2:"تأكيد البيانات", step2Sub:"راجع القيم المستخرجة",
-    step3:"تحليل المعركة", step3Sub:"مقارنة الأبطال والجنود والإحصائيات",
-    step4:"التوصيات", step4Sub:"استلم أقوى تشكيلة مقترحة",
-    privacy:"تبقى صورك على جهازك في هذه النسخة التصميمية.",
-    newAnalysis:"تحليل جديد", uploadTitle:"ارفع تقارير المعركة",
-    uploadSub:"أضف صورًا واضحة وكاملة للحصول على أعلى دقة ممكنة.",
-    reports:" تقارير", dropTitle:"اسحب الصور وأفلتها هنا", dropSub:"أو اضغط لاختيارها من جهازك",
-    requiredTitle:"صفحات التقرير الموصى بها", requiredTag:"لأعلى دقة",
-    req1:"ملخص المعركة", req2:"تفاصيل الجنود", req3:"إحصائيات المعركة", req4:"الأبطال والمهارات",
-    clear:"مسح", analyze:"تحليل المعركة",
-    previewLabel:"معاينة الواجهة", resultsTitle:"نتائج Battle IQ", confidence:"نسبة الثقة",
-    battleScore:"تقييم المعركة", strongPerformance:"أداء قوي",
-    scoreText:"أدت تشكيلتك بشكل جيد، لكن خطك الأمامي يحتاج إلى صمود أكبر.",
-    mainDiagnosis:"التشخيص الرئيسي", diagnosisTitle:"صحة المشاة كانت نقطة الضعف الأساسية",
-    diagnosisText:"انهار خط المشاة مبكرًا، مما كشف الرماة قبل أن يقدموا كامل ضررهم.",
-    impact:"التأثير", high:"مرتفع", recommendedFormation:"التشكيلة المقترحة", bestChoice:"الخيار الأفضل",
-    upgradePriority:"أولوية التطوير", priority1:"صحة المشاة", priority1Sub:"أعلى تأثير في المعركة",
-    priority2:"دفاع المشاة", priority2Sub:"تحسين صمود الخط الأمامي",
-    priority3:"مستويات مهارات الأبطال", priority3Sub:"رفع كفاءة التشكيلة",
-    prototypeWarning:"هذه نسخة تصميمية للواجهة. الإصدار الحالي لا يقرأ أو يحلل بيانات التقارير بالذكاء الاصطناعي حتى الآن.",
-    uploadToast:"تمت إضافة الصور بنجاح", clearToast:"تم مسح جميع الصور",
-    demoToast:"تم عرض نتائج تجريبية"
-  }
-};
+const T={en:{eyebrow:"KINGSHOT BATTLE ANALYZER",hero:"Upload the report, verify the extracted values, then receive a rule-based battle diagnosis and formation recommendation.",stage2:"Analysis Engine",p1:"Upload",p2:"Verify",p3:"Analyze",p4:"Results",newAnalysis:"NEW ANALYSIS",uploadTitle:"Upload Battle Reports",uploadText:"Add clear screenshots, then continue to verify the important values.",reports:" reports",dropTitle:"Drop screenshots here",dropText:"or tap to browse your device",clear:"Clear",continue:"Continue to verification",verification:"DATA VERIFICATION",verifyTitle:"Confirm Battle Data",verifyText:"Enter values exactly as shown in the report. Percentages accept decimals.",local:"Saved locally",battleInfo:"Battle Information",battleType:"Battle type",result:"Your result",yourTroops:"Your total troops",enemyTroops:"Enemy total troops",yourSide:"Your Side",enemySide:"Enemy Side",total:"Total",yourStats:"Your Statistics",enemyStats:"Enemy Statistics",losses:"Battle Losses / Wounded",yourLoss:"Your losses",enemyLoss:"Enemy losses",yourWounded:"Your wounded",enemyWounded:"Enemy wounded",back:"Back",run:"Run Battle Analysis",analyzing:"Analyzing Battle Data",analysisStatus:"Comparing troop ratios, combat statistics, and losses...",check1:"Troop ratio checked",check2:"Statistics compared",check3:"Weaknesses ranked",check4:"Formation generated",results:"BATTLE IQ RESULTS",confidence:"Confidence",battleScore:"BATTLE SCORE",mainDiagnosis:"MAIN DIAGNOSIS",impact:"Impact",recommendedFormation:"RECOMMENDED FORMATION",priorities:"TOP PRIORITIES",statComparison:"STAT COMPARISON",largestGaps:"Largest performance gaps",evidence:"ANALYSIS EVIDENCE",ruleNote:"This version uses a transparent rule-based engine. It does not yet identify heroes or read numbers directly from screenshots.",edit:"Edit Data",copy:"Copy Summary",new:"New Analysis"},
+ar:{eyebrow:"محلل معارك KINGSHOT",hero:"ارفع التقرير، ثم راجع البيانات، واحصل على تشخيص للمعركة وتشكيلة مقترحة بواسطة محرك قواعد واضح.",stage2:"محرك التحليل",p1:"الرفع",p2:"المراجعة",p3:"التحليل",p4:"النتائج",newAnalysis:"تحليل جديد",uploadTitle:"ارفع تقارير المعركة",uploadText:"أضف صورًا واضحة ثم انتقل لمراجعة القيم المهمة.",reports:" تقارير",dropTitle:"اسحب الصور وأفلتها هنا",dropText:"أو اضغط لاختيارها من جهازك",clear:"مسح",continue:"المتابعة إلى مراجعة البيانات",verification:"مراجعة البيانات",verifyTitle:"تأكيد بيانات المعركة",verifyText:"أدخل القيم كما تظهر في التقرير. يمكن استخدام الكسور العشرية في النسب.",local:"محفوظ محليًا",battleInfo:"معلومات المعركة",battleType:"نوع المعركة",result:"نتيجتك",yourTroops:"إجمالي جنودك",enemyTroops:"إجمالي جنود الخصم",yourSide:"طرفك",enemySide:"طرف الخصم",total:"المجموع",yourStats:"إحصائياتك",enemyStats:"إحصائيات الخصم",losses:"الخسائر والجرحى",yourLoss:"خسائرك",enemyLoss:"خسائر الخصم",yourWounded:"جرحاك",enemyWounded:"جرحى الخصم",back:"رجوع",run:"بدء تحليل المعركة",analyzing:"جارٍ تحليل بيانات المعركة",analysisStatus:"تتم مقارنة نسب الجنود والإحصائيات والخسائر...",check1:"تم فحص نسب الجنود",check2:"تمت مقارنة الإحصائيات",check3:"تم ترتيب نقاط الضعف",check4:"تم إنشاء التشكيلة",results:"نتائج BATTLE IQ",confidence:"نسبة الثقة",battleScore:"تقييم المعركة",mainDiagnosis:"التشخيص الرئيسي",impact:"التأثير",recommendedFormation:"التشكيلة المقترحة",priorities:"أهم الأولويات",statComparison:"مقارنة الإحصائيات",largestGaps:"أكبر الفروقات",evidence:"أدلة التحليل",ruleNote:"تستخدم هذه النسخة محرك قواعد واضح. لم تتم إضافة قراءة الأرقام أو التعرف على الأبطال من الصور حتى الآن.",edit:"تعديل البيانات",copy:"نسخ الملخص",new:"تحليل جديد"}};
+let lang=localStorage.getItem("saifks_language")==="ar"?"ar":"en",files=[];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const statNames=[["inf","Infantry"],["mark","Marksmen"],["cav","Cavalry"]];
+const metrics=[["atk","Attack"],["def","Defense"],["hp","Health"],["leth","Lethality"]];
 
-let language = localStorage.getItem("saifks_language") === "ar" ? "ar" : "en";
-let files = [];
+function buildStats(container,prefix){container.innerHTML=`<div class="stat-head"><span>Troop</span>${metrics.map(x=>`<span>${x[1]}</span>`).join("")}</div>`+statNames.map(([k,n])=>`<div class="stat-row"><b>${n}</b>${metrics.map(([m])=>`<input id="${prefix}_${k}_${m}" type="number" min="0" step="0.1" placeholder="0">`).join("")}</div>`).join("")}
+buildStats($("#yourStats"),"y");buildStats($("#enemyStats"),"e");
 
-const fileInput = document.getElementById("fileInput");
-const dropZone = document.getElementById("dropZone");
-const previewGrid = document.getElementById("previewGrid");
-const reportCount = document.getElementById("reportCount");
-const analyzeBtn = document.getElementById("analyzeBtn");
-const clearBtn = document.getElementById("clearBtn");
-const langBtn = document.getElementById("langBtn");
-const resultsSection = document.getElementById("resultsSection");
-const toast = document.getElementById("toast");
+function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";$("#langBtn").textContent=lang==="ar"?"EN":"AR";$$("[data-t]").forEach(el=>{let k=el.dataset.t;if(T[lang][k])el.textContent=T[lang][k]});localStorage.setItem("saifks_language",lang)}
+applyLang();$("#langBtn").onclick=()=>{lang=lang==="en"?"ar":"en";applyLang()};$("#homeBtn").onclick=()=>location.href="../index.html";
 
-function applyLanguage(){
-  const t = translations[language];
-  document.documentElement.lang = language;
-  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-  langBtn.textContent = language === "ar" ? "EN" : "AR";
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.dataset.i18n;
-    if(t[key]) el.textContent = t[key];
-  });
-  localStorage.setItem("saifks_language", language);
-}
-applyLanguage();
+function go(step){$$(".panel").forEach(p=>p.classList.toggle("active",+p.dataset.panel===step));$$(".progress button").forEach(b=>b.classList.toggle("active",+b.dataset.step<=step));window.scrollTo({top:170,behavior:"smooth"})}
+function toast(msg){let t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.x);toast.x=setTimeout(()=>t.classList.remove("show"),1800)}
 
-langBtn.addEventListener("click", ()=>{
-  language = language === "en" ? "ar" : "en";
-  applyLanguage();
-});
-document.getElementById("homeBtn").addEventListener("click", ()=> location.href = "../index.html");
+$("#dropZone").onclick=()=>$("#fileInput").click();$("#fileInput").onchange=e=>addFiles([...e.target.files]);
+["dragover","dragenter"].forEach(ev=>$("#dropZone").addEventListener(ev,e=>e.preventDefault()));
+$("#dropZone").ondrop=e=>{e.preventDefault();addFiles([...e.dataTransfer.files].filter(f=>f.type.startsWith("image/")))};
+function addFiles(arr){files.push(...arr.slice(0,12-files.length));renderFiles();toast(lang==="ar"?"تمت إضافة الصور":"Screenshots added")}
+function renderFiles(){$("#previewGrid").innerHTML="";files.forEach((f,i)=>{let d=document.createElement("div");d.className="preview";let img=document.createElement("img");img.src=URL.createObjectURL(f);let b=document.createElement("button");b.textContent="×";b.onclick=()=>{files.splice(i,1);renderFiles()};let s=document.createElement("span");s.textContent=f.name;d.append(img,b,s);$("#previewGrid").append(d)});$("#reportCount").textContent=files.length;$("#clearBtn").disabled=$("#toVerifyBtn").disabled=!files.length}
+$("#clearBtn").onclick=()=>{files=[];$("#fileInput").value="";renderFiles()};$("#toVerifyBtn").onclick=()=>go(2);$$(".backBtn").forEach(b=>b.onclick=()=>go(1));
 
-dropZone.addEventListener("click", ()=> fileInput.click());
-fileInput.addEventListener("change", e => addFiles([...e.target.files]));
+function n(id){return Number($("#"+id).value)||0}
+function ratioTotal(side){return n(side+"InfRatio")+n(side+"MarkRatio")+n(side+"CavRatio")}
+["yInfRatio","yMarkRatio","yCavRatio","eInfRatio","eMarkRatio","eCavRatio"].forEach(id=>$("#"+id).oninput=updateTotals);
+function updateTotals(){let yt=ratioTotal("y"),et=ratioTotal("e");$("#yourRatioTotal").textContent=yt.toFixed(1)+"%";$("#enemyRatioTotal").textContent=et.toFixed(1)+"%";$("#yourRatioTotal").classList.toggle("invalid",Math.abs(yt-100)>.05);$("#enemyRatioTotal").classList.toggle("invalid",Math.abs(et-100)>.05)}
 
-["dragenter","dragover"].forEach(type => dropZone.addEventListener(type, e=>{
-  e.preventDefault(); dropZone.classList.add("dragging");
-}));
-["dragleave","drop"].forEach(type => dropZone.addEventListener(type, e=>{
-  e.preventDefault(); dropZone.classList.remove("dragging");
-}));
-dropZone.addEventListener("drop", e => addFiles([...e.dataTransfer.files].filter(f=>f.type.startsWith("image/"))));
+function validate(){let errors=[];if(Math.abs(ratioTotal("y")-100)>.05)errors.push(lang==="ar"?"مجموع نسب جنودك يجب أن يساوي 100%.":"Your troop ratio must total 100%.");if(Math.abs(ratioTotal("e")-100)>.05)errors.push(lang==="ar"?"مجموع نسب جنود الخصم يجب أن يساوي 100%.":"Enemy troop ratio must total 100%.");let entered=0;statNames.forEach(([s])=>metrics.forEach(([m])=>{if(n(`y_${s}_${m}`)>0&&n(`e_${s}_${m}`)>0)entered++}));if(entered<4)errors.push(lang==="ar"?"أدخل على الأقل أربع مقارنات إحصائية للطرفين.":"Enter at least four matching statistics for both sides.");let v=$("#validationBox");v.hidden=!errors.length;v.innerHTML=errors.map(x=>"• "+x).join("<br>");return !errors.length}
 
-function addFiles(newFiles){
-  const room = Math.max(0, 12 - files.length);
-  files.push(...newFiles.slice(0, room));
-  renderPreviews();
-  showToast(translations[language].uploadToast);
-}
+function collect(){let stats=[];statNames.forEach(([s,sn])=>metrics.forEach(([m,mn])=>{let y=n(`y_${s}_${m}`),e=n(`e_${s}_${m}`);if(y||e)stats.push({s,sn,m,mn,y,e,diff:y-e,pct:e?((y-e)/e*100):(y?100:0)})}));return{result:$("#battleResult").value,type:$("#battleType").value,yTotal:n("yourTotal"),eTotal:n("enemyTotal"),ratios:{y:[n("yInfRatio"),n("yMarkRatio"),n("yCavRatio")],e:[n("eInfRatio"),n("eMarkRatio"),n("eCavRatio")]},stats,yLoss:n("yourLosses"),eLoss:n("enemyLosses"),yW:n("yourWounded"),eW:n("enemyWounded")}}
+function analyze(d){let gaps=d.stats.filter(x=>x.y&&x.e).sort((a,b)=>Math.abs(b.pct)-Math.abs(a.pct));let negatives=gaps.filter(x=>x.pct<0);let positives=gaps.filter(x=>x.pct>0);let avg=gaps.length?gaps.reduce((s,x)=>s+x.pct,0)/gaps.length:0;let lossEdge=(d.eLoss+d.eW)-(d.yLoss+d.yW);let troopEdge=d.eTotal?((d.yTotal-d.eTotal)/d.eTotal*100):0;let score=50+avg*.22+Math.max(-18,Math.min(18,lossEdge/Math.max(1,d.yTotal||d.eTotal)*120))+Math.max(-10,Math.min(10,troopEdge*.12));if(d.result==="win")score+=8;else score-=8;score=Math.round(Math.max(10,Math.min(98,score)));
+let main=negatives[0]||gaps[0];let formation=[50,20,30];if(main){if(main.s==="inf"){formation=[60,20,20]}else if(main.s==="mark"){formation=[55,25,20]}else{formation=[55,15,30]}}if(d.type==="castle"&&formation[0]<60)formation=[60,15,25];if(d.result==="loss"&&main?.m==="hp")formation[0]=Math.min(65,formation[0]+5),formation[2]=100-formation[0]-formation[1];
+let conf=Math.round(Math.min(99,65+gaps.length*2+(d.yTotal&&d.eTotal?6:0)+(d.yLoss||d.eLoss?5:0)));
+let impact=main&&Math.abs(main.pct)>=25?(lang==="ar"?"مرتفع":"High"):main&&Math.abs(main.pct)>=10?(lang==="ar"?"متوسط":"Medium"):(lang==="ar"?"منخفض":"Low");
+let title,desc;if(main){title=lang==="ar"?`${main.sn} ${translateMetric(main.m)} هي أكبر نقطة ضعف`:`${main.sn} ${main.mn} is the largest weakness`;desc=lang==="ar"?`أنت أقل من الخصم في هذا المؤشر بنسبة ${Math.abs(main.pct).toFixed(1)}%. هذا الفارق قد يؤثر مباشرة في بقاء الوحدة وأدائها.`:`You trail the enemy by ${Math.abs(main.pct).toFixed(1)}% in this metric, which can directly reduce that unit's battle performance.`}else{title=lang==="ar"?"البيانات غير كافية لتشخيص دقيق":"Not enough data for a precise diagnosis";desc=lang==="ar"?"أدخل المزيد من الإحصائيات للحصول على تحليل أفضل.":"Enter more matching statistics to improve the diagnosis."}
+let priorities=negatives.slice(0,3).map(x=>({name:lang==="ar"?`${x.sn} ${translateMetric(x.m)}`:`${x.sn} ${x.mn}`,sub:lang==="ar"?`متأخر بنسبة ${Math.abs(x.pct).toFixed(1)}% عن الخصم`:`${Math.abs(x.pct).toFixed(1)}% behind the enemy`}));while(priorities.length<3)priorities.push({name:lang==="ar"?"مراجعة مستوى الأبطال":"Review hero development",sub:lang==="ar"?"أضف بيانات الأبطال في المرحلة القادمة":"Hero data will be added in the next stage"});
+let evidence=[];if(main)evidence.push(lang==="ar"?`أكبر فارق سلبي: ${main.sn} ${translateMetric(main.m)} (${main.pct.toFixed(1)}%).`:`Largest negative gap: ${main.sn} ${main.mn} (${main.pct.toFixed(1)}%).`);if(d.yTotal&&d.eTotal)evidence.push(lang==="ar"?`فارق حجم الجيش: ${troopEdge.toFixed(1)}% لصالح ${troopEdge>=0?"طرفك":"الخصم"}.`:`Army size difference: ${Math.abs(troopEdge).toFixed(1)}% in favor of ${troopEdge>=0?"your side":"the enemy"}.`);if(d.yLoss||d.eLoss||d.yW||d.eW)evidence.push(lang==="ar"?`فارق الخسائر والجرحى: ${Math.abs(lossEdge).toLocaleString()} جندي لصالح ${lossEdge>=0?"طرفك":"الخصم"}.`:`Loss and wounded difference: ${Math.abs(lossEdge).toLocaleString()} troops in favor of ${lossEdge>=0?"your side":"the enemy"}.`);evidence.push(lang==="ar"?`التشكيلة المقترحة تعطي خطًا أماميًا بنسبة ${formation[0]}% لحماية وحدات الضرر.`:`The recommended formation uses a ${formation[0]}% frontline to protect damage-dealing units.`);
+return{score,conf,main,title,desc,impact,formation,priorities,gaps:gaps.slice(0,6),evidence,avg,positives}}
+function translateMetric(m){return({atk:"الهجوم",def:"الدفاع",hp:"الصحة",leth:"الفتك"})[m]}
 
-function renderPreviews(){
-  previewGrid.innerHTML = "";
-  files.forEach((file,index)=>{
-    const item = document.createElement("div");
-    item.className = "preview-item";
-    const img = document.createElement("img");
-    img.alt = file.name;
-    img.src = URL.createObjectURL(file);
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.textContent = "×";
-    remove.addEventListener("click", ()=>{
-      files.splice(index,1);
-      renderPreviews();
-    });
-    const name = document.createElement("span");
-    name.textContent = file.name;
-    item.append(img,remove,name);
-    previewGrid.appendChild(item);
-  });
-  reportCount.textContent = files.length;
-  analyzeBtn.disabled = files.length === 0;
-  clearBtn.disabled = files.length === 0;
-}
+$("#runAnalysisBtn").onclick=()=>{if(!validate())return;saveForm();go(3);setTimeout(()=>{let r=analyze(collect());renderResults(r);go(4)},1200)};
+function renderResults(r){$("#confidenceValue").textContent=r.conf+"%";$("#scoreValue").textContent=r.score;$("#scoreRing").style.background=`radial-gradient(circle,#0e1a2d 58%,transparent 59%),conic-gradient(var(--green) 0 ${r.score*3.6}deg,rgba(255,255,255,.07) ${r.score*3.6}deg)`;let label=r.score>=80?(lang==="ar"?"أداء قوي":"Strong performance"):r.score>=60?(lang==="ar"?"أداء متوسط":"Moderate performance"):(lang==="ar"?"يحتاج إلى تحسين":"Needs improvement");$("#scoreLabel").textContent=label;$("#scoreDescription").textContent=lang==="ar"?`تم حساب التقييم من فروقات الإحصائيات وحجم الجيش والخسائر المسجلة.`:`The score combines statistic gaps, army size, and recorded losses.`;$("#diagnosisTitle").textContent=r.title;$("#diagnosisText").textContent=r.desc;$("#impactValue").textContent=r.impact;let [a,b,c]=r.formation;$("#formationValue").textContent=`${a} / ${b} / ${c}`;[["Inf",a],["Mark",b],["Cav",c]].forEach(([k,v])=>{$("#f"+k+"Text").textContent=v+"%";$("#f"+k+"Bar").style.width=v+"%"});$("#priorityList").innerHTML=r.priorities.map((p,i)=>`<li><span>${i+1}</span><div><b>${p.name}</b><small>${p.sub}</small></div></li>`).join("");let max=Math.max(1,...r.gaps.map(x=>Math.abs(x.pct)));$("#gapList").innerHTML=r.gaps.map(x=>`<div class="gap-row ${x.pct>=0?"positive":"negative"}"><span>${lang==="ar"?x.sn+" "+translateMetric(x.m):x.sn+" "+x.mn}</span><div class="gap-track"><i style="width:${Math.min(100,Math.abs(x.pct)/max*100)}%"></i></div><b>${x.pct>=0?"+":""}${x.pct.toFixed(1)}%</b></div>`).join("")||`<p>${lang==="ar"?"لا توجد بيانات كافية.":"Not enough data."}</p>`;$("#evidenceList").innerHTML=r.evidence.map((x,i)=>`<div><b>${i+1}.</b> ${x}</div>`).join("");window.lastResult=r}
+$("#editDataBtn").onclick=()=>go(2);$("#newBtn").onclick=()=>{files=[];renderFiles();$$("input[type=number]").forEach(x=>x.value=x.id.includes("Ratio")?(x.id.includes("Inf")?"50":x.id.includes("Mark")?"20":"30"):"");localStorage.removeItem("battleIqForm");go(1)};
+$("#copyBtn").onclick=async()=>{let r=window.lastResult;if(!r)return;let text=`Battle IQ | SaifKS\n${lang==="ar"?"التقييم":"Score"}: ${r.score}/100\n${lang==="ar"?"نسبة الثقة":"Confidence"}: ${r.conf}%\n${lang==="ar"?"التشخيص":"Diagnosis"}: ${r.title}\n${lang==="ar"?"التشكيلة المقترحة":"Recommended Formation"}: ${r.formation.join(" / ")}\n\n${r.priorities.map((p,i)=>`${i+1}. ${p.name} — ${p.sub}`).join("\n")}`;await navigator.clipboard.writeText(text);toast(lang==="ar"?"تم نسخ الملخص":"Summary copied")};
 
-clearBtn.addEventListener("click", ()=>{
-  files = [];
-  fileInput.value = "";
-  renderPreviews();
-  resultsSection.hidden = true;
-  showToast(translations[language].clearToast);
-});
-
-analyzeBtn.addEventListener("click", ()=>{
-  analyzeBtn.disabled = true;
-  const original = analyzeBtn.innerHTML;
-  analyzeBtn.innerHTML = `<span class="loading">◌</span><span>${language==="ar"?"جارٍ التحليل...":"Analyzing..."}</span>`;
-  setTimeout(()=>{
-    analyzeBtn.innerHTML = original;
-    analyzeBtn.disabled = false;
-    resultsSection.hidden = false;
-    resultsSection.scrollIntoView({behavior:"smooth",block:"start"});
-    showToast(translations[language].demoToast);
-  },900);
-});
-
-function showToast(message){
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(()=>toast.classList.remove("show"),2200);
-}
+function saveForm(){let ids=["battleType","battleResult","yourTotal","enemyTotal","yInfRatio","yMarkRatio","yCavRatio","eInfRatio","eMarkRatio","eCavRatio","yourLosses","enemyLosses","yourWounded","enemyWounded"];statNames.forEach(([s])=>metrics.forEach(([m])=>ids.push(`y_${s}_${m}`,`e_${s}_${m}`)));let data={};ids.forEach(id=>data[id]=$("#"+id).value);localStorage.setItem("battleIqForm",JSON.stringify(data))}
+function loadForm(){try{let d=JSON.parse(localStorage.getItem("battleIqForm")||"{}");Object.entries(d).forEach(([id,v])=>{if($("#"+id))$("#"+id).value=v});updateTotals()}catch{}}
+loadForm();
