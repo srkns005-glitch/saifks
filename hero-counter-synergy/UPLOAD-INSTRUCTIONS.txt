@@ -1,0 +1,9 @@
+ارفع جميع الملفات الموجودة في هذا المجلد مباشرة داخل:
+hero-counter-synergy/
+
+يجب أن يظهر داخل الصفحة النص:
+KINGSHOT HERO CENTER · V6
+
+لا ترفع المجلد نفسه، بل الملفات الموجودة بداخله.
+بعد الرفع افتح:
+https://saifks.com/hero-counter-synergy/?v=6
