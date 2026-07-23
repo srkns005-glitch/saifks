@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Hero Counter + Synergy | SaifKS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SaifKS">
+      <span class="brand-mark">S</span>
+      <span>
+        <strong>SaifKS</strong>
+        <small>Battle Intelligence Lab</small>
+      </span>
+    </a>
+
+    <div class="top-actions">
+      <button id="langBtn" class="ghost-btn" type="button">العربية</button>
+      <button id="resetBtn" class="ghost-btn" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-intro">
+      <div>
+        <span class="eyebrow">KINGSHOT STRATEGY TOOL</span>
+        <h1 data-i18n="title">Hero Counter <span>+</span> Synergy</h1>
+        <p data-i18n="subtitle">
+          Select an enemy hero and battle mode to reveal counters, synergy partners, strengths, weaknesses, and recommended teams.
+        </p>
+      </div>
+      <div class="status-badge">
+        <i></i>
+        <span data-i18n="prototype">Independent Prototype</span>
+      </div>
+    </section>
+
+    <section class="control-panel glass-card">
+      <div class="field-grid">
+        <label class="field">
+          <span data-i18n="enemyHero">Enemy Hero</span>
+          <select id="heroSelect"></select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="battleMode">Battle Mode</span>
+          <select id="modeSelect">
+            <option value="expedition">Expedition</option>
+            <option value="arena">Arena</option>
+            <option value="bear">Bear Hunt</option>
+            <option value="castle-defense">Castle Defense</option>
+            <option value="castle-attack">Castle Attack</option>
+          </select>
+        </label>
+
+        <button id="analyzeBtn" class="analyze-btn" type="button">
+          <span data-i18n="analyze">Analyze Matchup</span>
+          <b>→</b>
+        </button>
+      </div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="overview-grid">
+        <article class="enemy-card glass-card">
+          <div class="section-label" data-i18n="selectedEnemy">Selected Enemy</div>
+          <div class="enemy-content">
+            <div id="enemyAvatar" class="hero-avatar large">A</div>
+            <div>
+              <h2 id="enemyName">Alcar</h2>
+              <div id="enemyClass" class="class-pill">Infantry</div>
+              <p id="enemyDescription"></p>
+            </div>
+          </div>
+          <div class="mini-stats">
+            <div><span data-i18n="pressure">Pressure</span><strong id="pressureScore">92</strong></div>
+            <div><span data-i18n="durability">Durability</span><strong id="durabilityScore">94</strong></div>
+            <div><span data-i18n="control">Control</span><strong id="controlScore">76</strong></div>
+          </div>
+        </article>
+
+        <article class="score-card glass-card">
+          <div class="section-label" data-i18n="matchupRating">Matchup Rating</div>
+          <div class="score-ring" id="scoreRing">
+            <span id="overallScore">94</span>
+            <small>%</small>
+          </div>
+          <h3 id="ratingLabel">Excellent Counter Options</h3>
+          <p id="ratingNote"></p>
+        </article>
+      </div>
+
+      <div class="content-grid">
+        <article class="glass-card panel counters-panel">
+          <div class="panel-head">
+            <div>
+              <span class="section-label" data-i18n="bestCounters">Best Counters</span>
+              <h3 data-i18n="counterRanking">Counter Ranking</h3>
+            </div>
+            <span id="modeBadge" class="mode-badge">Expedition</span>
+          </div>
+          <div id="counterList" class="rank-list"></div>
+        </article>
+
+        <article class="glass-card panel synergy-panel">
+          <div class="panel-head">
+            <div>
+              <span class="section-label" data-i18n="bestSynergy">Best Synergy</span>
+              <h3 data-i18n="partnerRanking">Partner Ranking</h3>
+            </div>
+          </div>
+          <div id="synergyList" class="synergy-list"></div>
+        </article>
+
+        <article class="glass-card panel team-panel">
+          <div class="panel-head">
+            <div>
+              <span class="section-label" data-i18n="recommendedTeams">Recommended Teams</span>
+              <h3 data-i18n="readyFormations">Ready Formations</h3>
+            </div>
+          </div>
+          <div id="teamList" class="team-list"></div>
+        </article>
+
+        <article class="glass-card panel insight-panel">
+          <div class="insight-block">
+            <span class="section-label positive" data-i18n="strengths">Strengths</span>
+            <div id="strengthList" class="tag-list"></div>
+          </div>
+          <div class="divider"></div>
+          <div class="insight-block">
+            <span class="section-label negative" data-i18n="weaknesses">Weaknesses</span>
+            <div id="weaknessList" class="tag-list"></div>
+          </div>
+          <div class="divider"></div>
+          <div class="insight-block">
+            <span class="section-label" data-i18n="analysisWhy">Why This Works</span>
+            <ul id="reasonList" class="reason-list"></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="emptyState" class="empty-state glass-card">
+      <div class="empty-icon">⚔</div>
+      <h2 data-i18n="readyTitle">Ready to analyze</h2>
+      <p data-i18n="readyText">Choose a hero and battle mode, then press Analyze Matchup.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>SaifKS.com</span>
+    <i></i>
+    <span data-i18n="footer">Prototype build — not connected to the main website</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
