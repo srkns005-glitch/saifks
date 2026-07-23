@@ -21,14 +21,14 @@
       <h1>Battle <em>IQ</em></h1>
       <p data-t="hero">Upload the report, verify the extracted values, then receive a rule-based battle diagnosis and formation recommendation.</p>
     </div>
-    <div class="stage-badge"><span>V2</span><small data-t="stage2">Analysis Engine</small></div>
+    <div class="stage-badge"><span>IQ</span><small data-t="stage2">Rule-Based Engine</small></div>
   </section>
 
   <nav class="progress" id="progress">
-    <button class="active" data-step="1"><b>1</b><span data-t="p1">Upload</span></button>
-    <button data-step="2"><b>2</b><span data-t="p2">Verify</span></button>
-    <button data-step="3"><b>3</b><span data-t="p3">Analyze</span></button>
-    <button data-step="4"><b>4</b><span data-t="p4">Results</span></button>
+    <button class="active" data-step="1"><b>1</b><span><strong data-t="p1">Upload</strong><small data-t="p1sub">Battle reports</small></span></button>
+    <button data-step="2"><b>2</b><span><strong data-t="p2">Verify</strong><small data-t="p2sub">Battle data</small></span></button>
+    <button data-step="3"><b>3</b><span><strong data-t="p3">Analyze</strong><small data-t="p3sub">Rule engine</small></span></button>
+    <button data-step="4"><b>4</b><span><strong data-t="p4">Results</strong><small data-t="p4sub">Final report</small></span></button>
   </nav>
 
   <section class="panel active" data-panel="1">
@@ -44,6 +44,10 @@
       <i>PNG · JPG · WEBP</i>
     </button>
     <div id="previewGrid" class="preview-grid"></div>
+    <div id="uploadSummary" class="upload-summary" hidden>
+      <div><span>✓</span><b id="uploadSummaryCount">0 reports uploaded</b></div>
+      <small id="uploadSummarySize">0 MB</small>
+    </div>
     <div class="footer-actions">
       <button id="clearBtn" class="btn ghost" disabled><span data-t="clear">Clear</span></button>
       <button id="toVerifyBtn" class="btn primary" disabled><span data-t="continue">Continue to verification</span> →</button>
@@ -55,8 +59,17 @@
       <div><span class="kicker" data-t="verification">DATA VERIFICATION</span><h2 data-t="verifyTitle">Confirm Battle Data</h2><p data-t="verifyText">Enter values exactly as shown in the report. Percentages accept decimals.</p></div>
       <span class="safe-tag">✓ <span data-t="local">Saved locally</span></span>
     </div>
-
     <div class="form-grid">
+      <div class="form-card wide hero-entry">
+        <div class="card-row">
+          <div><span class="kicker" data-t="heroesOptional">OPTIONAL</span><h3 data-t="participatingHeroes">Participating Heroes</h3></div>
+          <span class="manual-tag" data-t="manualEntry">Manual entry</span>
+        </div>
+        <div class="hero-fields">
+          <div><span data-t="yourHeroes">Your heroes</span><div class="hero-inputs"><input id="yourHero1" placeholder="Hero 1"><input id="yourHero2" placeholder="Hero 2"><input id="yourHero3" placeholder="Hero 3"></div></div>
+          <div><span data-t="enemyHeroes">Enemy heroes</span><div class="hero-inputs"><input id="enemyHero1" placeholder="Hero 1"><input id="enemyHero2" placeholder="Hero 2"><input id="enemyHero3" placeholder="Hero 3"></div></div>
+        </div>
+      </div>
       <div class="form-card wide">
         <h3 data-t="battleInfo">Battle Information</h3>
         <div class="fields four">

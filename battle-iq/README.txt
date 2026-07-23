@@ -1,23 +1,24 @@
-Battle IQ v2 — SaifKS
-========================
+BATTLE IQ — FREE RULE-BASED VERSION
 
-Stage 2 completed:
-- Image upload and preview
-- Data verification form
-- Troop ratio validation
-- Infantry / Marksmen / Cavalry statistics
-- Attack / Defense / Health / Lethality comparison
-- Losses and wounded inputs
-- Rule-based analysis engine
-- Battle score and confidence estimate
-- Main weakness diagnosis
+This package is fully static and works on GitHub Pages.
+
+Included:
+- Screenshot upload and preview
+- Manual battle-data verification
+- Local rule-based battle score
+- Statistics comparison
+- Weakness diagnosis
 - Recommended troop formation
 - Upgrade priorities
-- Evidence and largest stat gaps
-- Arabic / English support
-- Local form persistence
-- Copy summary
+- Copyable final summary
+- Arabic and English
+- LocalStorage persistence
 
-Important:
-This stage does not yet perform OCR or identify heroes from images.
-Those features belong to the next backend/AI stage.
+Removed completely:
+- OpenAI integration
+- Netlify Functions
+- API keys and environment files
+- AI image reader and extraction status
+
+Deployment:
+Upload the battle-iq folder to the website repository and link to battle-iq/index.html. No server or paid service is required.
