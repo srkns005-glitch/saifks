@@ -1,1 +1,1 @@
-Standalone Hero Counter + Synergy test page. Not linked to the main homepage. Deploy the whole hero-counter-synergy folder on GitHub/Netlify. JSON fetch requires HTTP hosting; opening index.html directly may be blocked by browser security. Contains all 34 heroes from hero-center/heroes.json and an explainable rule-based analysis layer.
+Hero Lab V7 - Mythic heroes only. Upload all files directly inside hero-counter-synergy/.

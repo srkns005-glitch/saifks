@@ -1,76 +1,8 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#08111f">
-  <title>مقارنة الأبطال | SaifKS</title>
-  <link rel="stylesheet" href="styles.css?v=6.0.0">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="SaifKS">
-      <img src="../logo.png" alt="SaifKS" onerror="this.style.display='none'">
-      <span><strong>SaifKS</strong><small>Hero Comparison</small></span>
-    </a>
-    <div class="topActions">
-      <button id="lang" type="button">English</button>
-      <button id="reset" type="button" data-v="reset">إعادة الضبط</button>
-    </div>
-  </header>
-
-  <main class="page">
-    <section class="heroIntro">
-      <span class="eyebrow">KINGSHOT HERO CENTER · V6</span>
-      <h1 data-v="title">مقارنة الأبطال <small style="font-size:.38em;vertical-align:middle;opacity:.7">V6</small></h1>
-      <p data-v="sub">مقارنة مباشرة مبنية على الإحصائيات ونصوص المهارات الأصلية فقط.</p>
-    </section>
-
-    <section class="notice">
-      <div class="noticeIcon">!</div>
-      <div><strong data-v="important">مهم</strong><p data-v="notice"></p></div>
-    </section>
-
-    <section class="controls card">
-      <label><span data-v="heroA">البطل الأول</span><select id="hero"></select></label>
-      <label><span data-v="heroB">البطل الثاني</span><select id="compareHero"></select></label>
-      <label><span data-v="mode">نوع التحليل</span><select id="mode"><option value="arena" data-v="arena">الساحة</option><option value="expedition" data-v="expedition">الاستكشاف</option></select></label>
-      <button id="analyze" class="primary" type="button" data-v="compare">قارن الآن</button>
-    </section>
-
-    <section id="loading" class="loading card" data-v="loading">جاري تحميل بيانات الأبطال…</section>
-
-    <section id="results" hidden>
-      <article class="resultSummary card"><span class="sectionKicker" data-v="result">نتيجة المقارنة</span><p id="summaryText"></p></article>
-
-      <section class="panel card">
-        <header class="sectionHeader"><div><span class="sectionKicker" data-v="heroOverview">بيانات البطل</span><h2 data-v="heroOverview">بيانات البطل</h2></div></header>
-        <div id="heroOverview" class="heroPair"></div>
-      </section>
-
-      <section class="panel card">
-        <header class="sectionHeader"><div><span class="sectionKicker">STATS</span><h2 data-v="stats">مقارنة الإحصائيات</h2></div></header>
-        <div id="statsVerified"></div>
-      </section>
-
-      <section class="panel card">
-        <header class="sectionHeader"><div><span class="sectionKicker">SKILL MATCHUP</span><h2 data-v="interactions">التفاعلات المؤكدة بين المهارات</h2></div></header>
-        <div id="interactionsVerified" class="interactionGrid"></div>
-      </section>
-
-      <section class="panel card">
-        <header class="sectionHeader"><div><span class="sectionKicker">EFFECTS</span><h2 data-v="mechanics">ملخص التأثيرات المكتشفة</h2></div></header>
-        <div id="mechanicsVerified" class="mechanicsGrid"></div>
-      </section>
-
-      <section class="panel card">
-        <header class="sectionHeader"><div><span class="sectionKicker">SOURCE DATA</span><h2 data-v="raw">النص الرسمي للمهارات</h2></div></header>
-        <div id="skillsVerified" class="skillsGrid"></div>
-      </section>
-    </section>
-  </main>
-
-  <footer>SaifKS.com <i></i> Built by Saif</footer>
-  <script src="app.js?v=6.0.0"></script>
-</body>
-</html>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07111f"><title>Hero Lab | SaifKS</title><link rel="stylesheet" href="styles.css?v=7.0.0"></head><body>
+<header class="topbar"><a class="brand" href="#"><img src="../logo.png" onerror="this.style.display='none'"><span><b>SaifKS</b><small>Hero Lab · V7</small></span></a><div class="actions"><button id="lang">English</button><button id="reset">إعادة الضبط</button></div></header>
+<main class="page"><section class="hero"><span class="eyebrow">KINGSHOT · LEGENDARY HEROES ONLY</span><h1>مختبر الأبطال</h1><p>استكشف الأبطال الأسطوريين، قارن بينهم، وافحص توازن تشكيلتك من بيانات المهارات الأصلية.</p><div class="chips"><span>22 بطلاً أسطورياً</span><span>الأجيال 1–7</span><span>بدون Rare وEpic</span></div></section>
+<nav class="tabs"><button class="active" data-tab="explorer">مستكشف الأبطال</button><button data-tab="compare">مقارنة بطلين</button><button data-tab="team">فاحص التشكيلة</button></nav>
+<section id="explorer" class="tab active"><div class="toolbar card"><input id="search" placeholder="ابحث عن بطل..."><select id="gen"><option value="all">جميع الأجيال</option></select><select id="cls"><option value="all">جميع الأنواع</option><option value="Infantry">مشاة</option><option value="Cavalry">فرسان</option><option value="Archer">رماة</option></select></div><div class="split"><div id="heroGrid" class="heroGrid"></div><aside id="profile" class="profile card"><div class="empty">اختر بطلاً لعرض تحليله</div></aside></div></section>
+<section id="compare" class="tab"><div class="picker card"><label>البطل الأول<select id="heroA"></select></label><button id="swap">⇄</button><label>البطل الثاني<select id="heroB"></select></label><label>نوع البيانات<select id="compareMode"><option value="expedition">Expedition</option><option value="arena">Arena</option></select></label><button id="compareBtn" class="primary">قارن الآن</button></div><div id="compareResult"></div></section>
+<section id="team" class="tab"><div class="teamIntro card"><div><h2>فاحص تشكيلة من 3 أبطال</h2><p>اختر مشاة وفرسان ورماة. الأداة لا تدّعي أنها أفضل تشكيلة؛ بل تكشف التوازن والتأثيرات الموجودة والنواقص.</p></div><select id="teamMode"><option value="expedition">Expedition</option><option value="arena">Arena</option></select></div><div class="teamPickers"><label class="card"><span>🛡️ المشاة</span><select id="teamInf"></select></label><label class="card"><span>🐎 الفرسان</span><select id="teamCav"></select></label><label class="card"><span>🏹 الرماة</span><select id="teamArc"></select></label></div><button id="analyzeTeam" class="primary wide">افحص التشكيلة</button><div id="teamResult"></div></section>
+</main><footer>SaifKS.com <i></i> Built by Saif</footer><script src="app.js?v=7.0.0"></script></body></html>
