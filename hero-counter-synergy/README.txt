@@ -1,1 +1,0 @@
-Hero Lab V7 - Mythic heroes only. Upload all files directly inside hero-counter-synergy/.
