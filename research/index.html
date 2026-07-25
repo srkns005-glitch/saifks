@@ -95,7 +95,7 @@ footer{margin-inline-start:calc(var(--nav-w) + 28px);margin-inline-end:calc(var(
 /* ===== V10 PHASE 3 — INTERACTIVE RESEARCH TREE ===== */
 .view-switcher{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 10px;padding:8px;border:1px solid rgba(255,255,255,.09);border-radius:15px;background:rgba(10,22,36,.88);backdrop-filter:blur(14px)}
 .view-tabs{display:flex;gap:6px}.view-tab{height:38px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--muted);padding:0 13px;font-size:11px;font-weight:700}.view-tab.active{border-color:var(--gold);background:linear-gradient(135deg,#f1cb70,#d5a640);color:#211705;box-shadow:0 6px 18px rgba(239,198,103,.18)}
-.view-hint{color:var(--muted);font-size:10px}.graph-shell{position:relative;height:clamp(560px,72vh,820px);overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:20px;background:radial-gradient(circle at 50% 30%,rgba(91,168,255,.08),transparent 38%),linear-gradient(180deg,#091827,#06101b);box-shadow:inset 0 1px rgba(255,255,255,.04),0 22px 55px rgba(0,0,0,.28);touch-action:none;user-select:none}
+.view-hint{color:var(--muted);font-size:10px}.graph-shell{position:relative;height:clamp(560px,72vh,820px);min-height:560px;overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:20px;background:radial-gradient(circle at 50% 30%,rgba(91,168,255,.08),transparent 38%),linear-gradient(180deg,#091827,#06101b);box-shadow:inset 0 1px rgba(255,255,255,.04),0 22px 55px rgba(0,0,0,.28);touch-action:none;user-select:none}
 .graph-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px;opacity:.48}
 .graph-toolbar{position:absolute;z-index:8;top:12px;inset-inline-end:12px;display:flex;gap:6px;padding:6px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:rgba(5,13,22,.82);backdrop-filter:blur(12px)}
 .graph-tool{width:36px;height:34px;border:1px solid var(--line);border-radius:9px;background:#122238;color:#fff;font-weight:800}.graph-tool:hover{border-color:var(--gold);color:var(--gold)}
@@ -253,8 +253,8 @@ renderSideNav();updateCommandMetrics();
 
 
 /* ===== V10 PHASE 3 BEHAVIOR ===== */
-let researchView=localStorage.getItem('saifks-research-view-v10')||'graph';
-let graphState={x:40,y:70,scale:1,minScale:.42,maxScale:1.65,drag:false,startX:0,startY:0,originX:0,originY:0};
+let researchView='list';try{researchView=localStorage.getItem('saifks-research-view-v10')||'list'}catch(_){researchView='list'}
+let graphState={x:40,y:70,scale:1,minScale:.28,maxScale:1.65,drag:false,startX:0,startY:0,originX:0,originY:0};
 let graphDeps=new Map(),graphReverse=new Map(),focusedGraphTech=null;
 const phase3ListRender=renderCards;
 function ensureViewSwitcher(){
@@ -263,7 +263,7 @@ function ensureViewSwitcher(){
   const el=document.createElement('div');el.id='viewSwitcher';el.className='view-switcher';
   el.innerHTML=`<div class="view-tabs"><button class="view-tab" data-view="graph">${lang==='ar'?'الشجرة التفاعلية':'Interactive Tree'}</button><button class="view-tab" data-view="list">${lang==='ar'?'عرض القائمة':'List View'}</button></div><span class="view-hint">${lang==='ar'?'اسحب للتحريك · استخدم أزرار التكبير · اضغط البحث للتفاصيل':'Drag to move · zoom with controls · tap a research for details'}</span>`;
   head.insertAdjacentElement('afterend',el);
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;researchView=b.dataset.view;localStorage.setItem('saifks-research-view-v10',researchView);renderCards()});
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;researchView=b.dataset.view;try{localStorage.setItem('saifks-research-view-v10',researchView)}catch(_){}renderCards()});
 }
 function normalizeTechName(v){return String(v||'').toLowerCase().replace(/[’'`]/g,'').replace(/\blv\.?\s*\d+\b/g,'').replace(/[^a-z0-9]+/g,' ').trim()}
 function buildGraphDependencies(list){
@@ -281,10 +281,16 @@ function buildGraphDependencies(list){
   }
 }
 function ancestorsOf(id,out=new Set()){for(const p of graphDeps.get(id)||[]){if(!out.has(p)){out.add(p);ancestorsOf(p,out)}}return out}
+function graphTierOf(tech){
+  if(Number.isFinite(Number(tech.tier))&&Number(tech.tier)>0)return Number(tech.tier);
+  const m=String(tech.name||'').match(/\b(I|II|III|IV|V|VI|VII|VIII|IX|X)\s*$/i);
+  if(!m)return 1;
+  return ({I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10})[m[1].toUpperCase()]||1;
+}
 function renderGraph(){
   ensureViewSwitcher();const list=filtered(),host=$('#groups'),c=color(activeTree);$('#count').textContent=`${list.length} ${t('researches')}`;$('#treeName').textContent=tree().name[lang]||tree().name.en;
   if(!list.length){host.innerHTML=`<div class="tree-empty">${lang==='ar'?'لا توجد نتائج مطابقة':'No matching results'}</div>`;return}
-  buildGraphDependencies(list);const tiers=[...new Set(list.map(x=>Number(x.tier)||1))].sort((a,b)=>a-b),tierMap=new Map(tiers.map(v=>[v,list.filter(x=>(Number(x.tier)||1)===v)]));
+  buildGraphDependencies(list);const tiers=[...new Set(list.map(graphTierOf))].sort((a,b)=>a-b),tierMap=new Map(tiers.map(v=>[v,list.filter(x=>graphTierOf(x)===v)]));
   const nodeW=210,nodeH=118,colGap=92,rowGap=26,padX=70,padY=78;
   let maxRows=Math.max(...[...tierMap.values()].map(a=>a.length)),stageW=padX*2+tiers.length*(nodeW+colGap)-colGap,stageH=Math.max(620,padY*2+maxRows*(nodeH+rowGap)-rowGap);
   const positions=new Map();tiers.forEach((tier,ci)=>{const items=tierMap.get(tier),block=items.length*nodeH+(items.length-1)*rowGap,startY=Math.max(padY,(stageH-block)/2);items.forEach((x,ri)=>positions.set(x.id,{x:padX+ci*(nodeW+colGap),y:startY+ri*(nodeH+rowGap)}))});
@@ -293,7 +299,12 @@ function renderGraph(){
   host.innerHTML=`<div class="graph-shell" id="graphShell"><div class="graph-toolbar"><button class="graph-tool" data-graph="out">−</button><button class="graph-tool" data-graph="fit">⌗</button><button class="graph-tool" data-graph="in">+</button><button class="graph-tool" data-graph="reset">↺</button></div><div class="graph-viewport" id="graphViewport"><div class="graph-stage" id="graphStage" style="width:${stageW}px;height:${stageH}px"><svg class="graph-links" width="${stageW}" height="${stageH}">${links.join('')}</svg>${tiers.map((tier,ci)=>`<div class="graph-tier-label" style="left:${padX+ci*(nodeW+colGap)+15}px;top:28px">${t('tier')} <b>${tier}</b></div>`).join('')}${list.map(x=>{const p=positions.get(x.id);return `<button class="graph-node ${planIds.has(x.id)?'in-plan':''}" data-tech="${x.id}" style="left:${p.x}px;top:${p.y}px;--accent:${c};--iconbg:${c}18"><span class="graph-node-head"><span class="graph-node-icon">${icon(x.category)}</span><span class="graph-node-copy"><b>${x.name}</b><small>${x.description||'—'}</small></span><span class="graph-node-level">${t('max')}<strong>${x.maxLevel}</strong></span></span><span class="graph-node-effect">${x.effectRange||t('unavailable')}</span></button>`}).join('')}</div></div><div class="graph-legend"><span><i class="legend-dot"></i>${lang==='ar'?'بحث':'Research'}</span><span><i class="legend-dot plan"></i>${lang==='ar'?'داخل الخطة':'In plan'}</span><span><i class="legend-dot path"></i>${lang==='ar'?'مسار المتطلبات':'Requirement path'}</span></div><div class="graph-minimap" id="graphMinimap"><div class="mini-content">${list.map(x=>{const p=positions.get(x.id);return `<i class="mini-dot ${planIds.has(x.id)?'plan':''}" style="left:${(p.x/stageW)*125}px;top:${(p.y/stageH)*72}px"></i>`}).join('')}<i class="mini-window" id="miniWindow"></i></div></div></div>`;
   graphState.stageW=stageW;graphState.stageH=stageH;bindGraph();requestAnimationFrame(()=>fitGraph(false));
 }
-function renderCards(){ensureViewSwitcher();document.querySelectorAll('.view-tab').forEach(b=>b.classList.toggle('active',b.dataset.view===researchView));if(researchView==='graph')renderGraph();else phase3ListRender()}
+function renderCards(){
+  ensureViewSwitcher();
+  document.querySelectorAll('.view-tab').forEach(b=>b.classList.toggle('active',b.dataset.view===researchView));
+  if(researchView!=='graph'){phase3ListRender();return}
+  try{renderGraph()}catch(err){console.error('Interactive tree fallback:',err);researchView='list';try{localStorage.setItem('saifks-research-view-v10','list')}catch(_){}document.querySelectorAll('.view-tab').forEach(b=>b.classList.toggle('active',b.dataset.view==='list'));phase3ListRender()}
+}
 function applyGraphTransform(){const st=$('#graphStage');if(!st)return;st.style.transform=`translate(${graphState.x}px,${graphState.y}px) scale(${graphState.scale})`;updateMiniMap()}
 function fitGraph(animate=true){const shell=$('#graphShell');if(!shell||!graphState.stageW)return;const sx=(shell.clientWidth-38)/graphState.stageW,sy=(shell.clientHeight-38)/graphState.stageH;graphState.scale=Math.max(graphState.minScale,Math.min(1,Math.min(sx,sy)));graphState.x=(shell.clientWidth-graphState.stageW*graphState.scale)/2;graphState.y=(shell.clientHeight-graphState.stageH*graphState.scale)/2;if(animate)$('#graphStage')?.animate([{opacity:.65},{opacity:1}],{duration:220});applyGraphTransform()}
 function zoomGraph(factor,cx,cy){const shell=$('#graphShell');if(!shell)return;cx??=shell.clientWidth/2;cy??=shell.clientHeight/2;const old=graphState.scale,next=Math.max(graphState.minScale,Math.min(graphState.maxScale,old*factor));graphState.x=cx-(cx-graphState.x)*(next/old);graphState.y=cy-(cy-graphState.y)*(next/old);graphState.scale=next;applyGraphTransform()}
