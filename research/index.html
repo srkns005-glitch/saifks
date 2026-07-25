@@ -118,8 +118,11 @@ function onTargetChange(){
 }
 function onCurrentChange(){
   const max=levelMax(),current=Number($('#current').value||0),previousTarget=Number($('#target').value||0);
-  const targetValues=[0,...Array.from({length:Math.max(0,max-current)},(_,i)=>current+i+1)];
-  const chosen=previousTarget>current?previousTarget:0;
+  // المستوى 0 يظهر فقط عند عدم اختيار مستوى حالي بعد.
+  // بمجرد أن يصبح المستوى الحالي 1 أو أعلى، تعرض قائمة الهدف المستويات الأعلى منه فقط.
+  const higherTargets=Array.from({length:Math.max(0,max-current)},(_,i)=>current+i+1);
+  const targetValues=current===0?[0,...higherTargets]:higherTargets;
+  const chosen=previousTarget>current?previousTarget:(current===0?0:(higherTargets[0]||0));
   setOptions($('#target'),targetValues,chosen);
   calc();
 }
