@@ -204,4 +204,92 @@ function updateSettings(){settings.researchBonus=Math.max(0,Number($('#researchB
   const heroTitle=document.querySelector('.hero h1'); if(heroTitle) heroTitle.textContent=document.documentElement.lang==='ar'?'أكاديمية الحرب':'War Academy';
 })();
 </script>
+<style id="v12-foundation-style">
+/* V12.0 — Research Tree Foundation */
+body.v12-mode{overflow-x:hidden}
+body.v12-mode .hero,body.v12-mode .v11-command,body.v12-mode .boost-panel,body.v12-mode .controls,body.v12-mode .section-head{display:none!important}
+body.v12-mode main.page{max-width:100%;padding:10px 10px 92px}
+body.v12-mode #tabs{max-width:1160px;margin:0 auto 10px}
+body.v12-mode #groups{display:block!important;max-width:none}
+.v12-shell{position:relative;height:calc(100vh - 142px);min-height:620px;border:1px solid #31445a;border-radius:18px;overflow:hidden;background:
+ radial-gradient(circle at 50% 0%,rgba(82,142,210,.16),transparent 34%),
+ linear-gradient(180deg,#0a1725 0%,#07111d 70%,#050b12 100%);box-shadow:inset 0 0 70px #0008,0 15px 40px #0005;touch-action:none;user-select:none}
+.v12-shell:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px}
+.v12-toolbar{position:absolute;z-index:10;top:12px;inset-inline-start:12px;display:flex;gap:7px;padding:6px;border:1px solid #31445a;border-radius:13px;background:rgba(6,15,25,.9);backdrop-filter:blur(10px)}
+.v12-tool{width:38px;height:38px;border:1px solid #3a4d65;border-radius:10px;background:#112033;color:#f4f7fb;font-size:18px}.v12-tool:hover{border-color:#efc667;color:#efc667}
+.v12-stage-label{position:absolute;z-index:8;top:14px;left:50%;transform:translateX(-50%);padding:7px 14px;border:1px solid #6c592d;border-radius:999px;background:rgba(18,21,24,.9);color:#efc667;font-size:12px;font-weight:800;white-space:nowrap}
+.v12-viewport{position:absolute;inset:0;overflow:hidden;cursor:grab}.v12-viewport.dragging{cursor:grabbing}
+.v12-world{position:absolute;top:0;left:0;width:1180px;min-height:1800px;transform-origin:0 0;will-change:transform}
+.v12-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.v12-edge{fill:none;stroke:#52677e;stroke-width:3;opacity:.72;filter:drop-shadow(0 0 3px #0a0f15)}
+.v12-edge.active{stroke:#d7ad4f;opacity:.95}
+.v12-tier{position:absolute;left:50%;transform:translateX(-50%);width:110px;height:26px;display:grid;place-items:center;border:1px solid #3a4d65;border-radius:999px;background:#0d1b2b;color:#91a4b9;font-size:10px;font-weight:800;letter-spacing:.8px}
+.v12-node{position:absolute;width:132px;min-height:118px;transform:translate(-50%,-50%);border:0;background:transparent;color:#fff;text-align:center;padding:0;z-index:3}
+.v12-node-core{position:relative;width:74px;height:74px;margin:0 auto;border-radius:19px;border:3px solid #61758b;background:linear-gradient(145deg,#172a3f,#0d1724);display:grid;place-items:center;box-shadow:0 8px 16px #0008,inset 0 0 16px rgba(255,255,255,.05);transition:.16s ease}
+.v12-node:hover .v12-node-core,.v12-node:focus-visible .v12-node-core{transform:translateY(-3px) scale(1.04);border-color:#efc667;box-shadow:0 0 0 3px rgba(239,198,103,.15),0 12px 22px #0009}
+.v12-node.available .v12-node-core{border-color:#56a5e9}.v12-node.completed .v12-node-core{border-color:#57d39a}.v12-node.planned .v12-node-core{border-color:#efc667}.v12-node.locked{opacity:.58}
+.v12-glyph{font-size:29px;filter:drop-shadow(0 2px 3px #000)}
+.v12-level{position:absolute;right:-8px;bottom:-7px;min-width:38px;height:22px;padding:0 6px;display:grid;place-items:center;border:2px solid #09121c;border-radius:999px;background:#182638;color:#d8e3ed;font-size:10px;font-weight:900}
+.v12-node.completed .v12-level{background:#22704f;color:#eafff5}.v12-node.planned .v12-level{background:#8a6924;color:#fff7d4}
+.v12-name{display:block;margin-top:8px;font-size:11px;font-weight:800;line-height:1.25;text-shadow:0 2px 4px #000;white-space:normal}
+.v12-category{display:block;margin-top:2px;color:#8598ad;font-size:9px}
+.v12-empty{position:absolute;inset:0;display:grid;place-items:center;color:#91a4b9}
+.v12-minimap{position:absolute;z-index:9;right:12px;bottom:12px;width:132px;height:90px;border:1px solid #31445a;border-radius:11px;background:rgba(5,12,20,.88);overflow:hidden;pointer-events:none}.v12-minimap i{position:absolute;width:7px;height:7px;border-radius:2px;background:#61758b}.v12-mini-view{position:absolute;border:1px solid #efc667;background:rgba(239,198,103,.08)}
+@media(max-width:700px){body.v12-mode main.page{padding:7px 6px 82px}.v12-shell{height:calc(100vh - 126px);min-height:560px;border-radius:14px}.v12-world{width:980px}.v12-node{width:116px}.v12-node-core{width:66px;height:66px;border-radius:17px}.v12-name{font-size:10px}.v12-minimap{display:none}.v12-stage-label{top:10px;font-size:10px}.v12-toolbar{top:auto;bottom:10px}}
+</style>
+<script id="v12-foundation-engine">
+(function(){
+  const groups=document.getElementById('groups');
+  if(!groups||typeof DB==='undefined'||document.getElementById('v12TreeShell')) return;
+  document.body.classList.add('v12-mode');
+  const state={scale:1,x:0,y:20,drag:false,startX:0,startY:0,baseX:0,baseY:0,nodes:[],width:1180,height:1800};
+  const romanMap={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+  const glyphs={infantry:'🛡️',cavalry:'🐎',archer:'🏹',attack:'⚔️',defense:'🛡️',health:'❤',lethality:'✦',training:'⚒️',healing:'✚',march:'➤',capacity:'⬡',economy:'◈',gathering:'⛏️',research:'⌬',other:'◆'};
+  const savedLevels=JSON.parse(localStorage.getItem('saifks-research-current-levels-v12')||'{}');
+  groups.innerHTML=`<section id="v12TreeShell" class="v12-shell"><div class="v12-stage-label" id="v12StageLabel"></div><div class="v12-toolbar"><button class="v12-tool" data-act="in" title="Zoom in">＋</button><button class="v12-tool" data-act="out" title="Zoom out">−</button><button class="v12-tool" data-act="fit" title="Fit">⌂</button><button class="v12-tool" data-act="reset" title="Reset">↺</button></div><div class="v12-viewport" id="v12Viewport"><div class="v12-world" id="v12World"><svg class="v12-lines" id="v12Lines"></svg><div id="v12Nodes"></div></div></div><div class="v12-minimap" id="v12Minimap"><div class="v12-mini-view" id="v12MiniView"></div></div></section>`;
+  const shell=document.getElementById('v12TreeShell'),viewport=document.getElementById('v12Viewport'),world=document.getElementById('v12World'),nodesEl=document.getElementById('v12Nodes'),lines=document.getElementById('v12Lines');
+  function tree(){return DB.trees.find(t=>t.id===activeTree)||DB.trees[0]}
+  function tierOf(t){const m=t.name.match(/\b(I|II|III|IV|V|VI|VII|VIII|IX|X)$/);return m?(romanMap[m[1]]||1):1}
+  function baseName(t){return t.name.replace(/\s+(I|II|III|IV|V|VI|VII|VIII|IX|X)$/,'').trim()}
+  function currentLevel(t){return Math.max(0,Math.min(t.maxLevel,Number(savedLevels[t.id]||0)))}
+  function status(t){const lv=currentLevel(t);if(lv>=t.maxLevel)return'completed';if(plan.some(p=>p.id===t.id))return'planned';return lv>0?'available':'locked'}
+  function laneOrder(techs){const preferred=['infantry','defense','health','attack','other','training','research','healing','march','capacity','gathering','economy','cavalry','lethality','archer'];const cats=[...new Set(techs.map(t=>t.category||'other'))];return cats.sort((a,b)=>(preferred.indexOf(a)<0?99:preferred.indexOf(a))-(preferred.indexOf(b)<0?99:preferred.indexOf(b)))}
+  function layout(){
+    const tr=tree(),techs=tr.techs.slice(),tiers=[...new Set(techs.map(tierOf))].sort((a,b)=>a-b),cats=laneOrder(techs);
+    const width=innerWidth<700?980:1180,margin=90,laneW=(width-margin*2)/Math.max(1,cats.length-1),rowGap=220;
+    const categoryX={};cats.forEach((c,i)=>categoryX[c]=cats.length===1?width/2:margin+i*laneW);
+    const byTier={};tiers.forEach(n=>byTier[n]=[]);techs.forEach(t=>byTier[tierOf(t)].push(t));
+    const result=[];
+    tiers.forEach((tier,ti)=>{
+      const row=byTier[tier],sameCat={};row.forEach(t=>(sameCat[t.category||'other']??=[]).push(t));
+      Object.entries(sameCat).forEach(([cat,arr])=>arr.forEach((t,j)=>{const spread=(j-(arr.length-1)/2)*112;result.push({tech:t,x:categoryX[cat]+spread,y:130+ti*rowGap,tier})}));
+    });
+    state.width=width;state.height=Math.max(900,160+tiers.length*rowGap);world.style.width=state.width+'px';world.style.height=state.height+'px';lines.setAttribute('viewBox',`0 0 ${state.width} ${state.height}`);state.nodes=result;
+    return {tr,tiers,cats,result};
+  }
+  function draw(){
+    const {tr,tiers,result}=layout();document.getElementById('v12StageLabel').textContent=(lang==='ar'?'شجرة ':'')+(tr.name[lang]||tr.name.en)+(lang==='ar'?' — اسحب للاستكشاف':' Research Tree — drag to explore');
+    nodesEl.innerHTML=tiers.map((n,i)=>`<div class="v12-tier" style="top:${78+i*220}px">TIER ${n}</div>`).join('')+result.map(n=>{const t=n.tech,lv=currentLevel(t),st=status(t);return `<button class="v12-node ${st}" data-tech="${t.id}" style="left:${n.x}px;top:${n.y}px" aria-label="${t.name}"><span class="v12-node-core"><span class="v12-glyph">${glyphs[t.category]||glyphs.other}</span><span class="v12-level">${lv>=t.maxLevel?'MAX':lv+'/'+t.maxLevel}</span></span><span class="v12-name">${t.name}</span><span class="v12-category">${t.category||'research'}</span></button>`}).join('');
+    const pos=new Map(result.map(n=>[n.tech.id,n]));let edges='';
+    result.forEach(n=>{const prev=result.filter(p=>baseName(p.tech)===baseName(n.tech)&&p.tier===n.tier-1)[0];if(prev){const x1=prev.x,y1=prev.y+38,x2=n.x,y2=n.y-38,mid=(y1+y2)/2;edges+=`<path class="v12-edge ${status(prev.tech)==='completed'?'active':''}" d="M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}"/>`}});
+    lines.innerHTML=edges;drawMini();fit(false);
+  }
+  function apply(){world.style.transform=`translate(${state.x}px,${state.y}px) scale(${state.scale})`;drawMini()}
+  function clamp(){const r=viewport.getBoundingClientRect(),minX=Math.min(40,r.width-state.width*state.scale-40),minY=Math.min(70,r.height-state.height*state.scale-70);state.x=Math.max(minX,Math.min(40,state.x));state.y=Math.max(minY,Math.min(70,state.y))}
+  function fit(animate=true){const r=viewport.getBoundingClientRect();state.scale=Math.max(.48,Math.min(1,(r.width-24)/state.width));state.x=(r.width-state.width*state.scale)/2;state.y=45;world.style.transition=animate?'transform .25s ease':'none';apply();setTimeout(()=>world.style.transition='',260)}
+  function zoom(delta,cx=viewport.clientWidth/2,cy=viewport.clientHeight/2){const old=state.scale,next=Math.max(.45,Math.min(1.65,old+delta));state.x=cx-(cx-state.x)*(next/old);state.y=cy-(cy-state.y)*(next/old);state.scale=next;clamp();apply()}
+  function drawMini(){const mm=document.getElementById('v12Minimap');if(!mm)return;const dots=state.nodes.map(n=>`<i style="left:${n.x/state.width*124}px;top:${n.y/state.height*82}px"></i>`).join('');const r=viewport.getBoundingClientRect(),view=document.getElementById('v12MiniView'),vw=Math.min(128,r.width/(state.width*state.scale)*128),vh=Math.min(86,r.height/(state.height*state.scale)*86),vx=Math.max(0,-state.x/(state.width*state.scale)*128),vy=Math.max(0,-state.y/(state.height*state.scale)*86);mm.innerHTML=dots+`<div class="v12-mini-view" style="left:${vx}px;top:${vy}px;width:${vw}px;height:${vh}px"></div>`}
+  viewport.addEventListener('pointerdown',e=>{if(e.target.closest('.v12-node'))return;state.drag=true;state.startX=e.clientX;state.startY=e.clientY;state.baseX=state.x;state.baseY=state.y;viewport.classList.add('dragging');viewport.setPointerCapture(e.pointerId)});
+  viewport.addEventListener('pointermove',e=>{if(!state.drag)return;state.x=state.baseX+e.clientX-state.startX;state.y=state.baseY+e.clientY-state.startY;clamp();apply()});
+  viewport.addEventListener('pointerup',()=>{state.drag=false;viewport.classList.remove('dragging')});viewport.addEventListener('pointercancel',()=>{state.drag=false;viewport.classList.remove('dragging')});
+  viewport.addEventListener('wheel',e=>{e.preventDefault();const r=viewport.getBoundingClientRect();zoom(e.deltaY<0?.1:-.1,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+  nodesEl.addEventListener('click',e=>{const b=e.target.closest('[data-tech]');if(b)openTech(b.dataset.tech)});
+  shell.querySelector('.v12-toolbar').addEventListener('click',e=>{const a=e.target.closest('[data-act]')?.dataset.act;if(a==='in')zoom(.12);if(a==='out')zoom(-.12);if(a==='fit')fit();if(a==='reset'){state.scale=1;state.x=(viewport.clientWidth-state.width)/2;state.y=30;clamp();apply()}});
+  const oldRender=window.render;window.render=function(){oldRender();setTimeout(draw,0)};
+  const oldPlan=window.renderPlan;window.renderPlan=function(){oldPlan();setTimeout(draw,0)};
+  new MutationObserver(()=>setTimeout(draw,0)).observe(document.getElementById('tabs'),{subtree:true,attributes:true,attributeFilter:['class']});
+  addEventListener('resize',()=>fit(false));draw();
+})();
+</script>
+
 </body></html>
