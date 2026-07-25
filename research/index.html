@@ -66,8 +66,27 @@ body.modal-open{overflow:hidden;touch-action:none}
 @media(max-width:760px){.selectors{display:flex!important;gap:8px}.selectors .field{flex:1 1 0;width:0}.selectors .arrow{flex-basis:20px}}
 @media(max-width:380px){.selectors{display:flex!important}.selectors .arrow{display:none}.selectors .field{width:0}}
 </style>
+
+<style>
+:root{--bg:#0f172a;--card:#162033;--accent:#22c55e;--gold:#eab308;--text:#eef2ff}
+body{background:linear-gradient(180deg,#0b1220,#111827)!important;color:var(--text)!important}
+.v10-dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:20px}
+.v10-card{background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.v10-title{font-size:30px;font-weight:800;margin:20px;text-align:center}
+.v10-sub{text-align:center;opacity:.8;margin-bottom:18px}
+</style>
 </head>
 <body>
+
+<div class="v10-title">Research Command Center</div>
+<div class="v10-sub">Offline Database • 191 Technologies • 720 Research Levels</div>
+<div class="v10-dashboard">
+<div class="v10-card"><div>Technologies</div><h2>191</h2></div>
+<div class="v10-card"><div>Research Levels</div><h2>720</h2></div>
+<div class="v10-card"><div>Current Plan</div><h2 id='v10Plan'>0</h2></div>
+<div class="v10-card"><div>Estimated Time</div><h2 id='v10Time'>0 Days</h2></div>
+</div>
+
 <header class="topbar"><a class="brand" href="/"><span class="brand-logo">♛</span><span><b>SaifKS</b><small>Research Planner</small></span></a><div class="top-actions"><button id="homeBtn" class="head-btn">⌂</button><button id="langBtn" class="head-btn">EN</button></div></header>
 <main class="page"><section class="hero"><div><h1 data-i="title">مخطط البحوث</h1><p data-i="subtitle">اختر مستواك الحالي والهدف واحسب الموارد والوقت والقوة بدقة.</p></div><div class="db-stats"><div><b id="techCount">191</b><span data-i="researches">بحث</span></div><div><b id="levelCount">714</b><span data-i="levels">مستوى</span></div></div></section><nav id="tabs" class="tabs"></nav><section class="boost-panel"><div class="boost-box"><label data-i="researchSpeedBonus">مكافأة سرعة البحث</label><div class="boost-input"><input id="researchBonus" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><span>%</span></div></div><div class="boost-box"><label data-i="availableSpeedups">التسريعات المتوفرة</label><div class="speedup-fields"><div><input id="speedDays" type="number" inputmode="numeric" min="0" placeholder="0"><small data-i="days">أيام</small></div><div><input id="speedHours" type="number" inputmode="numeric" min="0" max="23" placeholder="0"><small data-i="hours">ساعات</small></div><div><input id="speedMinutes" type="number" inputmode="numeric" min="0" max="59" placeholder="0"><small data-i="minutes">دقائق</small></div></div></div></section><section class="controls"><div class="search"><span>⌕</span><input id="search" type="search" autocomplete="off" placeholder="ابحث..."></div><div id="chips" class="chips"></div></section><div class="section-head"><div><span id="treeName" class="kicker"></span><h2 data-i="researchTree">شجرة الأبحاث</h2></div><span id="count" class="count"></span></div><div id="groups" class="groups"></div></main>
 <button id="fab" class="fab"><span data-i="plan">خطة البحث</span><b id="planCount">0</b></button>
