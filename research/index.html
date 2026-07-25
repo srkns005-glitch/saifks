@@ -55,6 +55,8 @@ body.modal-open{overflow:hidden;touch-action:none}
 @media(max-width:390px){.node-order{display:none}.research-node{grid-template-columns:34px minmax(0,1fr) auto 12px}.roadmap-tier{grid-template-columns:36px minmax(0,1fr)}.tier-dot{width:30px;height:30px}.tier-line{top:30px}.db-stats{display:none}}
 
 .boost-input input::placeholder,.speedup-fields input::placeholder{color:#8794a6;opacity:.55}.boost-input input:focus::placeholder,.speedup-fields input:focus::placeholder{opacity:.28}.plan-item{cursor:default}.plan-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08)}.plan-detail{min-width:0;padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--field)}.plan-detail small{display:block;margin:0;color:var(--muted);font-size:8px}.plan-detail b{display:block;margin-top:3px;font-size:10px;overflow-wrap:anywhere}.plan-time{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.plan-time .plan-detail{background:#101e2e}.field select option:disabled{color:#667386}.field select{appearance:auto;-webkit-appearance:menulist}.selectors .field{min-width:0}.selectors .field select{min-width:0;max-width:100%}@media(max-width:420px){.plan-details{grid-template-columns:repeat(2,minmax(0,1fr))}.plan-time{grid-template-columns:1fr}.selectors{grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr)}.field select{padding-inline:8px;font-size:15px}.arrow{padding-bottom:15px;font-size:15px}}
+
+.plan-item{transition:border-color .16s,background .16s}.plan-item:hover{border-color:#536b88;background:#132236}.plan-row>div{min-width:0}.plan-row b{display:block;overflow-wrap:anywhere}.plan-row small{font-size:10px}.remove{flex:0 0 32px}
 </style>
 </head>
 <body>
@@ -123,9 +125,8 @@ function renderPlan(){
   plan=plan.filter(p=>techById(p.id));
   $('#planCount').textContent=plan.length;
   $('#planList').innerHTML=plan.map((p,i)=>{
-    const x=techById(p.id),z=sum(planRows(p)),tm=adjustedTimes(z.time);
-    const detail=(label,value,wide='')=>`<div class="plan-detail ${wide}"><small>${label}</small><b>${value}</b></div>`;
-    return `<div class="plan-item"><div class="plan-row"><div><b>${x.name}</b><small>${p.current} → ${p.target}</small></div><button class="remove" data-remove="${i}" aria-label="${t('clear')}">×</button></div><div class="plan-details"><div class="plan-time">${detail(t('baseTime'),fmtTime(tm.base))}${detail(t('afterBonus'),fmtTime(tm.after))}${detail(t('remainingTime'),fmtTime(tm.remaining))}</div>${detail(t('power'),fmt(z.power))}${detail(t('bread'),fmt(z.bread))}${detail(t('wood'),fmt(z.wood))}${detail(t('stone'),fmt(z.stone))}${detail(t('iron'),fmt(z.iron))}${detail(t('gold'),fmt(z.gold))}</div></div>`
+    const x=techById(p.id);
+    return `<div class="plan-item"><div class="plan-row"><div><b>${x.name}</b><small>${p.current} → ${p.target}</small></div><button class="remove" data-remove="${i}" aria-label="${t('clear')}">×</button></div></div>`
   }).join('');
   $('#planEmpty').classList.toggle('hidden',plan.length>0);
   $('#summary').classList.toggle('hidden',plan.length===0);
