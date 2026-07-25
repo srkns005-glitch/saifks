@@ -1,0 +1,1895 @@
+{
+  "meta": {
+    "game": "KINGSHOT",
+    "version": "0.1.0",
+    "source": "Research | Kingshot Database.pdf",
+    "generated": "2026-07-25",
+    "note": "Independent starter database. Full per-level rows are included only where the PDF exposed them."
+  },
+  "trees": [
+    {
+      "id": "development",
+      "name": {
+        "en": "Development",
+        "ar": "التطوير"
+      },
+      "summary": {
+        "techCount": 45,
+        "levels": 129,
+        "baseTimeSeconds": 76301760,
+        "power": 2900000,
+        "cost": {
+          "bread": 209800000,
+          "wood": 209800000,
+          "stone": 41900000,
+          "iron": 10500000,
+          "gold": 3500000
+        }
+      },
+      "techs": [
+        {
+          "id": "bandaging-1",
+          "name": "Bandaging I",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+4.6% to +15.2%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-2",
+          "name": "Bandaging II",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+9% to +30%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-3",
+          "name": "Bandaging III",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+13.4% to +44.8%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-4",
+          "name": "Bandaging IV",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+18% to +60%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-5",
+          "name": "Bandaging V",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+22.4% to +74.8%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-6",
+          "name": "Bandaging VI",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+27% to +90%",
+          "levels": []
+        },
+        {
+          "id": "bandaging-7",
+          "name": "Bandaging VII",
+          "description": "Enhances Healing Speed of wounded soldiers",
+          "effectType": "Healing Speed",
+          "maxLevel": 3,
+          "range": "+27% to +90%",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-1",
+          "name": "Camp Expansion I",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+2 to +7",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-2",
+          "name": "Camp Expansion II",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+4 to +15",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-3",
+          "name": "Camp Expansion III",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+7 to +23",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-4",
+          "name": "Camp Expansion IV",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+9 to +30",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-5",
+          "name": "Camp Expansion V",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+11 to +37",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-6",
+          "name": "Camp Expansion VI",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+14 to +46",
+          "levels": []
+        },
+        {
+          "id": "camp-expansion-7",
+          "name": "Camp Expansion VII",
+          "description": "Increases the number of Squads that can be trained at a single time",
+          "effectType": "Training Capacity",
+          "maxLevel": 3,
+          "range": "+14 to +46",
+          "levels": []
+        },
+        {
+          "id": "command-tactics-1",
+          "name": "Command Tactics I",
+          "description": "Increases the number of Expedition armies that can be deployed at the same time",
+          "effectType": "March Queue",
+          "maxLevel": 1,
+          "range": "+1",
+          "levels": []
+        },
+        {
+          "id": "command-tactics-2",
+          "name": "Command Tactics II",
+          "description": "Increases the number of Expedition armies that can be deployed at the same time",
+          "effectType": "March Queue",
+          "maxLevel": 1,
+          "range": "+1",
+          "levels": []
+        },
+        {
+          "id": "command-tactics-3",
+          "name": "Command Tactics III",
+          "description": "Increases the number of Expedition armies that can be deployed at the same time",
+          "effectType": "March Queue",
+          "maxLevel": 1,
+          "range": "+1",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-1",
+          "name": "Tool Enhancement I",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+0.4% to +1.3%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-2",
+          "name": "Tool Enhancement II",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+0.6% to +2.2%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-3",
+          "name": "Tool Enhancement III",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+1% to +3%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-4",
+          "name": "Tool Enhancement IV",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+1.2% to +3.9%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-5",
+          "name": "Tool Enhancement V",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+1.6% to +5.2%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-6",
+          "name": "Tool Enhancement VI",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+1.8% to +6.1%",
+          "levels": []
+        },
+        {
+          "id": "tool-enhancement-7",
+          "name": "Tool Enhancement VII",
+          "description": "Enhances Research Speed",
+          "effectType": "Research Speed",
+          "maxLevel": 3,
+          "range": "+1.8% to +6.1%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-1",
+          "name": "Tooling Up I",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+0.4% to +1.3%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-2",
+          "name": "Tooling Up II",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+0.6% to +2.2%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-3",
+          "name": "Tooling Up III",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+1% to +3%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-4",
+          "name": "Tooling Up IV",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+1.2% to +3.9%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-5",
+          "name": "Tooling Up V",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+1.6% to +5.2%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-6",
+          "name": "Tooling Up VI",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+1.8% to +6.1%",
+          "levels": []
+        },
+        {
+          "id": "tooling-up-7",
+          "name": "Tooling Up VII",
+          "description": "Enhances Construction Speed",
+          "effectType": "Construction Speed",
+          "maxLevel": 3,
+          "range": "+1.8% to +6.1%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-1",
+          "name": "Trainer Tools I",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+2.2% to +7.4%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-2",
+          "name": "Trainer Tools II",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+4.6% to +15.2%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-3",
+          "name": "Trainer Tools III",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+6.8% to +22.6%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-4",
+          "name": "Trainer Tools IV",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+9% to +30%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-5",
+          "name": "Trainer Tools V",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+11.2% to +37.4%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-6",
+          "name": "Trainer Tools VI",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+13.4% to +44.8%",
+          "levels": []
+        },
+        {
+          "id": "trainer-tools-7",
+          "name": "Trainer Tools VII",
+          "description": "Enhances Training Speed",
+          "effectType": "Training Speed",
+          "maxLevel": 3,
+          "range": "+13.4% to +44.8%",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-1",
+          "name": "Ward Expansion I",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+540 to +1,800",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-2",
+          "name": "Ward Expansion II",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+1,100 to +3,600",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-3",
+          "name": "Ward Expansion III",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+2,200 to +7,300",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-4",
+          "name": "Ward Expansion IV",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+4,300 to +14.4K",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-5",
+          "name": "Ward Expansion V",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+8,600 to +29.2K",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-6",
+          "name": "Ward Expansion VI",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+12K to +40K",
+          "levels": []
+        },
+        {
+          "id": "ward-expansion-7",
+          "name": "Ward Expansion VII",
+          "description": "Enhances Infirmary Capacity",
+          "effectType": "Infirmary Capacity",
+          "maxLevel": 3,
+          "range": "+20K to +67K",
+          "levels": []
+        }
+      ]
+    },
+    {
+      "id": "economy",
+      "name": {
+        "en": "Economy",
+        "ar": "الاقتصاد"
+      },
+      "summary": {
+        "techCount": 44,
+        "levels": 132,
+        "baseTimeSeconds": 14355780,
+        "power": 437700,
+        "cost": {
+          "bread": 156700000,
+          "wood": 156700000,
+          "stone": 31200000,
+          "iron": 7800000,
+          "gold": 3100000
+        }
+      },
+      "techs": [
+        {
+          "id": "bread-output-1",
+          "name": "Bread Output I",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+4% to +13.5%",
+          "levels": [
+            {
+              "level": 1,
+              "power": 1040,
+              "timeSeconds": 27,
+              "cost": {
+                "bread": 5400,
+                "wood": 5400,
+                "stone": 1000,
+                "iron": 270,
+                "gold": 320
+              },
+              "effect": 4,
+              "requires": [
+                "Academy Lv.1"
+              ]
+            },
+            {
+              "level": 2,
+              "power": 2080,
+              "timeSeconds": 40,
+              "cost": {
+                "bread": 7500,
+                "wood": 7500,
+                "stone": 1500,
+                "iron": 370,
+                "gold": 440
+              },
+              "effect": 8,
+              "requires": [
+                "Academy Lv.2"
+              ]
+            },
+            {
+              "level": 3,
+              "power": 3510,
+              "timeSeconds": 60,
+              "cost": {
+                "bread": 16000,
+                "wood": 16000,
+                "stone": 3200,
+                "iron": 810,
+                "gold": 960
+              },
+              "effect": 13.5,
+              "requires": [
+                "Academy Lv.3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bread-output-2",
+          "name": "Bread Output II",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+4% to +13.5%",
+          "levels": [
+            {
+              "level": 1,
+              "power": 1040,
+              "timeSeconds": 300,
+              "cost": {
+                "bread": 54000,
+                "wood": 54000,
+                "stone": 10000,
+                "iron": 2700,
+                "gold": 640
+              },
+              "effect": 4,
+              "requires": [
+                "Academy Lv.8",
+                "Stone Gathering I Lv.1"
+              ]
+            },
+            {
+              "level": 2,
+              "power": 2080,
+              "timeSeconds": 420,
+              "cost": {
+                "bread": 75000,
+                "wood": 75000,
+                "stone": 15000,
+                "iron": 3700,
+                "gold": 890
+              },
+              "effect": 8,
+              "requires": [
+                "Academy Lv.9"
+              ]
+            },
+            {
+              "level": 3,
+              "power": 3510,
+              "timeSeconds": 0,
+              "cost": {
+                "bread": 160000,
+                "wood": 160000,
+                "stone": 32000,
+                "iron": 8100,
+                "gold": 1900
+              },
+              "effect": 13.5,
+              "requires": [
+                "Academy Lv.10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bread-output-3",
+          "name": "Bread Output III",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+5.5% to +18%",
+          "levels": []
+        },
+        {
+          "id": "bread-output-4",
+          "name": "Bread Output IV",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+7% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "bread-output-5",
+          "name": "Bread Output V",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "bread-output-6",
+          "name": "Bread Output VI",
+          "description": "Enhances Bread Output in Mill",
+          "effectType": "Bread Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-1",
+          "name": "Food Foraging I",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-2",
+          "name": "Food Foraging II",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-3",
+          "name": "Food Foraging III",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+11% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-4",
+          "name": "Food Foraging IV",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+13.5% to +45%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-5",
+          "name": "Food Foraging V",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "food-foraging-6",
+          "name": "Food Foraging VI",
+          "description": "Enhances Bread Gathering Speed",
+          "effectType": "Bread Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-1",
+          "name": "Wood Gathering I",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-2",
+          "name": "Wood Gathering II",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-3",
+          "name": "Wood Gathering III",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+11% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-4",
+          "name": "Wood Gathering IV",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+13.5% to +45%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-5",
+          "name": "Wood Gathering V",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-gathering-6",
+          "name": "Wood Gathering VI",
+          "description": "Enhances Wood Gathering Speed",
+          "effectType": "Wood Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-1",
+          "name": "Wood Output I",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+4% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-2",
+          "name": "Wood Output II",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+4% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-3",
+          "name": "Wood Output III",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+5.5% to +18%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-4",
+          "name": "Wood Output IV",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+7% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-5",
+          "name": "Wood Output V",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "wood-output-6",
+          "name": "Wood Output VI",
+          "description": "Enhances Wood Output",
+          "effectType": "Wood Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "iron-mining-1",
+          "name": "Iron Mining I",
+          "description": "Enhances Iron Mining Speed",
+          "effectType": "Iron Mining Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-mining-2",
+          "name": "Iron Mining II",
+          "description": "Enhances Iron Mining Speed",
+          "effectType": "Iron Mining Speed",
+          "maxLevel": 3,
+          "range": "+11% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-mining-3",
+          "name": "Iron Mining III",
+          "description": "Enhances Iron Mining Speed",
+          "effectType": "Iron Mining Speed",
+          "maxLevel": 3,
+          "range": "+13.5% to +45%",
+          "levels": []
+        },
+        {
+          "id": "iron-mining-4",
+          "name": "Iron Mining IV",
+          "description": "Enhances Iron Mining Speed",
+          "effectType": "Iron Mining Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-mining-5",
+          "name": "Iron Mining V",
+          "description": "Enhances Iron Mining Speed",
+          "effectType": "Iron Mining Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-output-1",
+          "name": "Iron Output I",
+          "description": "Enhances Iron Output",
+          "effectType": "Iron Output",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "iron-output-2",
+          "name": "Iron Output II",
+          "description": "Enhances Iron Output",
+          "effectType": "Iron Output",
+          "maxLevel": 3,
+          "range": "+5.5% to +18%",
+          "levels": []
+        },
+        {
+          "id": "iron-output-3",
+          "name": "Iron Output III",
+          "description": "Enhances Iron Output",
+          "effectType": "Iron Output",
+          "maxLevel": 3,
+          "range": "+7% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-output-4",
+          "name": "Iron Output IV",
+          "description": "Enhances Iron Output",
+          "effectType": "Iron Output",
+          "maxLevel": 3,
+          "range": "+7% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "iron-output-5",
+          "name": "Iron Output V",
+          "description": "Enhances Iron Output",
+          "effectType": "Iron Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "stone-gathering-1",
+          "name": "Stone Gathering I",
+          "description": "Enhances Stone Gathering Speed",
+          "effectType": "Stone Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "stone-gathering-2",
+          "name": "Stone Gathering II",
+          "description": "Enhances Stone Gathering Speed",
+          "effectType": "Stone Gathering Speed",
+          "maxLevel": 3,
+          "range": "+11% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "stone-gathering-3",
+          "name": "Stone Gathering III",
+          "description": "Enhances Stone Gathering Speed",
+          "effectType": "Stone Gathering Speed",
+          "maxLevel": 3,
+          "range": "+13.5% to +45%",
+          "levels": []
+        },
+        {
+          "id": "stone-gathering-4",
+          "name": "Stone Gathering IV",
+          "description": "Enhances Stone Gathering Speed",
+          "effectType": "Stone Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "stone-gathering-5",
+          "name": "Stone Gathering V",
+          "description": "Enhances Stone Gathering Speed",
+          "effectType": "Stone Gathering Speed",
+          "maxLevel": 3,
+          "range": "+16% to +53.5%",
+          "levels": []
+        },
+        {
+          "id": "stone-output-1",
+          "name": "Stone Output I",
+          "description": "Enhances Stone Output",
+          "effectType": "Stone Output",
+          "maxLevel": 3,
+          "range": "+8% to +27%",
+          "levels": []
+        },
+        {
+          "id": "stone-output-2",
+          "name": "Stone Output II",
+          "description": "Enhances Stone Output",
+          "effectType": "Stone Output",
+          "maxLevel": 3,
+          "range": "+5.5% to +18%",
+          "levels": []
+        },
+        {
+          "id": "stone-output-3",
+          "name": "Stone Output III",
+          "description": "Enhances Stone Output",
+          "effectType": "Stone Output",
+          "maxLevel": 3,
+          "range": "+7% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "stone-output-4",
+          "name": "Stone Output IV",
+          "description": "Enhances Stone Output",
+          "effectType": "Stone Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        },
+        {
+          "id": "stone-output-5",
+          "name": "Stone Output V",
+          "description": "Enhances Stone Output",
+          "effectType": "Stone Output",
+          "maxLevel": 3,
+          "range": "+8% to +26%",
+          "levels": []
+        }
+      ]
+    },
+    {
+      "id": "battle",
+      "name": {
+        "en": "Battle",
+        "ar": "المعركة"
+      },
+      "summary": {
+        "techCount": 102,
+        "levels": 453,
+        "baseTimeSeconds": 326760120,
+        "power": 17700000,
+        "cost": {
+          "bread": 847700000,
+          "wood": 847700000,
+          "stone": 169900000,
+          "iron": 42700000,
+          "gold": 15600000
+        }
+      },
+      "techs": [
+        {
+          "id": "leathercraft-1",
+          "name": "Leathercraft I",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "leathercraft-2",
+          "name": "Leathercraft II",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "leathercraft-3",
+          "name": "Leathercraft III",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "leathercraft-4",
+          "name": "Leathercraft IV",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "leathercraft-5",
+          "name": "Leathercraft V",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "leathercraft-6",
+          "name": "Leathercraft VI",
+          "description": "Enhances Archer Health",
+          "effectType": "Archer Health",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-1",
+          "name": "Assault Techniques I",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 3,
+          "range": "+0.5% to +1.5%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-2",
+          "name": "Assault Techniques II",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 3,
+          "range": "+0.75% to +2.5%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-3",
+          "name": "Assault Techniques III",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 4,
+          "range": "+1% to +4.5%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-4",
+          "name": "Assault Techniques IV",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 5,
+          "range": "+1.75% to +10%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-5",
+          "name": "Assault Techniques V",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 6,
+          "range": "+2% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "assault-techniques-6",
+          "name": "Assault Techniques VI",
+          "description": "Enhances Squads' Lethality",
+          "effectType": "Squads' Lethality",
+          "maxLevel": 6,
+          "range": "+2.25% to +15.25%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-1",
+          "name": "Bulwark Formations I",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-2",
+          "name": "Bulwark Formations II",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-3",
+          "name": "Bulwark Formations III",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-4",
+          "name": "Bulwark Formations IV",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-5",
+          "name": "Bulwark Formations V",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "bulwark-formations-6",
+          "name": "Bulwark Formations VI",
+          "description": "Enhances Cavalry Defense",
+          "effectType": "Cavalry Defense",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-1",
+          "name": "Close Combat I",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-2",
+          "name": "Close Combat II",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-3",
+          "name": "Close Combat III",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-4",
+          "name": "Close Combat IV",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-5",
+          "name": "Close Combat V",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "close-combat-6",
+          "name": "Close Combat VI",
+          "description": "Enhances Infantry Lethality",
+          "effectType": "Infantry Lethality",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-1",
+          "name": "Defensive Formations I",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-2",
+          "name": "Defensive Formations II",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-3",
+          "name": "Defensive Formations III",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-4",
+          "name": "Defensive Formations IV",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-5",
+          "name": "Defensive Formations V",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "defensive-formations-6",
+          "name": "Defensive Formations VI",
+          "description": "Enhances Infantry Defense",
+          "effectType": "Infantry Defense",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-1",
+          "name": "Shield Upgrade I",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-2",
+          "name": "Shield Upgrade II",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-3",
+          "name": "Shield Upgrade III",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-4",
+          "name": "Shield Upgrade IV",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-5",
+          "name": "Shield Upgrade V",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "shield-upgrade-6",
+          "name": "Shield Upgrade VI",
+          "description": "Enhances Infantry Health",
+          "effectType": "Infantry Health",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-1",
+          "name": "Lance Upgrade I",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-2",
+          "name": "Lance Upgrade II",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-3",
+          "name": "Lance Upgrade III",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-4",
+          "name": "Lance Upgrade IV",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-5",
+          "name": "Lance Upgrade V",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "lance-upgrade-6",
+          "name": "Lance Upgrade VI",
+          "description": "Enhances Cavalry Lethality",
+          "effectType": "Cavalry Lethality",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-1",
+          "name": "Cavalry Charge I",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-2",
+          "name": "Cavalry Charge II",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-3",
+          "name": "Cavalry Charge III",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-4",
+          "name": "Cavalry Charge IV",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-5",
+          "name": "Cavalry Charge V",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "cavalry-charge-6",
+          "name": "Cavalry Charge VI",
+          "description": "Enhances Cavalry Attack",
+          "effectType": "Cavalry Attack",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-1",
+          "name": "Fortified Mail I",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-2",
+          "name": "Fortified Mail II",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-3",
+          "name": "Fortified Mail III",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-4",
+          "name": "Fortified Mail IV",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-5",
+          "name": "Fortified Mail V",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "fortified-mail-6",
+          "name": "Fortified Mail VI",
+          "description": "Enhances Cavalry Health",
+          "effectType": "Cavalry Health",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-1",
+          "name": "Picket Lines I",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-2",
+          "name": "Picket Lines II",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-3",
+          "name": "Picket Lines III",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-4",
+          "name": "Picket Lines IV",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-5",
+          "name": "Picket Lines V",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "picket-lines-6",
+          "name": "Picket Lines VI",
+          "description": "Enhances Archer Defense",
+          "effectType": "Archer Defense",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-1",
+          "name": "Precision Targeting I",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-2",
+          "name": "Precision Targeting II",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-3",
+          "name": "Precision Targeting III",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-4",
+          "name": "Precision Targeting IV",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-5",
+          "name": "Precision Targeting V",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "precision-targeting-6",
+          "name": "Precision Targeting VI",
+          "description": "Enhances Archer Attack",
+          "effectType": "Archer Attack",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-1",
+          "name": "Regimental Expansion I",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 3,
+          "range": "+320 to +1,000",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-2",
+          "name": "Regimental Expansion II",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 3,
+          "range": "+320 to +1,400",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-3",
+          "name": "Regimental Expansion III",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 4,
+          "range": "+620 to +2,800",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-4",
+          "name": "Regimental Expansion IV",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 5,
+          "range": "+990 to +5,600",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-5",
+          "name": "Regimental Expansion V",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 6,
+          "range": "+1,200 to +8,000",
+          "levels": []
+        },
+        {
+          "id": "regimental-expansion-6",
+          "name": "Regimental Expansion VI",
+          "description": "Enhances Squads' Deployment Capacity",
+          "effectType": "Squads' Deployment Capacity",
+          "maxLevel": 6,
+          "range": "+2,000 to +13.4K",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-1",
+          "name": "Reprisal Tactics I",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-2",
+          "name": "Reprisal Tactics II",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-3",
+          "name": "Reprisal Tactics III",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-4",
+          "name": "Reprisal Tactics IV",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-5",
+          "name": "Reprisal Tactics V",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "reprisal-tactics-6",
+          "name": "Reprisal Tactics VI",
+          "description": "Enhances Infantry Attack",
+          "effectType": "Infantry Attack",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-1",
+          "name": "Special Defensive Training I",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 3,
+          "range": "+0.5% to +1.5%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-2",
+          "name": "Special Defensive Training II",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 3,
+          "range": "+0.75% to +2.5%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-3",
+          "name": "Special Defensive Training III",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 4,
+          "range": "+1% to +4.5%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-4",
+          "name": "Special Defensive Training IV",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 5,
+          "range": "+1.75% to +10%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-5",
+          "name": "Special Defensive Training V",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 6,
+          "range": "+2% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "special-defensive-training-6",
+          "name": "Special Defensive Training VI",
+          "description": "Enhances Squads' Defense",
+          "effectType": "Squads' Defense",
+          "maxLevel": 6,
+          "range": "+2.25% to +15.25%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-1",
+          "name": "Survival Techniques I",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 3,
+          "range": "+0.5% to +1.5%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-2",
+          "name": "Survival Techniques II",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 3,
+          "range": "+0.75% to +2.5%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-3",
+          "name": "Survival Techniques III",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 4,
+          "range": "+1% to +4.5%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-4",
+          "name": "Survival Techniques IV",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 5,
+          "range": "+1.75% to +10%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-5",
+          "name": "Survival Techniques V",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 6,
+          "range": "+2% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "survival-techniques-6",
+          "name": "Survival Techniques VI",
+          "description": "Enhances Squads' Health",
+          "effectType": "Squads' Health",
+          "maxLevel": 6,
+          "range": "+2.25% to +15.25%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-1",
+          "name": "Targeted Sniping I",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 3,
+          "range": "+1.25% to +4%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-2",
+          "name": "Targeted Sniping II",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 3,
+          "range": "+1.75% to +5.5%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-3",
+          "name": "Targeted Sniping III",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 4,
+          "range": "+2.5% to +11.5%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-4",
+          "name": "Targeted Sniping IV",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 5,
+          "range": "+4% to +22.5%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-5",
+          "name": "Targeted Sniping V",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 6,
+          "range": "+4.75% to +31.75%",
+          "levels": []
+        },
+        {
+          "id": "targeted-sniping-6",
+          "name": "Targeted Sniping VI",
+          "description": "Enhances Archer Lethality",
+          "effectType": "Archer Lethality",
+          "maxLevel": 6,
+          "range": "+5.5% to +36.5%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-1",
+          "name": "Weapons Prep I",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 3,
+          "range": "+0.5% to +1.5%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-2",
+          "name": "Weapons Prep II",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 3,
+          "range": "+0.75% to +2.5%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-3",
+          "name": "Weapons Prep III",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 4,
+          "range": "+1% to +4.5%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-4",
+          "name": "Weapons Prep IV",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 5,
+          "range": "+1.75% to +10%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-5",
+          "name": "Weapons Prep V",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 6,
+          "range": "+2% to +13.5%",
+          "levels": []
+        },
+        {
+          "id": "weapons-prep-6",
+          "name": "Weapons Prep VI",
+          "description": "Enhances Squads' Attack",
+          "effectType": "Squads' Attack",
+          "maxLevel": 6,
+          "range": "+2.25% to +15.25%",
+          "levels": []
+        }
+      ]
+    }
+  ]
+}

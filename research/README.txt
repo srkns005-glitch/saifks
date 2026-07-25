@@ -1,0 +1,1 @@
+Starter build. Open index.html through a local/static server. Full per-level calculations currently work for Bread Output I and Bread Output II; the remaining catalog is prepared in research-data.json for completion.
