@@ -65,6 +65,32 @@ body.modal-open{overflow:hidden;touch-action:none}
 .selectors .arrow{flex:0 0 26px;text-align:center}
 @media(max-width:760px){.selectors{display:flex!important;gap:8px}.selectors .field{flex:1 1 0;width:0}.selectors .arrow{flex-basis:20px}}
 @media(max-width:380px){.selectors{display:flex!important}.selectors .arrow{display:none}.selectors .field{width:0}}
+
+/* ===== V10 PHASE 2 — PROFESSIONAL COMMAND LAYOUT ===== */
+:root{--nav-w:238px;--queue-w:354px;--top-h:68px;--glass:rgba(14,27,43,.88);--glow:rgba(91,168,255,.18)}
+body{background:
+ radial-gradient(circle at 15% 0%,rgba(91,168,255,.12),transparent 28%),
+ radial-gradient(circle at 88% 8%,rgba(239,198,103,.10),transparent 26%),
+ linear-gradient(180deg,#07111d 0%,#050b12 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+.topbar{height:var(--top-h);padding-inline:18px;background:rgba(4,11,19,.84);backdrop-filter:blur(18px);border-bottom-color:rgba(255,255,255,.08)}
+.brand-logo{border-color:rgba(239,198,103,.5);background:linear-gradient(145deg,#242536,#121825);box-shadow:0 0 26px rgba(239,198,103,.10)}
+.command-hero{max-width:none;margin:18px calc(var(--queue-w) + 28px) 0 calc(var(--nav-w) + 28px);padding:24px;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(520px,1.4fr);gap:24px;align-items:center;border:1px solid rgba(255,255,255,.09);border-radius:24px;background:linear-gradient(125deg,rgba(18,38,60,.96),rgba(9,20,33,.94));box-shadow:0 24px 70px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.04);position:relative;overflow:hidden}
+.command-hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;inset-inline-end:-190px;top:-260px;background:radial-gradient(circle,rgba(91,168,255,.22),transparent 67%);pointer-events:none}
+.command-kicker{font-size:10px;letter-spacing:1.8px;color:var(--gold);font-weight:800}.command-copy h1{margin:7px 0 8px;font-size:clamp(27px,3.2vw,44px);line-height:1.05}.command-copy p{margin:0;max-width:570px;color:var(--muted);line-height:1.7;font-size:13px}
+.command-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;position:relative;z-index:1}.command-metrics>div{min-width:0;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(4,13,22,.55);backdrop-filter:blur(12px)}.command-metrics small,.command-metrics span{display:block;color:var(--muted);font-size:9px}.command-metrics strong{display:block;margin:5px 0 4px;font-size:21px;color:#fff}.command-metrics>div:nth-child(3) strong{color:var(--gold)}.command-metrics>div:nth-child(4) strong{color:var(--green);font-size:17px}
+.side-nav{position:fixed;z-index:32;top:calc(var(--top-h) + 18px);bottom:18px;inset-inline-start:18px;width:var(--nav-w);padding:16px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:var(--glass);backdrop-filter:blur(18px);box-shadow:0 22px 55px rgba(0,0,0,.28)}
+.side-nav-head{padding:2px 4px 14px;border-bottom:1px solid rgba(255,255,255,.08)}.side-nav-head span{display:block;font-size:15px;font-weight:800}.side-nav-head small{display:block;margin-top:4px;color:var(--muted);font-size:10px}.side-nav-trees{display:grid;gap:8px;padding:14px 0}.side-tree{width:100%;display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:10px;padding:10px;border:1px solid transparent;border-radius:14px;background:transparent;color:var(--text);text-align:start;transition:.2s ease}.side-tree:hover{background:rgba(255,255,255,.04);transform:translateY(-1px)}.side-tree.active{border-color:color-mix(in srgb,var(--accent) 55%,transparent);background:linear-gradient(125deg,color-mix(in srgb,var(--accent) 16%,transparent),rgba(255,255,255,.025));box-shadow:inset 3px 0 0 var(--accent)}html[dir="rtl"] .side-tree.active{box-shadow:inset -3px 0 0 var(--accent)}.side-tree-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:color-mix(in srgb,var(--accent) 15%,#09131f);color:var(--accent);font-size:18px}.side-tree-copy{min-width:0}.side-tree-copy b{display:block;font-size:12px}.side-tree-copy small{display:block;margin-top:4px;color:var(--muted);font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.side-tree-count{min-width:28px;height:28px;display:grid;place-items:center;border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted);font-size:9px}.side-nav-foot{margin-top:auto;padding:11px;border-radius:12px;background:rgba(84,213,155,.07);color:#9bcbb7;font-size:9px}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);margin-inline-end:6px}
+.page{max-width:none;margin-inline-start:calc(var(--nav-w) + 28px);margin-inline-end:calc(var(--queue-w) + 28px);padding:16px 0 90px}.page>.hero{display:none}.tabs{display:none}.boost-panel{border-radius:18px!important;background:linear-gradient(145deg,rgba(18,34,53,.9),rgba(9,20,32,.94))!important;box-shadow:0 18px 40px rgba(0,0,0,.2)}.controls{top:calc(var(--top-h) + 10px);border-radius:18px;background:rgba(8,19,31,.88);backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.section-head{padding:2px 4px}.section-head h2{font-size:23px}.groups{gap:22px}.roadmap-group,.group{border:1px solid rgba(255,255,255,.07)!important;border-radius:20px!important;background:linear-gradient(150deg,rgba(15,29,46,.82),rgba(8,18,30,.82))!important;padding:15px!important;box-shadow:0 16px 38px rgba(0,0,0,.20)}
+.research-node,.card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}.research-node:hover,.card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28),0 0 0 1px color-mix(in srgb,var(--accent) 28%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 9%,#142235),#0b1725)}
+#planner.overlay{display:block;position:fixed;z-index:31;top:calc(var(--top-h) + 18px);bottom:18px;inset-inline-end:18px;inset-inline-start:auto;width:var(--queue-w);pointer-events:auto}.overlay#planner .backdrop{display:none}.overlay#planner .drawer{position:static;width:100%;height:100%;border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:16px;background:var(--glass);backdrop-filter:blur(18px);box-shadow:0 22px 55px rgba(0,0,0,.30)}#planner .drawer-head .icon-btn{display:none}.plan-list{padding-block:12px;scrollbar-width:thin}.plan-item{position:relative;padding:12px 12px 12px 14px;border-color:rgba(255,255,255,.075);background:linear-gradient(145deg,rgba(20,36,55,.85),rgba(9,20,32,.9));transition:.18s ease}.plan-item:hover{border-color:rgba(239,198,103,.35);transform:translateY(-1px)}.plan-item:before{content:"";position:absolute;inset-block:10px;inset-inline-start:0;width:3px;border-radius:3px;background:var(--gold)}.summary{background:linear-gradient(180deg,transparent,rgba(6,14,23,.9));margin-inline:-16px;margin-bottom:-16px;padding:14px 16px 16px}.summary-grid div{background:rgba(4,13,22,.62);border-color:rgba(255,255,255,.07)}.fab{display:none}
+.modal-wrap{z-index:90;backdrop-filter:blur(3px)}.modal-wrap .backdrop{background:rgba(1,5,9,.62)}.modal{top:var(--top-h);bottom:0;left:auto;right:auto;inset-inline-end:0;width:min(560px,100%);max-height:none;height:calc(100dvh - var(--top-h));transform:none;border-radius:22px 0 0 0;border-inline-start:1px solid rgba(255,255,255,.1);border-block:0;border-inline-end:0;padding:22px;background:linear-gradient(160deg,#102238,#081421);box-shadow:-24px 0 70px rgba(0,0,0,.55);animation:drawerIn .25s ease}.modal-head{position:sticky;top:-22px;z-index:4;margin:-22px -22px 0;padding:17px 22px;background:rgba(8,20,33,.94);backdrop-filter:blur(18px)}@keyframes drawerIn{from{opacity:.2;translate:35px 0}to{opacity:1;translate:0 0}}html[dir="rtl"] .modal{border-radius:0 22px 0 0;box-shadow:24px 0 70px rgba(0,0,0,.55)}html[dir="rtl"] @keyframes drawerIn{from{opacity:.2;translate:-35px 0}to{opacity:1;translate:0 0}}
+.tech-title{padding:20px 0 4px}.tech-title .card-icon{width:52px;height:52px;flex-basis:52px;border-radius:15px;font-size:23px}.tech-title h2{font-size:25px}.range{padding:14px;border-radius:14px}.selectors{padding:14px;border:1px solid rgba(255,255,255,.075);border-radius:16px;background:rgba(4,13,22,.42)}.field select{height:52px}.totals{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.total{padding:12px;border-radius:13px}.time-breakdown{grid-column:1/-1!important;border-radius:14px!important}.levels{border-radius:15px}.add{min-height:54px;border-radius:14px;font-size:14px}
+footer{margin-inline-start:calc(var(--nav-w) + 28px);margin-inline-end:calc(var(--queue-w) + 28px)}
+@media(max-width:1180px){:root{--nav-w:204px;--queue-w:316px}.command-hero{grid-template-columns:1fr}.command-metrics{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:980px){.side-nav{display:none}.command-hero{margin:14px 12px 0}.page{margin-inline:0;padding-inline:12px}.tabs{display:grid}.command-metrics{grid-template-columns:repeat(2,1fr)}#planner.overlay{display:none;position:fixed;inset:0;width:auto;z-index:80}.overlay#planner.open{display:block}.overlay#planner .backdrop{display:block}.overlay#planner .drawer{position:absolute;inset-block:0;inset-inline-end:0;width:min(430px,100%);height:auto;border-radius:0;border-inline-start:1px solid var(--line)}#planner .drawer-head .icon-btn{display:inline-block}.fab{display:flex}footer{margin-inline:0}.modal{top:auto;bottom:0;inset-inline:0;width:100%;height:auto;max-height:93dvh;border-radius:22px 22px 0 0!important;border:1px solid var(--line);transform:none}.modal-head{top:-16px;margin:-16px -13px 0;padding:13px 14px}.command-copy{text-align:center}.command-copy p{margin-inline:auto}}
+@media(max-width:620px){.command-hero{padding:17px;border-radius:19px}.command-copy h1{font-size:27px}.command-copy p{font-size:11px}.command-metrics{gap:7px}.command-metrics>div{padding:11px}.command-metrics strong{font-size:18px}.command-metrics>div:nth-child(4) strong{font-size:14px}.command-metrics span{display:none}}
 </style>
 
 <style>
@@ -78,16 +104,28 @@ body{background:linear-gradient(180deg,#0b1220,#111827)!important;color:var(--te
 </head>
 <body>
 
-<div class="v10-title">Research Command Center</div>
-<div class="v10-sub">Offline Database • 191 Technologies • 720 Research Levels</div>
-<div class="v10-dashboard">
-<div class="v10-card"><div>Technologies</div><h2>191</h2></div>
-<div class="v10-card"><div>Research Levels</div><h2>720</h2></div>
-<div class="v10-card"><div>Current Plan</div><h2 id='v10Plan'>0</h2></div>
-<div class="v10-card"><div>Estimated Time</div><h2 id='v10Time'>0 Days</h2></div>
-</div>
+<section class="command-hero" aria-label="Research Command Center">
+  <div class="command-copy">
+    <span class="command-kicker">SAIFKS INTELLIGENCE SUITE</span>
+    <h1>Research Command Center</h1>
+    <p>Plan every upgrade, compare its cost, and build your complete research route offline.</p>
+  </div>
+  <div class="command-metrics">
+    <div><small>Technologies</small><strong>191</strong><span>Complete database</span></div>
+    <div><small>Research Levels</small><strong>720</strong><span>All levels verified</span></div>
+    <div><small>Current Plan</small><strong id="v10Plan">0</strong><span>Queued upgrades</span></div>
+    <div><small>Remaining Time</small><strong id="v10Time">—</strong><span>After bonus & speedups</span></div>
+  </div>
+</section>
 
 <header class="topbar"><a class="brand" href="/"><span class="brand-logo">♛</span><span><b>SaifKS</b><small>Research Planner</small></span></a><div class="top-actions"><button id="homeBtn" class="head-btn">⌂</button><button id="langBtn" class="head-btn">EN</button></div></header>
+<aside id="sideNav" class="side-nav" aria-label="Research categories">
+  <div class="side-nav-head"><span>Research Trees</span><small>Choose a command branch</small></div>
+  <div id="sideNavTrees" class="side-nav-trees"></div>
+  <div class="side-nav-foot">
+    <span class="live-dot"></span> Offline database ready
+  </div>
+</aside>
 <main class="page"><section class="hero"><div><h1 data-i="title">مخطط البحوث</h1><p data-i="subtitle">اختر مستواك الحالي والهدف واحسب الموارد والوقت والقوة بدقة.</p></div><div class="db-stats"><div><b id="techCount">191</b><span data-i="researches">بحث</span></div><div><b id="levelCount">714</b><span data-i="levels">مستوى</span></div></div></section><nav id="tabs" class="tabs"></nav><section class="boost-panel"><div class="boost-box"><label data-i="researchSpeedBonus">مكافأة سرعة البحث</label><div class="boost-input"><input id="researchBonus" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><span>%</span></div></div><div class="boost-box"><label data-i="availableSpeedups">التسريعات المتوفرة</label><div class="speedup-fields"><div><input id="speedDays" type="number" inputmode="numeric" min="0" placeholder="0"><small data-i="days">أيام</small></div><div><input id="speedHours" type="number" inputmode="numeric" min="0" max="23" placeholder="0"><small data-i="hours">ساعات</small></div><div><input id="speedMinutes" type="number" inputmode="numeric" min="0" max="59" placeholder="0"><small data-i="minutes">دقائق</small></div></div></div></section><section class="controls"><div class="search"><span>⌕</span><input id="search" type="search" autocomplete="off" placeholder="ابحث..."></div><div id="chips" class="chips"></div></section><div class="section-head"><div><span id="treeName" class="kicker"></span><h2 data-i="researchTree">شجرة الأبحاث</h2></div><span id="count" class="count"></span></div><div id="groups" class="groups"></div></main>
 <button id="fab" class="fab"><span data-i="plan">خطة البحث</span><b id="planCount">0</b></button>
 <div id="planner" class="overlay"><button class="backdrop" data-close-planner></button><aside class="drawer"><div class="drawer-head"><div><span class="kicker" data-i="planner">الخطة</span><h2 data-i="plan">خطة البحث</h2></div><div><button id="clear" class="text-btn danger" data-i="clear">مسح</button> <button class="icon-btn" data-close-planner>×</button></div></div><div id="planList" class="plan-list"></div><div id="planEmpty" class="plan-empty" data-i="empty">لم تضف أي بحث بعد.</div><div id="summary" class="summary hidden"><div class="summary-grid"><div class="wide"><small data-i="time">الوقت</small><b id="sTime">—</b></div><div><small data-i="power">القوة</small><b id="sPower">—</b></div><div><small data-i="bread">الخبز</small><b id="sBread">—</b></div><div><small data-i="wood">الخشب</small><b id="sWood">—</b></div><div><small data-i="stone">الحجر</small><b id="sStone">—</b></div><div><small data-i="iron">الحديد</small><b id="sIron">—</b></div><div><small data-i="gold">الذهب</small><b id="sGold">—</b></div></div><button id="copy" class="primary" data-i="copy">نسخ الملخص</button></div></aside></div>
@@ -170,5 +208,31 @@ $('#tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tree]');
 function syncSettingsUI(){$('#researchBonus').value=Number(settings.researchBonus)>0?settings.researchBonus:'';$('#speedDays').value=Number(settings.speedDays)>0?settings.speedDays:'';$('#speedHours').value=Number(settings.speedHours)>0?settings.speedHours:'';$('#speedMinutes').value=Number(settings.speedMinutes)>0?settings.speedMinutes:''}
 function updateSettings(){settings.researchBonus=Math.max(0,Number($('#researchBonus').value)||0);settings.speedDays=Math.max(0,Number($('#speedDays').value)||0);settings.speedHours=Math.max(0,Math.min(23,Number($('#speedHours').value)||0));settings.speedMinutes=Math.max(0,Math.min(59,Number($('#speedMinutes').value)||0));localStorage.setItem('saifks-research-settings-v7',JSON.stringify(settings));calc();renderPlan()}
 ['researchBonus','speedDays','speedHours','speedMinutes'].forEach(id=>$('#'+id).addEventListener('input',updateSettings));syncSettingsUI();$('#techCount').textContent=DB.meta.parsedTotals.technologies;$('#levelCount').textContent=DB.meta.parsedTotals.levels;applyLang();
+
+/* ===== V10 PHASE 2 BEHAVIOR ===== */
+function sideTreeIcon(id){return id==='development'?'⚗':id==='economy'?'⌂':'⚔'}
+function renderSideNav(){
+  const host=document.getElementById('sideNavTrees');
+  if(!host)return;
+  host.innerHTML=DB.trees.map(x=>{
+    const c=color(x.id),levels=x.techs.reduce((a,b)=>a+b.levels.length,0);
+    return `<button class="side-tree ${x.id===activeTree?'active':''}" data-side-tree="${x.id}" style="--accent:${c}"><span class="side-tree-icon">${sideTreeIcon(x.id)}</span><span class="side-tree-copy"><b>${x.name[lang]||x.name.en}</b><small>${x.techs.length} ${t('researches')} · ${levels} ${t('levels')}</small></span><span class="side-tree-count">${x.techs.length}</span></button>`
+  }).join('');
+}
+function updateCommandMetrics(){
+  const planMetric=document.getElementById('v10Plan'),timeMetric=document.getElementById('v10Time');
+  if(planMetric)planMetric.textContent=plan.length;
+  if(timeMetric){const z=sum(plan.flatMap(planRows)),tm=adjustedTimes(z.time);timeMetric.textContent=plan.length?fmtTime(tm.remaining):'—'}
+}
+document.getElementById('sideNavTrees')?.addEventListener('click',e=>{
+  const b=e.target.closest('[data-side-tree]');if(!b)return;
+  activeTree=b.dataset.sideTree;localStorage.setItem('saifks-research-active-tree',activeTree);activeFilter='all';render();renderSideNav();
+  window.scrollTo({top:document.querySelector('.controls')?.offsetTop-80||0,behavior:'smooth'});
+});
+const phase2Render=render;render=function(){phase2Render();renderSideNav();updateCommandMetrics()};
+const phase2RenderPlan=renderPlan;renderPlan=function(){phase2RenderPlan();updateCommandMetrics()};
+const phase2ApplyLang=applyLang;applyLang=function(){phase2ApplyLang();renderSideNav();updateCommandMetrics()};
+renderSideNav();updateCommandMetrics();
+
 </script>
 </body></html>
