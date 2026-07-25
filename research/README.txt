@@ -1,1 +1,1 @@
-SaifKS Research Planner Phase 1 v5 - Tree layout. Open index.html directly.
+SaifKS Research Planner v7 - easier tier tree, zero defaults, research speed bonus and speedups.
