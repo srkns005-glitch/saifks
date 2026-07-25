@@ -1,5 +1,3 @@
-SaifKS Research Planner v10
-- Fixed Current/Target level selector rules.
-- Both selectors begin at 0.
-- Target is always strictly higher than Current.
-- Combined research-speed bonus and speedups into one final-time result.
+SaifKS Research Planner v9.1
+- Remaining time after speedups appears only in Research Plan and copied summary.
+- Individual research details show base time and time after research-speed bonus only.
