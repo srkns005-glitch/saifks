@@ -1,3 +1,1 @@
-SaifKS Research Planner V10 Phase 3.3 Premium
-Premium UI rebuild with interactive research tree.
-Database and calculations preserved.
+SaifKS War Academy V11 - Premium redesign. Database and calculations preserved.
