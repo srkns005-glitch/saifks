@@ -1,11 +1,81 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>SaifKS Research Planner</title><link rel="stylesheet" href="styles.css"></head><body>
-<header><div class="brand">♛ <b>SaifKS</b><span>Research Planner</span></div><button id="lang">EN</button></header>
-<main><section class="hero"><small>KINGSHOT ACADEMY</small><h1 data-ar="مخطط البحوث" data-en="Research Planner">مخطط البحوث</h1><p data-ar="اختر الشجرة، ثم البحث، وحدد مستواك الحالي والهدف. تظهر النتيجة مباشرة." data-en="Choose a tree and technology, then select your current and target levels. Results appear instantly.">اختر الشجرة، ثم البحث، وحدد مستواك الحالي والهدف. تظهر النتيجة مباشرة.</p></section>
-<div id="tabs" class="tabs"></div>
-<section class="grid">
-<div class="card"><h2>1. <span data-ar="اختيار البحث" data-en="Choose Research">اختيار البحث</span></h2><label data-ar="البحث" data-en="Technology">البحث</label><select id="tech"></select><div id="meta" class="meta"></div><div class="two"><div><label data-ar="المستوى الحالي" data-en="Current Level">المستوى الحالي</label><select id="cur"></select></div><div><label data-ar="المستوى المستهدف" data-en="Target Level">المستوى المستهدف</label><select id="target"></select></div></div></div>
-<div class="card"><h2>2. <span data-ar="الوقت والتسريعات" data-en="Time & Speedups">الوقت والتسريعات</span></h2><label data-ar="مكافأة سرعة البحث %" data-en="Research Speed Bonus %">مكافأة سرعة البحث %</label><input id="speed" inputmode="decimal" placeholder="0"><div class="three"><input id="days" placeholder="أيام"><input id="hours" placeholder="ساعات"><input id="mins" placeholder="دقائق"></div></div>
-<div class="card full"><h2>3. <span data-ar="الموارد المتوفرة" data-en="Available Resources">الموارد المتوفرة</span></h2><div class="resources"><label>🍞 <input id="bread" placeholder="Bread"></label><label>🪵 <input id="wood" placeholder="Wood"></label><label>🪨 <input id="stone" placeholder="Stone"></label><label>⚙️ <input id="iron" placeholder="Iron"></label><label>🪙 <input id="gold" placeholder="Gold"></label></div></div>
-</section>
-<section class="card result"><h2>4. <span data-ar="ملخص الخطة" data-en="Plan Summary">ملخص الخطة</span></h2><div id="notice"></div><div id="res" class="results"></div><div class="times"><div><small>Base</small><b id="base">—</b></div><div><small>After Speed</small><b id="actual">—</b></div><div><small>Speedups</small><b id="avail">—</b></div><div><small>Remaining</small><b id="remain">—</b></div></div><div class="actions"><button id="copy">نسخ الملخص</button><button id="reset">إعادة الضبط</button></div></section>
-</main><footer>SaifKS.com | Built by Saif</footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>SaifKS Research Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SaifKS Home"><span class="crown">♛</span><span><b>SaifKS</b><small>Research Planner</small></span></a>
+    <div class="top-actions"><button id="homeBtn" class="icon-btn" aria-label="Home">⌂</button><button id="langBtn" class="lang-btn">EN</button></div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="eyebrow">KINGSHOT ACADEMY</div>
+      <h1 data-i18n="title">مخطط البحوث</h1>
+      <p data-i18n="subtitle">استعرض جميع الأبحاث، اختر مستواك الحالي والهدف، وأنشئ خطة كاملة بالموارد والوقت والقوة.</p>
+      <div class="hero-stats">
+        <div><b id="techCount">191</b><span data-i18n="researches">بحث</span></div>
+        <div><b id="levelCount">714</b><span data-i18n="levels">مستوى</span></div>
+        <div><b>3</b><span data-i18n="trees">أشجار</span></div>
+      </div>
+    </section>
+
+    <section id="treeTabs" class="tree-tabs" aria-label="Research trees"></section>
+
+    <section class="toolbar card">
+      <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" data-placeholder-ar="ابحث عن بحث..." data-placeholder-en="Search research..."></div>
+      <div id="filters" class="filters"></div>
+    </section>
+
+    <section class="content-layout">
+      <div>
+        <div class="section-head"><div><span id="activeTreeLabel" class="tree-kicker"></span><h2 data-i18n="allResearch">جميع الأبحاث</h2></div><span id="resultCount" class="count-pill"></span></div>
+        <div id="researchGrid" class="research-grid"></div>
+      </div>
+
+      <aside class="planner card">
+        <div class="planner-head"><div><span class="tree-kicker" data-i18n="planner">الخطة</span><h2 data-i18n="planTitle">خطة البحث</h2></div><button id="clearPlan" class="text-btn danger" data-i18n="clear">مسح</button></div>
+        <div id="planItems" class="plan-items"></div>
+        <div id="emptyPlan" class="empty-state"><div class="empty-icon">＋</div><b data-i18n="emptyPlanTitle">لم تضف أبحاثًا بعد</b><p data-i18n="emptyPlanText">افتح أي بحث وحدد المستوى الحالي والهدف، ثم أضفه إلى الخطة.</p></div>
+        <div id="summary" class="summary hidden">
+          <div class="summary-grid">
+            <div><small data-i18n="time">الوقت</small><b id="sumTime">—</b></div>
+            <div><small data-i18n="power">القوة</small><b id="sumPower">—</b></div>
+            <div><small data-i18n="bread">الخبز</small><b id="sumBread">—</b></div>
+            <div><small data-i18n="wood">الخشب</small><b id="sumWood">—</b></div>
+            <div><small data-i18n="stone">الحجر</small><b id="sumStone">—</b></div>
+            <div><small data-i18n="iron">الحديد</small><b id="sumIron">—</b></div>
+            <div class="gold"><small data-i18n="gold">الذهب</small><b id="sumGold">—</b></div>
+          </div>
+          <button id="copySummary" class="primary-btn" data-i18n="copySummary">نسخ الملخص</button>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close-modal>×</button>
+      <div class="modal-title-row"><div id="modalIcon" class="tech-icon"></div><div><span id="modalTree" class="tree-kicker"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p></div></div>
+      <div id="modalRange" class="effect-banner"></div>
+      <div class="level-selectors">
+        <label><span data-i18n="currentLevel">المستوى الحالي</span><select id="currentLevel"></select></label>
+        <span class="arrow">←</span>
+        <label><span data-i18n="targetLevel">المستوى المستهدف</span><select id="targetLevel"></select></label>
+      </div>
+      <div id="modalTotals" class="modal-totals"></div>
+      <div id="levelDetails" class="level-details"></div>
+      <button id="addToPlan" class="primary-btn" data-i18n="addToPlan">إضافة إلى الخطة</button>
+    </div>
+  </div>
+
+  <footer>SaifKS.com | Built by Saif</footer>
+  <script src="app.js"></script>
+</body>
+</html>

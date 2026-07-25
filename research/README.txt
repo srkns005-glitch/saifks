@@ -1,12 +1,19 @@
-SaifKS Research Planner v0.2
+SaifKS Research Planner — Phase 1
 
-Fixed:
-- The calculator now opens on Economy / Bread Output I so a working result appears immediately.
-- Only technologies with complete per-level data can be selected.
-- Current level starts from 0.
-- Target level automatically shows only levels higher than the current level.
-- Changing the current level updates the target list immediately.
-- Select and input events now recalculate reliably.
-- Saved-state logic was corrected.
+Files:
+- index.html
+- styles.css
+- app.js
+- research-data.json
 
-Database remains independent in research-data.json.
+Database:
+- 191 technologies
+- 714 parsed level rows
+- Development: 45 technologies / 129 levels
+- Economy: 44 technologies / 132 levels
+- Battle: 102 technologies / 453 levels
+
+Important source note:
+Fortified Mail VI is listed with Max Level 6 but the source PDF contains no per-level cost rows for it. The planner displays it as unavailable rather than inventing values.
+
+Upload this folder to your site and open index.html.
