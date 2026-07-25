@@ -2,77 +2,106 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="theme-color" content="#0b1220">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08111d">
   <title>SaifKS Research Planner</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/" aria-label="SaifKS Home"><span class="crown">♛</span><span><b>SaifKS</b><small>Research Planner</small></span></a>
-    <div class="top-actions"><button id="homeBtn" class="icon-btn" aria-label="Home">⌂</button><button id="langBtn" class="lang-btn">EN</button></div>
+    <a class="brand" href="/" aria-label="SaifKS Home">
+      <span class="brand-mark">♛</span>
+      <span class="brand-copy"><b>SaifKS</b><small>Research Planner</small></span>
+    </a>
+    <div class="top-actions">
+      <button id="homeBtn" class="header-btn" aria-label="Home"><span>⌂</span><em data-i18n="home">الرئيسية</em></button>
+      <button id="langBtn" class="header-btn lang-btn">EN</button>
+    </div>
   </header>
 
   <main class="page-shell">
-    <section class="hero">
-      <div class="eyebrow">KINGSHOT ACADEMY</div>
-      <h1 data-i18n="title">مخطط البحوث</h1>
-      <p data-i18n="subtitle">استعرض جميع الأبحاث، اختر مستواك الحالي والهدف، وأنشئ خطة كاملة بالموارد والوقت والقوة.</p>
-      <div class="hero-stats">
+    <section class="intro-strip">
+      <div>
+        <span class="eyebrow">KINGSHOT ACADEMY</span>
+        <h1 data-i18n="title">مخطط البحوث</h1>
+        <p data-i18n="subtitle">اختر الشجرة والبحث، ثم احسب تكلفة الانتقال من مستواك الحالي إلى الهدف.</p>
+      </div>
+      <div class="compact-stats" aria-label="Database statistics">
         <div><b id="techCount">191</b><span data-i18n="researches">بحث</span></div>
         <div><b id="levelCount">714</b><span data-i18n="levels">مستوى</span></div>
-        <div><b>3</b><span data-i18n="trees">أشجار</span></div>
       </div>
     </section>
 
-    <section id="treeTabs" class="tree-tabs" aria-label="Research trees"></section>
+    <nav id="treeTabs" class="tree-tabs" aria-label="Research trees"></nav>
 
-    <section class="toolbar card">
-      <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" data-placeholder-ar="ابحث عن بحث..." data-placeholder-en="Search research..."></div>
-      <div id="filters" class="filters"></div>
+    <section class="control-panel">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" data-placeholder-ar="ابحث باسم البحث أو التأثير..." data-placeholder-en="Search by research or effect...">
+      </div>
+      <div id="filters" class="filters" aria-label="Research filters"></div>
     </section>
 
-    <section class="content-layout">
+    <section class="results-head">
       <div>
-        <div class="section-head"><div><span id="activeTreeLabel" class="tree-kicker"></span><h2 data-i18n="allResearch">جميع الأبحاث</h2></div><span id="resultCount" class="count-pill"></span></div>
-        <div id="researchGrid" class="research-grid"></div>
+        <span id="activeTreeLabel" class="tree-kicker"></span>
+        <h2 data-i18n="allResearch">الأبحاث</h2>
       </div>
-
-      <aside class="planner card">
-        <div class="planner-head"><div><span class="tree-kicker" data-i18n="planner">الخطة</span><h2 data-i18n="planTitle">خطة البحث</h2></div><button id="clearPlan" class="text-btn danger" data-i18n="clear">مسح</button></div>
-        <div id="planItems" class="plan-items"></div>
-        <div id="emptyPlan" class="empty-state"><div class="empty-icon">＋</div><b data-i18n="emptyPlanTitle">لم تضف أبحاثًا بعد</b><p data-i18n="emptyPlanText">افتح أي بحث وحدد المستوى الحالي والهدف، ثم أضفه إلى الخطة.</p></div>
-        <div id="summary" class="summary hidden">
-          <div class="summary-grid">
-            <div><small data-i18n="time">الوقت</small><b id="sumTime">—</b></div>
-            <div><small data-i18n="power">القوة</small><b id="sumPower">—</b></div>
-            <div><small data-i18n="bread">الخبز</small><b id="sumBread">—</b></div>
-            <div><small data-i18n="wood">الخشب</small><b id="sumWood">—</b></div>
-            <div><small data-i18n="stone">الحجر</small><b id="sumStone">—</b></div>
-            <div><small data-i18n="iron">الحديد</small><b id="sumIron">—</b></div>
-            <div class="gold"><small data-i18n="gold">الذهب</small><b id="sumGold">—</b></div>
-          </div>
-          <button id="copySummary" class="primary-btn" data-i18n="copySummary">نسخ الملخص</button>
-        </div>
-      </aside>
+      <span id="resultCount" class="count-pill"></span>
     </section>
+
+    <div id="researchGrid" class="research-groups"></div>
   </main>
 
+  <button id="planFab" class="plan-fab" aria-label="Open research plan">
+    <span class="plan-fab-icon">▣</span>
+    <span data-i18n="planTitle">خطة البحث</span>
+    <b id="planCount">0</b>
+  </button>
+
+  <div id="plannerShell" class="planner-shell" aria-hidden="true">
+    <button class="planner-backdrop" data-close-planner aria-label="Close planner"></button>
+    <aside class="planner-panel" role="dialog" aria-modal="true" aria-label="Research plan">
+      <div class="planner-head">
+        <div><span class="tree-kicker" data-i18n="planner">الخطة</span><h2 data-i18n="planTitle">خطة البحث</h2></div>
+        <div class="planner-actions"><button id="clearPlan" class="text-btn danger" data-i18n="clear">مسح</button><button class="close-btn" data-close-planner>×</button></div>
+      </div>
+      <div id="planItems" class="plan-items"></div>
+      <div id="emptyPlan" class="empty-state"><div class="empty-icon">＋</div><b data-i18n="emptyPlanTitle">لم تضف أبحاثًا بعد</b><p data-i18n="emptyPlanText">افتح أي بحث وحدد المستوى الحالي والهدف، ثم أضفه إلى الخطة.</p></div>
+      <div id="summary" class="summary hidden">
+        <div class="summary-grid">
+          <div class="wide"><small data-i18n="time">الوقت</small><b id="sumTime">—</b></div>
+          <div><small data-i18n="power">القوة</small><b id="sumPower">—</b></div>
+          <div><small data-i18n="bread">الخبز</small><b id="sumBread">—</b></div>
+          <div><small data-i18n="wood">الخشب</small><b id="sumWood">—</b></div>
+          <div><small data-i18n="stone">الحجر</small><b id="sumStone">—</b></div>
+          <div><small data-i18n="iron">الحديد</small><b id="sumIron">—</b></div>
+          <div class="gold"><small data-i18n="gold">الذهب</small><b id="sumGold">—</b></div>
+        </div>
+        <button id="copySummary" class="primary-btn" data-i18n="copySummary">نسخ الملخص</button>
+      </div>
+    </aside>
+  </div>
+
   <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-backdrop" data-close-modal aria-label="Close details"></button>
+    <section class="modal-card" role="dialog" aria-modal="true">
+      <div class="modal-handle"></div>
       <button class="modal-close" data-close-modal>×</button>
       <div class="modal-title-row"><div id="modalIcon" class="tech-icon"></div><div><span id="modalTree" class="tree-kicker"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p></div></div>
       <div id="modalRange" class="effect-banner"></div>
       <div class="level-selectors">
         <label><span data-i18n="currentLevel">المستوى الحالي</span><select id="currentLevel"></select></label>
-        <span class="arrow">←</span>
+        <span class="arrow">→</span>
         <label><span data-i18n="targetLevel">المستوى المستهدف</span><select id="targetLevel"></select></label>
       </div>
       <div id="modalTotals" class="modal-totals"></div>
-      <div id="levelDetails" class="level-details"></div>
-      <button id="addToPlan" class="primary-btn" data-i18n="addToPlan">إضافة إلى الخطة</button>
-    </div>
+      <details class="levels-disclosure">
+        <summary data-i18n="showLevelDetails">عرض تفاصيل المستويات</summary>
+        <div id="levelDetails" class="level-details"></div>
+      </details>
+      <button id="addToPlan" class="primary-btn sticky-add" data-i18n="addToPlan">إضافة إلى الخطة</button>
+    </section>
   </div>
 
   <footer>SaifKS.com | Built by Saif</footer>
