@@ -1,5 +1,5 @@
-SaifKS Research Planner v8
-- Professional vertical roadmap tree
-- Modal close button remains visible
-- Selected research section persists after refresh
-- Mobile bottom-sheet modal and safer layout
+SaifKS Research Planner v10
+- Fixed Current/Target level selector rules.
+- Both selectors begin at 0.
+- Target is always strictly higher than Current.
+- Combined research-speed bonus and speedups into one final-time result.
