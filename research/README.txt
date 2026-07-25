@@ -1,3 +1,3 @@
-SaifKS Research Planner v9.4
-
-Fixed target-level options: level 0 is hidden whenever the current level is above 0, and only levels higher than the current level are shown.
+SaifKS Research Planner v9.5
+Added complete Fortified Mail VI data for levels 1-6.
+Database: 191 technologies / 720 research levels.
