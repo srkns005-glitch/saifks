@@ -26,9 +26,15 @@ button{cursor:pointer}
 .logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#1e3650,#0b1727);border:1px solid #315070;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
 .logo:before{content:"";width:20px;height:20px;border:3px solid var(--accent);border-radius:50%;box-shadow:0 0 22px rgba(69,211,162,.5)}
 .brand h1{font-size:18px;margin:0;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
-.tabs{display:flex;gap:8px;overflow:auto;scrollbar-width:none;flex:1;justify-content:center}
-.tab{border:1px solid var(--line);background:#0d1a2b;color:var(--muted);padding:10px 16px;border-radius:12px;white-space:nowrap;transition:.2s}
-.tab.active{background:linear-gradient(135deg,rgba(69,211,162,.18),rgba(90,169,255,.12));color:white;border-color:rgba(69,211,162,.7);box-shadow:0 0 0 3px rgba(69,211,162,.08)}
+.section-tabs-wrap{border-top:1px solid rgba(255,255,255,.05);background:rgba(8,18,31,.78)}
+.tabs{max-width:1600px;margin:auto;padding:10px 22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tab{position:relative;border:1px solid transparent;background:transparent;color:var(--muted);padding:12px 16px;border-radius:14px;white-space:nowrap;transition:.22s;font-weight:800}
+.tab:hover{color:#dbe7f5;background:rgba(255,255,255,.035)}
+.tab:after{content:"";position:absolute;right:22%;left:22%;bottom:3px;height:3px;border-radius:20px;background:transparent;transition:.22s}
+.tab.active{background:linear-gradient(135deg,rgba(69,211,162,.16),rgba(90,169,255,.11));color:white;border-color:rgba(69,211,162,.38);box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)}
+.tab.active:after{right:12%;left:12%;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 16px rgba(69,211,162,.45)}
+.tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;margin-inline-start:7px;padding:0 6px;border-radius:10px;background:#13243a;color:#8fa6c0;font-size:9px}
+.tab.active .tab-count{background:rgba(69,211,162,.14);color:#baf6e3}
 .header-actions{display:flex;gap:8px}
 .icon-btn,.primary-btn,.ghost-btn,.danger-btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;color:white;background:#102038}
 .primary-btn{background:linear-gradient(135deg,#26b98a,#318cd9);border:0;font-weight:800}
@@ -46,7 +52,7 @@ button{cursor:pointer}
 .legend{display:flex;gap:9px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:5px}.dot{width:8px;height:8px;border-radius:50%;background:#52647b}.dot.progress{background:var(--accent2)}.dot.plan{background:var(--accent)}.dot.max{background:var(--purple)}
 .tree-viewport{position:relative;overflow:auto;min-height:620px;max-height:calc(100vh - 240px);padding:25px}
-.tree-canvas{transform-origin:top right;transition:transform .18s;min-width:890px}
+.tree-canvas{transform-origin:top right;transition:transform .18s,opacity .18s;min-width:890px}
 .tier{position:relative;margin:0 0 36px;padding-top:26px}
 .tier:not(:first-child):before{content:"";position:absolute;top:-22px;right:50%;width:2px;height:24px;background:linear-gradient(var(--line),rgba(69,211,162,.5))}
 .tier-label{position:absolute;top:0;right:50%;transform:translateX(50%);font-size:10px;color:#7890ac;background:#0b1727;border:1px solid var(--line);padding:4px 9px;border-radius:20px}
@@ -152,7 +158,11 @@ button{cursor:pointer}
 
 @media(max-width:1100px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;height:auto;display:grid;grid-template-columns:1fr 1fr}.plan-card{max-height:460px}.tree-viewport{max-height:none}.nodes{grid-template-columns:repeat(3,minmax(190px,1fr))}}
 @media(max-width:760px){
- .topbar-inner{padding:11px 12px;flex-wrap:wrap}.brand{flex:1}.brand small{display:none}.tabs{order:3;width:100%;justify-content:flex-start}.header-actions{display:none}
+ .topbar-inner{padding:11px 12px}.brand{flex:1}.brand small{display:none}.header-actions{display:none}
+ .section-tabs-wrap{overflow:hidden}
+ .tabs{padding:8px;gap:6px;grid-template-columns:repeat(3,1fr)}
+ .tab{padding:10px 5px;border-radius:11px;font-size:11px}
+ .tab-count{display:none}
  .layout{padding:11px}.control-row{grid-template-columns:1fr 1fr}.control-row .field:first-child{grid-column:1/-1}.control-row button{grid-column:1/-1}
  .sidebar{display:block}.summary-card{margin-bottom:12px}.tree-head{align-items:flex-start;flex-direction:column}.tree-viewport{padding:15px;min-height:500px}
  .tree-canvas{min-width:760px}.nodes{grid-template-columns:repeat(3,minmax(180px,1fr));gap:10px}.node{min-height:120px;padding:11px}
@@ -165,8 +175,10 @@ button{cursor:pointer}
 <header class="topbar">
  <div class="topbar-inner">
   <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner</small></div></div>
-  <nav class="tabs" id="tabs"></nav>
   <div class="header-actions"><button class="icon-btn" id="zoomOut">−</button><button class="icon-btn" id="zoomIn">＋</button></div>
+ </div>
+ <div class="section-tabs-wrap">
+  <nav class="tabs" id="tabs"></nav>
  </div>
 </header>
 
@@ -249,8 +261,18 @@ function isPlanned(id){return state.plan.includes(id)}
 function toast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
 
 function renderTabs(){
- const el=document.getElementById("tabs");el.innerHTML=categories.map(c=>`<button class="tab ${state.category===c?"active":""}" data-cat="${c}">${catArabic[c]}</button>`).join("");
- el.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{state.category=b.dataset.cat;save();renderAll()})
+ const el=document.getElementById("tabs");
+ el.innerHTML=categories.map(c=>{
+   const count=DB.technologies.filter(t=>t.category===c).length;
+   return `<button class="tab ${state.category===c?"active":""}" data-cat="${c}"><span>${catArabic[c]}</span><span class="tab-count">${count}</span></button>`;
+ }).join("");
+ el.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+   if(state.category===b.dataset.cat)return;
+   state.category=b.dataset.cat;save();
+   const tree=document.getElementById("tree");
+   tree.style.opacity=".2";tree.style.transform=`translateY(8px) scale(${zoom})`;
+   setTimeout(()=>{renderAll();tree.style.opacity="1";tree.style.transform=`translateY(0) scale(${zoom})`},130);
+ })
 }
 function renderTree(){
  const q=document.getElementById("search").value.trim().toLowerCase();
@@ -284,10 +306,10 @@ function openDrawer(id){
  document.getElementById("drawer").classList.add("show");document.getElementById("backdrop").classList.add("show")
 }
 function fillCurrent(val){
- const s=document.getElementById("currentLevel");s.innerHTML=Array.from({length:activeTech.max_level+1},(_,i)=>`<option value="${i}" ${i===val?"selected":""}>${i===0?"غير مطور":i}</option>`).join("")
+ const s=document.getElementById("currentLevel");s.innerHTML=Array.from({length:activeTech.max_level+1},(_,i)=>`<option value="${i}" ${i===val?"selected":""}>${i===0?"0":i}</option>`).join("")
 }
 function fillTarget(cur,val){
- const s=document.getElementById("targetLevel");s.innerHTML=Array.from({length:activeTech.max_level-cur+1},(_,i)=>i+cur).map(i=>`<option value="${i}" ${i===val?"selected":""}>${i===0?"غير مطور":i===activeTech.max_level?"MAX ("+i+")":i}</option>`).join("")
+ const s=document.getElementById("targetLevel");s.innerHTML=Array.from({length:activeTech.max_level-cur+1},(_,i)=>i+cur).map(i=>`<option value="${i}" ${i===val?"selected":""}>${i===0?"0":i===activeTech.max_level?"MAX ("+i+")":i}</option>`).join("")
 }
 function updateDrawerPreview(){
  const c=+document.getElementById("currentLevel").value,tg=+document.getElementById("targetLevel").value;
