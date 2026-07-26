@@ -104,6 +104,31 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;ba
 .v127-tree{max-width:860px}.v127-canvas{padding:66px 20px 150px;background:linear-gradient(180deg,#f7e8d2,#efd7b8 44%,#ead0ae);border-color:#cdb28f;box-shadow:0 22px 55px #0005,inset 0 1px #fff}.v127-stage{min-height:188px;grid-template-columns:repeat(3,1fr);align-items:start}.v127-stage.single .v125-node{grid-column:2}.v127-stage.two .v125-node:first-child{grid-column:1}.v127-stage.two .v125-node:last-child{grid-column:3}.v125-node{width:160px;min-height:142px;justify-self:center}.v125-node-core{width:94px;height:94px;border-radius:27px;background:linear-gradient(145deg,#a8f0e8,#52c8c8);border:4px solid #d9fff9;box-shadow:0 3px 0 #4d9f9f,0 10px 18px #6d4d2a30,inset 0 0 0 2px #68b7b7}.v125-glyph{width:64px;height:64px}.v125-level{top:82px;min-width:58px;height:29px;border-radius:14px;background:#806342;color:#fff;border:2px solid #ead8bd;box-shadow:0 2px 0 #5d432d;font-size:15px}.v125-name{margin-top:19px;max-width:154px;color:#4c3525;text-shadow:0 1px #fff;font-size:14px;line-height:1.25;font-weight:900}.v125-node.selected .v125-node-core{box-shadow:0 0 0 5px #ffd66b,0 0 28px #ffc64d,0 3px 0 #9f7837}.v125-node.completed .v125-node-core{filter:none}.v125-line{stroke:#42d9dc;stroke-width:7;filter:drop-shadow(0 2px 0 #1f8d91)}.v125-line-shadow{stroke:#fff9;stroke-width:11}.v125-tree-head{position:sticky;top:64px;z-index:12;background:rgba(247,232,210,.96);color:#493220;border-color:#d8bd98;backdrop-filter:blur(10px)}.v125-tree-head small{color:#806b57}.v125-jump{background:#56d3d4;border-color:#259fa2;color:#173b3c}.v125-detail{background:#fffaf1;border-color:#d8c0a0;color:#493220}.v125-detail-copy small{color:#8a735d}.v125-detail button{background:#55d2d4;border-color:#218f92;color:#153a3b}
 @media(max-width:700px){.v127-tree{margin-inline:-4px;border-radius:18px}.v127-canvas{padding:56px 4px 128px}.v127-stage{min-height:174px;gap:0}.v125-node{width:31vw;max-width:124px;min-height:132px}.v125-node-core{width:78px;height:78px;border-radius:23px}.v125-glyph{width:53px;height:53px}.v125-level{top:68px;min-width:52px;height:27px;font-size:13px}.v125-name{margin-top:18px;max-width:31vw;font-size:12px}.v125-line{stroke-width:6}.v125-line-shadow{stroke-width:10}.v125-tree-head{top:58px}}
 </style>
+
+<style id="v12-phase8-exact-layout">
+/* V12.8 — exact mobile-first research topology */
+.v127-tree{max-width:520px!important;margin:0 auto!important;border-radius:16px!important}
+.v127-canvas{padding:38px 2px 120px!important;background:linear-gradient(180deg,#f4e3cd 0%,#ecd2b0 45%,#e6c9a3 100%)!important}
+.v127-stage{min-height:148px!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:start!important;position:relative!important}
+.v127-stage[data-kind="bridge"]{min-height:118px!important}
+.v127-stage[data-kind="tier-start"]{min-height:170px!important;padding-top:18px}
+.v127-stage[data-kind="tier-start"]::before{content:attr(data-tier);position:absolute;top:-8px;left:50%;transform:translateX(-50%);padding:3px 11px;border:1px solid #b99770;border-radius:999px;background:#f7ead7;color:#76573a;font-size:10px;font-weight:900;letter-spacing:.8px;box-shadow:0 2px 6px #8d654322}
+.v125-node{width:31.5vw!important;max-width:132px!important;min-height:126px!important;padding:0 2px!important;touch-action:manipulation!important;will-change:transform}
+.v125-node-core{width:76px!important;height:76px!important;border-radius:21px!important;border-width:3px!important;box-shadow:0 3px 0 #4c9a9a,0 8px 14px #78542e24,inset 0 0 0 2px #67baba!important;transition:transform .16s ease,box-shadow .16s ease,filter .16s ease!important}
+.v125-node:active .v125-node-core{transform:scale(.96)!important}
+.v125-node.selected .v125-node-core{transform:translateY(-2px)!important;box-shadow:0 0 0 4px #ffd463,0 0 20px #ffc84f99,0 3px 0 #987034!important}
+.v125-glyph{width:50px!important;height:50px!important}
+.v125-level{top:65px!important;min-width:50px!important;height:25px!important;font-size:12px!important;border-width:2px!important}
+.v125-name{margin-top:16px!important;max-width:128px!important;font-size:11px!important;line-height:1.17!important;min-height:27px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.v125-lines{overflow:visible!important}
+.v125-line-shadow{stroke:#f9f2e7!important;stroke-width:10!important;opacity:.96!important;stroke-linecap:round;stroke-linejoin:round}
+.v125-line{stroke:#43d3d6!important;stroke-width:5.5!important;filter:drop-shadow(0 1px 0 #1e8f92)!important;stroke-linecap:round;stroke-linejoin:round}
+.v125-tree-head{position:relative!important;top:auto!important;height:44px!important;background:#e2c19c!important;backdrop-filter:none!important}
+.v125-detail{max-width:500px!important;left:50%!important;right:auto!important;transform:translateX(-50%) translateY(120%)!important;border-radius:16px 16px 0 0!important}
+.v125-detail.open{transform:translateX(-50%) translateY(0)!important}
+@media(max-width:430px){.v127-canvas{padding-inline:0!important}.v127-stage{min-height:143px!important}.v125-node{max-width:124px!important}.v125-node-core{width:72px!important;height:72px!important}.v125-level{top:61px!important}.v125-name{font-size:10.5px!important;max-width:122px!important}}
+@media(min-width:700px){.v125-node{width:150px!important;max-width:150px!important}.v125-node-core{width:86px!important;height:86px!important}.v125-level{top:75px!important}.v125-name{font-size:12px!important}.v127-stage{min-height:160px!important}}
+</style>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="/"><span class="brand-logo">♛</span><span><b>SaifKS</b><small>Research Planner</small></span></a><div class="top-actions"><button id="homeBtn" class="head-btn">⌂</button><button id="langBtn" class="head-btn">EN</button></div></header>
@@ -513,29 +538,54 @@ body.v12-mode #groups{max-width:796px!important;margin:auto}
    const txt=(t.levels||[]).map(x=>x.needs||'').join(' · ');
    return all.filter(x=>x.id!==t.id && txt.includes(x.name));
  }
+ function romanOf(name){const m=String(name||'').match(/\s(I|II|III|IV|V|VI)$/);return m?m[1]:''}
+ function baseOf(name){return String(name||'').replace(/\s(I|II|III|IV|V|VI)$/,'')}
+ function battleLayout(techs){
+   const tiers=['I','II','III','IV','V','VI'];
+   const pattern=[
+    ['Weapons Prep'],
+    ['Reprisal Tactics','Precision Targeting','Cavalry Charge'],
+    ['Defensive Formations','Picket Lines','Bulwark Formations'],
+    ['Special Defensive Training'],
+    ['Assault Techniques','Survival Techniques'],
+    ['Regimental Expansion'],
+    ['Close Combat','Targeted Sniping','Lance Upgrade'],
+    ['Shield Upgrade','Leathercraft','Fortified Mail']
+   ];
+   const byName=new Map(techs.map(t=>[t.name,t]));
+   const rows=[],meta=[],parents=new Map(techs.map(t=>[t.id,[]]));
+   const get=(base,r)=>byName.get(base+' '+r);
+   tiers.forEach((r,ti)=>{
+     pattern.forEach((bases,pi)=>{
+       const row=bases.map(b=>get(b,r)).filter(Boolean);if(!row.length)return;
+       rows.push(row);meta.push({kind:pi===0?'tier-start':'normal',tier:r});
+       if(pi===1){const root=get('Weapons Prep',r);row.forEach(t=>root&&parents.set(t.id,[root]))}
+       if(pi===2){const prev=pattern[1].map(b=>get(b,r));row.forEach((t,i)=>prev[i]&&parents.set(t.id,[prev[i]]))}
+       if(pi===3){parents.set(row[0].id,pattern[2].map(b=>get(b,r)).filter(Boolean))}
+       if(pi===4){const sp=get('Special Defensive Training',r);row.forEach(t=>sp&&parents.set(t.id,[sp]))}
+       if(pi===5){parents.set(row[0].id,pattern[4].map(b=>get(b,r)).filter(Boolean))}
+       if(pi===6){const reg=get('Regimental Expansion',r);row.forEach(t=>reg&&parents.set(t.id,[reg]))}
+       if(pi===7){const prev=pattern[6].map(b=>get(b,r));row.forEach((t,i)=>prev[i]&&parents.set(t.id,[prev[i]]))}
+     });
+     if(ti<tiers.length-1){const next=get('Weapons Prep',tiers[ti+1]);const finals=pattern[7].map(b=>get(b,r)).filter(Boolean);if(next)parents.set(next.id,finals)}
+   });
+   const used=new Set(rows.flat().map(t=>t.id));
+   techs.filter(t=>!used.has(t.id)).forEach(t=>{rows.push([t]);meta.push({kind:'normal',tier:romanOf(t.name)});parents.set(t.id,requirementsFor(t,techs))});
+   return {rows,parents,meta};
+ }
  function graphLayout(techs){
+   if(activeTree==='battle')return battleLayout(techs);
    const parents=new Map(techs.map(t=>[t.id,requirementsFor(t,techs)]));
    const memo=new Map(),visiting=new Set();
-   function rank(t){
-     if(memo.has(t.id))return memo.get(t.id);
-     if(visiting.has(t.id))return 0;
-     visiting.add(t.id);
-     const ps=parents.get(t.id)||[];
-     const r=ps.length?1+Math.max(...ps.map(rank)):0;
-     visiting.delete(t.id);memo.set(t.id,r);return r;
-   }
-   techs.forEach(rank);
-   const rows=[];
-   techs.forEach(t=>{const r=memo.get(t.id)||0;(rows[r]??=[]).push(t)});
-   rows.forEach(row=>row.sort((a,b)=>lane(a)-lane(b)||a.name.localeCompare(b.name)));
-   return {rows:rows.filter(Boolean),parents};
+   function rank(t){if(memo.has(t.id))return memo.get(t.id);if(visiting.has(t.id))return 0;visiting.add(t.id);const ps=parents.get(t.id)||[];const r=ps.length?1+Math.max(...ps.map(rank)):0;visiting.delete(t.id);memo.set(t.id,r);return r}
+   techs.forEach(rank);const rows=[];techs.forEach(t=>{const r=memo.get(t.id)||0;(rows[r]??=[]).push(t)});rows.forEach(row=>row.sort((a,b)=>lane(a)-lane(b)||a.name.localeCompare(b.name)));return {rows:rows.filter(Boolean),parents,meta:rows.filter(Boolean).map(()=>({kind:'normal',tier:''}))};
  }
  function node(t){return `<button class="v125-node ${stat(t)}" data-tech="${t.id}" aria-label="${t.name}"><span class="v125-node-core"><span class="v125-glyph">${icon(t.category)}</span></span><span class="v125-level">${level(t)}</span><span class="v125-name">${t.name}</span></button>`}
  function renderVertical(){
    document.body.classList.add('v12-mode');
    const tr=DB.trees.find(x=>x.id===activeTree)||DB.trees[0];
-   const {rows,parents}=graphLayout(tr.techs);
-   groups.innerHTML=`<section class="v125-tree v127-tree" id="v125Tree"><header class="v125-tree-head"><div><b>${tr.name[lang]||tr.name.en}</b><small> · ${tr.techs.length} ${lang==='ar'?'بحث':'researches'}</small></div><button class="v125-jump" id="v125Top">${lang==='ar'?'أعلى الشجرة':'Top'}</button></header><div class="v125-canvas v127-canvas" id="v125Canvas"><svg class="v125-lines" id="v125Lines" aria-hidden="true"></svg>${rows.map((r,i)=>`<div class="v125-stage v127-stage ${r.length===1?'single':r.length===2?'two':''}" data-rank="${i}">${r.map(node).join('')}</div>`).join('')}</div></section><aside class="v125-detail" id="v125Detail"><div class="v125-detail-icon" id="v125DetailIcon">${icon('general')}</div><div class="v125-detail-copy"><b id="v125DetailName">—</b><small id="v125DetailLevel">—</small></div><button id="v125DetailOpen">${lang==='ar'?'التفاصيل':'Details'}</button></aside>`;
+   const {rows,parents,meta=[]}=graphLayout(tr.techs);
+   groups.innerHTML=`<section class="v125-tree v127-tree" id="v125Tree"><header class="v125-tree-head"><div><b>${tr.name[lang]||tr.name.en}</b><small> · ${tr.techs.length} ${lang==='ar'?'بحث':'researches'}</small></div><button class="v125-jump" id="v125Top">${lang==='ar'?'أعلى الشجرة':'Top'}</button></header><div class="v125-canvas v127-canvas" id="v125Canvas"><svg class="v125-lines" id="v125Lines" aria-hidden="true"></svg>${rows.map((r,i)=>`<div class="v125-stage v127-stage ${r.length===1?'single':r.length===2?'two':''}" data-rank="${i}" data-kind="${meta[i]?.kind||'normal'}" data-tier="${meta[i]?.tier||''}">${r.map(node).join('')}</div>`).join('')}</div></section><aside class="v125-detail" id="v125Detail"><div class="v125-detail-icon" id="v125DetailIcon">${icon('general')}</div><div class="v125-detail-copy"><b id="v125DetailName">—</b><small id="v125DetailLevel">—</small></div><button id="v125DetailOpen">${lang==='ar'?'التفاصيل':'Details'}</button></aside>`;
    groups._v127Parents=parents;
    requestAnimationFrame(()=>requestAnimationFrame(drawLines));
  }
