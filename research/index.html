@@ -237,12 +237,37 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="inline-level-selectors">
+.node{cursor:default}
+.inline-levels{
+ display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:7px;margin-top:10px
+}
+.inline-levels label{display:flex;flex-direction:column;gap:5px;min-width:0}
+.inline-levels small{font-size:9px;color:var(--muted);text-align:center}
+.inline-levels select{
+ width:100%;height:38px;border:1px solid #29415f;border-radius:10px;
+ background:#091525;color:#fff;text-align:center;font-weight:900;font-size:13px;
+ padding:0 7px;outline:none;appearance:auto
+}
+.inline-levels select:focus{
+ border-color:var(--accent);box-shadow:0 0 0 3px rgba(69,211,162,.11)
+}
+.inline-levels .arrow{align-self:center;margin-top:14px;color:var(--accent2);font-weight:900}
+.node.in-plan .inline-levels select{border-color:rgba(69,211,162,.42)}
+@media(max-width:760px){
+ .inline-levels{gap:5px}
+ .inline-levels select{height:40px;font-size:16px}
+ .inline-levels small{font-size:8px}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · PDF Order V3.5</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · Inline Levels V3.6</small></div></div>
   <div class="header-actions"><button class="icon-btn" id="zoomOut">−</button><button class="icon-btn" id="zoomIn">＋</button></div>
  </div>
  <div class="section-tabs-wrap">
@@ -353,17 +378,28 @@ function renderTree(){
  const tree=document.getElementById("tree");tree.style.zoom=zoom;tree.style.transform="none";
  if(!techs.length){tree.innerHTML='<div class="empty">لا توجد نتائج مطابقة.</div>';return}
  tree.innerHTML=Object.keys(rows).sort((a,b)=>a-b).map((row,index)=>`<section class="tier pdf-row"><div class="tier-label">صف PDF ${index+1}</div><div class="nodes row-${rows[row].length}">${rows[row].sort((a,b)=>(a.tree_col??0)-(b.tree_col??0)).map(nodeHTML).join("")}</div></section>`).join("");
- tree.querySelectorAll(".node").forEach(n=>n.onclick=()=>openDrawer(n.dataset.id))
+ tree.querySelectorAll(".inline-current").forEach(s=>s.onchange=e=>updateInlineLevel(e.target.dataset.current,"current",+e.target.value));
+ tree.querySelectorAll(".inline-target").forEach(s=>s.onchange=e=>updateInlineLevel(e.target.dataset.target,"target",+e.target.value));
+}
+function levelOptions(max,selected,min=0){
+ let out="";
+ for(let i=min;i<=max;i++)out+=`<option value="${i}" ${i===selected?"selected":""}>${i}</option>`;
+ return out
 }
 function nodeHTML(t){
  const c=config(t.id),planned=isPlanned(t.id),maxed=c.current===t.max_level;
  const cls=planned?"in-plan":maxed?"is-max":c.current>0?"in-progress":"";
- return `<button class="node ${cls}" data-id="${t.id}">
+ const safeTarget=Math.max(c.current,c.target);
+ return `<div class="node ${cls}" data-id="${t.id}">
   <div class="node-top"><div class="node-name">${t.name}</div><span class="node-max">${maxed?"MAX":"MAX "+t.max_level}</span></div>
   <div class="node-buff">${t.buff_summary||t.description}</div>
-  <div class="level-strip"><div class="level-box"><small>الحالي</small><b>${c.current}</b></div><span class="arrow">←</span><div class="level-box"><small>المستهدف</small><b>${c.target}</b></div></div>
-  <div class="delta">${deltaText(t,c.current,c.target)}</div>
- </button>`
+  <div class="inline-levels">
+   <label><small>الحالي</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
+   <span class="arrow">←</span>
+   <label><small>المستهدف</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
+  </div>
+  <div class="delta">${deltaText(t,c.current,safeTarget)}</div>
+ </div>`
 }
 function openDrawer(id){
  activeTech=DB.technologies.find(t=>t.id===id);if(!activeTech)return;
@@ -412,9 +448,31 @@ function renderSummary(){
  document.getElementById("baseTime").textContent=duration(t.time);document.getElementById("bonusTime").textContent=duration(after);document.getElementById("usedSpeedups").textContent=duration(used);document.getElementById("remainingTime").textContent=duration(remain);document.getElementById("power").textContent=fmt(t.power);
  document.getElementById("resources").innerHTML=Object.entries(t.res).map(([k,v])=>`<div class="resource"><span>${resourceArabic[k]}</span><b>${fmt(v)}</b></div>`).join("")
 }
+function updateInlineLevel(id,type,value){
+ const tech=DB.technologies.find(t=>t.id===id);if(!tech)return;
+ const currentConfig=config(id);
+ let current=currentConfig.current,target=currentConfig.target;
+ if(type==="current"){
+   current=value;
+   if(target<current)target=current;
+ }else{
+   target=Math.max(current,value);
+ }
+ state.levels[id]={current,target};
+ if(target>current){
+   if(!state.plan.includes(id))state.plan.push(id);
+ }else{
+   state.plan=state.plan.filter(x=>x!==id);
+ }
+ save();
+ renderTree();
+ renderPlan();
+ renderSummary();
+ toast(target>current?"تمت الإضافة إلى الملخص تلقائيًا":"تم تحديث المستوى")
+}
 function renderPlan(){
  const el=document.getElementById("planList");
- if(!state.plan.length){el.innerHTML='<div class="empty" style="padding:35px 10px">اضغط على بحث من الشجرة وأضفه إلى الخطة.</div>';return}
+ if(!state.plan.length){el.innerHTML='<div class="empty" style="padding:35px 10px">اختر المستوى الحالي والمستهدف من بطاقة البحث، وسيُضاف إلى الملخص تلقائيًا.</div>';return}
  el.innerHTML=state.plan.map(id=>{const t=DB.technologies.find(x=>x.id===id),c=config(id);return `<div class="plan-item"><div class="plan-item-top"><b>${t.name}</b><button class="remove" data-remove="${id}">✕</button></div><small>المستوى ${c.current} ← ${c.target} · ${deltaText(t,c.current,c.target)}</small></div>`}).join("");
  el.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{state.plan=state.plan.filter(x=>x!==b.dataset.remove);save();renderAll()})
 }
