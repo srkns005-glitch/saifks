@@ -86,6 +86,70 @@ button{cursor:pointer}
 .requirements{margin-top:14px}.req-title{font-size:12px;color:var(--muted);margin-bottom:8px}.req{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #233a56;font-size:11px}
 .drawer-footer{padding:15px 18px;border-top:1px solid var(--line);margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:9px}
 .toast{position:fixed;bottom:25px;right:50%;transform:translateX(50%) translateY(30px);opacity:0;background:#12263d;border:1px solid #315579;border-radius:12px;padding:11px 16px;z-index:100;transition:.2s;font-size:12px}.toast.show{opacity:1;transform:translateX(50%) translateY(0)}
+
+.save-status{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  margin:-5px 0 13px;padding:9px 11px;border-radius:11px;
+  background:rgba(90,169,255,.08);border:1px solid rgba(90,169,255,.2);
+  color:#9fcaff;font-size:11px
+}
+.save-status.saved{background:rgba(69,211,162,.08);border-color:rgba(69,211,162,.25);color:#9ff0d4}
+.mobile-summary-toggle{display:none}
+@media(max-width:760px){
+  body{overflow-x:hidden}
+  .layout{display:block;padding:8px}
+  .control-panel{padding:11px;margin-bottom:10px;border-radius:15px}
+  .control-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .control-row .field:first-child{grid-column:1/-1}
+  .control-row .field label{font-size:10px;margin-bottom:5px}
+  .control-row .field input{height:42px;font-size:16px}
+  .control-row button{grid-column:1/-1;height:40px;padding:7px 10px}
+  .tree-shell{border-radius:15px}
+  .tree-head{padding:11px 12px}
+  .tree-title h2{font-size:15px}.tree-title p{font-size:10px}
+  .legend{display:none}
+  .tree-viewport{padding:10px;min-height:420px;overflow:visible}
+  .tree-canvas{min-width:0!important;transform:none!important}
+  .tier{margin-bottom:18px;padding-top:25px}
+  .nodes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .node{min-height:102px;padding:10px;border-radius:13px}
+  .node:hover{transform:none}
+  .node-name{font-size:11px}
+  .node-max{font-size:8px;padding:2px 5px}
+  .node-buff{font-size:9px;margin-top:4px}
+  .level-strip{margin-top:8px;gap:4px}
+  .level-box{padding:5px 3px;border-radius:8px}
+  .level-box b{font-size:12px}.level-box small{font-size:7px}
+  .delta{margin-top:5px;font-size:9px}
+  .sidebar{display:block;position:static;height:auto;margin-top:10px}
+  .summary-card{margin-bottom:10px;border-radius:15px}
+  .summary-grid{padding:9px;gap:6px}
+  .metric{padding:9px;border-radius:10px}
+  .metric span{font-size:9px}.metric strong{font-size:12px}
+  .resources{padding:0 9px 9px;gap:6px}
+  .resource{padding:7px;font-size:10px}
+  .plan-card{max-height:none;border-radius:15px}
+  .plan-list{max-height:320px}
+  .card-head{padding:11px 12px}
+  .plan-actions{position:sticky;bottom:0;background:#0d1828;z-index:3}
+  .drawer{top:auto;bottom:0;height:min(88vh,760px);border-right:0;border-top:1px solid #29415f;
+          border-radius:22px 22px 0 0;transform:translateY(105%)}
+  .drawer.show{transform:translateY(0)}
+  .drawer-head{padding:14px 14px 11px}
+  .drawer-head h2{font-size:16px}
+  .drawer-body{padding:13px}
+  .selector-grid{gap:8px}
+  .level-preview{margin:10px 0;gap:7px}
+  .preview{padding:9px;border-radius:10px}
+  .drawer-footer{position:sticky;bottom:0;background:#0b1727;padding:10px 12px;
+                 grid-template-columns:1fr;border-top:1px solid var(--line)}
+  .drawer-footer .ghost-btn{display:none}
+}
+@media(max-width:390px){
+  .nodes{grid-template-columns:1fr}
+  .node{min-height:92px}
+}
+
 @media(max-width:1100px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;height:auto;display:grid;grid-template-columns:1fr 1fr}.plan-card{max-height:460px}.tree-viewport{max-height:none}.nodes{grid-template-columns:repeat(3,minmax(190px,1fr))}}
 @media(max-width:760px){
  .topbar-inner{padding:11px 12px;flex-wrap:wrap}.brand{flex:1}.brand small{display:none}.tabs{order:3;width:100%;justify-content:flex-start}.header-actions{display:none}
@@ -152,7 +216,7 @@ button{cursor:pointer}
 <aside class="drawer" id="drawer">
  <div class="drawer-head"><div><h2 id="detailName"></h2><p id="detailDescription"></p></div><button class="icon-btn close" id="closeDrawer">✕</button></div>
  <div class="drawer-body">
-  <div class="detail-buff" id="detailBuff"></div>
+  <div class="detail-buff" id="detailBuff"></div><div class="save-status" id="saveStatus">يتم حفظ الاختيار تلقائيًا</div>
   <div class="selector-grid">
    <div class="field"><label>المستوى الحالي</label><select id="currentLevel"></select></div>
    <div class="field"><label>المستوى المستهدف</label><select id="targetLevel"></select></div>
@@ -216,6 +280,7 @@ function openDrawer(id){
  document.getElementById("detailBuff").textContent=activeTech.buff_summary;
  fillCurrent(c.current);fillTarget(c.current,Math.max(c.current,c.target));updateDrawerPreview();
  document.getElementById("addPlan").textContent=isPlanned(id)?"تحديث البحث في الخطة":"إضافة إلى الخطة";
+ document.getElementById("saveStatus").textContent="يتم حفظ الاختيار تلقائيًا";document.getElementById("saveStatus").classList.remove("saved");
  document.getElementById("drawer").classList.add("show");document.getElementById("backdrop").classList.add("show")
 }
 function fillCurrent(val){
@@ -275,13 +340,36 @@ document.getElementById("search").oninput=renderTree;
 document.getElementById("researchBonus").value=state.bonus||0;document.getElementById("speedupHours").value=state.speedups||0;
 document.getElementById("researchBonus").oninput=e=>{state.bonus=Math.max(0,+e.target.value||0);save();renderSummary()};
 document.getElementById("speedupHours").oninput=e=>{state.speedups=Math.max(0,+e.target.value||0);save();renderSummary()};
-document.getElementById("currentLevel").onchange=e=>{const cur=+e.target.value;fillTarget(cur,Math.max(cur,+document.getElementById("targetLevel").value));updateDrawerPreview()};
-document.getElementById("targetLevel").onchange=updateDrawerPreview;
+function autoSaveSelection(){
+ if(!activeTech)return;
+ const current=+document.getElementById("currentLevel").value;
+ const target=+document.getElementById("targetLevel").value;
+ state.levels[activeTech.id]={current,target};
+ if(target<=current) state.plan=state.plan.filter(id=>id!==activeTech.id);
+ save();
+ const badge=document.getElementById("saveStatus");
+ badge.textContent="✓ تم تثبيت المستوى الحالي والمستهدف";
+ badge.classList.add("saved");
+ renderTree();
+ renderSummary();
+ renderPlan();
+}
+document.getElementById("currentLevel").onchange=e=>{
+ const cur=+e.target.value;
+ const previousTarget=+document.getElementById("targetLevel").value;
+ fillTarget(cur,Math.max(cur,previousTarget));
+ updateDrawerPreview();
+ autoSaveSelection();
+};
+document.getElementById("targetLevel").onchange=()=>{
+ updateDrawerPreview();
+ autoSaveSelection();
+};
 document.getElementById("addPlan").onclick=()=>commit(true);document.getElementById("saveOnly").onclick=()=>commit(false);
 document.getElementById("closeDrawer").onclick=closeDrawer;document.getElementById("backdrop").onclick=closeDrawer;
 document.getElementById("copyPlan").onclick=copySummary;
 document.getElementById("clearPlan").onclick=()=>{state.plan=[];save();renderAll();toast("تم حذف الخطة")};
-document.getElementById("resetAll").onclick=()=>{if(confirm("هل تريد إعادة جميع المستويات والخطة؟")){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;save();location.reload()}};
+document.getElementById("resetAll").onclick=()=>{if(confirm("هل تريد إعادة جميع المستويات والخطة؟")){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;document.getElementById("researchBonus").value=0;document.getElementById("speedupHours").value=0;save();renderAll();toast("تمت إعادة الضبط")}};
 document.getElementById("zoomIn").onclick=()=>{zoom=Math.min(1.25,zoom+.1);renderTree()};document.getElementById("zoomOut").onclick=()=>{zoom=Math.max(.7,zoom-.1);renderTree()};
 renderAll();
 </script>
