@@ -1,4 +1,11 @@
-SaifKS Research Planner V12 Phase 8
-- Battle tree uses the exact repeating 17-node topology from the game screenshots.
-- Continuous vertical mobile layout, no folding and no zoom.
-- Real prerequisite links and tier-to-tier bridges.
+SaifKS Research Planner — V12 Phase 10
+
+What changed:
+- Project split into index.html + dedicated CSS/JS assets.
+- Deterministic SVG connector engine with rounded 90-degree routes.
+- Full prerequisite and unlocked-path highlighting, not only direct neighbors.
+- Mobile-first fixed three-column research layout.
+- Improved node states, stage markers, sticky navigation, detail panel and scrolling.
+- Reduced-motion support and lighter rendering for smoother mobile use.
+
+Open index.html directly. No server or internet connection is required.
