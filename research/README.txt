@@ -1,11 +1,12 @@
-SaifKS Research Planner — Phase 15
+SaifKS Research Planner — Phase 15.1 FIXED
 
-Open index.html.
-All project files are inside this single folder.
+Critical fix:
+- Phase 15 scripts now access the actual DB, activeTree, and plan variables declared by the main page.
+- Previous Phase 15 loaded but returned before decorating nodes, so visually nothing changed.
 
-Phase 15:
-- Every research can be selected.
-- Current and target levels are visible directly in the tree.
-- MAX is shown when both current and target reach the maximum.
-- Current and target research effects are visible directly in the tree.
-- Current level remains unable to exceed target level.
+Visible changes:
+- Every node shows Current → Target.
+- MAX appears only when Current and Target are both maximum.
+- Research effect is shown directly under the node name.
+- Every research node can be selected.
+- Current never exceeds Target.
