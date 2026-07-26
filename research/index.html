@@ -321,12 +321,84 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="balanced-pdf-rows">
+/* ثلاثة أبحاث: تملأ الصف بالكامل */
+.pdf-row .nodes.row-3{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  max-width:980px !important;
+  margin-inline:auto !important;
+}
+
+/* بحثان: عرض متوسط ومتمركزان */
+.pdf-row .nodes.row-2{
+  grid-template-columns:repeat(2,minmax(210px,290px)) !important;
+  justify-content:center !important;
+  max-width:650px !important;
+  margin-inline:auto !important;
+}
+
+/* بحث واحد: في منتصف الصف */
+.pdf-row .nodes.row-1{
+  grid-template-columns:minmax(230px,320px) !important;
+  justify-content:center !important;
+  max-width:360px !important;
+  margin-inline:auto !important;
+}
+.pdf-row .nodes.row-1 .node:only-child{
+  grid-column:auto !important;
+  max-width:none !important;
+  width:100% !important;
+  justify-self:center !important;
+}
+
+@media(max-width:760px){
+  /* ثلاثة بجانب بعض كما طلبت */
+  .pdf-row .nodes.row-3{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:5px !important;
+    max-width:100% !important;
+  }
+
+  /* بحثان بعرض متوسط، وليس بعرض الشاشة بالكامل */
+  .pdf-row .nodes.row-2{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    width:76% !important;
+    max-width:420px !important;
+    gap:6px !important;
+    margin-inline:auto !important;
+  }
+
+  /* البحث الوحيد في المنتصف */
+  .pdf-row .nodes.row-1{
+    grid-template-columns:minmax(0,1fr) !important;
+    width:42% !important;
+    min-width:110px !important;
+    max-width:210px !important;
+    margin-inline:auto !important;
+  }
+  .pdf-row .nodes.row-1 .node:only-child{
+    width:100% !important;
+    max-width:none !important;
+  }
+}
+
+@media(max-width:390px){
+  .pdf-row .nodes.row-2{
+    width:82% !important;
+  }
+  .pdf-row .nodes.row-1{
+    width:48% !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · 3-Column Effects V3.7</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · Balanced PDF Rows V3.8</small></div></div>
   <div class="header-actions"><button class="icon-btn" id="zoomOut">−</button><button class="icon-btn" id="zoomIn">＋</button></div>
  </div>
  <div class="section-tabs-wrap">
