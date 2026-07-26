@@ -393,12 +393,29 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="speedup-time-controls">
+.zero-placeholder::placeholder{color:rgba(205,221,241,.24);opacity:1}
+.zero-placeholder:placeholder-shown{color:transparent}
+.zero-placeholder:focus{color:#fff}
+.speedup-field{min-width:280px}
+.speedup-time-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.speedup-time-grid>div{display:flex;flex-direction:column;gap:4px}
+.speedup-time-grid small{font-size:9px;color:var(--muted);text-align:center}
+.speedup-time-grid input{width:100%;text-align:center}
+@media(max-width:760px){
+ .speedup-field{min-width:0;width:100%}
+ .speedup-time-grid{gap:5px}
+ .speedup-time-grid input{font-size:16px}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · Balanced PDF Rows V3.8</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · Time Controls V3.9</small></div></div>
   <div class="header-actions"><button class="icon-btn" id="zoomOut">−</button><button class="icon-btn" id="zoomIn">＋</button></div>
  </div>
  <div class="section-tabs-wrap">
@@ -411,8 +428,15 @@ button{cursor:pointer}
   <div class="control-panel">
    <div class="control-row">
     <div class="field"><label>البحث داخل القسم</label><input id="search" type="search" placeholder="اكتب اسم البحث أو نوع المكافأة..."></div>
-    <div class="field"><label>مكافأة سرعة البحث %</label><input id="researchBonus" inputmode="decimal" type="number" min="0" step="0.1" value="0"></div>
-    <div class="field"><label>ساعات التسريع المتوفرة</label><input id="speedupHours" inputmode="decimal" type="number" min="0" step="0.1" value="0"></div>
+    <div class="field"><label>مكافأة سرعة البحث %</label><input id="researchBonus" class="zero-placeholder" inputmode="decimal" type="number" min="0" step="0.1" placeholder="0"></div>
+    <div class="field speedup-field">
+      <label>تسريعات البحث المتوفرة</label>
+      <div class="speedup-time-grid">
+        <div><small>أيام</small><input id="speedupDays" class="zero-placeholder" inputmode="numeric" type="number" min="0" step="1" placeholder="0"></div>
+        <div><small>ساعات</small><input id="speedupHours" class="zero-placeholder" inputmode="numeric" type="number" min="0" max="23" step="1" placeholder="0"></div>
+        <div><small>دقائق</small><input id="speedupMinutes" class="zero-placeholder" inputmode="numeric" type="number" min="0" max="59" step="1" placeholder="0"></div>
+      </div>
+    </div>
     <button class="ghost-btn" id="resetAll">إعادة ضبط الخطة</button>
    </div>
   </div>
@@ -616,8 +640,19 @@ function totals(){
  const total={time:0,power:0,res:{bread:0,wood:0,stone:0,iron:0,gold:0}};
  state.plan.forEach(id=>{const t=DB.technologies.find(x=>x.id===id);if(!t)return;const c=config(id);t.levels.filter(l=>l.level>c.current&&l.level<=c.target).forEach(l=>{total.time+=l.time_seconds||0;total.power+=l.power||0;Object.keys(total.res).forEach(k=>total.res[k]+=l.resources?.[k]||0)})});return total
 }
+function speedupSeconds(){
+ const days=Math.max(0,+state.speedupDays||0);
+ const hours=Math.max(0,+state.speedupHours||0);
+ const minutes=Math.max(0,+state.speedupMinutes||0);
+ return days*86400+hours*3600+minutes*60
+}
+function speedupText(){
+ const d=Math.max(0,+state.speedupDays||0),h=Math.max(0,+state.speedupHours||0),m=Math.max(0,+state.speedupMinutes||0);
+ const parts=[];if(d)parts.push(d+" يوم");if(h)parts.push(h+" ساعة");if(m)parts.push(m+" دقيقة");
+ return parts.join(" و ")||"0"
+}
 function renderSummary(){
- const t=totals(),bonus=Math.max(0,+state.bonus||0),after=t.time/(1+bonus/100),available=Math.max(0,+state.speedups||0)*3600,used=Math.min(after,available),remain=Math.max(0,after-available);
+ const t=totals(),bonus=Math.max(0,+state.bonus||0),after=t.time/(1+bonus/100),available=speedupSeconds(),used=Math.min(after,available),remain=Math.max(0,after-available);
  document.getElementById("planCount").textContent=state.plan.length+" بحوث";document.getElementById("selectedCount").textContent=state.plan.length;
  document.getElementById("baseTime").textContent=duration(t.time);document.getElementById("bonusTime").textContent=duration(after);document.getElementById("usedSpeedups").textContent=duration(used);document.getElementById("remainingTime").textContent=duration(remain);document.getElementById("power").textContent=fmt(t.power);
  document.getElementById("resources").innerHTML=Object.entries(t.res).map(([k,v])=>`<div class="resource"><span>${resourceArabic[k]}</span><b>${fmt(v)}</b></div>`).join("")
@@ -655,15 +690,23 @@ function copySummary(){
  const t=totals(),bonus=Math.max(0,+state.bonus||0),after=t.time/(1+bonus/100),remain=Math.max(0,after-(+state.speedups||0)*3600);
  let s=`SaifKS Research Plan\n\n`;
  state.plan.forEach(id=>{const x=DB.technologies.find(t=>t.id===id),c=config(id);s+=`${x.name}: ${c.current} → ${c.target} (${deltaText(x,c.current,c.target)})\n`});
- s+=`\nResearch Speed Bonus: ${bonus}%\nBase Time: ${duration(t.time)}\nTime After Bonus: ${duration(after)}\nSpeedups: ${state.speedups||0}h\nRemaining Time: ${duration(remain)}\nPower: ${fmt(t.power)}\n`;
+ s+=`\nResearch Speed Bonus: ${bonus}%\nBase Time: ${duration(t.time)}\nTime After Bonus: ${duration(after)}\nSpeedups: ${speedupText()}\nRemaining Time: ${duration(remain)}\nPower: ${fmt(t.power)}\n`;
  Object.entries(t.res).forEach(([k,v])=>s+=`${resourceArabic[k]}: ${fmt(v)}\n`);
  navigator.clipboard.writeText(s).then(()=>toast("تم نسخ الملخص"))
 }
 
 document.getElementById("search").oninput=renderTree;
-document.getElementById("researchBonus").value=state.bonus||0;document.getElementById("speedupHours").value=state.speedups||0;
+document.getElementById("researchBonus").value=state.bonus>0?state.bonus:"";
+state.speedupDays=state.speedupDays??Math.floor((state.speedups||0)/24);
+state.speedupHours=state.speedupHours??Math.floor((state.speedups||0)%24);
+state.speedupMinutes=state.speedupMinutes??0;
+document.getElementById("speedupDays").value=state.speedupDays>0?state.speedupDays:"";
+document.getElementById("speedupHours").value=state.speedupHours>0?state.speedupHours:"";
+document.getElementById("speedupMinutes").value=state.speedupMinutes>0?state.speedupMinutes:"";
 document.getElementById("researchBonus").oninput=e=>{state.bonus=Math.max(0,+e.target.value||0);save();renderSummary()};
-document.getElementById("speedupHours").oninput=e=>{state.speedups=Math.max(0,+e.target.value||0);save();renderSummary()};
+document.getElementById("speedupDays").oninput=e=>{state.speedupDays=Math.max(0,Math.floor(+e.target.value||0));save();renderSummary()};
+document.getElementById("speedupHours").oninput=e=>{state.speedupHours=Math.min(23,Math.max(0,Math.floor(+e.target.value||0)));if(+e.target.value>23)e.target.value=23;save();renderSummary()};
+document.getElementById("speedupMinutes").oninput=e=>{state.speedupMinutes=Math.min(59,Math.max(0,Math.floor(+e.target.value||0)));if(+e.target.value>59)e.target.value=59;save();renderSummary()};
 function autoSaveSelection(){
  if(!activeTech)return;
  const current=+document.getElementById("currentLevel").value;
@@ -692,8 +735,8 @@ document.getElementById("targetLevel").onchange=()=>{
 document.getElementById("addPlan").onclick=()=>commit(true);document.getElementById("saveOnly").onclick=()=>commit(false);
 document.getElementById("closeDrawer").onclick=closeDrawer;document.getElementById("backdrop").onclick=closeDrawer;
 document.getElementById("copyPlan").onclick=copySummary;
-document.getElementById("clearPlan").onclick=()=>{state.plan=[];save();renderAll();toast("تم حذف الخطة")};
-document.getElementById("resetAll").onclick=()=>{if(confirm("هل تريد إعادة جميع المستويات والخطة؟")){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;document.getElementById("researchBonus").value=0;document.getElementById("speedupHours").value=0;save();renderAll();toast("تمت إعادة الضبط")}};
+document.getElementById("clearPlan").onclick=()=>{if(confirm("هل تريد حذف الخطة وجميع المستويات المختارة؟")){state.levels={};state.plan=[];save();renderAll();toast("تم حذف الخطة والمستويات المختارة")}};
+document.getElementById("resetAll").onclick=()=>{if(confirm("هل تريد إعادة جميع المستويات والخطة والتسريعات؟")){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;state.speedupDays=0;state.speedupHours=0;state.speedupMinutes=0;document.getElementById("researchBonus").value="";document.getElementById("speedupDays").value="";document.getElementById("speedupHours").value="";document.getElementById("speedupMinutes").value="";save();renderAll();toast("تمت إعادة الضبط")}};
 document.getElementById("zoomIn").onclick=()=>{zoom=Math.min(1.25,zoom+.1);renderTree()};document.getElementById("zoomOut").onclick=()=>{zoom=Math.max(.7,zoom-.1);renderTree()};
 renderAll();
 </script>
