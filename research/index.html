@@ -169,6 +169,54 @@ button{cursor:pointer}
  .summary-grid{grid-template-columns:1fr 1fr}.drawer{width:100%}
 }
 </style>
+
+<style id="research-visibility-fix">
+/* V3.3: ensure the full research tree is always reachable */
+.tree-viewport{
+  max-height:none !important;
+  min-height:0 !important;
+  overflow-x:auto !important;
+  overflow-y:visible !important;
+  padding-bottom:70px !important;
+}
+.tree-canvas{
+  opacity:1;
+  transform:none !important;
+  min-height:max-content;
+}
+.tier,.nodes,.node{
+  visibility:visible !important;
+}
+@media (min-width:1101px){
+  .tree-canvas{min-width:890px}
+}
+@media (max-width:1100px){
+  .tree-canvas{min-width:760px}
+}
+@media (max-width:760px){
+  .tree-viewport{
+    overflow:visible !important;
+    padding:10px 8px 45px !important;
+  }
+  .tree-canvas{
+    min-width:0 !important;
+    width:100% !important;
+    zoom:1 !important;
+  }
+  .nodes{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    width:100%;
+  }
+  .node{
+    width:100%;
+    min-width:0;
+  }
+}
+@media (max-width:390px){
+  .nodes{grid-template-columns:1fr !important}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -270,8 +318,8 @@ function renderTabs(){
    if(state.category===b.dataset.cat)return;
    state.category=b.dataset.cat;save();
    const tree=document.getElementById("tree");
-   tree.style.opacity=".2";tree.style.transform=`translateY(8px) scale(${zoom})`;
-   setTimeout(()=>{renderAll();tree.style.opacity="1";tree.style.transform=`translateY(0) scale(${zoom})`},130);
+   tree.style.opacity=".2";
+   setTimeout(()=>{renderAll();tree.style.opacity="1";tree.style.transform="none";tree.style.zoom=zoom},130);
  })
 }
 function renderTree(){
@@ -279,8 +327,9 @@ function renderTree(){
  let techs=DB.technologies.filter(t=>t.category===state.category && (!q||(t.name+" "+t.description+" "+t.buff_summary).toLowerCase().includes(q)));
  const groups={};techs.forEach(t=>{const s=romanStage(t.name);(groups[s]??=[]).push(t)});
  document.getElementById("treeTitle").textContent="شجرة بحوث "+catArabic[state.category];
- document.getElementById("treeMeta").textContent=techs.length+" بحث · اضغط على أي بحث لتحديد المستويات";
- const tree=document.getElementById("tree");tree.style.transform=`scale(${zoom})`;
+ const categoryTotal=DB.technologies.filter(t=>t.category===state.category).length;
+ document.getElementById("treeMeta").textContent=techs.length+" من "+categoryTotal+" بحث · جميع البحوث قابلة للتمرير والمشاهدة";
+ const tree=document.getElementById("tree");tree.style.zoom=zoom;tree.style.transform="none";
  if(!techs.length){tree.innerHTML='<div class="empty">لا توجد نتائج مطابقة.</div>';return}
  tree.innerHTML=Object.keys(groups).sort((a,b)=>a-b).map(stage=>`<section class="tier"><div class="tier-label">${stage==0?"Special":"Tier "+stage}</div><div class="nodes">${groups[stage].map(nodeHTML).join("")}</div></section>`).join("");
  tree.querySelectorAll(".node").forEach(n=>n.onclick=()=>openDrawer(n.dataset.id))
