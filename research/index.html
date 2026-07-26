@@ -177,17 +177,16 @@ function initLevelSelectors(){
 function onTargetChange(){
   const target=Number($('#target').value||0);
   const previousCurrent=Number($('#current').value||0);
-  const currentValues=target>0?Array.from({length:target},(_,i)=>i):[0];
-  setOptions($('#current'),currentValues,Math.min(previousCurrent,Math.max(0,target-1)));
+  const currentValues=Array.from({length:Math.max(0,target)+1},(_,i)=>i);
+  setOptions($('#current'),currentValues,Math.min(previousCurrent,Math.max(0,target)));
   calc();
 }
 function onCurrentChange(){
   const max=levelMax(),current=Number($('#current').value||0),previousTarget=Number($('#target').value||0);
   // المستوى 0 يظهر فقط عند عدم اختيار مستوى حالي بعد.
   // بمجرد أن يصبح المستوى الحالي 1 أو أعلى، تعرض قائمة الهدف المستويات الأعلى منه فقط.
-  const higherTargets=Array.from({length:Math.max(0,max-current)},(_,i)=>current+i+1);
-  const targetValues=current===0?[0,...higherTargets]:higherTargets;
-  const chosen=previousTarget>current?previousTarget:(current===0?0:(higherTargets[0]||0));
+  const targetValues=Array.from({length:Math.max(0,max-current)+1},(_,i)=>current+i);
+  const chosen=previousTarget>=current?previousTarget:current;
   setOptions($('#target'),targetValues,chosen);
   calc();
 }
@@ -662,6 +661,6 @@ body.v12-mode #groups{max-width:796px!important;margin:auto}
 
   <script src="assets/js/phase10-engine.js?v=10.0.0"></script>
 <script src="assets/js/phase11-polish.js?v=11.0.0"></script>
-<link rel="stylesheet" href="assets/css/phase12.css?v=12.0.0">
-<script src="assets/js/phase12-progress.js?v=12.0.0"></script>
+<link rel="stylesheet" href="assets/css/phase13.css?v=14.0.0">
+<script src="assets/js/phase13-levels.js?v=14.0.0"></script>
 </body></html>
