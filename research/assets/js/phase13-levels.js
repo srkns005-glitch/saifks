@@ -8,10 +8,13 @@
   const isAR=()=>document.documentElement.lang==='ar';
   const read=(key)=>{try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return{}}};
   const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
-  const tree=()=>window.DB?.trees?.find(t=>t.id===window.activeTree)||window.DB?.trees?.[0];
+  const getDB=()=>typeof DB!=='undefined'?DB:window.DB;
+  const getActiveTree=()=>typeof activeTree!=='undefined'?activeTree:window.activeTree;
+  const getPlan=()=>typeof plan!=='undefined'?plan:(window.plan||[]);
+  const tree=()=>getDB()?.trees?.find(t=>t.id===getActiveTree())||getDB()?.trees?.[0];
   const tech=id=>tree()?.techs?.find(t=>String(t.id)===String(id));
   const parents=()=>$('#groups')?._v127Parents||new Map();
-  const planned=id=>(window.plan||[]).find(p=>String(p.id)===String(id));
+  const planned=id=>getPlan().find(p=>String(p.id)===String(id));
   const current=id=>{const t=tech(id);return t?Math.max(0,Math.min(+t.maxLevel||0,+read(CURRENT_KEY)[id]||0)):0};
   const target=id=>{const t=tech(id);if(!t)return 0;const c=current(id),saved=read(TARGET_KEY)[id],p=planned(id);const raw=saved??p?.target??c;return Math.max(c,Math.min(+t.maxLevel||0,+raw||0))};
   const saveCurrent=(id,val)=>{const o=read(CURRENT_KEY);o[id]=val;write(CURRENT_KEY,o)};

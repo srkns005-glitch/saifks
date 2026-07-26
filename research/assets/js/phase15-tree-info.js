@@ -6,13 +6,16 @@
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return{}}};
-  const tree=()=>window.DB?.trees?.find(t=>t.id===window.activeTree)||window.DB?.trees?.[0];
+  const getDB=()=>typeof DB!=='undefined'?DB:window.DB;
+  const getActiveTree=()=>typeof activeTree!=='undefined'?activeTree:window.activeTree;
+  const getPlan=()=>typeof plan!=='undefined'?plan:(window.plan||[]);
+  const tree=()=>getDB()?.trees?.find(t=>t.id===getActiveTree())||getDB()?.trees?.[0];
   const tech=id=>tree()?.techs?.find(t=>String(t.id)===String(id));
   const isAR=()=>document.documentElement.lang==='ar';
   const cleanEffect=v=>String(v??'').trim()||'—';
   function current(t){return Math.max(0,Math.min(+t.maxLevel||0,+read(CURRENT_KEY)[t.id]||0))}
   function target(t){
-    const c=current(t),saved=read(TARGET_KEY)[t.id],plan=(window.plan||[]).find(p=>String(p.id)===String(t.id));
+    const c=current(t),saved=read(TARGET_KEY)[t.id],plan=getPlan().find(p=>String(p.id)===String(t.id));
     return Math.max(c,Math.min(+t.maxLevel||0,+(saved??plan?.target??c)||0));
   }
   function effectAt(t,level){
