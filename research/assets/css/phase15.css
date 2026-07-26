@@ -1,0 +1,15 @@
+/* Phase 15 — visible current/target levels and research effect */
+.v125-node{cursor:pointer!important;pointer-events:auto!important}
+.v125-node .p15-levels{display:block;margin-top:18px;min-height:20px;color:#fff;font-size:11px;font-weight:900;line-height:1.1;text-shadow:0 1px 1px #2f2016;white-space:nowrap}
+.v125-node .p15-effect{display:block;margin:4px auto 0;max-width:126px;min-height:16px;padding:2px 5px;border:1px solid rgba(110,76,45,.22);border-radius:999px;background:rgba(255,250,241,.72);color:#6f4d31;font-size:9px;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v125-node .v125-level{display:none!important}
+.v125-node .v125-name{margin-top:5px!important}
+.v125-node.completed .p15-levels{color:#ffe48b}
+.v125-node.p15-targeted .p15-effect{border-color:#2a9da0;background:#e8ffff;color:#1f7275}
+.v125-node.selected .p15-effect{box-shadow:0 0 0 2px rgba(255,209,85,.35)}
+.p15-detail-effect{display:block;margin-top:4px;color:#6f4d31!important;font-size:10px!important;font-weight:800}
+@media(max-width:430px){
+  .v125-node .p15-levels{margin-top:14px;font-size:10px}
+  .v125-node .p15-effect{max-width:112px;font-size:8.5px;padding-inline:4px}
+  .v125-node .v125-name{font-size:10px!important}
+}
