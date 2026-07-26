@@ -262,12 +262,71 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="three-research-grid">
+.pdf-row .nodes,
+.nodes{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:9px !important;
+}
+.pdf-row .nodes.row-1,
+.pdf-row .nodes.row-2,
+.pdf-row .nodes.row-3{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  justify-content:stretch !important;
+}
+.pdf-row .nodes.row-1 .node:only-child,
+.pdf-row .nodes.row-2 .node:only-child{
+  grid-column:auto !important;
+  max-width:none !important;
+  justify-self:stretch !important;
+}
+.effect-delta{
+  min-height:31px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 5px;
+  border-radius:8px;
+  background:rgba(90,169,255,.07);
+  border:1px solid rgba(90,169,255,.13);
+  color:#b9d8ff;
+  font-size:9px;
+  line-height:1.35;
+  text-align:center;
+  font-weight:800;
+}
+@media(max-width:760px){
+ .pdf-row .nodes,.nodes,
+ .pdf-row .nodes.row-1,.pdf-row .nodes.row-2,.pdf-row .nodes.row-3{
+   grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+   gap:5px !important;
+ }
+ .node{padding:7px 5px !important;min-height:145px !important;border-radius:10px !important}
+ .node-top{gap:3px}
+ .node-name{font-size:9px !important;line-height:1.25}
+ .node-max{font-size:7px !important;padding:2px 3px !important}
+ .node-buff{font-size:7.5px !important;line-height:1.25;min-height:28px}
+ .inline-levels{gap:3px !important;margin-top:6px !important}
+ .inline-levels small{font-size:7px !important}
+ .inline-levels select{height:34px !important;font-size:13px !important;padding:0 2px !important;border-radius:8px !important}
+ .inline-levels .arrow{font-size:10px;margin-top:13px}
+ .effect-delta{font-size:7.5px;min-height:34px;padding:4px 3px;margin-top:5px}
+}
+@media(max-width:360px){
+ .node-name{font-size:8px !important}
+ .node-buff{display:none}
+ .node{min-height:118px !important}
+ .effect-delta{font-size:7px}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · Inline Levels V3.6</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1>SaifKS Research Center</h1><small>Professional Research Planner · 3-Column Effects V3.7</small></div></div>
   <div class="header-actions"><button class="icon-btn" id="zoomOut">−</button><button class="icon-btn" id="zoomIn">＋</button></div>
  </div>
  <div class="section-tabs-wrap">
@@ -349,7 +408,50 @@ function effectNumber(str){const m=String(str||"").match(/-?\d+(?:\.\d+)?/);retu
 function effectUnit(str){return String(str||"").includes("%")?"%":""}
 function config(id){return state.levels[id]||{current:0,target:0}}
 function getEffect(t,lvl){if(!lvl)return 0;const row=t.levels.find(x=>x.level===lvl);return row?effectNumber(row.effect):0}
-function deltaText(t,c,tg){const d=getEffect(t,tg)-getEffect(t,c);return d>0?"+"+d.toFixed(2).replace(/\.?0+$/,"")+effectUnit(t.levels[0]?.effect):"لا توجد زيادة"}
+function effectLabel(t){
+ const text=((t.buff_summary||"")+" "+(t.description||"")+" "+(t.name||"")).toLowerCase();
+ const labels=[
+  [["healing speed","bandaging"],"سرعة العلاج"],
+  [["training capacity","camp expansion"],"سعة تدريب الجنود"],
+  [["training speed","trainer tools"],"سرعة تدريب الجنود"],
+  [["research speed","tool enhancement"],"سرعة البحث"],
+  [["construction speed","tooling up"],"سرعة البناء"],
+  [["hospital capacity","ward expansion"],"سعة المستشفى"],
+  [["march queue","command tactics"],"عدد مسيرات الجيش"],
+  [["bread output"],"إنتاج الخبز"],
+  [["wood output"],"إنتاج الخشب"],
+  [["stone output"],"إنتاج الحجر"],
+  [["iron output"],"إنتاج الحديد"],
+  [["food foraging"],"سرعة جمع الخبز"],
+  [["wood gathering"],"سرعة جمع الخشب"],
+  [["stone gathering"],"سرعة جمع الحجر"],
+  [["iron mining"],"سرعة جمع الحديد"],
+  [["infantry attack","close combat"],"هجوم المشاة"],
+  [["infantry defense","defensive formations"],"دفاع المشاة"],
+  [["infantry lethality","weapons prep"],"فتك المشاة"],
+  [["infantry health","shield upgrade"],"صحة المشاة"],
+  [["archer attack","precision targeting"],"هجوم الرماة"],
+  [["archer defense","picket lines"],"دفاع الرماة"],
+  [["archer lethality","targeted sniping"],"فتك الرماة"],
+  [["archer health","leathercraft"],"صحة الرماة"],
+  [["cavalry attack","cavalry charge"],"هجوم الفرسان"],
+  [["cavalry defense","bulwark formations"],"دفاع الفرسان"],
+  [["cavalry lethality","lance upgrade"],"فتك الفرسان"],
+  [["cavalry health","fortified mail"],"صحة الفرسان"],
+  [["squad attack","assault techniques"],"هجوم القوات"],
+  [["squad defense","special defensive training"],"دفاع القوات"],
+  [["squad health","survival techniques"],"صحة القوات"],
+  [["squad lethality","reprisal tactics"],"فتك القوات"],
+  [["march capacity","regimental expansion"],"سعة المسيرة"]
+ ];
+ for(const [keys,label] of labels)if(keys.some(k=>text.includes(k)))return label;
+ const raw=(t.buff_summary||t.description||"الزيادة").split("+")[0].trim();
+ return raw||"الزيادة"
+}
+function deltaText(t,c,tg){
+ const d=getEffect(t,tg)-getEffect(t,c);
+ return d>0?effectLabel(t)+": +"+d.toFixed(2).replace(/\.?0+$/,"")+effectUnit(t.levels[0]?.effect):effectLabel(t)+": 0"
+}
 function isPlanned(id){return state.plan.includes(id)}
 function toast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
 
@@ -398,7 +500,7 @@ function nodeHTML(t){
    <span class="arrow">←</span>
    <label><small>المستهدف</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
   </div>
-  <div class="delta">${deltaText(t,c.current,safeTarget)}</div>
+  <div class="delta effect-delta">${deltaText(t,c.current,safeTarget)}</div>
  </div>`
 }
 function openDrawer(id){
