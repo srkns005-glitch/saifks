@@ -217,6 +217,26 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="pdf-tree-order">
+.pdf-row{margin-bottom:22px}
+.pdf-row .nodes{max-width:980px;margin-inline:auto}
+.pdf-row .nodes.row-1{grid-template-columns:minmax(220px,360px);justify-content:center}
+.pdf-row .nodes.row-2{grid-template-columns:repeat(2,minmax(190px,320px));justify-content:center}
+.pdf-row .nodes.row-3{grid-template-columns:repeat(3,minmax(180px,1fr))}
+.pdf-row .tier-label{background:linear-gradient(90deg,transparent,rgba(90,169,255,.12),transparent);padding:5px 10px}
+@media(max-width:760px){
+ .pdf-row .nodes.row-1,.pdf-row .nodes.row-2,.pdf-row .nodes.row-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .pdf-row .nodes.row-1 .node:only-child{grid-column:1/-1;max-width:72%;justify-self:center}
+ .pdf-row{margin-bottom:14px}
+ .pdf-row .tier-label{font-size:9px;padding:3px 8px}
+}
+@media(max-width:390px){
+ .pdf-row .nodes.row-1,.pdf-row .nodes.row-2,.pdf-row .nodes.row-3{grid-template-columns:1fr!important}
+ .pdf-row .nodes.row-1 .node:only-child{grid-column:auto;max-width:none}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -325,13 +345,14 @@ function renderTabs(){
 function renderTree(){
  const q=document.getElementById("search").value.trim().toLowerCase();
  let techs=DB.technologies.filter(t=>t.category===state.category && (!q||(t.name+" "+t.description+" "+t.buff_summary).toLowerCase().includes(q)));
- const groups={};techs.forEach(t=>{const s=romanStage(t.name);(groups[s]??=[]).push(t)});
+ techs.sort((a,b)=>(a.tree_order??9999)-(b.tree_order??9999));
+ const rows={};techs.forEach(t=>{const r=t.tree_row??999;(rows[r]??=[]).push(t)});
  document.getElementById("treeTitle").textContent="شجرة بحوث "+catArabic[state.category];
  const categoryTotal=DB.technologies.filter(t=>t.category===state.category).length;
- document.getElementById("treeMeta").textContent=techs.length+" من "+categoryTotal+" بحث · جميع البحوث قابلة للتمرير والمشاهدة";
+ document.getElementById("treeMeta").textContent=techs.length+" من "+categoryTotal+" بحث · مرتبة حسب تسلسل شجرة الـ PDF";
  const tree=document.getElementById("tree");tree.style.zoom=zoom;tree.style.transform="none";
  if(!techs.length){tree.innerHTML='<div class="empty">لا توجد نتائج مطابقة.</div>';return}
- tree.innerHTML=Object.keys(groups).sort((a,b)=>a-b).map(stage=>`<section class="tier"><div class="tier-label">${stage==0?"Special":"Tier "+stage}</div><div class="nodes">${groups[stage].map(nodeHTML).join("")}</div></section>`).join("");
+ tree.innerHTML=Object.keys(rows).sort((a,b)=>a-b).map((row,index)=>`<section class="tier pdf-row"><div class="tier-label">المرحلة ${index+1}</div><div class="nodes row-${rows[row].length}">${rows[row].sort((a,b)=>(a.tree_col??0)-(b.tree_col??0)).map(nodeHTML).join("")}</div></section>`).join("");
  tree.querySelectorAll(".node").forEach(n=>n.onclick=()=>openDrawer(n.dataset.id))
 }
 function nodeHTML(t){
