@@ -73,10 +73,7 @@
           "academy_level": 4,
           "prerequisites": []
         }
-      ],
-      "tree_row": 3,
-      "tree_col": 0,
-      "tree_order": 30
+      ]
     },
     {
       "id": "development-bandaging-ii",
@@ -142,10 +139,7 @@
           "academy_level": 10,
           "prerequisites": []
         }
-      ],
-      "tree_row": 8,
-      "tree_col": 0,
-      "tree_order": 80
+      ]
     },
     {
       "id": "development-bandaging-iii",
@@ -211,10 +205,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 12,
-      "tree_col": 0,
-      "tree_order": 120
+      ]
     },
     {
       "id": "development-bandaging-iv",
@@ -280,10 +271,7 @@
           "academy_level": 19,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 0,
-      "tree_order": 170
+      ]
     },
     {
       "id": "development-bandaging-v",
@@ -349,10 +337,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 0,
-      "tree_order": 220
+      ]
     },
     {
       "id": "development-bandaging-vi",
@@ -418,10 +403,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 26,
-      "tree_col": 0,
-      "tree_order": 260
+      ]
     },
     {
       "id": "development-bandaging-vii",
@@ -487,10 +469,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 30,
-      "tree_col": 0,
-      "tree_order": 300
+      ]
     },
     {
       "id": "development-camp-expansion-i",
@@ -556,10 +535,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 0,
-      "tree_order": 10
+      ]
     },
     {
       "id": "development-camp-expansion-ii",
@@ -625,10 +601,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 0,
-      "tree_order": 60
+      ]
     },
     {
       "id": "development-camp-expansion-iii",
@@ -694,10 +667,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 0,
-      "tree_order": 100
+      ]
     },
     {
       "id": "development-camp-expansion-iv",
@@ -763,10 +733,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 0,
-      "tree_order": 150
+      ]
     },
     {
       "id": "development-camp-expansion-v",
@@ -832,10 +799,7 @@
           "academy_level": 22,
           "prerequisites": []
         }
-      ],
-      "tree_row": 20,
-      "tree_col": 0,
-      "tree_order": 200
+      ]
     },
     {
       "id": "development-camp-expansion-vi",
@@ -901,10 +865,7 @@
           "academy_level": 27,
           "prerequisites": []
         }
-      ],
-      "tree_row": 24,
-      "tree_col": 0,
-      "tree_order": 240
+      ]
     },
     {
       "id": "development-camp-expansion-vii",
@@ -970,10 +931,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 28,
-      "tree_col": 0,
-      "tree_order": 280
+      ]
     },
     {
       "id": "development-command-tactics-i",
@@ -1009,10 +967,7 @@
             }
           ]
         }
-      ],
-      "tree_row": 4,
-      "tree_col": 0,
-      "tree_order": 40
+      ]
     },
     {
       "id": "development-command-tactics-ii",
@@ -1048,10 +1003,7 @@
             }
           ]
         }
-      ],
-      "tree_row": 13,
-      "tree_col": 0,
-      "tree_order": 130
+      ]
     },
     {
       "id": "development-command-tactics-iii",
@@ -1087,10 +1039,7 @@
             }
           ]
         }
-      ],
-      "tree_row": 18,
-      "tree_col": 0,
-      "tree_order": 180
+      ]
     },
     {
       "id": "development-tool-enhancement-i",
@@ -1160,10 +1109,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 0,
-      "tree_order": 20
+      ]
     },
     {
       "id": "development-tool-enhancement-ii",
@@ -1233,10 +1179,7 @@
           "academy_level": 8,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 0,
-      "tree_order": 70
+      ]
     },
     {
       "id": "development-tool-enhancement-iii",
@@ -1306,10 +1249,7 @@
           "academy_level": 13,
           "prerequisites": []
         }
-      ],
-      "tree_row": 11,
-      "tree_col": 0,
-      "tree_order": 110
+      ]
     },
     {
       "id": "development-tool-enhancement-iv",
@@ -1379,10 +1319,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 16,
-      "tree_col": 0,
-      "tree_order": 160
+      ]
     },
     {
       "id": "development-tool-enhancement-v",
@@ -1452,10 +1389,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 21,
-      "tree_col": 0,
-      "tree_order": 210
+      ]
     },
     {
       "id": "development-tool-enhancement-vi",
@@ -1525,10 +1459,7 @@
           "academy_level": 28,
           "prerequisites": []
         }
-      ],
-      "tree_row": 25,
-      "tree_col": 0,
-      "tree_order": 250
+      ]
     },
     {
       "id": "development-tool-enhancement-vii",
@@ -1598,10 +1529,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 29,
-      "tree_col": 0,
-      "tree_order": 290
+      ]
     },
     {
       "id": "development-tooling-up-i",
@@ -1662,10 +1590,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 0,
-      "tree_col": 0,
-      "tree_order": 0
+      ]
     },
     {
       "id": "development-tooling-up-ii",
@@ -1731,10 +1656,7 @@
           "academy_level": 4,
           "prerequisites": []
         }
-      ],
-      "tree_row": 5,
-      "tree_col": 0,
-      "tree_order": 50
+      ]
     },
     {
       "id": "development-tooling-up-iii",
@@ -1804,10 +1726,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 0,
-      "tree_order": 90
+      ]
     },
     {
       "id": "development-tooling-up-iv",
@@ -1873,10 +1792,7 @@
           "academy_level": 16,
           "prerequisites": []
         }
-      ],
-      "tree_row": 14,
-      "tree_col": 0,
-      "tree_order": 140
+      ]
     },
     {
       "id": "development-tooling-up-v",
@@ -1942,10 +1858,7 @@
           "academy_level": 21,
           "prerequisites": []
         }
-      ],
-      "tree_row": 19,
-      "tree_col": 0,
-      "tree_order": 190
+      ]
     },
     {
       "id": "development-tooling-up-vi",
@@ -2015,10 +1928,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 0,
-      "tree_order": 230
+      ]
     },
     {
       "id": "development-tooling-up-vii",
@@ -2088,10 +1998,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 27,
-      "tree_col": 0,
-      "tree_order": 270
+      ]
     },
     {
       "id": "development-trainer-tools-i",
@@ -2157,10 +2064,7 @@
           "academy_level": 4,
           "prerequisites": []
         }
-      ],
-      "tree_row": 3,
-      "tree_col": 1,
-      "tree_order": 31
+      ]
     },
     {
       "id": "development-trainer-tools-ii",
@@ -2226,10 +2130,7 @@
           "academy_level": 10,
           "prerequisites": []
         }
-      ],
-      "tree_row": 8,
-      "tree_col": 1,
-      "tree_order": 81
+      ]
     },
     {
       "id": "development-trainer-tools-iii",
@@ -2295,10 +2196,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 12,
-      "tree_col": 1,
-      "tree_order": 121
+      ]
     },
     {
       "id": "development-trainer-tools-iv",
@@ -2364,10 +2262,7 @@
           "academy_level": 19,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 1,
-      "tree_order": 171
+      ]
     },
     {
       "id": "development-trainer-tools-v",
@@ -2433,10 +2328,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 1,
-      "tree_order": 221
+      ]
     },
     {
       "id": "development-trainer-tools-vi",
@@ -2503,10 +2395,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 26,
-      "tree_col": 1,
-      "tree_order": 261
+      ]
     },
     {
       "id": "development-trainer-tools-vii",
@@ -2572,10 +2461,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 30,
-      "tree_col": 1,
-      "tree_order": 301
+      ]
     },
     {
       "id": "development-ward-expansion-i",
@@ -2641,10 +2527,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 1,
-      "tree_order": 11
+      ]
     },
     {
       "id": "development-ward-expansion-ii",
@@ -2710,10 +2593,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 1,
-      "tree_order": 61
+      ]
     },
     {
       "id": "development-ward-expansion-iii",
@@ -2779,10 +2659,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 1,
-      "tree_order": 101
+      ]
     },
     {
       "id": "development-ward-expansion-iv",
@@ -2848,10 +2725,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 1,
-      "tree_order": 151
+      ]
     },
     {
       "id": "development-ward-expansion-v",
@@ -2917,10 +2791,7 @@
           "academy_level": 22,
           "prerequisites": []
         }
-      ],
-      "tree_row": 20,
-      "tree_col": 1,
-      "tree_order": 201
+      ]
     },
     {
       "id": "development-ward-expansion-vi",
@@ -2986,10 +2857,7 @@
           "academy_level": 27,
           "prerequisites": []
         }
-      ],
-      "tree_row": 24,
-      "tree_col": 1,
-      "tree_order": 241
+      ]
     },
     {
       "id": "development-ward-expansion-vii",
@@ -3055,10 +2923,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 28,
-      "tree_col": 1,
-      "tree_order": 281
+      ]
     },
     {
       "id": "economy-bread-output-i",
@@ -3119,10 +2984,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 0,
-      "tree_col": 0,
-      "tree_order": 0
+      ]
     },
     {
       "id": "economy-bread-output-ii",
@@ -3188,10 +3050,7 @@
           "academy_level": 10,
           "prerequisites": []
         }
-      ],
-      "tree_row": 5,
-      "tree_col": 0,
-      "tree_order": 50
+      ]
     },
     {
       "id": "economy-bread-output-iii",
@@ -3257,10 +3116,7 @@
           "academy_level": 15,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 0,
-      "tree_order": 90
+      ]
     },
     {
       "id": "economy-bread-output-iv",
@@ -3326,10 +3182,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 13,
-      "tree_col": 0,
-      "tree_order": 130
+      ]
     },
     {
       "id": "economy-bread-output-v",
@@ -3395,10 +3248,7 @@
           "academy_level": 25,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 0,
-      "tree_order": 170
+      ]
     },
     {
       "id": "economy-bread-output-vi",
@@ -3465,10 +3315,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 21,
-      "tree_col": 0,
-      "tree_order": 210
+      ]
     },
     {
       "id": "economy-food-foraging-i",
@@ -3534,10 +3381,7 @@
           "academy_level": 7,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 0,
-      "tree_order": 20
+      ]
     },
     {
       "id": "economy-food-foraging-ii",
@@ -3603,10 +3447,7 @@
           "academy_level": 13,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 0,
-      "tree_order": 70
+      ]
     },
     {
       "id": "economy-food-foraging-iii",
@@ -3672,10 +3513,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 11,
-      "tree_col": 0,
-      "tree_order": 110
+      ]
     },
     {
       "id": "economy-food-foraging-iv",
@@ -3741,10 +3579,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 0,
-      "tree_order": 150
+      ]
     },
     {
       "id": "economy-food-foraging-v",
@@ -3810,10 +3645,7 @@
           "academy_level": 28,
           "prerequisites": []
         }
-      ],
-      "tree_row": 19,
-      "tree_col": 0,
-      "tree_order": 190
+      ]
     },
     {
       "id": "economy-food-foraging-vi",
@@ -3879,10 +3711,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 0,
-      "tree_order": 230
+      ]
     },
     {
       "id": "economy-iron-mining-i",
@@ -3952,10 +3781,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 8,
-      "tree_col": 0,
-      "tree_order": 80
+      ]
     },
     {
       "id": "economy-iron-mining-ii",
@@ -4029,10 +3855,7 @@
           "academy_level": 19,
           "prerequisites": []
         }
-      ],
-      "tree_row": 12,
-      "tree_col": 0,
-      "tree_order": 120
+      ]
     },
     {
       "id": "economy-iron-mining-iii",
@@ -4106,10 +3929,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 16,
-      "tree_col": 0,
-      "tree_order": 160
+      ]
     },
     {
       "id": "economy-iron-mining-iv",
@@ -4183,10 +4003,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 20,
-      "tree_col": 0,
-      "tree_order": 200
+      ]
     },
     {
       "id": "economy-iron-mining-v",
@@ -4260,10 +4077,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 24,
-      "tree_col": 0,
-      "tree_order": 240
+      ]
     },
     {
       "id": "economy-iron-output-i",
@@ -4333,10 +4147,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 0,
-      "tree_order": 60
+      ]
     },
     {
       "id": "economy-iron-output-ii",
@@ -4410,10 +4221,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 0,
-      "tree_order": 100
+      ]
     },
     {
       "id": "economy-iron-output-iii",
@@ -4487,10 +4295,7 @@
           "academy_level": 22,
           "prerequisites": []
         }
-      ],
-      "tree_row": 14,
-      "tree_col": 0,
-      "tree_order": 140
+      ]
     },
     {
       "id": "economy-iron-output-iv",
@@ -4564,10 +4369,7 @@
           "academy_level": 27,
           "prerequisites": []
         }
-      ],
-      "tree_row": 18,
-      "tree_col": 0,
-      "tree_order": 180
+      ]
     },
     {
       "id": "economy-iron-output-v",
@@ -4641,10 +4443,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 0,
-      "tree_order": 220
+      ]
     },
     {
       "id": "economy-stone-gathering-i",
@@ -4710,10 +4509,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 4,
-      "tree_col": 0,
-      "tree_order": 40
+      ]
     },
     {
       "id": "economy-stone-gathering-ii",
@@ -4779,10 +4575,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 11,
-      "tree_col": 1,
-      "tree_order": 111
+      ]
     },
     {
       "id": "economy-stone-gathering-iii",
@@ -4848,10 +4641,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 1,
-      "tree_order": 151
+      ]
     },
     {
       "id": "economy-stone-gathering-iv",
@@ -4917,10 +4707,7 @@
           "academy_level": 28,
           "prerequisites": []
         }
-      ],
-      "tree_row": 19,
-      "tree_col": 1,
-      "tree_order": 191
+      ]
     },
     {
       "id": "economy-stone-gathering-v",
@@ -4986,10 +4773,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 1,
-      "tree_order": 231
+      ]
     },
     {
       "id": "economy-stone-output-i",
@@ -5059,10 +4843,7 @@
           "academy_level": 8,
           "prerequisites": []
         }
-      ],
-      "tree_row": 3,
-      "tree_col": 0,
-      "tree_order": 30
+      ]
     },
     {
       "id": "economy-stone-output-ii",
@@ -5128,10 +4909,7 @@
           "academy_level": 15,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 2,
-      "tree_order": 92
+      ]
     },
     {
       "id": "economy-stone-output-iii",
@@ -5197,10 +4975,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 13,
-      "tree_col": 2,
-      "tree_order": 132
+      ]
     },
     {
       "id": "economy-stone-output-iv",
@@ -5266,10 +5041,7 @@
           "academy_level": 25,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 2,
-      "tree_order": 172
+      ]
     },
     {
       "id": "economy-stone-output-v",
@@ -5335,10 +5107,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 21,
-      "tree_col": 2,
-      "tree_order": 212
+      ]
     },
     {
       "id": "economy-wood-gathering-i",
@@ -5404,10 +5173,7 @@
           "academy_level": 7,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 1,
-      "tree_order": 21
+      ]
     },
     {
       "id": "economy-wood-gathering-ii",
@@ -5473,10 +5239,7 @@
           "academy_level": 13,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 1,
-      "tree_order": 71
+      ]
     },
     {
       "id": "economy-wood-gathering-iii",
@@ -5542,10 +5305,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 11,
-      "tree_col": 2,
-      "tree_order": 112
+      ]
     },
     {
       "id": "economy-wood-gathering-iv",
@@ -5611,10 +5371,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 2,
-      "tree_order": 152
+      ]
     },
     {
       "id": "economy-wood-gathering-v",
@@ -5680,10 +5437,7 @@
           "academy_level": 28,
           "prerequisites": []
         }
-      ],
-      "tree_row": 19,
-      "tree_col": 2,
-      "tree_order": 192
+      ]
     },
     {
       "id": "economy-wood-gathering-vi",
@@ -5749,10 +5503,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 2,
-      "tree_order": 232
+      ]
     },
     {
       "id": "economy-wood-output-i",
@@ -5818,10 +5569,7 @@
           "academy_level": 5,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 0,
-      "tree_order": 10
+      ]
     },
     {
       "id": "economy-wood-output-ii",
@@ -5887,10 +5635,7 @@
           "academy_level": 10,
           "prerequisites": []
         }
-      ],
-      "tree_row": 5,
-      "tree_col": 1,
-      "tree_order": 51
+      ]
     },
     {
       "id": "economy-wood-output-iii",
@@ -5956,10 +5701,7 @@
           "academy_level": 15,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 1,
-      "tree_order": 91
+      ]
     },
     {
       "id": "economy-wood-output-iv",
@@ -6025,10 +5767,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 13,
-      "tree_col": 1,
-      "tree_order": 131
+      ]
     },
     {
       "id": "economy-wood-output-v",
@@ -6094,10 +5833,7 @@
           "academy_level": 25,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 1,
-      "tree_order": 171
+      ]
     },
     {
       "id": "economy-wood-output-vi",
@@ -6164,10 +5900,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 21,
-      "tree_col": 1,
-      "tree_order": 211
+      ]
     },
     {
       "id": "battle-leathercraft-i",
@@ -6233,10 +5966,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 1,
-      "tree_order": 71
+      ]
     },
     {
       "id": "battle-leathercraft-ii",
@@ -6302,10 +6032,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 1,
-      "tree_order": 151
+      ]
     },
     {
       "id": "battle-leathercraft-iii",
@@ -6388,10 +6115,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 1,
-      "tree_order": 231
+      ]
     },
     {
       "id": "battle-leathercraft-iv",
@@ -6491,10 +6215,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 31,
-      "tree_col": 1,
-      "tree_order": 311
+      ]
     },
     {
       "id": "battle-leathercraft-v",
@@ -6611,10 +6332,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 39,
-      "tree_col": 1,
-      "tree_order": 391
+      ]
     },
     {
       "id": "battle-leathercraft-vi",
@@ -6742,10 +6460,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 47,
-      "tree_col": 1,
-      "tree_order": 471
+      ]
     },
     {
       "id": "battle-assault-techniques-i",
@@ -6811,10 +6526,7 @@
           "academy_level": 7,
           "prerequisites": []
         }
-      ],
-      "tree_row": 4,
-      "tree_col": 1,
-      "tree_order": 41
+      ]
     },
     {
       "id": "battle-assault-techniques-ii",
@@ -6880,10 +6592,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 12,
-      "tree_col": 1,
-      "tree_order": 121
+      ]
     },
     {
       "id": "battle-assault-techniques-iii",
@@ -6966,10 +6675,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 20,
-      "tree_col": 1,
-      "tree_order": 201
+      ]
     },
     {
       "id": "battle-assault-techniques-iv",
@@ -7069,10 +6775,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 28,
-      "tree_col": 1,
-      "tree_order": 281
+      ]
     },
     {
       "id": "battle-assault-techniques-v",
@@ -7189,10 +6892,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 36,
-      "tree_col": 1,
-      "tree_order": 361
+      ]
     },
     {
       "id": "battle-assault-techniques-vi",
@@ -7309,10 +7009,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 44,
-      "tree_col": 1,
-      "tree_order": 441
+      ]
     },
     {
       "id": "battle-bulwark-formations-i",
@@ -7378,10 +7075,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 2,
-      "tree_order": 22
+      ]
     },
     {
       "id": "battle-bulwark-formations-ii",
@@ -7447,10 +7141,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 2,
-      "tree_order": 102
+      ]
     },
     {
       "id": "battle-bulwark-formations-iii",
@@ -7533,10 +7224,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 18,
-      "tree_col": 2,
-      "tree_order": 182
+      ]
     },
     {
       "id": "battle-bulwark-formations-iv",
@@ -7636,10 +7324,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 26,
-      "tree_col": 2,
-      "tree_order": 262
+      ]
     },
     {
       "id": "battle-bulwark-formations-v",
@@ -7756,10 +7441,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 34,
-      "tree_col": 2,
-      "tree_order": 342
+      ]
     },
     {
       "id": "battle-bulwark-formations-vi",
@@ -7879,10 +7561,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 42,
-      "tree_col": 2,
-      "tree_order": 422
+      ]
     },
     {
       "id": "battle-close-combat-i",
@@ -7948,10 +7627,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 0,
-      "tree_order": 60
+      ]
     },
     {
       "id": "battle-close-combat-ii",
@@ -8017,10 +7693,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 14,
-      "tree_col": 0,
-      "tree_order": 140
+      ]
     },
     {
       "id": "battle-close-combat-iii",
@@ -8103,10 +7776,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 0,
-      "tree_order": 220
+      ]
     },
     {
       "id": "battle-close-combat-iv",
@@ -8211,10 +7881,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 30,
-      "tree_col": 0,
-      "tree_order": 300
+      ]
     },
     {
       "id": "battle-close-combat-v",
@@ -8331,10 +7998,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 38,
-      "tree_col": 0,
-      "tree_order": 380
+      ]
     },
     {
       "id": "battle-close-combat-vi",
@@ -8451,10 +8115,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 46,
-      "tree_col": 0,
-      "tree_order": 460
+      ]
     },
     {
       "id": "battle-defensive-formations-i",
@@ -8520,10 +8181,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 0,
-      "tree_order": 20
+      ]
     },
     {
       "id": "battle-defensive-formations-ii",
@@ -8589,10 +8247,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 0,
-      "tree_order": 100
+      ]
     },
     {
       "id": "battle-defensive-formations-iii",
@@ -8675,10 +8330,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 18,
-      "tree_col": 0,
-      "tree_order": 180
+      ]
     },
     {
       "id": "battle-defensive-formations-iv",
@@ -8778,10 +8430,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 26,
-      "tree_col": 0,
-      "tree_order": 260
+      ]
     },
     {
       "id": "battle-defensive-formations-v",
@@ -8898,10 +8547,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 34,
-      "tree_col": 0,
-      "tree_order": 340
+      ]
     },
     {
       "id": "battle-defensive-formations-vi",
@@ -9018,10 +8664,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 42,
-      "tree_col": 0,
-      "tree_order": 420
+      ]
     },
     {
       "id": "battle-shield-upgrade-i",
@@ -9087,10 +8730,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 0,
-      "tree_order": 70
+      ]
     },
     {
       "id": "battle-shield-upgrade-ii",
@@ -9156,10 +8796,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 0,
-      "tree_order": 150
+      ]
     },
     {
       "id": "battle-shield-upgrade-iii",
@@ -9242,10 +8879,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 0,
-      "tree_order": 230
+      ]
     },
     {
       "id": "battle-shield-upgrade-iv",
@@ -9345,10 +8979,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 31,
-      "tree_col": 0,
-      "tree_order": 310
+      ]
     },
     {
       "id": "battle-shield-upgrade-v",
@@ -9465,10 +9096,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 39,
-      "tree_col": 0,
-      "tree_order": 390
+      ]
     },
     {
       "id": "battle-shield-upgrade-vi",
@@ -9585,10 +9213,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 47,
-      "tree_col": 0,
-      "tree_order": 470
+      ]
     },
     {
       "id": "battle-lance-upgrade-i",
@@ -9654,10 +9279,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 2,
-      "tree_order": 62
+      ]
     },
     {
       "id": "battle-lance-upgrade-ii",
@@ -9723,10 +9345,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 14,
-      "tree_col": 2,
-      "tree_order": 142
+      ]
     },
     {
       "id": "battle-lance-upgrade-iii",
@@ -9809,10 +9428,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 2,
-      "tree_order": 222
+      ]
     },
     {
       "id": "battle-lance-upgrade-iv",
@@ -9917,10 +9533,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 30,
-      "tree_col": 2,
-      "tree_order": 302
+      ]
     },
     {
       "id": "battle-lance-upgrade-v",
@@ -10037,10 +9650,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 38,
-      "tree_col": 2,
-      "tree_order": 382
+      ]
     },
     {
       "id": "battle-lance-upgrade-vi",
@@ -10157,10 +9767,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 46,
-      "tree_col": 2,
-      "tree_order": 462
+      ]
     },
     {
       "id": "battle-cavalry-charge-i",
@@ -10226,10 +9833,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 2,
-      "tree_order": 12
+      ]
     },
     {
       "id": "battle-cavalry-charge-ii",
@@ -10295,10 +9899,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 2,
-      "tree_order": 92
+      ]
     },
     {
       "id": "battle-cavalry-charge-iii",
@@ -10381,10 +9982,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 2,
-      "tree_order": 172
+      ]
     },
     {
       "id": "battle-cavalry-charge-iv",
@@ -10484,10 +10082,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 25,
-      "tree_col": 2,
-      "tree_order": 252
+      ]
     },
     {
       "id": "battle-cavalry-charge-v",
@@ -10604,10 +10199,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 33,
-      "tree_col": 2,
-      "tree_order": 332
+      ]
     },
     {
       "id": "battle-cavalry-charge-vi",
@@ -10724,10 +10316,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 41,
-      "tree_col": 2,
-      "tree_order": 412
+      ]
     },
     {
       "id": "battle-fortified-mail-i",
@@ -10793,10 +10382,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 7,
-      "tree_col": 2,
-      "tree_order": 72
+      ]
     },
     {
       "id": "battle-fortified-mail-ii",
@@ -10862,10 +10448,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 15,
-      "tree_col": 2,
-      "tree_order": 152
+      ]
     },
     {
       "id": "battle-fortified-mail-iii",
@@ -10948,10 +10531,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 23,
-      "tree_col": 2,
-      "tree_order": 232
+      ]
     },
     {
       "id": "battle-fortified-mail-iv",
@@ -11051,10 +10631,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 31,
-      "tree_col": 2,
-      "tree_order": 312
+      ]
     },
     {
       "id": "battle-fortified-mail-v",
@@ -11171,10 +10748,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 39,
-      "tree_col": 2,
-      "tree_order": 392
+      ]
     },
     {
       "id": "battle-fortified-mail-vi",
@@ -11297,10 +10871,7 @@
           "prerequisites": [],
           "resources_inferred": true
         }
-      ],
-      "tree_row": 47,
-      "tree_col": 2,
-      "tree_order": 472
+      ]
     },
     {
       "id": "battle-picket-lines-i",
@@ -11366,10 +10937,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 2,
-      "tree_col": 1,
-      "tree_order": 21
+      ]
     },
     {
       "id": "battle-picket-lines-ii",
@@ -11435,10 +11003,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 10,
-      "tree_col": 1,
-      "tree_order": 101
+      ]
     },
     {
       "id": "battle-picket-lines-iii",
@@ -11521,10 +11086,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 18,
-      "tree_col": 1,
-      "tree_order": 181
+      ]
     },
     {
       "id": "battle-picket-lines-iv",
@@ -11624,10 +11186,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 26,
-      "tree_col": 1,
-      "tree_order": 261
+      ]
     },
     {
       "id": "battle-picket-lines-v",
@@ -11749,10 +11308,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 34,
-      "tree_col": 1,
-      "tree_order": 341
+      ]
     },
     {
       "id": "battle-picket-lines-vi",
@@ -11880,10 +11436,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 42,
-      "tree_col": 1,
-      "tree_order": 421
+      ]
     },
     {
       "id": "battle-precision-targeting-i",
@@ -11949,10 +11502,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 1,
-      "tree_order": 11
+      ]
     },
     {
       "id": "battle-precision-targeting-ii",
@@ -12018,10 +11568,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 1,
-      "tree_order": 91
+      ]
     },
     {
       "id": "battle-precision-targeting-iii",
@@ -12104,10 +11651,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 1,
-      "tree_order": 171
+      ]
     },
     {
       "id": "battle-precision-targeting-iv",
@@ -12207,10 +11751,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 25,
-      "tree_col": 1,
-      "tree_order": 251
+      ]
     },
     {
       "id": "battle-precision-targeting-v",
@@ -12327,10 +11868,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 33,
-      "tree_col": 1,
-      "tree_order": 331
+      ]
     },
     {
       "id": "battle-precision-targeting-vi",
@@ -12447,10 +11985,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 41,
-      "tree_col": 1,
-      "tree_order": 411
+      ]
     },
     {
       "id": "battle-regimental-expansion-i",
@@ -12520,10 +12055,7 @@
           "academy_level": 8,
           "prerequisites": []
         }
-      ],
-      "tree_row": 5,
-      "tree_col": 0,
-      "tree_order": 50
+      ]
     },
     {
       "id": "battle-regimental-expansion-ii",
@@ -12593,10 +12125,7 @@
           "academy_level": 13,
           "prerequisites": []
         }
-      ],
-      "tree_row": 13,
-      "tree_col": 0,
-      "tree_order": 130
+      ]
     },
     {
       "id": "battle-regimental-expansion-iii",
@@ -12683,10 +12212,7 @@
           "academy_level": 19,
           "prerequisites": []
         }
-      ],
-      "tree_row": 21,
-      "tree_col": 0,
-      "tree_order": 210
+      ]
     },
     {
       "id": "battle-regimental-expansion-iv",
@@ -12790,10 +12316,7 @@
           "academy_level": 25,
           "prerequisites": []
         }
-      ],
-      "tree_row": 29,
-      "tree_col": 0,
-      "tree_order": 290
+      ]
     },
     {
       "id": "battle-regimental-expansion-v",
@@ -12914,10 +12437,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 37,
-      "tree_col": 0,
-      "tree_order": 370
+      ]
     },
     {
       "id": "battle-regimental-expansion-vi",
@@ -13038,10 +12558,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 45,
-      "tree_col": 0,
-      "tree_order": 450
+      ]
     },
     {
       "id": "battle-reprisal-tactics-i",
@@ -13107,10 +12624,7 @@
           "academy_level": 6,
           "prerequisites": []
         }
-      ],
-      "tree_row": 1,
-      "tree_col": 0,
-      "tree_order": 10
+      ]
     },
     {
       "id": "battle-reprisal-tactics-ii",
@@ -13176,10 +12690,7 @@
           "academy_level": 11,
           "prerequisites": []
         }
-      ],
-      "tree_row": 9,
-      "tree_col": 0,
-      "tree_order": 90
+      ]
     },
     {
       "id": "battle-reprisal-tactics-iii",
@@ -13262,10 +12773,7 @@
           "academy_level": 17,
           "prerequisites": []
         }
-      ],
-      "tree_row": 17,
-      "tree_col": 0,
-      "tree_order": 170
+      ]
     },
     {
       "id": "battle-reprisal-tactics-iv",
@@ -13365,10 +12873,7 @@
           "academy_level": 23,
           "prerequisites": []
         }
-      ],
-      "tree_row": 25,
-      "tree_col": 0,
-      "tree_order": 250
+      ]
     },
     {
       "id": "battle-reprisal-tactics-v",
@@ -13485,10 +12990,7 @@
           "academy_level": 29,
           "prerequisites": []
         }
-      ],
-      "tree_row": 33,
-      "tree_col": 0,
-      "tree_order": 330
+      ]
     },
     {
       "id": "battle-reprisal-tactics-vi",
@@ -13605,10 +13107,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 41,
-      "tree_col": 0,
-      "tree_order": 410
+      ]
     },
     {
       "id": "battle-special-defensive-training-i",
@@ -13682,10 +13181,7 @@
           "academy_level": 7,
           "prerequisites": []
         }
-      ],
-      "tree_row": 3,
-      "tree_col": 0,
-      "tree_order": 30
+      ]
     },
     {
       "id": "battle-special-defensive-training-ii",
@@ -13759,10 +13255,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 11,
-      "tree_col": 0,
-      "tree_order": 110
+      ]
     },
     {
       "id": "battle-special-defensive-training-iii",
@@ -13853,10 +13346,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 19,
-      "tree_col": 0,
-      "tree_order": 190
+      ]
     },
     {
       "id": "battle-special-defensive-training-iv",
@@ -13969,10 +13459,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 27,
-      "tree_col": 0,
-      "tree_order": 270
+      ]
     },
     {
       "id": "battle-special-defensive-training-v",
@@ -14097,10 +13584,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 35,
-      "tree_col": 0,
-      "tree_order": 350
+      ]
     },
     {
       "id": "battle-special-defensive-training-vi",
@@ -14225,10 +13709,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 43,
-      "tree_col": 0,
-      "tree_order": 430
+      ]
     },
     {
       "id": "battle-survival-techniques-i",
@@ -14294,10 +13775,7 @@
           "academy_level": 7,
           "prerequisites": []
         }
-      ],
-      "tree_row": 4,
-      "tree_col": 0,
-      "tree_order": 40
+      ]
     },
     {
       "id": "battle-survival-techniques-ii",
@@ -14363,10 +13841,7 @@
           "academy_level": 12,
           "prerequisites": []
         }
-      ],
-      "tree_row": 12,
-      "tree_col": 0,
-      "tree_order": 120
+      ]
     },
     {
       "id": "battle-survival-techniques-iii",
@@ -14449,10 +13924,7 @@
           "academy_level": 18,
           "prerequisites": []
         }
-      ],
-      "tree_row": 20,
-      "tree_col": 0,
-      "tree_order": 200
+      ]
     },
     {
       "id": "battle-survival-techniques-iv",
@@ -14552,10 +14024,7 @@
           "academy_level": 24,
           "prerequisites": []
         }
-      ],
-      "tree_row": 28,
-      "tree_col": 0,
-      "tree_order": 280
+      ]
     },
     {
       "id": "battle-survival-techniques-v",
@@ -14672,10 +14141,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 36,
-      "tree_col": 0,
-      "tree_order": 360
+      ]
     },
     {
       "id": "battle-survival-techniques-vi",
@@ -14792,10 +14258,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 44,
-      "tree_col": 0,
-      "tree_order": 440
+      ]
     },
     {
       "id": "battle-targeted-sniping-i",
@@ -14861,10 +14324,7 @@
           "academy_level": 9,
           "prerequisites": []
         }
-      ],
-      "tree_row": 6,
-      "tree_col": 1,
-      "tree_order": 61
+      ]
     },
     {
       "id": "battle-targeted-sniping-ii",
@@ -14930,10 +14390,7 @@
           "academy_level": 14,
           "prerequisites": []
         }
-      ],
-      "tree_row": 14,
-      "tree_col": 1,
-      "tree_order": 141
+      ]
     },
     {
       "id": "battle-targeted-sniping-iii",
@@ -15016,10 +14473,7 @@
           "academy_level": 20,
           "prerequisites": []
         }
-      ],
-      "tree_row": 22,
-      "tree_col": 1,
-      "tree_order": 221
+      ]
     },
     {
       "id": "battle-targeted-sniping-iv",
@@ -15124,10 +14578,7 @@
           "academy_level": 26,
           "prerequisites": []
         }
-      ],
-      "tree_row": 30,
-      "tree_col": 1,
-      "tree_order": 301
+      ]
     },
     {
       "id": "battle-targeted-sniping-v",
@@ -15244,10 +14695,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 38,
-      "tree_col": 1,
-      "tree_order": 381
+      ]
     },
     {
       "id": "battle-targeted-sniping-vi",
@@ -15364,10 +14812,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 46,
-      "tree_col": 1,
-      "tree_order": 461
+      ]
     },
     {
       "id": "battle-weapons-prep-i",
@@ -15428,10 +14873,7 @@
           "academy_level": 3,
           "prerequisites": []
         }
-      ],
-      "tree_row": 0,
-      "tree_col": 0,
-      "tree_order": 0
+      ]
     },
     {
       "id": "battle-weapons-prep-ii",
@@ -15505,10 +14947,7 @@
           "academy_level": 10,
           "prerequisites": []
         }
-      ],
-      "tree_row": 8,
-      "tree_col": 0,
-      "tree_order": 80
+      ]
     },
     {
       "id": "battle-weapons-prep-iii",
@@ -15599,10 +15038,7 @@
           "academy_level": 16,
           "prerequisites": []
         }
-      ],
-      "tree_row": 16,
-      "tree_col": 0,
-      "tree_order": 160
+      ]
     },
     {
       "id": "battle-weapons-prep-iv",
@@ -15715,10 +15151,7 @@
           "academy_level": 22,
           "prerequisites": []
         }
-      ],
-      "tree_row": 24,
-      "tree_col": 0,
-      "tree_order": 240
+      ]
     },
     {
       "id": "battle-weapons-prep-v",
@@ -15843,10 +15276,7 @@
           "academy_level": 28,
           "prerequisites": []
         }
-      ],
-      "tree_row": 32,
-      "tree_col": 0,
-      "tree_order": 320
+      ]
     },
     {
       "id": "battle-weapons-prep-vi",
@@ -15971,10 +15401,7 @@
           "academy_level": null,
           "prerequisites": []
         }
-      ],
-      "tree_row": 40,
-      "tree_col": 0,
-      "tree_order": 400
+      ]
     }
   ]
 }
