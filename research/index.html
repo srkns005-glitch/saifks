@@ -810,12 +810,69 @@ html[dir="rtl"] .language-select{
 }
 </style>
 
+
+<style id="v47-card-spacing-fix">
+/* Remove empty space inside research cards */
+.node{
+  min-height:0 !important;
+  height:auto !important;
+  padding-top:12px !important;
+  padding-bottom:12px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+  gap:9px !important;
+}
+
+.node-top{
+  margin:0 !important;
+}
+
+.node .inline-levels{
+  margin:0 !important;
+}
+
+.node .delta{
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1.25 !important;
+}
+
+.node .delta:empty{
+  display:none !important;
+}
+
+/* When there is no increase, remove the delta row completely */
+.node .delta:not(:empty){
+  margin-top:1px !important;
+}
+
+/* Keep all cards aligned without forcing extra inner height */
+.nodes{
+  align-items:stretch !important;
+}
+
+.node{
+  align-self:stretch !important;
+}
+
+@media(max-width:760px){
+  .node{
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+    gap:7px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Glass Categories V4.6</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Card Spacing Fix V4.7</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
