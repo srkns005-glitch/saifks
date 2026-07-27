@@ -438,16 +438,69 @@ html[dir="ltr"] .topbar,html[dir="ltr"] main{direction:ltr}
 .language-select{min-width:0;width:100%;height:38px;padding:0 28px 0 2px;border:0!important;background:transparent!important;box-shadow:none!important;color:#fff;font-size:12px;font-weight:800;outline:none}.language-select option{background:#0c192b;color:#fff}
 @media(max-width:760px){.topbar-inner{gap:8px}.brand{min-width:0}.brand h1{font-size:16px;white-space:nowrap}.brand small{font-size:8px;max-width:145px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.header-actions{gap:5px}.home-svg-btn,.language-control{height:36px;border-radius:10px}.home-svg-btn{width:36px;flex-basis:36px}.language-control{min-width:104px;max-width:116px;padding-inline:8px 3px;gap:5px}.language-select{height:32px;font-size:10px}}
 </style>
+
+<style id="header-v42-fix">
+.language-control{
+  min-width:112px !important;
+  max-width:132px !important;
+  height:36px !important;
+  padding:0 5px !important;
+  gap:0 !important;
+  border-radius:10px !important;
+}
+.language-control>svg{display:none !important}
+.language-select{
+  height:34px !important;
+  width:100% !important;
+  padding:0 22px 0 7px !important;
+  font-size:11px !important;
+  text-align:center !important;
+  text-align-last:center !important;
+}
+html[dir="rtl"] .language-select{
+  padding:0 7px 0 22px !important;
+}
+.home-svg-btn{
+  width:36px !important;
+  height:36px !important;
+  flex-basis:36px !important;
+  border-radius:10px !important;
+}
+.home-svg-btn svg{
+  width:17px !important;
+  height:17px !important;
+}
+.header-actions{
+  gap:6px !important;
+}
+@media(max-width:760px){
+  .language-control{
+    min-width:94px !important;
+    max-width:106px !important;
+    height:34px !important;
+  }
+  .language-select{
+    height:32px !important;
+    font-size:9px !important;
+    padding-inline:4px 17px !important;
+  }
+  .home-svg-btn{
+    width:34px !important;
+    height:34px !important;
+    flex-basis:34px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Multilingual V4.1</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Multilingual V4.2</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
-   <div class="language-control"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17M12 3c2.4 2.5 3.7 5.5 3.7 9S14.4 18.5 12 21M12 3C9.6 5.5 8.3 8.5 8.3 12S9.6 18.5 12 21"/></svg>
-    <select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
+   <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
    </div>
   </div>
  </div>
@@ -783,7 +836,6 @@ document.getElementById("copyPlan").onclick=copySummary;
 document.getElementById("clearPlan").onclick=()=>{if(confirm(tr("confirmClear"))){state.levels={};state.plan=[];save();renderAll();toast(tr("cleared"))}};
 document.getElementById("resetAll").onclick=()=>{if(confirm(tr("confirmReset"))){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;state.speedupDays=0;state.speedupHours=0;state.speedupMinutes=0;document.getElementById("researchBonus").value="";document.getElementById("speedupDays").value="";document.getElementById("speedupHours").value="";document.getElementById("speedupMinutes").value="";save();renderAll();toast(tr("resetDone"))}};
 document.getElementById("languageSelect").onchange=e=>{currentLang=e.target.value;localStorage.setItem("saifksLanguage",currentLang);localStorage.setItem("language",currentLang);applyLanguage()};
-renderTree()};
 applyLanguage();
 </script>
 </body>
