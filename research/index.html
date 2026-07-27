@@ -867,12 +867,79 @@ html[dir="rtl"] .language-select{
 }
 </style>
 
+
+<style id="v48-header-delta-arrow-fix">
+/* Language control matches the Home button height */
+.language-control{
+  height:38px !important;
+  min-height:38px !important;
+  max-height:38px !important;
+  display:flex !important;
+  align-items:center !important;
+}
+.language-select{
+  height:36px !important;
+  min-height:36px !important;
+  max-height:36px !important;
+  line-height:36px !important;
+}
+
+/* Percentage/effect below each research: plain text only, no rectangle */
+.node .delta,
+.node .effect-delta{
+  display:block !important;
+  width:auto !important;
+  max-width:100% !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  margin:1px 0 0 !important;
+  color:#31d67b !important;
+  font-weight:800 !important;
+  text-align:center !important;
+}
+
+/* Arrow direction and spacing */
+.inline-levels .arrow{
+  direction:ltr !important;
+  transform:none !important;
+  font-size:18px !important;
+  line-height:1 !important;
+}
+
+html[dir="rtl"] .inline-levels{
+  direction:ltr !important;
+}
+html[dir="rtl"] .inline-levels label{
+  direction:rtl !important;
+}
+
+@media(max-width:760px){
+  .language-control{
+    height:36px !important;
+    min-height:36px !important;
+    max-height:36px !important;
+  }
+  .language-select{
+    height:34px !important;
+    min-height:34px !important;
+    max-height:34px !important;
+    line-height:34px !important;
+  }
+  .inline-levels .arrow{
+    font-size:16px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Card Spacing Fix V4.7</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Header & Arrow Fix V4.8</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
@@ -1061,7 +1128,7 @@ function nodeHTML(t){
   <div class="node-top"><div class="node-name">${translatedName(t.name)}</div><span class="node-max">${maxed?"MAX":"MAX "+t.max_level}</span></div>
   <div class="inline-levels">
    <label><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
-   <span class="arrow">←</span>
+   <span class="arrow">→</span>
    <label><small>${tr("target")}</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
   </div>
   <div class="delta effect-delta">${deltaText(t,c.current,safeTarget)}</div>
