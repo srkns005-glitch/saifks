@@ -1161,42 +1161,14 @@ body{
 
 
 
-<style id="v56-arabic-physical-column-swap">
-/* Force physical positions in Arabic only, independent of RTL rendering. */
-html[lang="ar"] .inline-levels{
-  direction:ltr !important;
-  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important;
-}
-html[lang="ar"] .inline-levels .current-wrap{
-  grid-column:1 !important;
-  grid-row:1 !important;
-  direction:rtl !important;
-}
-html[lang="ar"] .inline-levels .arrow{
-  grid-column:2 !important;
-  grid-row:1 !important;
-  direction:ltr !important;
-  transform:none !important;
-}
-html[lang="ar"] .inline-levels .target-wrap{
-  grid-column:3 !important;
-  grid-row:1 !important;
-  direction:rtl !important;
-}
 
-/* Drawer: current physically left, target physically right. */
-html[lang="ar"] .selector-grid{
+<style id="v57-js-physical-order">
+.inline-levels,
+.selector-grid{
   direction:ltr !important;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
 }
-html[lang="ar"] .selector-grid .current-field{
-  grid-column:1 !important;
-  grid-row:1 !important;
-  direction:rtl !important;
-}
-html[lang="ar"] .selector-grid .target-field{
-  grid-column:2 !important;
-  grid-row:1 !important;
+html[lang="ar"] .inline-levels label,
+html[lang="ar"] .selector-grid .field{
   direction:rtl !important;
 }
 </style>
@@ -1272,8 +1244,8 @@ html[lang="ar"] .selector-grid .target-field{
  <div class="drawer-body">
   <div class="detail-buff" id="detailBuff"></div><div class="save-status" id="saveStatus">يتم حفظ الاختيار تلقائيًا</div>
   <div class="selector-grid">
-   <div class="field current-field"><label>المستوى الحالي</label><select id="currentLevel"></select></div>
-   <div class="field target-field"><label>المستوى المستهدف</label><select id="targetLevel"></select></div>
+   <div class="field current-field" id="currentField"><label>المستوى الحالي</label><select id="currentLevel"></select></div>
+   <div class="field target-field" id="targetField"><label>المستوى المستهدف</label><select id="targetLevel"></select></div>
   </div>
   <div class="level-preview" id="levelPreview"></div>
   <div class="requirements" id="requirements"></div>
@@ -1325,6 +1297,19 @@ document.getElementById("bonusLabel").textContent=tr("bonusLabel");
  document.getElementById("selectedTitle").textContent=tr("selected");
  document.getElementById("copyPlan").textContent=tr("copy");
  document.getElementById("clearPlan").textContent=tr("clear");
+
+ const selectorGrid=document.querySelector(".selector-grid");
+ const currentField=document.getElementById("currentField");
+ const targetField=document.getElementById("targetField");
+ if(selectorGrid&&currentField&&targetField){
+   selectorGrid.setAttribute("dir","ltr");
+   selectorGrid.innerHTML="";
+   if(currentLang==="ar"){
+     selectorGrid.append(targetField,currentField);
+   }else{
+     selectorGrid.append(currentField,targetField);
+   }
+ }
  renderAll()
 }
 
@@ -1391,13 +1376,18 @@ function nodeHTML(t){
  const c=config(t.id),planned=isPlanned(t.id),maxed=c.current===t.max_level;
  const cls=planned?"in-plan":maxed?"is-max":c.current>0?"in-progress":"";
  const safeTarget=Math.max(c.current,c.target);
+
+ const currentControl=`<label class="current-wrap"><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>`;
+ const targetControl=`<label class="target-wrap"><small>${tr("target")}</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>`;
+
+ /* Arabic gets the opposite physical side order only. */
+ const levelControls=currentLang==="ar"
+   ? `${targetControl}<span class="arrow">←</span>${currentControl}`
+   : `${currentControl}<span class="arrow">→</span>${targetControl}`;
+
  return `<div class="node ${cls}" data-id="${t.id}">
   <div class="node-top"><div class="node-name">${translatedName(t.name)}</div><span class="node-max">${maxed?"MAX":"MAX "+t.max_level}</span></div>
-  <div class="inline-levels">
-   <label class="current-wrap"><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
-   <span class="arrow">→</span>
-   <label class="target-wrap"><small>${tr("target")}</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
-  </div>
+  <div class="inline-levels" dir="ltr">${levelControls}</div>
   <div class="delta effect-delta">${deltaText(t,c.current,safeTarget)}</div>
  </div>`
 }
