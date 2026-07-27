@@ -1159,23 +1159,29 @@ body{
 </style>
 
 
-<style id="v54-arabic-current-target-sides">
-/* Arabic only: current on the left, target on the right */
-html[lang="ar"] .level-strip,
+
+<style id="v55-arabic-current-target-real-swap">
+/*
+ Arabic only:
+ - Current level appears on the LEFT.
+ - Target level appears on the RIGHT.
+ Other languages keep their existing layout.
+*/
+html[lang="ar"] .inline-levels,
 html[lang="ar"] .selector-grid,
 html[lang="ar"] .level-preview{
   direction:ltr !important;
 }
 
-html[lang="ar"] .level-strip > *,
+html[lang="ar"] .inline-levels > *,
 html[lang="ar"] .selector-grid > *,
 html[lang="ar"] .level-preview > *{
   direction:rtl !important;
 }
 
-/* Reverse the arrow visually only in Arabic */
-html[lang="ar"] .level-strip .arrow{
-  transform:scaleX(-1);
+/* Current is left and target is right, so the arrow points toward target. */
+html[lang="ar"] .inline-levels .arrow{
+  transform:none !important;
 }
 </style>
 
