@@ -1160,28 +1160,44 @@ body{
 
 
 
-<style id="v55-arabic-current-target-real-swap">
-/*
- Arabic only:
- - Current level appears on the LEFT.
- - Target level appears on the RIGHT.
- Other languages keep their existing layout.
-*/
-html[lang="ar"] .inline-levels,
-html[lang="ar"] .selector-grid,
-html[lang="ar"] .level-preview{
-  direction:ltr !important;
-}
 
-html[lang="ar"] .inline-levels > *,
-html[lang="ar"] .selector-grid > *,
-html[lang="ar"] .level-preview > *{
+<style id="v56-arabic-physical-column-swap">
+/* Force physical positions in Arabic only, independent of RTL rendering. */
+html[lang="ar"] .inline-levels{
+  direction:ltr !important;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important;
+}
+html[lang="ar"] .inline-levels .current-wrap{
+  grid-column:1 !important;
+  grid-row:1 !important;
+  direction:rtl !important;
+}
+html[lang="ar"] .inline-levels .arrow{
+  grid-column:2 !important;
+  grid-row:1 !important;
+  direction:ltr !important;
+  transform:none !important;
+}
+html[lang="ar"] .inline-levels .target-wrap{
+  grid-column:3 !important;
+  grid-row:1 !important;
   direction:rtl !important;
 }
 
-/* Current is left and target is right, so the arrow points toward target. */
-html[lang="ar"] .inline-levels .arrow{
-  transform:none !important;
+/* Drawer: current physically left, target physically right. */
+html[lang="ar"] .selector-grid{
+  direction:ltr !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+}
+html[lang="ar"] .selector-grid .current-field{
+  grid-column:1 !important;
+  grid-row:1 !important;
+  direction:rtl !important;
+}
+html[lang="ar"] .selector-grid .target-field{
+  grid-column:2 !important;
+  grid-row:1 !important;
+  direction:rtl !important;
 }
 </style>
 
@@ -1256,8 +1272,8 @@ html[lang="ar"] .inline-levels .arrow{
  <div class="drawer-body">
   <div class="detail-buff" id="detailBuff"></div><div class="save-status" id="saveStatus">يتم حفظ الاختيار تلقائيًا</div>
   <div class="selector-grid">
-   <div class="field"><label>المستوى الحالي</label><select id="currentLevel"></select></div>
-   <div class="field"><label>المستوى المستهدف</label><select id="targetLevel"></select></div>
+   <div class="field current-field"><label>المستوى الحالي</label><select id="currentLevel"></select></div>
+   <div class="field target-field"><label>المستوى المستهدف</label><select id="targetLevel"></select></div>
   </div>
   <div class="level-preview" id="levelPreview"></div>
   <div class="requirements" id="requirements"></div>
@@ -1378,9 +1394,9 @@ function nodeHTML(t){
  return `<div class="node ${cls}" data-id="${t.id}">
   <div class="node-top"><div class="node-name">${translatedName(t.name)}</div><span class="node-max">${maxed?"MAX":"MAX "+t.max_level}</span></div>
   <div class="inline-levels">
-   <label><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
+   <label class="current-wrap"><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
    <span class="arrow">→</span>
-   <label><small>${tr("target")}</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
+   <label class="target-wrap"><small>${tr("target")}</small><select class="inline-target" data-target="${t.id}">${levelOptions(t.max_level,safeTarget,c.current)}</select></label>
   </div>
   <div class="delta effect-delta">${deltaText(t,c.current,safeTarget)}</div>
  </div>`
