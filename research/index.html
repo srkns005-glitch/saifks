@@ -717,12 +717,105 @@ html[dir="rtl"] .language-select{
 }
 </style>
 
+
+<style id="v46-glass-main-sections">
+/* The three main category tabs */
+.tabs{
+  gap:10px !important;
+}
+
+.tab{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.028)) !important;
+  border:1px solid rgba(174,213,255,.20) !important;
+  color:rgba(229,241,255,.78) !important;
+  border-radius:15px !important;
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.13) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(135%) !important;
+  backdrop-filter:blur(14px) saturate(135%) !important;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease !important;
+}
+
+.tab::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(125,190,255,.17), transparent 42%),
+    linear-gradient(120deg, rgba(255,255,255,.08), transparent 34%);
+}
+
+.tab > *{
+  position:relative;
+  z-index:1;
+}
+
+.tab:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(116,188,255,.42) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.045)) !important;
+  box-shadow:
+    0 14px 32px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+
+.tab.active{
+  color:#ffffff !important;
+  border-color:rgba(81,174,255,.60) !important;
+  background:
+    linear-gradient(145deg, rgba(52,145,238,.25), rgba(255,255,255,.055)) !important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.29),
+    0 0 24px rgba(58,154,255,.12),
+    inset 0 1px 0 rgba(255,255,255,.19) !important;
+}
+
+.tab-count{
+  background:rgba(4,14,27,.38) !important;
+  border:1px solid rgba(174,213,255,.15) !important;
+  color:#dcecff !important;
+  -webkit-backdrop-filter:blur(7px) !important;
+  backdrop-filter:blur(7px) !important;
+}
+
+/* Keep the dynamic increase line only when there is a real increase */
+.node .delta{
+  min-height:18px;
+}
+.node .delta:empty{
+  display:none !important;
+}
+
+@media(max-width:760px){
+  .tabs{gap:6px !important}
+  .tab{
+    border-radius:12px !important;
+    -webkit-backdrop-filter:blur(10px) saturate(125%) !important;
+    backdrop-filter:blur(10px) saturate(125%) !important;
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.20),
+      inset 0 1px 0 rgba(255,255,255,.11) !important;
+  }
+  .tab:hover{transform:none !important}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Glass Research Cards V4.5</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Glass Categories V4.6</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
@@ -909,7 +1002,6 @@ function nodeHTML(t){
  const safeTarget=Math.max(c.current,c.target);
  return `<div class="node ${cls}" data-id="${t.id}">
   <div class="node-top"><div class="node-name">${translatedName(t.name)}</div><span class="node-max">${maxed?"MAX":"MAX "+t.max_level}</span></div>
-  <div class="node-buff">${translatedDescription(t)}</div>
   <div class="inline-levels">
    <label><small>${tr("current")}</small><select class="inline-current" data-current="${t.id}">${levelOptions(t.max_level,c.current,0)}</select></label>
    <span class="arrow">←</span>
