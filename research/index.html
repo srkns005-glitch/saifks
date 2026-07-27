@@ -1158,6 +1158,27 @@ body{
 }
 </style>
 
+
+<style id="v54-arabic-current-target-sides">
+/* Arabic only: current on the left, target on the right */
+html[lang="ar"] .level-strip,
+html[lang="ar"] .selector-grid,
+html[lang="ar"] .level-preview{
+  direction:ltr !important;
+}
+
+html[lang="ar"] .level-strip > *,
+html[lang="ar"] .selector-grid > *,
+html[lang="ar"] .level-preview > *{
+  direction:rtl !important;
+}
+
+/* Reverse the arrow visually only in Arabic */
+html[lang="ar"] .level-strip .arrow{
+  transform:scaleX(-1);
+}
+</style>
+
 </head>
 <body>
 <div class="app">
