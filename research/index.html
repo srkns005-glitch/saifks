@@ -1034,6 +1034,65 @@ body{
 }
 </style>
 
+
+<style id="v52-actions-normal-flow">
+/* Keep action buttons directly under the selected researches list */
+.plan-actions,
+.selected-actions,
+.summary-actions,
+#selectedResearches .actions,
+#selectedResearches .plan-actions{
+  position:static !important;
+  bottom:auto !important;
+  z-index:auto !important;
+  background:transparent !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  margin:0 !important;
+  padding:11px !important;
+  border-top:1px solid var(--line) !important;
+}
+
+/* Remove the excessive raised/sticky spacing */
+#selectedResearches,
+.plan-card{
+  padding-bottom:0 !important;
+  overflow:hidden !important;
+}
+
+/* Keep only enough page space for Safari's bottom toolbar */
+body{
+  padding-bottom:calc(22px + env(safe-area-inset-bottom)) !important;
+}
+
+.plan-list{
+  overflow:visible !important;
+}
+
+/* Small safe gap after the whole selected-research card */
+.plan-card{
+  margin-bottom:calc(74px + env(safe-area-inset-bottom)) !important;
+}
+
+@media(max-width:760px){
+  body{
+    padding-bottom:calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .plan-actions,
+  .selected-actions,
+  .summary-actions,
+  #selectedResearches .actions,
+  #selectedResearches .plan-actions{
+    padding:10px !important;
+  }
+
+  .plan-card{
+    margin-bottom:calc(86px + env(safe-area-inset-bottom)) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
