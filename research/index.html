@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#08111f">
-<meta name="saifks-build" content="V5.16-REAL-ARABIC-CARD-SWAP"><title>SaifKS Research Center</title>
+<meta name="saifks-build" content="V5.17-AR-ECONOMY-BATTLE-REVERSED-GROWTH-ORIGINAL"><title>SaifKS Research Center</title>
 <style>
 :root{
   --bg:#07101d;--panel:#0d1828;--panel2:#111f33;--panel3:#162842;
@@ -1176,11 +1176,13 @@ html[lang="ar"] .selector-grid .field{
 
 
 
-<style id="saifks-v516-real-ar-card-swap">
-html[lang="ar"] .pdf-row .nodes{
+<style id="saifks-v517-ar-economy-battle-swap">
+html[lang="ar"] #tree[data-category="Economy"] .pdf-row .nodes,
+html[lang="ar"] #tree[data-category="Battle"] .pdf-row .nodes{
   direction:ltr !important;
 }
-html[lang="ar"] .pdf-row .node{
+html[lang="ar"] #tree[data-category="Economy"] .pdf-row .node,
+html[lang="ar"] #tree[data-category="Battle"] .pdf-row .node{
   direction:rtl !important;
 }
 </style>
@@ -1374,11 +1376,11 @@ function renderTree(){
  document.getElementById("treeTitle").textContent=tr("tree")+" · "+categoryName(state.category);
  const categoryTotal=DB.technologies.filter(t=>t.category===state.category).length;
  document.getElementById("treeMeta").textContent=techs.length+" "+tr("of")+" "+categoryTotal+" "+tr("research");
- const tree=document.getElementById("tree");tree.style.zoom=zoom;tree.style.transform="none";
+ const tree=document.getElementById("tree");tree.dataset.category=state.category;tree.style.zoom=zoom;tree.style.transform="none";
  if(!techs.length){tree.innerHTML='<div class="empty">'+tr("noResults")+'</div>';return}
  tree.innerHTML=Object.keys(rows).sort((a,b)=>a-b).map((row,index)=>{
    const ordered=rows[row].sort((a,b)=>(a.tree_col??0)-(b.tree_col??0));
-   const visibleOrder=(currentLang==="ar"&&(ordered.length===2||ordered.length===3))
+   const visibleOrder=(currentLang==="ar"&&(state.category==="Economy"||state.category==="Battle")&&(ordered.length===2||ordered.length===3))
      ? [...ordered].reverse()
      : ordered;
    return `<section class="tier pdf-row"><div class="tier-label">${index+1}</div><div class="nodes row-${visibleOrder.length}">${visibleOrder.map(nodeHTML).join("")}</div></section>`;
