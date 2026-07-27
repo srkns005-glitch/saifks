@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#08111f">
-<meta name="saifks-build" content="V5.18-ALL-CATEGORY-DIRECTIONS-CORRECTED"><title>SaifKS Research Center</title>
+<meta name="saifks-build" content="V5.19-ECONOMY-BATTLE-DATA-ORDER-FIX"><title>SaifKS Research Center</title>
 <style>
 :root{
   --bg:#07101d;--panel:#0d1828;--panel2:#111f33;--panel3:#162842;
@@ -1371,7 +1371,11 @@ function renderTree(){
  if(!techs.length){tree.innerHTML='<div class="empty">'+tr("noResults")+'</div>';return}
  tree.innerHTML=Object.keys(rows).sort((a,b)=>a-b).map((row,index)=>{
    const ordered=rows[row].sort((a,b)=>(a.tree_col??0)-(b.tree_col??0));
-   const visibleOrder=ordered;
+   const visibleOrder=(
+     currentLang==="ar" &&
+     (state.category==="Economy" || state.category==="Battle") &&
+     (ordered.length===2 || ordered.length===3)
+   ) ? [...ordered].reverse() : ordered;
    return `<section class="tier pdf-row"><div class="tier-label">${index+1}</div><div class="nodes row-${visibleOrder.length}">${visibleOrder.map(nodeHTML).join("")}</div></section>`;
  }).join("");
  tree.querySelectorAll(".inline-current").forEach(s=>s.onchange=e=>updateInlineLevel(e.target.dataset.current,"current",+e.target.value));
