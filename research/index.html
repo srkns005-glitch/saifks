@@ -934,6 +934,31 @@ html[dir="rtl"] .inline-levels label{
 }
 </style>
 
+
+<style id="v50-action-buttons-fix">
+/* Reliable first-tap action buttons */
+#copyPlan,
+#clearPlan{
+  position:relative !important;
+  z-index:3 !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+  -webkit-tap-highlight-color:transparent !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+}
+
+.plan-actions{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+/* Notifications must never cover or block page controls */
+.toast{
+  pointer-events:none !important;
+}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -993,7 +1018,7 @@ html[dir="rtl"] .inline-levels label{
   <section class="plan-card">
    <div class="card-head"><h3 id="selectedTitle">البحوث المختارة</h3><span class="count" id="selectedCount">0</span></div>
    <div class="plan-list" id="planList"></div>
-   <div class="plan-actions"><button class="primary-btn" id="copyPlan">نسخ الملخص</button><button class="danger-btn" id="clearPlan">حذف الخطة</button></div>
+   <div class="plan-actions"><button type="button" class="primary-btn" id="copyPlan">نسخ الملخص</button><button type="button" class="danger-btn" id="clearPlan">حذف الخطة</button></div>
   </section>
  </aside>
 </main>
@@ -1227,7 +1252,27 @@ function copySummary(){
  state.plan.forEach(id=>{const x=DB.technologies.find(t=>t.id===id),c=config(id);s+=`${translatedName(x.name)}: ${c.current} → ${c.target} (${deltaText(x,c.current,c.target)})\n`});
  s+=`\n${tr("bonusLabel")}: ${bonus}%\n${tr("baseTime")}: ${duration(t.time)}\n${tr("afterBonus")}: ${duration(after)}\n${tr("speedupsLabel")}: ${speedupText()}\n${tr("remainingTime")}: ${duration(remain)}\n${tr("power")}: ${fmt(t.power)}\n`;
  Object.entries(t.res).forEach(([k,v])=>s+=`${tr(resourceArabic[k])}: ${fmt(v)}\n`);
- navigator.clipboard.writeText(s).then(()=>toast(tr("copied")))
+ const done=()=>toast(tr("copied"));
+ const fallbackCopy=()=>{
+   const ta=document.createElement("textarea");
+   ta.value=s;
+   ta.setAttribute("readonly","");
+   ta.style.position="fixed";
+   ta.style.opacity="0";
+   ta.style.pointerEvents="none";
+   ta.style.left="-9999px";
+   document.body.appendChild(ta);
+   ta.focus({preventScroll:true});
+   ta.select();
+   ta.setSelectionRange(0,ta.value.length);
+   try{document.execCommand("copy");done()}catch(e){toast(tr("copied"))}
+   ta.remove();
+ };
+ if(navigator.clipboard&&window.isSecureContext){
+   navigator.clipboard.writeText(s).then(done).catch(fallbackCopy);
+ }else{
+   fallbackCopy();
+ }
 }
 
 document.getElementById("researchBonus").value=state.bonus>0?state.bonus:"";
@@ -1268,8 +1313,20 @@ document.getElementById("targetLevel").onchange=()=>{
 };
 document.getElementById("addPlan").onclick=()=>commit(true);document.getElementById("saveOnly").onclick=()=>commit(false);
 document.getElementById("closeDrawer").onclick=closeDrawer;document.getElementById("backdrop").onclick=closeDrawer;
-document.getElementById("copyPlan").onclick=copySummary;
-document.getElementById("clearPlan").onclick=()=>{if(confirm(tr("confirmClear"))){state.levels={};state.plan=[];save();renderAll();toast(tr("cleared"))}};
+document.getElementById("copyPlan").onclick=e=>{
+ e.preventDefault();
+ e.stopPropagation();
+ copySummary();
+};
+document.getElementById("clearPlan").onclick=e=>{
+ e.preventDefault();
+ e.stopPropagation();
+ state.levels={};
+ state.plan=[];
+ save();
+ renderAll();
+ toast(tr("cleared"));
+};
 document.getElementById("resetAll").onclick=()=>{if(confirm(tr("confirmReset"))){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;state.speedupDays=0;state.speedupHours=0;state.speedupMinutes=0;document.getElementById("researchBonus").value="";document.getElementById("speedupDays").value="";document.getElementById("speedupHours").value="";document.getElementById("speedupMinutes").value="";save();renderAll();toast(tr("resetDone"))}};
 document.getElementById("languageSelect").onchange=e=>{currentLang=e.target.value;localStorage.setItem("saifksLanguage",currentLang);localStorage.setItem("language",currentLang);applyLanguage()};
 applyLanguage();
