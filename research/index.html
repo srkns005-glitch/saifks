@@ -606,12 +606,123 @@ html[dir="rtl"] .language-select{
 }
 </style>
 
+
+<style id="v45-glass-research-cards">
+/* Glass research cards */
+.node{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.035)) !important;
+  border:1px solid rgba(174,213,255,.22) !important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.26),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -1px 0 rgba(255,255,255,.035) !important;
+  -webkit-backdrop-filter:blur(15px) saturate(135%) !important;
+  backdrop-filter:blur(15px) saturate(135%) !important;
+  border-radius:18px !important;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease !important;
+}
+
+.node::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(135,194,255,.18), transparent 36%),
+    linear-gradient(115deg, rgba(255,255,255,.11), transparent 28%);
+  opacity:.82;
+}
+
+.node::after{
+  content:"";
+  position:absolute;
+  top:-55%;
+  left:-32%;
+  width:52%;
+  height:180%;
+  pointer-events:none;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
+  transition:left .45s ease;
+}
+
+.node:hover{
+  transform:translateY(-3px) !important;
+  border-color:rgba(121,192,255,.48) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.135), rgba(255,255,255,.05)) !important;
+  box-shadow:
+    0 19px 42px rgba(0,0,0,.32),
+    0 0 0 1px rgba(99,175,255,.08),
+    inset 0 1px 0 rgba(255,255,255,.22) !important;
+}
+
+.node:hover::after{
+  left:112%;
+}
+
+.node > *{
+  position:relative;
+  z-index:1;
+}
+
+.node.in-plan{
+  border-color:rgba(49,214,123,.48) !important;
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.28),
+    0 0 22px rgba(49,214,123,.08),
+    inset 0 1px 0 rgba(255,255,255,.16) !important;
+}
+
+.node.is-max{
+  border-color:rgba(255,210,95,.42) !important;
+  background:
+    linear-gradient(145deg, rgba(255,220,110,.105), rgba(255,255,255,.035)) !important;
+}
+
+.node .inline-levels select{
+  background:rgba(5,15,28,.50) !important;
+  border:1px solid rgba(174,213,255,.18) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+  backdrop-filter:blur(8px) !important;
+}
+
+.node .node-max{
+  background:rgba(5,15,28,.42) !important;
+  border:1px solid rgba(174,213,255,.16) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+  backdrop-filter:blur(8px) !important;
+}
+
+@media(max-width:760px){
+  .node{
+    border-radius:15px !important;
+    -webkit-backdrop-filter:blur(11px) saturate(125%) !important;
+    backdrop-filter:blur(11px) saturate(125%) !important;
+    box-shadow:
+      0 10px 25px rgba(0,0,0,.24),
+      inset 0 1px 0 rgba(255,255,255,.13) !important;
+  }
+  .node:hover{
+    transform:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Visual Refinements V4.4</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Glass Research Cards V4.5</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
