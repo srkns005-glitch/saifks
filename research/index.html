@@ -529,12 +529,89 @@ html[dir="rtl"] .language-select{
 }
 </style>
 
+
+<style id="v44-visual-refinements">
+.language-control{
+  width:82px !important;
+  min-width:82px !important;
+  max-width:82px !important;
+  height:30px !important;
+  padding:0 !important;
+}
+.language-select{
+  width:100% !important;
+  height:28px !important;
+  padding:0 14px 0 4px !important;
+  margin:0 !important;
+  border:0 !important;
+  font-size:8.5px !important;
+  text-align:center !important;
+  text-align-last:center !important;
+  direction:ltr !important;
+  line-height:28px !important;
+}
+.language-select option{
+  text-align:center !important;
+}
+html[dir="rtl"] .language-select{
+  padding:0 14px 0 4px !important;
+  direction:ltr !important;
+}
+
+#researchBonus{
+  width:92px !important;
+  max-width:92px !important;
+  min-width:92px !important;
+  height:36px !important;
+  text-align:center !important;
+}
+#bonusLabel{
+  white-space:nowrap !important;
+}
+.control-row .field:has(#researchBonus){
+  flex:0 0 auto !important;
+  width:auto !important;
+  min-width:0 !important;
+}
+
+.node .delta,
+.node .effect-delta,
+.node .node-buff{
+  color:#31d67b !important;
+}
+.node .delta,
+.node .effect-delta{
+  font-weight:800 !important;
+}
+
+@media(max-width:760px){
+  .language-control{
+    width:74px !important;
+    min-width:74px !important;
+    max-width:74px !important;
+    height:28px !important;
+  }
+  .language-select{
+    height:26px !important;
+    line-height:26px !important;
+    font-size:7.5px !important;
+    padding:0 12px 0 3px !important;
+  }
+  #researchBonus{
+    width:80px !important;
+    min-width:80px !important;
+    max-width:80px !important;
+    height:34px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Clean Header V4.3</small></div></div>
+  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة الذهب</h1><small>SaifKS.com · Visual Refinements V4.4</small></div></div>
   <div class="header-actions">
    <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
