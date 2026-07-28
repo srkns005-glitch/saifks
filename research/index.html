@@ -1178,6 +1178,33 @@ html[lang="ar"] .selector-grid .field{
 
 
 
+
+<style id="saifks-site-footer-style">
+.site-footer{
+  width:100%;
+  padding:18px 16px 22px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+.site-footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.site-footer a{color:inherit;text-decoration:none;transition:.2s ease}
+.site-footer a:hover{color:var(--text)}
+.site-footer .footer-youtube{display:inline-flex;align-items:center;gap:5px;font-weight:700}
+.site-footer .youtube-icon{font-size:14px;line-height:1}
+@media(max-width:480px){
+  .site-footer{padding:15px 10px 19px;font-size:12px}
+  .site-footer-inner{gap:6px}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -1241,6 +1268,18 @@ html[lang="ar"] .selector-grid .field{
   </section>
  </aside>
 </main>
+<footer class="site-footer" aria-label="SaifKS footer">
+  <div class="site-footer-inner">
+    <a href="https://saifks.com/" target="_blank" rel="noopener noreferrer">SaifKS.com</a>
+    <span aria-hidden="true">|</span>
+    <span>Built by Saif</span>
+    <span aria-hidden="true">|</span>
+    <a class="footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <span class="youtube-icon" aria-hidden="true">▶</span><span>YouTube</span>
+    </a>
+  </div>
+</footer>
+
 </div>
 
 <div class="drawer-backdrop" id="backdrop"></div>
