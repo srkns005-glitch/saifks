@@ -1613,8 +1613,16 @@ document.getElementById("clearPlan").onclick=e=>{
  toast(tr("cleared"));
 };
 document.getElementById("resetAll").onclick=()=>{if(confirm(tr("confirmReset"))){state.levels={};state.plan=[];state.bonus=0;state.speedups=0;state.speedupDays=0;state.speedupHours=0;state.speedupMinutes=0;document.getElementById("researchBonus").value="";document.getElementById("speedupDays").value="";document.getElementById("speedupHours").value="";document.getElementById("speedupMinutes").value="";save();renderAll();toast(tr("resetDone"))}};
-document.getElementById("languageSelect").onchange=e=>{currentLang=e.target.value;localStorage.setItem("saifksLanguage",currentLang);localStorage.setItem("language",currentLang);applyLanguage()};
+document.getElementById("languageSelect").onchange=e=>{currentLang=e.target.value;localStorage.setItem("saifksLanguage",currentLang);localStorage.setItem("language",currentLang);localStorage.setItem("saifRallyLang",currentLang);applyLanguage()};
 applyLanguage();
+
+window.addEventListener("storage",e=>{
+ if((e.key==="saifksLanguage"||e.key==="language")&&LANGS.includes(e.newValue)){currentLang=e.newValue;applyLanguage()}
+});
+window.addEventListener("pageshow",()=>{
+ const saved=localStorage.getItem("saifksLanguage")||localStorage.getItem("language");
+ if(LANGS.includes(saved)&&saved!==currentLang){currentLang=saved;applyLanguage()}
+});
 </script>
 </body>
 </html>
