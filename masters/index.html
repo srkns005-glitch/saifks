@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#111827">
+  <title>Masters | SaifKS</title>
+  <style>
+    :root {
+      --bg:#08111f; --surface:#101c2f; --surface2:#17243a; --line:rgba(255,255,255,.09);
+      --text:#f7f8fb; --muted:#a9b4c6; --gold:#f3bf57; --gold2:#ffe09a;
+      --blue:#4fc3f7; --green:#5ee6a8; --danger:#ff7a86; --radius:22px;
+      --shadow:0 18px 55px rgba(0,0,0,.32);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:
+      radial-gradient(circle at 15% 0%,rgba(79,195,247,.13),transparent 28%),
+      radial-gradient(circle at 90% 5%,rgba(243,191,87,.12),transparent 24%),
+      var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    button,select,input{font:inherit}
+    button{cursor:pointer}
+    .app{max-width:1200px;margin:auto;padding:18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--gold2),var(--gold));color:#38240b;font-weight:900;box-shadow:0 8px 25px rgba(243,191,87,.23)}
+    .brand h1{font-size:21px;margin:0;letter-spacing:.2px}
+    .brand small{display:block;color:var(--muted);margin-top:3px}
+    .lang{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 14px;border-radius:13px}
+    .hero{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.35fr);gap:18px}
+    .portrait-card,.info-card,.panel{background:linear-gradient(160deg,rgba(23,36,58,.97),rgba(12,23,40,.98));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .portrait-card{position:relative;overflow:hidden;min-height:520px}
+    .portrait-card:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,14,25,.95) 0%,rgba(7,14,25,.08) 53%,transparent 78%);pointer-events:none}
+    .portrait-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .portrait-overlay{position:absolute;z-index:2;left:22px;right:22px;bottom:20px}
+    .eyebrow{color:var(--gold2);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1.4px}
+    .portrait-overlay h2{font-size:40px;margin:5px 0 7px}
+    .portrait-overlay p{margin:0;color:#d5dce7}
+    .info-card{padding:24px;display:flex;flex-direction:column;gap:18px}
+    .title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .title-row h2{margin:0;font-size:31px}
+    .subtitle{margin:7px 0 0;color:var(--muted);line-height:1.6}
+    .badge{white-space:nowrap;background:rgba(243,191,87,.13);border:1px solid rgba(243,191,87,.35);color:var(--gold2);padding:9px 12px;border-radius:999px;font-weight:800;font-size:13px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+    .stat{padding:15px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:16px}
+    .stat b{display:block;font-size:22px;color:var(--gold2)}
+    .stat span{color:var(--muted);font-size:13px}
+    .bonus{padding:16px;border-radius:17px;background:linear-gradient(135deg,rgba(79,195,247,.13),rgba(94,230,168,.08));border:1px solid rgba(79,195,247,.25)}
+    .bonus strong{display:block;margin-bottom:5px}
+    .tabs{display:flex;gap:8px;overflow:auto;padding:3px 0}
+    .tab{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--muted);padding:11px 15px;border-radius:13px;white-space:nowrap;font-weight:750}
+    .tab.active{background:var(--gold);border-color:var(--gold);color:#30200a}
+    .section{display:none}
+    .section.active{display:block}
+    .section h3{margin:0 0 12px;font-size:20px}
+    .story{color:#c9d2df;line-height:1.85;margin:0}
+    .calculator{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .panel{padding:20px}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    label{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-bottom:7px}
+    select{width:100%;appearance:none;background:#0b1628;color:var(--text);border:1px solid var(--line);border-radius:13px;padding:13px;outline:none}
+    select:focus{border-color:var(--blue)}
+    .results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:15px}
+    .result{background:#0b1628;border:1px solid var(--line);border-radius:15px;padding:14px}
+    .result span{display:block;color:var(--muted);font-size:12px}
+    .result b{display:block;margin-top:5px;font-size:20px}
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .skill{padding:17px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:17px}
+    .skill-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .skill h4{margin:0;font-size:17px}
+    .skill p{color:var(--muted);line-height:1.55;font-size:14px;min-height:43px}
+    .skill-levels{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .mini{background:#0b1628;border-radius:12px;padding:10px;border:1px solid var(--line)}
+    .mini span{font-size:11px;color:var(--muted);display:block}
+    .mini b{font-size:15px}
+    .talent{padding:18px;border-radius:17px;background:linear-gradient(135deg,rgba(243,191,87,.13),rgba(243,191,87,.04));border:1px solid rgba(243,191,87,.28)}
+    .talent p{color:#d5dce7;line-height:1.7}
+    .warning{margin-top:12px;color:#f8c978;font-size:13px}
+    .footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 12px}
+    @media(max-width:850px){
+      .hero{grid-template-columns:1fr}
+      .portrait-card{min-height:510px}
+      .calculator{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .app{padding:12px}
+      .portrait-card{min-height:440px}
+      .portrait-overlay h2{font-size:34px}
+      .info-card,.panel{padding:16px}
+      .stats{grid-template-columns:1fr 1fr}
+      .stats .stat:last-child{grid-column:1/-1}
+      .fields,.skills-grid{grid-template-columns:1fr}
+      .title-row{flex-direction:column}
+    }
+    [dir="rtl"] body{font-family:Tahoma,Arial,sans-serif}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">SK</div><div><h1>SaifKS Masters</h1><small data-i18n="subbrand">Specialist Database & Calculator</small></div></div>
+    <button class="lang" id="langBtn">العربية</button>
+  </header>
+
+  <main class="hero">
+    <section class="portrait-card">
+      <img src="assets/valora.jpeg" alt="Valora">
+      <div class="portrait-overlay">
+        <div class="eyebrow" data-i18n="bearMaster">Bear Hunt Master</div>
+        <h2 data-name>Valora</h2>
+        <p data-i18n="hunter">Bear Hunter • Expedition Specialist</p>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <div class="title-row">
+        <div><h2 data-name>Valora</h2><p class="subtitle" data-i18n="intro">A specialist designed for Bear Hunt progression, rally capacity and valuable enhancement rewards.</p></div>
+        <div class="badge" data-i18n="master">Master</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>Lv.100</b><span data-i18n="maxAffinity">Maximum Affinity</span></div>
+        <div class="stat"><b>+15.00%</b><span data-i18n="squadAtk">Squad ATK</span></div>
+        <div class="stat"><b>+15%</b><span data-i18n="expedition">Expedition Squad ATK</span></div>
+      </div>
+
+      <div class="bonus"><strong data-i18n="talentName">Hunter Instinct</strong><span data-i18n="talentText">Up to +30% Bear Hunt Damage for Valora herself.</span></div>
+
+      <nav class="tabs" aria-label="Master information">
+        <button class="tab active" data-tab="overview" data-i18n="overview">Overview</button>
+        <button class="tab" data-tab="affinity" data-i18n="affinity">Affinity</button>
+        <button class="tab" data-tab="skills" data-i18n="skills">Skills</button>
+        <button class="tab" data-tab="talent" data-i18n="talent">Talent</button>
+      </nav>
+
+      <div class="section active" id="overview">
+        <h3 data-i18n="about">About Valora</h3>
+        <p class="story" data-i18n="story">Valora grew up among dangerous forests and giant beasts. Her fearless hunting instincts made her a natural Bear Hunt specialist, strengthening squads while increasing capacity and improving valuable Bear Hunt rewards.</p>
+      </div>
+
+      <div class="section" id="affinity">
+        <h3 data-i18n="affinityProgress">Affinity progression</h3>
+        <p class="story" data-i18n="affinityDesc">Affinity reaches level 100 and grants a final +15.00% Squad ATK bonus.</p>
+      </div>
+
+      <div class="section" id="skills">
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+
+      <div class="section" id="talent">
+        <div class="talent"><h3 data-i18n="talentName">Hunter Instinct</h3><p data-i18n="talentLong">Valora inflicts 2% to 30% additional Bear Hunt Damage Points. This talent is effective for Valora herself only.</p></div>
+        <div class="warning" data-i18n="talentNote">Intermediate talent values were not provided, so the database stores only the verified minimum and maximum.</div>
+      </div>
+    </section>
+  </main>
+
+  <section class="calculator">
+    <div class="panel">
+      <h3 data-i18n="affCalc">Affinity Calculator</h3>
+      <div class="fields">
+        <div><label data-i18n="currentLevel">Current level</label><select id="currentAffinity"></select></div>
+        <div><label data-i18n="targetLevel">Target level</label><select id="targetAffinity"></select></div>
+      </div>
+      <div class="results">
+        <div class="result"><span data-i18n="affinityRequired">Affinity required</span><b id="affinityRequired">0</b></div>
+        <div class="result"><span data-i18n="advRequired">Advancement required</span><b id="advancementRequired">0</b></div>
+        <div class="result"><span data-i18n="currentAtk">Current Squad ATK</span><b id="currentAtk">0%</b></div>
+        <div class="result"><span data-i18n="targetAtk">Target Squad ATK</span><b id="targetAtk">0%</b></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 data-i18n="skillCalc">Skill Calculator</h3>
+      <div class="fields">
+        <div><label data-i18n="selectSkill">Select skill</label><select id="skillSelect"></select></div>
+        <div><label data-i18n="skillTarget">Target skill level</label><select id="skillTarget"></select></div>
+      </div>
+      <div class="results">
+        <div class="result"><span data-i18n="expRequired">EXP required</span><b id="expRequired">0</b></div>
+        <div class="result"><span data-i18n="booksRequired">Books required</span><b id="booksRequired">0</b></div>
+        <div class="result" style="grid-column:1/-1"><span data-i18n="effectAtTarget">Effect at target</span><b id="effectTarget">—</b></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">SaifKS.com | Built by Saif</footer>
+</div>
+
+<script>
+const DB = {"schema_version": "1.0.0", "database_id": "saifks-specialists", "specialists": [{"id": "valora", "name": {"en": "Valora", "ar": "فالورا"}, "title": {"en": "Bear Hunter", "ar": "صائدة الدببة"}, "category": "bear_hunt", "expedition_bonus": {"stat": "squads_attack_percent", "value": 15}, "talent": {"id": "hunter_instinct", "name": {"en": "Hunter Instinct", "ar": "غريزة الصياد"}, "description_en": "Inflicts additional Bear Hunt Damage Points, effective for Valora only.", "effect": {"stat": "bear_hunt_damage_percent", "min": 2, "max": 30, "per_level_values": null, "verification": "range_verified_from_source; intermediate values_not_provided"}}, "affinity": {"max_level": 100, "stat": "troops_attack_percent", "levels": [{"level": 1, "affinity_cost": 1000, "advancement_cost": 0, "troops_attack_percent": 1.58, "cumulative_affinity": 1000, "cumulative_advancement": 0}, {"level": 2, "affinity_cost": 200, "advancement_cost": 0, "troops_attack_percent": 1.65, "cumulative_affinity": 1200, "cumulative_advancement": 0}, {"level": 3, "affinity_cost": 210, "advancement_cost": 0, "troops_attack_percent": 1.73, "cumulative_affinity": 1410, "cumulative_advancement": 0}, {"level": 4, "affinity_cost": 220, "advancement_cost": 0, "troops_attack_percent": 1.8, "cumulative_affinity": 1630, "cumulative_advancement": 0}, {"level": 5, "affinity_cost": 230, "advancement_cost": 0, "troops_attack_percent": 1.88, "cumulative_affinity": 1860, "cumulative_advancement": 0}, {"level": 6, "affinity_cost": 240, "advancement_cost": 0, "troops_attack_percent": 1.95, "cumulative_affinity": 2100, "cumulative_advancement": 0}, {"level": 7, "affinity_cost": 260, "advancement_cost": 0, "troops_attack_percent": 2.03, "cumulative_affinity": 2360, "cumulative_advancement": 0}, {"level": 8, "affinity_cost": 280, "advancement_cost": 0, "troops_attack_percent": 2.1, "cumulative_affinity": 2640, "cumulative_advancement": 0}, {"level": 9, "affinity_cost": 300, "advancement_cost": 0, "troops_attack_percent": 2.18, "cumulative_affinity": 2940, "cumulative_advancement": 0}, {"level": 10, "affinity_cost": 320, "advancement_cost": 5, "troops_attack_percent": 2.85, "cumulative_affinity": 3260, "cumulative_advancement": 5}, {"level": 11, "affinity_cost": 340, "advancement_cost": 0, "troops_attack_percent": 2.93, "cumulative_affinity": 3600, "cumulative_advancement": 5}, {"level": 12, "affinity_cost": 360, "advancement_cost": 0, "troops_attack_percent": 3.0, "cumulative_affinity": 3960, "cumulative_advancement": 5}, {"level": 13, "affinity_cost": 380, "advancement_cost": 0, "troops_attack_percent": 3.08, "cumulative_affinity": 4340, "cumulative_advancement": 5}, {"level": 14, "affinity_cost": 400, "advancement_cost": 0, "troops_attack_percent": 3.15, "cumulative_affinity": 4740, "cumulative_advancement": 5}, {"level": 15, "affinity_cost": 420, "advancement_cost": 0, "troops_attack_percent": 3.23, "cumulative_affinity": 5160, "cumulative_advancement": 5}, {"level": 16, "affinity_cost": 440, "advancement_cost": 0, "troops_attack_percent": 3.3, "cumulative_affinity": 5600, "cumulative_advancement": 5}, {"level": 17, "affinity_cost": 460, "advancement_cost": 0, "troops_attack_percent": 3.38, "cumulative_affinity": 6060, "cumulative_advancement": 5}, {"level": 18, "affinity_cost": 480, "advancement_cost": 0, "troops_attack_percent": 3.45, "cumulative_affinity": 6540, "cumulative_advancement": 5}, {"level": 19, "affinity_cost": 500, "advancement_cost": 0, "troops_attack_percent": 3.53, "cumulative_affinity": 7040, "cumulative_advancement": 5}, {"level": 20, "affinity_cost": 520, "advancement_cost": 10, "troops_attack_percent": 4.2, "cumulative_affinity": 7560, "cumulative_advancement": 15}, {"level": 21, "affinity_cost": 540, "advancement_cost": 0, "troops_attack_percent": 4.28, "cumulative_affinity": 8100, "cumulative_advancement": 15}, {"level": 22, "affinity_cost": 560, "advancement_cost": 0, "troops_attack_percent": 4.35, "cumulative_affinity": 8660, "cumulative_advancement": 15}, {"level": 23, "affinity_cost": 580, "advancement_cost": 0, "troops_attack_percent": 4.43, "cumulative_affinity": 9240, "cumulative_advancement": 15}, {"level": 24, "affinity_cost": 600, "advancement_cost": 0, "troops_attack_percent": 4.5, "cumulative_affinity": 9840, "cumulative_advancement": 15}, {"level": 25, "affinity_cost": 620, "advancement_cost": 0, "troops_attack_percent": 4.58, "cumulative_affinity": 10460, "cumulative_advancement": 15}, {"level": 26, "affinity_cost": 640, "advancement_cost": 0, "troops_attack_percent": 4.65, "cumulative_affinity": 11100, "cumulative_advancement": 15}, {"level": 27, "affinity_cost": 660, "advancement_cost": 0, "troops_attack_percent": 4.73, "cumulative_affinity": 11760, "cumulative_advancement": 15}, {"level": 28, "affinity_cost": 680, "advancement_cost": 0, "troops_attack_percent": 4.8, "cumulative_affinity": 12440, "cumulative_advancement": 15}, {"level": 29, "affinity_cost": 700, "advancement_cost": 0, "troops_attack_percent": 4.88, "cumulative_affinity": 13140, "cumulative_advancement": 15}, {"level": 30, "affinity_cost": 730, "advancement_cost": 15, "troops_attack_percent": 5.55, "cumulative_affinity": 13870, "cumulative_advancement": 30}, {"level": 31, "affinity_cost": 760, "advancement_cost": 0, "troops_attack_percent": 5.63, "cumulative_affinity": 14630, "cumulative_advancement": 30}, {"level": 32, "affinity_cost": 790, "advancement_cost": 0, "troops_attack_percent": 5.7, "cumulative_affinity": 15420, "cumulative_advancement": 30}, {"level": 33, "affinity_cost": 820, "advancement_cost": 0, "troops_attack_percent": 5.78, "cumulative_affinity": 16240, "cumulative_advancement": 30}, {"level": 34, "affinity_cost": 850, "advancement_cost": 0, "troops_attack_percent": 5.85, "cumulative_affinity": 17090, "cumulative_advancement": 30}, {"level": 35, "affinity_cost": 880, "advancement_cost": 0, "troops_attack_percent": 5.93, "cumulative_affinity": 17970, "cumulative_advancement": 30}, {"level": 36, "affinity_cost": 910, "advancement_cost": 0, "troops_attack_percent": 6.0, "cumulative_affinity": 18880, "cumulative_advancement": 30}, {"level": 37, "affinity_cost": 940, "advancement_cost": 0, "troops_attack_percent": 6.08, "cumulative_affinity": 19820, "cumulative_advancement": 30}, {"level": 38, "affinity_cost": 970, "advancement_cost": 0, "troops_attack_percent": 6.15, "cumulative_affinity": 20790, "cumulative_advancement": 30}, {"level": 39, "affinity_cost": 1000, "advancement_cost": 0, "troops_attack_percent": 6.23, "cumulative_affinity": 21790, "cumulative_advancement": 30}, {"level": 40, "affinity_cost": 1040, "advancement_cost": 20, "troops_attack_percent": 6.9, "cumulative_affinity": 22830, "cumulative_advancement": 50}, {"level": 41, "affinity_cost": 1080, "advancement_cost": 0, "troops_attack_percent": 6.98, "cumulative_affinity": 23910, "cumulative_advancement": 50}, {"level": 42, "affinity_cost": 1120, "advancement_cost": 0, "troops_attack_percent": 7.05, "cumulative_affinity": 25030, "cumulative_advancement": 50}, {"level": 43, "affinity_cost": 1160, "advancement_cost": 0, "troops_attack_percent": 7.13, "cumulative_affinity": 26190, "cumulative_advancement": 50}, {"level": 44, "affinity_cost": 1200, "advancement_cost": 0, "troops_attack_percent": 7.2, "cumulative_affinity": 27390, "cumulative_advancement": 50}, {"level": 45, "affinity_cost": 1240, "advancement_cost": 0, "troops_attack_percent": 7.28, "cumulative_affinity": 28630, "cumulative_advancement": 50}, {"level": 46, "affinity_cost": 1280, "advancement_cost": 0, "troops_attack_percent": 7.35, "cumulative_affinity": 29910, "cumulative_advancement": 50}, {"level": 47, "affinity_cost": 1320, "advancement_cost": 0, "troops_attack_percent": 7.43, "cumulative_affinity": 31230, "cumulative_advancement": 50}, {"level": 48, "affinity_cost": 1360, "advancement_cost": 0, "troops_attack_percent": 7.5, "cumulative_affinity": 32590, "cumulative_advancement": 50}, {"level": 49, "affinity_cost": 1400, "advancement_cost": 0, "troops_attack_percent": 7.58, "cumulative_affinity": 33990, "cumulative_advancement": 50}, {"level": 50, "affinity_cost": 1450, "advancement_cost": 25, "troops_attack_percent": 8.25, "cumulative_affinity": 35440, "cumulative_advancement": 75}, {"level": 51, "affinity_cost": 1500, "advancement_cost": 0, "troops_attack_percent": 8.33, "cumulative_affinity": 36940, "cumulative_advancement": 75}, {"level": 52, "affinity_cost": 1550, "advancement_cost": 0, "troops_attack_percent": 8.4, "cumulative_affinity": 38490, "cumulative_advancement": 75}, {"level": 53, "affinity_cost": 1600, "advancement_cost": 0, "troops_attack_percent": 8.48, "cumulative_affinity": 40090, "cumulative_advancement": 75}, {"level": 54, "affinity_cost": 1650, "advancement_cost": 0, "troops_attack_percent": 8.55, "cumulative_affinity": 41740, "cumulative_advancement": 75}, {"level": 55, "affinity_cost": 1700, "advancement_cost": 0, "troops_attack_percent": 8.63, "cumulative_affinity": 43440, "cumulative_advancement": 75}, {"level": 56, "affinity_cost": 1750, "advancement_cost": 0, "troops_attack_percent": 8.7, "cumulative_affinity": 45190, "cumulative_advancement": 75}, {"level": 57, "affinity_cost": 1800, "advancement_cost": 0, "troops_attack_percent": 8.78, "cumulative_affinity": 46990, "cumulative_advancement": 75}, {"level": 58, "affinity_cost": 1850, "advancement_cost": 0, "troops_attack_percent": 8.85, "cumulative_affinity": 48840, "cumulative_advancement": 75}, {"level": 59, "affinity_cost": 1900, "advancement_cost": 0, "troops_attack_percent": 8.93, "cumulative_affinity": 50740, "cumulative_advancement": 75}, {"level": 60, "affinity_cost": 1950, "advancement_cost": 30, "troops_attack_percent": 9.6, "cumulative_affinity": 52690, "cumulative_advancement": 105}, {"level": 61, "affinity_cost": 2000, "advancement_cost": 0, "troops_attack_percent": 9.68, "cumulative_affinity": 54690, "cumulative_advancement": 105}, {"level": 62, "affinity_cost": 2050, "advancement_cost": 0, "troops_attack_percent": 9.75, "cumulative_affinity": 56740, "cumulative_advancement": 105}, {"level": 63, "affinity_cost": 2100, "advancement_cost": 0, "troops_attack_percent": 9.83, "cumulative_affinity": 58840, "cumulative_advancement": 105}, {"level": 64, "affinity_cost": 2150, "advancement_cost": 0, "troops_attack_percent": 9.9, "cumulative_affinity": 60990, "cumulative_advancement": 105}, {"level": 65, "affinity_cost": 2200, "advancement_cost": 0, "troops_attack_percent": 9.98, "cumulative_affinity": 63190, "cumulative_advancement": 105}, {"level": 66, "affinity_cost": 2250, "advancement_cost": 0, "troops_attack_percent": 10.05, "cumulative_affinity": 65440, "cumulative_advancement": 105}, {"level": 67, "affinity_cost": 2300, "advancement_cost": 0, "troops_attack_percent": 10.13, "cumulative_affinity": 67740, "cumulative_advancement": 105}, {"level": 68, "affinity_cost": 2350, "advancement_cost": 0, "troops_attack_percent": 10.2, "cumulative_affinity": 70090, "cumulative_advancement": 105}, {"level": 69, "affinity_cost": 2400, "advancement_cost": 0, "troops_attack_percent": 10.28, "cumulative_affinity": 72490, "cumulative_advancement": 105}, {"level": 70, "affinity_cost": 2450, "advancement_cost": 35, "troops_attack_percent": 10.95, "cumulative_affinity": 74940, "cumulative_advancement": 140}, {"level": 71, "affinity_cost": 2500, "advancement_cost": 0, "troops_attack_percent": 11.03, "cumulative_affinity": 77440, "cumulative_advancement": 140}, {"level": 72, "affinity_cost": 2550, "advancement_cost": 0, "troops_attack_percent": 11.1, "cumulative_affinity": 79990, "cumulative_advancement": 140}, {"level": 73, "affinity_cost": 2600, "advancement_cost": 0, "troops_attack_percent": 11.18, "cumulative_affinity": 82590, "cumulative_advancement": 140}, {"level": 74, "affinity_cost": 2650, "advancement_cost": 0, "troops_attack_percent": 11.25, "cumulative_affinity": 85240, "cumulative_advancement": 140}, {"level": 75, "affinity_cost": 2700, "advancement_cost": 0, "troops_attack_percent": 11.33, "cumulative_affinity": 87940, "cumulative_advancement": 140}, {"level": 76, "affinity_cost": 2750, "advancement_cost": 0, "troops_attack_percent": 11.4, "cumulative_affinity": 90690, "cumulative_advancement": 140}, {"level": 77, "affinity_cost": 2800, "advancement_cost": 0, "troops_attack_percent": 11.48, "cumulative_affinity": 93490, "cumulative_advancement": 140}, {"level": 78, "affinity_cost": 2850, "advancement_cost": 0, "troops_attack_percent": 11.55, "cumulative_affinity": 96340, "cumulative_advancement": 140}, {"level": 79, "affinity_cost": 2900, "advancement_cost": 0, "troops_attack_percent": 11.63, "cumulative_affinity": 99240, "cumulative_advancement": 140}, {"level": 80, "affinity_cost": 2950, "advancement_cost": 40, "troops_attack_percent": 12.3, "cumulative_affinity": 102190, "cumulative_advancement": 180}, {"level": 81, "affinity_cost": 3000, "advancement_cost": 0, "troops_attack_percent": 12.38, "cumulative_affinity": 105190, "cumulative_advancement": 180}, {"level": 82, "affinity_cost": 3050, "advancement_cost": 0, "troops_attack_percent": 12.45, "cumulative_affinity": 108240, "cumulative_advancement": 180}, {"level": 83, "affinity_cost": 3100, "advancement_cost": 0, "troops_attack_percent": 12.53, "cumulative_affinity": 111340, "cumulative_advancement": 180}, {"level": 84, "affinity_cost": 3150, "advancement_cost": 0, "troops_attack_percent": 12.6, "cumulative_affinity": 114490, "cumulative_advancement": 180}, {"level": 85, "affinity_cost": 3200, "advancement_cost": 0, "troops_attack_percent": 12.68, "cumulative_affinity": 117690, "cumulative_advancement": 180}, {"level": 86, "affinity_cost": 3250, "advancement_cost": 0, "troops_attack_percent": 12.75, "cumulative_affinity": 120940, "cumulative_advancement": 180}, {"level": 87, "affinity_cost": 3300, "advancement_cost": 0, "troops_attack_percent": 12.83, "cumulative_affinity": 124240, "cumulative_advancement": 180}, {"level": 88, "affinity_cost": 3350, "advancement_cost": 0, "troops_attack_percent": 12.9, "cumulative_affinity": 127590, "cumulative_advancement": 180}, {"level": 89, "affinity_cost": 3400, "advancement_cost": 0, "troops_attack_percent": 12.98, "cumulative_affinity": 130990, "cumulative_advancement": 180}, {"level": 90, "affinity_cost": 3450, "advancement_cost": 45, "troops_attack_percent": 13.65, "cumulative_affinity": 134440, "cumulative_advancement": 225}, {"level": 91, "affinity_cost": 3500, "advancement_cost": 0, "troops_attack_percent": 13.73, "cumulative_affinity": 137940, "cumulative_advancement": 225}, {"level": 92, "affinity_cost": 3550, "advancement_cost": 0, "troops_attack_percent": 13.8, "cumulative_affinity": 141490, "cumulative_advancement": 225}, {"level": 93, "affinity_cost": 3600, "advancement_cost": 0, "troops_attack_percent": 13.88, "cumulative_affinity": 145090, "cumulative_advancement": 225}, {"level": 94, "affinity_cost": 3650, "advancement_cost": 0, "troops_attack_percent": 13.95, "cumulative_affinity": 148740, "cumulative_advancement": 225}, {"level": 95, "affinity_cost": 3700, "advancement_cost": 0, "troops_attack_percent": 14.03, "cumulative_affinity": 152440, "cumulative_advancement": 225}, {"level": 96, "affinity_cost": 3750, "advancement_cost": 0, "troops_attack_percent": 14.1, "cumulative_affinity": 156190, "cumulative_advancement": 225}, {"level": 97, "affinity_cost": 3800, "advancement_cost": 0, "troops_attack_percent": 14.18, "cumulative_affinity": 159990, "cumulative_advancement": 225}, {"level": 98, "affinity_cost": 3850, "advancement_cost": 0, "troops_attack_percent": 14.25, "cumulative_affinity": 163840, "cumulative_advancement": 225}, {"level": 99, "affinity_cost": 3900, "advancement_cost": 0, "troops_attack_percent": 14.33, "cumulative_affinity": 167740, "cumulative_advancement": 225}, {"level": 100, "affinity_cost": 3950, "advancement_cost": 50, "troops_attack_percent": 15.0, "cumulative_affinity": 171690, "cumulative_advancement": 275}], "totals_to_level_100": {"affinity": 171690, "advancement": 275, "troops_attack_percent": 15.0}, "data_notes": ["Costs are interpreted as the cost to reach the listed level.", "Level 88 corrected by the user to 12.90% Squad ATK."]}, "skills": [{"id": "dance_of_the_hunt", "slot": 1, "name": {"en": "Dance of the Hunt", "ar": "رقصة الصيد"}, "effect": {"stat": "raging_bear_rally_squad_capacity", "min": 30000, "max": 300000, "values_by_level": [30000, 60000, 90000, 120000, 150000, 180000, 210000, 240000, 270000, 300000], "verification": "endpoints_verified; intermediate_values_linear_inference"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 30000}, {"level": 2, "exp": 3600, "books": 70, "effect_value": 60000}, {"level": 3, "exp": 7200, "books": 140, "effect_value": 90000}, {"level": 4, "exp": 10800, "books": 210, "effect_value": 120000}, {"level": 5, "exp": 14400, "books": 280, "effect_value": 150000}, {"level": 6, "exp": 18000, "books": 350, "effect_value": 180000}, {"level": 7, "exp": 21600, "books": 420, "effect_value": 210000}, {"level": 8, "exp": 25200, "books": 490, "effect_value": 240000}, {"level": 9, "exp": 28800, "books": 560, "effect_value": 270000}, {"level": 10, "exp": 32400, "books": 630, "effect_value": 300000}]}, {"id": "leader_by_example", "slot": 2, "name": {"en": "Leader By Example", "ar": "القيادة بالقدوة"}, "effect": {"stat": "extra_100_enhancement_xp_part_rewards_per_bear_hunt", "min": 1, "max": 5, "values_by_level": [1, 2, 3, 4, 5], "verification": "range_verified; per_level_sequence inferred"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 1}, {"level": 2, "exp": 27600, "books": 400, "effect_value": 2}, {"level": 3, "exp": 55200, "books": 800, "effect_value": 3}, {"level": 4, "exp": 110400, "books": 1600, "effect_value": 4}, {"level": 5, "exp": 220800, "books": 3200, "effect_value": 5}]}, {"id": "weapon_obsession", "slot": 3, "name": {"en": "Weapon Obsession", "ar": "هوس الأسلحة"}, "effect": {"stat": "additional_forgehammer_rewards_per_bear_hunt", "min": 1, "max": 5, "values_by_level": [1, 2, 3, 4, 5], "verification": "range_verified; per_level_sequence inferred"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 1}, {"level": 2, "exp": 43200, "books": 500, "effect_value": 2}, {"level": 3, "exp": 86400, "books": 1000, "effect_value": 3}, {"level": 4, "exp": 172800, "books": 2000, "effect_value": 4}, {"level": 5, "exp": 345600, "books": 4000, "effect_value": 5}]}, {"id": "savage_advantage", "slot": 4, "name": {"en": "Savage Advantage", "ar": "الميزة الوحشية"}, "effect": {"stat": "bear_hunt_squad_capacity", "min": 3000, "max": 30000, "values_by_level": [3000, 6000, 9000, 12000, 15000, 18000, 21000, 24000, 27000, 30000], "verification": "endpoints_verified; intermediate_values_linear_inference"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 3000}, {"level": 2, "exp": 10200, "books": 100, "effect_value": 6000}, {"level": 3, "exp": 20400, "books": 200, "effect_value": 9000}, {"level": 4, "exp": 30600, "books": 300, "effect_value": 12000}, {"level": 5, "exp": 41400, "books": 400, "effect_value": 15000}, {"level": 6, "exp": 51600, "books": 500, "effect_value": 18000}, {"level": 7, "exp": 61800, "books": 600, "effect_value": 21000}, {"level": 8, "exp": 72600, "books": 700, "effect_value": 24000}, {"level": 9, "exp": 82800, "books": 800, "effect_value": 27000}, {"level": 10, "exp": 93000, "books": 900, "effect_value": 30000}]}], "source": {"primary": "User-provided Kingshot Wiki PDF and screenshots", "captured_date": "2026-07-29"}}]};
+const specialist = DB.specialists.find(s => s.id === "valora");
+let lang = localStorage.getItem("saifksLanguage") === "ar" ? "ar" : "en";
+
+const i18n = {
+ en:{
+  subbrand:"Specialist Database & Calculator",bearMaster:"Bear Hunt Master",hunter:"Bear Hunter • Expedition Specialist",master:"Master",
+  intro:"A specialist designed for Bear Hunt progression, rally capacity and valuable enhancement rewards.",maxAffinity:"Maximum Affinity",
+  squadAtk:"Squad ATK",expedition:"Expedition Squad ATK",talentName:"Hunter Instinct",talentText:"Up to +30% Bear Hunt Damage for Valora herself.",
+  overview:"Overview",affinity:"Affinity",skills:"Skills",talent:"Talent",about:"About Valora",
+  story:"Valora grew up among dangerous forests and giant beasts. Her fearless hunting instincts made her a natural Bear Hunt specialist, strengthening squads while increasing capacity and improving valuable Bear Hunt rewards.",
+  affinityProgress:"Affinity progression",affinityDesc:"Affinity reaches level 100 and grants a final +15.00% Squad ATK bonus.",
+  talentLong:"Valora inflicts 2% to 30% additional Bear Hunt Damage Points. This talent is effective for Valora herself only.",
+  talentNote:"Intermediate talent values were not provided, so the database stores only the verified minimum and maximum.",
+  affCalc:"Affinity Calculator",currentLevel:"Current level",targetLevel:"Target level",affinityRequired:"Affinity required",
+  advRequired:"Advancement required",currentAtk:"Current Squad ATK",targetAtk:"Target Squad ATK",skillCalc:"Skill Calculator",
+  selectSkill:"Select skill",skillTarget:"Target skill level",expRequired:"EXP required",booksRequired:"Books required",effectAtTarget:"Effect at target",
+  level:"Level",exp:"EXP",books:"Books",capacity:"capacity",rewards:"rewards"
+ },
+ ar:{
+  subbrand:"قاعدة بيانات وحاسبة المتخصصين",bearMaster:"متخصصة صيد الدب",hunter:"صائدة الدببة • متخصصة استكشاف",master:"متخصص",
+  intro:"متخصصة مصممة لتطوير صيد الدب وزيادة سعة الحشد وتحسين مكافآت التعزيز.",maxAffinity:"أقصى مستوى تقارب",
+  squadAtk:"هجوم الفرق",expedition:"هجوم فرق الاستكشاف",talentName:"غريزة الصياد",talentText:"حتى +30% ضرر إضافي في صيد الدب لفالورا فقط.",
+  overview:"نظرة عامة",affinity:"التقارب",skills:"المهارات",talent:"السمة",about:"عن فالورا",
+  story:"نشأت فالورا وسط الغابات الخطرة والوحوش العملاقة. جعلتها غرائزها الجريئة متخصصة طبيعية في صيد الدب، حيث تقوي الفرق وتزيد السعة وتحسن المكافآت القيّمة.",
+  affinityProgress:"تطوير التقارب",affinityDesc:"يصل التقارب إلى المستوى 100 ويمنح في النهاية +15.00% لهجوم الفرق.",
+  talentLong:"تسبب فالورا ضرراً إضافياً في صيد الدب يتراوح بين 2% و30%. تعمل هذه السمة على فالورا نفسها فقط.",
+  talentNote:"لم تُرسل القيم الوسطية للسمة، لذلك تحفظ قاعدة البيانات الحد الأدنى والأقصى المؤكدين فقط.",
+  affCalc:"حاسبة التقارب",currentLevel:"المستوى الحالي",targetLevel:"المستوى الهدف",affinityRequired:"التقارب المطلوب",
+  advRequired:"مواد التقدم المطلوبة",currentAtk:"هجوم الفرق الحالي",targetAtk:"هجوم الفرق عند الهدف",skillCalc:"حاسبة المهارات",
+  selectSkill:"اختر المهارة",skillTarget:"مستوى المهارة الهدف",expRequired:"الخبرة المطلوبة",booksRequired:"الكتب المطلوبة",effectAtTarget:"التأثير عند الهدف",
+  level:"المستوى",exp:"الخبرة",books:"الكتب",capacity:"السعة",rewards:"المكافآت"
+ }
+};
+
+function tr(key){ return i18n[lang][key] || key; }
+function fmt(n){ return Number(n).toLocaleString(lang==="ar"?"ar-AE":"en-AE"); }
+
+function applyLanguage(){
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.getElementById("langBtn").textContent=lang==="en"?"العربية":"English";
+ document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));
+ document.querySelectorAll("[data-name]").forEach(el=>el.textContent=lang==="ar"?"فالورا":"Valora");
+ renderSkills(); fillSkillSelect(); calculateSkill();
+}
+
+document.getElementById("langBtn").addEventListener("click",()=>{
+ lang=lang==="en"?"ar":"en"; localStorage.setItem("saifksLanguage",lang); applyLanguage();
+});
+
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+ document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active"); document.getElementById(btn.dataset.tab).classList.add("active");
+}));
+
+function fillAffinity(){
+ const cur=document.getElementById("currentAffinity"), tar=document.getElementById("targetAffinity");
+ cur.innerHTML=""; tar.innerHTML="";
+ for(let i=0;i<=100;i++){
+  cur.add(new Option(i===0?"—":i,i));
+  tar.add(new Option(i===0?"—":i,i));
+ }
+ cur.value="0"; tar.value="100";
+}
+function calculateAffinity(){
+ let current=+document.getElementById("currentAffinity").value;
+ let target=+document.getElementById("targetAffinity").value;
+ if(target<current){ target=current; document.getElementById("targetAffinity").value=String(target); }
+ const rows=specialist.affinity.levels.filter(r=>r.level>current && r.level<=target);
+ const affinity=rows.reduce((a,r)=>a+r.affinity_cost,0);
+ const advancement=rows.reduce((a,r)=>a+r.advancement_cost,0);
+ const currentAtk=current?specialist.affinity.levels[current-1].troops_attack_percent:0;
+ const targetAtk=target?specialist.affinity.levels[target-1].troops_attack_percent:0;
+ document.getElementById("affinityRequired").textContent=fmt(affinity);
+ document.getElementById("advancementRequired").textContent=fmt(advancement);
+ document.getElementById("currentAtk").textContent=currentAtk.toFixed(2)+"%";
+ document.getElementById("targetAtk").textContent=targetAtk.toFixed(2)+"%";
+}
+document.getElementById("currentAffinity").addEventListener("change",calculateAffinity);
+document.getElementById("targetAffinity").addEventListener("change",calculateAffinity);
+
+function skillEffectText(skill,level){
+ const val=skill.effect.values_by_level?.[level-1];
+ if(val==null) return "—";
+ if(skill.id==="dance_of_the_hunt"||skill.id==="savage_advantage") return fmt(val)+" "+tr("capacity");
+ return fmt(val)+" "+tr("rewards");
+}
+function renderSkills(){
+ const grid=document.getElementById("skillsGrid");
+ grid.innerHTML=specialist.skills.map(skill=>{
+   const max=skill.levels.at(-1);
+   return `<article class="skill"><div class="skill-head"><h4>${lang==="ar"?skill.name.ar:skill.name.en}</h4><span class="badge">Lv.${max.level}</span></div>
+   <p>${skillEffectText(skill,max.level)}</p>
+   <div class="skill-levels"><div class="mini"><span>${tr("exp")}</span><b>${fmt(max.exp)}</b></div><div class="mini"><span>${tr("books")}</span><b>${fmt(max.books)}</b></div></div></article>`;
+ }).join("");
+}
+function fillSkillSelect(){
+ const sel=document.getElementById("skillSelect");
+ const previous=sel.value;
+ sel.innerHTML="";
+ specialist.skills.forEach(skill=>sel.add(new Option(lang==="ar"?skill.name.ar:skill.name.en,skill.id)));
+ if([...sel.options].some(o=>o.value===previous)) sel.value=previous;
+ fillSkillTargets();
+}
+function fillSkillTargets(){
+ const skill=specialist.skills.find(s=>s.id===document.getElementById("skillSelect").value) || specialist.skills[0];
+ const target=document.getElementById("skillTarget"); const old=+target.value||skill.levels.length;
+ target.innerHTML="";
+ skill.levels.forEach(r=>target.add(new Option(r.level,r.level)));
+ target.value=String(Math.min(old,skill.levels.length));
+}
+function calculateSkill(){
+ const skill=specialist.skills.find(s=>s.id===document.getElementById("skillSelect").value) || specialist.skills[0];
+ const target=+document.getElementById("skillTarget").value || 1;
+ const rows=skill.levels.filter(r=>r.level<=target);
+ document.getElementById("expRequired").textContent=fmt(rows.reduce((a,r)=>a+r.exp,0));
+ document.getElementById("booksRequired").textContent=fmt(rows.reduce((a,r)=>a+r.books,0));
+ document.getElementById("effectTarget").textContent=skillEffectText(skill,target);
+}
+document.getElementById("skillSelect").addEventListener("change",()=>{fillSkillTargets();calculateSkill();});
+document.getElementById("skillTarget").addEventListener("change",calculateSkill);
+
+fillAffinity(); applyLanguage(); calculateAffinity();
+</script>
+</body>
+</html>
