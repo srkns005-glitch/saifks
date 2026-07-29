@@ -60,11 +60,17 @@ button{cursor:pointer}
 }
 .two{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 .field label{display:block;color:var(--muted);font-size:13px;font-weight:700;margin:0 0 7px}
-select{
+select,input{
   width:100%;background:#0b1626;color:var(--text);border:1px solid var(--line);
   padding:13px;border-radius:12px;outline:none;font-size:16px
 }
-select:focus{border-color:var(--blue)}
+select:focus,input:focus{border-color:var(--blue)}
+input::placeholder{color:#5e6b7e}
+.copy{
+  border:0;background:var(--gold);color:#33220a;padding:11px 16px;
+  border-radius:12px;font-weight:800
+}
+.copy-status{color:var(--green);font-size:13px;align-self:center;min-height:18px}
 .materials{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .material{
   min-height:108px;background:#0b1626;border:1px solid var(--line);
@@ -157,16 +163,32 @@ select:focus{border-color:var(--blue)}
               <label data-t="targetLevel">Target level</label>
               <select id="targetAffinity"></select>
             </div>
+            <div class="field">
+              <label data-t="availableAffinity">Available Affinity</label>
+              <input id="availableAffinity" type="number" min="0" inputmode="numeric" placeholder="0">
+            </div>
+            <div class="field">
+              <label data-t="availableAdvancement">Available Advancement</label>
+              <input id="availableAdvancement" type="number" min="0" inputmode="numeric" placeholder="0">
+            </div>
           </div>
         </div>
 
         <div class="materials">
           <div class="material primary"><div class="material-icon">🤝</div><div><span data-t="affinityMaterial">Affinity required</span><b id="affinityCost">0</b></div></div>
-          <div class="material"><div class="material-icon">🔷</div><div><span data-t="advancementMaterial">Advancement required</span><b id="advCost">0</b></div></div>
+          <div class="material"><div class="material-icon">📦</div><div><span data-t="availableAffinityCard">Affinity available</span><b id="availableAffinityCard">0</b></div></div>
+          <div class="material"><div class="material-icon">🧮</div><div><span data-t="remainingAffinity">Affinity remaining</span><b id="remainingAffinity">0</b></div></div>
+          <div class="material primary"><div class="material-icon">🔷</div><div><span data-t="advancementMaterial">Advancement required</span><b id="advCost">0</b></div></div>
+          <div class="material"><div class="material-icon">📦</div><div><span data-t="availableAdvancementCard">Advancement available</span><b id="availableAdvancementCard">0</b></div></div>
+          <div class="material"><div class="material-icon">🧮</div><div><span data-t="remainingAdvancement">Advancement remaining</span><b id="remainingAdvancement">0</b></div></div>
           <div class="material"><div class="material-icon">⚔️</div><div><span data-t="currentAtk">Current Squad ATK</span><b id="currentAtk">0.00%</b></div></div>
           <div class="material"><div class="material-icon">🎯</div><div><span data-t="targetAtk">Target Squad ATK</span><b id="targetAtk">0.00%</b></div></div>
         </div>
-        <div class="actions"><button class="reset" id="resetAffinity" data-t="reset">Reset</button></div>
+        <div class="actions">
+          <button class="reset" id="resetAffinity" data-t="reset">Reset</button>
+          <button class="copy" id="copyAffinity" data-t="copySummary">Copy Summary</button>
+          <span class="copy-status" id="affinityCopyStatus"></span>
+        </div>
       </section>
 
       <section class="panel" id="skills">
@@ -177,15 +199,27 @@ select:focus{border-color:var(--blue)}
             <div class="field"><label data-t="currentSkill">Current level</label><select id="currentSkill"></select></div>
             <div class="field"><label data-t="targetSkill">Target level</label><select id="targetSkill"></select></div>
           </div>
+          <div class="two" style="margin-top:11px">
+            <div class="field"><label data-t="availableExp">Available EXP</label><input id="availableExp" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+            <div class="field"><label data-t="availableBooks">Available Books</label><input id="availableBooks" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+          </div>
           <div class="skill-note" id="skillEffect">—</div>
         </div>
         <div class="materials">
           <div class="material primary"><div class="material-icon">⭐</div><div><span data-t="expRequired">EXP required</span><b id="expCost">0</b></div></div>
-          <div class="material"><div class="material-icon">📘</div><div><span data-t="booksRequired">Books required</span><b id="bookCost">0</b></div></div>
+          <div class="material"><div class="material-icon">📦</div><div><span data-t="availableExpCard">EXP available</span><b id="availableExpCard">0</b></div></div>
+          <div class="material"><div class="material-icon">🧮</div><div><span data-t="remainingExp">EXP remaining</span><b id="remainingExp">0</b></div></div>
+          <div class="material primary"><div class="material-icon">📘</div><div><span data-t="booksRequired">Books required</span><b id="bookCost">0</b></div></div>
+          <div class="material"><div class="material-icon">📦</div><div><span data-t="availableBooksCard">Books available</span><b id="availableBooksCard">0</b></div></div>
+          <div class="material"><div class="material-icon">🧮</div><div><span data-t="remainingBooks">Books remaining</span><b id="remainingBooks">0</b></div></div>
           <div class="material"><div class="material-icon">📈</div><div><span data-t="currentEffect">Current effect</span><b id="currentEffect">0</b></div></div>
           <div class="material"><div class="material-icon">🏆</div><div><span data-t="targetEffect">Target effect</span><b id="targetEffect">0</b></div></div>
         </div>
-        <div class="actions"><button class="reset" id="resetSkills" data-t="reset">Reset</button></div>
+        <div class="actions">
+          <button class="reset" id="resetSkills" data-t="reset">Reset</button>
+          <button class="copy" id="copySkills" data-t="copySummary">Copy Summary</button>
+          <span class="copy-status" id="skillCopyStatus"></span>
+        </div>
       </section>
 
       <section class="panel" id="info">
@@ -213,6 +247,10 @@ en:{
  reset:"Reset",skillCalculator:"Skill Calculator",chooseSkill:"Choose skill",currentSkill:"Current level",
  targetSkill:"Target level",expRequired:"EXP required",booksRequired:"Books required",currentEffect:"Current effect",
  targetEffect:"Target effect",skillDetails:"Valora Skills",talentNotice:"Hunter Instinct: 2% → 30% additional Bear Hunt Damage for Valora only.",
+ availableAffinity:"Available Affinity",availableAdvancement:"Available Advancement",availableAffinityCard:"Affinity available",
+ remainingAffinity:"Affinity remaining",availableAdvancementCard:"Advancement available",remainingAdvancement:"Advancement remaining",
+ availableExp:"Available EXP",availableBooks:"Available Books",availableExpCard:"EXP available",remainingExp:"EXP remaining",
+ availableBooksCard:"Books available",remainingBooks:"Books remaining",copySummary:"Copy Summary",copied:"Copied",
  level:"Level",capacity:"Capacity",rewards:"Rewards"
 },
 ar:{
@@ -225,6 +263,10 @@ ar:{
  reset:"إعادة ضبط",skillCalculator:"حاسبة المهارات",chooseSkill:"اختر المهارة",currentSkill:"المستوى الحالي",
  targetSkill:"المستوى الهدف",expRequired:"الخبرة المطلوبة",booksRequired:"الكتب المطلوبة",currentEffect:"التأثير الحالي",
  targetEffect:"التأثير عند الهدف",skillDetails:"مهارات فالورا",talentNotice:"غريزة الصياد: من 2% إلى 30% ضرر إضافي في صيد الدب لفالورا فقط.",
+ availableAffinity:"مواد التقارب المتوفرة",availableAdvancement:"مواد التقدم المتوفرة",availableAffinityCard:"التقارب المتوفر",
+ remainingAffinity:"التقارب المتبقي",availableAdvancementCard:"التقدم المتوفر",remainingAdvancement:"التقدم المتبقي",
+ availableExp:"الخبرة المتوفرة",availableBooks:"الكتب المتوفرة",availableExpCard:"الخبرة المتوفرة",remainingExp:"الخبرة المتبقية",
+ availableBooksCard:"الكتب المتوفرة",remainingBooks:"الكتب المتبقية",copySummary:"نسخ الملخص",copied:"تم النسخ",
  level:"المستوى",capacity:"السعة",rewards:"المكافآت"
 }
 };
@@ -271,19 +313,28 @@ function calcAffinity(){
  let current=+currentAffinity.value;
  let target=+targetAffinity.value;
  if(target<current){target=current;targetAffinity.value=String(target)}
- if(current===0 && target===0){
-  affinityCost.textContent="0";advCost.textContent="0";
-  currentAtk.textContent="0.00%";targetAtk.textContent="0.00%";return;
- }
+ const availableAff=Math.max(0,+availableAffinity.value||0);
+ const availableAdv=Math.max(0,+availableAdvancement.value||0);
  const rows=VALORA.affinity.levels.filter(r=>r.level>current&&r.level<=target);
- affinityCost.textContent=fmt(rows.reduce((s,r)=>s+r.affinity_cost,0));
- advCost.textContent=fmt(rows.reduce((s,r)=>s+r.advancement_cost,0));
+ const requiredAff=rows.reduce((s,r)=>s+r.affinity_cost,0);
+ const requiredAdv=rows.reduce((s,r)=>s+r.advancement_cost,0);
+ affinityCost.textContent=fmt(requiredAff);
+ advCost.textContent=fmt(requiredAdv);
+ availableAffinityCard.textContent=fmt(availableAff);
+ availableAdvancementCard.textContent=fmt(availableAdv);
+ remainingAffinity.textContent=fmt(Math.max(0,requiredAff-availableAff));
+ remainingAdvancement.textContent=fmt(Math.max(0,requiredAdv-availableAdv));
  currentAtk.textContent=(current?VALORA.affinity.levels[current-1].troops_attack_percent:0).toFixed(2)+"%";
  targetAtk.textContent=(target?VALORA.affinity.levels[target-1].troops_attack_percent:0).toFixed(2)+"%";
 }
 currentAffinity.onchange=calcAffinity;
 targetAffinity.onchange=calcAffinity;
-resetAffinity.onclick=()=>{currentAffinity.value="0";targetAffinity.value="0";calcAffinity()};
+availableAffinity.oninput=calcAffinity;
+availableAdvancement.oninput=calcAffinity;
+resetAffinity.onclick=()=>{
+ currentAffinity.value="0";targetAffinity.value="0";availableAffinity.value="";availableAdvancement.value="";
+ calcAffinity();affinityCopyStatus.textContent="";
+};
 
 function fillSkills(){
  const previous=skillSelect.value;
@@ -309,8 +360,16 @@ function calcSkills(){
  let current=+currentSkill.value,target=+targetSkill.value;
  if(target<current){target=current;targetSkill.value=String(target)}
  const rows=skill.levels.filter(r=>r.level>current&&r.level<=target);
- expCost.textContent=fmt(rows.reduce((s,r)=>s+r.exp,0));
- bookCost.textContent=fmt(rows.reduce((s,r)=>s+r.books,0));
+ const requiredExp=rows.reduce((s,r)=>s+r.exp,0);
+ const requiredBooks=rows.reduce((s,r)=>s+r.books,0);
+ const haveExp=Math.max(0,+availableExp.value||0);
+ const haveBooks=Math.max(0,+availableBooks.value||0);
+ expCost.textContent=fmt(requiredExp);
+ bookCost.textContent=fmt(requiredBooks);
+ availableExpCard.textContent=fmt(haveExp);
+ availableBooksCard.textContent=fmt(haveBooks);
+ remainingExp.textContent=fmt(Math.max(0,requiredExp-haveExp));
+ remainingBooks.textContent=fmt(Math.max(0,requiredBooks-haveBooks));
  currentEffect.textContent=effectText(skill,current);
  targetEffect.textContent=effectText(skill,target);
  const name=lang==="ar"?skill.name.ar:skill.name.en;
@@ -319,7 +378,46 @@ function calcSkills(){
 skillSelect.onchange=()=>{fillSkillLevels();calcSkills()};
 currentSkill.onchange=calcSkills;
 targetSkill.onchange=calcSkills;
-resetSkills.onclick=()=>{currentSkill.value="0";targetSkill.value="0";calcSkills()};
+availableExp.oninput=calcSkills;
+availableBooks.oninput=calcSkills;
+resetSkills.onclick=()=>{
+ currentSkill.value="0";targetSkill.value="0";availableExp.value="";availableBooks.value="";
+ calcSkills();skillCopyStatus.textContent="";
+};
+
+async function copyText(text,statusEl){
+ try{await navigator.clipboard.writeText(text);}
+ catch(e){
+  const area=document.createElement("textarea");
+  area.value=text;document.body.appendChild(area);area.select();document.execCommand("copy");area.remove();
+ }
+ statusEl.textContent=tr("copied");
+ setTimeout(()=>statusEl.textContent="",1800);
+}
+copyAffinity.onclick=()=>{
+ const current=+currentAffinity.value,target=+targetAffinity.value;
+ const rows=VALORA.affinity.levels.filter(r=>r.level>current&&r.level<=target);
+ const requiredAff=rows.reduce((s,r)=>s+r.affinity_cost,0);
+ const requiredAdv=rows.reduce((s,r)=>s+r.advancement_cost,0);
+ const haveAff=Math.max(0,+availableAffinity.value||0),haveAdv=Math.max(0,+availableAdvancement.value||0);
+ const lines=lang==="ar"?
+ [`فالورا - ملخص التقارب`,`المستوى الحالي: ${current}`,`المستوى الهدف: ${target}`,`التقارب المطلوب: ${fmt(requiredAff)}`,`التقارب المتوفر: ${fmt(haveAff)}`,`التقارب المتبقي: ${fmt(Math.max(0,requiredAff-haveAff))}`,`التقدم المطلوب: ${fmt(requiredAdv)}`,`التقدم المتوفر: ${fmt(haveAdv)}`,`التقدم المتبقي: ${fmt(Math.max(0,requiredAdv-haveAdv))}`,`هجوم الفرق عند الهدف: ${targetAtk.textContent}`]:
+ [`Valora - Affinity Summary`,`Current level: ${current}`,`Target level: ${target}`,`Affinity required: ${fmt(requiredAff)}`,`Affinity available: ${fmt(haveAff)}`,`Affinity remaining: ${fmt(Math.max(0,requiredAff-haveAff))}`,`Advancement required: ${fmt(requiredAdv)}`,`Advancement available: ${fmt(haveAdv)}`,`Advancement remaining: ${fmt(Math.max(0,requiredAdv-haveAdv))}`,`Target Squad ATK: ${targetAtk.textContent}`];
+ copyText(lines.join("\n"),affinityCopyStatus);
+};
+copySkills.onclick=()=>{
+ const skill=VALORA.skills.find(s=>s.id===skillSelect.value)||VALORA.skills[0];
+ const name=lang==="ar"?skill.name.ar:skill.name.en;
+ const current=+currentSkill.value,target=+targetSkill.value;
+ const rows=skill.levels.filter(r=>r.level>current&&r.level<=target);
+ const requiredExp=rows.reduce((s,r)=>s+r.exp,0);
+ const requiredBooks=rows.reduce((s,r)=>s+r.books,0);
+ const haveExp=Math.max(0,+availableExp.value||0),haveBooks=Math.max(0,+availableBooks.value||0);
+ const lines=lang==="ar"?
+ [`فالورا - ملخص المهارة`,`المهارة: ${name}`,`المستوى الحالي: ${current}`,`المستوى الهدف: ${target}`,`الخبرة المطلوبة: ${fmt(requiredExp)}`,`الخبرة المتوفرة: ${fmt(haveExp)}`,`الخبرة المتبقية: ${fmt(Math.max(0,requiredExp-haveExp))}`,`الكتب المطلوبة: ${fmt(requiredBooks)}`,`الكتب المتوفرة: ${fmt(haveBooks)}`,`الكتب المتبقية: ${fmt(Math.max(0,requiredBooks-haveBooks))}`,`التأثير عند الهدف: ${targetEffect.textContent}`]:
+ [`Valora - Skill Summary`,`Skill: ${name}`,`Current level: ${current}`,`Target level: ${target}`,`EXP required: ${fmt(requiredExp)}`,`EXP available: ${fmt(haveExp)}`,`EXP remaining: ${fmt(Math.max(0,requiredExp-haveExp))}`,`Books required: ${fmt(requiredBooks)}`,`Books available: ${fmt(haveBooks)}`,`Books remaining: ${fmt(Math.max(0,requiredBooks-haveBooks))}`,`Target effect: ${targetEffect.textContent}`];
+ copyText(lines.join("\n"),skillCopyStatus);
+};
 
 function renderSkillsList(){
  skillsList.innerHTML=VALORA.skills.map(s=>{
