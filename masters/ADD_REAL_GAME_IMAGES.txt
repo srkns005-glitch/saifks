@@ -1,0 +1,1 @@
+Replace placeholder icons with original game assets if available.
