@@ -1,440 +1,58 @@
 <!doctype html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Masters | SaifKS</title>
+<html lang="en" dir="ltr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><title>Valora Masters Planner | SaifKS</title>
 <style>
-:root{
-  --bg:#09111d;--card:#121e30;--card2:#17263b;--line:#263850;
-  --text:#f7f9fc;--muted:#9eabc0;--gold:#f6bf52;--gold2:#ffe19c;
-  --blue:#59c5ff;--green:#62e6aa;--danger:#ff8a91;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:linear-gradient(180deg,#07101b,#0c1726 45%,#09111d);
-  color:var(--text);font-family:Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
-}
-button,select{font:inherit}
-button{cursor:pointer}
-.wrap{width:min(100%,980px);margin:auto;padding:14px}
-.top{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:8px 2px 16px
-}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{
-  width:42px;height:42px;border-radius:13px;background:var(--gold);
-  color:#35230b;display:grid;place-items:center;font-weight:900
-}
-.brand h1{font-size:20px;margin:0}
-.brand small{display:block;color:var(--muted);margin-top:2px}
-.lang{
-  border:1px solid var(--line);background:var(--card);color:var(--text);
-  border-radius:12px;padding:10px 13px
-}
-.master-card{
-  overflow:hidden;border:1px solid var(--line);border-radius:24px;
-  background:var(--card);box-shadow:0 20px 55px rgba(0,0,0,.32)
-}
-.master-top{display:grid;grid-template-columns:300px 1fr;min-height:390px}
-.image-box{
-  position:relative;background:radial-gradient(circle at 50% 32%,rgba(246,191,82,.28),rgba(89,197,255,.08) 54%,transparent 72%);
-  min-height:390px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;padding:18px 16px 0
-}
-.image-box::after{content:"";position:absolute;inset:auto 10% 12px;height:32px;background:rgba(0,0,0,.35);filter:blur(18px);border-radius:50%}
-.image-box img{position:relative;z-index:1;width:auto;height:auto;max-width:94%;max-height:365px;object-fit:contain;display:block;filter:drop-shadow(0 18px 24px rgba(0,0,0,.36))}
-.info{padding:24px;display:flex;flex-direction:column;justify-content:center}
-.kicker{color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
-.info h2{font-size:38px;margin:6px 0 4px}
-.role{color:var(--muted);margin:0 0 18px}
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.quick-card{background:var(--card2);border:1px solid var(--line);padding:13px;border-radius:15px}
-.quick-card b{display:block;color:var(--gold2);font-size:19px}
-.quick-card span{font-size:12px;color:var(--muted)}
-.summary{margin-top:13px;padding:14px;border-radius:15px;background:rgba(89,197,255,.08);border:1px solid rgba(89,197,255,.23);line-height:1.6}
-.content{padding:18px}
-.section-title{margin:0 0 13px;font-size:20px}
-.selector-card{
-  background:var(--card2);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px
-}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.field label{display:block;color:var(--muted);font-size:13px;font-weight:700;margin:0 0 7px}
-select,input{
-  width:100%;background:#0b1626;color:var(--text);border:1px solid var(--line);
-  padding:13px;border-radius:12px;outline:none;font-size:16px
-}
-select:focus,input:focus{border-color:var(--blue)}
-input::placeholder{color:#5e6b7e}
-.copy{
-  border:0;background:var(--gold);color:#33220a;padding:11px 16px;
-  border-radius:12px;font-weight:800
-}
-.copy-status{color:var(--green);font-size:13px;align-self:center;min-height:18px}
-.materials{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.material{
-  min-height:108px;background:#0b1626;border:1px solid var(--line);
-  border-radius:16px;padding:13px;display:flex;flex-direction:column;justify-content:space-between
-}
-.material-icon{height:54px;display:flex;align-items:center;justify-content:flex-start}
-.material-icon img{width:54px;height:54px;object-fit:contain;display:block;filter:drop-shadow(0 7px 10px rgba(0,0,0,.32))}
-.material-icon.text-icon{font-size:23px}
-.material span{color:var(--muted);font-size:12px}
-.material b{font-size:24px;margin-top:5px}
-.material.primary b{color:var(--gold2)}
-.skill-row{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:10px;align-items:end}
-.skill-note{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.5}
-.actions{display:flex;gap:9px;margin-top:14px}
-.reset{
-  border:1px solid var(--line);background:#0b1626;color:var(--text);
-  padding:11px 16px;border-radius:12px;font-weight:700
-}
-.tabs{display:flex;gap:8px;margin-bottom:14px;overflow:auto}
-.tab{
-  flex:1;min-width:120px;border:1px solid var(--line);background:#0b1626;
-  color:var(--muted);padding:11px;border-radius:12px;font-weight:800
-}
-.tab.active{background:var(--gold);border-color:var(--gold);color:#33220a}
-.panel{display:none}
-.panel.active{display:block}
-.skills-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.skill-card{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:14px}
-.skill-card h3{margin:0 0 7px;font-size:16px}
-.skill-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
-.notice{color:#f9d27b;font-size:12px;margin-top:10px}
-.footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 0 8px}
-@media(max-width:760px){
-  .master-top{grid-template-columns:1fr}
-  .image-box{min-height:390px}
-  .info{padding:18px}
-  .info h2{font-size:32px}
-}
-@media(max-width:560px){
-  .wrap{padding:10px}
-  .image-box{min-height:310px;padding-top:10px}
-  .image-box img{max-height:300px}
-  .quick{grid-template-columns:1fr 1fr}
-  .quick-card:last-child{grid-column:1/-1}
-  .two,.skill-row{grid-template-columns:1fr}
-  .materials{grid-template-columns:1fr 1fr}
-  .skills-list{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header class="top">
-    <div class="brand">
-      <div class="logo">SK</div>
-      <div><h1>SaifKS Masters</h1><small data-t="subtitle">Simple specialist calculator</small></div>
-    </div>
-    <button class="lang" id="langBtn">العربية</button>
-  </header>
-
-  <main class="master-card">
-    <div class="master-top">
-      <div class="image-box"><img src="./valora.png" alt="Valora"></div>
-      <div class="info">
-        <div class="kicker" data-t="bearMaster">Bear Hunt Master</div>
-        <h2 data-name>Valora</h2>
-        <p class="role" data-t="role">Bear Hunter • Expedition Specialist</p>
-        <div class="quick">
-          <div class="quick-card"><b>Lv.100</b><span data-t="maxLevel">Maximum level</span></div>
-          <div class="quick-card"><b>+15.00%</b><span data-t="maxAtk">Maximum Squad ATK</span></div>
-          <div class="quick-card"><b>+30%</b><span data-t="bearDamage">Bear Hunt Damage</span></div>
-        </div>
-        <div class="summary" data-t="summary">Valora increases Bear Hunt capacity, improves Bear Hunt rewards and grants Squad ATK through Affinity.</div>
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="tabs">
-        <button class="tab active" data-panel="affinity" data-t="affinity">Affinity</button>
-        <button class="tab" data-panel="skills" data-t="skills">Skills</button>
-        <button class="tab" data-panel="info" data-t="details">Details</button>
-      </div>
-
-      <section class="panel active" id="affinity">
-        <h2 class="section-title" data-t="affinityCalculator">Affinity Calculator</h2>
-        <div class="selector-card">
-          <div class="two">
-            <div class="field">
-              <label data-t="currentLevel">Current level</label>
-              <select id="currentAffinity"></select>
-            </div>
-            <div class="field">
-              <label data-t="targetLevel">Target level</label>
-              <select id="targetAffinity"></select>
-            </div>
-            <div class="field">
-              <label data-t="availableAffinity">Available Affinity</label>
-              <input id="availableAffinity" type="number" min="0" inputmode="numeric" placeholder="0">
-            </div>
-            <div class="field">
-              <label data-t="availableAdvancement">Available Advancement</label>
-              <input id="availableAdvancement" type="number" min="0" inputmode="numeric" placeholder="0">
-            </div>
-          </div>
-        </div>
-
-        <div class="materials">
-          <div class="material primary"><div class="material-icon text-icon">🤝</div><div><span data-t="affinityMaterial">Affinity required</span><b id="affinityCost">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">📦</div><div><span data-t="availableAffinityCard">Affinity available</span><b id="availableAffinityCard">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">🧮</div><div><span data-t="remainingAffinity">Affinity remaining</span><b id="remainingAffinity">0</b></div></div>
-          <div class="material primary"><div class="material-icon"><img src="./advancement.png" alt="Advancement"></div><div><span data-t="advancementMaterial">Advancement required</span><b id="advCost">0</b></div></div>
-          <div class="material"><div class="material-icon"><img src="./advancement.png" alt="Advancement"></div><div><span data-t="availableAdvancementCard">Advancement available</span><b id="availableAdvancementCard">0</b></div></div>
-          <div class="material"><div class="material-icon"><img src="./advancement.png" alt="Advancement"></div><div><span data-t="remainingAdvancement">Advancement remaining</span><b id="remainingAdvancement">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">⚔️</div><div><span data-t="currentAtk">Current Squad ATK</span><b id="currentAtk">0.00%</b></div></div>
-          <div class="material"><div class="material-icon text-icon">🎯</div><div><span data-t="targetAtk">Target Squad ATK</span><b id="targetAtk">0.00%</b></div></div>
-        </div>
-        <div class="actions">
-          <button class="reset" id="resetAffinity" data-t="reset">Reset</button>
-          <button class="copy" id="copyAffinity" data-t="copySummary">Copy Summary</button>
-          <span class="copy-status" id="affinityCopyStatus"></span>
-        </div>
-      </section>
-
-      <section class="panel" id="skills">
-        <h2 class="section-title" data-t="skillCalculator">Skill Calculator</h2>
-        <div class="selector-card">
-          <div class="skill-row">
-            <div class="field"><label data-t="chooseSkill">Choose skill</label><select id="skillSelect"></select></div>
-            <div class="field"><label data-t="currentSkill">Current level</label><select id="currentSkill"></select></div>
-            <div class="field"><label data-t="targetSkill">Target level</label><select id="targetSkill"></select></div>
-          </div>
-          <div class="two" style="margin-top:11px">
-            <div class="field"><label data-t="availableExp">Available EXP</label><input id="availableExp" type="number" min="0" inputmode="numeric" placeholder="0"></div>
-            <div class="field"><label data-t="availableBooks">Available Books</label><input id="availableBooks" type="number" min="0" inputmode="numeric" placeholder="0"></div>
-          </div>
-          <div class="skill-note" id="skillEffect">—</div>
-        </div>
-        <div class="materials">
-          <div class="material primary"><div class="material-icon text-icon">⭐</div><div><span data-t="expRequired">EXP required</span><b id="expCost">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">📦</div><div><span data-t="availableExpCard">EXP available</span><b id="availableExpCard">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">🧮</div><div><span data-t="remainingExp">EXP remaining</span><b id="remainingExp">0</b></div></div>
-          <div class="material primary"><div class="material-icon"><img src="./skill-book.png" alt="Skill Book"></div><div><span data-t="booksRequired">Books required</span><b id="bookCost">0</b></div></div>
-          <div class="material"><div class="material-icon"><img src="./skill-book.png" alt="Skill Book"></div><div><span data-t="availableBooksCard">Books available</span><b id="availableBooksCard">0</b></div></div>
-          <div class="material"><div class="material-icon"><img src="./skill-book.png" alt="Skill Book"></div><div><span data-t="remainingBooks">Books remaining</span><b id="remainingBooks">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">📈</div><div><span data-t="currentEffect">Current effect</span><b id="currentEffect">0</b></div></div>
-          <div class="material"><div class="material-icon text-icon">🏆</div><div><span data-t="targetEffect">Target effect</span><b id="targetEffect">0</b></div></div>
-        </div>
-        <div class="actions">
-          <button class="reset" id="resetSkills" data-t="reset">Reset</button>
-          <button class="copy" id="copySkills" data-t="copySummary">Copy Summary</button>
-          <span class="copy-status" id="skillCopyStatus"></span>
-        </div>
-      </section>
-
-      <section class="panel" id="info">
-        <h2 class="section-title" data-t="skillDetails">Valora Skills</h2>
-        <div class="skills-list" id="skillsList"></div>
-        <div class="notice" data-t="talentNotice">Hunter Instinct: 2% → 30% additional Bear Hunt Damage for Valora only.</div>
-      </section>
-    </div>
-  </main>
-  <footer class="footer">SaifKS.com | Built by Saif</footer>
-</div>
-
+:root{--bg:#06101e;--glass:rgba(15,31,51,.62);--glass2:rgba(9,22,39,.72);--line:rgba(255,255,255,.11);--text:#f7fbff;--muted:#9fb0c6;--gold:#ffc85c;--cyan:#58d6ff;--green:#6ce4ad;--red:#ff8190;--shadow:0 16px 45px rgba(0,0,0,.28);--r:18px}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(88,214,255,.13),transparent 28%),radial-gradient(circle at 92% 8%,rgba(255,200,92,.12),transparent 26%),linear-gradient(160deg,#07111f,#0a1728 52%,#07111f);overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100% - 22px,1280px);margin:auto;padding:12px 0 calc(18px + env(safe-area-inset-bottom))}.glass{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;background:linear-gradient(var(--bg) 65%,transparent)}.brand{font-weight:950;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.lang{min-width:132px;height:42px;border-radius:13px;border:1px solid var(--line);background:var(--glass2);color:var(--text);padding:0 12px;font-size:16px;outline:none}
+.hero{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:16px;border-radius:22px;padding:14px;overflow:hidden}.hero-art{height:185px;display:grid;place-items:center;background:radial-gradient(circle,rgba(255,200,92,.18),transparent 68%);border-radius:18px}.hero-art img{max-width:100%;max-height:185px;object-fit:contain}.hero h1{font-size:34px;margin:0 0 3px}.hero-sub{color:var(--gold);font-weight:850;font-size:13px}.hero-desc{color:var(--muted);font-size:12px;line-height:1.65;margin:7px 0 0;max-width:680px}.hero-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.pill{border:1px solid var(--line);background:rgba(255,255,255,.045);padding:8px 11px;border-radius:12px;min-width:126px}.pill b{display:block;font-size:16px;color:var(--gold);margin-bottom:2px}.pill span{font-size:10px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);gap:12px;margin-top:12px;align-items:start}.main{display:grid;gap:12px}.card{border-radius:var(--r);padding:14px}.head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.head h2{font-size:17px;margin:0}.hint{font-size:10px;color:var(--muted)}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:11px;font-weight:750;margin:0 0 6px;line-height:1.35}.field input,.field select{width:100%;height:45px;border-radius:12px;border:1px solid var(--line);background:rgba(2,13,25,.68);color:var(--text);padding:0 12px;font-size:16px;outline:none}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(88,214,255,.10)}.level-meta{display:flex;gap:8px;margin-top:9px}.meta{flex:1;border:1px solid var(--line);border-radius:11px;padding:8px 10px;background:rgba(255,255,255,.035)}.meta span{display:block;font-size:9px;color:var(--muted);margin-bottom:3px}.meta b{font-size:14px}.gift-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.gift{display:grid;grid-template-columns:58px 1fr;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:14px;padding:9px;min-width:0}.gift img{width:58px;height:58px;object-fit:contain}.gift-name{font-size:11px;font-weight:850;line-height:1.25}.gift-value{color:var(--gold);font-size:9px;margin:3px 0 6px}.gift input{width:100%;height:36px;border:1px solid var(--line);border-radius:9px;background:rgba(1,10,20,.7);color:white;padding:0 9px;font-size:16px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.metric{border:1px solid var(--line);background:rgba(1,12,23,.55);border-radius:12px;padding:9px 10px}.metric span{display:block;color:var(--muted);font-size:9px;margin-bottom:4px}.metric b{font-size:15px}.green{color:var(--green)}.resource{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center}.resource>img{width:72px;height:72px;object-fit:contain}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}.tab{height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(1,12,23,.55);color:var(--muted);font-weight:850;font-size:11px}.tab.active{background:linear-gradient(135deg,rgba(255,200,92,.95),rgba(255,158,65,.9));color:#2c1b04;border-color:transparent}.add{width:100%;height:41px;margin-top:10px;border:0;border-radius:11px;background:linear-gradient(135deg,#35c695,#318fdc);color:white;font-weight:900}.add.secondary{background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.level-list{max-height:210px;overflow:auto;border:1px solid var(--line);border-radius:12px;margin-top:10px;background:rgba(1,10,20,.48)}.level-line{display:grid;grid-template-columns:56px 1fr 1fr;gap:10px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);font-size:10px;align-items:center}.level-line:last-child{border:0}.level-line b{font-size:11px}.level-line span{color:var(--muted)}
+.side{position:sticky;top:72px}.summary-card{border-radius:var(--r);padding:14px}.plans{display:grid;gap:7px;max-height:340px;overflow:auto}.empty{text-align:center;color:var(--muted);font-size:11px;padding:24px 8px}.plan{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:12px;padding:9px}.plan-top{display:flex;justify-content:space-between;gap:8px}.plan b{font-size:11px}.plan small{display:block;color:var(--muted);margin-top:4px;font-size:9px;line-height:1.45}.remove{border:0;background:transparent;color:var(--red);padding:0;font-size:16px}.totals{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.total{border:1px solid var(--line);border-radius:11px;background:rgba(1,12,23,.55);padding:9px}.total span{display:block;color:var(--muted);font-size:9px;margin-bottom:3px}.total b{font-size:14px}.owned{margin-top:10px}.actions{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.copy,.reset{height:42px;border-radius:11px;font-weight:900}.copy{border:0;background:linear-gradient(135deg,#ffc85c,#ff9f43);color:#281800}.reset{border:1px solid rgba(255,129,144,.35);background:rgba(255,129,144,.09);color:#ffabb5;padding:0 14px}
+.footer{margin-top:14px;border-radius:16px;padding:13px 15px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:11px}.footer a{color:var(--text);text-decoration:none;font-weight:900}.youtube{color:#ff6b76!important}
+@media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:static}.plans{max-height:none}.hero{grid-template-columns:160px 1fr}.hero-art{height:160px}.hero-art img{max-height:160px}}
+@media(max-width:620px){.app{width:min(100% - 16px,1280px);padding-top:6px}.top{padding:7px 0}.hero{grid-template-columns:105px 1fr;padding:10px;gap:10px}.hero-art{height:120px}.hero-art img{max-height:120px}.hero h1{font-size:25px}.hero-desc{display:none}.hero-stats{margin-top:8px}.pill{min-width:0;flex:1;padding:7px 8px}.pill b{font-size:13px}.card{padding:11px}.gift-row{grid-template-columns:1fr}.gift{grid-template-columns:54px minmax(0,1fr) 90px}.gift img{width:54px;height:54px}.gift input{height:39px}.metrics{grid-template-columns:1fr 1fr}.metrics .metric:last-child{grid-column:1/-1}.tabs{gap:4px}.tab{font-size:10px}.level-line{grid-template-columns:48px 1fr 1fr}.footer{padding:12px 8px}.lang{min-width:118px}}
+@media(max-width:390px){.two{grid-template-columns:1fr}.resource{grid-template-columns:58px 1fr}.resource>img{width:58px;height:58px}.gift{grid-template-columns:48px 1fr}.gift img{width:48px;height:48px}.gift input{grid-column:1/-1}.totals{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="app">
+<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></header>
+<section class="hero glass"><div class="hero-art"><img src="valora.png" alt="Valora"></div><div><h1>Valora</h1><div class="hero-sub" data-i18n="role">Bear Hunt Master</div><p class="hero-desc" data-i18n="heroDesc">Plan affinity and all four skills, then collect every requirement in one compact summary.</p><div class="hero-stats"><div class="pill"><b>+30%</b><span data-i18n="bearDamage">Bear Hunt Damage</span></div><div class="pill"><b>+300,000</b><span data-i18n="rallyCapacity">Rally Capacity</span></div><div class="pill"><b>+15.00%</b><span data-i18n="squadAtk">Squad ATK at Lv.100</span></div></div></div></section>
+<div class="layout"><main class="main">
+<section class="card glass"><div class="head"><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
+<div class="gift-row"><div class="gift"><img src="copper-horn.png" alt="Copper Horn"><div><div class="gift-name" data-i18n="copperHorn">Copper Horn</div><div class="gift-value">+10 Affinity</div></div><input id="horn" type="number" min="0" inputmode="numeric" placeholder="0"></div><div class="gift"><img src="silver-goblet.png" alt="Silver Goblet"><div><div class="gift-name" data-i18n="silverGoblet">Silver Goblet</div><div class="gift-value">+100 Affinity</div></div><input id="goblet" type="number" min="0" inputmode="numeric" placeholder="0"></div><div class="gift"><img src="elite-spices.png" alt="Elite Spices"><div><div class="gift-name" data-i18n="eliteSpices">Elite Spices</div><div class="gift-value">+1,000 Affinity</div></div><input id="spices" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
+<div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><button class="add" id="addAffinity" data-i18n="addAffinity">Add Affinity to Summary</button>
+<div class="level-list" id="levelList"></div></section>
+<section class="card glass"><div class="head"><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img src="masters-manuscript.png" alt="Master's Manuscript"><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="learningExp">Learning EXP</span><b id="expNeed">0</b></div><div class="metric"><span data-i18n="skillEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div><button class="add" id="addSkill" data-i18n="addSkill">Add Skill to Summary</button></section>
+</main><aside class="side"><section class="summary-card glass"><div class="head"><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="totals"><div class="total"><span data-i18n="affinityPoints">Affinity Points</span><b id="totalAff">0</b></div><div class="total"><span data-i18n="masterEmblems">Master Emblems</span><b id="totalEmblems">0</b></div><div class="total"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="totalBooks">0</b></div><div class="total"><span data-i18n="learningExp">Learning EXP</span><b id="totalExp">0</b></div></div><div class="owned two"><div class="field"><label data-i18n="emblemsOwned">Master Emblems available</label><input id="emblemsOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div><div class="field"><label data-i18n="booksOwned">Manuscripts available</label><input id="booksOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div><div class="field"><label data-i18n="expOwned">Learning EXP available</label><input id="expOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div><div class="field"><label data-i18n="affinityOwned">Affinity from gifts</label><input id="affinityOwned" readonly value="0"></div></div><div class="actions"><button class="copy" id="copy" data-i18n="copySummary">Copy Summary</button><button class="reset" id="reset" data-i18n="reset">Reset</button></div></section></aside></div>
+<footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span>Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></footer></div>
 <script>
-const VALORA = {"id": "valora", "name": {"en": "Valora", "ar": "فالورا"}, "title": {"en": "Bear Hunter", "ar": "صائدة الدببة"}, "category": "bear_hunt", "expedition_bonus": {"stat": "squads_attack_percent", "value": 15}, "talent": {"id": "hunter_instinct", "name": {"en": "Hunter Instinct", "ar": "غريزة الصياد"}, "description_en": "Inflicts additional Bear Hunt Damage Points, effective for Valora only.", "effect": {"stat": "bear_hunt_damage_percent", "min": 2, "max": 30, "per_level_values": null, "verification": "range_verified_from_source; intermediate values_not_provided"}}, "affinity": {"max_level": 100, "stat": "troops_attack_percent", "levels": [{"level": 1, "affinity_cost": 1000, "advancement_cost": 0, "troops_attack_percent": 1.58, "cumulative_affinity": 1000, "cumulative_advancement": 0}, {"level": 2, "affinity_cost": 200, "advancement_cost": 0, "troops_attack_percent": 1.65, "cumulative_affinity": 1200, "cumulative_advancement": 0}, {"level": 3, "affinity_cost": 210, "advancement_cost": 0, "troops_attack_percent": 1.73, "cumulative_affinity": 1410, "cumulative_advancement": 0}, {"level": 4, "affinity_cost": 220, "advancement_cost": 0, "troops_attack_percent": 1.8, "cumulative_affinity": 1630, "cumulative_advancement": 0}, {"level": 5, "affinity_cost": 230, "advancement_cost": 0, "troops_attack_percent": 1.88, "cumulative_affinity": 1860, "cumulative_advancement": 0}, {"level": 6, "affinity_cost": 240, "advancement_cost": 0, "troops_attack_percent": 1.95, "cumulative_affinity": 2100, "cumulative_advancement": 0}, {"level": 7, "affinity_cost": 260, "advancement_cost": 0, "troops_attack_percent": 2.03, "cumulative_affinity": 2360, "cumulative_advancement": 0}, {"level": 8, "affinity_cost": 280, "advancement_cost": 0, "troops_attack_percent": 2.1, "cumulative_affinity": 2640, "cumulative_advancement": 0}, {"level": 9, "affinity_cost": 300, "advancement_cost": 0, "troops_attack_percent": 2.18, "cumulative_affinity": 2940, "cumulative_advancement": 0}, {"level": 10, "affinity_cost": 320, "advancement_cost": 5, "troops_attack_percent": 2.85, "cumulative_affinity": 3260, "cumulative_advancement": 5}, {"level": 11, "affinity_cost": 340, "advancement_cost": 0, "troops_attack_percent": 2.93, "cumulative_affinity": 3600, "cumulative_advancement": 5}, {"level": 12, "affinity_cost": 360, "advancement_cost": 0, "troops_attack_percent": 3.0, "cumulative_affinity": 3960, "cumulative_advancement": 5}, {"level": 13, "affinity_cost": 380, "advancement_cost": 0, "troops_attack_percent": 3.08, "cumulative_affinity": 4340, "cumulative_advancement": 5}, {"level": 14, "affinity_cost": 400, "advancement_cost": 0, "troops_attack_percent": 3.15, "cumulative_affinity": 4740, "cumulative_advancement": 5}, {"level": 15, "affinity_cost": 420, "advancement_cost": 0, "troops_attack_percent": 3.23, "cumulative_affinity": 5160, "cumulative_advancement": 5}, {"level": 16, "affinity_cost": 440, "advancement_cost": 0, "troops_attack_percent": 3.3, "cumulative_affinity": 5600, "cumulative_advancement": 5}, {"level": 17, "affinity_cost": 460, "advancement_cost": 0, "troops_attack_percent": 3.38, "cumulative_affinity": 6060, "cumulative_advancement": 5}, {"level": 18, "affinity_cost": 480, "advancement_cost": 0, "troops_attack_percent": 3.45, "cumulative_affinity": 6540, "cumulative_advancement": 5}, {"level": 19, "affinity_cost": 500, "advancement_cost": 0, "troops_attack_percent": 3.53, "cumulative_affinity": 7040, "cumulative_advancement": 5}, {"level": 20, "affinity_cost": 520, "advancement_cost": 10, "troops_attack_percent": 4.2, "cumulative_affinity": 7560, "cumulative_advancement": 15}, {"level": 21, "affinity_cost": 540, "advancement_cost": 0, "troops_attack_percent": 4.28, "cumulative_affinity": 8100, "cumulative_advancement": 15}, {"level": 22, "affinity_cost": 560, "advancement_cost": 0, "troops_attack_percent": 4.35, "cumulative_affinity": 8660, "cumulative_advancement": 15}, {"level": 23, "affinity_cost": 580, "advancement_cost": 0, "troops_attack_percent": 4.43, "cumulative_affinity": 9240, "cumulative_advancement": 15}, {"level": 24, "affinity_cost": 600, "advancement_cost": 0, "troops_attack_percent": 4.5, "cumulative_affinity": 9840, "cumulative_advancement": 15}, {"level": 25, "affinity_cost": 620, "advancement_cost": 0, "troops_attack_percent": 4.58, "cumulative_affinity": 10460, "cumulative_advancement": 15}, {"level": 26, "affinity_cost": 640, "advancement_cost": 0, "troops_attack_percent": 4.65, "cumulative_affinity": 11100, "cumulative_advancement": 15}, {"level": 27, "affinity_cost": 660, "advancement_cost": 0, "troops_attack_percent": 4.73, "cumulative_affinity": 11760, "cumulative_advancement": 15}, {"level": 28, "affinity_cost": 680, "advancement_cost": 0, "troops_attack_percent": 4.8, "cumulative_affinity": 12440, "cumulative_advancement": 15}, {"level": 29, "affinity_cost": 700, "advancement_cost": 0, "troops_attack_percent": 4.88, "cumulative_affinity": 13140, "cumulative_advancement": 15}, {"level": 30, "affinity_cost": 730, "advancement_cost": 15, "troops_attack_percent": 5.55, "cumulative_affinity": 13870, "cumulative_advancement": 30}, {"level": 31, "affinity_cost": 760, "advancement_cost": 0, "troops_attack_percent": 5.63, "cumulative_affinity": 14630, "cumulative_advancement": 30}, {"level": 32, "affinity_cost": 790, "advancement_cost": 0, "troops_attack_percent": 5.7, "cumulative_affinity": 15420, "cumulative_advancement": 30}, {"level": 33, "affinity_cost": 820, "advancement_cost": 0, "troops_attack_percent": 5.78, "cumulative_affinity": 16240, "cumulative_advancement": 30}, {"level": 34, "affinity_cost": 850, "advancement_cost": 0, "troops_attack_percent": 5.85, "cumulative_affinity": 17090, "cumulative_advancement": 30}, {"level": 35, "affinity_cost": 880, "advancement_cost": 0, "troops_attack_percent": 5.93, "cumulative_affinity": 17970, "cumulative_advancement": 30}, {"level": 36, "affinity_cost": 910, "advancement_cost": 0, "troops_attack_percent": 6.0, "cumulative_affinity": 18880, "cumulative_advancement": 30}, {"level": 37, "affinity_cost": 940, "advancement_cost": 0, "troops_attack_percent": 6.08, "cumulative_affinity": 19820, "cumulative_advancement": 30}, {"level": 38, "affinity_cost": 970, "advancement_cost": 0, "troops_attack_percent": 6.15, "cumulative_affinity": 20790, "cumulative_advancement": 30}, {"level": 39, "affinity_cost": 1000, "advancement_cost": 0, "troops_attack_percent": 6.23, "cumulative_affinity": 21790, "cumulative_advancement": 30}, {"level": 40, "affinity_cost": 1040, "advancement_cost": 20, "troops_attack_percent": 6.9, "cumulative_affinity": 22830, "cumulative_advancement": 50}, {"level": 41, "affinity_cost": 1080, "advancement_cost": 0, "troops_attack_percent": 6.98, "cumulative_affinity": 23910, "cumulative_advancement": 50}, {"level": 42, "affinity_cost": 1120, "advancement_cost": 0, "troops_attack_percent": 7.05, "cumulative_affinity": 25030, "cumulative_advancement": 50}, {"level": 43, "affinity_cost": 1160, "advancement_cost": 0, "troops_attack_percent": 7.13, "cumulative_affinity": 26190, "cumulative_advancement": 50}, {"level": 44, "affinity_cost": 1200, "advancement_cost": 0, "troops_attack_percent": 7.2, "cumulative_affinity": 27390, "cumulative_advancement": 50}, {"level": 45, "affinity_cost": 1240, "advancement_cost": 0, "troops_attack_percent": 7.28, "cumulative_affinity": 28630, "cumulative_advancement": 50}, {"level": 46, "affinity_cost": 1280, "advancement_cost": 0, "troops_attack_percent": 7.35, "cumulative_affinity": 29910, "cumulative_advancement": 50}, {"level": 47, "affinity_cost": 1320, "advancement_cost": 0, "troops_attack_percent": 7.43, "cumulative_affinity": 31230, "cumulative_advancement": 50}, {"level": 48, "affinity_cost": 1360, "advancement_cost": 0, "troops_attack_percent": 7.5, "cumulative_affinity": 32590, "cumulative_advancement": 50}, {"level": 49, "affinity_cost": 1400, "advancement_cost": 0, "troops_attack_percent": 7.58, "cumulative_affinity": 33990, "cumulative_advancement": 50}, {"level": 50, "affinity_cost": 1450, "advancement_cost": 25, "troops_attack_percent": 8.25, "cumulative_affinity": 35440, "cumulative_advancement": 75}, {"level": 51, "affinity_cost": 1500, "advancement_cost": 0, "troops_attack_percent": 8.33, "cumulative_affinity": 36940, "cumulative_advancement": 75}, {"level": 52, "affinity_cost": 1550, "advancement_cost": 0, "troops_attack_percent": 8.4, "cumulative_affinity": 38490, "cumulative_advancement": 75}, {"level": 53, "affinity_cost": 1600, "advancement_cost": 0, "troops_attack_percent": 8.48, "cumulative_affinity": 40090, "cumulative_advancement": 75}, {"level": 54, "affinity_cost": 1650, "advancement_cost": 0, "troops_attack_percent": 8.55, "cumulative_affinity": 41740, "cumulative_advancement": 75}, {"level": 55, "affinity_cost": 1700, "advancement_cost": 0, "troops_attack_percent": 8.63, "cumulative_affinity": 43440, "cumulative_advancement": 75}, {"level": 56, "affinity_cost": 1750, "advancement_cost": 0, "troops_attack_percent": 8.7, "cumulative_affinity": 45190, "cumulative_advancement": 75}, {"level": 57, "affinity_cost": 1800, "advancement_cost": 0, "troops_attack_percent": 8.78, "cumulative_affinity": 46990, "cumulative_advancement": 75}, {"level": 58, "affinity_cost": 1850, "advancement_cost": 0, "troops_attack_percent": 8.85, "cumulative_affinity": 48840, "cumulative_advancement": 75}, {"level": 59, "affinity_cost": 1900, "advancement_cost": 0, "troops_attack_percent": 8.93, "cumulative_affinity": 50740, "cumulative_advancement": 75}, {"level": 60, "affinity_cost": 1950, "advancement_cost": 30, "troops_attack_percent": 9.6, "cumulative_affinity": 52690, "cumulative_advancement": 105}, {"level": 61, "affinity_cost": 2000, "advancement_cost": 0, "troops_attack_percent": 9.68, "cumulative_affinity": 54690, "cumulative_advancement": 105}, {"level": 62, "affinity_cost": 2050, "advancement_cost": 0, "troops_attack_percent": 9.75, "cumulative_affinity": 56740, "cumulative_advancement": 105}, {"level": 63, "affinity_cost": 2100, "advancement_cost": 0, "troops_attack_percent": 9.83, "cumulative_affinity": 58840, "cumulative_advancement": 105}, {"level": 64, "affinity_cost": 2150, "advancement_cost": 0, "troops_attack_percent": 9.9, "cumulative_affinity": 60990, "cumulative_advancement": 105}, {"level": 65, "affinity_cost": 2200, "advancement_cost": 0, "troops_attack_percent": 9.98, "cumulative_affinity": 63190, "cumulative_advancement": 105}, {"level": 66, "affinity_cost": 2250, "advancement_cost": 0, "troops_attack_percent": 10.05, "cumulative_affinity": 65440, "cumulative_advancement": 105}, {"level": 67, "affinity_cost": 2300, "advancement_cost": 0, "troops_attack_percent": 10.13, "cumulative_affinity": 67740, "cumulative_advancement": 105}, {"level": 68, "affinity_cost": 2350, "advancement_cost": 0, "troops_attack_percent": 10.2, "cumulative_affinity": 70090, "cumulative_advancement": 105}, {"level": 69, "affinity_cost": 2400, "advancement_cost": 0, "troops_attack_percent": 10.28, "cumulative_affinity": 72490, "cumulative_advancement": 105}, {"level": 70, "affinity_cost": 2450, "advancement_cost": 35, "troops_attack_percent": 10.95, "cumulative_affinity": 74940, "cumulative_advancement": 140}, {"level": 71, "affinity_cost": 2500, "advancement_cost": 0, "troops_attack_percent": 11.03, "cumulative_affinity": 77440, "cumulative_advancement": 140}, {"level": 72, "affinity_cost": 2550, "advancement_cost": 0, "troops_attack_percent": 11.1, "cumulative_affinity": 79990, "cumulative_advancement": 140}, {"level": 73, "affinity_cost": 2600, "advancement_cost": 0, "troops_attack_percent": 11.18, "cumulative_affinity": 82590, "cumulative_advancement": 140}, {"level": 74, "affinity_cost": 2650, "advancement_cost": 0, "troops_attack_percent": 11.25, "cumulative_affinity": 85240, "cumulative_advancement": 140}, {"level": 75, "affinity_cost": 2700, "advancement_cost": 0, "troops_attack_percent": 11.33, "cumulative_affinity": 87940, "cumulative_advancement": 140}, {"level": 76, "affinity_cost": 2750, "advancement_cost": 0, "troops_attack_percent": 11.4, "cumulative_affinity": 90690, "cumulative_advancement": 140}, {"level": 77, "affinity_cost": 2800, "advancement_cost": 0, "troops_attack_percent": 11.48, "cumulative_affinity": 93490, "cumulative_advancement": 140}, {"level": 78, "affinity_cost": 2850, "advancement_cost": 0, "troops_attack_percent": 11.55, "cumulative_affinity": 96340, "cumulative_advancement": 140}, {"level": 79, "affinity_cost": 2900, "advancement_cost": 0, "troops_attack_percent": 11.63, "cumulative_affinity": 99240, "cumulative_advancement": 140}, {"level": 80, "affinity_cost": 2950, "advancement_cost": 40, "troops_attack_percent": 12.3, "cumulative_affinity": 102190, "cumulative_advancement": 180}, {"level": 81, "affinity_cost": 3000, "advancement_cost": 0, "troops_attack_percent": 12.38, "cumulative_affinity": 105190, "cumulative_advancement": 180}, {"level": 82, "affinity_cost": 3050, "advancement_cost": 0, "troops_attack_percent": 12.45, "cumulative_affinity": 108240, "cumulative_advancement": 180}, {"level": 83, "affinity_cost": 3100, "advancement_cost": 0, "troops_attack_percent": 12.53, "cumulative_affinity": 111340, "cumulative_advancement": 180}, {"level": 84, "affinity_cost": 3150, "advancement_cost": 0, "troops_attack_percent": 12.6, "cumulative_affinity": 114490, "cumulative_advancement": 180}, {"level": 85, "affinity_cost": 3200, "advancement_cost": 0, "troops_attack_percent": 12.68, "cumulative_affinity": 117690, "cumulative_advancement": 180}, {"level": 86, "affinity_cost": 3250, "advancement_cost": 0, "troops_attack_percent": 12.75, "cumulative_affinity": 120940, "cumulative_advancement": 180}, {"level": 87, "affinity_cost": 3300, "advancement_cost": 0, "troops_attack_percent": 12.83, "cumulative_affinity": 124240, "cumulative_advancement": 180}, {"level": 88, "affinity_cost": 3350, "advancement_cost": 0, "troops_attack_percent": 12.9, "cumulative_affinity": 127590, "cumulative_advancement": 180}, {"level": 89, "affinity_cost": 3400, "advancement_cost": 0, "troops_attack_percent": 12.98, "cumulative_affinity": 130990, "cumulative_advancement": 180}, {"level": 90, "affinity_cost": 3450, "advancement_cost": 45, "troops_attack_percent": 13.65, "cumulative_affinity": 134440, "cumulative_advancement": 225}, {"level": 91, "affinity_cost": 3500, "advancement_cost": 0, "troops_attack_percent": 13.73, "cumulative_affinity": 137940, "cumulative_advancement": 225}, {"level": 92, "affinity_cost": 3550, "advancement_cost": 0, "troops_attack_percent": 13.8, "cumulative_affinity": 141490, "cumulative_advancement": 225}, {"level": 93, "affinity_cost": 3600, "advancement_cost": 0, "troops_attack_percent": 13.88, "cumulative_affinity": 145090, "cumulative_advancement": 225}, {"level": 94, "affinity_cost": 3650, "advancement_cost": 0, "troops_attack_percent": 13.95, "cumulative_affinity": 148740, "cumulative_advancement": 225}, {"level": 95, "affinity_cost": 3700, "advancement_cost": 0, "troops_attack_percent": 14.03, "cumulative_affinity": 152440, "cumulative_advancement": 225}, {"level": 96, "affinity_cost": 3750, "advancement_cost": 0, "troops_attack_percent": 14.1, "cumulative_affinity": 156190, "cumulative_advancement": 225}, {"level": 97, "affinity_cost": 3800, "advancement_cost": 0, "troops_attack_percent": 14.18, "cumulative_affinity": 159990, "cumulative_advancement": 225}, {"level": 98, "affinity_cost": 3850, "advancement_cost": 0, "troops_attack_percent": 14.25, "cumulative_affinity": 163840, "cumulative_advancement": 225}, {"level": 99, "affinity_cost": 3900, "advancement_cost": 0, "troops_attack_percent": 14.33, "cumulative_affinity": 167740, "cumulative_advancement": 225}, {"level": 100, "affinity_cost": 3950, "advancement_cost": 50, "troops_attack_percent": 15.0, "cumulative_affinity": 171690, "cumulative_advancement": 275}], "totals_to_level_100": {"affinity": 171690, "advancement": 275, "troops_attack_percent": 15.0}, "data_notes": ["Costs are interpreted as the cost to reach the listed level.", "Level 88 corrected by the user to 12.90% Squad ATK."]}, "skills": [{"id": "dance_of_the_hunt", "slot": 1, "name": {"en": "Dance of the Hunt", "ar": "رقصة الصيد"}, "effect": {"stat": "raging_bear_rally_squad_capacity", "min": 30000, "max": 300000, "values_by_level": [30000, 60000, 90000, 120000, 150000, 180000, 210000, 240000, 270000, 300000], "verification": "endpoints_verified; intermediate_values_linear_inference"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 30000}, {"level": 2, "exp": 3600, "books": 70, "effect_value": 60000}, {"level": 3, "exp": 7200, "books": 140, "effect_value": 90000}, {"level": 4, "exp": 10800, "books": 210, "effect_value": 120000}, {"level": 5, "exp": 14400, "books": 280, "effect_value": 150000}, {"level": 6, "exp": 18000, "books": 350, "effect_value": 180000}, {"level": 7, "exp": 21600, "books": 420, "effect_value": 210000}, {"level": 8, "exp": 25200, "books": 490, "effect_value": 240000}, {"level": 9, "exp": 28800, "books": 560, "effect_value": 270000}, {"level": 10, "exp": 32400, "books": 630, "effect_value": 300000}]}, {"id": "leader_by_example", "slot": 2, "name": {"en": "Leader By Example", "ar": "القيادة بالقدوة"}, "effect": {"stat": "extra_100_enhancement_xp_part_rewards_per_bear_hunt", "min": 1, "max": 5, "values_by_level": [1, 2, 3, 4, 5], "verification": "range_verified; per_level_sequence inferred"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 1}, {"level": 2, "exp": 27600, "books": 400, "effect_value": 2}, {"level": 3, "exp": 55200, "books": 800, "effect_value": 3}, {"level": 4, "exp": 110400, "books": 1600, "effect_value": 4}, {"level": 5, "exp": 220800, "books": 3200, "effect_value": 5}]}, {"id": "weapon_obsession", "slot": 3, "name": {"en": "Weapon Obsession", "ar": "هوس الأسلحة"}, "effect": {"stat": "additional_forgehammer_rewards_per_bear_hunt", "min": 1, "max": 5, "values_by_level": [1, 2, 3, 4, 5], "verification": "range_verified; per_level_sequence inferred"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 1}, {"level": 2, "exp": 43200, "books": 500, "effect_value": 2}, {"level": 3, "exp": 86400, "books": 1000, "effect_value": 3}, {"level": 4, "exp": 172800, "books": 2000, "effect_value": 4}, {"level": 5, "exp": 345600, "books": 4000, "effect_value": 5}]}, {"id": "savage_advantage", "slot": 4, "name": {"en": "Savage Advantage", "ar": "الميزة الوحشية"}, "effect": {"stat": "bear_hunt_squad_capacity", "min": 3000, "max": 30000, "values_by_level": [3000, 6000, 9000, 12000, 15000, 18000, 21000, 24000, 27000, 30000], "verification": "endpoints_verified; intermediate_values_linear_inference"}, "levels": [{"level": 1, "exp": 0, "books": 0, "effect_value": 3000}, {"level": 2, "exp": 10200, "books": 100, "effect_value": 6000}, {"level": 3, "exp": 20400, "books": 200, "effect_value": 9000}, {"level": 4, "exp": 30600, "books": 300, "effect_value": 12000}, {"level": 5, "exp": 41400, "books": 400, "effect_value": 15000}, {"level": 6, "exp": 51600, "books": 500, "effect_value": 18000}, {"level": 7, "exp": 61800, "books": 600, "effect_value": 21000}, {"level": 8, "exp": 72600, "books": 700, "effect_value": 24000}, {"level": 9, "exp": 82800, "books": 800, "effect_value": 27000}, {"level": 10, "exp": 93000, "books": 900, "effect_value": 30000}]}], "source": {"primary": "User-provided Kingshot Wiki PDF and screenshots", "captured_date": "2026-07-29"}};
-let lang = localStorage.getItem("saifksLanguage")==="ar" ? "ar" : "en";
-
-const T={
-en:{
- subtitle:"Simple specialist calculator",bearMaster:"Bear Hunt Master",role:"Bear Hunter • Expedition Specialist",
- maxLevel:"Maximum level",maxAtk:"Maximum Squad ATK",bearDamage:"Bear Hunt Damage",
- summary:"Valora increases Bear Hunt capacity, improves Bear Hunt rewards and grants Squad ATK through Affinity.",
- affinity:"Affinity",skills:"Skills",details:"Details",affinityCalculator:"Affinity Calculator",
- currentLevel:"Current level",targetLevel:"Target level",affinityMaterial:"Affinity required",
- advancementMaterial:"Advancement required",currentAtk:"Current Squad ATK",targetAtk:"Target Squad ATK",
- reset:"Reset",skillCalculator:"Skill Calculator",chooseSkill:"Choose skill",currentSkill:"Current level",
- targetSkill:"Target level",expRequired:"EXP required",booksRequired:"Books required",currentEffect:"Current effect",
- targetEffect:"Target effect",skillDetails:"Valora Skills",talentNotice:"Hunter Instinct: 2% → 30% additional Bear Hunt Damage for Valora only.",
- availableAffinity:"Available Affinity",availableAdvancement:"Available Advancement",availableAffinityCard:"Affinity available",
- remainingAffinity:"Affinity remaining",availableAdvancementCard:"Advancement available",remainingAdvancement:"Advancement remaining",
- availableExp:"Available EXP",availableBooks:"Available Books",availableExpCard:"EXP available",remainingExp:"EXP remaining",
- availableBooksCard:"Books available",remainingBooks:"Books remaining",copySummary:"Copy Summary",copied:"Copied",
- level:"Level",capacity:"Capacity",rewards:"Rewards"
-},
-ar:{
- subtitle:"حاسبة سهلة للمتخصصين",bearMaster:"متخصصة صيد الدب",role:"صائدة الدببة • متخصصة استكشاف",
- maxLevel:"أقصى مستوى",maxAtk:"أقصى هجوم للفرق",bearDamage:"ضرر صيد الدب",
- summary:"تزيد فالورا سعة صيد الدب وتحسن مكافآته وتمنح هجوم الفرق من خلال التقارب.",
- affinity:"التقارب",skills:"المهارات",details:"التفاصيل",affinityCalculator:"حاسبة التقارب",
- currentLevel:"المستوى الحالي",targetLevel:"المستوى الهدف",affinityMaterial:"التقارب المطلوب",
- advancementMaterial:"مواد التقدم المطلوبة",currentAtk:"هجوم الفرق الحالي",targetAtk:"هجوم الفرق عند الهدف",
- reset:"إعادة ضبط",skillCalculator:"حاسبة المهارات",chooseSkill:"اختر المهارة",currentSkill:"المستوى الحالي",
- targetSkill:"المستوى الهدف",expRequired:"الخبرة المطلوبة",booksRequired:"الكتب المطلوبة",currentEffect:"التأثير الحالي",
- targetEffect:"التأثير عند الهدف",skillDetails:"مهارات فالورا",talentNotice:"غريزة الصياد: من 2% إلى 30% ضرر إضافي في صيد الدب لفالورا فقط.",
- availableAffinity:"مواد التقارب المتوفرة",availableAdvancement:"مواد التقدم المتوفرة",availableAffinityCard:"التقارب المتوفر",
- remainingAffinity:"التقارب المتبقي",availableAdvancementCard:"التقدم المتوفر",remainingAdvancement:"التقدم المتبقي",
- availableExp:"الخبرة المتوفرة",availableBooks:"الكتب المتوفرة",availableExpCard:"الخبرة المتوفرة",remainingExp:"الخبرة المتبقية",
- availableBooksCard:"الكتب المتوفرة",remainingBooks:"الكتب المتبقية",copySummary:"نسخ الملخص",copied:"تم النسخ",
- level:"المستوى",capacity:"السعة",rewards:"المكافآت"
-}
-};
-
-const tr=k=>T[lang][k]||k;
-const fmt=n=>Number(n).toLocaleString(lang==="ar"?"ar-AE":"en-AE");
-
-function applyLanguage(){
- document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- document.documentElement.lang=lang;
- document.getElementById("langBtn").textContent=lang==="en"?"العربية":"English";
- document.querySelectorAll("[data-t]").forEach(el=>el.textContent=tr(el.dataset.t));
- document.querySelectorAll("[data-name]").forEach(el=>el.textContent=lang==="ar"?"فالورا":"Valora");
- fillSkills();
- renderSkillsList();
- calcSkills();
-}
-
-document.getElementById("langBtn").onclick=()=>{
- lang=lang==="en"?"ar":"en";
- localStorage.setItem("saifksLanguage",lang);
- applyLanguage();
-};
-
-document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>{
- document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
- document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
- btn.classList.add("active");
- document.getElementById(btn.dataset.panel).classList.add("active");
-});
-
-function levelOptions(select,max){
- select.innerHTML="";
- select.add(new Option("—","0"));
- for(let i=1;i<=max;i++) select.add(new Option(i,String(i)));
- select.value="0";
-}
-
-function fillAffinity(){
- levelOptions(currentAffinity,100);
- levelOptions(targetAffinity,100);
-}
-function calcAffinity(){
- let current=+currentAffinity.value;
- let target=+targetAffinity.value;
- if(target<current){target=current;targetAffinity.value=String(target)}
- const availableAff=Math.max(0,+availableAffinity.value||0);
- const availableAdv=Math.max(0,+availableAdvancement.value||0);
- const rows=VALORA.affinity.levels.filter(r=>r.level>current&&r.level<=target);
- const requiredAff=rows.reduce((s,r)=>s+r.affinity_cost,0);
- const requiredAdv=rows.reduce((s,r)=>s+r.advancement_cost,0);
- affinityCost.textContent=fmt(requiredAff);
- advCost.textContent=fmt(requiredAdv);
- availableAffinityCard.textContent=fmt(availableAff);
- availableAdvancementCard.textContent=fmt(availableAdv);
- remainingAffinity.textContent=fmt(Math.max(0,requiredAff-availableAff));
- remainingAdvancement.textContent=fmt(Math.max(0,requiredAdv-availableAdv));
- currentAtk.textContent=(current?VALORA.affinity.levels[current-1].troops_attack_percent:0).toFixed(2)+"%";
- targetAtk.textContent=(target?VALORA.affinity.levels[target-1].troops_attack_percent:0).toFixed(2)+"%";
-}
-currentAffinity.onchange=calcAffinity;
-targetAffinity.onchange=calcAffinity;
-availableAffinity.oninput=calcAffinity;
-availableAdvancement.oninput=calcAffinity;
-resetAffinity.onclick=()=>{
- currentAffinity.value="0";targetAffinity.value="0";availableAffinity.value="";availableAdvancement.value="";
- calcAffinity();affinityCopyStatus.textContent="";
-};
-
-function fillSkills(){
- const previous=skillSelect.value;
- skillSelect.innerHTML="";
- VALORA.skills.forEach(s=>skillSelect.add(new Option(lang==="ar"?s.name.ar:s.name.en,s.id)));
- if([...skillSelect.options].some(o=>o.value===previous)) skillSelect.value=previous;
- fillSkillLevels();
-}
-function fillSkillLevels(){
- const skill=VALORA.skills.find(s=>s.id===skillSelect.value)||VALORA.skills[0];
- levelOptions(currentSkill,skill.levels.length);
- levelOptions(targetSkill,skill.levels.length);
-}
-function effectText(skill,lvl){
- if(!lvl)return "0";
- const value=skill.effect.values_by_level?.[lvl-1];
- if(value==null)return "—";
- if(skill.id==="dance_of_the_hunt"||skill.id==="savage_advantage") return fmt(value);
- return fmt(value);
-}
-function calcSkills(){
- const skill=VALORA.skills.find(s=>s.id===skillSelect.value)||VALORA.skills[0];
- let current=+currentSkill.value,target=+targetSkill.value;
- if(target<current){target=current;targetSkill.value=String(target)}
- const rows=skill.levels.filter(r=>r.level>current&&r.level<=target);
- const requiredExp=rows.reduce((s,r)=>s+r.exp,0);
- const requiredBooks=rows.reduce((s,r)=>s+r.books,0);
- const haveExp=Math.max(0,+availableExp.value||0);
- const haveBooks=Math.max(0,+availableBooks.value||0);
- expCost.textContent=fmt(requiredExp);
- bookCost.textContent=fmt(requiredBooks);
- availableExpCard.textContent=fmt(haveExp);
- availableBooksCard.textContent=fmt(haveBooks);
- remainingExp.textContent=fmt(Math.max(0,requiredExp-haveExp));
- remainingBooks.textContent=fmt(Math.max(0,requiredBooks-haveBooks));
- currentEffect.textContent=effectText(skill,current);
- targetEffect.textContent=effectText(skill,target);
- const name=lang==="ar"?skill.name.ar:skill.name.en;
- skillEffect.textContent=name+" • "+tr("level")+" "+target;
-}
-skillSelect.onchange=()=>{fillSkillLevels();calcSkills()};
-currentSkill.onchange=calcSkills;
-targetSkill.onchange=calcSkills;
-availableExp.oninput=calcSkills;
-availableBooks.oninput=calcSkills;
-resetSkills.onclick=()=>{
- currentSkill.value="0";targetSkill.value="0";availableExp.value="";availableBooks.value="";
- calcSkills();skillCopyStatus.textContent="";
-};
-
-async function copyText(text,statusEl){
- try{await navigator.clipboard.writeText(text);}
- catch(e){
-  const area=document.createElement("textarea");
-  area.value=text;document.body.appendChild(area);area.select();document.execCommand("copy");area.remove();
- }
- statusEl.textContent=tr("copied");
- setTimeout(()=>statusEl.textContent="",1800);
-}
-copyAffinity.onclick=()=>{
- const current=+currentAffinity.value,target=+targetAffinity.value;
- const rows=VALORA.affinity.levels.filter(r=>r.level>current&&r.level<=target);
- const requiredAff=rows.reduce((s,r)=>s+r.affinity_cost,0);
- const requiredAdv=rows.reduce((s,r)=>s+r.advancement_cost,0);
- const haveAff=Math.max(0,+availableAffinity.value||0),haveAdv=Math.max(0,+availableAdvancement.value||0);
- const lines=lang==="ar"?
- [`فالورا - ملخص التقارب`,`المستوى الحالي: ${current}`,`المستوى الهدف: ${target}`,`التقارب المطلوب: ${fmt(requiredAff)}`,`التقارب المتوفر: ${fmt(haveAff)}`,`التقارب المتبقي: ${fmt(Math.max(0,requiredAff-haveAff))}`,`التقدم المطلوب: ${fmt(requiredAdv)}`,`التقدم المتوفر: ${fmt(haveAdv)}`,`التقدم المتبقي: ${fmt(Math.max(0,requiredAdv-haveAdv))}`,`هجوم الفرق عند الهدف: ${targetAtk.textContent}`]:
- [`Valora - Affinity Summary`,`Current level: ${current}`,`Target level: ${target}`,`Affinity required: ${fmt(requiredAff)}`,`Affinity available: ${fmt(haveAff)}`,`Affinity remaining: ${fmt(Math.max(0,requiredAff-haveAff))}`,`Advancement required: ${fmt(requiredAdv)}`,`Advancement available: ${fmt(haveAdv)}`,`Advancement remaining: ${fmt(Math.max(0,requiredAdv-haveAdv))}`,`Target Squad ATK: ${targetAtk.textContent}`];
- copyText(lines.join("\n"),affinityCopyStatus);
-};
-copySkills.onclick=()=>{
- const skill=VALORA.skills.find(s=>s.id===skillSelect.value)||VALORA.skills[0];
- const name=lang==="ar"?skill.name.ar:skill.name.en;
- const current=+currentSkill.value,target=+targetSkill.value;
- const rows=skill.levels.filter(r=>r.level>current&&r.level<=target);
- const requiredExp=rows.reduce((s,r)=>s+r.exp,0);
- const requiredBooks=rows.reduce((s,r)=>s+r.books,0);
- const haveExp=Math.max(0,+availableExp.value||0),haveBooks=Math.max(0,+availableBooks.value||0);
- const lines=lang==="ar"?
- [`فالورا - ملخص المهارة`,`المهارة: ${name}`,`المستوى الحالي: ${current}`,`المستوى الهدف: ${target}`,`الخبرة المطلوبة: ${fmt(requiredExp)}`,`الخبرة المتوفرة: ${fmt(haveExp)}`,`الخبرة المتبقية: ${fmt(Math.max(0,requiredExp-haveExp))}`,`الكتب المطلوبة: ${fmt(requiredBooks)}`,`الكتب المتوفرة: ${fmt(haveBooks)}`,`الكتب المتبقية: ${fmt(Math.max(0,requiredBooks-haveBooks))}`,`التأثير عند الهدف: ${targetEffect.textContent}`]:
- [`Valora - Skill Summary`,`Skill: ${name}`,`Current level: ${current}`,`Target level: ${target}`,`EXP required: ${fmt(requiredExp)}`,`EXP available: ${fmt(haveExp)}`,`EXP remaining: ${fmt(Math.max(0,requiredExp-haveExp))}`,`Books required: ${fmt(requiredBooks)}`,`Books available: ${fmt(haveBooks)}`,`Books remaining: ${fmt(Math.max(0,requiredBooks-haveBooks))}`,`Target effect: ${targetEffect.textContent}`];
- copyText(lines.join("\n"),skillCopyStatus);
-};
-
-function renderSkillsList(){
- skillsList.innerHTML=VALORA.skills.map(s=>{
-  const max=s.levels.length;
-  const effect=effectText(s,max);
-  return `<div class="skill-card"><h3>${lang==="ar"?s.name.ar:s.name.en}</h3><p>${tr("level")} ${max} • ${effect}</p></div>`;
- }).join("");
-}
-
-fillAffinity();
-applyLanguage();
-calcAffinity();
-calcSkills();
-</script>
-</body>
-</html>
+const LEVELS=[{"level":1,"affinity_cost":1000,"advancement_cost":0,"troops_attack_percent":1.58,"cumulative_affinity":1000,"cumulative_advancement":0},{"level":2,"affinity_cost":200,"advancement_cost":0,"troops_attack_percent":1.65,"cumulative_affinity":1200,"cumulative_advancement":0},{"level":3,"affinity_cost":210,"advancement_cost":0,"troops_attack_percent":1.73,"cumulative_affinity":1410,"cumulative_advancement":0},{"level":4,"affinity_cost":220,"advancement_cost":0,"troops_attack_percent":1.8,"cumulative_affinity":1630,"cumulative_advancement":0},{"level":5,"affinity_cost":230,"advancement_cost":0,"troops_attack_percent":1.88,"cumulative_affinity":1860,"cumulative_advancement":0},{"level":6,"affinity_cost":240,"advancement_cost":0,"troops_attack_percent":1.95,"cumulative_affinity":2100,"cumulative_advancement":0},{"level":7,"affinity_cost":260,"advancement_cost":0,"troops_attack_percent":2.03,"cumulative_affinity":2360,"cumulative_advancement":0},{"level":8,"affinity_cost":280,"advancement_cost":0,"troops_attack_percent":2.1,"cumulative_affinity":2640,"cumulative_advancement":0},{"level":9,"affinity_cost":300,"advancement_cost":0,"troops_attack_percent":2.18,"cumulative_affinity":2940,"cumulative_advancement":0},{"level":10,"affinity_cost":320,"advancement_cost":5,"troops_attack_percent":2.85,"cumulative_affinity":3260,"cumulative_advancement":5},{"level":11,"affinity_cost":340,"advancement_cost":0,"troops_attack_percent":2.93,"cumulative_affinity":3600,"cumulative_advancement":5},{"level":12,"affinity_cost":360,"advancement_cost":0,"troops_attack_percent":3.0,"cumulative_affinity":3960,"cumulative_advancement":5},{"level":13,"affinity_cost":380,"advancement_cost":0,"troops_attack_percent":3.08,"cumulative_affinity":4340,"cumulative_advancement":5},{"level":14,"affinity_cost":400,"advancement_cost":0,"troops_attack_percent":3.15,"cumulative_affinity":4740,"cumulative_advancement":5},{"level":15,"affinity_cost":420,"advancement_cost":0,"troops_attack_percent":3.23,"cumulative_affinity":5160,"cumulative_advancement":5},{"level":16,"affinity_cost":440,"advancement_cost":0,"troops_attack_percent":3.3,"cumulative_affinity":5600,"cumulative_advancement":5},{"level":17,"affinity_cost":460,"advancement_cost":0,"troops_attack_percent":3.38,"cumulative_affinity":6060,"cumulative_advancement":5},{"level":18,"affinity_cost":480,"advancement_cost":0,"troops_attack_percent":3.45,"cumulative_affinity":6540,"cumulative_advancement":5},{"level":19,"affinity_cost":500,"advancement_cost":0,"troops_attack_percent":3.53,"cumulative_affinity":7040,"cumulative_advancement":5},{"level":20,"affinity_cost":520,"advancement_cost":10,"troops_attack_percent":4.2,"cumulative_affinity":7560,"cumulative_advancement":15},{"level":21,"affinity_cost":540,"advancement_cost":0,"troops_attack_percent":4.28,"cumulative_affinity":8100,"cumulative_advancement":15},{"level":22,"affinity_cost":560,"advancement_cost":0,"troops_attack_percent":4.35,"cumulative_affinity":8660,"cumulative_advancement":15},{"level":23,"affinity_cost":580,"advancement_cost":0,"troops_attack_percent":4.43,"cumulative_affinity":9240,"cumulative_advancement":15},{"level":24,"affinity_cost":600,"advancement_cost":0,"troops_attack_percent":4.5,"cumulative_affinity":9840,"cumulative_advancement":15},{"level":25,"affinity_cost":620,"advancement_cost":0,"troops_attack_percent":4.58,"cumulative_affinity":10460,"cumulative_advancement":15},{"level":26,"affinity_cost":640,"advancement_cost":0,"troops_attack_percent":4.65,"cumulative_affinity":11100,"cumulative_advancement":15},{"level":27,"affinity_cost":660,"advancement_cost":0,"troops_attack_percent":4.73,"cumulative_affinity":11760,"cumulative_advancement":15},{"level":28,"affinity_cost":680,"advancement_cost":0,"troops_attack_percent":4.8,"cumulative_affinity":12440,"cumulative_advancement":15},{"level":29,"affinity_cost":700,"advancement_cost":0,"troops_attack_percent":4.88,"cumulative_affinity":13140,"cumulative_advancement":15},{"level":30,"affinity_cost":730,"advancement_cost":15,"troops_attack_percent":5.55,"cumulative_affinity":13870,"cumulative_advancement":30},{"level":31,"affinity_cost":760,"advancement_cost":0,"troops_attack_percent":5.63,"cumulative_affinity":14630,"cumulative_advancement":30},{"level":32,"affinity_cost":790,"advancement_cost":0,"troops_attack_percent":5.7,"cumulative_affinity":15420,"cumulative_advancement":30},{"level":33,"affinity_cost":820,"advancement_cost":0,"troops_attack_percent":5.78,"cumulative_affinity":16240,"cumulative_advancement":30},{"level":34,"affinity_cost":850,"advancement_cost":0,"troops_attack_percent":5.85,"cumulative_affinity":17090,"cumulative_advancement":30},{"level":35,"affinity_cost":880,"advancement_cost":0,"troops_attack_percent":5.93,"cumulative_affinity":17970,"cumulative_advancement":30},{"level":36,"affinity_cost":910,"advancement_cost":0,"troops_attack_percent":6.0,"cumulative_affinity":18880,"cumulative_advancement":30},{"level":37,"affinity_cost":940,"advancement_cost":0,"troops_attack_percent":6.08,"cumulative_affinity":19820,"cumulative_advancement":30},{"level":38,"affinity_cost":970,"advancement_cost":0,"troops_attack_percent":6.15,"cumulative_affinity":20790,"cumulative_advancement":30},{"level":39,"affinity_cost":1000,"advancement_cost":0,"troops_attack_percent":6.23,"cumulative_affinity":21790,"cumulative_advancement":30},{"level":40,"affinity_cost":1040,"advancement_cost":20,"troops_attack_percent":6.9,"cumulative_affinity":22830,"cumulative_advancement":50},{"level":41,"affinity_cost":1080,"advancement_cost":0,"troops_attack_percent":6.98,"cumulative_affinity":23910,"cumulative_advancement":50},{"level":42,"affinity_cost":1120,"advancement_cost":0,"troops_attack_percent":7.05,"cumulative_affinity":25030,"cumulative_advancement":50},{"level":43,"affinity_cost":1160,"advancement_cost":0,"troops_attack_percent":7.13,"cumulative_affinity":26190,"cumulative_advancement":50},{"level":44,"affinity_cost":1200,"advancement_cost":0,"troops_attack_percent":7.2,"cumulative_affinity":27390,"cumulative_advancement":50},{"level":45,"affinity_cost":1240,"advancement_cost":0,"troops_attack_percent":7.28,"cumulative_affinity":28630,"cumulative_advancement":50},{"level":46,"affinity_cost":1280,"advancement_cost":0,"troops_attack_percent":7.35,"cumulative_affinity":29910,"cumulative_advancement":50},{"level":47,"affinity_cost":1320,"advancement_cost":0,"troops_attack_percent":7.43,"cumulative_affinity":31230,"cumulative_advancement":50},{"level":48,"affinity_cost":1360,"advancement_cost":0,"troops_attack_percent":7.5,"cumulative_affinity":32590,"cumulative_advancement":50},{"level":49,"affinity_cost":1400,"advancement_cost":0,"troops_attack_percent":7.58,"cumulative_affinity":33990,"cumulative_advancement":50},{"level":50,"affinity_cost":1450,"advancement_cost":25,"troops_attack_percent":8.25,"cumulative_affinity":35440,"cumulative_advancement":75},{"level":51,"affinity_cost":1500,"advancement_cost":0,"troops_attack_percent":8.33,"cumulative_affinity":36940,"cumulative_advancement":75},{"level":52,"affinity_cost":1550,"advancement_cost":0,"troops_attack_percent":8.4,"cumulative_affinity":38490,"cumulative_advancement":75},{"level":53,"affinity_cost":1600,"advancement_cost":0,"troops_attack_percent":8.48,"cumulative_affinity":40090,"cumulative_advancement":75},{"level":54,"affinity_cost":1650,"advancement_cost":0,"troops_attack_percent":8.55,"cumulative_affinity":41740,"cumulative_advancement":75},{"level":55,"affinity_cost":1700,"advancement_cost":0,"troops_attack_percent":8.63,"cumulative_affinity":43440,"cumulative_advancement":75},{"level":56,"affinity_cost":1750,"advancement_cost":0,"troops_attack_percent":8.7,"cumulative_affinity":45190,"cumulative_advancement":75},{"level":57,"affinity_cost":1800,"advancement_cost":0,"troops_attack_percent":8.78,"cumulative_affinity":46990,"cumulative_advancement":75},{"level":58,"affinity_cost":1850,"advancement_cost":0,"troops_attack_percent":8.85,"cumulative_affinity":48840,"cumulative_advancement":75},{"level":59,"affinity_cost":1900,"advancement_cost":0,"troops_attack_percent":8.93,"cumulative_affinity":50740,"cumulative_advancement":75},{"level":60,"affinity_cost":1950,"advancement_cost":30,"troops_attack_percent":9.6,"cumulative_affinity":52690,"cumulative_advancement":105},{"level":61,"affinity_cost":2000,"advancement_cost":0,"troops_attack_percent":9.68,"cumulative_affinity":54690,"cumulative_advancement":105},{"level":62,"affinity_cost":2050,"advancement_cost":0,"troops_attack_percent":9.75,"cumulative_affinity":56740,"cumulative_advancement":105},{"level":63,"affinity_cost":2100,"advancement_cost":0,"troops_attack_percent":9.83,"cumulative_affinity":58840,"cumulative_advancement":105},{"level":64,"affinity_cost":2150,"advancement_cost":0,"troops_attack_percent":9.9,"cumulative_affinity":60990,"cumulative_advancement":105},{"level":65,"affinity_cost":2200,"advancement_cost":0,"troops_attack_percent":9.98,"cumulative_affinity":63190,"cumulative_advancement":105},{"level":66,"affinity_cost":2250,"advancement_cost":0,"troops_attack_percent":10.05,"cumulative_affinity":65440,"cumulative_advancement":105},{"level":67,"affinity_cost":2300,"advancement_cost":0,"troops_attack_percent":10.13,"cumulative_affinity":67740,"cumulative_advancement":105},{"level":68,"affinity_cost":2350,"advancement_cost":0,"troops_attack_percent":10.2,"cumulative_affinity":70090,"cumulative_advancement":105},{"level":69,"affinity_cost":2400,"advancement_cost":0,"troops_attack_percent":10.28,"cumulative_affinity":72490,"cumulative_advancement":105},{"level":70,"affinity_cost":2450,"advancement_cost":35,"troops_attack_percent":10.95,"cumulative_affinity":74940,"cumulative_advancement":140},{"level":71,"affinity_cost":2500,"advancement_cost":0,"troops_attack_percent":11.03,"cumulative_affinity":77440,"cumulative_advancement":140},{"level":72,"affinity_cost":2550,"advancement_cost":0,"troops_attack_percent":11.1,"cumulative_affinity":79990,"cumulative_advancement":140},{"level":73,"affinity_cost":2600,"advancement_cost":0,"troops_attack_percent":11.18,"cumulative_affinity":82590,"cumulative_advancement":140},{"level":74,"affinity_cost":2650,"advancement_cost":0,"troops_attack_percent":11.25,"cumulative_affinity":85240,"cumulative_advancement":140},{"level":75,"affinity_cost":2700,"advancement_cost":0,"troops_attack_percent":11.33,"cumulative_affinity":87940,"cumulative_advancement":140},{"level":76,"affinity_cost":2750,"advancement_cost":0,"troops_attack_percent":11.4,"cumulative_affinity":90690,"cumulative_advancement":140},{"level":77,"affinity_cost":2800,"advancement_cost":0,"troops_attack_percent":11.48,"cumulative_affinity":93490,"cumulative_advancement":140},{"level":78,"affinity_cost":2850,"advancement_cost":0,"troops_attack_percent":11.55,"cumulative_affinity":96340,"cumulative_advancement":140},{"level":79,"affinity_cost":2900,"advancement_cost":0,"troops_attack_percent":11.63,"cumulative_affinity":99240,"cumulative_advancement":140},{"level":80,"affinity_cost":2950,"advancement_cost":40,"troops_attack_percent":12.3,"cumulative_affinity":102190,"cumulative_advancement":180},{"level":81,"affinity_cost":3000,"advancement_cost":0,"troops_attack_percent":12.38,"cumulative_affinity":105190,"cumulative_advancement":180},{"level":82,"affinity_cost":3050,"advancement_cost":0,"troops_attack_percent":12.45,"cumulative_affinity":108240,"cumulative_advancement":180},{"level":83,"affinity_cost":3100,"advancement_cost":0,"troops_attack_percent":12.53,"cumulative_affinity":111340,"cumulative_advancement":180},{"level":84,"affinity_cost":3150,"advancement_cost":0,"troops_attack_percent":12.6,"cumulative_affinity":114490,"cumulative_advancement":180},{"level":85,"affinity_cost":3200,"advancement_cost":0,"troops_attack_percent":12.68,"cumulative_affinity":117690,"cumulative_advancement":180},{"level":86,"affinity_cost":3250,"advancement_cost":0,"troops_attack_percent":12.75,"cumulative_affinity":120940,"cumulative_advancement":180},{"level":87,"affinity_cost":3300,"advancement_cost":0,"troops_attack_percent":12.83,"cumulative_affinity":124240,"cumulative_advancement":180},{"level":88,"affinity_cost":3350,"advancement_cost":0,"troops_attack_percent":12.9,"cumulative_affinity":127590,"cumulative_advancement":180},{"level":89,"affinity_cost":3400,"advancement_cost":0,"troops_attack_percent":12.98,"cumulative_affinity":130990,"cumulative_advancement":180},{"level":90,"affinity_cost":3450,"advancement_cost":45,"troops_attack_percent":13.65,"cumulative_affinity":134440,"cumulative_advancement":225},{"level":91,"affinity_cost":3500,"advancement_cost":0,"troops_attack_percent":13.73,"cumulative_affinity":137940,"cumulative_advancement":225},{"level":92,"affinity_cost":3550,"advancement_cost":0,"troops_attack_percent":13.8,"cumulative_affinity":141490,"cumulative_advancement":225},{"level":93,"affinity_cost":3600,"advancement_cost":0,"troops_attack_percent":13.88,"cumulative_affinity":145090,"cumulative_advancement":225},{"level":94,"affinity_cost":3650,"advancement_cost":0,"troops_attack_percent":13.95,"cumulative_affinity":148740,"cumulative_advancement":225},{"level":95,"affinity_cost":3700,"advancement_cost":0,"troops_attack_percent":14.03,"cumulative_affinity":152440,"cumulative_advancement":225},{"level":96,"affinity_cost":3750,"advancement_cost":0,"troops_attack_percent":14.1,"cumulative_affinity":156190,"cumulative_advancement":225},{"level":97,"affinity_cost":3800,"advancement_cost":0,"troops_attack_percent":14.18,"cumulative_affinity":159990,"cumulative_advancement":225},{"level":98,"affinity_cost":3850,"advancement_cost":0,"troops_attack_percent":14.25,"cumulative_affinity":163840,"cumulative_advancement":225},{"level":99,"affinity_cost":3900,"advancement_cost":0,"troops_attack_percent":14.33,"cumulative_affinity":167740,"cumulative_advancement":225},{"level":100,"affinity_cost":3950,"advancement_cost":50,"troops_attack_percent":15.0,"cumulative_affinity":171690,"cumulative_advancement":275}];
+const SKILLS=[{"id":"dance_of_the_hunt","slot":1,"name":{"en":"Dance of the Hunt","ar":"\u0631\u0642\u0635\u0629 \u0627\u0644\u0635\u064a\u062f"},"effect":{"stat":"raging_bear_rally_squad_capacity","min":30000,"max":300000,"values_by_level":[30000,60000,90000,120000,150000,180000,210000,240000,270000,300000],"verification":"endpoints_verified; intermediate_values_linear_inference"},"levels":[{"level":1,"exp":0,"books":0,"effect_value":30000},{"level":2,"exp":3600,"books":70,"effect_value":60000},{"level":3,"exp":7200,"books":140,"effect_value":90000},{"level":4,"exp":10800,"books":210,"effect_value":120000},{"level":5,"exp":14400,"books":280,"effect_value":150000},{"level":6,"exp":18000,"books":350,"effect_value":180000},{"level":7,"exp":21600,"books":420,"effect_value":210000},{"level":8,"exp":25200,"books":490,"effect_value":240000},{"level":9,"exp":28800,"books":560,"effect_value":270000},{"level":10,"exp":32400,"books":630,"effect_value":300000}]},{"id":"leader_by_example","slot":2,"name":{"en":"Leader By Example","ar":"\u0627\u0644\u0642\u064a\u0627\u062f\u0629 \u0628\u0627\u0644\u0642\u062f\u0648\u0629"},"effect":{"stat":"extra_100_enhancement_xp_part_rewards_per_bear_hunt","min":1,"max":5,"values_by_level":[1,2,3,4,5],"verification":"range_verified; per_level_sequence inferred"},"levels":[{"level":1,"exp":0,"books":0,"effect_value":1},{"level":2,"exp":27600,"books":400,"effect_value":2},{"level":3,"exp":55200,"books":800,"effect_value":3},{"level":4,"exp":110400,"books":1600,"effect_value":4},{"level":5,"exp":220800,"books":3200,"effect_value":5}]},{"id":"weapon_obsession","slot":3,"name":{"en":"Weapon Obsession","ar":"\u0647\u0648\u0633 \u0627\u0644\u0623\u0633\u0644\u062d\u0629"},"effect":{"stat":"additional_forgehammer_rewards_per_bear_hunt","min":1,"max":5,"values_by_level":[1,2,3,4,5],"verification":"range_verified; per_level_sequence inferred"},"levels":[{"level":1,"exp":0,"books":0,"effect_value":1},{"level":2,"exp":43200,"books":500,"effect_value":2},{"level":3,"exp":86400,"books":1000,"effect_value":3},{"level":4,"exp":172800,"books":2000,"effect_value":4},{"level":5,"exp":345600,"books":4000,"effect_value":5}]},{"id":"savage_advantage","slot":4,"name":{"en":"Savage Advantage","ar":"\u0627\u0644\u0645\u064a\u0632\u0629 \u0627\u0644\u0648\u062d\u0634\u064a\u0629"},"effect":{"stat":"bear_hunt_squad_capacity","min":3000,"max":30000,"values_by_level":[3000,6000,9000,12000,15000,18000,21000,24000,27000,30000],"verification":"endpoints_verified; intermediate_values_linear_inference"},"levels":[{"level":1,"exp":0,"books":0,"effect_value":3000},{"level":2,"exp":10200,"books":100,"effect_value":6000},{"level":3,"exp":20400,"books":200,"effect_value":9000},{"level":4,"exp":30600,"books":300,"effect_value":12000},{"level":5,"exp":41400,"books":400,"effect_value":15000},{"level":6,"exp":51600,"books":500,"effect_value":18000},{"level":7,"exp":61800,"books":600,"effect_value":21000},{"level":8,"exp":72600,"books":700,"effect_value":24000},{"level":9,"exp":82800,"books":800,"effect_value":27000},{"level":10,"exp":93000,"books":900,"effect_value":30000}]}];
+const I18N={
+en:{brandSub:'KINGSHOT MASTER PLANNER',role:'Bear Hunt Master',heroDesc:'Plan affinity and all four skills, then collect every requirement in one compact summary.',bearDamage:'Bear Hunt Damage',rallyCapacity:'Rally Capacity',squadAtk:'Squad ATK at Lv.100',affinity:'Affinity',startsZero:'Starts from level 0',currentLevel:'Current level',targetLevel:'Target level',currentAtk:'Current Squad ATK',targetAtk:'Target Squad ATK',copperHorn:'Copper Horn',silverGoblet:'Silver Goblet',eliteSpices:'Elite Spices',required:'Required',available:'Available',remaining:'Remaining',addAffinity:'Add Affinity to Summary',skills:'Skills',allSkills:'All four skills can be added',manuscripts:"Master's Manuscripts",learningExp:'Learning EXP',skillEffect:'Target effect',addSkill:'Add Skill to Summary',summary:'Summary',emptySummary:'Add affinity or skill levels to see all requirements.',affinityPoints:'Affinity Points',masterEmblems:'Master Emblems',emblemsOwned:'Master Emblems available',booksOwned:'Manuscripts available',expOwned:'Learning EXP available',affinityOwned:'Affinity from gifts',copySummary:'Copy Summary',reset:'Reset',level:'Level',cost:'Cost',attack:'Squad ATK',skill:'Skill',copied:'Copied',plans:'plans'},
+ar:{brandSub:'مخطط متخصصي KINGSHOT',role:'متخصصة فخ الدب',heroDesc:'خطط للتقارب والمهارات الأربع ثم اجمع كل المتطلبات في ملخص واحد صغير.',bearDamage:'ضرر فخ الدب',rallyCapacity:'سعة الحشد',squadAtk:'هجوم القوات عند المستوى 100',affinity:'التقارب',startsZero:'يبدأ من المستوى 0',currentLevel:'المستوى الحالي',targetLevel:'المستوى المستهدف',currentAtk:'هجوم القوات الحالي',targetAtk:'هجوم القوات المستهدف',copperHorn:'البوق النحاسي',silverGoblet:'الكأس الفضي',eliteSpices:'توابل النخبة',required:'المطلوب',available:'المتوفر',remaining:'المتبقي',addAffinity:'إضافة التقارب إلى الملخص',skills:'المهارات',allSkills:'يمكن إضافة المهارات الأربع',manuscripts:'مخطوطات المتخصص',learningExp:'خبرة التعلم',skillEffect:'التأثير المستهدف',addSkill:'إضافة المهارة إلى الملخص',summary:'الملخص',emptySummary:'أضف مستويات التقارب أو المهارات لرؤية جميع المتطلبات.',affinityPoints:'نقاط التقارب',masterEmblems:'شعارات المتخصص',emblemsOwned:'شعارات المتخصص المتوفرة',booksOwned:'المخطوطات المتوفرة',expOwned:'خبرة التعلم المتوفرة',affinityOwned:'التقارب من الهدايا',copySummary:'نسخ الملخص',reset:'إعادة الضبط',level:'المستوى',cost:'التكلفة',attack:'هجوم القوات',skill:'المهارة',copied:'تم النسخ',plans:'خطط'},
+fr:{brandSub:'PLANIFICATEUR DES MAÎTRES KINGSHOT',role:'Maître de la chasse à l’ours',heroDesc:'Planifiez l’affinité et les quatre compétences, puis regroupez tous les besoins dans un seul résumé compact.',bearDamage:'Dégâts de chasse à l’ours',rallyCapacity:'Capacité du ralliement',squadAtk:'ATQ d’escouade au niv.100',affinity:'Affinité',startsZero:'Commence au niveau 0',currentLevel:'Niveau actuel',targetLevel:'Niveau cible',currentAtk:'ATQ actuelle',targetAtk:'ATQ cible',copperHorn:'Cor en cuivre',silverGoblet:'Gobelet en argent',eliteSpices:'Épices d’élite',required:'Requis',available:'Disponible',remaining:'Restant',addAffinity:'Ajouter l’affinité au résumé',skills:'Compétences',allSkills:'Les quatre compétences peuvent être ajoutées',manuscripts:'Manuscrits du maître',learningExp:'EXP d’apprentissage',skillEffect:'Effet cible',addSkill:'Ajouter la compétence au résumé',summary:'Résumé',emptySummary:'Ajoutez des niveaux d’affinité ou de compétence pour voir tous les besoins.',affinityPoints:'Points d’affinité',masterEmblems:'Emblèmes du maître',emblemsOwned:'Emblèmes disponibles',booksOwned:'Manuscrits disponibles',expOwned:'EXP disponible',affinityOwned:'Affinité des cadeaux',copySummary:'Copier le résumé',reset:'Réinitialiser',level:'Niveau',cost:'Coût',attack:'ATQ d’escouade',skill:'Compétence',copied:'Copié',plans:'plans'},
+es:{brandSub:'PLANIFICADOR DE MAESTROS KINGSHOT',role:'Maestra de Caza del Oso',heroDesc:'Planifica la afinidad y las cuatro habilidades y reúne todos los requisitos en un resumen compacto.',bearDamage:'Daño de Caza del Oso',rallyCapacity:'Capacidad de rally',squadAtk:'ATQ de escuadrón en Nv.100',affinity:'Afinidad',startsZero:'Empieza en nivel 0',currentLevel:'Nivel actual',targetLevel:'Nivel objetivo',currentAtk:'ATQ actual',targetAtk:'ATQ objetivo',copperHorn:'Cuerno de cobre',silverGoblet:'Cáliz de plata',eliteSpices:'Especias de élite',required:'Necesario',available:'Disponible',remaining:'Restante',addAffinity:'Añadir afinidad al resumen',skills:'Habilidades',allSkills:'Se pueden añadir las cuatro habilidades',manuscripts:'Manuscritos del maestro',learningExp:'EXP de aprendizaje',skillEffect:'Efecto objetivo',addSkill:'Añadir habilidad al resumen',summary:'Resumen',emptySummary:'Añade niveles de afinidad o habilidad para ver todos los requisitos.',affinityPoints:'Puntos de afinidad',masterEmblems:'Emblemas del maestro',emblemsOwned:'Emblemas disponibles',booksOwned:'Manuscritos disponibles',expOwned:'EXP disponible',affinityOwned:'Afinidad de regalos',copySummary:'Copiar resumen',reset:'Restablecer',level:'Nivel',cost:'Coste',attack:'ATQ de escuadrón',skill:'Habilidad',copied:'Copiado',plans:'planes'},
+de:{brandSub:'KINGSHOT-MEISTERPLANER',role:'Bärenjagd-Meisterin',heroDesc:'Plane Affinität und alle vier Fähigkeiten und sammle alle Anforderungen in einer kompakten Übersicht.',bearDamage:'Bärenjagd-Schaden',rallyCapacity:'Rallye-Kapazität',squadAtk:'Trupp-ANG auf St.100',affinity:'Affinität',startsZero:'Beginnt bei Stufe 0',currentLevel:'Aktuelle Stufe',targetLevel:'Zielstufe',currentAtk:'Aktueller Trupp-ANG',targetAtk:'Ziel-Trupp-ANG',copperHorn:'Kupferhorn',silverGoblet:'Silberkelch',eliteSpices:'Elite-Gewürze',required:'Benötigt',available:'Verfügbar',remaining:'Verbleibend',addAffinity:'Affinität zur Übersicht hinzufügen',skills:'Fähigkeiten',allSkills:'Alle vier Fähigkeiten können hinzugefügt werden',manuscripts:'Meister-Manuskripte',learningExp:'Lern-EXP',skillEffect:'Zieleffekt',addSkill:'Fähigkeit zur Übersicht hinzufügen',summary:'Übersicht',emptySummary:'Füge Affinitäts- oder Fähigkeitsstufen hinzu, um alle Anforderungen zu sehen.',affinityPoints:'Affinitätspunkte',masterEmblems:'Meisterembleme',emblemsOwned:'Verfügbare Embleme',booksOwned:'Verfügbare Manuskripte',expOwned:'Verfügbare Lern-EXP',affinityOwned:'Affinität aus Geschenken',copySummary:'Übersicht kopieren',reset:'Zurücksetzen',level:'Stufe',cost:'Kosten',attack:'Trupp-ANG',skill:'Fähigkeit',copied:'Kopiert',plans:'Pläne'},
+tr:{brandSub:'KINGSHOT UZMAN PLANLAYICI',role:'Ayı Avı Uzmanı',heroDesc:'Yakınlık ve dört beceriyi planlayın, tüm gereksinimleri tek kompakt özette toplayın.',bearDamage:'Ayı Avı Hasarı',rallyCapacity:'Ralli Kapasitesi',squadAtk:'Sv.100 Takım Saldırısı',affinity:'Yakınlık',startsZero:'Seviye 0’dan başlar',currentLevel:'Mevcut seviye',targetLevel:'Hedef seviye',currentAtk:'Mevcut Takım Saldırısı',targetAtk:'Hedef Takım Saldırısı',copperHorn:'Bakır Boynuz',silverGoblet:'Gümüş Kadeh',eliteSpices:'Elit Baharatlar',required:'Gerekli',available:'Mevcut',remaining:'Kalan',addAffinity:'Yakınlığı Özete Ekle',skills:'Beceriler',allSkills:'Dört becerinin tümü eklenebilir',manuscripts:'Uzman El Yazmaları',learningExp:'Öğrenme EXP',skillEffect:'Hedef etki',addSkill:'Beceriyi Özete Ekle',summary:'Özet',emptySummary:'Tüm gereksinimleri görmek için yakınlık veya beceri seviyeleri ekleyin.',affinityPoints:'Yakınlık Puanları',masterEmblems:'Uzman Amblemleri',emblemsOwned:'Mevcut amblemler',booksOwned:'Mevcut el yazmaları',expOwned:'Mevcut Öğrenme EXP',affinityOwned:'Hediyelerden yakınlık',copySummary:'Özeti Kopyala',reset:'Sıfırla',level:'Seviye',cost:'Maliyet',attack:'Takım Saldırısı',skill:'Beceri',copied:'Kopyalandı',plans:'plan'},
+ko:{brandSub:'KINGSHOT 마스터 플래너',role:'곰 사냥 마스터',heroDesc:'친밀도와 네 가지 스킬을 계획하고 모든 요구량을 하나의 간결한 요약에 모으세요.',bearDamage:'곰 사냥 피해',rallyCapacity:'집결 수용량',squadAtk:'레벨 100 부대 공격력',affinity:'친밀도',startsZero:'레벨 0부터 시작',currentLevel:'현재 레벨',targetLevel:'목표 레벨',currentAtk:'현재 부대 공격력',targetAtk:'목표 부대 공격력',copperHorn:'구리 뿔',silverGoblet:'은 잔',eliteSpices:'정예 향신료',required:'필요',available:'보유',remaining:'남음',addAffinity:'친밀도를 요약에 추가',skills:'스킬',allSkills:'네 가지 스킬 모두 추가 가능',manuscripts:'마스터 원고',learningExp:'학습 EXP',skillEffect:'목표 효과',addSkill:'스킬을 요약에 추가',summary:'요약',emptySummary:'친밀도 또는 스킬 레벨을 추가하면 모든 요구량이 표시됩니다.',affinityPoints:'친밀도 포인트',masterEmblems:'마스터 엠블럼',emblemsOwned:'보유 엠블럼',booksOwned:'보유 원고',expOwned:'보유 학습 EXP',affinityOwned:'선물 친밀도',copySummary:'요약 복사',reset:'초기화',level:'레벨',cost:'비용',attack:'부대 공격력',skill:'스킬',copied:'복사됨',plans:'계획'},
+ja:{brandSub:'KINGSHOT マスタープランナー',role:'熊狩りマスター',heroDesc:'親密度と4つのスキルを計画し、必要量を1つのコンパクトな概要にまとめます。',bearDamage:'熊狩りダメージ',rallyCapacity:'集結容量',squadAtk:'Lv.100 部隊攻撃',affinity:'親密度',startsZero:'レベル0から開始',currentLevel:'現在レベル',targetLevel:'目標レベル',currentAtk:'現在の部隊攻撃',targetAtk:'目標の部隊攻撃',copperHorn:'銅の角笛',silverGoblet:'銀の杯',eliteSpices:'エリートスパイス',required:'必要',available:'所持',remaining:'残り',addAffinity:'親密度を概要に追加',skills:'スキル',allSkills:'4つのスキルをすべて追加可能',manuscripts:'マスター写本',learningExp:'学習EXP',skillEffect:'目標効果',addSkill:'スキルを概要に追加',summary:'概要',emptySummary:'親密度またはスキルレベルを追加すると、すべての必要量が表示されます。',affinityPoints:'親密度ポイント',masterEmblems:'マスター紋章',emblemsOwned:'所持紋章',booksOwned:'所持写本',expOwned:'所持学習EXP',affinityOwned:'贈り物の親密度',copySummary:'概要をコピー',reset:'リセット',level:'レベル',cost:'コスト',attack:'部隊攻撃',skill:'スキル',copied:'コピー済み',plans:'計画'},
+zh:{brandSub:'KINGSHOT 专家规划器',role:'猎熊专家',heroDesc:'规划亲密度和四项技能，并在一个紧凑摘要中汇总全部需求。',bearDamage:'猎熊伤害',rallyCapacity:'集结容量',squadAtk:'100级部队攻击',affinity:'亲密度',startsZero:'从0级开始',currentLevel:'当前等级',targetLevel:'目标等级',currentAtk:'当前部队攻击',targetAtk:'目标部队攻击',copperHorn:'铜号角',silverGoblet:'银杯',eliteSpices:'精英香料',required:'需要',available:'拥有',remaining:'剩余',addAffinity:'将亲密度添加到摘要',skills:'技能',allSkills:'四项技能均可添加',manuscripts:'专家手稿',learningExp:'学习经验',skillEffect:'目标效果',addSkill:'将技能添加到摘要',summary:'摘要',emptySummary:'添加亲密度或技能等级以查看全部需求。',affinityPoints:'亲密度点数',masterEmblems:'专家徽章',emblemsOwned:'拥有的徽章',booksOwned:'拥有的手稿',expOwned:'拥有的学习经验',affinityOwned:'礼物亲密度',copySummary:'复制摘要',reset:'重置',level:'等级',cost:'花费',attack:'部队攻击',skill:'技能',copied:'已复制',plans:'计划'}};
+let lang=localStorage.getItem('saifksLanguage')||localStorage.getItem('saifks_lang')||'en';if(!I18N[lang])lang='en';let skillIndex=0;let planItems=[];const $=id=>document.getElementById(id),num=v=>Math.max(0,Number(v)||0),fmt=v=>Math.round(v).toLocaleString(lang==='ar'?'en-US':undefined),tr=k=>I18N[lang][k]||I18N.en[k]||k;
+function atk(l){return l===0?0:(LEVELS.find(x=>x.level===l)?.troops_attack_percent||0)}function cumulative(l,key){if(l===0)return 0;return LEVELS.find(x=>x.level===l)?.['cumulative_'+key]||0}function affinityCost(c,t,key){return t<=c?0:cumulative(t,key)-cumulative(c,key)}
+function fillAffinity(){curA.innerHTML='';tarA.innerHTML='';for(let i=0;i<=100;i++){let label=`${tr('level')} ${i} · ${atk(i).toFixed(2)}%`;curA.add(new Option(label,i));tarA.add(new Option(label,i))}}
+function skillLevels(s){return [{level:0,exp:0,books:0,effect_value:0},...s.levels]}function fillSkill(){let arr=skillLevels(SKILLS[skillIndex]);curS.innerHTML='';tarS.innerHTML='';arr.forEach(x=>{curS.add(new Option(`${tr('level')} ${x.level}`,x.level));tarS.add(new Option(`${tr('level')} ${x.level}`,x.level))})}
+function skillCost(c,t,key){return skillLevels(SKILLS[skillIndex]).filter(x=>x.level>c&&x.level<=t).reduce((a,x)=>a+(x[key]||0),0)}function targetEffect(t){return skillLevels(SKILLS[skillIndex]).find(x=>x.level===t)?.effect_value||0}
+function update(){let c=num(curA.value),t=num(tarA.value);if(t<c){t=c;tarA.value=t}let an=affinityCost(c,t,'affinity'),en=affinityCost(c,t,'advancement'),ah=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;affNeed.textContent=fmt(an);affHave.textContent=fmt(ah);affLeft.textContent=fmt(Math.max(0,an-ah));affinityOwned.value=fmt(ah);curAtk.textContent=atk(c).toFixed(2)+'%';tarAtk.textContent=atk(t).toFixed(2)+'%';let cs=num(curS.value),ts=num(tarS.value);if(ts<cs){ts=cs;tarS.value=ts}booksNeed.textContent=fmt(skillCost(cs,ts,'books'));expNeed.textContent=fmt(skillCost(cs,ts,'exp'));skillEffect.textContent=fmt(targetEffect(ts));renderTotals()}
+function buildLevelList(){levelList.innerHTML='';for(let i=0;i<=100;i++){let cost=i===0?0:(LEVELS.find(x=>x.level===i)?.affinity_cost||0);let d=document.createElement('div');d.className='level-line';d.innerHTML=`<b>${tr('level')} ${i}</b><span>${tr('attack')}: ${atk(i).toFixed(2)}%</span><span>${tr('cost')}: ${fmt(cost)}</span>`;levelList.appendChild(d)}}
+function renderTabs(){tabs.innerHTML='';SKILLS.forEach((s,i)=>{let b=document.createElement('button');b.className='tab'+(i===skillIndex?' active':'');b.textContent=`${tr('skill')} ${i+1}`;b.onclick=()=>{skillIndex=i;fillSkill();renderTabs();update()};tabs.appendChild(b)})}
+function addAffinityPlan(){let c=num(curA.value),t=num(tarA.value);if(t<=c)return;let p={id:'affinity',type:'affinity',c,t,aff:affinityCost(c,t,'affinity'),emblems:affinityCost(c,t,'advancement'),books:0,exp:0};let idx=planItems.findIndex(x=>x.id===p.id);if(idx>=0)planItems[idx]=p;else planItems.push(p);save();renderPlans()}
+function addSkillPlan(){let c=num(curS.value),t=num(tarS.value);if(t<=c)return;let p={id:'skill'+skillIndex,type:'skill',skill:skillIndex,c,t,aff:0,emblems:0,books:skillCost(c,t,'books'),exp:skillCost(c,t,'exp')};let idx=planItems.findIndex(x=>x.id===p.id);if(idx>=0)planItems[idx]=p;else planItems.push(p);save();renderPlans()}
+function totals(){return planItems.reduce((a,p)=>({aff:a.aff+p.aff,emblems:a.emblems+p.emblems,books:a.books+p.books,exp:a.exp+p.exp}),{aff:0,emblems:0,books:0,exp:0})}
+function renderTotals(){let t=totals();let gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;totalAff.textContent=fmt(Math.max(0,t.aff-gift));totalEmblems.textContent=fmt(Math.max(0,t.emblems-num(emblemsOwned.value)));totalBooks.textContent=fmt(Math.max(0,t.books-num(booksOwned.value)));totalExp.textContent=fmt(Math.max(0,t.exp-num(expOwned.value)))}
+function renderPlans(){let box=$('plans');box.innerHTML='';if(!planItems.length){box.innerHTML=`<div class="empty">${tr('emptySummary')}</div>`}else planItems.forEach((p,i)=>{let d=document.createElement('div');d.className='plan';let title=p.type==='affinity'?tr('affinity'):`${tr('skill')} ${p.skill+1}`;d.innerHTML=`<div class="plan-top"><b>${title}: ${p.c} → ${p.t}</b><button class="remove" aria-label="Remove">×</button></div><small>${tr('affinityPoints')}: ${fmt(p.aff)} · ${tr('masterEmblems')}: ${fmt(p.emblems)} · ${tr('manuscripts')}: ${fmt(p.books)} · ${tr('learningExp')}: ${fmt(p.exp)}</small>`;d.querySelector('button').onclick=()=>{planItems.splice(i,1);save();renderPlans()};box.appendChild(d)});planCount.textContent=`${planItems.length} ${tr('plans')}`;renderTotals()}
+function summaryText(){let t=totals(),gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;let lines=['Valora — SaifKS.com'];planItems.forEach(p=>lines.push(`${p.type==='affinity'?tr('affinity'):`${tr('skill')} ${p.skill+1}`}: ${p.c} → ${p.t}`));lines.push('',`${tr('affinityPoints')}: ${fmt(Math.max(0,t.aff-gift))}`,`${tr('masterEmblems')}: ${fmt(Math.max(0,t.emblems-num(emblemsOwned.value)))}`,`${tr('manuscripts')}: ${fmt(Math.max(0,t.books-num(booksOwned.value)))}`,`${tr('learningExp')}: ${fmt(Math.max(0,t.exp-num(expOwned.value)))}`);return lines.join('\n')}
+function save(){localStorage.setItem('saifksMastersValoraPlans',JSON.stringify(planItems))}function load(){try{planItems=JSON.parse(localStorage.getItem('saifksMastersValoraPlans')||'[]')}catch{planItems=[]}}
+function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;localStorage.setItem('saifksLanguage',lang);localStorage.setItem('saifks_lang',lang);fillAffinity();fillSkill();renderTabs();buildLevelList();renderPlans();update()}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',update));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});addAffinity.onclick=addAffinityPlan;addSkill.onclick=addSkillPlan;copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}let old=copy.textContent;copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];save();document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;renderPlans();update()};load();applyLang();
+</script></body></html>
