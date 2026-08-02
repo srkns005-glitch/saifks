@@ -459,6 +459,31 @@ body.v3-open{overflow:hidden}
   .v3-preview-badge{font-size:8px;padding:6px 9px}.skill-detail:before{font-size:7px}
 }
 
+
+/* v55 — declutter, stronger navigation, stable skill selection */
+.hero{padding:12px;gap:14px}.hero-art{height:170px}.hero-art img{max-height:170px}
+.ultimate-dashboard{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:8px}
+.ultimate-kpi{padding:8px 9px;border-radius:12px;min-height:54px}
+.ultimate-kpi span{font-size:8px}.ultimate-kpi b{font-size:13px;margin-top:3px}
+.ultimate-progress-wrap{margin-top:7px;padding:8px 10px;border-radius:12px}
+.ultimate-progress-head{margin-bottom:6px}.ultimate-progress{height:6px}
+.ultimate-complete{margin-top:7px;padding:7px 10px}
+.expert-switch{gap:8px;padding:9px;background:rgba(4,14,27,.76);border-color:rgba(255,255,255,.13)}
+.expert-switch button{opacity:.72;border-color:rgba(255,255,255,.09);background:rgba(255,255,255,.025);box-shadow:none;transition:transform .18s ease,opacity .18s ease,border-color .18s ease,background .18s ease}
+.expert-switch button:hover{opacity:.94}
+.expert-switch button.active{opacity:1;transform:translateY(-1px);border:2px solid var(--expert-a);background:linear-gradient(135deg,color-mix(in srgb,var(--expert-a) 24%,#071321),color-mix(in srgb,var(--expert-b) 15%,#071321));box-shadow:0 0 0 3px color-mix(in srgb,var(--expert-a) 12%,transparent),0 10px 24px rgba(0,0,0,.25)}
+.expert-switch button.active:after{height:3px;bottom:3px;left:25%;right:25%;background:linear-gradient(90deg,transparent,var(--expert-a),var(--expert-b),transparent)}
+.tabs{gap:8px;margin-bottom:14px}.tab{min-height:44px;border:1px solid rgba(255,255,255,.10);background:rgba(2,12,23,.52);opacity:.74;transition:.18s ease}
+.tab:hover{opacity:1;border-color:rgba(88,214,255,.35)}
+.tab.active{opacity:1;border:2px solid var(--expert-a);background:linear-gradient(135deg,color-mix(in srgb,var(--expert-a) 26%,#071321),color-mix(in srgb,var(--expert-b) 18%,#071321));color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--expert-a) 10%,transparent)}
+.skill-detail{padding:12px;margin-bottom:10px}.ultimate-skill-preview{gap:7px;margin-top:8px}.ultimate-skill-state{padding:8px 9px;border-radius:11px}.ultimate-skill-state b{font-size:12px}.ultimate-unlock{margin-top:6px}
+.materials-panel{padding:12px}.materials-grid{gap:7px}.material-item{padding:8px;border-radius:13px}.material-item img{width:48px;height:48px}.material-item input{height:34px}
+.card{padding:12px}.layout{gap:14px}.main{gap:14px}.summary-card{padding:12px}
+.ultimate-cost-dashboard{gap:7px;margin-bottom:10px}.ultimate-cost{padding:8px 9px;border-radius:12px}.ultimate-cost-track{margin-top:6px}
+@media(max-width:920px){.hero{grid-template-columns:145px 1fr}.hero-art{height:145px}.hero-art img{max-height:145px}.ultimate-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.hero{grid-template-columns:92px 1fr;padding:9px}.hero-art{height:108px}.hero-art img{max-height:108px}.ultimate-dashboard{grid-template-columns:1fr 1fr;gap:5px}.ultimate-kpi{min-height:47px;padding:6px 7px}.ultimate-progress-wrap{padding:7px 8px}.expert-switch{padding:7px 38px}.expert-switch button{flex-basis:124px;min-height:47px}.tabs{grid-template-columns:1fr 1fr;gap:6px}.tab{min-height:42px;padding:6px}.materials-panel{padding:9px}.material-item{padding:7px}.ultimate-cost-dashboard{grid-template-columns:1fr 1fr 1fr;gap:5px}.ultimate-cost{padding:7px}.ultimate-cost span{font-size:8px}.ultimate-cost b{font-size:11px}.ultimate-cost-track{display:none}}
+@media(max-width:390px){.ultimate-cost-dashboard{grid-template-columns:1fr}.ultimate-cost-track{display:block}.expert-switch button{flex-basis:116px}}
+
 </style>
 <style id="ultimateStyles">
 /* ===== Masters Ultimate — product-grade layer ===== */
@@ -734,7 +759,6 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
     const aff=numText('totalAff'),emb=numText('totalEmblems'),books=numText('totalBooks');$('uAffCost')&&($('uAffCost').textContent=$('totalAff')?.textContent||'0');$('uEmbCost')&&($('uEmbCost').textContent=$('totalEmblems')?.textContent||'0');$('uBookCost')&&($('uBookCost').textContent=$('totalBooks')?.textContent||'0');
     const gift=(Number($('horn')?.value||0)*10)+(Number($('goblet')?.value||0)*100)+(Number($('spices')?.value||0)*1000),emOwn=Number($('emblemsOwned')?.value||0),bookOwn=Number($('booksOwned')?.value||0);const pct=(owned,need)=>need<=0?0:Math.min(100,owned/need*100);$('uAffTrack')&&($('uAffTrack').style.width=pct(gift,aff)+'%');$('uEmbTrack')&&($('uEmbTrack').style.width=pct(emOwn,emb)+'%');$('uBookTrack')&&($('uBookTrack').style.width=pct(bookOwn,books)+'%');
     const sc=Number($('curS')?.value||0),st=Number($('tarS')?.value||0);$('uSkillCurrent')&&($('uSkillCurrent').textContent=effectFor(sc));$('uSkillTarget')&&($('uSkillTarget').textContent=effectFor(st));const sk=currentSkill();$('uSkillUnlock')&&($('uSkillUnlock').textContent=sk?`Skill ${skillIndex+1} · Max Lv. ${maxSkillLevel(sk)}`:'');
-    document.querySelector('.expert-tab.active')?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   }
   const observer=new MutationObserver(()=>requestAnimationFrame(syncUltimate));['plans','expertHeroName','curAtk','tarAtk','totalAff','totalEmblems','totalBooks','skillName','skillEffect'].forEach(id=>{const e=$(id);if(e)observer.observe(e,{childList:true,subtree:true,characterData:true})});document.addEventListener('input',()=>requestAnimationFrame(syncUltimate));document.addEventListener('change',()=>requestAnimationFrame(syncUltimate));document.querySelectorAll('.expert-tab,.tab').forEach(b=>b.addEventListener('click',()=>setTimeout(syncUltimate,30)));setTimeout(syncUltimate,120);
 })();
