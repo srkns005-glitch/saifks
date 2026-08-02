@@ -282,8 +282,106 @@ body{
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+
+/* ===== Masters V2 — clearly differentiated premium preview ===== */
+body{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(48,113,255,.20),transparent 34%),
+    radial-gradient(circle at 92% 12%,rgba(255,183,77,.15),transparent 30%),
+    linear-gradient(180deg,#040b14 0%,#081321 48%,#06101c 100%);
+}
+.app{width:min(100% - 26px,1440px);padding-bottom:34px}
+.top{
+  margin-top:12px;padding:11px 15px;border:1px solid rgba(145,198,255,.18);
+  border-radius:18px;background:rgba(7,18,32,.82);backdrop-filter:blur(18px);
+  box-shadow:0 14px 38px rgba(0,0,0,.26);
+}
+.brand{font-size:18px;letter-spacing:.2px}.brand small{opacity:.62;letter-spacing:1.25px}
+.v2-preview{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin:12px 0 10px;padding:10px 14px;border:1px solid rgba(255,196,92,.27);
+  border-radius:16px;background:linear-gradient(135deg,rgba(255,196,92,.13),rgba(82,178,255,.08));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+.v2-preview span{font-size:11px;font-weight:900;letter-spacing:1.8px;color:#ffc86a}
+.v2-preview b{font-size:12px;color:#d9ebff;font-weight:700}
+.hero{
+  display:grid;grid-template-columns:240px 1fr;min-height:250px;padding:18px 24px;
+  border-radius:30px;border:1px solid rgba(118,192,255,.22);
+  background:
+    linear-gradient(120deg,rgba(20,43,72,.96),rgba(8,22,39,.97) 58%,rgba(42,32,19,.82));
+  box-shadow:0 24px 70px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.hero-art{height:216px;border:none;background:radial-gradient(circle at 50% 65%,rgba(255,204,102,.26),rgba(85,175,255,.10) 44%,transparent 72%)}
+.hero-art img{max-height:214px}
+.hero-identity{align-self:center;padding:10px 0}
+.hero h1{font-size:clamp(34px,5vw,52px);margin-bottom:10px}
+.hero-identity .hero-sub{display:inline-flex;padding:9px 16px;border-radius:999px;background:rgba(255,196,92,.10);border:1px solid rgba(255,196,92,.27)}
+.expert-switch{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px;padding:12px;
+  border-radius:24px;background:rgba(7,20,36,.88);border:1px solid rgba(130,194,255,.17)
+}
+.expert-switch button{
+  height:72px;min-height:72px;padding:8px 10px;border-radius:17px;flex-direction:column;gap:4px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid rgba(145,198,255,.12);font-weight:800;
+}
+.expert-switch button.active{
+  border-color:rgba(255,196,92,.55);
+  background:linear-gradient(145deg,rgba(255,196,92,.20),rgba(72,171,255,.16));
+  box-shadow:0 12px 28px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.12)
+}
+.expert-switch img{height:40px;max-height:40px;width:48px;object-fit:contain}
+.materials-panel{
+  margin-top:14px;padding:18px 18px 16px;border-radius:26px;
+  background:rgba(9,24,41,.88);border:1px solid rgba(130,194,255,.17)
+}
+.materials-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.material-item{
+  display:grid;grid-template-columns:58px minmax(0,1fr);align-items:center;padding:11px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  border:1px solid rgba(150,205,255,.12)
+}
+.material-item img{width:58px;height:58px}.material-item input{height:38px;border-radius:11px}
+.layout{grid-template-columns:minmax(0,1.6fr) minmax(330px,.6fr);gap:18px;margin-top:18px}
+.main{gap:18px}.card,.summary-card{padding:20px;border-radius:26px}
+.card{
+  background:linear-gradient(160deg,rgba(13,31,53,.94),rgba(7,20,36,.95));
+  border:1px solid rgba(130,194,255,.16);box-shadow:0 18px 48px rgba(0,0,0,.26)
+}
+.card .head{padding-bottom:13px;border-bottom:1px solid rgba(144,198,255,.10);margin-bottom:16px}
+.head h2{font-size:20px}.hint{font-size:11px;padding:5px 9px;border-radius:999px;background:rgba(95,177,255,.08)}
+.field label{font-weight:800;letter-spacing:.15px}.field input,.field select{height:50px;border-radius:14px}
+.meta,.metric,.total{border-radius:15px;padding:13px;background:rgba(255,255,255,.035)}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:8px;border-radius:16px;background:rgba(0,0,0,.16)}
+.tab{min-height:54px;border-radius:13px;font-weight:850}
+.tab.active{background:linear-gradient(135deg,rgba(255,197,92,.20),rgba(74,172,255,.16));border-color:rgba(255,197,92,.42)}
+.skill-detail{padding:18px;border-radius:19px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.skill-detail h3{font-size:21px}.skill-detail p{font-size:13px;line-height:1.75}
+.gain-box{border-radius:16px;padding:14px}
+.side{top:88px}.summary-card{
+  background:linear-gradient(165deg,rgba(30,45,66,.98),rgba(7,19,34,.98));
+  border:1px solid rgba(255,197,92,.20);box-shadow:0 20px 58px rgba(0,0,0,.34)
+}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plan{min-height:76px;padding:12px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(145,198,255,.11)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.copy,.reset{height:48px;border-radius:14px}
+.footer{border-radius:18px}
+@media(max-width:1100px){.materials-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.expert-switch{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:920px){.hero{grid-template-columns:180px 1fr;min-height:200px}.hero-art{height:176px}.hero-art img{max-height:174px}.layout{grid-template-columns:1fr}.side{position:static}.summary-card{position:relative}}
+@media(max-width:620px){
+  .app{width:min(100% - 12px,1440px)}.top{border-radius:14px}.v2-preview{border-radius:13px}
+  .hero{grid-template-columns:116px 1fr;min-height:146px;padding:11px 12px;border-radius:21px}.hero-art{height:122px}.hero-art img{max-height:120px}.hero h1{font-size:26px}
+  .expert-switch{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:7px;border-radius:18px}.expert-switch button{height:60px;min-height:60px;flex-direction:row;justify-content:flex-start}.expert-switch img{height:44px;max-height:44px;width:48px}
+  .materials-panel{padding:12px;border-radius:19px}.materials-grid{grid-template-columns:1fr 1fr;gap:8px}.material-item{grid-template-columns:45px 1fr;padding:8px}.material-item img{width:45px;height:45px}
+  .card,.summary-card{padding:13px;border-radius:19px}.tabs{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.layout{gap:12px;margin-top:12px}
+}
+@media(max-width:390px){.materials-grid{grid-template-columns:1fr}.hero{grid-template-columns:100px 1fr}.hero-art{height:112px}.hero-art img{max-height:110px}}
+
 </style></head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
+<div class="v2-preview"><span>MASTERS V2</span><b>Premium Preview</b></div>
 <section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
 <nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav><section class="materials-panel glass"><div class="head"><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
 <div class="material-item"><img src="copper-horn.png" alt="Copper Horn"><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
