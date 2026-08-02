@@ -49,19 +49,28 @@
 
 .expert-tab[data-expert="wilson"] img{width:52px;height:52px;transform:scale(1.22);transform-origin:center bottom}.hero-art img[src="wilson-v32.png"]{max-height:330px;transform:scale(1.04);transform-origin:center bottom}
 
-/* v33: unified compact master tabs */
+/* v34: two equal master tabs per row, preserving compact height */
 .expert-switch{
-  grid-template-columns:repeat(5,minmax(0,1fr));
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:7px;
   padding:8px;
+  overflow:visible;
 }
 .expert-switch button{
+  width:100%;
   min-width:0;
   min-height:48px;
+  height:48px;
   padding:6px 8px;
   gap:7px;
   border-radius:12px;
   font-size:12px;
+}
+.expert-switch button:last-child:nth-child(odd){
+  grid-column:1 / -1;
+  width:calc((100% - 7px) / 2);
+  justify-self:center;
 }
 .expert-switch img,
 .expert-tab[data-expert="cassia"] img,
@@ -71,32 +80,32 @@
   transform:none !important;
   object-fit:contain;
   object-position:center;
+  flex:0 0 34px;
 }
 @media(max-width:620px){
   .expert-switch{
-    display:grid;
-    grid-auto-flow:column;
-    grid-template-columns:none;
-    grid-auto-columns:92px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:6px;
-    overflow-x:auto;
-    overscroll-behavior-inline:contain;
-    scrollbar-width:thin;
     padding:7px;
+    overflow:visible;
   }
   .expert-switch button{
-    width:92px;
-    min-height:44px;
-    padding:5px 6px;
-    gap:5px;
+    width:100%;
+    min-height:48px;
+    height:48px;
+    padding:6px 7px;
+    gap:6px;
     font-size:11px;
+  }
+  .expert-switch button:last-child:nth-child(odd){
+    width:calc((100% - 6px) / 2);
   }
   .expert-switch img,
   .expert-tab[data-expert="cassia"] img,
   .expert-tab[data-expert="wilson"] img{
-    width:30px !important;
-    height:30px !important;
-    transform:none !important;
+    width:32px !important;
+    height:32px !important;
+    flex-basis:32px;
   }
 }
 </style></head><body><div class="app">
