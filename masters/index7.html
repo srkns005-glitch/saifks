@@ -1044,51 +1044,196 @@ html[dir="rtl"] .app-hero-eyebrow{letter-spacing:0}
 }
 </style>
 
+
+<style id="atlas-v66-rebuilt-hero-header">
+#heroProfile.app-hero{
+  --hero-accent:88,214,255;
+  position:relative!important;
+  isolation:isolate;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:14px!important;
+  padding:18px!important;
+  overflow:hidden!important;
+  border-radius:26px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.035))!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 22px 55px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04)!important;
+  backdrop-filter:blur(28px) saturate(150%)!important;
+  -webkit-backdrop-filter:blur(28px) saturate(150%)!important;
+}
+#heroProfile.app-hero::before{
+  content:"";
+  position:absolute;
+  width:420px;height:420px;
+  left:50%;top:-285px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--hero-accent),.34),transparent 68%);
+  filter:blur(8px);
+  opacity:.72;
+  z-index:-2;
+}
+#heroProfile.app-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 22%,transparent 74%,rgba(255,255,255,.035));
+  opacity:.5;
+  pointer-events:none;
+  z-index:-1;
+}
+#heroProfile[data-expert="valora"]{--hero-accent:255,110,118}
+#heroProfile[data-expert="pan"]{--hero-accent:255,166,74}
+#heroProfile[data-expert="roman"]{--hero-accent:82,207,151}
+#heroProfile[data-expert="cassia"]{--hero-accent:255,203,91}
+#heroProfile[data-expert="wilson"]{--hero-accent:77,165,255}
+#heroProfile[data-expert="guinevere"]{--hero-accent:180,126,255}
+
+.hero-title-block{text-align:center}
+.hero-kicker{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:24px;padding:0 10px;border-radius:999px;
+  border:1px solid rgba(var(--hero-accent),.28);
+  background:rgba(var(--hero-accent),.10);
+  color:rgb(var(--hero-accent));
+  font-size:9px;font-weight:950;letter-spacing:.13em;
+}
+.hero-title-block h1{
+  margin:8px 0 3px!important;
+  font-size:clamp(28px,5vw,42px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.035em!important;
+}
+.hero-title-block .hero-sub{
+  display:block!important;padding:0!important;margin:0!important;
+  background:none!important;border:0!important;box-shadow:none!important;
+  color:var(--muted)!important;font-size:12px!important;
+}
+.hero-portrait-stage{
+  position:relative;
+  height:260px;
+  display:flex;align-items:flex-end;justify-content:center;
+  overflow:hidden;border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  border:1px solid rgba(255,255,255,.09);
+}
+.hero-portrait-glow{
+  position:absolute;width:210px;height:210px;
+  left:50%;bottom:24px;transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--hero-accent),.25),transparent 68%);
+  filter:blur(5px);
+}
+.hero-portrait-stage #expertHeroImage{
+  position:relative;z-index:1;
+  width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center bottom!important;
+  margin:0!important;padding:0!important;transform:none!important;
+  filter:drop-shadow(0 16px 18px rgba(0,0,0,.34)) drop-shadow(0 0 18px rgba(var(--hero-accent),.14))!important;
+}
+.hero-progress-wrap{
+  padding:11px 13px;border-radius:16px;
+  background:rgba(1,9,18,.28);
+  border:1px solid rgba(255,255,255,.08);
+}
+.hero-progress-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;margin-bottom:8px;color:var(--muted);font-size:10px;
+}
+.hero-progress-meta strong{color:var(--text);font-size:11px;white-space:nowrap}
+.hero-progress-track{
+  position:relative;height:8px;border-radius:999px;
+  overflow:hidden;background:rgba(255,255,255,.08);
+}
+.hero-progress-track span{
+  position:absolute;inset:0 auto 0 0;width:0;border-radius:inherit;
+  transition:width .2s ease;
+}
+#heroProgressTarget{z-index:1;background:linear-gradient(90deg,rgba(var(--hero-accent),.35),rgb(var(--hero-accent)))}
+#heroProgressCurrent{z-index:2;background:rgba(255,255,255,.43);box-shadow:1px 0 0 rgba(255,255,255,.95)}
+.hero-stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.hero-stat-card{
+  min-width:0;min-height:64px;padding:10px 11px;border-radius:15px;
+  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.024));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+.hero-stat-card span{display:block;margin-bottom:5px;color:var(--muted);font-size:9px;line-height:1.2}
+.hero-stat-card strong{display:block;color:var(--text);font-size:13px;line-height:1.2;overflow-wrap:anywhere}
+.hero-stat-status strong{color:rgb(var(--hero-accent))}
+html[dir="rtl"] .hero-progress-track span{inset:0 0 0 auto}
+html[dir="rtl"] .hero-kicker{letter-spacing:0}
+@media(min-width:900px){
+  #heroProfile.app-hero{max-width:760px;margin-inline:auto;padding:22px!important}
+  .hero-portrait-stage{height:300px}
+}
+@media(max-width:620px){
+  #heroProfile.app-hero{gap:11px!important;padding:12px!important;border-radius:21px!important}
+  .hero-kicker{min-height:21px;padding:0 8px;font-size:8px}
+  .hero-title-block h1{margin:6px 0 2px!important;font-size:clamp(23px,8vw,31px)!important}
+  .hero-title-block .hero-sub{font-size:10px!important}
+  .hero-portrait-stage{height:205px;border-radius:17px}
+  .hero-portrait-glow{width:165px;height:165px;bottom:16px}
+  .hero-progress-wrap{padding:9px 10px;border-radius:13px}
+  .hero-stats-row{gap:6px}
+  .hero-stat-card{min-height:54px;padding:8px;border-radius:12px}
+  .hero-stat-card span{font-size:8px;margin-bottom:3px}
+  .hero-stat-card strong{font-size:10px}
+}
+@media(max-width:390px){
+  .hero-portrait-stage{height:188px}
+  .hero-progress-meta span{display:none}
+}
+</style>
+
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 
 
 
+
 <section class="hero app-hero glass" id="heroProfile" data-expert="valora">
-  <div class="app-hero-art">
-    
+  <div class="hero-title-block">
+    <span class="hero-kicker" id="heroEyebrow">MASTER PROFILE</span>
+    <h1 id="expertHeroName">Valora</h1>
+    <div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div>
+  </div>
+
+  <div class="hero-portrait-stage">
+    <div class="hero-portrait-glow" aria-hidden="true"></div>
     <img id="expertHeroImage" src="hero-valora.png" alt="Valora">
   </div>
 
-  <div class="app-hero-content">
-    <div class="app-hero-heading">
-      <span class="app-hero-eyebrow" id="heroEyebrow">MASTER PROFILE</span>
-      <h1 id="expertHeroName">Valora</h1>
-      <div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div>
+  <div class="hero-progress-wrap">
+    <div class="hero-progress-meta">
+      <span id="heroProgressLabel">Affinity progress</span>
+      <strong id="heroProgressLevels">Lv. 0 → Lv. 0</strong>
     </div>
-
-    <div class="app-progress-card">
-      <div class="app-progress-top">
-        <span id="heroProgressLabel">Affinity progress</span>
-        <b id="heroProgressLevels">Lv. 0 → Lv. 0</b>
-      </div>
-      <div class="app-progress-track" aria-hidden="true">
-        <span id="heroProgressCurrent"></span>
-        <span id="heroProgressTarget"></span>
-      </div>
-    </div>
-
-    <div class="app-quick-stats">
-      <div class="app-stat">
-        <span id="heroAffinityLabel">Affinity</span>
-        <b id="heroAffinityValue">0 → 0</b>
-      </div>
-      <div class="app-stat">
-        <span id="heroBonusLabel">Target bonus</span>
-        <b id="heroBonusValue">0.00%</b>
-      </div>
-      <div class="app-stat app-stat-status">
-        <span id="heroStatusLabel">Status</span>
-        <b id="heroStatusValue">Set target</b>
-      </div>
+    <div class="hero-progress-track" aria-hidden="true">
+      <span id="heroProgressTarget"></span>
+      <span id="heroProgressCurrent"></span>
     </div>
   </div>
+
+  <div class="hero-stats-row">
+    <article class="hero-stat-card">
+      <span id="heroAffinityLabel">Affinity</span>
+      <strong id="heroAffinityValue">0 → 0</strong>
+    </article>
+    <article class="hero-stat-card">
+      <span id="heroBonusLabel">Target bonus</span>
+      <strong id="heroBonusValue">0.00%</strong>
+    </article>
+    <article class="hero-stat-card hero-stat-status">
+      <span id="heroStatusLabel">Status</span>
+      <strong id="heroStatusValue">Set target</strong>
+    </article>
+  </div>
 </section>
+
 
 <nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav><div class="app-segment" role="navigation" aria-label="Page sections">
 <button type="button" data-go="affinitySection"><span>◈</span><b data-i18n="affinity">Affinity</b></button>
