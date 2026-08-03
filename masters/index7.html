@@ -264,7 +264,7 @@ body{
 }
 
 @media(max-width:920px){
-  .hero{grid-template-columns:170px minmax(0,1fr);min-height:184px;padding:14px 16px}.hero-art{height:164px}.hero-art img{max-height:160px}
+  .hero{grid-template-columns:170px minmax(0,1fr);min-height:184px;padding:8px 12px}.hero-art{height:164px}.hero-art img{max-height:160px}
   .layout{grid-template-columns:1fr}.summary-card{position:relative}.side{position:static}
 }
 @media(max-width:620px){
@@ -544,7 +544,13 @@ html[dir="rtl"] .plan-route{direction:rtl}html[dir="rtl"] .plan-state{text-align
 @media(max-width:920px){.expert-switch{grid-template-columns:repeat(3,minmax(0,1fr))!important}.side{position:static}.hero{grid-template-columns:130px 1fr}.hero-art,.hero-art img{height:140px;max-height:140px}}
 @media(max-width:620px){body{padding-bottom:82px}.app{width:min(100% - 12px,1180px)}.hero{grid-template-columns:105px 1fr;min-height:138px;padding:10px 12px;border-radius:20px}.hero-art,.hero-art img{height:118px;max-height:118px}.hero h1{font-size:25px}.expert-switch{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;padding:6px!important;border-radius:18px!important}.expert-switch button,.expert-switch button:last-child:nth-child(odd){height:72px!important;min-height:72px!important;font-size:9.5px!important}.expert-switch img,.expert-tab[data-expert="cassia"] img,.expert-tab[data-expert="wilson"] img{width:42px!important;height:42px!important;flex-basis:42px!important}.materials-panel,.card,.summary-card{border-radius:18px}.materials-grid{grid-template-columns:1fr 1fr}.material-item{grid-template-columns:36px 1fr;padding:6px}.material-item img{width:36px;height:36px}.tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tab{min-height:50px!important}.plan-route{grid-template-columns:1fr 26px 1fr}.summary-card{max-height:calc(100dvh - 98px);overflow:auto}}
 @media(max-width:380px){.expert-switch{grid-template-columns:repeat(2,minmax(0,1fr))!important}.materials-grid{grid-template-columns:1fr}.tabs{grid-template-columns:1fr 1fr!important}}
-</style></head><body><div class="app">
+</style>
+<style id="atlas_override">
+input,select{min-height:36px!important;height:36px!important}
+.summary,.summary-card,#summary{display:block!important;position:static!important}
+.glass,.card,.panel{backdrop-filter:blur(14px);background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.12)!important}
+</style>
+</head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 
 
