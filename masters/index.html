@@ -297,14 +297,9 @@ body{
   box-shadow:0 14px 38px rgba(0,0,0,.26);
 }
 .brand{font-size:18px;letter-spacing:.2px}.brand small{opacity:.62;letter-spacing:1.25px}
-.v2-preview{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin:12px 0 10px;padding:10px 14px;border:1px solid rgba(255,196,92,.27);
-  border-radius:16px;background:linear-gradient(135deg,rgba(255,196,92,.13),rgba(82,178,255,.08));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-}
-.v2-preview span{font-size:11px;font-weight:900;letter-spacing:1.8px;color:#ffc86a}
-.v2-preview b{font-size:12px;color:#d9ebff;font-weight:700}
+
+
+
 .hero{
   display:grid;grid-template-columns:240px 1fr;min-height:250px;padding:18px 24px;
   border-radius:30px;border:1px solid rgba(118,192,255,.22);
@@ -371,7 +366,7 @@ body{
 @media(max-width:1100px){.materials-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.expert-switch{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:920px){.hero{grid-template-columns:180px 1fr;min-height:200px}.hero-art{height:176px}.hero-art img{max-height:174px}.layout{grid-template-columns:1fr}.side{position:static}.summary-card{position:relative}}
 @media(max-width:620px){
-  .app{width:min(100% - 12px,1440px)}.top{border-radius:14px}.v2-preview{border-radius:13px}
+  .app{width:min(100% - 12px,1440px)}.top{border-radius:14px}
   .hero{grid-template-columns:116px 1fr;min-height:146px;padding:11px 12px;border-radius:21px}.hero-art{height:122px}.hero-art img{max-height:120px}.hero h1{font-size:26px}
   .expert-switch{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:7px;border-radius:18px}.expert-switch button{height:60px;min-height:60px;flex-direction:row;justify-content:flex-start}.expert-switch img{height:44px;max-height:44px;width:48px}
   .materials-panel{padding:12px;border-radius:19px}.materials-grid{grid-template-columns:1fr 1fr;gap:8px}.material-item{grid-template-columns:45px 1fr;padding:8px}.material-item img{width:45px;height:45px}
@@ -420,7 +415,7 @@ body{
   --v3-warn:#ffbd6a;
 }
 body.v3-open{overflow:hidden}
-.v3-preview-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;border:1px solid rgba(255,211,107,.36);background:rgba(255,211,107,.09);color:var(--v3-royal);font-size:10px;font-weight:950;letter-spacing:1.5px;text-transform:uppercase}
+
 .hero-identity{gap:10px}
 .v3-hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .v3-hero-chip{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid rgba(130,194,255,.18);border-radius:12px;background:rgba(5,16,29,.46);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
@@ -456,54 +451,19 @@ body.v3-open{overflow:hidden}
 }
 @media(max-width:620px){
   .v3-hero-meta{gap:6px;margin-top:8px}.v3-hero-chip{padding:6px 8px}.v3-hero-chip span{font-size:8px}.v3-hero-chip b{font-size:10px}
-  .v3-preview-badge{font-size:8px;padding:6px 9px}.skill-detail:before{font-size:7px}
+  .skill-detail:before{font-size:7px}
 }
 
 </style>
-<style id="remaining-red-fix">
-.remaining-negative{
+<style id="remaining-source-style">
+#affLeft,#emblemLeft,#totalAff,#totalEmblems,#totalBooks{
   color:#ff4d4f !important;
-  font-weight:800 !important;
+  font-weight:900 !important;
 }
 </style>
-<script id="remaining-red-fix-js">
-(function(){
-  function updateRemainingValues(root){
-    (root || document).querySelectorAll(
-      '[id*="remaining" i], [class~="remaining"], [class*="remaining-" i], [data-role="remaining"]'
-    ).forEach(function(el){
-      var raw=(el.textContent || '').trim();
-      var match=raw.match(/-?\d[\d,.]*/);
-      if(!match) return;
-
-      var value=match[0].replace(/^-/,'');
-      el.textContent='- ' + value;
-      el.classList.add('remaining-negative');
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded',function(){
-    updateRemainingValues(document);
-
-    new MutationObserver(function(mutations){
-      mutations.forEach(function(mutation){
-        if(mutation.target && mutation.target.nodeType===1){
-          updateRemainingValues(mutation.target.closest('[id*="remaining" i], [class*="remaining" i]') || mutation.target);
-        }
-      });
-    }).observe(document.documentElement,{
-      childList:true,
-      subtree:true,
-      characterData:true
-    });
-  });
-})();
-</script>
 
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
-<div class="v2-preview"><span></span><b></b></div>
-<div class="v3-preview-badge">Masters V3 · Game UI</div>
 <section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
 <nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav><section class="materials-panel glass"><div class="head"><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
 <div class="material-item"><img src="copper-horn.png" alt="Copper Horn"><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
@@ -634,15 +594,15 @@ function rebuildPlans(){
   skillSelections.forEach((sel,i)=>{let c=num(sel.c),t=num(sel.t);if(t>c)next.push({id:'skill'+i,type:'skill',skill:i,c,t,aff:0,emblems:0,books:skillCostFor(i,c,t,'books'),gain:Math.max(0,targetEffectFor(i,t)-targetEffectFor(i,c)),gainSecondary:Math.max(0,targetSecondaryEffectFor(i,t)-targetSecondaryEffectFor(i,c))})});
   planItems=next;save();renderPlans();
 }
-function update(){let c=num(curA.value),t=num(tarA.value);if(t<c){t=c;tarA.value=t}let an=affinityCost(c,t,'affinity'),en=affinityCost(c,t,'advancement'),ah=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;affNeed.textContent=fmt(an);affHave.textContent=fmt(ah);affLeft.textContent=fmt(Math.max(0,an-ah));affinityOwned.value=fmt(ah);emblemNeed.textContent=fmt(en);emblemHave.textContent=fmt(num(emblemsOwned.value));emblemLeft.textContent=fmt(Math.max(0,en-num(emblemsOwned.value)));if(activeExpert==='roman'){curAtk.textContent=`${romanTr('attackShort')} ${atk(c).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${romanTr('attackShort')} ${atk(t).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='cassia'){curAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(c).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(c).toFixed(1)}%`;tarAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(t).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(t).toFixed(1)}%`}else if(activeExpert==='wilson'){curAtk.textContent=`${wilsonTr('attackShort')} ${atk(c).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${wilsonTr('attackShort')} ${atk(t).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='guinevere'){curAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(c).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(t).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(t).toFixed(2)}%`}else{curAtk.textContent=atk(c).toFixed(2)+'%';tarAtk.textContent=atk(t).toFixed(2)+'%';}let cs=num(curS.value),ts=num(tarS.value);if(ts<cs){ts=cs;tarS.value=ts}skillSelections[skillIndex]={c:cs,t:ts};const skill=SKILLS[skillIndex],cv=targetEffect(cs),tv=targetEffect(ts),csv=targetSecondaryEffect(cs),tsv=targetSecondaryEffect(ts),gain=Math.max(0,tv-cv),gainSecondary=Math.max(0,tsv-csv);booksNeed.textContent=fmt(skillCost(cs,ts,'books'));currentSkillEffect.textContent=effectLabel(skill,cv,csv);skillEffect.textContent=effectLabel(skill,tv,tsv);skillGain.textContent=(gain||gainSecondary)?effectLabel(skill,gain,gainSecondary):'—';skillName.textContent=skillName(skill);skillDescription.textContent=skillDesc(skill);rebuildPlans()}
+function update(){let c=num(curA.value),t=num(tarA.value);if(t<c){t=c;tarA.value=t}let an=affinityCost(c,t,'affinity'),en=affinityCost(c,t,'advancement'),ah=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;affNeed.textContent=fmt(an);affHave.textContent=fmt(ah);affLeft.textContent='- '+fmt(Math.max(0,an-ah));affinityOwned.value=fmt(ah);emblemNeed.textContent=fmt(en);emblemHave.textContent=fmt(num(emblemsOwned.value));emblemLeft.textContent='- '+fmt(Math.max(0,en-num(emblemsOwned.value)));if(activeExpert==='roman'){curAtk.textContent=`${romanTr('attackShort')} ${atk(c).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${romanTr('attackShort')} ${atk(t).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='cassia'){curAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(c).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(c).toFixed(1)}%`;tarAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(t).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(t).toFixed(1)}%`}else if(activeExpert==='wilson'){curAtk.textContent=`${wilsonTr('attackShort')} ${atk(c).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${wilsonTr('attackShort')} ${atk(t).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='guinevere'){curAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(c).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(t).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(t).toFixed(2)}%`}else{curAtk.textContent=atk(c).toFixed(2)+'%';tarAtk.textContent=atk(t).toFixed(2)+'%';}let cs=num(curS.value),ts=num(tarS.value);if(ts<cs){ts=cs;tarS.value=ts}skillSelections[skillIndex]={c:cs,t:ts};const skill=SKILLS[skillIndex],cv=targetEffect(cs),tv=targetEffect(ts),csv=targetSecondaryEffect(cs),tsv=targetSecondaryEffect(ts),gain=Math.max(0,tv-cv),gainSecondary=Math.max(0,tsv-csv);booksNeed.textContent=fmt(skillCost(cs,ts,'books'));currentSkillEffect.textContent=effectLabel(skill,cv,csv);skillEffect.textContent=effectLabel(skill,tv,tsv);skillGain.textContent=(gain||gainSecondary)?effectLabel(skill,gain,gainSecondary):'—';skillName.textContent=skillName(skill);skillDescription.textContent=skillDesc(skill);rebuildPlans()}
 function renderTabs(){tabs.innerHTML='';SKILLS.forEach((sk,i)=>{let b=document.createElement('button');b.className='tab'+(i===skillIndex?' active':'');b.textContent=skillName(sk);b.onclick=()=>{skillSelections[skillIndex]={c:num(curS.value),t:num(tarS.value)};skillIndex=i;fillSkill();renderTabs();update()};tabs.appendChild(b)})}
 function totals(){return planItems.reduce((a,p)=>({aff:a.aff+(p.aff||0),emblems:a.emblems+(p.emblems||0),books:a.books+(p.books||0)}),{aff:0,emblems:0,books:0})}
-function renderTotals(){let t=totals();let gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;totalAff.textContent=fmt(Math.max(0,t.aff-gift));totalEmblems.textContent=fmt(Math.max(0,t.emblems-num(emblemsOwned.value)));totalBooks.textContent=fmt(Math.max(0,t.books-num(booksOwned.value)))}
+function renderTotals(){let t=totals();let gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;totalAff.textContent='- '+fmt(Math.max(0,t.aff-gift));totalEmblems.textContent='- '+fmt(Math.max(0,t.emblems-num(emblemsOwned.value)));totalBooks.textContent='- '+fmt(Math.max(0,t.books-num(booksOwned.value)))}
 function affinityEffectLabel(level){const v=atk(level);if(activeExpert==='roman')return `${romanTr('attackShort')} ${v.toFixed(2)}% · ${romanTr('defenseShort')} ${v.toFixed(2)}%`;if(activeExpert==='cassia')return `${cassiaTr('lethalityShort')} ${v.toFixed(1)}% · ${cassiaTr('healthShort')} ${v.toFixed(1)}%`;if(activeExpert==='wilson')return `${wilsonTr('attackShort')} ${v.toFixed(2)}% · ${wilsonTr('defenseShort')} ${v.toFixed(2)}%`;if(activeExpert==='guinevere')return `${guinevereTr('lethalityShort')} ${v.toFixed(2)}% · ${guinevereTr('healthShort')} ${v.toFixed(2)}%`;return `${v.toFixed(2)}%`}
 function summaryWord(key){const words={before:{en:'Before',ar:'قبل',fr:'Avant',es:'Antes',de:'Vorher',tr:'Önce',ko:'이전',ja:'変更前',zh:'之前'},after:{en:'After',ar:'بعد',fr:'Après',es:'Después',de:'Nachher',tr:'Sonra',ko:'이후',ja:'変更後',zh:'之后'},level:{en:'Lv.',ar:'مستوى',fr:'Niv.',es:'Nv.',de:'St.',tr:'Sv.',ko:'레벨',ja:'Lv.',zh:'等级'}};return words[key]?.[lang]||words[key]?.en||key}
 function renderPlans(){let box=$('plans');box.innerHTML='';if(!planItems.length){box.innerHTML=`<div class="empty">${tr('emptySummary')}</div>`}else planItems.forEach(p=>{let d=document.createElement('div');d.className='plan';let sk=p.type==='skill'?SKILLS[p.skill]:null;let title=p.type==='affinity'?tr('affinity'):skillName(sk);let before=p.type==='affinity'?affinityEffectLabel(p.c):effectLabel(sk,targetEffectFor(p.skill,p.c),targetSecondaryEffectFor(p.skill,p.c));let after=p.type==='affinity'?affinityEffectLabel(p.t):effectLabel(sk,targetEffectFor(p.skill,p.t),targetSecondaryEffectFor(p.skill,p.t));let costs=p.type==='affinity'?`<span class="cost-chip">${tr('affinityPoints')} <strong>${fmt(p.aff)}</strong></span><span class="cost-chip">${tr('masterEmblems')} <strong>${fmt(p.emblems)}</strong></span>`:`<span class="cost-chip">${tr('manuscripts')} <strong>${fmt(p.books)}</strong></span><span class="cost-chip gain">${tr('gainFromUpgrade')} <strong>${effectLabel(sk,p.gain||0,p.gainSecondary||0)}</strong></span>`;d.innerHTML=`<div class="plan-top"><b>${title} · ${summaryWord('level')} ${p.c} → ${p.t}</b></div><div class="plan-route"><div class="plan-state"><span>${summaryWord('before')}</span><b>${before}</b></div><div class="plan-arrow">→</div><div class="plan-state target"><span>${summaryWord('after')}</span><b>${after}</b></div></div><div class="plan-cost">${costs}</div>`;box.appendChild(d)});planCount.textContent=`${planItems.length} ${tr('plans')}`;renderTotals()}
 function summaryRange(c,t){return lang==='ar'?`من ${c} إلى ${t}`:`${c} → ${t}`}
-function summaryText(){let t=totals(),gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;let lines=[`${PROFILE_DATA[activeExpert].name} — SaifKS.com`];planItems.forEach(p=>{if(p.type==='affinity'){lines.push(`${tr('affinity')}: ${summaryRange(p.c,p.t)}`,`${summaryWord('before')}: ${affinityEffectLabel(p.c)}`,`${summaryWord('after')}: ${affinityEffectLabel(p.t)}`)}else{let sk=SKILLS[p.skill],name=skillName(sk);lines.push(`${name}: ${summaryRange(p.c,p.t)}`,`${summaryWord('before')}: ${effectLabel(sk,targetEffectFor(p.skill,p.c),targetSecondaryEffectFor(p.skill,p.c))}`,`${summaryWord('after')}: ${effectLabel(sk,targetEffectFor(p.skill,p.t),targetSecondaryEffectFor(p.skill,p.t))}`,`${tr('gainFromUpgrade')}: ${effectLabel(sk,p.gain||0,p.gainSecondary||0)}`)}});lines.push('',`${tr('affinityPoints')}: ${fmt(Math.max(0,t.aff-gift))}`,`${tr('masterEmblems')}: ${fmt(Math.max(0,t.emblems-num(emblemsOwned.value)))}`,`${tr('manuscripts')}: ${fmt(Math.max(0,t.books-num(booksOwned.value)))}`);return lines.join('\n')}
+function summaryText(){let t=totals(),gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;let lines=[`${PROFILE_DATA[activeExpert].name} — SaifKS.com`];planItems.forEach(p=>{if(p.type==='affinity'){lines.push(`${tr('affinity')}: ${summaryRange(p.c,p.t)}`,`${summaryWord('before')}: ${affinityEffectLabel(p.c)}`,`${summaryWord('after')}: ${affinityEffectLabel(p.t)}`)}else{let sk=SKILLS[p.skill],name=skillName(sk);lines.push(`${name}: ${summaryRange(p.c,p.t)}`,`${summaryWord('before')}: ${effectLabel(sk,targetEffectFor(p.skill,p.c),targetSecondaryEffectFor(p.skill,p.c))}`,`${summaryWord('after')}: ${effectLabel(sk,targetEffectFor(p.skill,p.t),targetSecondaryEffectFor(p.skill,p.t))}`,`${tr('gainFromUpgrade')}: ${effectLabel(sk,p.gain||0,p.gainSecondary||0)}`)}});lines.push('',`${tr('affinityPoints')}: - ${fmt(Math.max(0,t.aff-gift))}`,`${tr('masterEmblems')}: - ${fmt(Math.max(0,t.emblems-num(emblemsOwned.value)))}`,`${tr('manuscripts')}: - ${fmt(Math.max(0,t.books-num(booksOwned.value)))}`);return lines.join('\n')}
 function saveMaterials(){storageSet('saifksMastersMaterials',JSON.stringify({horn:num(horn.value),goblet:num(goblet.value),spices:num(spices.value),emblemsOwned:num(emblemsOwned.value),booksOwned:num(booksOwned.value)}))}
 function loadMaterials(){try{const m=JSON.parse(storageGet('saifksMastersMaterials','{}')||'{}');horn.value=num(m.horn)||'';goblet.value=num(m.goblet)||'';spices.value=num(m.spices)||'';emblemsOwned.value=num(m.emblemsOwned)||'';booksOwned.value=num(m.booksOwned)||''}catch(_){}}
 function save(){storageSet(PROFILE_DATA[activeExpert].storage,JSON.stringify({skillSelections,curA:num(curA.value),tarA:num(tarA.value),skillIndex}));saveMaterials();storageSet('saifksMastersActiveExpert',activeExpert)}
