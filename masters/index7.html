@@ -795,6 +795,200 @@ html[dir="rtl"] .app-hero-eyebrow{letter-spacing:0}
 }
 </style>
 
+
+<style id="atlas-v64-hero-tabs-glass-refined">
+/* 1) True glass treatment */
+.app-hero,
+.expert-switch{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.025))!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:
+    0 18px 46px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -1px 0 rgba(255,255,255,.035)!important;
+  backdrop-filter:blur(24px) saturate(145%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(145%)!important;
+}
+.app-hero::after,
+.expert-switch::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.14),transparent 22%,transparent 72%,rgba(255,255,255,.025));
+  opacity:.55;
+}
+.app-hero::before{
+  opacity:.45!important;
+  filter:blur(18px);
+}
+
+/* 2) Normalize every expert portrait inside the hero */
+.app-hero-art{
+  min-height:210px!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012))!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+}
+#expertHeroImage{
+  width:auto!important;
+  height:205px!important;
+  max-width:96%!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:none!important;
+  margin:0 auto!important;
+  filter:
+    drop-shadow(0 16px 20px rgba(0,0,0,.34))
+    drop-shadow(0 0 16px rgba(var(--hero-accent),.12))!important;
+}
+#expertHeroImage[data-expert="valora"]{height:190px!important}
+#expertHeroImage[data-expert="pan"]{height:202px!important}
+#expertHeroImage[data-expert="roman"]{height:198px!important}
+#expertHeroImage[data-expert="cassia"]{height:196px!important}
+#expertHeroImage[data-expert="wilson"]{height:204px!important}
+#expertHeroImage[data-expert="guinevere"]{height:202px!important}
+
+/* 3) Replace the old tab style completely: no circles, no pseudo rings */
+.expert-switch{
+  position:relative;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:12px!important;
+  padding:12px!important;
+  border-radius:22px!important;
+  overflow:hidden!important;
+}
+.expert-switch button,
+.expert-switch .expert-tab{
+  position:relative;
+  isolation:isolate;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:6px!important;
+  width:100%!important;
+  height:112px!important;
+  min-height:112px!important;
+  padding:9px 7px 10px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.018))!important;
+  color:#b9c8db!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important;
+  transform:none!important;
+  overflow:hidden!important;
+}
+.expert-switch button::before{
+  content:"";
+  position:absolute;
+  inset:auto 14% 0;
+  height:2px;
+  border-radius:999px;
+  background:transparent;
+  z-index:2;
+}
+.expert-switch button::after{
+  display:none!important;
+  content:none!important;
+}
+.expert-switch button img,
+.expert-switch .expert-tab img{
+  width:auto!important;
+  height:72px!important;
+  max-width:88%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  border-radius:0!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+  filter:drop-shadow(0 8px 10px rgba(0,0,0,.30))!important;
+  flex:none!important;
+}
+.expert-switch button span,
+.expert-switch button{
+  font-size:11px!important;
+  font-weight:900!important;
+}
+.expert-switch button.active{
+  color:#fff!important;
+  border-color:rgba(var(--hero-accent),.62)!important;
+  background:
+    linear-gradient(180deg,rgba(var(--hero-accent),.18),rgba(255,255,255,.025))!important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 0 0 1px rgba(var(--hero-accent),.10)!important;
+}
+.expert-switch button.active::before{
+  background:linear-gradient(90deg,transparent,rgb(var(--hero-accent)),transparent);
+}
+.expert-switch button:hover{
+  transform:translateY(-1px)!important;
+}
+
+/* Match tab accents to the selected expert */
+.expert-switch button[data-expert="valora"]{--tab-accent:255,110,118}
+.expert-switch button[data-expert="pan"]{--tab-accent:255,166,74}
+.expert-switch button[data-expert="roman"]{--tab-accent:82,207,151}
+.expert-switch button[data-expert="cassia"]{--tab-accent:255,203,91}
+.expert-switch button[data-expert="wilson"]{--tab-accent:77,165,255}
+.expert-switch button[data-expert="guinevere"]{--tab-accent:180,126,255}
+.expert-switch button.active{
+  --hero-accent:var(--tab-accent);
+}
+
+/* Mobile */
+@media(max-width:620px){
+  .app-hero{
+    grid-template-columns:112px minmax(0,1fr)!important;
+  }
+  .app-hero-art{min-height:162px!important}
+  #expertHeroImage{height:158px!important}
+  #expertHeroImage[data-expert="valora"]{height:148px!important}
+  #expertHeroImage[data-expert="pan"]{height:156px!important}
+  #expertHeroImage[data-expert="roman"]{height:153px!important}
+  #expertHeroImage[data-expert="cassia"]{height:151px!important}
+  #expertHeroImage[data-expert="wilson"]{height:158px!important}
+  #expertHeroImage[data-expert="guinevere"]{height:156px!important}
+
+  .expert-switch{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+    padding:9px!important;
+  }
+  .expert-switch button,
+  .expert-switch .expert-tab{
+    height:96px!important;
+    min-height:96px!important;
+    border-radius:14px!important;
+  }
+  .expert-switch button img,
+  .expert-switch .expert-tab img{
+    height:59px!important;
+  }
+}
+@media(max-width:390px){
+  .app-hero{grid-template-columns:96px minmax(0,1fr)!important}
+  .app-hero-art{min-height:150px!important}
+  #expertHeroImage{height:146px!important}
+}
+</style>
+
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 
@@ -802,7 +996,7 @@ html[dir="rtl"] .app-hero-eyebrow{letter-spacing:0}
 
 <section class="hero app-hero glass" id="heroProfile" data-expert="valora">
   <div class="app-hero-art">
-    <div class="app-hero-halo" aria-hidden="true"></div>
+    
     <img id="expertHeroImage" src="valora.png" alt="Valora">
   </div>
 
