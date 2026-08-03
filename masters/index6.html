@@ -490,6 +490,19 @@ body{background:radial-gradient(circle at 50% -18%,rgba(67,176,255,.24),transpar
 @media(max-width:620px){body{padding-bottom:82px}.app{width:min(100% - 12px,1180px);padding-top:4px}.top{height:56px}.brand{font-size:16px}.hero{grid-template-columns:118px 1fr;min-height:150px;padding:12px 13px;border-radius:22px}.hero-art{height:134px}.hero-art img{max-height:134px}.hero h1{font-size:27px;margin-bottom:7px}.hero-sub{font-size:10px;padding:6px 9px!important}.expert-switch{margin:8px 0!important;padding:7px!important;border-radius:18px!important}.expert-switch button,.expert-switch button:last-child:nth-child(odd){flex-basis:132px!important;width:132px!important;height:56px!important;min-height:56px!important;padding:6px 9px!important;font-size:11px!important}.expert-switch img,.expert-tab[data-expert="cassia"] img,.expert-tab[data-expert="wilson"] img{width:40px!important;height:40px!important;flex-basis:40px!important}.app-segment{display:none}.materials-panel{padding:11px;border-radius:19px}.materials-grid{grid-template-columns:1fr 1fr}.material-item{grid-template-columns:38px minmax(0,1fr);padding:7px}.material-item img{width:38px;height:38px}.material-item:last-child{grid-column:auto}.layout{margin-top:10px;gap:10px}.main{gap:10px}.card,.summary-card{padding:12px;border-radius:20px}.head{margin-bottom:10px}.head h2{font-size:16px}.field input,.field select{height:46px}.summary-card{margin-bottom:6px}.mobile-dock{position:fixed;z-index:80;display:grid;grid-template-columns:repeat(4,1fr);left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));height:64px;padding:6px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:rgba(8,20,36,.94);box-shadow:0 18px 42px rgba(0,0,0,.55);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}.mobile-dock button{border:0;background:transparent;color:#8094ad;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}.mobile-dock button span{font-size:18px;color:#63d8ff}.mobile-dock button small{font-size:8px;font-weight:800}.mobile-dock button:active{background:rgba(99,216,255,.1);color:#fff}.footer{margin-bottom:0}.app-section,#inventorySection,#summarySection{scroll-margin-top:68px}}
 @media(max-width:390px){.hero{grid-template-columns:105px 1fr}.hero h1{font-size:24px}.materials-grid{grid-template-columns:1fr}.expert-switch button,.expert-switch button:last-child:nth-child(odd){flex-basis:124px!important;width:124px!important}}
 
+
+/* v58 — reliable mobile summary sheet */
+@media(max-width:920px){
+  .v3-overlay{z-index:109!important}
+  .side{z-index:110!important;visibility:visible!important;opacity:1!important}
+  .side.v3-show{transform:translateY(0)!important}
+  body.v3-open{overflow:hidden}
+}
+@media(max-width:620px){
+  .v3-summary-fab{display:none!important}
+  .mobile-dock{z-index:90!important}
+  .side .summary-card{padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+}
 </style></head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 
@@ -689,8 +702,17 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
 
 <script>
 (function(){
-  const goTo=id=>{const el=document.getElementById(id);if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-70;window.scrollTo({top,behavior:'smooth'});};
+  const side=document.querySelector('.side');
+  const overlay=document.getElementById('v3Overlay');
+  const openSummary=()=>{if(side)side.classList.add('v3-show');if(overlay)overlay.classList.add('show');document.body.classList.add('v3-open')};
+  const closeSummary=()=>{if(side)side.classList.remove('v3-show');if(overlay)overlay.classList.remove('show');document.body.classList.remove('v3-open')};
+  const goTo=id=>{
+    if(id==='summarySection' && window.matchMedia('(max-width:920px)').matches){openSummary();return;}
+    const el=document.getElementById(id);if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-70;window.scrollTo({top,behavior:'smooth'});
+  };
   document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>goTo(btn.dataset.go)));
+  overlay&&overlay.addEventListener('click',closeSummary);
+  document.querySelector('.v3-sheet-close')?.addEventListener('click',closeSummary);
   const panel=document.getElementById('inventorySection');
   const toggle=document.getElementById('inventoryToggle');
   if(panel&&toggle){
