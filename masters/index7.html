@@ -550,11 +550,297 @@ input,select{min-height:36px!important;height:36px!important}
 .summary,.summary-card,#summary{display:block!important;position:static!important}
 .glass,.card,.panel{backdrop-filter:blur(14px);background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.12)!important}
 </style>
+
+<style id="atlas-v63-professional-hero">
+/* Masters UI — professional app-style hero profile */
+.app-hero{
+  --hero-accent:88,214,255;
+  position:relative;
+  isolation:isolate;
+  display:grid!important;
+  grid-template-columns:minmax(150px,220px) minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:clamp(14px,2vw,26px)!important;
+  min-height:224px;
+  margin-top:4px;
+  padding:clamp(14px,2.2vw,24px)!important;
+  border-radius:24px!important;
+  overflow:hidden!important;
+  background:
+    linear-gradient(135deg,rgba(var(--hero-accent),.14),rgba(7,17,31,.78) 42%,rgba(9,22,39,.88))!important;
+  border:1px solid rgba(255,255,255,.13)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  backdrop-filter:blur(18px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(125%)!important;
+}
+.app-hero::before{
+  content:"";
+  position:absolute;
+  width:320px;height:320px;
+  inset:-150px auto auto -90px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--hero-accent),.28),transparent 68%);
+  pointer-events:none;
+  z-index:-1;
+}
+.app-hero[data-expert="valora"]{--hero-accent:255,110,118}
+.app-hero[data-expert="pan"]{--hero-accent:255,166,74}
+.app-hero[data-expert="roman"]{--hero-accent:82,207,151}
+.app-hero[data-expert="cassia"]{--hero-accent:255,203,91}
+.app-hero[data-expert="wilson"]{--hero-accent:77,165,255}
+.app-hero[data-expert="guinevere"]{--hero-accent:180,126,255}
+
+.app-hero-art{
+  position:relative;
+  min-width:0;
+  min-height:190px;
+  display:grid;
+  place-items:end center;
+  align-self:stretch;
+  border-radius:20px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),
+    radial-gradient(circle at 50% 44%,rgba(var(--hero-accent),.2),transparent 62%);
+  border:1px solid rgba(255,255,255,.09);
+}
+.app-hero-halo{
+  position:absolute;
+  width:75%;aspect-ratio:1;
+  top:12%;left:50%;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:1px solid rgba(var(--hero-accent),.28);
+  box-shadow:0 0 45px rgba(var(--hero-accent),.14);
+}
+.app-hero-art img,
+#expertHeroImage{
+  position:relative;
+  z-index:1;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:210px!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:none!important;
+  margin:0!important;
+  filter:drop-shadow(0 14px 18px rgba(0,0,0,.32));
+}
+
+.app-hero-content{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:14px;
+  padding:2px 0;
+}
+.app-hero-heading{min-width:0}
+.app-hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:0 10px;
+  border-radius:999px;
+  background:rgba(var(--hero-accent),.12);
+  border:1px solid rgba(var(--hero-accent),.25);
+  color:rgb(var(--hero-accent));
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.app-hero h1{
+  margin:9px 0 4px!important;
+  font-size:clamp(27px,4vw,42px)!important;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  overflow-wrap:anywhere;
+}
+.app-hero .hero-sub{
+  display:block!important;
+  width:auto!important;
+  max-width:100%;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  color:var(--muted)!important;
+  font-size:13px!important;
+  line-height:1.45;
+}
+
+.app-progress-card{
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(1,10,20,.32);
+  border:1px solid rgba(255,255,255,.08);
+}
+.app-progress-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:8px;
+  font-size:10px;
+  color:var(--muted);
+}
+.app-progress-top b{
+  color:var(--text);
+  font-size:11px;
+  white-space:nowrap;
+}
+.app-progress-track{
+  position:relative;
+  height:7px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.08);
+}
+.app-progress-track span{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0;
+  border-radius:inherit;
+  transition:width .2s ease;
+}
+#heroProgressTarget{
+  z-index:1;
+  background:linear-gradient(90deg,rgba(var(--hero-accent),.42),rgb(var(--hero-accent)));
+}
+#heroProgressCurrent{
+  z-index:2;
+  background:rgba(255,255,255,.42);
+  box-shadow:1px 0 0 rgba(255,255,255,.95);
+}
+
+.app-quick-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.app-stat{
+  min-width:0;
+  min-height:58px;
+  padding:9px 10px;
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.09);
+}
+.app-stat span{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.25;
+  margin-bottom:5px;
+}
+.app-stat b{
+  display:block;
+  color:var(--text);
+  font-size:13px;
+  line-height:1.2;
+  overflow-wrap:anywhere;
+}
+.app-stat-status b{color:rgb(var(--hero-accent))}
+
+html[dir="rtl"] .app-progress-track span{inset:0 0 0 auto}
+html[dir="rtl"] .app-hero-eyebrow{letter-spacing:0}
+
+@media(max-width:620px){
+  .app-hero{
+    grid-template-columns:104px minmax(0,1fr)!important;
+    min-height:174px;
+    gap:11px!important;
+    padding:11px!important;
+    border-radius:20px!important;
+  }
+  .app-hero-art{
+    min-height:150px;
+    border-radius:16px;
+  }
+  .app-hero-art img,
+  #expertHeroImage{
+    max-height:153px!important;
+  }
+  .app-hero-content{gap:9px}
+  .app-hero-eyebrow{
+    min-height:21px;
+    padding:0 8px;
+    font-size:8px;
+  }
+  .app-hero h1{
+    margin:6px 0 2px!important;
+    font-size:clamp(22px,7vw,29px)!important;
+  }
+  .app-hero .hero-sub{font-size:10px!important}
+  .app-progress-card{padding:8px 9px;border-radius:12px}
+  .app-progress-top{margin-bottom:6px}
+  .app-quick-stats{gap:5px}
+  .app-stat{
+    min-height:49px;
+    padding:7px;
+    border-radius:11px;
+  }
+  .app-stat span{font-size:8px;margin-bottom:3px}
+  .app-stat b{font-size:10px}
+}
+@media(max-width:390px){
+  .app-hero{
+    grid-template-columns:88px minmax(0,1fr)!important;
+    gap:9px!important;
+  }
+  .app-hero-art{min-height:142px}
+  .app-hero-art img,#expertHeroImage{max-height:142px!important}
+  .app-progress-top span{display:none}
+}
+</style>
+
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 
 
-<section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
+
+<section class="hero app-hero glass" id="heroProfile" data-expert="valora">
+  <div class="app-hero-art">
+    <div class="app-hero-halo" aria-hidden="true"></div>
+    <img id="expertHeroImage" src="valora.png" alt="Valora">
+  </div>
+
+  <div class="app-hero-content">
+    <div class="app-hero-heading">
+      <span class="app-hero-eyebrow" id="heroEyebrow">MASTER PROFILE</span>
+      <h1 id="expertHeroName">Valora</h1>
+      <div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div>
+    </div>
+
+    <div class="app-progress-card">
+      <div class="app-progress-top">
+        <span id="heroProgressLabel">Affinity progress</span>
+        <b id="heroProgressLevels">Lv. 0 → Lv. 0</b>
+      </div>
+      <div class="app-progress-track" aria-hidden="true">
+        <span id="heroProgressCurrent"></span>
+        <span id="heroProgressTarget"></span>
+      </div>
+    </div>
+
+    <div class="app-quick-stats">
+      <div class="app-stat">
+        <span id="heroAffinityLabel">Affinity</span>
+        <b id="heroAffinityValue">0 → 0</b>
+      </div>
+      <div class="app-stat">
+        <span id="heroBonusLabel">Target bonus</span>
+        <b id="heroBonusValue">0.00%</b>
+      </div>
+      <div class="app-stat app-stat-status">
+        <span id="heroStatusLabel">Status</span>
+        <b id="heroStatusValue">Set target</b>
+      </div>
+    </div>
+  </div>
+</section>
+
 <nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav><div class="app-segment" role="navigation" aria-label="Page sections">
 <button type="button" data-go="affinitySection"><span>◈</span><b data-i18n="affinity">Affinity</b></button>
 <button type="button" data-go="skillsSection"><span>✦</span><b data-i18n="skills">Skills</b></button>
@@ -822,6 +1108,78 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(skills){skills.addEventListener('click',()=>{const y=window.scrollY;requestAnimationFrame(()=>window.scrollTo({top:y,left:0,behavior:'auto'}));},true)}
   document.querySelectorAll('input[type="number"]').forEach(i=>i.setAttribute('inputmode','numeric'));
 });
+</script>
+
+
+<script id="atlas-v63-professional-hero-js">
+(function(){
+  const $=id=>document.getElementById(id);
+  const hero=$('heroProfile');
+  if(!hero) return;
+
+  const labels={
+    en:{profile:'MASTER PROFILE',progress:'Affinity progress',affinity:'Affinity',bonus:'Target bonus',status:'Status',ready:'Ready',set:'Set target',same:'No upgrade'},
+    ar:{profile:'ملف الخبير',progress:'تقدم التقارب',affinity:'التقارب',bonus:'تأثير الهدف',status:'الحالة',ready:'جاهز',set:'حدد الهدف',same:'لا توجد ترقية'}
+  };
+
+  function lang(){
+    return document.documentElement.lang==='ar'?'ar':'en';
+  }
+  function num(id){
+    return Number($(id)?.value||0);
+  }
+  function text(id,value){
+    const el=$(id); if(el) el.textContent=value;
+  }
+  function bonusText(){
+    return $('tarAtk')?.textContent?.trim() || '0.00%';
+  }
+  function syncHeroProfile(){
+    const c=Math.max(0,Math.min(100,num('curA')));
+    const t=Math.max(c,Math.min(100,num('tarA')));
+    const l=labels[lang()];
+    const expert=$('expertHeroImage')?.dataset.expert || 'valora';
+    hero.dataset.expert=expert;
+
+    text('heroEyebrow',l.profile);
+    text('heroProgressLabel',l.progress);
+    text('heroAffinityLabel',l.affinity);
+    text('heroBonusLabel',l.bonus);
+    text('heroStatusLabel',l.status);
+
+    const levels=lang()==='ar' ? `من ${c} إلى ${t}` : `Lv. ${c} → Lv. ${t}`;
+    text('heroProgressLevels',levels);
+    text('heroAffinityValue',lang()==='ar'?`${c} إلى ${t}`:`${c} → ${t}`);
+    text('heroBonusValue',bonusText());
+    text('heroStatusValue',t>c?l.ready:(t===c&&t>0?l.same:l.set));
+
+    const current=$('heroProgressCurrent');
+    const target=$('heroProgressTarget');
+    if(current) current.style.width=c+'%';
+    if(target) target.style.width=t+'%';
+  }
+
+  ['curA','tarA','languageSelect'].forEach(id=>{
+    const el=$(id);
+    if(el){
+      el.addEventListener('input',syncHeroProfile);
+      el.addEventListener('change',()=>requestAnimationFrame(syncHeroProfile));
+    }
+  });
+
+  document.querySelectorAll('.expert-tab').forEach(btn=>{
+    btn.addEventListener('click',()=>requestAnimationFrame(()=>requestAnimationFrame(syncHeroProfile)));
+  });
+
+  const observer=new MutationObserver(syncHeroProfile);
+  ['expertHeroName','expertRole','tarAtk'].forEach(id=>{
+    const el=$(id); if(el) observer.observe(el,{childList:true,subtree:true,attributes:true});
+  });
+
+  window.addEventListener('pageshow',syncHeroProfile);
+  setTimeout(syncHeroProfile,0);
+  setTimeout(syncHeroProfile,250);
+})();
 </script>
 
 </body></html>
