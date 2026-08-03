@@ -459,9 +459,50 @@ body.v3-open{overflow:hidden}
   .v3-preview-badge{font-size:8px;padding:6px 9px}.skill-detail:before{font-size:7px}
 }
 
-</style></head><body><div class="app">
+</style>
+<style id="remaining-red-fix">
+.remaining-negative{
+  color:#ff4d4f !important;
+  font-weight:800 !important;
+}
+</style>
+<script id="remaining-red-fix-js">
+(function(){
+  function updateRemainingValues(root){
+    (root || document).querySelectorAll(
+      '[id*="remaining" i], [class~="remaining"], [class*="remaining-" i], [data-role="remaining"]'
+    ).forEach(function(el){
+      var raw=(el.textContent || '').trim();
+      var match=raw.match(/-?\d[\d,.]*/);
+      if(!match) return;
+
+      var value=match[0].replace(/^-/,'');
+      el.textContent='- ' + value;
+      el.classList.add('remaining-negative');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    updateRemainingValues(document);
+
+    new MutationObserver(function(mutations){
+      mutations.forEach(function(mutation){
+        if(mutation.target && mutation.target.nodeType===1){
+          updateRemainingValues(mutation.target.closest('[id*="remaining" i], [class*="remaining" i]') || mutation.target);
+        }
+      });
+    }).observe(document.documentElement,{
+      childList:true,
+      subtree:true,
+      characterData:true
+    });
+  });
+})();
+</script>
+
+</head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
-<div class="v2-preview"><span>MASTERS V2</span><b>Premium Preview</b></div>
+<div class="v2-preview"><span></span><b></b></div>
 <div class="v3-preview-badge">Masters V3 · Game UI</div>
 <section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
 <nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav><section class="materials-panel glass"><div class="head"><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
