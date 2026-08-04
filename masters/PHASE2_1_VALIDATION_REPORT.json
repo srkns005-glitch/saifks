@@ -1,0 +1,318 @@
+{
+  "errors": [],
+  "summary": {
+    "valora": {
+      "affinityLevels": 100,
+      "skills": {
+        "dance_of_the_hunt": 10,
+        "leader_by_example": 5,
+        "weapon_obsession": 5,
+        "savage_advantage": 10
+      }
+    },
+    "pan": {
+      "affinityLevels": 100,
+      "skills": {
+        "falconer": 5,
+        "good_steward": 5,
+        "master_architect": 5,
+        "ways_and_means": 10
+      }
+    },
+    "roman": {
+      "affinityLevels": 100,
+      "skills": {
+        "teacher_of_champions": 10,
+        "winner_take_all": 10,
+        "crowd_favorite": 10,
+        "one_desire": 10
+      }
+    },
+    "cassia": {
+      "affinityLevels": 100,
+      "skills": {
+        "recruiter_in_chief": 20,
+        "firepower_to_win": 20,
+        "commando": 20,
+        "inspiring_mobilization": 20
+      }
+    },
+    "wilson": {
+      "affinityLevels": 100,
+      "skills": {
+        "mobilization_master": 10,
+        "championship_publicity": 10,
+        "viking_bounty": 10,
+        "duel_sponsorship": 10
+      }
+    },
+    "guinevere": {
+      "affinityLevels": 100,
+      "skills": {
+        "max_efficiency": 10,
+        "merciful_heart": 10,
+        "royal_guidance": 20,
+        "call_of_round_table": 20
+      }
+    }
+  },
+  "migrationWarnings": [
+    {
+      "masterId": "pan",
+      "missingMasterLocalizationLanguages": [],
+      "missingSkillNameLanguages": {
+        "falconer": [
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "good_steward": [
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "master_architect": [
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "ways_and_means": [
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ]
+      }
+    },
+    {
+      "masterId": "roman",
+      "missingMasterLocalizationLanguages": [],
+      "missingSkillNameLanguages": {
+        "teacher_of_champions": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "winner_take_all": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "crowd_favorite": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "one_desire": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ]
+      }
+    },
+    {
+      "masterId": "cassia",
+      "missingMasterLocalizationLanguages": [
+        "en",
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "missingSkillNameLanguages": {
+        "recruiter_in_chief": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "firepower_to_win": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "commando": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "inspiring_mobilization": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ]
+      }
+    },
+    {
+      "masterId": "wilson",
+      "missingMasterLocalizationLanguages": [
+        "en",
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "missingSkillNameLanguages": {
+        "mobilization_master": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "championship_publicity": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "viking_bounty": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "duel_sponsorship": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ]
+      }
+    },
+    {
+      "masterId": "guinevere",
+      "missingMasterLocalizationLanguages": [
+        "en",
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "missingSkillNameLanguages": {
+        "max_efficiency": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "merciful_heart": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "royal_guidance": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ],
+        "call_of_round_table": [
+          "ar",
+          "fr",
+          "es",
+          "de",
+          "tr",
+          "ko",
+          "ja",
+          "zh"
+        ]
+      }
+    }
+  ],
+  "note": "Missing localizations are reported rather than invented. The migrated numeric data is preserved from the supplied legacy project."
+}
