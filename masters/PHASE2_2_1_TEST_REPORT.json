@@ -1,0 +1,11 @@
+{
+  "phase": "2.2.1",
+  "engine": "Affinity Engine",
+  "pureFunctions": true,
+  "domReferences": 0,
+  "localStorageReferences": 0,
+  "unitTests": "passed",
+  "integrationTests": "passed",
+  "mastersTested": 6,
+  "rangesPerMaster": 5
+}

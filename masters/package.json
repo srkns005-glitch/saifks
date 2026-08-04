@@ -1,0 +1,8 @@
+{
+  "name": "saifks-masters-v2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:affinity": "node tests/affinity-engine.test.mjs"
+  }
+}
