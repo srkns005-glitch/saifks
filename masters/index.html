@@ -1069,100 +1069,36 @@ button,input,select{
 </style>
 
 
+<style id="summary-stage1">
+/* Expert tabs: 2 per row */
+.expert-switch{
+display:grid!important;
+grid-template-columns:repeat(2,minmax(0,1fr))!important;
+gap:8px!important;
+}
+@media(max-width:640px){
+.expert-switch{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
 
+/* Disable sticky summary */
+.summary-card{position:static!important;top:auto!important}
 
-
-<style id="summary-table-rebuild">
-.layout{
-  grid-template-columns:minmax(0,1fr)!important;
+/* Prepare summary table look */
+.summary-totals{
+display:grid!important;
+gap:0!important;
+border:1px solid rgba(255,255,255,.08);
+border-radius:12px;
+overflow:hidden;
 }
-.summary-card{
-  position:static!important;
-  top:auto!important;
-  width:100%!important;
-  margin-top:12px!important;
+.summary-total{
+display:grid!important;
+grid-template-columns:1.3fr .8fr;
+padding:10px 12px!important;
+border-bottom:1px solid rgba(255,255,255,.08)!important;
+background:transparent!important;
 }
-.summary-table-section{
-  padding:14px!important;
-}
-.upgrade-overview{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:8px;
-  margin-bottom:12px;
-}
-.overview-cell{
-  min-height:58px;
-  padding:10px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:11px;
-  background:#0b1523;
-}
-.overview-cell span{
-  display:block;
-  color:var(--muted);
-  font-size:8px;
-  margin-bottom:5px;
-}
-.overview-cell b{
-  display:block;
-  font-size:13px;
-}
-.summary-table-wrap{
-  overflow-x:auto;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;
-}
-.summary-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:680px;
-}
-.summary-table th,
-.summary-table td{
-  padding:11px 12px;
-  text-align:start;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  font-size:11px;
-}
-.summary-table th{
-  color:var(--muted);
-  font-size:9px;
-  font-weight:900;
-  background:#0a1320;
-}
-.summary-table tbody tr:last-child td{
-  border-bottom:0;
-}
-.summary-material-name{
-  font-weight:900;
-}
-.summary-remaining-negative{
-  color:#ff6f7f!important;
-  font-weight:900!important;
-  direction:ltr!important;
-  unicode-bidi:isolate!important;
-}
-.summary-status-ready{
-  color:#65d8a4!important;
-  font-weight:900!important;
-}
-.summary-status-missing{
-  color:#ff6f7f!important;
-  font-weight:900!important;
-}
-.summary-table-section .plans{
-  margin-top:12px;
-}
-@media(max-width:620px){
-  .upgrade-overview{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  .summary-table th,
-  .summary-table td{
-    padding:9px 10px;
-  }
-}
+.summary-total:last-child{border-bottom:none!important}
 </style>
 
 </head><body><div class="app">
@@ -1179,80 +1115,7 @@ button,input,select{
 <section class="card glass atlas-section atlas-affinity"><div class="head"><div class="atlas-number">01</div><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
 <div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img src="master-emblem.png" alt="Master Emblem"><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
 <section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img src="masters-manuscript.png" alt="Master's Manuscript"><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
-</main><aside class="side"></aside></div>
-
-<section class="summary-card glass summary-table-section" id="summarySection">
-  <div class="head">
-    <h2 data-i18n="summary">Summary</h2>
-    <div class="hint" data-i18n="remaining">Remaining</div>
-  </div>
-
-  <div class="upgrade-overview">
-    <div class="overview-cell">
-      <span data-i18n="currentLevel">Current level</span>
-      <b id="summaryCurrentAffinity">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="targetLevel">Target level</span>
-      <b id="summaryTargetAffinity">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="currentEffect">Current effect</span>
-      <b id="summaryCurrentSkill">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="targetEffect">Target effect</span>
-      <b id="summaryTargetSkill">0</b>
-    </div>
-  </div>
-
-  <div class="summary-table-wrap">
-    <table class="summary-table">
-      <thead>
-        <tr>
-          <th data-i18n="material">Material</th>
-          <th data-i18n="available">Available</th>
-          <th data-i18n="required">Required</th>
-          <th data-i18n="remaining">Remaining</th>
-          <th data-i18n="status">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="affinityPoints">Affinity Points</span></td>
-          <td id="summaryAffAvailable">0</td>
-          <td id="summaryAffRequired">0</td>
-          <td id="summaryAffRemaining">0</td>
-          <td id="summaryAffStatus">—</td>
-        </tr>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="masterEmblems">Master Emblems</span></td>
-          <td id="summaryEmblemAvailable">0</td>
-          <td id="summaryEmblemRequired">0</td>
-          <td id="summaryEmblemRemaining">0</td>
-          <td id="summaryEmblemStatus">—</td>
-        </tr>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="manuscripts">Master's Manuscripts</span></td>
-          <td id="summaryBooksAvailable">0</td>
-          <td id="summaryBooksRequired">0</td>
-          <td id="summaryBooksRemaining">0</td>
-          <td id="summaryBooksStatus">—</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="plans" id="plans">
-    <div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div>
-  </div>
-
-  <div class="actions">
-    <button class="copy" id="copy" data-i18n="copySummary">Copy Summary</button>
-    <button class="reset" id="reset" data-i18n="reset">Reset</button>
-  </div>
-</section>
-
+</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="totals"><div class="total"><span data-i18n="affinityPoints">Affinity Points</span><b id="totalAff">0</b></div><div class="total"><span data-i18n="masterEmblems">Master Emblems</span><b id="totalEmblems">0</b></div><div class="total"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="totalBooks">0</b></div></div><input id="affinityOwned" type="hidden" value="0"><div class="actions"><button class="copy" id="copy" data-i18n="copySummary">Copy Summary</button><button class="reset" id="reset" data-i18n="reset">Reset</button></div></section></aside></div>
 <footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span data-i18n="builtBySaif">Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></footer></div>
 <script>
 
@@ -1434,90 +1297,6 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
       }
     },{passive:true});
   });
-})();
-</script>
-
-
-<script id="summary-table-rebuild-js">
-(function(){
-  const byId=id=>document.getElementById(id);
-  const numberFrom=el=>{
-    if(!el) return 0;
-    const raw=('value' in el ? el.value : el.textContent) || '0';
-    return Math.max(0, Number(String(raw).replace(/[^\d.-]/g,'')) || 0);
-  };
-  const fmt=n=>Math.round(n).toLocaleString(document.documentElement.lang==='ar'?'en-US':undefined);
-  const setRemaining=(el,value)=>{
-    if(!el) return;
-    value=Math.max(0,Number(value)||0);
-    el.classList.remove('summary-remaining-negative');
-    if(value<=0){
-      el.textContent='0';
-      return;
-    }
-    el.textContent='\u2066- '+fmt(value)+'\u2069';
-    el.classList.add('summary-remaining-negative');
-  };
-  const setStatus=(el,remaining)=>{
-    if(!el) return;
-    el.classList.remove('summary-status-ready','summary-status-missing');
-    if(remaining<=0){
-      el.textContent='✓';
-      el.classList.add('summary-status-ready');
-    }else{
-      el.textContent='✕';
-      el.classList.add('summary-status-missing');
-    }
-  };
-  function updateSummaryTable(){
-    const horn=numberFrom(byId('horn'));
-    const goblet=numberFrom(byId('goblet'));
-    const spices=numberFrom(byId('spices'));
-    const affinityAvailable=horn*10+goblet*100+spices*1000;
-    const affinityRequired=numberFrom(byId('affNeed'));
-    const affinityRemaining=Math.max(0,affinityRequired-affinityAvailable);
-
-    const emblemAvailable=numberFrom(byId('emblemsOwned'));
-    const emblemRequired=numberFrom(byId('emblemNeed'));
-    const emblemRemaining=Math.max(0,emblemRequired-emblemAvailable);
-
-    const booksAvailable=numberFrom(byId('booksOwned'));
-    const booksRequired=numberFrom(byId('booksNeed'));
-    const booksRemaining=Math.max(0,booksRequired-booksAvailable);
-
-    byId('summaryAffAvailable').textContent=fmt(affinityAvailable);
-    byId('summaryAffRequired').textContent=fmt(affinityRequired);
-    setRemaining(byId('summaryAffRemaining'),affinityRemaining);
-    setStatus(byId('summaryAffStatus'),affinityRemaining);
-
-    byId('summaryEmblemAvailable').textContent=fmt(emblemAvailable);
-    byId('summaryEmblemRequired').textContent=fmt(emblemRequired);
-    setRemaining(byId('summaryEmblemRemaining'),emblemRemaining);
-    setStatus(byId('summaryEmblemStatus'),emblemRemaining);
-
-    byId('summaryBooksAvailable').textContent=fmt(booksAvailable);
-    byId('summaryBooksRequired').textContent=fmt(booksRequired);
-    setRemaining(byId('summaryBooksRemaining'),booksRemaining);
-    setStatus(byId('summaryBooksStatus'),booksRemaining);
-
-    byId('summaryCurrentAffinity').textContent=byId('curA')?.value || '0';
-    byId('summaryTargetAffinity').textContent=byId('tarA')?.value || '0';
-    byId('summaryCurrentSkill').textContent=byId('curS')?.value || '0';
-    byId('summaryTargetSkill').textContent=byId('tarS')?.value || '0';
-  }
-
-  document.addEventListener('input',updateSummaryTable,true);
-  document.addEventListener('change',updateSummaryTable,true);
-
-  const observer=new MutationObserver(updateSummaryTable);
-  ['affNeed','emblemNeed','booksNeed','curA','tarA','curS','tarS'].forEach(id=>{
-    const el=byId(id);
-    if(el) observer.observe(el,{childList:true,subtree:true,characterData:true,attributes:true});
-  });
-
-  window.addEventListener('pageshow',updateSummaryTable);
-  setTimeout(updateSummaryTable,0);
-  setTimeout(updateSummaryTable,250);
 })();
 </script>
 
