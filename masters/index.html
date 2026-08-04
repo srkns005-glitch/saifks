@@ -1068,6 +1068,39 @@ button,input,select{
 }
 </style>
 
+
+<style id="summary-stage1">
+/* Expert tabs: 2 per row */
+.expert-switch{
+display:grid!important;
+grid-template-columns:repeat(2,minmax(0,1fr))!important;
+gap:8px!important;
+}
+@media(max-width:640px){
+.expert-switch{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+
+/* Disable sticky summary */
+.summary-card{position:static!important;top:auto!important}
+
+/* Prepare summary table look */
+.summary-totals{
+display:grid!important;
+gap:0!important;
+border:1px solid rgba(255,255,255,.08);
+border-radius:12px;
+overflow:hidden;
+}
+.summary-total{
+display:grid!important;
+grid-template-columns:1.3fr .8fr;
+padding:10px 12px!important;
+border-bottom:1px solid rgba(255,255,255,.08)!important;
+background:transparent!important;
+}
+.summary-total:last-child{border-bottom:none!important}
+</style>
+
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
