@@ -1068,10 +1068,7 @@ background:transparent!important;
 </style>
 
 <style id="stage1-stability-css">
-html.lang-loading body{
-  opacity:1!important;
-  visibility:visible!important;
-}
+html.lang-loading body{opacity:1!important;visibility:visible!important}
 .side{
   position:static!important;
   top:auto!important;
@@ -1083,6 +1080,26 @@ html.lang-loading body{
 }
 </style>
 
+
+<style id="stage3-final-guard">
+.v3-summary-fab,
+.v3-overlay,
+.v3-sheet-close{
+  display:none!important;
+  pointer-events:none!important;
+}
+html.lang-loading body{
+  opacity:1!important;
+  visibility:visible!important;
+}
+</style>
+
+<link rel="preload" as="image" href="valora.png">
+<link rel="preload" as="image" href="pan.png">
+<link rel="preload" as="image" href="roman.png">
+<link rel="preload" as="image" href="hero-cassia.png">
+<link rel="preload" as="image" href="hero-wilson.png">
+<link rel="preload" as="image" href="guinevere.png">
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
