@@ -1,0 +1,21 @@
+{
+  "app.title": "Usta Planlayıcı",
+  "app.subtitle": "Yakınlık, beceriler ve malzemeleri planlayın",
+  "nav.home": "Ana Sayfa",
+  "nav.language": "Dil",
+  "section.master": "Usta",
+  "section.affinity": "Yakınlık",
+  "section.skills": "Beceriler",
+  "section.materials": "Mevcut Malzemeler",
+  "section.summary": "Özet",
+  "field.currentLevel": "Mevcut seviye",
+  "field.targetLevel": "Hedef seviye",
+  "field.available": "Mevcut",
+  "field.required": "Gerekli",
+  "field.remaining": "Kalan",
+  "action.copy": "Özeti Kopyala",
+  "action.reset": "Sıfırla",
+  "status.ready": "Hazır",
+  "status.missing": "Eksik",
+  "fallback.loading": "Yükleniyor..."
+}

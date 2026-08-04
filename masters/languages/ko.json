@@ -1,0 +1,21 @@
+{
+  "app.title": "마스터 플래너",
+  "app.subtitle": "친밀도, 스킬, 재료를 계획하세요",
+  "nav.home": "홈",
+  "nav.language": "언어",
+  "section.master": "마스터",
+  "section.affinity": "친밀도",
+  "section.skills": "스킬",
+  "section.materials": "보유 재료",
+  "section.summary": "요약",
+  "field.currentLevel": "현재 레벨",
+  "field.targetLevel": "목표 레벨",
+  "field.available": "보유",
+  "field.required": "필요",
+  "field.remaining": "부족",
+  "action.copy": "요약 복사",
+  "action.reset": "초기화",
+  "status.ready": "완료",
+  "status.missing": "부족",
+  "fallback.loading": "불러오는 중..."
+}

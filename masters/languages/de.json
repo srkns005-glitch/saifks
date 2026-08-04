@@ -1,0 +1,21 @@
+{
+  "app.title": "Meister-Planer",
+  "app.subtitle": "Plane Affinität, Fähigkeiten und Materialien",
+  "nav.home": "Startseite",
+  "nav.language": "Sprache",
+  "section.master": "Meister",
+  "section.affinity": "Affinität",
+  "section.skills": "Fähigkeiten",
+  "section.materials": "Verfügbare Materialien",
+  "section.summary": "Zusammenfassung",
+  "field.currentLevel": "Aktuelles Level",
+  "field.targetLevel": "Ziellevel",
+  "field.available": "Verfügbar",
+  "field.required": "Benötigt",
+  "field.remaining": "Fehlend",
+  "action.copy": "Zusammenfassung kopieren",
+  "action.reset": "Zurücksetzen",
+  "status.ready": "Bereit",
+  "status.missing": "Fehlt",
+  "fallback.loading": "Wird geladen..."
+}
