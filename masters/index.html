@@ -1101,11 +1101,6 @@ background:transparent!important;
 .summary-total:last-child{border-bottom:none!important}
 </style>
 
-<style id="summary-static-fix">
-.v3-overlay,.v3-summary-fab,.v3-sheet-close,.v3-status{display:none!important}
-.side{position:static!important;top:auto!important}
-.summary-card{position:sticky!important;top:16px!important}
-</style>
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
@@ -1254,6 +1249,43 @@ function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert]
 function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading')}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
+<div class="v3-overlay" id="v3Overlay"></div>
+<button type="button" class="v3-summary-fab" id="v3SummaryFab">View Summary <span class="v3-count" id="v3FabCount">0</span></button>
+
+<script>
+(function(){
+  const heroIdentity=document.querySelector('.hero-identity');
+  if(heroIdentity && !document.querySelector('.v3-hero-meta')){
+    const meta=document.createElement('div');
+    meta.className='v3-hero-meta';
+    meta.innerHTML='<div class="v3-hero-chip"><span>Affinity</span><b id="v3AffinityMeta">0 → 0</b></div><div class="v3-hero-chip"><span>Skills</span><b id="v3SkillsMeta">4</b></div><div class="v3-hero-chip"><span>Status</span><b id="v3ReadyMeta">Planning</b></div>';
+    heroIdentity.appendChild(meta);
+  }
+  const summary=document.querySelector('.summary-card');
+  if(summary && !summary.querySelector('.v3-sheet-close')){
+    const handle=document.createElement('button');handle.type='button';handle.className='v3-sheet-close';handle.setAttribute('aria-label','Close summary');summary.prepend(handle);
+    const status=document.createElement('div');status.className='v3-status';status.innerHTML='<span>Upgrade readiness</span><b id="v3StatusText">No upgrade selected</b>';summary.appendChild(status);
+  }
+  const side=document.querySelector('.side'), overlay=document.getElementById('v3Overlay'), fab=document.getElementById('v3SummaryFab');
+  function openSheet(){side&&side.classList.add('v3-show');overlay&&overlay.classList.add('show');document.body.classList.add('v3-open')}
+  function closeSheet(){side&&side.classList.remove('v3-show');overlay&&overlay.classList.remove('show');document.body.classList.remove('v3-open')}
+  fab&&fab.addEventListener('click',openSheet);overlay&&overlay.addEventListener('click',closeSheet);document.querySelector('.v3-sheet-close')?.addEventListener('click',closeSheet);
+  function syncV3(){
+    const c=Number(document.getElementById('curA')?.value||0),t=Number(document.getElementById('tarA')?.value||0);
+    const aff=document.getElementById('v3AffinityMeta');if(aff)aff.textContent=c+' → '+t;
+    const skills=document.querySelectorAll('#tabs .tab').length;const sm=document.getElementById('v3SkillsMeta');if(sm)sm.textContent=String(skills||4);
+    const count=document.querySelectorAll('#plans .plan').length;const fc=document.getElementById('v3FabCount');if(fc)fc.textContent=String(count);
+    const st=document.getElementById('v3StatusText'),ready=document.getElementById('v3ReadyMeta');
+    const left=[document.getElementById('affLeft'),document.getElementById('emblemLeft'),document.getElementById('totalBooks')].map(x=>Number(String(x?.textContent||'0').replace(/[^0-9.-]/g,''))||0);
+    let label=count===0?'No upgrade selected':(left.some(v=>v>0)?'Materials still needed':'Ready to upgrade');
+    if(st)st.textContent=label;if(ready)ready.textContent=label;
+    document.querySelectorAll('#plans .plan').forEach(plan=>{if(plan.querySelector('.v3-progress'))return;const m=plan.querySelector('.plan-top b')?.textContent?.match(/(\d+)\s*→\s*(\d+)/);if(!m)return;const a=Number(m[1]),b=Number(m[2]),pct=b>0?Math.max(0,Math.min(100,(b-a)/b*100)):0;const bar=document.createElement('div');bar.className='v3-progress';bar.innerHTML='<i style="width:'+pct.toFixed(1)+'%"></i>';plan.appendChild(bar)});
+  }
+  const target=document.getElementById('plans');if(target)new MutationObserver(syncV3).observe(target,{childList:true,subtree:true});
+  document.addEventListener('input',()=>setTimeout(syncV3,0));document.addEventListener('change',()=>setTimeout(syncV3,0));setTimeout(syncV3,80);
+})();
+</script>
+
 <script id="atlas-round2-js">
 (function(){
   const status=document.getElementById('atlasStageStatus');
