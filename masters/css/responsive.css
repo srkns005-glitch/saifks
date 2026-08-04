@@ -1,0 +1,5 @@
+@media(max-width:620px){
+  .app-shell{width:min(100% - 10px,1280px);padding-top:6px}
+  .app-header{align-items:flex-start}
+  .section{padding:12px}
+}

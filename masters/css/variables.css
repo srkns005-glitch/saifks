@@ -1,0 +1,13 @@
+:root{
+  color-scheme:dark;
+  --bg:#07101c;
+  --surface:#101c2c;
+  --surface-soft:#152337;
+  --text:#f5f8fc;
+  --muted:#91a1b5;
+  --accent:#58d6ff;
+  --danger:#ff6f7f;
+  --success:#63d7a3;
+  --line:rgba(255,255,255,.10);
+  --radius:16px;
+}
