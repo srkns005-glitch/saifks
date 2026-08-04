@@ -17,13 +17,12 @@
     document.documentElement.lang=saved;
     document.documentElement.dir=saved==='ar'?'rtl':'ltr';
     document.documentElement.dataset.initialLang=saved;
-    document.documentElement.classList.add('lang-loading');
-    window.setTimeout(()=>document.documentElement.classList.remove('lang-loading'),1500);
+    document.documentElement.classList.remove('lang-loading');
   }catch(_){ }
 })();
 </script>
 <style>
-.lang-loading body{opacity:0}.lang-loading body *{transition:none!important}
+.lang-loading body{opacity:1!important}.lang-loading body *{transition:none!important}
 :root{color-scheme:dark;--bg:#06101e;--glass:rgba(15,31,51,.62);--glass2:rgba(9,22,39,.72);--line:rgba(255,255,255,.11);--text:#f7fbff;--muted:#9fb0c6;--gold:#ffc85c;--cyan:#58d6ff;--green:#6ce4ad;--red:#ff8190;--shadow:0 16px 45px rgba(0,0,0,.28);--r:18px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{-webkit-text-size-adjust:100%}background:var(--bg);scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(88,214,255,.13),transparent 28%),radial-gradient(circle at 92% 8%,rgba(255,200,92,.12),transparent 26%),linear-gradient(160deg,#07111f,#0a1728 52%,#07111f);overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}.app{width:min(100% - 22px,1280px);margin:auto;padding:12px 0 calc(18px + env(safe-area-inset-bottom))}.glass{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;background:linear-gradient(var(--bg) 65%,transparent)}.top-actions{display:flex;align-items:center;gap:8px}.home-btn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--glass2);color:var(--text);text-decoration:none}.home-btn svg{width:20px;height:20px;display:block}.brand{font-weight:950;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.lang{width:104px;min-width:104px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--glass2);color:var(--text);padding:0 24px 0 8px;font-size:12px;font-weight:800;text-align:center;text-align-last:center;outline:none}
@@ -414,7 +413,7 @@ body{
   --v3-good:#73e6ae;
   --v3-warn:#ffbd6a;
 }
-body.v3-open{overflow:hidden}
+
 
 .hero-identity{gap:10px}
 .v3-hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
@@ -435,18 +434,18 @@ body.v3-open{overflow:hidden}
 .cost-chip.gain{border-color:rgba(115,230,174,.22);background:rgba(115,230,174,.07)}
 .v3-status{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 0;padding:9px 11px;border-radius:12px;border:1px solid rgba(115,230,174,.18);background:rgba(115,230,174,.055)}
 .v3-status span{font-size:10px;color:var(--muted)}.v3-status b{font-size:11px;color:var(--v3-good)}
-.v3-summary-fab{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:70;height:52px;border:0;border-radius:16px;background:linear-gradient(135deg,#ffd36b,#ff9d49);color:#261704;font-weight:950;box-shadow:0 18px 44px rgba(0,0,0,.44)}
-.v3-summary-fab .v3-count{display:inline-grid;place-items:center;min-width:24px;height:24px;margin-inline-start:7px;padding:0 7px;border-radius:999px;background:rgba(38,23,4,.14)}
-.v3-sheet-close{display:none;width:100%;height:5px;max-width:54px;margin:0 auto 12px;border:0;border-radius:999px;background:rgba(255,255,255,.22)}
-.v3-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.56);backdrop-filter:blur(4px);z-index:79}
+
+
+
+
 @media(max-width:920px){
   .app{padding-bottom:86px}
-  .v3-summary-fab{display:block}
-  .v3-overlay.show{display:block}
+  
+  
   .side{position:fixed!important;left:8px;right:8px;bottom:0;top:auto!important;z-index:80;transform:translateY(110%);transition:transform .28s ease;max-height:86dvh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
-  .side.v3-show{transform:translateY(0)}
+  
   .side .summary-card{border-radius:24px 24px 0 0;box-shadow:0 -24px 70px rgba(0,0,0,.52)}
-  .v3-sheet-close{display:block}
+  
   .plans{max-height:48dvh!important;overflow:auto}
 }
 @media(max-width:620px){
@@ -1128,6 +1127,54 @@ button,input,select{
 }
 </style>
 
+
+<style id="atlas-final-stability-fix">
+/* Never hide the page during refresh */
+html.lang-loading body{
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Remove every remaining floating-summary trace */
+.v3-summary-fab,
+.v3-overlay,
+.v3-sheet-close,
+.v3-status{
+  display:none!important;
+}
+
+/* Experts: exactly two per row in all screen sizes */
+.expert-switch{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+.expert-switch button,
+.expert-switch .expert-tab{
+  width:100%!important;
+  min-width:0!important;
+}
+.expert-switch button:last-child:nth-child(odd){
+  grid-column:auto!important;
+}
+
+/* Keep the normal summary visible, not floating */
+.side{
+  position:static!important;
+  top:auto!important;
+}
+.summary-card{
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+}
+
+/* Prevent old overlays from blocking taps even if browser cached markup */
+.v3-overlay{
+  pointer-events:none!important;
+}
+</style>
+
 </head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
@@ -1309,56 +1356,9 @@ function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert]
 function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading')}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
-<div class="v3-overlay" id="v3Overlay"></div>
-<button type="button" class="v3-summary-fab" id="v3SummaryFab">View Summary <span class="v3-count" id="v3FabCount">0</span></button>
 
-<script>
-(function(){
-  const heroIdentity=document.querySelector('.hero-identity');
-  if(heroIdentity && !document.querySelector('.v3-hero-meta')){
-    const meta=document.createElement('div');
-    meta.className='v3-hero-meta';
-    meta.innerHTML='<div class="v3-hero-chip"><span>Affinity</span><b id="v3AffinityMeta">0 → 0</b></div><div class="v3-hero-chip"><span>Skills</span><b id="v3SkillsMeta">4</b></div><div class="v3-hero-chip"><span>Status</span><b id="v3ReadyMeta">Planning</b></div>';
-    heroIdentity.appendChild(meta);
-  }
-  const summary=document.querySelector('.summary-card');
-  if(summary && !summary.querySelector('.v3-sheet-close')){
-    const handle=document.createElement('button');handle.type='button';handle.className='v3-sheet-close';handle.setAttribute('aria-label','Close summary');summary.prepend(handle);
-    const status=document.createElement('div');status.className='v3-status';status.innerHTML='<span>Upgrade readiness</span><b id="v3StatusText">No upgrade selected</b>';summary.appendChild(status);
-  }
-  const side=document.querySelector('.side'), overlay=document.getElementById('v3Overlay'), fab=document.getElementById('v3SummaryFab');
-  function openSheet(){side&&side.classList.add('v3-show');overlay&&overlay.classList.add('show');document.body.classList.add('v3-open')}
-  function closeSheet(){side&&side.classList.remove('v3-show');overlay&&overlay.classList.remove('show');document.body.classList.remove('v3-open')}
-  fab&&fab.addEventListener('click',openSheet);overlay&&overlay.addEventListener('click',closeSheet);document.querySelector('.v3-sheet-close')?.addEventListener('click',closeSheet);
-  function syncV3(){
-    const c=Number(document.getElementById('curA')?.value||0),t=Number(document.getElementById('tarA')?.value||0);
-    const aff=document.getElementById('v3AffinityMeta');if(aff)aff.textContent=c+' → '+t;
-    const skills=document.querySelectorAll('#tabs .tab').length;const sm=document.getElementById('v3SkillsMeta');if(sm)sm.textContent=String(skills||4);
-    const count=document.querySelectorAll('#plans .plan').length;const fc=document.getElementById('v3FabCount');if(fc)fc.textContent=String(count);
-    const st=document.getElementById('v3StatusText'),ready=document.getElementById('v3ReadyMeta');
-    const left=[document.getElementById('affLeft'),document.getElementById('emblemLeft'),document.getElementById('totalBooks')].map(x=>Number(String(x?.textContent||'0').replace(/[^0-9.-]/g,''))||0);
-    let label=count===0?'No upgrade selected':(left.some(v=>v>0)?'Materials still needed':'Ready to upgrade');
-    if(st)st.textContent=label;if(ready)ready.textContent=label;
-    document.querySelectorAll('#plans .plan').forEach(plan=>{if(plan.querySelector('.v3-progress'))return;const m=plan.querySelector('.plan-top b')?.textContent?.match(/(\d+)\s*→\s*(\d+)/);if(!m)return;const a=Number(m[1]),b=Number(m[2]),pct=b>0?Math.max(0,Math.min(100,(b-a)/b*100)):0;const bar=document.createElement('div');bar.className='v3-progress';bar.innerHTML='<i style="width:'+pct.toFixed(1)+'%"></i>';plan.appendChild(bar)});
-  }
-  const target=document.getElementById('plans');if(target)new MutationObserver(syncV3).observe(target,{childList:true,subtree:true});
-  document.addEventListener('input',()=>setTimeout(syncV3,0));document.addEventListener('change',()=>setTimeout(syncV3,0));setTimeout(syncV3,80);
-})();
-</script>
 
-<script id="atlas-round2-js">
-(function(){
-  const status=document.getElementById('atlasStageStatus');
-  document.querySelectorAll('.expert-tab').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      if(status){
-        status.textContent='SYNC';
-        setTimeout(()=>status.textContent='READY',140);
-      }
-    },{passive:true});
-  });
-})();
-</script>
+
 
 
 <script id="safe-summary-table-js">
