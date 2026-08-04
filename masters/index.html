@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" dir="ltr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07111f"><title>SaifKS Masters | Premium Planner</title><script>
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#07111f" name="theme-color"/><title>SaifKS Masters | Premium Planner</title><script>
 (function(){
   const supported=['en','ar','fr','es','de','tr','ko','ja','zh'];
   const aliases={
@@ -435,18 +436,18 @@ body.v3-open{overflow:hidden}
 .cost-chip.gain{border-color:rgba(115,230,174,.22);background:rgba(115,230,174,.07)}
 .v3-status{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 0;padding:9px 11px;border-radius:12px;border:1px solid rgba(115,230,174,.18);background:rgba(115,230,174,.055)}
 .v3-status span{font-size:10px;color:var(--muted)}.v3-status b{font-size:11px;color:var(--v3-good)}
-.v3-summary-fab{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:70;height:52px;border:0;border-radius:16px;background:linear-gradient(135deg,#ffd36b,#ff9d49);color:#261704;font-weight:950;box-shadow:0 18px 44px rgba(0,0,0,.44)}
-.v3-summary-fab .v3-count{display:inline-grid;place-items:center;min-width:24px;height:24px;margin-inline-start:7px;padding:0 7px;border-radius:999px;background:rgba(38,23,4,.14)}
-.v3-sheet-close{display:none;width:100%;height:5px;max-width:54px;margin:0 auto 12px;border:0;border-radius:999px;background:rgba(255,255,255,.22)}
-.v3-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.56);backdrop-filter:blur(4px);z-index:79}
+
+
+
+
 @media(max-width:920px){
   .app{padding-bottom:86px}
-  .v3-summary-fab{display:block}
-  .v3-overlay.show{display:block}
+  
+  
   .side{position:fixed!important;left:8px;right:8px;bottom:0;top:auto!important;z-index:80;transform:translateY(110%);transition:transform .28s ease;max-height:86dvh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
-  .side.v3-show{transform:translateY(0)}
-  .side .summary-card{border-radius:24px 24px 0 0;box-shadow:0 -24px 70px rgba(0,0,0,.52)}
-  .v3-sheet-close{display:block}
+  
+  
+  
   .plans{max-height:48dvh!important;overflow:auto}
 }
 @media(max-width:620px){
@@ -455,9 +456,6 @@ body.v3-open{overflow:hidden}
 }
 
 </style>
-
-
-
 <style id="remaining-bidi-fix">
 .remaining-negative{
   color:#ff4d4f !important;
@@ -467,8 +465,6 @@ body.v3-open{overflow:hidden}
   display:inline-block;
 }
 </style>
-
-
 <style id="atlas-round2-premium">
 :root{
   --atlas-bg:#07090f;
@@ -867,8 +863,6 @@ input:focus,select:focus{
   .hero-art img{max-height:94px!important}
 }
 </style>
-
-
 <style id="atlas-official-index-polish-v1">
 /* Official index.html polish — no logic or data changes */
 :root{
@@ -1067,11 +1061,6 @@ button,input,select{
   .materials-panel,.card,.summary-card{padding:10px!important;border-radius:15px!important}
 }
 </style>
-
-
-
-
-
 <style id="summary-table-rebuild">
 .layout{
   grid-template-columns:minmax(0,1fr)!important;
@@ -1165,95 +1154,221 @@ button,input,select{
 }
 </style>
 
+<style id="deep-review-layout-fix">
+/* Remove all remaining traces of the old floating summary */
+.v3-overlay,
+.v3-summary-fab,
+.v3-sheet-close,
+.side{
+  display:none!important;
+}
+
+/* Restore a normal one-column page flow */
+.layout{
+  display:block!important;
+  grid-template-columns:none!important;
+}
+.main{
+  width:100%!important;
+  min-width:0!important;
+}
+.summary-table-section{
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-top:12px!important;
+  overflow:visible!important;
+}
+
+/* Keep the top controls visible and prevent overlap */
+.top{
+  position:relative!important;
+  top:auto!important;
+  z-index:10!important;
+}
+.app{
+  padding-bottom:24px!important;
+}
+
+/* Affinity controls must remain visible */
+.atlas-affinity,
+.atlas-affinity .two,
+.atlas-affinity .field,
+#curA,
+#tarA{
+  visibility:visible!important;
+  opacity:1!important;
+}
+.atlas-affinity{
+  display:block!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+.atlas-affinity .two{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+
+/* Summary table: desktop */
+.summary-table-wrap{
+  width:100%!important;
+  overflow:visible!important;
+}
+.summary-table{
+  width:100%!important;
+  min-width:0!important;
+  table-layout:fixed!important;
+}
+.summary-table th,
+.summary-table td{
+  overflow-wrap:anywhere;
+}
+
+/* Mobile summary becomes readable cards instead of a clipped wide table */
+@media(max-width:620px){
+  .atlas-affinity .two{
+    grid-template-columns:1fr!important;
+  }
+
+  .summary-table-wrap{
+    border:0!important;
+    overflow:visible!important;
+  }
+  .summary-table{
+    display:block!important;
+  }
+  .summary-table thead{
+    display:none!important;
+  }
+  .summary-table tbody{
+    display:grid!important;
+    gap:8px!important;
+  }
+  .summary-table tr{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+    padding:10px!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    border-radius:12px!important;
+    background:#0b1523!important;
+  }
+  .summary-table td{
+    display:block!important;
+    padding:8px!important;
+    border:1px solid rgba(255,255,255,.06)!important;
+    border-radius:9px!important;
+    background:rgba(255,255,255,.025)!important;
+    font-size:12px!important;
+  }
+  .summary-table td:first-child{
+    grid-column:1/-1!important;
+    border:0!important;
+    background:transparent!important;
+    padding:0 2px 5px!important;
+    font-size:13px!important;
+  }
+  .summary-table td:not(:first-child)::before{
+    content:attr(data-label);
+    display:block;
+    margin-bottom:4px;
+    color:var(--muted);
+    font-size:8px;
+    font-weight:900;
+  }
+
+  .upgrade-overview{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+</style>
+
 </head><body><div class="app">
-<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
-<section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
-<nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
-<div class="material-item"><img src="copper-horn.png" alt="Copper Horn"><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="silver-goblet.png" alt="Silver Goblet"><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="elite-spices.png" alt="Elite Spices"><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="master-emblem.png" alt="Master Emblem"><div class="material-info"><div class="material-name" data-i18n="masterEmblems">Master Emblems</div><div class="material-bonus">&nbsp;</div><input id="emblemsOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="masters-manuscript.png" alt="Master's Manuscript"><div class="material-info"><div class="material-name" data-i18n="manuscripts">Master's Manuscripts</div><div class="material-bonus">&nbsp;</div><input id="booksOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
+<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
+<section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
+<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="cassia-v29.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="wilson-v32.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
+<div class="material-item"><img alt="Copper Horn" src="copper-horn.png"/><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Silver Goblet" src="silver-goblet.png"/><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Elite Spices" src="elite-spices.png"/><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Master Emblem" src="master-emblem.png"/><div class="material-info"><div class="material-name" data-i18n="masterEmblems">Master Emblems</div><div class="material-bonus"> </div><input id="emblemsOwned" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div class="material-info"><div class="material-name" data-i18n="manuscripts">Master's Manuscripts</div><div class="material-bonus"> </div><input id="booksOwned" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 </div></section>
 <div class="layout"><main class="main">
 <section class="card glass atlas-section atlas-affinity"><div class="head"><div class="atlas-number">01</div><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
-<div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img src="master-emblem.png" alt="Master Emblem"><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
-<section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img src="masters-manuscript.png" alt="Master's Manuscript"><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
-</main><aside class="side"></aside></div>
-
+<div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img alt="Master Emblem" src="master-emblem.png"/><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
+<section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
+</main></div>
 <section class="summary-card glass summary-table-section" id="summarySection">
-  <div class="head">
-    <h2 data-i18n="summary">Summary</h2>
-    <div class="hint" data-i18n="remaining">Remaining</div>
-  </div>
-
-  <div class="upgrade-overview">
-    <div class="overview-cell">
-      <span data-i18n="currentLevel">Current level</span>
-      <b id="summaryCurrentAffinity">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="targetLevel">Target level</span>
-      <b id="summaryTargetAffinity">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="currentEffect">Current effect</span>
-      <b id="summaryCurrentSkill">0</b>
-    </div>
-    <div class="overview-cell">
-      <span data-i18n="targetEffect">Target effect</span>
-      <b id="summaryTargetSkill">0</b>
-    </div>
-  </div>
-
-  <div class="summary-table-wrap">
-    <table class="summary-table">
-      <thead>
-        <tr>
-          <th data-i18n="material">Material</th>
-          <th data-i18n="available">Available</th>
-          <th data-i18n="required">Required</th>
-          <th data-i18n="remaining">Remaining</th>
-          <th data-i18n="status">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="affinityPoints">Affinity Points</span></td>
-          <td id="summaryAffAvailable">0</td>
-          <td id="summaryAffRequired">0</td>
-          <td id="summaryAffRemaining">0</td>
-          <td id="summaryAffStatus">—</td>
-        </tr>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="masterEmblems">Master Emblems</span></td>
-          <td id="summaryEmblemAvailable">0</td>
-          <td id="summaryEmblemRequired">0</td>
-          <td id="summaryEmblemRemaining">0</td>
-          <td id="summaryEmblemStatus">—</td>
-        </tr>
-        <tr>
-          <td><span class="summary-material-name" data-i18n="manuscripts">Master's Manuscripts</span></td>
-          <td id="summaryBooksAvailable">0</td>
-          <td id="summaryBooksRequired">0</td>
-          <td id="summaryBooksRemaining">0</td>
-          <td id="summaryBooksStatus">—</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="plans" id="plans">
-    <div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div>
-  </div>
-
-  <div class="actions">
-    <button class="copy" id="copy" data-i18n="copySummary">Copy Summary</button>
-    <button class="reset" id="reset" data-i18n="reset">Reset</button>
-  </div>
+<div class="head">
+<h2 data-i18n="summary">Summary</h2>
+<div class="hint" data-i18n="remaining">Remaining</div>
+</div>
+<div class="upgrade-overview">
+<div class="overview-cell">
+<span data-i18n="currentLevel">Current level</span>
+<b id="summaryCurrentAffinity">0</b>
+</div>
+<div class="overview-cell">
+<span data-i18n="targetLevel">Target level</span>
+<b id="summaryTargetAffinity">0</b>
+</div>
+<div class="overview-cell">
+<span data-i18n="currentEffect">Current effect</span>
+<b id="summaryCurrentSkill">0</b>
+</div>
+<div class="overview-cell">
+<span data-i18n="targetEffect">Target effect</span>
+<b id="summaryTargetSkill">0</b>
+</div>
+</div>
+<div class="summary-table-wrap">
+<table class="summary-table">
+<thead>
+<tr>
+<th data-i18n="material">Material</th>
+<th data-i18n="available">Available</th>
+<th data-i18n="required">Required</th>
+<th data-i18n="remaining">Remaining</th>
+<th data-i18n="status">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="summary-material-name" data-i18n="affinityPoints">Affinity Points</span></td>
+<td id="summaryAffAvailable">0</td>
+<td id="summaryAffRequired">0</td>
+<td id="summaryAffRemaining">0</td>
+<td id="summaryAffStatus">—</td>
+</tr>
+<tr>
+<td><span class="summary-material-name" data-i18n="masterEmblems">Master Emblems</span></td>
+<td id="summaryEmblemAvailable">0</td>
+<td id="summaryEmblemRequired">0</td>
+<td id="summaryEmblemRemaining">0</td>
+<td id="summaryEmblemStatus">—</td>
+</tr>
+<tr>
+<td><span class="summary-material-name" data-i18n="manuscripts">Master's Manuscripts</span></td>
+<td id="summaryBooksAvailable">0</td>
+<td id="summaryBooksRequired">0</td>
+<td id="summaryBooksRemaining">0</td>
+<td id="summaryBooksStatus">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="plans" id="plans">
+<div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div>
+</div>
+<div class="actions">
+<button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button>
+<button class="reset" data-i18n="reset" id="reset">Reset</button>
+</div>
 </section>
-
-<footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span data-i18n="builtBySaif">Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></footer></div>
+<footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span data-i18n="builtBySaif">Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" rel="noopener" target="_blank">▶ YouTube</a></footer></div>
 <script>
 
 
@@ -1386,42 +1501,8 @@ function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert]
 function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading')}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
-<div class="v3-overlay" id="v3Overlay"></div>
-<button type="button" class="v3-summary-fab" id="v3SummaryFab">View Summary <span class="v3-count" id="v3FabCount">0</span></button>
 
-<script>
-(function(){
-  const heroIdentity=document.querySelector('.hero-identity');
-  if(heroIdentity && !document.querySelector('.v3-hero-meta')){
-    const meta=document.createElement('div');
-    meta.className='v3-hero-meta';
-    meta.innerHTML='<div class="v3-hero-chip"><span>Affinity</span><b id="v3AffinityMeta">0 → 0</b></div><div class="v3-hero-chip"><span>Skills</span><b id="v3SkillsMeta">4</b></div><div class="v3-hero-chip"><span>Status</span><b id="v3ReadyMeta">Planning</b></div>';
-    heroIdentity.appendChild(meta);
-  }
-  const summary=document.querySelector('.summary-card');
-  if(summary && !summary.querySelector('.v3-sheet-close')){
-    const handle=document.createElement('button');handle.type='button';handle.className='v3-sheet-close';handle.setAttribute('aria-label','Close summary');summary.prepend(handle);
-    const status=document.createElement('div');status.className='v3-status';status.innerHTML='<span>Upgrade readiness</span><b id="v3StatusText">No upgrade selected</b>';summary.appendChild(status);
-  }
-  const side=document.querySelector('.side'), overlay=document.getElementById('v3Overlay'), fab=document.getElementById('v3SummaryFab');
-  function openSheet(){side&&side.classList.add('v3-show');overlay&&overlay.classList.add('show');document.body.classList.add('v3-open')}
-  function closeSheet(){side&&side.classList.remove('v3-show');overlay&&overlay.classList.remove('show');document.body.classList.remove('v3-open')}
-  fab&&fab.addEventListener('click',openSheet);overlay&&overlay.addEventListener('click',closeSheet);document.querySelector('.v3-sheet-close')?.addEventListener('click',closeSheet);
-  function syncV3(){
-    const c=Number(document.getElementById('curA')?.value||0),t=Number(document.getElementById('tarA')?.value||0);
-    const aff=document.getElementById('v3AffinityMeta');if(aff)aff.textContent=c+' → '+t;
-    const skills=document.querySelectorAll('#tabs .tab').length;const sm=document.getElementById('v3SkillsMeta');if(sm)sm.textContent=String(skills||4);
-    const count=document.querySelectorAll('#plans .plan').length;const fc=document.getElementById('v3FabCount');if(fc)fc.textContent=String(count);
-    const st=document.getElementById('v3StatusText'),ready=document.getElementById('v3ReadyMeta');
-    const left=[document.getElementById('affLeft'),document.getElementById('emblemLeft'),document.getElementById('totalBooks')].map(x=>Number(String(x?.textContent||'0').replace(/[^0-9.-]/g,''))||0);
-    let label=count===0?'No upgrade selected':(left.some(v=>v>0)?'Materials still needed':'Ready to upgrade');
-    if(st)st.textContent=label;if(ready)ready.textContent=label;
-    document.querySelectorAll('#plans .plan').forEach(plan=>{if(plan.querySelector('.v3-progress'))return;const m=plan.querySelector('.plan-top b')?.textContent?.match(/(\d+)\s*→\s*(\d+)/);if(!m)return;const a=Number(m[1]),b=Number(m[2]),pct=b>0?Math.max(0,Math.min(100,(b-a)/b*100)):0;const bar=document.createElement('div');bar.className='v3-progress';bar.innerHTML='<i style="width:'+pct.toFixed(1)+'%"></i>';plan.appendChild(bar)});
-  }
-  const target=document.getElementById('plans');if(target)new MutationObserver(syncV3).observe(target,{childList:true,subtree:true});
-  document.addEventListener('input',()=>setTimeout(syncV3,0));document.addEventListener('change',()=>setTimeout(syncV3,0));setTimeout(syncV3,80);
-})();
-</script>
+
 
 <script id="atlas-round2-js">
 (function(){
@@ -1436,8 +1517,6 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
   });
 })();
 </script>
-
-
 <script id="summary-table-rebuild-js">
 (function(){
   const byId=id=>document.getElementById(id);
@@ -1518,6 +1597,35 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
   window.addEventListener('pageshow',updateSummaryTable);
   setTimeout(updateSummaryTable,0);
   setTimeout(updateSummaryTable,250);
+})();
+</script>
+
+<script id="deep-review-summary-fix-js">
+(function(){
+  function syncSummaryLabels(){
+    const table=document.querySelector('.summary-table');
+    if(!table) return;
+    const headers=[...table.querySelectorAll('thead th')].map(th=>th.textContent.trim());
+    table.querySelectorAll('tbody tr').forEach(row=>{
+      [...row.children].forEach((cell,index)=>{
+        if(index>0) cell.dataset.label=headers[index]||'';
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',syncSummaryLabels);
+  window.addEventListener('pageshow',syncSummaryLabels);
+
+  const languageSelect=document.getElementById('languageSelect');
+  if(languageSelect){
+    languageSelect.addEventListener('change',()=>{
+      requestAnimationFrame(()=>requestAnimationFrame(syncSummaryLabels));
+    });
+  }
+
+  const observer=new MutationObserver(syncSummaryLabels);
+  const table=document.querySelector('.summary-table');
+  if(table) observer.observe(table,{childList:true,subtree:true,characterData:true});
 })();
 </script>
 
