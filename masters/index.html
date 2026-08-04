@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" dir="ltr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07111f"><title>SaifKS Masters | Premium Planner</title><script>
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#07111f" name="theme-color"/><title>SaifKS Masters | Premium Planner</title><script>
 (function(){
   const supported=['en','ar','fr','es','de','tr','ko','ja','zh'];
   const aliases={
@@ -17,23 +18,11 @@
     document.documentElement.lang=saved;
     document.documentElement.dir=saved==='ar'?'rtl':'ltr';
     document.documentElement.dataset.initialLang=saved;
-    document.documentElement.classList.remove('lang-loading');
+    
+    window.setTimeout(()=>document.documentElement.classList.remove('lang-loading'),1500);
   }catch(_){ }
 })();
 </script>
-
-<script id="early-expert-restore">
-(function(){
-  const valid=['valora','pan','roman','cassia','wilson','guinevere'];
-  let expert='valora';
-  try{
-    const saved=localStorage.getItem('saifksMastersActiveExpert');
-    if(valid.includes(saved)) expert=saved;
-  }catch(_){}
-  document.documentElement.dataset.savedExpert=expert;
-})();
-</script>
-
 <style>
 .lang-loading body{opacity:1!important;visibility:visible!important}.lang-loading body *{transition:none!important}
 :root{color-scheme:dark;--bg:#06101e;--glass:rgba(15,31,51,.62);--glass2:rgba(9,22,39,.72);--line:rgba(255,255,255,.11);--text:#f7fbff;--muted:#9fb0c6;--gold:#ffc85c;--cyan:#58d6ff;--green:#6ce4ad;--red:#ff8190;--shadow:0 16px 45px rgba(0,0,0,.28);--r:18px}
@@ -467,9 +456,6 @@ body{
 }
 
 </style>
-
-
-
 <style id="remaining-bidi-fix">
 .remaining-negative{
   color:#ff4d4f !important;
@@ -479,8 +465,6 @@ body{
   display:inline-block;
 }
 </style>
-
-
 <style id="atlas-round2-premium">
 :root{
   --atlas-bg:#07090f;
@@ -879,8 +863,6 @@ input:focus,select:focus{
   .hero-art img{max-height:94px!important}
 }
 </style>
-
-
 <style id="atlas-official-index-polish-v1">
 /* Official index.html polish — no logic or data changes */
 :root{
@@ -1079,209 +1061,22 @@ button,input,select{
   .materials-panel,.card,.summary-card{padding:10px!important;border-radius:15px!important}
 }
 </style>
-
-
-
-
-
-<style id="safe-summary-table-style">
-.summary-card .safe-summary-table-wrap{
-  width:100%;
-  overflow-x:auto;
-  margin-top:10px;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:12px;
-  background:rgba(1,12,23,.38);
-}
-.summary-card .safe-summary-table{
-  width:100%;
-  min-width:520px;
-  border-collapse:collapse;
-}
-.summary-card .safe-summary-table th,
-.summary-card .safe-summary-table td{
-  padding:10px 11px;
-  text-align:start;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  font-size:11px;
-  white-space:nowrap;
-}
-.summary-card .safe-summary-table th{
-  color:var(--muted);
-  background:rgba(255,255,255,.025);
-  font-size:9px;
-  font-weight:900;
-}
-.summary-card .safe-summary-table td:first-child{
-  font-weight:900;
-}
-.summary-card .safe-summary-table tbody tr:last-child td{
-  border-bottom:0;
-}
-.summary-card .safe-summary-table td:last-child{
-  direction:ltr;
-  unicode-bidi:isolate;
-  font-weight:900;
-}
-.summary-card .safe-summary-table .is-missing{
-  color:#ff6f7f!important;
-}
-.summary-card .safe-summary-table .is-complete{
-  color:inherit!important;
-}
-.summary-card > .totals{
-  display:none!important;
-}
-@media(max-width:620px){
-  .summary-card .safe-summary-table th,
-  .summary-card .safe-summary-table td{
-    padding:9px;
-  }
-}
-</style>
-
-
-<style id="atlas-final-stability-fix">
-/* Never hide the page during refresh */
-html.lang-loading body{
-  opacity:1!important;
-  visibility:visible!important;
-}
-
-/* Remove every remaining floating-summary trace */
-.v3-summary-fab,
-.v3-overlay,
-.v3-sheet-close,
-.v3-status{
-  display:none!important;
-}
-
-/* Experts: exactly two per row in all screen sizes */
-.expert-switch{
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:8px!important;
-}
-.expert-switch button,
-.expert-switch .expert-tab{
-  width:100%!important;
-  min-width:0!important;
-}
-.expert-switch button:last-child:nth-child(odd){
-  grid-column:auto!important;
-}
-
-/* Keep the normal summary visible, not floating */
-.side{
-  position:static!important;
-  top:auto!important;
-}
-.summary-card{
-  position:static!important;
-  inset:auto!important;
-  transform:none!important;
-}
-
-/* Prevent old overlays from blocking taps even if browser cached markup */
-.v3-overlay{
-  pointer-events:none!important;
-}
-</style>
-
-
-<style id="early-expert-restore-style">
-html:not([data-expert-ready="1"]) .hero,
-html:not([data-expert-ready="1"]) .expert-switch{
-  visibility:hidden!important;
-}
-html[data-expert-ready="1"] .hero,
-html[data-expert-ready="1"] .expert-switch{
-  visibility:visible!important;
-}
-</style>
-
-</head><body><div class="app">
-<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a class="home-btn" href="../" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z"/></svg></a><select id="languageSelect" class="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
-<section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img id="expertHeroImage" src="valora.png" alt="Valora"></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" id="expertRole" data-i18n="role">Bear Hunt Specialist</div></div></section>
-<nav class="expert-switch glass" aria-label="Master selector"><button type="button" class="expert-tab" data-expert="valora"><img src="valora.png" alt="">Valora</button><button type="button" class="expert-tab" data-expert="pan"><img src="pan.png" alt="">Pan</button><button type="button" class="expert-tab" data-expert="roman"><img src="roman.png" alt="">Roman</button><button type="button" class="expert-tab" data-expert="cassia"><img src="cassia-v29.png" alt="">Cassia</button><button type="button" class="expert-tab" data-expert="wilson"><img src="wilson-v32.png" alt="">Wilson</button><button type="button" class="expert-tab" data-expert="guinevere"><img src="guinevere.png" alt="">Guinevere</button></nav>
-<script id="instant-expert-restore">
-(function(){
-  const expert=document.documentElement.dataset.savedExpert||'valora';
-  const map={
-    valora:{name:'Valora',image:'valora.png'},
-    pan:{name:'Pan',image:'pan.png'},
-    roman:{name:'Roman',image:'roman.png'},
-    cassia:{name:'Cassia',image:'cassia-v29.png'},
-    wilson:{name:'Wilson',image:'wilson-v32.png'},
-    guinevere:{name:'Guinevere',image:'guinevere.png'}
-  };
-  const data=map[expert]||map.valora;
-  const image=document.getElementById('expertHeroImage');
-  const name=document.getElementById('expertHeroName');
-
-  if(image){
-    image.src=data.image;
-    image.alt=data.name;
-    image.dataset.expert=expert;
-    image.loading='eager';
-    image.decoding='async';
-    image.fetchPriority='high';
-  }
-  if(name) name.textContent=data.name;
-
-  document.querySelectorAll('.expert-tab').forEach(button=>{
-    button.classList.toggle('active',button.dataset.expert===expert);
-  });
-
-  document.documentElement.dataset.expertReady='1';
-})();
-</script>
-</section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
-<div class="material-item"><img src="copper-horn.png" alt="Copper Horn"><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="silver-goblet.png" alt="Silver Goblet"><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="elite-spices.png" alt="Elite Spices"><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="master-emblem.png" alt="Master Emblem"><div class="material-info"><div class="material-name" data-i18n="masterEmblems">Master Emblems</div><div class="material-bonus">&nbsp;</div><input id="emblemsOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
-<div class="material-item"><img src="masters-manuscript.png" alt="Master's Manuscript"><div class="material-info"><div class="material-name" data-i18n="manuscripts">Master's Manuscripts</div><div class="material-bonus">&nbsp;</div><input id="booksOwned" type="number" min="0" inputmode="numeric" placeholder="0"></div></div>
+<style id="verified-stability-style">html.lang-loading body{opacity:1!important;visibility:visible!important}.v3-overlay,.v3-summary-fab,.v3-sheet-close{display:none!important;pointer-events:none!important}.expert-switch{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow:visible!important}.expert-switch button,.expert-switch .expert-tab{width:100%!important;min-width:0!important}.expert-switch button:last-child:nth-child(odd){grid-column:auto!important;width:100%!important;justify-self:stretch!important}.summary-card>.totals{display:none!important}.verified-summary-wrap{width:100%;overflow-x:auto;margin-top:10px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(1,12,23,.34)}.verified-summary-table{width:100%;min-width:520px;border-collapse:collapse}.verified-summary-table th,.verified-summary-table td{padding:10px 11px;text-align:start;border-bottom:1px solid rgba(255,255,255,.07);font-size:11px;white-space:nowrap}.verified-summary-table th{color:var(--muted);font-size:9px;font-weight:900;background:rgba(255,255,255,.025)}.verified-summary-table td:first-child{font-weight:900}.verified-summary-table tbody tr:last-child td{border-bottom:0}.verified-summary-table td:last-child{direction:ltr;unicode-bidi:isolate;font-weight:900}.verified-summary-table .missing{color:#ff6f7f!important}#expertHeroImage{transition:none!important}</style></head><body><div class="app">
+<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
+<section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="" id="expertHeroImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="/></div><div class="hero-identity"><h1 id="expertHeroName"> </h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
+<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="cassia-v29.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="wilson-v32.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav><script id="saved-expert-first-paint">(function(){const map={valora:['Valora','valora.png'],pan:['Pan','pan.png'],roman:['Roman','roman.png'],cassia:['Cassia','cassia-v29.png'],wilson:['Wilson','wilson-v32.png'],guinevere:['Guinevere','guinevere.png']};let key='valora';try{const saved=localStorage.getItem('saifksMastersActiveExpert');if(map[saved])key=saved}catch(_){}const data=map[key],img=document.getElementById('expertHeroImage'),name=document.getElementById('expertHeroName');if(img){img.src=data[1];img.alt=data[0];img.dataset.expert=key;img.loading='eager';img.decoding='async'}if(name)name.textContent=data[0];document.querySelectorAll('.expert-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.expert===key));})();</script></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
+<div class="material-item"><img alt="Copper Horn" src="copper-horn.png"/><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Silver Goblet" src="silver-goblet.png"/><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Elite Spices" src="elite-spices.png"/><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Master Emblem" src="master-emblem.png"/><div class="material-info"><div class="material-name" data-i18n="masterEmblems">Master Emblems</div><div class="material-bonus"> </div><input id="emblemsOwned" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
+<div class="material-item"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div class="material-info"><div class="material-name" data-i18n="manuscripts">Master's Manuscripts</div><div class="material-bonus"> </div><input id="booksOwned" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 </div></section>
 <div class="layout"><main class="main">
 <section class="card glass atlas-section atlas-affinity"><div class="head"><div class="atlas-number">01</div><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
-<div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img src="master-emblem.png" alt="Master Emblem"><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
-<section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img src="masters-manuscript.png" alt="Master's Manuscript"><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
-</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div>
-<div class="safe-summary-table-wrap">
-  <table class="safe-summary-table">
-    <thead>
-      <tr>
-        <th id="safeMaterialHeader">Material</th>
-        <th data-i18n="available">Available</th>
-        <th data-i18n="required">Required</th>
-        <th data-i18n="remaining">Remaining</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-i18n="affinityPoints">Affinity Points</td>
-        <td id="safeAffAvailable">0</td>
-        <td id="safeAffRequired">0</td>
-        <td id="safeAffRemaining">0</td>
-      </tr>
-      <tr>
-        <td data-i18n="masterEmblems">Master Emblems</td>
-        <td id="safeEmblemAvailable">0</td>
-        <td id="safeEmblemRequired">0</td>
-        <td id="safeEmblemRemaining">0</td>
-      </tr>
-      <tr>
-        <td data-i18n="manuscripts">Master's Manuscripts</td>
-        <td id="safeBooksAvailable">0</td>
-        <td id="safeBooksRequired">0</td>
-        <td id="safeBooksRemaining">0</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="totals"><div class="total"><span data-i18n="affinityPoints">Affinity Points</span><b id="totalAff">0</b></div><div class="total"><span data-i18n="masterEmblems">Master Emblems</span><b id="totalEmblems">0</b></div><div class="total"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="totalBooks">0</b></div></div><input id="affinityOwned" type="hidden" value="0"><div class="actions"><button class="copy" id="copy" data-i18n="copySummary">Copy Summary</button><button class="reset" id="reset" data-i18n="reset">Reset</button></div></section></aside></div>
-<footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span data-i18n="builtBySaif">Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a></footer></div>
+<div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img alt="Master Emblem" src="master-emblem.png"/><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
+<section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
+</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="verified-summary-wrap" id="verifiedSummaryTable"><table class="verified-summary-table"><thead><tr><th id="verifiedMaterialHead">Material</th><th data-i18n="available">Available</th><th data-i18n="required">Required</th><th data-i18n="remaining">Remaining</th></tr></thead><tbody><tr><td data-i18n="affinityPoints">Affinity Points</td><td id="vAffHave">0</td><td id="vAffNeed">0</td><td id="vAffLeft">0</td></tr><tr><td data-i18n="masterEmblems">Master Emblems</td><td id="vEmblemHave">0</td><td id="vEmblemNeed">0</td><td id="vEmblemLeft">0</td></tr><tr><td data-i18n="manuscripts">Master's Manuscripts</td><td id="vBooksHave">0</td><td id="vBooksNeed">0</td><td id="vBooksLeft">0</td></tr></tbody></table></div><div class="totals"><div class="total"><span data-i18n="affinityPoints">Affinity Points</span><b id="totalAff">0</b></div><div class="total"><span data-i18n="masterEmblems">Master Emblems</span><b id="totalEmblems">0</b></div><div class="total"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="totalBooks">0</b></div></div><input id="affinityOwned" type="hidden" value="0"/><div class="actions"><button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button><button class="reset" data-i18n="reset" id="reset">Reset</button></div></section></aside></div>
+<footer class="footer glass"><a href="https://saifks.com/">SaifKS.com</a><span>|</span><span data-i18n="builtBySaif">Built by Saif</span><a class="youtube" href="https://www.youtube.com/@saifkshot" rel="noopener" target="_blank">▶ YouTube</a></footer></div>
 <script>
 
 
@@ -1411,80 +1206,23 @@ function saveMaterials(){storageSet('saifksMastersMaterials',JSON.stringify({hor
 function loadMaterials(){try{const m=JSON.parse(storageGet('saifksMastersMaterials','{}')||'{}');horn.value=num(m.horn)||'';goblet.value=num(m.goblet)||'';spices.value=num(m.spices)||'';emblemsOwned.value=num(m.emblemsOwned)||'';booksOwned.value=num(m.booksOwned)||''}catch(_){}}
 function save(){storageSet(PROFILE_DATA[activeExpert].storage,JSON.stringify({skillSelections,curA:num(curA.value),tarA:num(tarA.value),skillIndex}));saveMaterials();storageSet('saifksMastersActiveExpert',activeExpert)}
 function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert].storage,'{}')||'{}');skillSelections=SKILLS.map((_,i)=>Array.isArray(state.skillSelections)&&state.skillSelections[i]?{c:num(state.skillSelections[i].c),t:num(state.skillSelections[i].t)}:{c:0,t:0});skillIndex=Math.min(Math.max(0,num(state.skillIndex)),SKILLS.length-1);window.__savedAffinity={c:num(state.curA),t:num(state.tarA)}}catch(_){skillSelections=SKILLS.map(()=>({c:0,t:0}));skillIndex=0;window.__savedAffinity={c:0,t:0}}}
-function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading');document.documentElement.dataset.expertReady='1'}
+function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading')}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
 
 
 
-
-
-
-
-
-<script id="safe-summary-table-js">
+<script id="atlas-round2-js">
 (function(){
-  const $=id=>document.getElementById(id);
-  const read=el=>{
-    if(!el) return 0;
-    const raw=('value' in el ? el.value : el.textContent) || '0';
-    return Math.max(0,Number(String(raw).replace(/[^\d.-]/g,''))||0);
-  };
-  const fmt=value=>Math.round(value).toLocaleString(
-    document.documentElement.lang==='ar' ? 'en-US' : undefined
-  );
-  let frame=0;
-
-  function setRemaining(el,value){
-    if(!el) return;
-    value=Math.max(0,Number(value)||0);
-    el.classList.toggle('is-missing',value>0);
-    el.classList.toggle('is-complete',value===0);
-    el.textContent=value>0 ? '\u2066- '+fmt(value)+'\u2069' : '0';
-  }
-
-  function render(){
-    frame=0;
-    const affinityAvailable=read($('affHave'));
-    const affinityRequired=read($('affNeed'));
-    const emblemAvailable=read($('emblemHave'));
-    const emblemRequired=read($('emblemNeed'));
-    const booksAvailable=read($('booksOwned'));
-    const booksRequired=read($('booksNeed'));
-
-    if($('safeAffAvailable')) $('safeAffAvailable').textContent=fmt(affinityAvailable);
-    if($('safeAffRequired')) $('safeAffRequired').textContent=fmt(affinityRequired);
-    setRemaining($('safeAffRemaining'),affinityRequired-affinityAvailable);
-
-    if($('safeEmblemAvailable')) $('safeEmblemAvailable').textContent=fmt(emblemAvailable);
-    if($('safeEmblemRequired')) $('safeEmblemRequired').textContent=fmt(emblemRequired);
-    setRemaining($('safeEmblemRemaining'),emblemRequired-emblemAvailable);
-
-    if($('safeBooksAvailable')) $('safeBooksAvailable').textContent=fmt(booksAvailable);
-    if($('safeBooksRequired')) $('safeBooksRequired').textContent=fmt(booksRequired);
-    setRemaining($('safeBooksRemaining'),booksRequired-booksAvailable);
-
-    const header=$('safeMaterialHeader');
-    if(header){
-      const names={
-        ar:'المادة',en:'Material',fr:'Matériau',es:'Material',
-        de:'Material',tr:'Malzeme',ko:'재료',ja:'素材',zh:'材料'
-      };
-      header.textContent=names[document.documentElement.lang]||'Material';
-    }
-  }
-
-  function schedule(){
-    if(frame) return;
-    frame=requestAnimationFrame(render);
-  }
-
-  document.addEventListener('input',schedule,true);
-  document.addEventListener('change',schedule,true);
-  document.addEventListener('click',schedule,true);
-  window.addEventListener('pageshow',schedule);
-  document.addEventListener('DOMContentLoaded',schedule,{once:true});
+  const status=document.getElementById('atlasStageStatus');
+  document.querySelectorAll('.expert-tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(status){
+        status.textContent='SYNC';
+        setTimeout(()=>status.textContent='READY',140);
+      }
+    },{passive:true});
+  });
 })();
 </script>
-
-</body></html>
+<script id="verified-summary-sync">(function(){const $=id=>document.getElementById(id);let frame=0;const read=el=>{if(!el)return 0;const raw=('value'in el?el.value:el.textContent)||'0';return Math.max(0,Number(String(raw).replace(/[^\d.-]/g,''))||0)};const fmt=v=>Math.round(v).toLocaleString(document.documentElement.lang==='ar'?'en-US':undefined);function remain(el,v){v=Math.max(0,v||0);el.classList.toggle('missing',v>0);el.textContent=v>0?'\u2066- '+fmt(v)+'\u2069':'0'}function render(){frame=0;const ah=read($('affHave')),an=read($('affNeed')),eh=read($('emblemHave')),en=read($('emblemNeed')),bh=read($('booksOwned')),bn=read($('booksNeed'));if(!$('vAffHave'))return;$('vAffHave').textContent=fmt(ah);$('vAffNeed').textContent=fmt(an);remain($('vAffLeft'),an-ah);$('vEmblemHave').textContent=fmt(eh);$('vEmblemNeed').textContent=fmt(en);remain($('vEmblemLeft'),en-eh);$('vBooksHave').textContent=fmt(bh);$('vBooksNeed').textContent=fmt(bn);remain($('vBooksLeft'),bn-bh);const names={ar:'المادة',en:'Material',fr:'Matériau',es:'Material',de:'Material',tr:'Malzeme',ko:'재료',ja:'素材',zh:'材料'};$('verifiedMaterialHead').textContent=names[document.documentElement.lang]||'Material'}function schedule(){if(!frame)frame=requestAnimationFrame(render)}document.addEventListener('input',schedule,true);document.addEventListener('change',schedule,true);document.addEventListener('click',schedule,false);window.addEventListener('pageshow',schedule);document.addEventListener('DOMContentLoaded',schedule,{once:true})})();</script></body></html>
