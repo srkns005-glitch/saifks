@@ -58,5 +58,15 @@
     "javascriptErrors": [],
     "missingReferences": [],
     "duplicateIds": []
+  },
+  "layoutFixV2": {
+    "summaryInsideLayoutAfterMain": true,
+    "footerAfterLayout": true,
+    "largeVerticalGapRemoved": true,
+    "order": [
+      "main",
+      "summary",
+      "footer"
+    ]
   }
 }
