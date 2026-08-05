@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 
-<html dir="ltr" lang="en"><head><meta charset="utf-8"/>
+<html dir="ltr" lang="en"><head>
+
+<script id="refresh-boot-single">
+(function(){
+  const supported=['en','ar','fr','es','de','tr','ko','ja','zh'];
+  let lang='en';
+  try{
+    const saved=
+      localStorage.getItem('saifksLanguage')||
+      localStorage.getItem('saifks_lang')||
+      'en';
+    if(supported.includes(saved)) lang=saved;
+  }catch(_){}
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.documentElement.classList.add('app-booting');
+})();
+</script>
+<meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#07111f" name="theme-color"/><title>SaifKS Masters | Premium Planner</title><script></script>
+
+
+
 <style>
-.lang-loading body{opacity:1!important;visibility:visible!important}.lang-loading body *{transition:none!important}
+.lang-loading body *{transition:none!important}
 :root{color-scheme:dark;--bg:#06101e;--glass:rgba(15,31,51,.62);--glass2:rgba(9,22,39,.72);--line:rgba(255,255,255,.11);--text:#f7fbff;--muted:#9fb0c6;--gold:#ffc85c;--cyan:#58d6ff;--green:#6ce4ad;--red:#ff8190;--shadow:0 16px 45px rgba(0,0,0,.28);--r:18px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{-webkit-text-size-adjust:100%}background:var(--bg);scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(88,214,255,.13),transparent 28%),radial-gradient(circle at 92% 8%,rgba(255,200,92,.12),transparent 26%),linear-gradient(160deg,#07111f,#0a1728 52%,#07111f);overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}.app{width:min(100% - 22px,1280px);margin:auto;padding:12px 0 calc(18px + env(safe-area-inset-bottom))}.glass{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;background:linear-gradient(var(--bg) 65%,transparent)}.top-actions{display:flex;align-items:center;gap:8px}.home-btn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--glass2);color:var(--text);text-decoration:none}.home-btn svg{width:20px;height:20px;display:block}.brand{font-weight:950;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.lang{width:104px;min-width:104px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--glass2);color:var(--text);padding:0 24px 0 8px;font-size:12px;font-weight:800;text-align:center;text-align-last:center;outline:none}
@@ -1079,7 +1100,7 @@ background:transparent!important;
   --pro-red:#ff7385;
   --pro-green:#62dba7;
 }
-html.lang-loading body{opacity:1!important;visibility:visible!important}
+html
 body{
   background:
     radial-gradient(circle at 10% 0%,rgba(91,220,255,.12),transparent 28%),
@@ -1433,40 +1454,48 @@ footer{
   transform:scale(1.12)!important;
   transform-origin:center bottom!important;
 }
-</style></head><body><div class="app">
+</style>
+
+
+
+<style id="refresh-boot-shell-style">
+html,body{background:#07101c!important}
+#appBootShell{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(88,214,255,.11),transparent 30%),
+    radial-gradient(circle at 82% 4%,rgba(255,200,92,.08),transparent 28%),
+    #07101c;
+  color:#f7fbff;
+}
+#appBootShell .boot-inner{
+  display:grid;
+  justify-items:center;
+  gap:7px;
+  padding:18px 22px;
+}
+#appBootShell strong{font-size:18px;letter-spacing:.2px}
+#appBootShell span{color:#9fb0c6;font-size:10px;letter-spacing:1.2px}
+html:not(.app-booting) #appBootShell{display:none!important}
+html.app-booting .app{visibility:hidden!important}
+</style>
+
+</head><body>
+
+<div id="appBootShell">
+  <div class="boot-inner">
+    <strong>SaifKS Masters</strong>
+    <span>KINGSHOT MASTER PLANNER</span>
+  </div>
+</div>
+<div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
-<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav><script id="stable-expert-bootstrap">
-(function(){
-  const profiles={
-    valora:['Valora','valora.png'],
-    pan:['Pan','pan.png'],
-    roman:['Roman','roman.png'],
-    cassia:['Cassia','hero-cassia.png'],
-    wilson:['Wilson','hero-wilson.png'],
-    guinevere:['Guinevere','guinevere.png']
-  };
-  let expert='valora';
-  try{
-    const saved=localStorage.getItem('saifksMastersActiveExpert');
-    if(profiles[saved]) expert=saved;
-  }catch(_){}
-  const [label,src]=profiles[expert];
-  const image=document.getElementById('expertHeroImage');
-  const name=document.getElementById('expertHeroName');
-  if(image){
-    image.src=src;
-    image.alt=label;
-    image.dataset.expert=expert;
-    image.loading='eager';
-    image.decoding='async';
-  }
-  if(name) name.textContent=label;
-  document.querySelectorAll('.expert-tab').forEach(tab=>{
-    tab.classList.toggle('active',tab.dataset.expert===expert);
-  });
-})();
-</script></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
+<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
 <div class="material-item"><img alt="Copper Horn" src="copper-horn.png"/><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 <div class="material-item"><img alt="Silver Goblet" src="silver-goblet.png"/><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 <div class="material-item"><img alt="Elite Spices" src="elite-spices.png"/><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
@@ -1628,7 +1657,7 @@ function saveMaterials(){storageSet('saifksMastersMaterials',JSON.stringify({hor
 function loadMaterials(){try{const m=JSON.parse(storageGet('saifksMastersMaterials','{}')||'{}');horn.value=num(m.horn)||'';goblet.value=num(m.goblet)||'';spices.value=num(m.spices)||'';emblemsOwned.value=num(m.emblemsOwned)||'';booksOwned.value=num(m.booksOwned)||''}catch(_){}}
 function save(){storageSet(PROFILE_DATA[activeExpert].storage,JSON.stringify({skillSelections,curA:num(curA.value),tarA:num(tarA.value),skillIndex}));saveMaterials();storageSet('saifksMastersActiveExpert',activeExpert)}
 function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert].storage,'{}')||'{}');skillSelections=SKILLS.map((_,i)=>Array.isArray(state.skillSelections)&&state.skillSelections[i]?{c:num(state.skillSelections[i].c),t:num(state.skillSelections[i].t)}:{c:0,t:0});skillIndex=Math.min(Math.max(0,num(state.skillIndex)),SKILLS.length-1);window.__savedAffinity={c:num(state.curA),t:num(state.tarA)}}catch(_){skillSelections=SKILLS.map(()=>({c:0,t:0}));skillIndex=0;window.__savedAffinity={c:0,t:0}}}
-function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('lang-loading')}
+function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('app-booting');document.getElementById('appBootShell')?.remove()}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
 <script id="stable-summary-table">
@@ -1674,4 +1703,15 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
     schedule();
   },{once:true});
 })();
-</script></body></html>
+</script>
+
+
+
+<script id="refresh-boot-failsafe">
+window.addEventListener('error',()=>{
+  document.documentElement.classList.remove('app-booting');
+  document.getElementById('appBootShell')?.remove();
+},{once:true});
+</script>
+
+</body></html>
