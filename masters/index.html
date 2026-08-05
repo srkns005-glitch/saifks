@@ -3,6 +3,65 @@
 <html dir="ltr" lang="en"><head><meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#07111f" name="theme-color"/><title>SaifKS Masters | Premium Planner</title><script></script>
+
+<script id="refresh-stability-bootstrap">
+(function(){
+  const languages=['en','ar','fr','es','de','tr','ko','ja','zh'];
+  const masters={
+    valora:{name:'Valora',image:'valora.png'},
+    pan:{name:'Pan',image:'pan.png'},
+    roman:{name:'Roman',image:'roman.png'},
+    cassia:{name:'Cassia',image:'hero-cassia.png'},
+    wilson:{name:'Wilson',image:'hero-wilson.png'},
+    guinevere:{name:'Guinevere',image:'guinevere.png'}
+  };
+
+  let language='en';
+  let masterId='valora';
+
+  try{
+    const savedLanguage =
+      localStorage.getItem('saifksLanguage') ||
+      localStorage.getItem('saifks_lang') ||
+      localStorage.getItem('language');
+    if(languages.includes(savedLanguage)) language=savedLanguage;
+
+    const savedMaster=localStorage.getItem('saifksMastersActiveExpert');
+    if(masters[savedMaster]) masterId=savedMaster;
+  }catch(_){}
+
+  document.documentElement.lang=language;
+  document.documentElement.dir=language==='ar'?'rtl':'ltr';
+  document.documentElement.dataset.initialMaster=masterId;
+  document.documentElement.classList.remove('lang-loading');
+
+  const applyMaster=()=>{
+    const master=masters[masterId];
+    const image=document.getElementById('expertHeroImage');
+    const name=document.getElementById('expertHeroName');
+
+    if(image){
+      image.src=master.image;
+      image.alt=master.name;
+      image.dataset.expert=masterId;
+      image.loading='eager';
+      image.decoding='async';
+    }
+    if(name) name.textContent=master.name;
+
+    document.querySelectorAll('.expert-tab').forEach(tab=>{
+      tab.classList.toggle('active',tab.dataset.expert===masterId);
+    });
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',applyMaster,{once:true});
+  }else{
+    applyMaster();
+  }
+})();
+</script>
+
 <style>
 .lang-loading body{opacity:1!important;visibility:visible!important}.lang-loading body *{transition:none!important}
 :root{color-scheme:dark;--bg:#06101e;--glass:rgba(15,31,51,.62);--glass2:rgba(9,22,39,.72);--line:rgba(255,255,255,.11);--text:#f7fbff;--muted:#9fb0c6;--gold:#ffc85c;--cyan:#58d6ff;--green:#6ce4ad;--red:#ff8190;--shadow:0 16px 45px rgba(0,0,0,.28);--r:18px}
@@ -1433,40 +1492,24 @@ footer{
   transform:scale(1.12)!important;
   transform-origin:center bottom!important;
 }
-</style></head><body><div class="app">
+</style>
+<style id="refresh-stability-css">
+html:not([data-page-ready="1"]) body *,
+html:not([data-page-ready="1"]) body *::before,
+html:not([data-page-ready="1"]) body *::after{
+  transition:none!important;
+  animation:none!important;
+}
+html.lang-loading body{
+  opacity:1!important;
+  visibility:visible!important;
+}
+</style>
+
+</head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
-<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav><script id="stable-expert-bootstrap">
-(function(){
-  const profiles={
-    valora:['Valora','valora.png'],
-    pan:['Pan','pan.png'],
-    roman:['Roman','roman.png'],
-    cassia:['Cassia','hero-cassia.png'],
-    wilson:['Wilson','hero-wilson.png'],
-    guinevere:['Guinevere','guinevere.png']
-  };
-  let expert='valora';
-  try{
-    const saved=localStorage.getItem('saifksMastersActiveExpert');
-    if(profiles[saved]) expert=saved;
-  }catch(_){}
-  const [label,src]=profiles[expert];
-  const image=document.getElementById('expertHeroImage');
-  const name=document.getElementById('expertHeroName');
-  if(image){
-    image.src=src;
-    image.alt=label;
-    image.dataset.expert=expert;
-    image.loading='eager';
-    image.decoding='async';
-  }
-  if(name) name.textContent=label;
-  document.querySelectorAll('.expert-tab').forEach(tab=>{
-    tab.classList.toggle('active',tab.dataset.expert===expert);
-  });
-})();
-</script></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
+<nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
 <div class="material-item"><img alt="Copper Horn" src="copper-horn.png"/><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 <div class="material-item"><img alt="Silver Goblet" src="silver-goblet.png"/><div class="material-info"><div class="material-name" data-i18n="silverGoblet">Silver Goblet</div><div class="material-bonus" data-i18n="bonusAffinity100">+100 Affinity</div><input id="goblet" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
 <div class="material-item"><img alt="Elite Spices" src="elite-spices.png"/><div class="material-info"><div class="material-name" data-i18n="eliteSpices">Elite Spices</div><div class="material-bonus" data-i18n="bonusAffinity1000">+1,000 Affinity</div><input id="spices" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
@@ -1674,4 +1717,20 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
     schedule();
   },{once:true});
 })();
-</script></body></html>
+</script>
+<script id="refresh-ready-marker">
+(function(){
+  const ready=()=>{
+    requestAnimationFrame(()=>{
+      document.documentElement.dataset.pageReady='1';
+    });
+  };
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',ready,{once:true});
+  }else{
+    ready();
+  }
+})();
+</script>
+
+</body></html>
