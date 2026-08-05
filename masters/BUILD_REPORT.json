@@ -1,0 +1,55 @@
+{
+  "project": "SaifKS Masters Complete Professional",
+  "all_files_in_one_folder": true,
+  "files": [
+    "copper-horn.png",
+    "elite-spices.png",
+    "guinevere.png",
+    "hero-cassia.png",
+    "hero-wilson.png",
+    "index.html",
+    "master-emblem.png",
+    "masters-manuscript.png",
+    "pan.png",
+    "roman.png",
+    "silver-goblet.png",
+    "valora.png"
+  ],
+  "removed_unused_files": [
+    "profiles.html",
+    "hero-guinevere.png",
+    "cassia.html",
+    "hero-pan.png",
+    "valora.html",
+    "wilson.html",
+    "guinevere.html",
+    "hero-roman.png",
+    "hero-valora.png",
+    "pan.html",
+    "index2.html",
+    "roman.html"
+  ],
+  "javascript_errors": [],
+  "missing_local_references": [],
+  "duplicate_ids": [],
+  "preserved": {
+    "masters": 6,
+    "affinity_levels_per_master": 100,
+    "skills_per_master": 4,
+    "languages": 9,
+    "persistence": true,
+    "copy_summary": true,
+    "reset": true
+  },
+  "fixed": [
+    "floating summary removed",
+    "summary made static",
+    "summary converted to table",
+    "two master tabs per row",
+    "language blank refresh removed",
+    "saved master restored before first paint",
+    "Cassia and Wilson image paths fixed",
+    "unused duplicate pages and assets removed",
+    "responsive glass design added"
+  ]
+}
