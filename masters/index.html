@@ -1385,13 +1385,45 @@ footer{
   }
 }
 </style>
-<style>
-.footer-brand{display:flex;justify-content:center;align-items:center;gap:.45rem;flex-wrap:wrap;
-font-weight:700;font-size:14px;padding:14px 10px}
-.footer-brand a{text-decoration:none}
+<style id="footer-brand-compact">
+.footer,
+footer{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:8px!important;
+  padding:0!important;
+}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  width:100%;
+  min-height:34px;
+  padding:5px 8px;
+  margin:0;
+  font-size:12px;
+  line-height:1.15;
+  font-weight:700;
+  white-space:nowrap;
+}
+.footer-brand a{
+  text-decoration:none;
+  line-height:inherit;
+}
 .footer-brand .site{color:#f6c453}
 .footer-brand .built{color:#e8edf5}
-.footer-brand .yt{color:#ff4d4f}
+.footer-brand .yt{color:#ff5b61}
+.footer-brand a:active{opacity:.78}
+@media(max-width:380px){
+  .footer-brand{
+    gap:3px;
+    min-height:32px;
+    padding:4px 5px;
+    font-size:11px;
+    letter-spacing:-.1px;
+  }
+}
 </style></head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
@@ -1436,7 +1468,7 @@ font-weight:700;font-size:14px;padding:14px 10px}
 <section class="card glass atlas-section atlas-affinity"><div class="head"><div class="atlas-number">01</div><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
 <div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img alt="Master Emblem" src="master-emblem.png"/><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
 <section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
-</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="summary-table-wrap"><table aria-label="Summary resources" class="summary-table"><thead><tr><th data-i18n="material">Material</th><th data-i18n="available">Available</th><th data-i18n="required">Required</th><th data-i18n="remaining">Remaining</th></tr></thead><tbody><tr><td data-i18n="affinityPoints">Affinity Points</td><td id="summaryAffHave">0</td><td id="summaryAffNeed">0</td><td class="summary-remaining"><b id="totalAff">0</b></td></tr><tr><td data-i18n="masterEmblems">Master Emblems</td><td id="summaryEmblemHave">0</td><td id="summaryEmblemNeed">0</td><td class="summary-remaining"><b id="totalEmblems">0</b></td></tr><tr><td data-i18n="manuscripts">Master's Manuscripts</td><td id="summaryBooksHave">0</td><td id="summaryBooksNeed">0</td><td class="summary-remaining"><b id="totalBooks">0</b></td></tr></tbody></table></div><input id="affinityOwned" type="hidden" value="0"/><div class="actions"><button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button><button class="reset" data-i18n="reset" id="reset">Reset</button></div></section></aside></div><footer class="footer glass"><div class="footer-brand"><a class="site" href="https://saifks.com">SaifKS.com</a><span class="built"> | Built by Saif | </span><a class="yt" href="https://www.youtube.com/@SaifKS">▶ YouTube</a></div></footer>
+</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="summary-table-wrap"><table aria-label="Summary resources" class="summary-table"><thead><tr><th data-i18n="material">Material</th><th data-i18n="available">Available</th><th data-i18n="required">Required</th><th data-i18n="remaining">Remaining</th></tr></thead><tbody><tr><td data-i18n="affinityPoints">Affinity Points</td><td id="summaryAffHave">0</td><td id="summaryAffNeed">0</td><td class="summary-remaining"><b id="totalAff">0</b></td></tr><tr><td data-i18n="masterEmblems">Master Emblems</td><td id="summaryEmblemHave">0</td><td id="summaryEmblemNeed">0</td><td class="summary-remaining"><b id="totalEmblems">0</b></td></tr><tr><td data-i18n="manuscripts">Master's Manuscripts</td><td id="summaryBooksHave">0</td><td id="summaryBooksNeed">0</td><td class="summary-remaining"><b id="totalBooks">0</b></td></tr></tbody></table></div><input id="affinityOwned" type="hidden" value="0"/><div class="actions"><button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button><button class="reset" data-i18n="reset" id="reset">Reset</button></div></section></aside></div><footer class="footer glass"><div class="footer-brand"><a class="site" href="https://saifks.com/" target="_self">SaifKS.com</a><span class="built"> | Built by Saif | </span><a class="yt" href="https://www.youtube.com/@Saifkshot" rel="noopener noreferrer" target="_blank">▶ YouTube</a></div></footer>
 </div>
 <script>
 
