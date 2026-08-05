@@ -1244,7 +1244,149 @@ footer{
   .side{margin-top:7px!important}
   .footer,footer{margin-top:7px!important}
 }
-</style></head><body><div class="app">
+</style>
+<style id="iphone-summary-no-scroll">
+/* iPhone: summary must fit inside the viewport with no horizontal scrolling */
+@media (max-width:620px){
+  .summary-card{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    padding:12px!important;
+  }
+
+  .summary-table-wrap{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow:visible!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
+  .summary-table{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    table-layout:auto!important;
+    border-collapse:separate!important;
+  }
+
+  .summary-table thead{
+    display:none!important;
+  }
+
+  .summary-table tbody{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    width:100%!important;
+  }
+
+  .summary-table tr{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+    width:100%!important;
+    min-width:0!important;
+    padding:9px!important;
+    border:1px solid rgba(255,255,255,.09)!important;
+    border-radius:12px!important;
+    background:rgba(3,14,26,.42)!important;
+  }
+
+  .summary-table td{
+    display:block!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:7px 5px!important;
+    border:1px solid rgba(255,255,255,.06)!important;
+    border-radius:8px!important;
+    background:rgba(255,255,255,.025)!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    text-align:center!important;
+    font-size:10px!important;
+    line-height:1.3!important;
+  }
+
+  .summary-table td:first-child{
+    grid-column:1/-1!important;
+    padding:0 2px 6px!important;
+    border:0!important;
+    background:transparent!important;
+    text-align:start!important;
+    font-size:12px!important;
+    font-weight:900!important;
+  }
+
+  .summary-table td:nth-child(2)::before,
+  .summary-table td:nth-child(3)::before,
+  .summary-table td:nth-child(4)::before{
+    display:block!important;
+    margin-bottom:4px!important;
+    color:var(--muted)!important;
+    font-size:8px!important;
+    font-weight:800!important;
+    line-height:1.15!important;
+  }
+
+  .summary-table td:nth-child(2)::before{content:"Available";}
+  .summary-table td:nth-child(3)::before{content:"Required";}
+  .summary-table td:nth-child(4)::before{content:"Remaining";}
+
+  html[lang="ar"] .summary-table td:nth-child(2)::before{content:"المتوفر";}
+  html[lang="ar"] .summary-table td:nth-child(3)::before{content:"المطلوب";}
+  html[lang="ar"] .summary-table td:nth-child(4)::before{content:"المتبقي";}
+
+  html[lang="fr"] .summary-table td:nth-child(2)::before{content:"Disponible";}
+  html[lang="fr"] .summary-table td:nth-child(3)::before{content:"Requis";}
+  html[lang="fr"] .summary-table td:nth-child(4)::before{content:"Restant";}
+
+  html[lang="es"] .summary-table td:nth-child(2)::before{content:"Disponible";}
+  html[lang="es"] .summary-table td:nth-child(3)::before{content:"Requerido";}
+  html[lang="es"] .summary-table td:nth-child(4)::before{content:"Restante";}
+
+  html[lang="de"] .summary-table td:nth-child(2)::before{content:"Verfügbar";}
+  html[lang="de"] .summary-table td:nth-child(3)::before{content:"Benötigt";}
+  html[lang="de"] .summary-table td:nth-child(4)::before{content:"Fehlend";}
+
+  html[lang="tr"] .summary-table td:nth-child(2)::before{content:"Mevcut";}
+  html[lang="tr"] .summary-table td:nth-child(3)::before{content:"Gerekli";}
+  html[lang="tr"] .summary-table td:nth-child(4)::before{content:"Kalan";}
+
+  html[lang="ko"] .summary-table td:nth-child(2)::before{content:"보유";}
+  html[lang="ko"] .summary-table td:nth-child(3)::before{content:"필요";}
+  html[lang="ko"] .summary-table td:nth-child(4)::before{content:"부족";}
+
+  html[lang="ja"] .summary-table td:nth-child(2)::before{content:"所持";}
+  html[lang="ja"] .summary-table td:nth-child(3)::before{content:"必要";}
+  html[lang="ja"] .summary-table td:nth-child(4)::before{content:"不足";}
+
+  html[lang="zh"] .summary-table td:nth-child(2)::before{content:"现有";}
+  html[lang="zh"] .summary-table td:nth-child(3)::before{content:"需要";}
+  html[lang="zh"] .summary-table td:nth-child(4)::before{content:"缺少";}
+
+  .summary-remaining{
+    direction:ltr!important;
+    unicode-bidi:isolate!important;
+  }
+
+  .summary-card .actions{
+    grid-template-columns:1fr!important;
+    width:100%!important;
+  }
+
+  .summary-card .copy,
+  .summary-card .reset{
+    width:100%!important;
+  }
+}
+</style>
+
+</head><body><div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
 <nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav><script id="stable-expert-bootstrap">

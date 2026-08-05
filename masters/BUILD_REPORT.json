@@ -72,5 +72,10 @@
   "romanMaterialsFix": {
     "fixed": true,
     "details": "Roman now uses the same translated +10, +100 and +1,000 Affinity labels as the other masters."
+  },
+  "iphoneSummaryFix": {
+    "horizontalScrollRemoved": true,
+    "mobileLayout": "Each material appears as a compact card with Available, Required and Remaining columns.",
+    "languagesSupported": 9
   }
 }
