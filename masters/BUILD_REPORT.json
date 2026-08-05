@@ -77,5 +77,80 @@
     "horizontalScrollRemoved": true,
     "mobileLayout": "Each material appears as a compact card with Available, Required and Remaining columns.",
     "languagesSupported": 9
+  },
+  "footerFix": {
+    "youtubeUrl": "https://www.youtube.com/@Saifkshot",
+    "compactHeight": true,
+    "singleLine": true
+  },
+  "refreshFlickerAudit": {
+    "before": {
+      "lang_loading_add_calls": 0,
+      "lang_loading_opacity_zero_rules": 0,
+      "timeouts": 1,
+      "mutation_observers": 1,
+      "dom_content_loaded": 1,
+      "pageshow_listeners": 1,
+      "expert_default_valora_refs": 4
+    },
+    "after": {
+      "lang_loading_add_calls": 0,
+      "lang_loading_opacity_zero_rules": 0,
+      "timeouts": 1,
+      "mutation_observers": 1,
+      "refresh_bootstrap_count": 1,
+      "ready_marker_count": 1
+    },
+    "fixed": [
+      "body is never hidden during refresh",
+      "saved language is applied before first paint",
+      "saved master is restored before visible rendering",
+      "first-render transitions are temporarily disabled",
+      "obsolete language fallback timer removed",
+      "duplicate identical script blocks removed"
+    ],
+    "javascriptErrors": [],
+    "duplicateIds": []
+  },
+  "refreshFlickerFixV2": {
+    "singleBootstrap": true,
+    "singleBootShell": true,
+    "stackedRefreshScriptsRemoved": true,
+    "languageAppliedBeforeBody": true,
+    "pageRevealedAfterMainApplyLang": true,
+    "whiteBlankPrevented": true
+  },
+  "singleInitFix": {
+    "before": {
+      "applyLang_calls": 3,
+      "fillAffinity_calls": 1,
+      "fillSkill_calls": 2,
+      "renderTabs_calls": 2,
+      "updateExpertChrome_calls": 1,
+      "update_calls": 3
+    },
+    "after": {
+      "applyLang_calls": 3,
+      "fillAffinity_calls": 0,
+      "fillSkill_calls": 1,
+      "renderTabs_calls": 1,
+      "updateExpertChrome_calls": 0,
+      "update_calls": 2,
+      "init_calls": 1
+    },
+    "applyLangTranslationOnly": true,
+    "singleGuardedInit": true,
+    "bootShellRemoved": true
+  },
+  "singleInitFixV2": {
+    "single_init_call": true,
+    "guarded_init": true,
+    "applyLang_has_no_fillAffinity": true,
+    "applyLang_has_no_fillSkill": true,
+    "applyLang_has_no_renderTabs": true,
+    "applyLang_has_no_updateExpertChrome": true,
+    "applyLang_has_no_update": true,
+    "init_has_render_sequence": true,
+    "javascript_errors": 0
   }
 }

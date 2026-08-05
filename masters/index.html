@@ -2,22 +2,7 @@
 
 <html dir="ltr" lang="en"><head>
 
-<script id="refresh-boot-single">
-(function(){
-  const supported=['en','ar','fr','es','de','tr','ko','ja','zh'];
-  let lang='en';
-  try{
-    const saved=
-      localStorage.getItem('saifksLanguage')||
-      localStorage.getItem('saifks_lang')||
-      'en';
-    if(supported.includes(saved)) lang=saved;
-  }catch(_){}
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  document.documentElement.classList.add('app-booting');
-})();
-</script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#07111f" name="theme-color"/><title>SaifKS Masters | Premium Planner</title><script></script>
@@ -1458,40 +1443,22 @@ footer{
 
 
 
-<style id="refresh-boot-shell-style">
-html,body{background:#07101c!important}
-#appBootShell{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  display:grid;
-  place-items:center;
-  background:
-    radial-gradient(circle at 18% 0%,rgba(88,214,255,.11),transparent 30%),
-    radial-gradient(circle at 82% 4%,rgba(255,200,92,.08),transparent 28%),
-    #07101c;
-  color:#f7fbff;
+
+
+
+<style id="single-init-visibility-fix">
+html,body,.app{
+  opacity:1!important;
+  visibility:visible!important;
 }
-#appBootShell .boot-inner{
-  display:grid;
-  justify-items:center;
-  gap:7px;
-  padding:18px 22px;
+html.app-booting .app{
+  visibility:visible!important;
 }
-#appBootShell strong{font-size:18px;letter-spacing:.2px}
-#appBootShell span{color:#9fb0c6;font-size:10px;letter-spacing:1.2px}
-html:not(.app-booting) #appBootShell{display:none!important}
-html.app-booting .app{visibility:hidden!important}
 </style>
 
 </head><body>
 
-<div id="appBootShell">
-  <div class="boot-inner">
-    <strong>SaifKS Masters</strong>
-    <span>KINGSHOT MASTER PLANNER</span>
-  </div>
-</div>
+
 <div class="app">
 <header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
@@ -1657,8 +1624,27 @@ function saveMaterials(){storageSet('saifksMastersMaterials',JSON.stringify({hor
 function loadMaterials(){try{const m=JSON.parse(storageGet('saifksMastersMaterials','{}')||'{}');horn.value=num(m.horn)||'';goblet.value=num(m.goblet)||'';spices.value=num(m.spices)||'';emblemsOwned.value=num(m.emblemsOwned)||'';booksOwned.value=num(m.booksOwned)||''}catch(_){}}
 function save(){storageSet(PROFILE_DATA[activeExpert].storage,JSON.stringify({skillSelections,curA:num(curA.value),tarA:num(tarA.value),skillIndex}));saveMaterials();storageSet('saifksMastersActiveExpert',activeExpert)}
 function load(){try{const state=JSON.parse(storageGet(PROFILE_DATA[activeExpert].storage,'{}')||'{}');skillSelections=SKILLS.map((_,i)=>Array.isArray(state.skillSelections)&&state.skillSelections[i]?{c:num(state.skillSelections[i].c),t:num(state.skillSelections[i].t)}:{c:0,t:0});skillIndex=Math.min(Math.max(0,num(state.skillIndex)),SKILLS.length-1);window.__savedAffinity={c:num(state.curA),t:num(state.tarA)}}catch(_){skillSelections=SKILLS.map(()=>({c:0,t:0}));skillIndex=0;window.__savedAffinity={c:0,t:0}}}
-function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('app-booting');document.getElementById('appBootShell')?.remove()}
+function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage.src=p.image;expertHeroImage.alt=p.name;expertHeroImage.dataset.expert=activeExpert;expertHeroName.textContent=p.name;document.title=`${p.name} Masters Planner | SaifKS`;document.querySelectorAll('.expert-tab').forEach(b=>b.classList.toggle('active',b.dataset.expert===activeExpert));expertRole.textContent=activeExpert==='pan'?panTr('role'):(activeExpert==='roman'?romanTr('role'):(activeExpert==='cassia'?cassiaTr('role'):(activeExpert==='wilson'?wilsonTr('role'):(activeExpert==='guinevere'?guinevereTr('role'):tr('role')))));if(activeExpert==='pan'){document.querySelector('[data-i18n=currentAtk]').textContent=lang==='ar'?'دفاع القوات الحالي':panTr('defense');document.querySelector('[data-i18n=targetAtk]').textContent=lang==='ar'?'دفاع القوات المستهدف':panTr('defense')}else if(activeExpert==='roman'){document.querySelector('[data-i18n=currentAtk]').textContent=romanTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=romanTr('targetStat')}else if(activeExpert==='cassia'){document.querySelector('[data-i18n=currentAtk]').textContent=cassiaTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=cassiaTr('targetStat')}else if(activeExpert==='wilson'){document.querySelector('[data-i18n=currentAtk]').textContent=wilsonTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=wilsonTr('targetStat')}else if(activeExpert==='guinevere'){document.querySelector('[data-i18n=currentAtk]').textContent=guinevereTr('currentStat');document.querySelector('[data-i18n=targetAtk]').textContent=guinevereTr('targetStat')}else{document.querySelector('[data-i18n=currentAtk]').textContent=tr('currentAtk');document.querySelector('[data-i18n=targetAtk]').textContent=tr('targetAtk')}}function switchExpert(name){if(!PROFILE_DATA[name]||name===activeExpert)return;save();activeExpert=name;storageSet('saifksMastersActiveExpert',name);LEVELS=PROFILE_DATA[name].levels;SKILLS=PROFILE_DATA[name].skills;I18N=PROFILE_DATA[name].i18n;EXTRA_I18N=PROFILE_DATA[name].extra;skillIndex=0;planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));load();applyLang()}function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);curA.value=ac;tarA.value=Math.max(ac,at);}
+
+/* SINGLE_INIT_PATCH_START */
+let __saifksInitialized=false;
+function init(){
+  if(__saifksInitialized) return;
+  __saifksInitialized=true;
+
+  applyLang();
+  fillAffinity();
+  fillSkill();
+  renderTabs();
+  updateExpertChrome();
+  update();
+
+  document.documentElement.dataset.appInitialized='1';
+}
+/* SINGLE_INIT_PATCH_END */
+
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
+init();
 </script>
 <script id="stable-summary-table">
 (function(){
@@ -1707,11 +1693,6 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
 
 
 
-<script id="refresh-boot-failsafe">
-window.addEventListener('error',()=>{
-  document.documentElement.classList.remove('app-booting');
-  document.getElementById('appBootShell')?.remove();
-},{once:true});
-</script>
+
 
 </body></html>
