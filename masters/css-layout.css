@@ -1,6 +1,0 @@
-.app-shell{width:min(100% - 20px,1280px);margin:auto;padding:12px 0 24px}
-.app-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.app-grid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:12px}
-.app-sidebar,.app-main{min-width:0}
-.panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
-@media(max-width:820px){.app-grid{grid-template-columns:1fr}}
