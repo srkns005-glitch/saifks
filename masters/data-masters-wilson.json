@@ -1,0 +1,2091 @@
+{
+  "schemaVersion": 1,
+  "id": "wilson",
+  "name": "Wilson",
+  "portrait": "assets/heroes/wilson.png",
+  "legacyStorageKey": "saifksMastersWilsonState",
+  "localization": {},
+  "affinity": {
+    "maxLevel": 100,
+    "resourceIds": [
+      "affinity_points",
+      "master_emblems"
+    ],
+    "levels": [
+      {
+        "level": 1,
+        "cost": {
+          "affinityPoints": 5000,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 5000,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.05,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 2,
+        "cost": {
+          "affinityPoints": 350,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 5350,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.1,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 3,
+        "cost": {
+          "affinityPoints": 360,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 5710,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.15,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 4,
+        "cost": {
+          "affinityPoints": 380,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 6090,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 5,
+        "cost": {
+          "affinityPoints": 400,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 6490,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.25,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 6,
+        "cost": {
+          "affinityPoints": 420,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 6910,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 7,
+        "cost": {
+          "affinityPoints": 440,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 7350,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.35,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 8,
+        "cost": {
+          "affinityPoints": 460,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 7810,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 9,
+        "cost": {
+          "affinityPoints": 480,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 8290,
+          "masterEmblems": 0
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.45,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 10,
+        "cost": {
+          "affinityPoints": 500,
+          "masterEmblems": 6
+        },
+        "cumulative": {
+          "affinityPoints": 8790,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.9,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 11,
+        "cost": {
+          "affinityPoints": 520,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 9310,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 1.95,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 12,
+        "cost": {
+          "affinityPoints": 560,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 9870,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 13,
+        "cost": {
+          "affinityPoints": 600,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 10470,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.05,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 14,
+        "cost": {
+          "affinityPoints": 640,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 11110,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.1,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 15,
+        "cost": {
+          "affinityPoints": 680,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 11790,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.15,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 16,
+        "cost": {
+          "affinityPoints": 720,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 12510,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 17,
+        "cost": {
+          "affinityPoints": 760,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 13270,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.25,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 18,
+        "cost": {
+          "affinityPoints": 800,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 14070,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 19,
+        "cost": {
+          "affinityPoints": 840,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 14910,
+          "masterEmblems": 6
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.35,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 20,
+        "cost": {
+          "affinityPoints": 880,
+          "masterEmblems": 10
+        },
+        "cumulative": {
+          "affinityPoints": 15790,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.8,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 21,
+        "cost": {
+          "affinityPoints": 920,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 16710,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.85,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 22,
+        "cost": {
+          "affinityPoints": 970,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 17680,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.9,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 23,
+        "cost": {
+          "affinityPoints": 1020,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 18700,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 2.95,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 24,
+        "cost": {
+          "affinityPoints": 1070,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 19770,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 25,
+        "cost": {
+          "affinityPoints": 1120,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 20890,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.05,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 26,
+        "cost": {
+          "affinityPoints": 1170,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 22060,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.1,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 27,
+        "cost": {
+          "affinityPoints": 1220,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 23280,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.15,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 28,
+        "cost": {
+          "affinityPoints": 1270,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 24550,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 29,
+        "cost": {
+          "affinityPoints": 1320,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 25870,
+          "masterEmblems": 16
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.25,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 30,
+        "cost": {
+          "affinityPoints": 1370,
+          "masterEmblems": 20
+        },
+        "cumulative": {
+          "affinityPoints": 27240,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.7,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 31,
+        "cost": {
+          "affinityPoints": 1420,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 28660,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.75,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 32,
+        "cost": {
+          "affinityPoints": 1470,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 30130,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.8,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 33,
+        "cost": {
+          "affinityPoints": 1520,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 31650,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.85,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 34,
+        "cost": {
+          "affinityPoints": 1570,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 33220,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.9,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 35,
+        "cost": {
+          "affinityPoints": 1620,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 34840,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 3.95,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 36,
+        "cost": {
+          "affinityPoints": 1670,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 36510,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 37,
+        "cost": {
+          "affinityPoints": 1720,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 38230,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.05,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 38,
+        "cost": {
+          "affinityPoints": 1770,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 40000,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.1,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 39,
+        "cost": {
+          "affinityPoints": 1820,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 41820,
+          "masterEmblems": 36
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.15,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 40,
+        "cost": {
+          "affinityPoints": 1870,
+          "masterEmblems": 25
+        },
+        "cumulative": {
+          "affinityPoints": 43690,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.6,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 41,
+        "cost": {
+          "affinityPoints": 1920,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 45610,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.65,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 42,
+        "cost": {
+          "affinityPoints": 1980,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 47590,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.7,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 43,
+        "cost": {
+          "affinityPoints": 2040,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 49630,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.75,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 44,
+        "cost": {
+          "affinityPoints": 2100,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 51730,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.8,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 45,
+        "cost": {
+          "affinityPoints": 2160,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 53890,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.85,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 46,
+        "cost": {
+          "affinityPoints": 2220,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 56110,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.9,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 47,
+        "cost": {
+          "affinityPoints": 2280,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 58390,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 4.95,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 48,
+        "cost": {
+          "affinityPoints": 2340,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 60730,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 49,
+        "cost": {
+          "affinityPoints": 2400,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 63130,
+          "masterEmblems": 61
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.05,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 50,
+        "cost": {
+          "affinityPoints": 2460,
+          "masterEmblems": 30
+        },
+        "cumulative": {
+          "affinityPoints": 65590,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 51,
+        "cost": {
+          "affinityPoints": 2520,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 68110,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.55,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 52,
+        "cost": {
+          "affinityPoints": 2580,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 70690,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.6,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 53,
+        "cost": {
+          "affinityPoints": 2640,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 73330,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.65,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 54,
+        "cost": {
+          "affinityPoints": 2700,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 76030,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.7,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 55,
+        "cost": {
+          "affinityPoints": 2760,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 78790,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.75,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 56,
+        "cost": {
+          "affinityPoints": 2820,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 81610,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.8,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 57,
+        "cost": {
+          "affinityPoints": 2880,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 84490,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.85,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 58,
+        "cost": {
+          "affinityPoints": 2940,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 87430,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.9,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 59,
+        "cost": {
+          "affinityPoints": 3000,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 90430,
+          "masterEmblems": 91
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 5.95,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 60,
+        "cost": {
+          "affinityPoints": 3060,
+          "masterEmblems": 40
+        },
+        "cumulative": {
+          "affinityPoints": 93490,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 61,
+        "cost": {
+          "affinityPoints": 3120,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 96610,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.45,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 62,
+        "cost": {
+          "affinityPoints": 3180,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 99790,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 63,
+        "cost": {
+          "affinityPoints": 3240,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 103030,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.55,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 64,
+        "cost": {
+          "affinityPoints": 3300,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 106330,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.6,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 65,
+        "cost": {
+          "affinityPoints": 3360,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 109690,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.65,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 66,
+        "cost": {
+          "affinityPoints": 3420,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 113110,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.7,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 67,
+        "cost": {
+          "affinityPoints": 3480,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 116590,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.75,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 68,
+        "cost": {
+          "affinityPoints": 3540,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 120130,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.8,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 69,
+        "cost": {
+          "affinityPoints": 3600,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 123730,
+          "masterEmblems": 131
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 6.85,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 70,
+        "cost": {
+          "affinityPoints": 3660,
+          "masterEmblems": 50
+        },
+        "cumulative": {
+          "affinityPoints": 127390,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 71,
+        "cost": {
+          "affinityPoints": 3720,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 131110,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.35,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 72,
+        "cost": {
+          "affinityPoints": 3780,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 134890,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 73,
+        "cost": {
+          "affinityPoints": 3840,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 138730,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.45,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 74,
+        "cost": {
+          "affinityPoints": 3900,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 142630,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 75,
+        "cost": {
+          "affinityPoints": 3960,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 146590,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.55,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 76,
+        "cost": {
+          "affinityPoints": 4020,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 150610,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.6,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 77,
+        "cost": {
+          "affinityPoints": 4080,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 154690,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.65,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 78,
+        "cost": {
+          "affinityPoints": 4140,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 158830,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.7,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 79,
+        "cost": {
+          "affinityPoints": 4200,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 163030,
+          "masterEmblems": 181
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 7.75,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 80,
+        "cost": {
+          "affinityPoints": 4260,
+          "masterEmblems": 60
+        },
+        "cumulative": {
+          "affinityPoints": 167290,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 81,
+        "cost": {
+          "affinityPoints": 4320,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 171610,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.25,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 82,
+        "cost": {
+          "affinityPoints": 4380,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 175990,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 83,
+        "cost": {
+          "affinityPoints": 4440,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 180430,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.35,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 84,
+        "cost": {
+          "affinityPoints": 4500,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 184930,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 85,
+        "cost": {
+          "affinityPoints": 4560,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 189490,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.45,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 86,
+        "cost": {
+          "affinityPoints": 4620,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 194110,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 87,
+        "cost": {
+          "affinityPoints": 4680,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 198790,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.55,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 88,
+        "cost": {
+          "affinityPoints": 4740,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 203530,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.6,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 89,
+        "cost": {
+          "affinityPoints": 4800,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 208330,
+          "masterEmblems": 241
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 8.65,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 90,
+        "cost": {
+          "affinityPoints": 4860,
+          "masterEmblems": 75
+        },
+        "cumulative": {
+          "affinityPoints": 213190,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.1,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 91,
+        "cost": {
+          "affinityPoints": 4920,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 218110,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.15,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 92,
+        "cost": {
+          "affinityPoints": 4980,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 223090,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.2,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 93,
+        "cost": {
+          "affinityPoints": 5040,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 228130,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.25,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 94,
+        "cost": {
+          "affinityPoints": 5100,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 233230,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.3,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 95,
+        "cost": {
+          "affinityPoints": 5160,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 238390,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.35,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 96,
+        "cost": {
+          "affinityPoints": 5220,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 243610,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.4,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 97,
+        "cost": {
+          "affinityPoints": 5280,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 248890,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.45,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 98,
+        "cost": {
+          "affinityPoints": 5340,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 254230,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.5,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 99,
+        "cost": {
+          "affinityPoints": 5400,
+          "masterEmblems": 0
+        },
+        "cumulative": {
+          "affinityPoints": 259630,
+          "masterEmblems": 316
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 9.55,
+          "unit": "percent"
+        }
+      },
+      {
+        "level": 100,
+        "cost": {
+          "affinityPoints": 5460,
+          "masterEmblems": 90
+        },
+        "cumulative": {
+          "affinityPoints": 265090,
+          "masterEmblems": 406
+        },
+        "effect": {
+          "stat": "squad_attack_percent",
+          "value": 10,
+          "unit": "percent"
+        }
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "mobilization_master",
+      "slot": 1,
+      "maxLevel": 10,
+      "localization": {
+        "name": {
+          "en": "Mobilization Master"
+        },
+        "description": {}
+      },
+      "levels": [
+        {
+          "level": 1,
+          "experience": 0,
+          "manuscripts": 0,
+          "effect": {
+            "primary": 2,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 2,
+          "experience": 25800,
+          "manuscripts": 300,
+          "effect": {
+            "primary": 4,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 3,
+          "experience": 51600,
+          "manuscripts": 600,
+          "effect": {
+            "primary": 6,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 4,
+          "experience": 77400,
+          "manuscripts": 900,
+          "effect": {
+            "primary": 8,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 5,
+          "experience": 103200,
+          "manuscripts": 1200,
+          "effect": {
+            "primary": 10,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 6,
+          "experience": 129000,
+          "manuscripts": 1500,
+          "effect": {
+            "primary": 12,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 7,
+          "experience": 154800,
+          "manuscripts": 1800,
+          "effect": {
+            "primary": 14,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 8,
+          "experience": 180600,
+          "manuscripts": 2100,
+          "effect": {
+            "primary": 16,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 9,
+          "experience": 206400,
+          "manuscripts": 2400,
+          "effect": {
+            "primary": 18,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 10,
+          "experience": 232200,
+          "manuscripts": 2700,
+          "effect": {
+            "primary": 20,
+            "secondary": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "championship_publicity",
+      "slot": 2,
+      "maxLevel": 10,
+      "localization": {
+        "name": {
+          "en": "Championship Publicity"
+        },
+        "description": {}
+      },
+      "levels": [
+        {
+          "level": 1,
+          "experience": 0,
+          "manuscripts": 0,
+          "effect": {
+            "primary": 5,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 2,
+          "experience": 25800,
+          "manuscripts": 300,
+          "effect": {
+            "primary": 10,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 3,
+          "experience": 51600,
+          "manuscripts": 600,
+          "effect": {
+            "primary": 15,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 4,
+          "experience": 77400,
+          "manuscripts": 900,
+          "effect": {
+            "primary": 20,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 5,
+          "experience": 103200,
+          "manuscripts": 1200,
+          "effect": {
+            "primary": 25,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 6,
+          "experience": 129000,
+          "manuscripts": 1500,
+          "effect": {
+            "primary": 30,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 7,
+          "experience": 154800,
+          "manuscripts": 1800,
+          "effect": {
+            "primary": 35,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 8,
+          "experience": 180600,
+          "manuscripts": 2100,
+          "effect": {
+            "primary": 40,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 9,
+          "experience": 206400,
+          "manuscripts": 2400,
+          "effect": {
+            "primary": 45,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 10,
+          "experience": 232200,
+          "manuscripts": 2700,
+          "effect": {
+            "primary": 50,
+            "secondary": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "viking_bounty",
+      "slot": 3,
+      "maxLevel": 10,
+      "localization": {
+        "name": {
+          "en": "Viking Bounty"
+        },
+        "description": {}
+      },
+      "levels": [
+        {
+          "level": 1,
+          "experience": 0,
+          "manuscripts": 0,
+          "effect": {
+            "primary": 5,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 2,
+          "experience": 25800,
+          "manuscripts": 300,
+          "effect": {
+            "primary": 10,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 3,
+          "experience": 51600,
+          "manuscripts": 600,
+          "effect": {
+            "primary": 15,
+            "secondary": 3
+          }
+        },
+        {
+          "level": 4,
+          "experience": 77400,
+          "manuscripts": 900,
+          "effect": {
+            "primary": 20,
+            "secondary": 4
+          }
+        },
+        {
+          "level": 5,
+          "experience": 103200,
+          "manuscripts": 1200,
+          "effect": {
+            "primary": 25,
+            "secondary": 5
+          }
+        },
+        {
+          "level": 6,
+          "experience": 129000,
+          "manuscripts": 1500,
+          "effect": {
+            "primary": 30,
+            "secondary": 6
+          }
+        },
+        {
+          "level": 7,
+          "experience": 154800,
+          "manuscripts": 1800,
+          "effect": {
+            "primary": 35,
+            "secondary": 7
+          }
+        },
+        {
+          "level": 8,
+          "experience": 180600,
+          "manuscripts": 2100,
+          "effect": {
+            "primary": 40,
+            "secondary": 8
+          }
+        },
+        {
+          "level": 9,
+          "experience": 206400,
+          "manuscripts": 2400,
+          "effect": {
+            "primary": 45,
+            "secondary": 9
+          }
+        },
+        {
+          "level": 10,
+          "experience": 232200,
+          "manuscripts": 2700,
+          "effect": {
+            "primary": 50,
+            "secondary": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "duel_sponsorship",
+      "slot": 4,
+      "maxLevel": 10,
+      "localization": {
+        "name": {
+          "en": "Duel Sponsorship"
+        },
+        "description": {}
+      },
+      "levels": [
+        {
+          "level": 1,
+          "experience": 0,
+          "manuscripts": 0,
+          "effect": {
+            "primary": 5,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 2,
+          "experience": 51600,
+          "manuscripts": 500,
+          "effect": {
+            "primary": 10,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 3,
+          "experience": 103200,
+          "manuscripts": 1000,
+          "effect": {
+            "primary": 15,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 4,
+          "experience": 154800,
+          "manuscripts": 1500,
+          "effect": {
+            "primary": 20,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 5,
+          "experience": 206400,
+          "manuscripts": 2000,
+          "effect": {
+            "primary": 25,
+            "secondary": 1
+          }
+        },
+        {
+          "level": 6,
+          "experience": 258000,
+          "manuscripts": 2500,
+          "effect": {
+            "primary": 30,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 7,
+          "experience": 309600,
+          "manuscripts": 3000,
+          "effect": {
+            "primary": 35,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 8,
+          "experience": 361200,
+          "manuscripts": 3500,
+          "effect": {
+            "primary": 40,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 9,
+          "experience": 412800,
+          "manuscripts": 4000,
+          "effect": {
+            "primary": 45,
+            "secondary": 2
+          }
+        },
+        {
+          "level": 10,
+          "experience": 464400,
+          "manuscripts": 4500,
+          "effect": {
+            "primary": 50,
+            "secondary": 3
+          }
+        }
+      ]
+    }
+  ],
+  "source": {
+    "origin": "legacy SaifKS Masters index.html",
+    "migration": "phase 2.1",
+    "preservedAsProvided": true
+  },
+  "dataQuality": {
+    "missingMasterLocalizationLanguages": [
+      "en",
+      "ar",
+      "fr",
+      "es",
+      "de",
+      "tr",
+      "ko",
+      "ja",
+      "zh"
+    ],
+    "missingSkillNameLanguages": {
+      "mobilization_master": [
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "championship_publicity": [
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "viking_bounty": [
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ],
+      "duel_sponsorship": [
+        "ar",
+        "fr",
+        "es",
+        "de",
+        "tr",
+        "ko",
+        "ja",
+        "zh"
+      ]
+    }
+  }
+}
