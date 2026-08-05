@@ -51,5 +51,12 @@
     "Cassia and Wilson image paths fixed",
     "unused duplicate pages and assets removed",
     "responsive glass design added"
-  ]
+  ],
+  "layoutFix": {
+    "summaryBeforeFooter": true,
+    "largeGapRemoved": true,
+    "javascriptErrors": [],
+    "missingReferences": [],
+    "duplicateIds": []
+  }
 }
