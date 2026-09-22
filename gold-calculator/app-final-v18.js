@@ -4,7 +4,7 @@ const translations={"en":{"title":"True Gold Calculator","buildings":"Buildings"
 
 const buildingLabels={"en":{"town":"Town Center","embassy":"Embassy","barracks":"Barracks","stable":"Stable","range":"Range","command":"Command Center","infirmary":"Infirmary","academy":"War Academy"},"ar":{"town":"مركز المدينة","embassy":"السفارة","barracks":"الثكنات","stable":"الإسطبل","range":"معسكر الرماة","command":"مركز القيادة","infirmary":"المستشفى","academy":"أكاديمية الحرب"},"fr":{"town":"Centre-ville","embassy":"Ambassade","barracks":"Caserne","stable":"Écurie","range":"Camp d’archers","command":"Centre de commandement","infirmary":"Infirmerie","academy":"Académie de guerre"},"es":{"town":"Centro de la ciudad","embassy":"Embajada","barracks":"Cuartel","stable":"Establo","range":"Campo de arqueros","command":"Centro de mando","infirmary":"Enfermería","academy":"Academia de guerra"},"de":{"town":"Stadtzentrum","embassy":"Botschaft","barracks":"Kaserne","stable":"Stall","range":"Bogenschützenlager","command":"Kommandozentrale","infirmary":"Lazarett","academy":"Kriegsakademie"},"tr":{"town":"Şehir Merkezi","embassy":"Elçilik","barracks":"Kışla","stable":"Ahır","range":"Okçu Kampı","command":"Komuta Merkezi","infirmary":"Revir","academy":"Savaş Akademisi"},"ko":{"town":"도시 센터","embassy":"대사관","barracks":"병영","stable":"마구간","range":"궁병 캠프","command":"지휘 센터","infirmary":"의무실","academy":"전쟁 아카데미"},"ja":{"town":"タウンセンター","embassy":"大使館","barracks":"兵舎","stable":"厩舎","range":"弓兵キャンプ","command":"司令センター","infirmary":"診療所","academy":"戦争アカデミー"},"zh":{"town":"市政厅","embassy":"大使馆","barracks":"兵营","stable":"马厩","range":"弓兵营地","command":"指挥中心","infirmary":"医院","academy":"战争学院"}};
 
-let currentLanguage=localStorage.getItem("saifRallyLang")||"en";
+let const requestedLanguage=new URLSearchParams(location.search).get("lang");\ncurrentLanguage=(requestedLanguage&&translations[requestedLanguage])?requestedLanguage:(localStorage.getItem("saifRallyLang")||localStorage.getItem("saifksLanguage")||localStorage.getItem("language")||"en");\nif(!translations[currentLanguage]) currentLanguage="en";
 const levels=window.LEVEL_ORDER;
 const box=document.getElementById("buildings");
 
@@ -98,7 +98,7 @@ function applyLanguage(language){
   document.documentElement.lang=language;
   document.documentElement.dir=language==="ar"?"rtl":"ltr";
   document.title=`${text.title} | SaifKS`;
-  localStorage.setItem("saifRallyLang",language);
+  localStorage.setItem("saifRallyLang",language);\n  localStorage.setItem("saifksLanguage",language);\n  localStorage.setItem("language",language);
   document.getElementById("languageSelect").value=language;
 
   document.querySelectorAll("[data-i18n]").forEach(element=>{
@@ -585,7 +585,7 @@ document.getElementById("copySummary").addEventListener("click",async()=>{
 
   const text=translations[currentLanguage];
   const lines=[];
-  const zeroTimes=["0d 0h 0m","0ي 0س 0د","0j 0h 0min","0d 0h 0min","0T 0Std 0Min"];
+  const zeroTimes=["0d 0h 0m","0ي 0س 0د","0j 0h 0min","0d 0h 0min","0T 0Std 0Min","0g 0s 0dk","0일 0시간 0분","0日 0時間 0分","0天 0小时 0分"];
   const add=(label,id)=>{
     const value=document.getElementById(id).textContent.trim();
     if(value!=="0"&&!zeroTimes.includes(value)) lines.push("",label,value);
