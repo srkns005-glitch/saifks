@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Rally Planner">
 <title>Rally Planner | KINGSHOT Tools</title>
 <style>
 *{box-sizing:border-box}
@@ -453,6 +458,8 @@ async function copyAlliancePlan(){
 function refreshTeamCounts(){teams.forEach(team=>{const title=team.root.querySelector(".team-title");if(!title)return;let count=title.querySelector(".team-count");if(!count){count=document.createElement("span");count.className="team-count";title.appendChild(count)}count.textContent=team.players.length})}
 loadCommandSettings();$("#standardBuffer").onclick=setStandardBuffer;$("#saveCommand").onclick=saveCommandSettings;$("#copyAllTeams").onclick=copyAlliancePlan;setInterval(refreshTeamCounts,300);refreshTeamCounts();
 
+
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
 </script>
 </body>
 </html>
