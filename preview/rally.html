@@ -145,6 +145,12 @@ input{padding:12px 10px;min-width:0}
 .preview-notice{position:fixed;right:14px;bottom:14px;z-index:999;padding:9px 12px;border-radius:999px;background:#ffd46b;color:#241805;font-size:12px;font-weight:1000;letter-spacing:.07em;box-shadow:0 10px 28px rgba(0,0,0,.36)}
 @media(max-width:620px){body{background:radial-gradient(circle at 50% -10%,rgba(255,212,107,.18),transparent 34%),linear-gradient(180deg,#0a1628,#050b14)}.hero{padding-top:22px}.hero-shell{text-align:left}.kicker{font-size:.62rem}.hero h1{font-size:3.15rem;letter-spacing:-.075em}.hero h1 span{margin-top:4px}.hero p{text-align:left;font-size:1rem}.tools{gap:12px}.tool{padding:18px;background:linear-gradient(135deg,#162d4a,#0b1727 66%);border-color:rgba(255,212,107,.2);box-shadow:0 13px 30px rgba(0,0,0,.26)}.tool:after{width:130px;height:130px;right:-58px;top:-58px;background:rgba(255,212,107,.13)}.tool-top{align-items:flex-start}.tool-number{font-size:2.1rem;color:rgba(255,212,107,.16)}.tool h3{font-size:1.28rem}.tool-link{background:linear-gradient(180deg,#ffe08a,#d99a2b);border:0;color:#281a05;font-size:1rem;box-shadow:0 8px 20px rgba(217,154,43,.22)}.card{border-color:rgba(255,212,107,.18);box-shadow:0 12px 30px rgba(0,0,0,.18)}.team-title{color:#fff!important;background:linear-gradient(135deg,#2a5b91,#152d49)!important;border-bottom-color:rgba(255,212,107,.35)!important}.quick-buttons button.selected{box-shadow:0 6px 16px rgba(245,196,81,.28)}.wave{border:1px solid rgba(255,212,107,.18);background:linear-gradient(135deg,rgba(255,212,107,.1),transparent 55%)}}
 
+
+/* Rally Command Center */
+.command-center{margin:0 0 20px;padding:22px;border-radius:22px;border:1px solid rgba(245,196,81,.33);background:linear-gradient(135deg,rgba(245,196,81,.13),rgba(25,38,60,.95) 55%,rgba(11,18,32,.98));box-shadow:0 18px 45px rgba(0,0,0,.2)}
+.command-top{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:16px}.command-title{margin:0;font-size:1.25rem}.command-title span{display:block;margin-top:4px;color:var(--muted);font-size:.86rem;font-weight:650;line-height:1.45}.command-chip{padding:7px 10px;border-radius:999px;color:#281b04;background:var(--gold);font-size:.72rem;font-weight:1000;letter-spacing:.08em;white-space:nowrap}.command-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.command-grid input{margin-top:7px}.command-actions{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:9px;margin-top:15px}.command-actions button{min-height:48px;border-radius:12px;font-weight:950;cursor:pointer}.command-actions .standard{border:1px solid rgba(245,196,81,.45);background:rgba(245,196,81,.12);color:var(--gold)}.command-actions .save{border:1px solid var(--border);background:var(--light);color:var(--text)}.command-actions .share{border:0;background:linear-gradient(var(--gold),var(--gold2));color:#1a1304}.team-count{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:27px;margin-left:7px;border-radius:50%;color:#1c1404;background:var(--gold);font-size:.78rem;font-weight:1000;vertical-align:middle}
+@media(max-width:560px){.command-center{margin:0 0 15px;padding:16px;border-radius:18px}.command-top{margin-bottom:13px}.command-title{font-size:1.12rem}.command-title span{font-size:.8rem}.command-grid{grid-template-columns:1fr}.command-actions{grid-template-columns:1fr;gap:8px}.command-actions button{min-height:46px}.team-title{display:flex;align-items:center;justify-content:center}.team-count{margin-left:6px}}
+
 </style>
 </head>
 <body><div class="preview-notice">MOBILE PREVIEW</div>
@@ -163,6 +169,21 @@ input{padding:12px 10px;min-width:0}
 <p id="subtitle">Create synchronized UTC rally schedules quickly and accurately.</p>
 <div id="utcNow" class="clock">UTC Now: --:--:--</div>
 </header>
+<section class="command-center" aria-label="Rally Command Center">
+  <div class="command-top">
+    <h2 class="command-title">Rally Command Center<span>Save your alliance setup, use a standard launch buffer, and share all team plans at once.</span></h2>
+    <span class="command-chip">LEADER MODE</span>
+  </div>
+  <div class="command-grid">
+    <label>Alliance / Event name<input id="commandName" type="text" placeholder="WLF — Castle Battle"></label>
+    <label>Plan note<input id="commandNote" type="text" placeholder="Use your best heroes"></label>
+  </div>
+  <div class="command-actions">
+    <button id="standardBuffer" class="standard" type="button">Set all teams to 30 sec</button>
+    <button id="saveCommand" class="save" type="button">Save on this device</button>
+    <button id="copyAllTeams" class="share" type="button">Copy complete alliance plan</button>
+  </div>
+</section>
 
 <div class="teams-grid">
 <section class="card team-card" data-team="A">
@@ -362,6 +383,22 @@ $("#langToggle").onclick=()=>{currentLanguage=currentLanguage==="en"?"ar":"en";a
 $("#cancelEdit").onclick=closeEdit;$("#saveEdit").onclick=()=>activeTeam&&activeTeam.saveEdit();$("#editModal").onclick=e=>{if(e.target===$("#editModal"))closeEdit()};
 function tick(){$("#utcNow").textContent=`UTC Now: ${utc(new Date())}`}setInterval(tick,1000);tick();
 teams=[...document.querySelectorAll("[data-team]")].map(el=>new TeamTool(el,el.dataset.team));applyLanguage();
+
+function commandSettings(){return {name:$("#commandName").value.trim(),note:$("#commandNote").value.trim()}}
+function saveCommandSettings(){localStorage.setItem("saifRallyCommand",JSON.stringify(commandSettings()));showToast(currentLanguage==="ar"?"تم حفظ إعدادات القيادة":"Command setup saved")}
+function loadCommandSettings(){try{const saved=JSON.parse(localStorage.getItem("saifRallyCommand")||"{}");$("#commandName").value=saved.name||"";$("#commandNote").value=saved.note||""}catch{}}
+function setStandardBuffer(){teams.forEach(team=>{team.q('[data-role="bufferMin"]').value=0;team.q('[data-role="bufferSec"]').value=30;team.root.querySelectorAll("[data-buffer]").forEach(x=>x.classList.toggle("selected",Number(x.dataset.buffer)===30))});showToast(currentLanguage==="ar"?"تم ضبط كل الفرق على 30 ثانية":"All teams set to 30 seconds")}
+async function copyAlliancePlan(){
+ const settings=commandSettings(),active=teams.filter(team=>team.players.length>=2);
+ if(!active.length){showToast(currentLanguage==="ar"?"أضف قائدين على الأقل في فريق واحد":"Add at least two leaders to a team");return}
+ active.forEach(team=>team.recalculate(true));
+ const blocks=active.map(team=>{const lines=team.schedule.map((p,i)=>(i+1)+". "+p.name+" — "+utc(p.start)).join("\n");return "TEAM "+team.id+"\n"+lines});
+ const message=[settings.name||"RALLY PLAN",settings.note?"Note: "+settings.note:""].concat(blocks).filter(Boolean).join("\n\n");
+ await copyText(message);showToast(currentLanguage==="ar"?"تم نسخ خطة التحالف":"Alliance plan copied");
+}
+function refreshTeamCounts(){teams.forEach(team=>{const title=team.root.querySelector(".team-title");if(!title)return;let count=title.querySelector(".team-count");if(!count){count=document.createElement("span");count.className="team-count";title.appendChild(count)}count.textContent=team.players.length})}
+loadCommandSettings();$("#standardBuffer").onclick=setStandardBuffer;$("#saveCommand").onclick=saveCommandSettings;$("#copyAllTeams").onclick=copyAlliancePlan;setInterval(refreshTeamCounts,300);refreshTeamCounts();
+
 </script>
 </body>
 </html>
