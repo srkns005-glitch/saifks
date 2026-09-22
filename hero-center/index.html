@@ -83,10 +83,18 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 .translation-error{border-color:#8a555b;background:#311d28;color:#ffd9dc;cursor:pointer}
 @keyframes translationSpin{to{transform:rotate(360deg)}}
 </style>
+<link rel="icon" href="../logo.png">
+
+<style id="saifks-unified-brand-style">
+.saifks-brand-logo,.brand img.logo,img.brand-mark{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+.brand:has(.saifks-brand-logo){display:flex;align-items:center;gap:10px}
+.brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
+@media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
+</style>
 </head>
 <body>
 <header><div class="wrap"><nav>
-<div class="brand"><div class="logo">👑</div><div><b>SaifKS Hero Center</b><small id="brandSub">All Heroes Database</small></div></div>
+<div class="brand"><img class="logo" src="../logo.png" alt="SaifKS logo"><div><b>SaifKS Hero Center</b><small id="brandSub">All Heroes Database</small></div></div>
 <div class="actions event-controls">
 <a class="event-home-btn" href="../index.html" id="homeBtn" aria-label="Home" title="Home">
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2v8.3a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5z"/></svg>
