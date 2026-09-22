@@ -168,3 +168,23 @@ html[dir="rtl"] .result-row strong{text-align:left}
   .result-row strong{min-width:68px;font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Saved upgrade plans */
+.saved-plans-card{border-color:rgba(97,214,160,.28)}
+.saved-plans-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.saved-plans-heading h2{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:clamp(19px,2.5vw,23px);line-height:1.25}
+.saved-plans-heading h2::before{content:"";width:4px;height:22px;flex:0 0 auto;border-radius:10px;background:var(--green)}
+.saved-plans-heading p{color:var(--muted);font-size:14px}
+.saved-plans-count{flex:0 0 auto;min-width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(97,214,160,.35);border-radius:10px;background:rgba(97,214,160,.08);color:var(--green);font-weight:900}
+.saved-plans-create,.saved-plans-manage{display:grid;grid-template-columns:minmax(0,1fr) 170px;align-items:end;gap:12px}
+.saved-plans-manage{margin-top:12px}
+.saved-plans-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.saved-plans-create>button,.saved-plans-actions>button{width:100%}
+.danger-outline{border:1px solid rgba(255,114,121,.45);background:rgba(255,114,121,.08);color:var(--red)}
+.saved-plans-status{min-height:21px;margin-top:10px;color:var(--green);font-size:13px;font-weight:750}
+.saved-plans-status.error{color:var(--red)}
+@media(max-width:720px){
+  .saved-plans-create,.saved-plans-manage{grid-template-columns:1fr}
+  .saved-plans-actions{grid-template-columns:1fr 1fr}
+}
