@@ -204,3 +204,15 @@ html[dir="rtl"] .result-row strong{text-align:left}
   .brand-block{grid-template-columns:30px minmax(0,1fr);column-gap:7px}
   .brand-logo{width:30px;height:30px;border-radius:9px}
 }
+
+
+/* Plan sharing */
+.saved-plans-manage{grid-template-columns:minmax(0,1fr) minmax(280px,360px)}
+.saved-plans-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+.saved-plans-actions .danger-outline{grid-column:1 / -1}
+.share-plan-button{border:1px solid rgba(97,214,160,.42);background:rgba(97,214,160,.12);color:var(--green)}
+.share-plan-button:hover{background:rgba(97,214,160,.18)}
+@media(max-width:720px){
+  .saved-plans-manage{grid-template-columns:1fr}
+  .saved-plans-actions{grid-template-columns:1fr 1fr}
+}
