@@ -1,0 +1,19 @@
+{
+  "name": "SaifKS True Gold Calculator",
+  "short_name": "SaifKS Gold",
+  "description": "Plan KINGSHOT building upgrades, True Gold, resources, time and power.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07111e",
+  "theme_color": "#091625",
+  "icons": [
+    {
+      "src": "../logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
