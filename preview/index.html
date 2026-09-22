@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07101d">
 <meta name="saifks-build" content="main-hero-center-linked-20260716021930">
 <meta name="description" content="Professional tools for KINGSHOT players and alliance leaders.">
-<link rel="icon" href="icon-192.png">
+<link rel="icon" href="../icon-192.png">
 <title>SaifKS | KINGSHOT Tools</title>
 <style>
 *{box-sizing:border-box}
@@ -86,17 +86,42 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
-/* Mobile preview: deliberately distinct from production */
-.preview-notice{position:fixed;right:14px;bottom:14px;z-index:999;padding:9px 12px;border-radius:999px;background:#ffd46b;color:#241805;font-size:12px;font-weight:1000;letter-spacing:.07em;box-shadow:0 10px 28px rgba(0,0,0,.36)}
-@media(max-width:620px){body{background:radial-gradient(circle at 50% -10%,rgba(255,212,107,.18),transparent 34%),linear-gradient(180deg,#0a1628,#050b14)}.hero{padding-top:22px}.hero-shell{text-align:left}.kicker{font-size:.62rem}.hero h1{font-size:3.15rem;letter-spacing:-.075em}.hero h1 span{margin-top:4px}.hero p{text-align:left;font-size:1rem}.tools{gap:12px}.tool{padding:18px;background:linear-gradient(135deg,#162d4a,#0b1727 66%);border-color:rgba(255,212,107,.2);box-shadow:0 13px 30px rgba(0,0,0,.26)}.tool:after{width:130px;height:130px;right:-58px;top:-58px;background:rgba(255,212,107,.13)}.tool-top{align-items:flex-start}.tool-number{font-size:2.1rem;color:rgba(255,212,107,.16)}.tool h3{font-size:1.28rem}.tool-link{background:linear-gradient(180deg,#ffe08a,#d99a2b);border:0;color:#281a05;font-size:1rem;box-shadow:0 8px 20px rgba(217,154,43,.22)}.card{border-color:rgba(255,212,107,.18);box-shadow:0 12px 30px rgba(0,0,0,.18)}.team-title{color:#fff!important;background:linear-gradient(135deg,#2a5b91,#152d49)!important;border-bottom-color:rgba(255,212,107,.35)!important}.quick-buttons button.selected{box-shadow:0 6px 16px rgba(245,196,81,.28)}.wave{border:1px solid rgba(255,212,107,.18);background:linear-gradient(135deg,rgba(255,212,107,.1),transparent 55%)}}
+/* Mobile usability preview */
+:focus-visible{outline:3px solid rgba(255,212,107,.85);outline-offset:3px}
+@media(max-width:620px){
+  .nav{position:sticky;top:0;padding:10px 0;isolation:isolate}
+  .nav:before{content:"";position:absolute;inset:0 -10px;z-index:-1;background:rgba(6,16,28,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .brand{gap:9px}.brand-name{font-size:1.05rem}
+  select.lang{min-height:44px;max-width:138px;padding:8px 9px}
+  .hero{padding:30px 0 38px}.hero h1{font-size:clamp(2.7rem,13vw,3.55rem);line-height:.94;margin:18px 0 14px}
+  .hero p{line-height:1.65}.cta-row{margin-top:24px;gap:10px}
+  .cta{min-height:52px}.section-head{gap:8px;margin-bottom:16px}.section-head p{line-height:1.55}
+  .tools{gap:13px}.tool{min-height:0;padding:19px;border-radius:21px}
+  .tool-icon{width:54px;height:54px;border-radius:16px;font-size:1.5rem}.tool-number{font-size:2.6rem}
+  .tool h3{font-size:1.35rem;margin:18px 0 8px}.tool p{line-height:1.6;margin-bottom:17px}
+  .tool-link{display:flex;justify-content:space-between;min-height:48px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,212,107,.22);background:rgba(255,212,107,.08)}
+}
 
-@media(max-width:620px){.brand img{display:none}}
+
+/* Visible mobile redesign preview */
+.preview-notice{position:fixed;right:14px;bottom:14px;z-index:999;padding:9px 12px;border-radius:999px;background:#ffd46b;color:#241805;font-size:12px;font-weight:1000;letter-spacing:.07em;box-shadow:0 10px 28px rgba(0,0,0,.36)}
+@media(max-width:620px){
+  body{background:radial-gradient(circle at 50% -10%,rgba(255,212,107,.18),transparent 34%),linear-gradient(180deg,#0a1628,#050b14)}
+  .hero{padding-top:22px}.hero-shell{text-align:left}.kicker{font-size:.62rem}.hero h1{font-size:3.15rem;letter-spacing:-.075em}.hero h1 span{margin-top:4px}.hero p{text-align:left;font-size:1rem}
+  .tools{gap:12px}.tool{padding:18px;background:linear-gradient(135deg,#162d4a,#0b1727 66%);border-color:rgba(255,212,107,.2);box-shadow:0 13px 30px rgba(0,0,0,.26)}
+  .tool:after{width:130px;height:130px;right:-58px;top:-58px;background:rgba(255,212,107,.13)}.tool-top{align-items:flex-start}.tool-number{font-size:2.1rem;color:rgba(255,212,107,.16)}
+  .tool h3{font-size:1.28rem}.tool-link{background:linear-gradient(180deg,#ffe08a,#d99a2b);border:0;color:#281a05;font-size:1rem;box-shadow:0 8px 20px rgba(217,154,43,.22)}
+  .card{border-color:rgba(255,212,107,.18);box-shadow:0 12px 30px rgba(0,0,0,.18)}
+  .team-title{color:#fff!important;background:linear-gradient(135deg,#2a5b91,#152d49)!important;border-bottom-color:rgba(255,212,107,.35)!important}
+  .quick-buttons button.selected{box-shadow:0 6px 16px rgba(245,196,81,.28)}.wave{border:1px solid rgba(255,212,107,.18);background:linear-gradient(135deg,rgba(255,212,107,.1),transparent 55%)}
+}
+
 </style>
 </head>
 <body><div class="preview-notice">MOBILE PREVIEW</div>
 <div class="wrap">
 <nav class="nav">
-  <a class="brand" href="index.html" aria-label="SaifKS home">
+  <a class="brand" href="../" aria-label="SaifKS home">
     <img src="../logo.png" alt="SaifKS logo">
     <span class="brand-copy">
       <span class="brand-name">SaifKS</span>
@@ -153,49 +178,49 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
       <div class="tool-top"><div class="tool-icon">🪙</div><div class="tool-number">03</div></div>
       <h3 data-i18n="goldTitle">True Gold Calculator</h3>
       <p data-i18n="goldDesc">Calculate building upgrades, True Gold, resources, construction time, power, and automatic upgrade requirements.</p>
-      <a class="tool-link" href="https://saifks.com/gold-calculator/index.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
+      <a class="tool-link" href="../gold-calculator/index.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">📅</div><div class="tool-number">04</div></div>
       <h3 data-i18n="eventsTitle">Event Center</h3>
       <p data-i18n="eventsDesc">Explore Solo and Alliance events with complete guides, rewards, preparation tips, and strategies in your selected language.</p>
-      <a id="eventCenterLink" class="tool-link" href="https://saifks.com/event-center/index.html"><span data-i18n="openGuide">Open Event Center</span><span>→</span></a>
+      <a id="eventCenterLink" class="tool-link" href="../event-center/index.html"><span data-i18n="openGuide">Open Event Center</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">🦸</div><div class="tool-number">05</div></div>
       <h3 data-i18n="heroTitle">Hero Center</h3>
       <p data-i18n="heroDesc">Explore heroes, skills, exclusive gear, ratings, and Saif analysis.</p>
-      <a id="heroCenterLink" class="tool-link" href="https://saifks.com/hero-center/index.html"><span data-i18n="openHeroes">Open Hero Center</span><span>→</span></a>
+      <a id="heroCenterLink" class="tool-link" href="../hero-center/index.html"><span data-i18n="openHeroes">Open Hero Center</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">🛡️</div><div class="tool-number">06</div></div>
       <h3 data-i18n="heroGearTitle">Hero Gear & Exclusive Weapon</h3>
       <p data-i18n="heroGearDesc">Plan Hero Gear upgrades, Mastery Forging, required resources, and the hero's exclusive weapon.</p>
-      <a id="heroGearLink" class="tool-link" href="https://saifks.com/hero-gear-center/index.html"><span data-i18n="openHeroGear">Open Gear Planner</span><span>→</span></a>
+      <a id="heroGearLink" class="tool-link" href="../hero-gear-center/index.html"><span data-i18n="openHeroGear">Open Gear Planner</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">👑</div><div class="tool-number">07</div></div>
       <h3 data-i18n="governorTitle">Governor Center</h3>
       <p data-i18n="governorDesc">Plan Governor Gear and Charms, calculate required and remaining materials, and save your progress.</p>
-      <a id="governorCenterLink" class="tool-link" href="https://saifks.com/governor-center/index.html"><span data-i18n="openGovernor">Open Governor Center</span><span>→</span></a>
+      <a id="governorCenterLink" class="tool-link" href="../governor-center/index.html"><span data-i18n="openGovernor">Open Governor Center</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">📚</div><div class="tool-number">08</div></div>
       <h3 data-i18n="researchTitle">Research Calculator</h3>
       <p data-i18n="researchDesc">Plan Academy research upgrades and calculate the required resources and time.</p>
-      <a id="researchCenterLink" class="tool-link" href="https://saifks.com/research/index.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
+      <a id="researchCenterLink" class="tool-link" href="../research/index.html"><span data-i18n="launch">Launch Tool</span><span>→</span></a>
     </article>
 
     <article class="tool">
       <div class="tool-top"><div class="tool-icon">🎓</div><div class="tool-number">09</div></div>
       <h3 data-i18n="mastersTitle">Masters</h3>
       <p data-i18n="mastersDesc">Plan Master affinity, skills, materials, and remaining upgrade requirements.</p>
-      <a id="mastersCenterLink" class="tool-link" href="https://saifks.com/masters/index.html"><span data-i18n="openMasters">Open Masters</span><span>→</span></a>
+      <a id="mastersCenterLink" class="tool-link" href="../masters/index.html"><span data-i18n="openMasters">Open Masters</span><span>→</span></a>
     </article>
 
 
@@ -243,12 +268,12 @@ function apply(){
   const governorCenterLink=document.getElementById('governorCenterLink');
   const researchCenterLink=document.getElementById('researchCenterLink');
   const mastersCenterLink=document.getElementById('mastersCenterLink');
-  if(eventLink)eventLink.href='event-center/index.html?lang='+encodeURIComponent(lang);
-  if(heroLink)heroLink.href='hero-center/index.html?lang='+encodeURIComponent(lang);
-  if(heroGearLink)heroGearLink.href='hero-gear-center/index.html?lang='+encodeURIComponent(lang);
-  if(governorCenterLink)governorCenterLink.href='governor-center/index.html?lang='+encodeURIComponent(lang);
-  if(researchCenterLink)researchCenterLink.href='research/index.html?lang='+encodeURIComponent(lang);
-  if(mastersCenterLink)mastersCenterLink.href='masters/index.html?lang='+encodeURIComponent(lang);
+  if(eventLink)eventLink.href='../event-center/index.html?lang='+encodeURIComponent(lang);
+  if(heroLink)heroLink.href='../hero-center/index.html?lang='+encodeURIComponent(lang);
+  if(heroGearLink)heroGearLink.href='../hero-gear-center/index.html?lang='+encodeURIComponent(lang);
+  if(governorCenterLink)governorCenterLink.href='../governor-center/index.html?lang='+encodeURIComponent(lang);
+  if(researchCenterLink)researchCenterLink.href='../research/index.html?lang='+encodeURIComponent(lang);
+  if(mastersCenterLink)mastersCenterLink.href='../masters/index.html?lang='+encodeURIComponent(lang);
 }
 
 document.getElementById('languageSelect').addEventListener('change',function(){
