@@ -1,4 +1,4 @@
-const CACHE_NAME="saifks-gold-v2";
+const CACHE_NAME="saifks-gold-v3";
 const APP_SHELL=[
   "./index.html",
   "./style-final-v18.css",
