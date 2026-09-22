@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="SaifKS Gold">
   <link rel="manifest" href="manifest.webmanifest?v=1.0.0">
   <link rel="apple-touch-icon" href="../logo.png">
-  <link rel="stylesheet" href="style-final-v18.css?v=6.1.0">
+  <link rel="stylesheet" href="style-final-v18.css?v=6.2.0">
 </head>
 <body>
 <header class="header">
@@ -74,6 +74,36 @@
     </div>
 
     <p id="plannerMessage" class="planner-message" aria-live="polite"></p>
+  </section>
+
+  <section class="card saved-plans-card">
+    <div class="saved-plans-heading">
+      <div>
+        <h2 data-i18n="savedPlans">Saved Plans</h2>
+        <p data-i18n="savedPlansHelp">Save different upgrade plans on this device and return to them anytime.</p>
+      </div>
+      <span id="savedPlansCount" class="saved-plans-count">0</span>
+    </div>
+
+    <div class="saved-plans-create">
+      <div class="field">
+        <label for="planName" data-i18n="planName">Plan name</label>
+        <input id="planName" type="text" maxlength="40" data-i18n-placeholder="planNamePlaceholder" placeholder="Example: TG3 upgrade">
+      </div>
+      <button id="saveNamedPlan" class="primary" type="button" data-i18n="savePlan">Save Plan</button>
+    </div>
+
+    <div class="saved-plans-manage">
+      <div class="field">
+        <label for="savedPlansSelect" data-i18n="selectPlan">Choose a saved plan</label>
+        <select id="savedPlansSelect"><option value="">—</option></select>
+      </div>
+      <div class="saved-plans-actions">
+        <button id="loadNamedPlan" class="secondary" type="button" data-i18n="loadPlan">Load Plan</button>
+        <button id="deleteNamedPlan" class="danger-outline" type="button" data-i18n="deletePlan">Delete</button>
+      </div>
+    </div>
+    <p id="savedPlansStatus" class="saved-plans-status" role="status" aria-live="polite"></p>
   </section>
 
   <section class="card">
@@ -227,7 +257,7 @@
   <a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
 </footer>
 
-<script src="building-data-final-v18.js?v=6.1.0"></script>
-<script src="app-final-v18.js?v=6.1.0"></script>
+<script src="building-data-final-v18.js?v=6.2.0"></script>
+<script src="app-final-v18.js?v=6.2.0"></script>
 </body>
 </html>
