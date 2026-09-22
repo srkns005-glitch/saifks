@@ -599,7 +599,15 @@ html[dir="rtl"] .event-modal-topbar{direction:rtl}
   #modal .nav-actions{grid-template-columns:1fr 1fr}
 }
 
-</style></head><body>
+</style><link rel="icon" href="../logo.png">
+
+<style id="saifks-unified-brand-style">
+.saifks-brand-logo,.brand img.logo,img.brand-mark{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+.brand:has(.saifks-brand-logo){display:flex;align-items:center;gap:10px}
+.brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
+@media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
+</style>
+</head><body>
 <header><div class="head"><div class="header-actions"><a class="small-btn" href="../index.html">Home</a><select id="lang"><option value="en">English</option>
 <option value="ar">العربية</option>
 <option value="fr">Français</option>
@@ -608,7 +616,7 @@ html[dir="rtl"] .event-modal-topbar{direction:rtl}
 <option value="tr">Türkçe</option>
 <option value="ko">한국어</option>
 <option value="ja">日本語</option>
-<option value="zh">简体中文</option></select></div><div class="brand"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div></div></header>
+<option value="zh">简体中文</option></select></div><div class="brand"><img class="saifks-brand-logo" src="../logo.png" alt="SaifKS logo"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div></div></header>
 <main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button"><span class="tab-label">Solo Events</span><span class="tab-count">40</span></button><button id="allianceTab" class="event-tab" data-group="alliance" type="button"><span class="tab-label">Alliance Events</span><span class="tab-count">12</span></button></div><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
 <div id="modal" class="hidden">
   <div class="shade" data-close></div>
