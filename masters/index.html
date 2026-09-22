@@ -1488,6 +1488,13 @@ html:not(.app-booting) #appBootShell{display:none!important}
 html.app-booting .app{visibility:hidden!important}
 </style>
 
+<link rel="icon" href="../logo.png">
+<style id="saifks-unified-brand-style">
+.saifks-brand-logo{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+.brand:has(.saifks-brand-logo){display:flex;align-items:center;gap:10px}
+.brand:has(.saifks-brand-logo) span{min-width:0}
+@media(max-width:620px){.saifks-brand-logo{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
+</style>
 </head><body>
 
 <div id="appBootShell">
@@ -1497,7 +1504,7 @@ html.app-booting .app{visibility:hidden!important}
   </div>
 </div>
 <div class="app">
-<header class="top"><div class="brand">SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
+<header class="top"><div class="brand"><img class="saifks-brand-logo" src="../logo.png" alt="SaifKS logo"><span>SaifKS Masters<small data-i18n="brandSub">KINGSHOT MASTER PLANNER</small></span></div><div class="top-actions"><a aria-label="Home" class="home-btn" href="../"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3.2 2.8 10.6a1 1 0 0 0 1.25 1.56L5 11.4V20a1 1 0 0 0 1 1h4.2v-5.7h3.6V21H18a1 1 0 0 0 1-1v-8.6l.95.76a1 1 0 1 0 1.25-1.56L12 3.2Z" fill="currentColor"></path></svg></a><select aria-label="Language" class="lang" id="languageSelect"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></header>
 <section class="atlas-stage" id="atlasStage"><div class="atlas-stage-label"><span>MASTER COMMAND</span><b id="atlasStageStatus">READY</b></div><section class="hero glass"><div class="hero-art"><img alt="Valora" id="expertHeroImage" src="valora.png"/></div><div class="hero-identity"><h1 id="expertHeroName">Valora</h1><div class="hero-sub" data-i18n="role" id="expertRole">Bear Hunt Specialist</div></div></section>
 <nav aria-label="Master selector" class="expert-switch glass"><button class="expert-tab" data-expert="valora" type="button"><img alt="" src="valora.png"/>Valora</button><button class="expert-tab" data-expert="pan" type="button"><img alt="" src="pan.png"/>Pan</button><button class="expert-tab" data-expert="roman" type="button"><img alt="" src="roman.png"/>Roman</button><button class="expert-tab" data-expert="cassia" type="button"><img alt="" src="hero-cassia.png"/>Cassia</button><button class="expert-tab" data-expert="wilson" type="button"><img alt="" src="hero-wilson.png"/>Wilson</button><button class="expert-tab" data-expert="guinevere" type="button"><img alt="" src="guinevere.png"/>Guinevere</button></nav></section><section class="materials-panel glass atlas-section atlas-materials"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="availableMaterials">Available Materials</h2><span class="hint" data-i18n="enterOwnedMaterials">Enter what you currently own</span></div><div class="materials-grid">
 <div class="material-item"><img alt="Copper Horn" src="copper-horn.png"/><div class="material-info"><div class="material-name" data-i18n="copperHorn">Copper Horn</div><div class="material-bonus" data-i18n="bonusAffinity10">+10 Affinity</div><input id="horn" inputmode="numeric" min="0" placeholder="0" type="number"/></div></div>
