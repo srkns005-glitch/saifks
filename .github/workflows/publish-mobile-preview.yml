@@ -1,10 +1,18 @@
-name: Publish mobile preview
+name: Publish KINGSHOT preview
 
 on:
   push:
     branches: [main]
     paths:
       - 'preview/**'
+      - 'gold-calculator/**'
+      - 'event-center/**'
+      - 'hero-center/**'
+      - 'hero-gear-center/**'
+      - 'governor-center/**'
+      - 'research/**'
+      - 'masters/**'
+      - 'logo.png'
       - '.github/workflows/publish-mobile-preview.yml'
   workflow_dispatch:
 
@@ -14,7 +22,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: mobile-preview-pages
+  group: kingshot-preview-pages
   cancel-in-progress: true
 
 jobs:
@@ -26,8 +34,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Build public preview artifact
+        shell: bash
+        run: |
+          mkdir -p public-site
+          cp -R preview/. public-site/
+          for dir in gold-calculator event-center hero-center hero-gear-center governor-center research masters; do
+            if [ -d "$dir" ]; then
+              cp -R "$dir" "public-site/$dir"
+            fi
+          done
+          if [ -f logo.png ]; then cp logo.png public-site/logo.png; fi
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./preview
+          path: ./public-site
       - id: deployment
         uses: actions/deploy-pages@v4
