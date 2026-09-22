@@ -116,6 +116,9 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
   .quick-buttons button.selected{box-shadow:0 6px 16px rgba(245,196,81,.28)}.wave{border:1px solid rgba(255,212,107,.18);background:linear-gradient(135deg,rgba(255,212,107,.1),transparent 55%)}
 }
 
+
+/* Command Center */
+.command{padding:0 0 34px}.command-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.command-card{border:1px solid var(--line);border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(18,38,64,.98),rgba(9,22,38,.98));box-shadow:var(--shadow)}.command-card h2{margin:0;font-size:1.5rem;letter-spacing:-.035em}.command-card p{color:var(--muted);line-height:1.65;margin:9px 0 18px}.command-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.command-field{display:grid;gap:7px;color:var(--muted);font-size:.78rem;font-weight:850}.command-field input{min-width:0;width:100%;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:#0a1727;color:var(--text);font:inherit;font-size:16px;outline:none}.command-field input:focus{border-color:rgba(255,212,107,.6);box-shadow:0 0 0 3px rgba(255,212,107,.09)}.command-actions{display:flex;align-items:center;gap:12px;margin-top:14px}.command-save{border:0;border-radius:13px;min-height:46px;padding:11px 16px;background:linear-gradient(180deg,var(--gold),var(--gold2));color:#251805;font-weight:950;cursor:pointer}.command-status{color:var(--green,#72e3aa);font-size:.83rem;font-weight:850}.command-tools{display:grid;gap:10px}.command-tool{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:var(--text);padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(8,18,31,.5);font-weight:950;transition:.2s}.command-tool:hover{border-color:rgba(255,212,107,.5);transform:translateY(-2px)}.command-tool span:last-child{color:var(--gold)}.private-note{margin-top:14px!important;font-size:.82rem}@media(max-width:760px){.command-grid{grid-template-columns:1fr}.command-fields{grid-template-columns:1fr}.command-card{padding:19px}}
 </style>
 </head>
 <body><div class="preview-notice">MOBILE PREVIEW</div>
@@ -153,6 +156,31 @@ html[dir="rtl"] .tool:hover .tool-link span:last-child{transform:translateX(-5px
         <a class="cta secondary" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener" data-i18n="youtubeCta">Visit YouTube</a>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section class="command" aria-label="Command Center">
+  <div class="command-grid">
+    <article class="command-card">
+      <h2 data-command="setupTitle">Your command setup</h2>
+      <p data-command="setupText">Save your player details once and keep your plans ready on this device.</p>
+      <div class="command-fields">
+        <label class="command-field"><span data-command="player">Player name</span><input id="commandPlayer" data-command-placeholder="playerHint" placeholder="Your in-game name" maxlength="32"></label>
+        <label class="command-field"><span data-command="alliance">Alliance</span><input id="commandAlliance" data-command-placeholder="allianceHint" placeholder="Alliance tag" maxlength="16"></label>
+        <label class="command-field"><span data-command="kingdom">Kingdom</span><input id="commandKingdom" data-command-placeholder="kingdomHint" placeholder="e.g. 1437" inputmode="numeric" maxlength="8"></label>
+      </div>
+      <div class="command-actions"><button id="saveCommandProfile" class="command-save" type="button" data-command="save">Save on this device</button><span id="commandStatus" class="command-status" role="status"></span></div>
+    </article>
+    <aside class="command-card">
+      <h2 data-command="startTitle">Start planning</h2>
+      <p data-command="startText">Open the tool you need right now.</p>
+      <div class="command-tools">
+        <a class="command-tool" href="rally.html"><span>⏱️ <span data-command="rally">Rally Planner</span></span><span>→</span></a>
+        <a class="command-tool" href="bear.html"><span>🐻 <span data-command="bear">Bear Trap Planner</span></span><span>→</span></a>
+      </div>
+      <p class="private-note" data-command="private">Your setup stays only on your device.</p>
+    </aside>
   </div>
 </section>
 
@@ -244,6 +272,26 @@ const savedLang=localStorage.getItem('saifRallyLang')||localStorage.getItem('sai
 let lang=(savedLang&&translations[savedLang])?savedLang:((pageLang&&translations[pageLang])?pageLang:'en');
 if(!translations[lang]) lang='en';
 
+
+const commandCopy={
+en:{setupTitle:"Your command setup",setupText:"Save your player details once and keep your plans ready on this device.",player:"Player name",playerHint:"Your in-game name",alliance:"Alliance",allianceHint:"Alliance tag",kingdom:"Kingdom",kingdomHint:"e.g. 1437",save:"Save on this device",saved:"Saved on this device",startTitle:"Start planning",startText:"Open the tool you need right now.",rally:"Rally Planner",bear:"Bear Trap Planner",private:"Your setup stays only on your device."},
+ar:{setupTitle:"إعداداتك القيادية",setupText:"احفظ بياناتك مرة واحدة لتبقى خططك جاهزة على هذا الجهاز.",player:"اسم اللاعب",playerHint:"اسمك داخل اللعبة",alliance:"التحالف",allianceHint:"اختصار التحالف",kingdom:"المملكة",kingdomHint:"مثال: 1437",save:"حفظ على هذا الجهاز",saved:"تم الحفظ على هذا الجهاز",startTitle:"ابدأ التخطيط",startText:"افتح الأداة التي تحتاجها الآن.",rally:"مخطط الحشود",bear:"مخطط فخ الدب",private:"بياناتك تبقى على جهازك فقط."},
+fr:{setupTitle:"Votre espace de commandement",setupText:"Enregistrez vos informations une fois et gardez vos plans prêts sur cet appareil.",player:"Nom du joueur",playerHint:"Votre nom dans le jeu",alliance:"Alliance",allianceHint:"Tag d’alliance",kingdom:"Royaume",kingdomHint:"ex. 1437",save:"Enregistrer sur cet appareil",saved:"Enregistré sur cet appareil",startTitle:"Commencer à planifier",startText:"Ouvrez l’outil dont vous avez besoin.",rally:"Planificateur de rallyes",bear:"Planificateur du piège à ours",private:"Vos informations restent uniquement sur cet appareil."},
+es:{setupTitle:"Tu centro de mando",setupText:"Guarda tus datos una vez y mantén tus planes listos en este dispositivo.",player:"Nombre del jugador",playerHint:"Tu nombre en el juego",alliance:"Alianza",allianceHint:"Etiqueta de alianza",kingdom:"Reino",kingdomHint:"ej. 1437",save:"Guardar en este dispositivo",saved:"Guardado en este dispositivo",startTitle:"Empezar a planificar",startText:"Abre la herramienta que necesitas.",rally:"Planificador de rallies",bear:"Planificador de trampa para osos",private:"Tus datos solo permanecen en este dispositivo."},
+de:{setupTitle:"Deine Kommandozentrale",setupText:"Speichere deine Angaben einmal und halte deine Pläne auf diesem Gerät bereit.",player:"Spielername",playerHint:"Dein Name im Spiel",alliance:"Allianz",allianceHint:"Allianz-Tag",kingdom:"Königreich",kingdomHint:"z. B. 1437",save:"Auf diesem Gerät speichern",saved:"Auf diesem Gerät gespeichert",startTitle:"Planung starten",startText:"Öffne das Werkzeug, das du brauchst.",rally:"Rallye-Planer",bear:"Bärenfallen-Planer",private:"Deine Angaben bleiben nur auf diesem Gerät."},
+tr:{setupTitle:"Komuta merkezin",setupText:"Bilgilerini bir kez kaydet ve planlarını bu cihazda hazır tut.",player:"Oyuncu adı",playerHint:"Oyun içi adın",alliance:"İttifak",allianceHint:"İttifak etiketi",kingdom:"Krallık",kingdomHint:"ör. 1437",save:"Bu cihazda kaydet",saved:"Bu cihazda kaydedildi",startTitle:"Planlamaya başla",startText:"İhtiyacın olan aracı aç.",rally:"Ralli Planlayıcı",bear:"Ayı Tuzağı Planlayıcı",private:"Bilgilerin yalnızca bu cihazda kalır."},
+ko:{setupTitle:"나의 지휘 설정",setupText:"정보를 한 번 저장하고 이 기기에서 계획을 준비하세요.",player:"플레이어 이름",playerHint:"게임 내 이름",alliance:"연맹",allianceHint:"연맹 태그",kingdom:"왕국",kingdomHint:"예: 1437",save:"이 기기에 저장",saved:"이 기기에 저장됨",startTitle:"계획 시작",startText:"지금 필요한 도구를 여세요.",rally:"집결 플래너",bear:"곰 함정 플래너",private:"정보는 이 기기에만 저장됩니다."},
+ja:{setupTitle:"コマンド設定",setupText:"情報を一度保存して、この端末で計画をすぐ使えるようにします。",player:"プレイヤー名",playerHint:"ゲーム内の名前",alliance:"同盟",allianceHint:"同盟タグ",kingdom:"王国",kingdomHint:"例: 1437",save:"この端末に保存",saved:"この端末に保存しました",startTitle:"計画を始める",startText:"必要なツールを開いてください。",rally:"集結プランナー",bear:"熊罠プランナー",private:"情報はこの端末にのみ保存されます。"},
+zh:{setupTitle:"你的指挥设置",setupText:"一次保存你的信息，并在此设备上随时准备好计划。",player:"玩家名称",playerHint:"你的游戏名称",alliance:"联盟",allianceHint:"联盟标签",kingdom:"王国",kingdomHint:"例如：1437",save:"保存到此设备",saved:"已保存到此设备",startTitle:"开始规划",startText:"打开你现在需要的工具。",rally:"集结规划器",bear:"熊陷阱规划器",private:"你的信息仅保存在此设备上。"}
+};
+function applyCommandCopy(){
+ const copy=commandCopy[lang]||commandCopy.en;
+ document.querySelectorAll('[data-command]').forEach(el=>{const v=copy[el.dataset.command];if(v!==undefined)el.textContent=v;});
+ document.querySelectorAll('[data-command-placeholder]').forEach(el=>{const v=copy[el.dataset.commandPlaceholder];if(v!==undefined)el.placeholder=v;});
+}
+function loadCommandProfile(){const p=JSON.parse(localStorage.getItem('saifksCommandProfile')||'{}');document.getElementById('commandPlayer').value=p.player||'';document.getElementById('commandAlliance').value=p.alliance||'';document.getElementById('commandKingdom').value=p.kingdom||'';}
+document.getElementById('saveCommandProfile').addEventListener('click',()=>{const p={player:document.getElementById('commandPlayer').value.trim(),alliance:document.getElementById('commandAlliance').value.trim(),kingdom:document.getElementById('commandKingdom').value.trim()};localStorage.setItem('saifksCommandProfile',JSON.stringify(p));document.getElementById('commandStatus').textContent=(commandCopy[lang]||commandCopy.en).saved;});
+
 function apply(){
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
@@ -274,6 +322,7 @@ function apply(){
   if(governorCenterLink)governorCenterLink.href='../governor-center/index.html?lang='+encodeURIComponent(lang);
   if(researchCenterLink)researchCenterLink.href='../research/index.html?lang='+encodeURIComponent(lang);
   if(mastersCenterLink)mastersCenterLink.href='../masters/index.html?lang='+encodeURIComponent(lang);
+  applyCommandCopy();
 }
 
 document.getElementById('languageSelect').addEventListener('change',function(){
@@ -284,6 +333,7 @@ document.getElementById('languageSelect').addEventListener('change',function(){
   history.replaceState(null,'',cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
 });
 
+loadCommandProfile();
 apply();
 
 window.addEventListener('storage',function(e){
