@@ -1233,14 +1233,22 @@ html[lang="ar"] .selector-grid .field{
 }
 </style>
 
+<link rel="icon" href="../logo.png">
+
+<style id="saifks-unified-brand-style">
+.saifks-brand-logo,.brand img.logo,img.brand-mark{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+.brand:has(.saifks-brand-logo){display:flex;align-items:center;gap:10px}
+.brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
+@media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
+</style>
 </head>
 <body>
 <div class="app">
 <header class="topbar">
  <div class="topbar-inner">
-  <div class="brand"><div class="logo"></div><div><h1 id="pageTitle">حاسبة البحوث</h1><small>saifks.com</small></div></div>
+  <div class="brand"><img class="logo" src="../logo.png" alt="SaifKS logo"><div><h1 id="pageTitle">حاسبة البحوث</h1><small>saifks.com</small></div></div>
   <div class="header-actions">
-   <a class="home-svg-btn" id="homeLink" href="/" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
+   <a class="home-svg-btn" id="homeLink" href="../index.html" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.2v-6.2H9.3V21H4.1A1.1 1.1 0 0 1 3 19.9z"/><path d="M1.8 11.7 12 2.9l10.2 8.8"/></svg></a>
    <div class="language-control"><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select>
    </div>
   </div>
