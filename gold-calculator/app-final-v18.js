@@ -582,6 +582,11 @@ function setupSavedPlans(){
     const disabled=!select.value;
     document.getElementById("loadNamedPlan").disabled=disabled;
     document.getElementById("deleteNamedPlan").disabled=disabled;
+    if(disabled) return;
+    const plan=readSavedPlans().find(item=>item.id===select.value);
+    if(!plan) return;
+    applyNamedPlan(plan.state||{});
+    showSavedPlanStatus("planLoaded");
   });
 
   renderSavedPlans();
