@@ -94,11 +94,15 @@ buildingNames.forEach(name=>{
 });
 
 function applyLanguage(language){
+  const savedScrollTop=window.scrollY;
+  const root=document.documentElement;
+  root.classList.add("language-updating");
   currentLanguage=language;
   const text=translations[language];
+  const nextDirection=language==="ar"?"rtl":"ltr";
 
-  document.documentElement.lang=language;
-  document.documentElement.dir=language==="ar"?"rtl":"ltr";
+  if(root.lang!==language) root.lang=language;
+  if(root.dir!==nextDirection) root.dir=nextDirection;
   document.title=`${text.title} | SaifKS`;
   localStorage.setItem("saifRallyLang",language);
   localStorage.setItem("saifksLanguage",language);
@@ -118,6 +122,12 @@ function applyLanguage(language){
   });
 
   calculate();
+  requestAnimationFrame(()=>{
+    if(Math.abs(window.scrollY-savedScrollTop)>1){
+      window.scrollTo({top:savedScrollTop,left:0,behavior:"auto"});
+    }
+    root.classList.remove("language-updating");
+  });
 }
 
 document.getElementById("languageSelect").addEventListener("change",function(){
@@ -515,7 +525,7 @@ function calculate(){
   setResult("powerGain",totals.power);
 }
 
-document.querySelectorAll("input,select").forEach(element=>{
+document.querySelectorAll("input,select:not(#languageSelect)").forEach(element=>{
   element.addEventListener("input",()=>{
     calculate();
     saveState();
