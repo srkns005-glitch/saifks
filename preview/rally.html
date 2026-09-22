@@ -151,6 +151,17 @@ input{padding:12px 10px;min-width:0}
 .command-top{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:16px}.command-title{margin:0;font-size:1.25rem}.command-title span{display:block;margin-top:4px;color:var(--muted);font-size:.86rem;font-weight:650;line-height:1.45}.command-chip{padding:7px 10px;border-radius:999px;color:#281b04;background:var(--gold);font-size:.72rem;font-weight:1000;letter-spacing:.08em;white-space:nowrap}.command-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.command-grid input{margin-top:7px}.command-actions{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:9px;margin-top:15px}.command-actions button{min-height:48px;border-radius:12px;font-weight:950;cursor:pointer}.command-actions .standard{border:1px solid rgba(245,196,81,.45);background:rgba(245,196,81,.12);color:var(--gold)}.command-actions .save{border:1px solid var(--border);background:var(--light);color:var(--text)}.command-actions .share{border:0;background:linear-gradient(var(--gold),var(--gold2));color:#1a1304}.team-count{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:27px;margin-left:7px;border-radius:50%;color:#1c1404;background:var(--gold);font-size:.78rem;font-weight:1000;vertical-align:middle}
 @media(max-width:560px){.command-center{margin:0 0 15px;padding:16px;border-radius:18px}.command-top{margin-bottom:13px}.command-title{font-size:1.12rem}.command-title span{font-size:.8rem}.command-grid{grid-template-columns:1fr}.command-actions{grid-template-columns:1fr;gap:8px}.command-actions button{min-height:46px}.team-title{display:flex;align-items:center;justify-content:center}.team-count{margin-left:6px}}
 
+
+/* professional-rally-dashboard */
+.command-center{display:none!important}
+.app-dashboard{margin:0 0 18px;padding:22px;border-radius:24px;border:1px solid rgba(99,164,255,.28);background:linear-gradient(140deg,rgba(28,58,91,.98),rgba(16,29,48,.98) 56%,rgba(10,18,32,.98));box-shadow:0 22px 55px rgba(0,0,0,.28)}
+.dashboard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.dashboard-kicker{color:var(--gold);font-size:.72rem;font-weight:1000;letter-spacing:.13em}.dashboard-head h2{margin:7px 0 0;font-size:clamp(1.45rem,4vw,2.1rem);letter-spacing:-.04em}.dashboard-head p{margin:8px 0 0;color:var(--muted);line-height:1.55;max-width:580px}.dashboard-time{min-width:126px;padding:12px;border-radius:15px;border:1px solid rgba(245,196,81,.3);background:rgba(245,196,81,.08);text-align:center}.dashboard-time b{display:block;color:var(--gold);font-size:.76rem}.dashboard-time span{display:block;margin-top:5px;font-variant-numeric:tabular-nums;font-weight:950}
+.team-switcher{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.team-switch{min-height:86px;padding:13px;border:1px solid var(--border);border-radius:16px;background:rgba(7,14,26,.45);color:var(--text);text-align:left;cursor:pointer;transition:.2s}.team-switch:hover,.team-switch.active{border-color:rgba(245,196,81,.72);background:linear-gradient(145deg,rgba(245,196,81,.2),rgba(255,255,255,.04));transform:translateY(-2px)}.team-switch strong{display:block;font-size:1rem}.team-switch small{display:block;margin-top:7px;color:var(--muted);font-size:.76rem}.team-switch .switch-status{color:var(--gold);font-weight:850}
+.teams-grid{grid-template-columns:minmax(0,1fr)!important;max-width:920px;margin:0 auto}.team-card{display:none}.team-card.dashboard-active{display:block;animation:panelIn .25s ease}.team-card .team-title{display:flex;justify-content:space-between;align-items:center;text-align:left;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.09)}.team-card .team-title:after{content:"MANUAL LEADER TIMELINE";color:var(--muted);font-size:.68rem;letter-spacing:.09em;font-weight:900}.team-card .two-cols{max-width:500px}.team-card form{max-width:620px}.team-card .list.generated{max-width:760px}.team-card .summary{max-width:760px}
+@keyframes panelIn{from{opacity:.15;transform:translateY(8px)}to{opacity:1;transform:none}
+}
+@media(max-width:560px){.app-dashboard{padding:17px;border-radius:19px}.dashboard-head{display:block}.dashboard-head h2{font-size:1.55rem}.dashboard-head p{font-size:.88rem}.dashboard-time{display:flex;align-items:center;justify-content:space-between;margin-top:14px;width:100%;min-width:0;padding:10px 12px}.dashboard-time b{display:inline}.dashboard-time span{display:inline;margin:0}.team-switcher{grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}.team-switch{min-height:75px;padding:11px;border-radius:13px}.team-switch strong{font-size:.92rem}.team-card{padding:16px}.team-card .team-title{font-size:1.18rem!important}.team-card .team-title:after{font-size:.58rem}.team-card .two-cols{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body><div class="preview-notice">MOBILE PREVIEW</div>
@@ -169,6 +180,22 @@ input{padding:12px 10px;min-width:0}
 <p id="subtitle">Create synchronized UTC rally schedules quickly and accurately.</p>
 <div id="utcNow" class="clock">UTC Now: --:--:--</div>
 </header>
+<section class="app-dashboard" aria-label="Rally dashboard">
+  <div class="dashboard-head">
+    <div>
+      <div class="dashboard-kicker" data-dash="kicker">RALLY OPERATIONS</div>
+      <h2 data-dash="title">Your alliance rally command board</h2>
+      <p data-dash="description">Choose a team, add leaders manually, then generate precise UTC launch times for every player.</p>
+    </div>
+    <div class="dashboard-time"><b data-dash="server">UTC TIME</b><span id="dashboardUtc">--:--:--</span></div>
+  </div>
+  <div class="team-switcher" role="tablist">
+    <button class="team-switch active" type="button" data-focus-team="A"><strong>Team A</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="B"><strong>Team B</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="C"><strong>Team C</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="D"><strong>Team D</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
+  </div>
+</section>
 <section class="command-center" aria-label="Rally Command Center">
   <div class="command-top">
     <h2 class="command-title">Rally Command Center<span>Save your alliance setup, use a standard launch buffer, and share all team plans at once.</span></h2>
@@ -383,6 +410,33 @@ $("#langToggle").onclick=()=>{currentLanguage=currentLanguage==="en"?"ar":"en";a
 $("#cancelEdit").onclick=closeEdit;$("#saveEdit").onclick=()=>activeTeam&&activeTeam.saveEdit();$("#editModal").onclick=e=>{if(e.target===$("#editModal"))closeEdit()};
 function tick(){$("#utcNow").textContent=`UTC Now: ${utc(new Date())}`}setInterval(tick,1000);tick();
 teams=[...document.querySelectorAll("[data-team]")].map(el=>new TeamTool(el,el.dataset.team));applyLanguage();
+
+const dashCopy={
+ en:{kicker:"RALLY OPERATIONS",title:"Your alliance rally command board",description:"Choose a team, add leaders manually, then generate precise UTC launch times for every player.",server:"UTC TIME",leaders:"leaders"},
+ ar:{kicker:"إدارة الحشود",title:"لوحة قيادة حشود التحالف",description:"اختر فريقًا، وأدخل القادة يدويًا، ثم أنشئ توقيت إطلاق UTC الدقيق لكل قائد.",server:"توقيت UTC",leaders:"قادة"}
+};
+function applyDashboardLanguage(){
+ const copy=dashCopy[currentLanguage]||dashCopy.en;
+ document.querySelectorAll("[data-dash]").forEach(el=>el.textContent=copy[el.dataset.dash]||el.textContent);
+}
+function focusTeam(id){
+ document.querySelectorAll("[data-focus-team]").forEach(btn=>btn.classList.toggle("active",btn.dataset.focusTeam===id));
+ teams.forEach(team=>team.root.classList.toggle("dashboard-active",team.id===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function refreshDashboard(){
+ const time=$("#dashboardUtc"); if(time)time.textContent=utc(new Date()).replace(" UTC","");
+ document.querySelectorAll("[data-focus-team]").forEach(btn=>{
+   const team=teams.find(item=>item.id===btn.dataset.focusTeam);
+   const status=btn.querySelector(".switch-status");
+   if(team&&status)status.innerHTML=team.players.length+" <span data-dash=\"leaders\">"+(dashCopy[currentLanguage]||dashCopy.en).leaders+"</span>";
+ });
+}
+document.querySelectorAll("[data-focus-team]").forEach(btn=>btn.onclick=()=>focusTeam(btn.dataset.focusTeam));
+const oldLanguageToggle=$("#langToggle").onclick;
+$("#langToggle").onclick=()=>{oldLanguageToggle();applyDashboardLanguage();refreshDashboard()};
+focusTeam("A");applyDashboardLanguage();refreshDashboard();setInterval(refreshDashboard,500);
+
 
 function commandSettings(){return {name:$("#commandName").value.trim(),note:$("#commandNote").value.trim()}}
 function saveCommandSettings(){localStorage.setItem("saifRallyCommand",JSON.stringify(commandSettings()));showToast(currentLanguage==="ar"?"تم حفظ إعدادات القيادة":"Command setup saved")}
