@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-unified-v16-20260923">
+<meta name="saifks-build" content="hero-gear-unified-v17-20260923">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style>
 *{box-sizing:border-box}
@@ -345,6 +345,76 @@ body{background:#07131f!important}
  .home-header-button,#lang{width:66px!important;min-width:66px!important;font-size:10px!important}
  .workflow-step span{display:block!important}
  .segments.four{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+</style><style id="hero-gear-mobile-polish-v17">
+/* Mobile application polish: visual-only; calculator logic is unchanged. */
+@media(max-width:720px){
+ html,body{max-width:100%;overflow-x:clip}
+ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
+ .wrap{width:100%!important;max-width:100%!important;padding-inline:10px!important}
+ .unified-header{margin-inline:-10px!important;padding-inline:10px!important;grid-template-columns:minmax(0,1fr) auto auto!important}
+ .hero{margin:10px 0!important;padding:12px 13px!important;border-radius:14px!important}
+ .hero p{font-size:.78rem!important;line-height:1.55!important}
+ .zero-pill{display:inline-flex!important;margin-top:8px!important;padding:6px 9px!important;font-size:.6rem!important}
+ .workflow{gap:6px!important;margin-bottom:10px!important}
+ .workflow-step{min-height:58px!important;padding:7px 4px!important;border:1px solid rgba(122,158,188,.17)!important}
+ .workflow-step i{width:24px!important;height:24px!important;font-size:.68rem!important}
+ .workflow-step span{font-size:.58rem!important;line-height:1.25!important}
+ .layout,.left,.right{width:100%!important;max-width:100%!important}
+ .layout{display:flex!important;flex-direction:column!important;gap:10px!important}
+ .stack{gap:10px!important}
+ .card,.result-card,.simple-result{border-radius:15px!important;box-shadow:0 8px 22px rgba(0,0,0,.2)!important}
+ .head{min-height:48px!important;padding:12px!important}
+ .head h2,.head h3,.result-card h3{font-size:.92rem!important}
+ .head span{font-size:.57rem!important}
+ .pad{padding:11px!important}
+ .selection{display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
+ .box,.upgrade{padding:11px!important;border-radius:13px!important}
+ .box h4,.upgrade h4{margin-bottom:9px!important;font-size:.7rem!important}
+ .segments.three{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .segments.three button{min-height:48px!important;font-size:.72rem!important}
+ .segments.four,.gear-piece-buttons{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .gear-piece-buttons .piece{min-height:104px!important;padding:8px 4px!important}
+ .piece-thumb{width:60px!important;height:60px!important}
+ .gear-piece-buttons b{font-size:.68rem!important}
+ .selected-gear-card{grid-template-columns:88px minmax(0,1fr)!important;gap:11px!important;padding:10px!important;border-radius:14px!important}
+ .selected-gear-image-wrap{min-width:88px!important;min-height:88px!important;border-radius:12px!important}
+ .selected-gear-info>b{font-size:.9rem!important}
+ .pair{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr)!important;gap:5px!important;align-items:end!important}
+ .arrow{transform:none!important;padding-bottom:11px!important;font-size:.8rem!important}
+ .field label{min-height:2.4em!important;font-size:.59rem!important;line-height:1.2!important}
+ .field select,.field input{height:46px!important;padding:0 7px!important;font-size:.82rem!important;border-radius:10px!important}
+ .quick{margin-top:9px!important;padding-bottom:3px!important;gap:6px!important;scrollbar-width:none}
+ .quick::-webkit-scrollbar{display:none}
+ .quick button{min-width:44px!important;height:34px!important;border-radius:9px!important;font-size:.7rem!important}
+ .plan-actions{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:7px!important;margin-top:11px!important}
+ .add-plan,.remove-plan{height:50px!important;border-radius:12px!important}
+ .remove-plan.visible{min-width:88px!important;padding-inline:10px!important}
+ .plan-action-hint{font-size:.6rem!important;line-height:1.45!important;text-align:center!important}
+ .optional-toggle,.advanced-toggle{min-height:46px!important;border-radius:12px!important}
+ .right{display:flex!important;flex-direction:column!important;gap:10px!important}
+ .simple-result{padding:13px!important}
+ .simple-result-top{margin-bottom:10px!important}
+ .target-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .target-chip{padding:10px 7px!important}
+ .resources,.gains,.xp-grid,.resource-inputs{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .res,.item{padding:9px!important}
+ .stat-compare{width:100%!important}
+ .actions{display:grid!important;grid-template-columns:minmax(0,1fr) 104px!important;gap:7px!important;margin-top:0!important}
+ .copy,.reset{height:48px!important;border-radius:12px!important}
+ .mobile-summary{display:flex!important;position:fixed!important;z-index:120!important;left:10px!important;right:10px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;transform:none!important;width:auto!important;max-width:520px!important;min-width:0!important;height:54px!important;margin-inline:auto!important;border:1px solid rgba(255,224,144,.7)!important;border-radius:15px!important;background:linear-gradient(180deg,#e0b64e,#b78122)!important;color:#171108!important;box-shadow:0 15px 38px rgba(0,0,0,.5)!important;font-size:.84rem!important}
+ .mobile-summary b{background:#171108!important;color:#f7d77b!important}
+ .final-footer{margin-top:18px!important;padding:22px 12px 84px!important;font-size:12px!important}
+}
+@media(max-width:390px){
+ .unified-brand h1{font-size:13px!important}
+ .home-header-button,#lang{width:61px!important;min-width:61px!important;font-size:9px!important}
+ .hero p{font-size:.72rem!important}
+ .workflow-step span{font-size:.54rem!important}
+ .selected-gear-card{grid-template-columns:78px minmax(0,1fr)!important}
+ .selected-gear-image-wrap{min-width:78px!important;min-height:78px!important}
+ .field label{font-size:.55rem!important}
+ .actions{grid-template-columns:minmax(0,1fr) 92px!important}
 }
 </style></head>
 <body><div class="wrap">
