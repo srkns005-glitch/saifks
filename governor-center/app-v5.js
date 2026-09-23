@@ -19,7 +19,18 @@ const charmIcons = {keenness:"✦",protection:"⬢",vision:"◉"};
 
 function loadState(){
   try {
-    const saved={...defaultState, ...JSON.parse(localStorage.getItem(stateKey)||"{}")};
+    const parsed=JSON.parse(localStorage.getItem(stateKey)||"{}");
+    const objectOrEmpty=value=>value&&typeof value==="object"&&!Array.isArray(value)?value:{};
+    const saved={
+      ...defaultState,
+      ...parsed,
+      gearOwned:{...defaultState.gearOwned,...objectOrEmpty(parsed.gearOwned)},
+      charmOwned:{...defaultState.charmOwned,...objectOrEmpty(parsed.charmOwned)},
+      gear:objectOrEmpty(parsed.gear),
+      charms:objectOrEmpty(parsed.charms)
+    };
+    if(!["gear","charms"].includes(saved.activeTab)) saved.activeTab="gear";
+    if(!i18n[saved.language]) saved.language="en";
     const queryLanguage=new URLSearchParams(location.search).get("lang");
     if(i18n[queryLanguage]) saved.language=queryLanguage;
     return saved;
@@ -27,7 +38,11 @@ function loadState(){
   catch { return structuredClone(defaultState); }
 }
 function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
-function n(v){ return Number(v||0); }
+function n(v){
+  const value=Number(v);
+  if(!Number.isFinite(value)) return 0;
+  return Math.min(Number.MAX_SAFE_INTEGER,Math.max(0,Math.floor(value)));
+}
 function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
 const charmLabels={en:"Charm",ar:"تميمة",tr:"Tılsım",fr:"Charme",es:"Amuleto",de:"Talisman",ko:"부적",ja:"チャーム",zh:"饰品"};
 function tr(k){
@@ -196,7 +211,12 @@ function bindOwnedInputs(){
   ];
   ids.forEach(([id,group,key])=>{
     const el=document.getElementById(id); el.value=state[group][key]||"";
-    el.addEventListener("input",()=>{state[group][key]=n(el.value);saveState();renderAll();});
+    el.addEventListener("input",()=>{
+      const value=n(el.value);
+      state[group][key]=value;
+      if(el.value!==""&&Number(el.value)!==value) el.value=String(value);
+      saveState();renderAll();
+    });
   });
 }
 function gearCalc(s){
@@ -263,6 +283,7 @@ function renderGear(){
       </div>`;
   });
   document.getElementById("gearSelectedCount").textContent=`${total.count} ${tr("pieces")}`;
+  document.getElementById("copyGear").disabled=total.count===0;
   const rem={
     satin:Math.max(0,total.satin-state.gearOwned.satin),
     threads:Math.max(0,total.threads-state.gearOwned.threads),
@@ -293,6 +314,7 @@ function renderCharms(){
     if(badge) badge.textContent=`${active} / 3`;
   });
   document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
+  document.getElementById("copyCharms").disabled=total.count===0;
   const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
   document.getElementById("charmSummary").innerHTML=
     summaryDetailed(tr("guides"),rem.guides,total.guides,state.charmOwned.guides,rem.guides===0&&total.guides>0)+
