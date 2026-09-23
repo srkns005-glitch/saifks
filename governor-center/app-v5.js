@@ -24,7 +24,11 @@ function loadState(){
 function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
 function n(v){ return Number(v||0); }
 function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
-function tr(k){ return (i18n[state.language]||i18n.en)[k] ?? i18n.en[k] ?? k; }
+const charmLabels={en:"Charm",ar:"تميمة",tr:"Tılsım",fr:"Charme",es:"Amuleto",de:"Talisman",ko:"부적",ja:"チャーム",zh:"饰品"};
+function tr(k){
+  if(k==="charm") return charmLabels[state.language]||charmLabels.en;
+  return (i18n[state.language]||i18n.en)[k] ?? i18n.en[k] ?? k;
+}
 const names={
 hood:{en:"Hood",ar:"غطاء الرأس",tr:"Başlık",fr:"Capuche",es:"Capucha",de:"Kapuze",ko:"후드",ja:"フード",zh:"兜帽"},
 necklace:{en:"Necklace",ar:"القلادة",tr:"Kolye",fr:"Collier",es:"Collar",de:"Halskette",ko:"목걸이",ja:"ネックレス",zh:"项链"},
@@ -218,7 +222,7 @@ function summaryText(key){
     ja:{total:"必要合計",owned:"所持数",remaining:"残り"},
     zh:{total:"所需总数",owned:"已有数量",remaining:"剩余数量"}
   };
-  return (terms[state.lang]||terms.en)[key];
+  return (terms[state.language]||terms.en)[key];
 }
 function summaryDetailed(label,remaining,total,owned=0,complete=false){
   const hasOwned=Number(owned)>0;
