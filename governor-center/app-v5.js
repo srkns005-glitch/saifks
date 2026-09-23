@@ -18,7 +18,12 @@ const gearIcons = {hood:"♜",necklace:"◈",cloak:"◆",breeches:"▥",ring:"�
 const charmIcons = {keenness:"✦",protection:"⬢",vision:"◉"};
 
 function loadState(){
-  try { return {...defaultState, ...JSON.parse(localStorage.getItem(stateKey)||"{}")}; }
+  try {
+    const saved={...defaultState, ...JSON.parse(localStorage.getItem(stateKey)||"{}")};
+    const queryLanguage=new URLSearchParams(location.search).get("lang");
+    if(i18n[queryLanguage]) saved.language=queryLanguage;
+    return saved;
+  }
   catch { return structuredClone(defaultState); }
 }
 function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
@@ -64,6 +69,9 @@ function setupLanguage(){
   button.addEventListener("click",e=>{e.stopPropagation();const open=menu.hidden;menu.hidden=!open;button.setAttribute("aria-expanded",String(open))});
   menu.querySelectorAll("[data-lang]").forEach(option=>option.addEventListener("click",()=>{
     state.language=option.dataset.lang;
+    const url=new URL(location.href);
+    url.searchParams.set("lang",state.language);
+    history.replaceState(null,"",url);
     localStorage.setItem(langKey,state.language);
     saveState();updateLabel();closeMenu();applyLanguage();buildGearCards();buildCharmCards();renderAll();
   }));
