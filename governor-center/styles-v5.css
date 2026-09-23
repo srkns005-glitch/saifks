@@ -744,3 +744,96 @@ h1{font-size:clamp(38px,5.4vw,64px);line-height:.98;background:linear-gradient(1
   .hero-badge{gap:5px;padding-inline:8px}.hero-badge strong{font-size:18px}.hero-badge span{font-size:9px}.hero-badge span:first-of-type{margin-inline-end:5px}
   .gear-compact-head .item-icon.small{width:36px;height:36px;flex-basis:36px}
 }
+
+/* V13 — complete Governor Charms card redesign */
+.charm-equipment-list{
+  display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin:11px 0!important
+}
+.charm-compact-card{
+  padding:0!important;overflow:hidden!important;border-radius:17px!important;
+  border:1px solid rgba(114,151,184,.24)!important;
+  background:linear-gradient(145deg,rgba(15,33,53,.98),rgba(7,19,32,.99))!important
+}
+.charm-compact-head{
+  position:static!important;display:flex!important;align-items:center!important;justify-content:space-between!important;
+  min-height:58px!important;padding:9px 13px!important;border-bottom:1px solid rgba(255,255,255,.085)!important;
+  background:linear-gradient(90deg,rgba(255,212,107,.09),rgba(78,160,255,.035),transparent 72%)!important
+}
+.charm-head-identity{display:flex;align-items:center;gap:10px;min-width:0}
+.charm-head-identity .item-icon.small{
+  width:39px!important;height:39px!important;flex:0 0 39px!important;border-radius:11px!important;font-size:17px!important
+}
+.charm-head-identity h3{
+  margin:0!important;color:var(--text)!important;font-size:15px!important;font-weight:950!important;text-align:start!important
+}
+.charm-compact-head .charm-active-count{
+  position:static!important;inset:auto!important;transform:none!important;display:inline-flex!important;
+  min-width:52px!important;height:29px!important;align-items:center!important;justify-content:center!important;
+  padding:0 9px!important;border:1px solid rgba(255,212,107,.23)!important;border-radius:999px!important;
+  color:var(--gold-soft)!important;background:rgba(255,212,107,.08)!important;font-size:11px!important;font-weight:900!important
+}
+.charm-compact-list{display:grid!important}
+.charm-compact-row{
+  display:grid!important;grid-template-columns:minmax(104px,.72fr) minmax(120px,1fr) minmax(120px,1fr) minmax(210px,1.25fr)!important;
+  gap:10px!important;align-items:center!important;min-height:68px!important;padding:9px 12px!important;
+  border-top:1px solid rgba(255,255,255,.07)!important;background:rgba(3,12,21,.16)!important
+}
+.charm-compact-row:first-child{border-top:0!important}
+.charm-compact-row:nth-child(even){background:rgba(255,255,255,.016)!important}
+.charm-compact-row.enabled{
+  background:linear-gradient(90deg,rgba(255,212,107,.085),rgba(78,160,255,.025),transparent 68%)!important;
+  box-shadow:inset 3px 0 0 rgba(255,212,107,.72)
+}
+[dir="rtl"] .charm-compact-row.enabled{box-shadow:inset -3px 0 0 rgba(255,212,107,.72)}
+.charm-row-identity{display:flex;align-items:center;gap:8px;min-width:0}
+.charm-row-identity strong{font-size:13px;font-weight:900;white-space:nowrap}
+.charm-index{
+  width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center;border-radius:9px;
+  border:1px solid rgba(255,212,107,.20);background:rgba(255,212,107,.08);color:var(--gold-soft);font-size:12px;font-weight:950
+}
+.charm-level-box{display:grid!important;gap:4px!important;min-width:0!important}
+.charm-level-box span{display:block!important;margin:0!important;color:var(--muted)!important;font-size:10px!important;line-height:1.1!important;font-weight:800!important}
+.charm-level-box .stage-select{
+  width:100%!important;height:42px!important;min-height:42px!important;padding:0 11px!important;
+  border-radius:10px!important;font-size:16px!important;font-weight:900!important
+}
+.charm-inline-result{
+  display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;
+  min-width:0!important;min-height:0!important;margin:0!important;padding:0!important
+}
+.charm-inline-result:empty{display:none!important}
+.charm-inline-result .result-label{flex:0 0 auto}
+.charm-inline-result .inline-material{flex:1 1 72px;max-width:112px;min-width:64px!important;padding:6px 7px!important}
+.charm-inline-result .inline-material strong{font-size:12px!important}.charm-inline-result .inline-material small{font-size:8px!important}
+.charm-inline-result .charm-status{font-size:11px!important;text-align:start!important}
+
+@media(min-width:1100px){
+  .charm-equipment-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:start!important}
+  .charm-compact-row{grid-template-columns:minmax(88px,.8fr) minmax(92px,1fr) minmax(92px,1fr)!important;gap:8px!important}
+  .charm-inline-result{grid-column:1/-1!important;justify-content:flex-start!important;padding-inline-start:36px!important}
+  .charm-inline-result .inline-material{max-width:140px}
+}
+@media(max-width:900px){
+  .charm-compact-card{border-radius:15px!important}
+  .charm-compact-row{
+    grid-template-columns:minmax(92px,.72fr) minmax(110px,1fr) minmax(110px,1fr)!important;
+    min-height:66px!important;padding:8px 10px!important;gap:8px!important
+  }
+  .charm-inline-result{grid-column:1/-1!important;justify-content:flex-start!important;padding-inline-start:36px!important}
+  .charm-inline-result .inline-material{max-width:150px}
+}
+@media(max-width:560px){
+  .charm-equipment-list{gap:8px!important}
+  .charm-compact-head{min-height:52px!important;padding:7px 9px!important}
+  .charm-head-identity{gap:8px}.charm-head-identity .item-icon.small{width:35px!important;height:35px!important;flex-basis:35px!important}
+  .charm-head-identity h3{font-size:14px!important}.charm-compact-head .charm-active-count{height:26px!important;min-width:47px!important;font-size:10px!important}
+  .charm-compact-row{grid-template-columns:78px minmax(0,1fr) minmax(0,1fr)!important;min-height:64px!important;padding:8px!important;gap:6px!important}
+  .charm-row-identity{gap:6px}.charm-row-identity strong{font-size:12px}.charm-index{width:25px;height:25px;flex-basis:25px;font-size:11px}
+  .charm-level-box span{font-size:9px!important}.charm-level-box .stage-select{height:42px!important;min-height:42px!important;padding:0 7px!important}
+  .charm-inline-result{padding-inline-start:31px!important;gap:5px!important}
+  .charm-inline-result .result-label{font-size:8px!important}.charm-inline-result .inline-material{min-width:58px!important;padding:5px 6px!important}
+}
+@media(max-width:390px){
+  .charm-compact-row{grid-template-columns:70px minmax(0,1fr) minmax(0,1fr)!important;padding-inline:6px!important}
+  .charm-row-identity strong{font-size:11px}.charm-index{width:23px;height:23px;flex-basis:23px}
+}
