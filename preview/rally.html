@@ -504,9 +504,16 @@ const dashCopy={
  ar:{kicker:"إدارة الحشود",title:"لوحة قيادة حشود التحالف",description:"اختر فريقًا، وأدخل القادة يدويًا، ثم أنشئ توقيت إطلاق UTC الدقيق لكل قائد.",server:"توقيت UTC",leaders:"قادة"}
 };
 Object.assign(dashCopy,{"fr":{"kicker":"OPÉRATIONS DE RALLYE","title":"Tableau de commandement de l’alliance","description":"Choisissez une équipe, ajoutez les chefs et créez les heures UTC.","server":"HEURE UTC","leaders":"chefs"},"es":{"kicker":"OPERACIONES DE RALLY","title":"Panel de mando de la alianza","description":"Elige un equipo, añade líderes y genera horas UTC.","server":"HORA UTC","leaders":"líderes"},"de":{"kicker":"RALLYE-EINSATZ","title":"Rallye-Kommandozentrale","description":"Wähle ein Team, füge Anführer hinzu und erstelle UTC-Zeiten.","server":"UTC-ZEIT","leaders":"Anführer"},"tr":{"kicker":"RALLİ OPERASYONLARI","title":"İttifak ralli komuta paneli","description":"Takım seçin, liderleri ekleyin ve UTC saatlerini oluşturun.","server":"UTC SAATİ","leaders":"lider"},"ko":{"kicker":"집결 작전","title":"연맹 집결 지휘판","description":"팀을 선택하고 리더를 추가한 뒤 UTC 시간을 생성하세요.","server":"UTC 시간","leaders":"리더"},"ja":{"kicker":"集結作戦","title":"同盟集結コマンドボード","description":"チームを選び、リーダーを追加してUTC時刻を作成します。","server":"UTC時刻","leaders":"リーダー"},"zh":{"kicker":"集结行动","title":"联盟集结指挥面板","description":"选择队伍、添加队长并生成 UTC 时间。","server":"UTC 时间","leaders":"队长"}});
+const rallyUiLabels={
+ en:{team:"Team",sec:"sec",min:"min"},ar:{team:"الفريق",sec:"ث",min:"د"},fr:{team:"Équipe",sec:"s",min:"min"},es:{team:"Equipo",sec:"s",min:"min"},de:{team:"Team",sec:"Sek",min:"Min"},tr:{team:"Takım",sec:"sn",min:"dk"},ko:{team:"팀",sec:"초",min:"분"},ja:{team:"チーム",sec:"秒",min:"分"},zh:{team:"队伍",sec:"秒",min:"分"}
+};
 function applyDashboardLanguage(){
  const copy=dashCopy[currentLanguage]||dashCopy.en;
+ const ui=rallyUiLabels[currentLanguage]||rallyUiLabels.en;
  document.querySelectorAll("[data-dash]").forEach(el=>el.textContent=copy[el.dataset.dash]||el.textContent);
+ document.querySelectorAll("[data-focus-team]").forEach(btn=>{const strong=btn.querySelector("strong");if(strong)strong.textContent=ui.team+" "+btn.dataset.focusTeam});
+ document.querySelectorAll(".team-card").forEach(card=>{const title=card.querySelector(".team-title");if(title)title.childNodes[0].nodeValue=ui.team+" "+card.dataset.team+" "});
+ document.querySelectorAll("[data-buffer]").forEach(btn=>{const value=Number(btn.dataset.buffer);btn.textContent=value>=60?(value/60)+" "+ui.min:value+" "+ui.sec});
 }
 function focusTeam(id){
  document.querySelectorAll("[data-focus-team]").forEach(btn=>btn.classList.toggle("active",btn.dataset.focusTeam===id));
