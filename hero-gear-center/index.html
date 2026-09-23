@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-unified-v24-20260923">
+<meta name="saifks-build" content="hero-gear-unified-v25-20260923">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style id="hero-gear-styles-v24">
 
@@ -518,6 +518,97 @@ body{background:#07131f!important}
 .inventory-xp-card .xp-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}.inventory-xp-card .item{min-height:72px!important;padding:7px!important}.inventory-xp-card .item label{font-size:.54rem!important}.inventory-xp-card .item small{font-size:.49rem!important}.inventory-xp-card .item input{height:34px!important;text-align:center!important}
 @media(max-width:720px){.inventory-hub{margin:10px 0;border-radius:14px}.inventory-hub-head{padding:9px 10px}.inventory-hub-head h3{font-size:.8rem}.inventory-hub-body{padding:7px;gap:7px}.inventory-hub .head{min-height:39px!important}.inventory-resource-card .resource-inputs,.inventory-xp-card .xp-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.inventory-resource-card .item,.inventory-xp-card .item{min-height:64px!important}.inventory-xp-card .item input,.inventory-resource-card .item input{height:36px!important}}
 @media(max-width:380px){.inventory-hub-head{align-items:flex-start;flex-direction:column;gap:5px}.inventory-save-badge{font-size:.55rem}.inventory-hub-body{padding:6px}.inventory-resource-card .item,.inventory-xp-card .item{padding:6px!important}}
+
+
+/* v25 — visual polish: hierarchy, rhythm, and app-like surfaces. */
+:root{
+ --v25-line:rgba(121,166,201,.20);
+ --v25-line-strong:rgba(244,201,107,.32);
+ --v25-surface:linear-gradient(155deg,rgba(14,39,60,.96),rgba(6,21,35,.98));
+ --v25-shadow:0 18px 52px rgba(0,0,0,.22);
+}
+body{
+ background:
+ radial-gradient(circle at 12% 5%,rgba(49,114,163,.13),transparent 28%),
+ radial-gradient(circle at 88% 18%,rgba(244,201,107,.07),transparent 24%),
+ #05111d!important;
+}
+.wrap{width:min(1180px,calc(100% - 28px))!important;margin-inline:auto!important}
+.unified-header{
+ min-height:72px!important;padding:12px 16px!important;border:1px solid var(--v25-line)!important;
+ border-radius:0 0 20px 20px!important;background:rgba(5,19,32,.9)!important;
+ box-shadow:0 14px 36px rgba(0,0,0,.18)!important;backdrop-filter:blur(18px)!important;
+}
+.unified-brand{gap:11px!important}.unified-brand-logo{width:46px!important;height:46px!important;border-radius:14px!important;box-shadow:0 8px 22px rgba(0,0,0,.3)!important}
+.unified-brand h1{letter-spacing:-.02em!important}.home-header-button,.lang-toggle{
+ min-height:42px!important;border-radius:12px!important;border-color:var(--v25-line)!important;background:rgba(16,43,66,.82)!important;
+}
+.hero{margin-top:14px!important;padding:19px 21px!important;border:1px solid rgba(121,166,201,.16)!important;border-radius:18px!important;background:linear-gradient(135deg,rgba(14,42,66,.76),rgba(6,23,38,.48))!important}
+.hero h1{font-size:clamp(1.08rem,2.1vw,1.48rem)!important}.hero p{max-width:720px!important}.zero-pill{border-radius:999px!important}
+.workflow{margin:10px 0 14px!important;gap:8px!important;padding:6px!important;border:1px solid rgba(121,166,201,.13)!important;border-radius:16px!important;background:rgba(3,15,26,.5)!important}
+.workflow-step{min-height:48px!important;padding:8px 10px!important;border:0!important;border-radius:11px!important;background:transparent!important}
+.workflow-step.active{background:linear-gradient(135deg,rgba(244,201,107,.15),rgba(18,47,72,.92))!important;box-shadow:inset 0 0 0 1px rgba(244,201,107,.24)!important}
+.layout{gap:14px!important;align-items:start!important}.stack{gap:12px!important}
+.card,.simple-result,.result-card,.progress-dashboard,.inventory-hub{
+ border-color:var(--v25-line)!important;border-radius:18px!important;background:var(--v25-surface)!important;box-shadow:var(--v25-shadow)!important;
+}
+.card>.head{min-height:50px!important;padding:10px 14px!important;border-bottom-color:rgba(255,255,255,.055)!important;background:rgba(89,151,198,.045)!important}
+.card>.head h2,.card>.head h3{letter-spacing:-.015em!important}.pad{padding:13px!important}
+.box,.upgrade{border-color:rgba(121,166,201,.16)!important;border-radius:15px!important;background:rgba(3,16,27,.32)!important}
+.segments{gap:7px!important}.segments button{border-radius:12px!important;transition:transform .16s ease,border-color .16s ease,background .16s ease!important}
+.segments button:hover{transform:translateY(-1px)}.segments button.active{box-shadow:inset 0 0 0 1px rgba(244,201,107,.16),0 8px 20px rgba(0,0,0,.14)!important}
+.selected-gear-card{border-radius:16px!important;border-color:rgba(244,201,107,.22)!important;background:linear-gradient(135deg,rgba(244,201,107,.075),rgba(8,27,43,.72))!important}
+.selected-gear-image-wrap{border-radius:15px!important}.gear-type-banner{border-radius:11px!important}
+.field select,.field input,.item input{
+ border-color:rgba(126,169,201,.24)!important;background:rgba(2,14,24,.72)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important;
+}
+.field select:focus,.field input:focus,.item input:focus{border-color:rgba(244,201,107,.58)!important;box-shadow:0 0 0 3px rgba(244,201,107,.09)!important;outline:none!important}
+.quick button{border-color:rgba(121,166,201,.18)!important;background:rgba(13,39,60,.76)!important}
+.advanced-toggle{border-radius:13px!important;border-color:rgba(121,166,201,.19)!important;background:rgba(11,34,53,.65)!important}
+.inventory-hub{position:relative!important;margin:12px 0 14px!important;border-color:rgba(93,184,144,.25)!important;box-shadow:0 18px 48px rgba(0,0,0,.2)!important;overflow:hidden!important}
+.inventory-hub:before{content:"";position:absolute;z-index:1;inset:0 auto auto 0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#66d7a3,transparent);opacity:.7}
+.inventory-hub-head{min-height:54px!important;padding:11px 14px!important;background:linear-gradient(90deg,rgba(65,191,134,.08),rgba(87,153,205,.04))!important}
+.inventory-hub-head h3{font-size:.93rem!important}.inventory-hub-body{gap:9px!important;padding:10px!important}
+.inventory-hub .card{border-radius:14px!important;border-color:rgba(121,166,201,.14)!important;background:rgba(3,17,29,.52)!important;box-shadow:none!important}
+.inventory-resource-card .item,.inventory-xp-card .item{border-color:rgba(121,166,201,.13)!important;border-radius:11px!important;background:rgba(9,30,47,.62)!important}
+.inventory-resource-card .xp-total{border-radius:12px!important;background:linear-gradient(90deg,rgba(244,201,107,.095),rgba(16,49,74,.55))!important}
+.primary-result{position:relative!important;border-color:var(--v25-line-strong)!important;background:linear-gradient(150deg,rgba(22,51,76,.99),rgba(6,22,36,.99))!important;box-shadow:0 20px 58px rgba(0,0,0,.29)!important;overflow:hidden!important}
+.primary-result:before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,#f4c96b,transparent);opacity:.82}
+.simple-result-top{padding-bottom:10px!important;border-bottom:1px solid rgba(255,255,255,.06)!important}.result-state{border-radius:999px!important}
+.summary-overview{gap:8px!important}.summary-overview>div{border-radius:13px!important;border-color:rgba(121,166,201,.16)!important;background:rgba(4,20,33,.5)!important}
+.summary-overview>div:first-child{border-color:rgba(244,201,107,.27)!important;background:rgba(244,201,107,.07)!important}
+.embedded-progress{border-color:rgba(121,166,201,.14)!important;background:rgba(2,15,26,.48)!important}
+.result-card{padding:13px!important}.requirement-item{border-radius:12px!important;background:rgba(5,23,38,.7)!important}
+.stats-total-table{border-radius:13px!important}.actions{border-radius:16px!important}
+.copy{background:linear-gradient(135deg,#f0c65f,#ffd978)!important;color:#211704!important}.reset{background:rgba(13,39,60,.9)!important}
+.final-footer{border-top-color:rgba(121,166,201,.12)!important}
+@media(min-width:851px){
+ .layout{grid-template-columns:minmax(0,1.12fr) minmax(390px,.88fr)!important}
+ .right{position:sticky!important;top:12px!important;max-height:calc(100vh - 24px);overflow:auto;padding-inline-end:3px;scrollbar-width:thin;scrollbar-color:rgba(244,201,107,.34) transparent}
+ .right::-webkit-scrollbar{width:5px}.right::-webkit-scrollbar-thumb{background:rgba(244,201,107,.32);border-radius:10px}
+}
+@media(max-width:850px){
+ .wrap{width:min(100% - 18px,720px)!important}.layout{gap:10px!important}.right{position:static!important;max-height:none!important;overflow:visible!important}
+}
+@media(max-width:720px){
+ body{background:radial-gradient(circle at 50% 0,rgba(45,109,157,.14),transparent 30%),#05111d!important}
+ .wrap{width:100%!important;padding-inline:8px!important}
+ .unified-header{position:sticky!important;top:0!important;z-index:80!important;min-height:64px!important;padding:9px 8px!important;border-radius:0 0 16px 16px!important}
+ .unified-brand{min-width:0!important}.unified-brand-logo{width:40px!important;height:40px!important;border-radius:12px!important}.unified-brand h1{font-size:.78rem!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+ .home-header-button,.lang-toggle{min-height:38px!important;border-radius:10px!important}
+ .hero{margin-top:9px!important;padding:13px 12px!important;border-radius:14px!important}.hero h1{font-size:1rem!important}.hero p{font-size:.68rem!important;line-height:1.5!important}.zero-pill{margin-top:8px!important}
+ .workflow{margin:7px 0 10px!important;padding:4px!important;border-radius:13px!important}.workflow-step{min-height:43px!important;padding:6px 5px!important;border-radius:9px!important}.workflow-step i{width:23px!important;height:23px!important}
+ .card,.simple-result,.result-card,.progress-dashboard,.inventory-hub{border-radius:15px!important;box-shadow:0 13px 34px rgba(0,0,0,.18)!important}
+ .card>.head{min-height:45px!important;padding:8px 10px!important}.pad{padding:9px!important}
+ .selection{gap:8px!important}.box,.upgrade{border-radius:12px!important;padding:9px!important}
+ .segments{gap:5px!important}.segments button{border-radius:10px!important}
+ .selected-gear-card{border-radius:13px!important;padding:9px!important}
+ .inventory-hub-head{min-height:48px!important;padding:9px 10px!important}.inventory-hub-body{padding:7px!important}
+ .inventory-resource-card .item,.inventory-xp-card .item{border-radius:10px!important}
+ .primary-result{order:0!important}.result-card{padding:10px!important}
+ .summary-overview{gap:6px!important}.summary-overview>div{border-radius:10px!important}
+ .actions{padding:6px!important;border-radius:14px!important}
+}
 
 </style>
 <link rel="icon" href="../logo.png">
