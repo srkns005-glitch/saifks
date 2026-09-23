@@ -196,23 +196,66 @@ input{padding:12px 10px;min-width:0}
 .brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
 @media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
 </style>
-</head>
-<body><div class="preview-notice">MOBILE PREVIEW</div>
-<main class="container">
-<div class="topbar">
-<a class="home-link" href="index.html">← <span data-i18n="home">Home</span></a>
-<select id="langToggle" class="lang-btn" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option></select>
-</div>
 
-<header>
-<div class="brand">
-<img class="saifks-brand-logo" src="logo.png" alt="SaifKS logo">
-<div class="brand-name">Rally Planner</div>
-</div>
-<div class="badge">KINGSHOT TOOLS</div>
-<p id="subtitle">Create synchronized UTC rally schedules quickly and accurately.</p>
-<div id="utcNow" class="clock">UTC Now: --:--:--</div>
-</header>
+<style id="rally-unified-layout-v1">
+.preview-notice{display:none!important}
+.site-header{position:sticky;top:0;z-index:100;background:#091625;border-bottom:1px solid rgba(255,255,255,.09);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.site-header-row{width:min(1080px,calc(100% - 32px));min-height:76px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:10px 0}
+.site-brand{display:grid;grid-template-columns:38px minmax(0,1fr);align-items:center;column-gap:10px;min-width:0;text-align:start}
+.site-brand-logo{grid-row:1 / span 2;width:38px;height:38px;border:1px solid rgba(244,198,91,.5);border-radius:11px;background:#14263b;object-fit:cover}
+.site-brand>div{min-width:0}.site-brand h1{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:clamp(17px,2.6vw,23px);line-height:1.15}
+.site-brand p{margin:4px 0 0;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+.home-header-button,#langToggle{width:96px;min-width:96px;height:42px;display:inline-flex;align-items:center;justify-content:center;padding:0 8px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:#102238;color:var(--text);font-size:13px;font-weight:800;text-decoration:none;text-align:center;text-align-last:center;box-shadow:none}
+body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16px 0 34px}
+.planner-status{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px;padding:13px 15px;border:1px solid var(--border);border-radius:15px;background:var(--card)}
+.planner-status p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+.planner-status .clock{flex:0 0 auto;margin:0;padding:9px 12px;border:1px solid rgba(245,196,81,.25);border-radius:10px;background:rgba(245,196,81,.07);color:var(--gold);font-size:.86rem;font-weight:900}
+.app-dashboard{border-radius:18px!important;box-shadow:0 12px 32px rgba(0,0,0,.2)!important}
+.team-switch{border-radius:12px!important}
+.card{border-radius:16px!important;box-shadow:0 10px 26px rgba(0,0,0,.16)!important}
+.reinforce-panel{border-radius:18px!important;padding:20px!important}
+.reinforce-settings{gap:10px!important}
+.reinforce-block{min-height:112px!important;border-radius:12px!important}
+.reinforce-time input{height:46px!important}
+.reinforce-member-form{grid-template-columns:minmax(170px,1.25fr) minmax(95px,.65fr) minmax(95px,.65fr) auto!important}
+.final-footer{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px;padding:26px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:14px;text-align:center}
+.final-footer a{color:var(--gold);font-weight:800;text-decoration:none}
+@media(max-width:720px){
+ .site-header-row{width:calc(100% - 20px);min-height:70px;gap:6px}
+ .site-brand{grid-template-columns:34px minmax(0,1fr);column-gap:8px}
+ .site-brand-logo{width:34px;height:34px;border-radius:10px}
+ .site-brand h1{font-size:16px}.site-brand p{font-size:9px}
+ .home-header-button,#langToggle{width:74px;min-width:74px;height:38px;padding:0 4px;font-size:11px}
+ body>.site-header+main.container{width:calc(100% - 20px);padding:10px 0 28px}
+ .planner-status{display:block;padding:12px}.planner-status .clock{display:inline-flex;margin-top:9px}
+ .app-dashboard{padding:15px!important;border-radius:16px!important}
+ .team-switcher{grid-template-columns:1fr 1fr!important}
+ .reinforce-panel{padding:14px!important;border-radius:16px!important}
+ .reinforce-settings{grid-template-columns:1fr!important}
+ .reinforce-block{min-height:0!important;padding:12px!important}
+ .reinforce-block b{min-height:0!important;margin-bottom:8px}
+ .reinforce-settings>button{grid-column:auto!important}
+ .reinforce-member-form{grid-template-columns:1fr 1fr!important;padding:10px!important}
+ .reinforce-member-form label:first-child,.reinforce-member-form button{grid-column:1 / -1!important}
+ .reinforce-row{grid-template-columns:minmax(0,1fr) auto!important}
+}
+@media(max-width:410px){
+ .site-header-row{width:calc(100% - 16px)}
+ .site-brand{grid-template-columns:30px minmax(0,1fr);column-gap:7px}
+ .site-brand-logo{width:30px;height:30px;border-radius:9px}
+ .site-brand h1{font-size:14px}.site-brand p{display:none}
+ .home-header-button,#langToggle{width:66px;min-width:66px;font-size:10px}
+ body>.site-header+main.container{width:calc(100% - 16px)}
+}
+</style></head>
+<body>
+<header class="site-header"><div class="site-header-row">
+<div class="site-brand"><img class="site-brand-logo" src="logo.png" alt="SaifKS logo"><div><h1 id="plannerPageTitle">Rally Planner</h1><p>SaifKS.com</p></div></div>
+<a class="home-header-button home-link" href="index.html"><span data-i18n="home">Home</span></a>
+<select id="langToggle" class="lang-toggle" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option></select>
+</div></header>
+<main class="container">
+<section class="planner-status"><p id="subtitle">Create synchronized UTC rally schedules quickly and accurately.</p><div id="utcNow" class="clock">UTC Now: --:--:--</div></section>
 <section class="app-dashboard" aria-label="Rally dashboard">
   <div class="dashboard-head">
     <div>
@@ -318,12 +361,7 @@ input{padding:12px 10px;min-width:0}
 <div id="reinforceEnemyResult" class="reinforce-enemy-result"></div>
 <form id="reinforceForm" class="reinforce-member-form"><label><span data-rein="player">اسم لاعب التعزيز</span><input id="reinforceName" type="text" placeholder="Saif" required maxlength="32"></label><label><span data-rein="marchMin">دقائق مسيرته</span><input id="reinforceMyMin" type="number" min="0" max="59" value="0"></label><label><span data-rein="marchSec">ثوانٍ مسيرته</span><input id="reinforceMySec" type="number" min="0" max="59" value="30"></label><button class="primary" type="submit" data-rein="add">أضف تعزيز</button></form>
 <div id="reinforceList" class="reinforce-list"></div><div class="reinforce-actions"><button id="reinforceCopy" class="secondary hidden" type="button" data-rein="copy">نسخ كل التعليمات</button><button id="reinforceClear" class="danger" type="button" data-rein="clear">مسح التعزيزات</button></div></section>
-<footer class="footer">
-  <div class="footer-inner">
-    <div><strong>SaifKS.com</strong> | Built by Saif</div>
-    <a class="youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a>
-  </div>
-</footer>
+<footer class="final-footer"><div>SaifKS.com | Built by Saif</div><a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer">▶ YouTube</a></footer>
 </main>
 
 <div id="editModal" class="modal hidden">
@@ -346,6 +384,7 @@ input{padding:12px 10px;min-width:0}
 <script>
 const $=s=>document.querySelector(s);
 let currentLanguage=localStorage.getItem("saifRallyLang")||"en";
+const plannerTitleLabels={en:"Rally Planner",ar:"مخطط الحشود",fr:"Planificateur de rallye",es:"Planificador de rally",de:"Rallye-Planer",tr:"Ralli Planlayıcı",ko:"집결 플래너",ja:"集結プランナー",zh:"集结规划器"};
 const translations={en:{home:"Home",subtitle:"Create synchronized UTC rally schedules quickly and accurately.",prepTitle:"1. Preparation Time",prepDesc:"Choose how much time you need to copy and send the schedule.",minutes:"Minutes",seconds:"Seconds",addTitle:"2. Add Rally Leader",playerName:"Player Name",marchMinutes:"March Minutes",marchSeconds:"March Seconds",addPlayer:"+ Add Player",scheduleTitle:"3. UTC Schedule",clear:"Clear",generate:"Generate Schedule From UTC Now",firstStartsIn:"First rally starts in",copyAll:"Copy Team Times",copyDiscord:"Copy Discord Format",editPlayer:"Edit Player",cancel:"Cancel",saveChanges:"Save Changes",edit:"Edit",delete:"Delete",copy:"Copy",march:"March",updated:"Player updated",copied:"Copied",allCopied:"Team times copied",discordCopied:"Discord format copied"},ar:{home:"الرئيسية",subtitle:"أنشئ جدول حشود متزامن بتوقيت UTC بسرعة ودقة.",prepTitle:"1. وقت التحضير",prepDesc:"حدد المدة التي تحتاجها لنسخ الجدول وإرساله.",minutes:"الدقائق",seconds:"الثواني",addTitle:"2. إضافة قائد حشد",playerName:"اسم اللاعب",marchMinutes:"دقائق المسير",marchSeconds:"ثواني المسير",addPlayer:"+ إضافة لاعب",scheduleTitle:"3. جدول UTC",clear:"مسح الكل",generate:"إنشاء الجدول من الوقت العالمي الحالي",firstStartsIn:"يبدأ أول حشد بعد",copyAll:"نسخ أوقات الفريق",copyDiscord:"نسخ بتنسيق Discord",editPlayer:"تعديل اللاعب",cancel:"إلغاء",saveChanges:"حفظ التعديلات",edit:"تعديل",delete:"حذف",copy:"نسخ",march:"المسير",updated:"تم تحديث اللاعب",copied:"تم النسخ",allCopied:"تم نسخ أوقات الفريق",discordCopied:"تم نسخ تنسيق Discord"}};
 const extraTranslations={"fr":{"home":"Accueil","subtitle":"Créez des horaires de rallye UTC synchronisés.","prepTitle":"1. Temps de préparation","prepDesc":"Choisissez le temps pour copier et envoyer le planning.","minutes":"Minutes","seconds":"Secondes","addTitle":"2. Ajouter un chef de rallye","playerName":"Nom du joueur","marchMinutes":"Minutes de marche","marchSeconds":"Secondes de marche","addPlayer":"+ Ajouter un joueur","scheduleTitle":"3. Planning UTC","clear":"Effacer","generate":"Créer le planning UTC","firstStartsIn":"Le premier rallye commence dans","copyAll":"Copier les horaires","copyDiscord":"Copier au format Discord","editPlayer":"Modifier le joueur","cancel":"Annuler","saveChanges":"Enregistrer","edit":"Modifier","delete":"Supprimer","copy":"Copier","march":"Marche","updated":"Joueur mis à jour","copied":"Copié","allCopied":"Horaires copiés","discordCopied":"Format Discord copié"},"es":{"home":"Inicio","subtitle":"Crea horarios de rally sincronizados en UTC.","prepTitle":"1. Tiempo de preparación","prepDesc":"Elige el tiempo para copiar y enviar el horario.","minutes":"Minutos","seconds":"Segundos","addTitle":"2. Añadir líder de rally","playerName":"Nombre del jugador","marchMinutes":"Minutos de marcha","marchSeconds":"Segundos de marcha","addPlayer":"+ Añadir jugador","scheduleTitle":"3. Horario UTC","clear":"Borrar","generate":"Crear horario UTC","firstStartsIn":"El primer rally comienza en","copyAll":"Copiar horarios","copyDiscord":"Copiar formato Discord","editPlayer":"Editar jugador","cancel":"Cancelar","saveChanges":"Guardar","edit":"Editar","delete":"Eliminar","copy":"Copiar","march":"Marcha","updated":"Jugador actualizado","copied":"Copiado","allCopied":"Horarios copiados","discordCopied":"Formato Discord copiado"},"de":{"home":"Startseite","subtitle":"Erstelle synchronisierte UTC-Rallyepläne.","prepTitle":"1. Vorbereitungszeit","prepDesc":"Wähle die Zeit zum Kopieren und Senden.","minutes":"Minuten","seconds":"Sekunden","addTitle":"2. Rallye-Anführer hinzufügen","playerName":"Spielername","marchMinutes":"Marschminuten","marchSeconds":"Marschsekunden","addPlayer":"+ Spieler hinzufügen","scheduleTitle":"3. UTC-Zeitplan","clear":"Löschen","generate":"UTC-Plan erstellen","firstStartsIn":"Die erste Rallye startet in","copyAll":"Zeiten kopieren","copyDiscord":"Discord-Format kopieren","editPlayer":"Spieler bearbeiten","cancel":"Abbrechen","saveChanges":"Speichern","edit":"Bearbeiten","delete":"Löschen","copy":"Kopieren","march":"Marsch","updated":"Spieler aktualisiert","copied":"Kopiert","allCopied":"Zeiten kopiert","discordCopied":"Discord-Format kopiert"},"tr":{"home":"Ana sayfa","subtitle":"UTC ile senkronize ralli programları oluşturun.","prepTitle":"1. Hazırlık süresi","prepDesc":"Planı kopyalayıp göndermek için zamanı seçin.","minutes":"Dakika","seconds":"Saniye","addTitle":"2. Ralli lideri ekle","playerName":"Oyuncu adı","marchMinutes":"Yürüyüş dakikası","marchSeconds":"Yürüyüş saniyesi","addPlayer":"+ Oyuncu ekle","scheduleTitle":"3. UTC programı","clear":"Temizle","generate":"UTC programı oluştur","firstStartsIn":"İlk ralli şu kadar sonra başlar","copyAll":"Saatleri kopyala","copyDiscord":"Discord biçimini kopyala","editPlayer":"Oyuncuyu düzenle","cancel":"İptal","saveChanges":"Kaydet","edit":"Düzenle","delete":"Sil","copy":"Kopyala","march":"Yürüyüş","updated":"Oyuncu güncellendi","copied":"Kopyalandı","allCopied":"Saatler kopyalandı","discordCopied":"Discord biçimi kopyalandı"},"ko":{"home":"홈","subtitle":"UTC 기준 동기화된 집결 일정을 만드세요.","prepTitle":"1. 준비 시간","prepDesc":"일정을 복사하고 보내는 시간을 선택하세요.","minutes":"분","seconds":"초","addTitle":"2. 집결 리더 추가","playerName":"플레이어 이름","marchMinutes":"행군 분","marchSeconds":"행군 초","addPlayer":"+ 플레이어 추가","scheduleTitle":"3. UTC 일정","clear":"지우기","generate":"UTC 일정 생성","firstStartsIn":"첫 집결 시작까지","copyAll":"시간 복사","copyDiscord":"Discord 형식 복사","editPlayer":"플레이어 수정","cancel":"취소","saveChanges":"저장","edit":"수정","delete":"삭제","copy":"복사","march":"행군","updated":"플레이어 업데이트됨","copied":"복사됨","allCopied":"시간 복사됨","discordCopied":"Discord 형식 복사됨"},"ja":{"home":"ホーム","subtitle":"UTCで同期した集結スケジュールを作成します。","prepTitle":"1. 準備時間","prepDesc":"予定をコピーして送信する時間を選択します。","minutes":"分","seconds":"秒","addTitle":"2. 集結リーダーを追加","playerName":"プレイヤー名","marchMinutes":"行軍（分）","marchSeconds":"行軍（秒）","addPlayer":"+ プレイヤーを追加","scheduleTitle":"3. UTCスケジュール","clear":"クリア","generate":"UTC予定を作成","firstStartsIn":"最初の集結開始まで","copyAll":"時間をコピー","copyDiscord":"Discord形式でコピー","editPlayer":"プレイヤーを編集","cancel":"キャンセル","saveChanges":"保存","edit":"編集","delete":"削除","copy":"コピー","march":"行軍","updated":"プレイヤーを更新しました","copied":"コピーしました","allCopied":"時間をコピーしました","discordCopied":"Discord形式をコピーしました"},"zh":{"home":"首页","subtitle":"创建 UTC 同步集结时间表。","prepTitle":"1. 准备时间","prepDesc":"选择复制和发送时间表所需的时间。","minutes":"分钟","seconds":"秒","addTitle":"2. 添加集结队长","playerName":"玩家名称","marchMinutes":"行军分钟","marchSeconds":"行军秒数","addPlayer":"+ 添加玩家","scheduleTitle":"3. UTC 时间表","clear":"清除","generate":"生成 UTC 时间表","firstStartsIn":"首次集结开始倒计时","copyAll":"复制时间","copyDiscord":"复制 Discord 格式","editPlayer":"编辑玩家","cancel":"取消","saveChanges":"保存","edit":"编辑","delete":"删除","copy":"复制","march":"行军","updated":"玩家已更新","copied":"已复制","allCopied":"时间已复制","discordCopied":"Discord 格式已复制"}};Object.entries(extraTranslations).forEach(([code,copy])=>translations[code]=Object.assign({},translations.en,copy));
 const t=k=>(translations[currentLanguage]||translations.en)[k]||k,pad=n=>String(n).padStart(2,"0"),dur=s=>`${pad(Math.floor(s/60))}:${pad(s%60)}`,utc=d=>`${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())} UTC`,sec=(m,s)=>Number(m)*60+Number(s),esc=v=>v.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -453,7 +492,7 @@ class TeamTool{
  saveEdit(){const p=this.players.find(x=>x.id===this.editingId);if(!p)return;const name=$("#editName").value.trim(),march=sec($("#editMarchMin").value,$("#editMarchSec").value);if(!name||march<=0){alert("Enter a valid name and march time.");return}p.name=name;p.march=march;this.save();closeEdit();this.schedule.length?this.recalculate(false):this.render();showToast(t("updated"))}
 }
 let teams=[],activeTeam=null;
-function applyLanguage(){document.documentElement.lang=currentLanguage;document.documentElement.dir=currentLanguage==="ar"?"rtl":"ltr";document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));$("#subtitle").textContent=t("subtitle");$("#langToggle").value=currentLanguage;localStorage.setItem("saifRallyLang",currentLanguage);teams.forEach(x=>x.render())}
+function applyLanguage(){document.documentElement.lang=currentLanguage;document.documentElement.dir=currentLanguage==="ar"?"rtl":"ltr";document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));$("#subtitle").textContent=t("subtitle");$("#plannerPageTitle").textContent=plannerTitleLabels[currentLanguage]||plannerTitleLabels.en;$("#langToggle").value=currentLanguage;localStorage.setItem("saifRallyLang",currentLanguage);teams.forEach(x=>x.render())}
 function closeEdit(){activeTeam=null;$("#editModal").classList.add("hidden")}
 $("#langToggle").onchange=e=>{currentLanguage=e.target.value;applyLanguage()};
 $("#cancelEdit").onclick=closeEdit;$("#saveEdit").onclick=()=>activeTeam&&activeTeam.saveEdit();$("#editModal").onclick=e=>{if(e.target===$("#editModal"))closeEdit()};
