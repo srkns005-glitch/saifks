@@ -247,7 +247,7 @@ body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16p
  .home-header-button,#langToggle{width:66px;min-width:66px;font-size:10px}
  body>.site-header+main.container{width:calc(100% - 16px)}
 }
-</style></head>
+</style><style id="rally-arabic-polish">html[lang="ar"] .team-card .team-title:after{content:"الجدول اليدوي للقادة"!important;letter-spacing:0!important}</style></head>
 <body>
 <header class="site-header"><div class="site-header-row">
 <div class="site-brand"><img class="site-brand-logo" src="logo.png" alt="SaifKS logo"><div><h1 id="plannerPageTitle">Rally Planner</h1><p>SaifKS.com</p></div></div>
@@ -496,7 +496,8 @@ function applyLanguage(){document.documentElement.lang=currentLanguage;document.
 function closeEdit(){activeTeam=null;$("#editModal").classList.add("hidden")}
 $("#langToggle").onchange=e=>{currentLanguage=e.target.value;applyLanguage()};
 $("#cancelEdit").onclick=closeEdit;$("#saveEdit").onclick=()=>activeTeam&&activeTeam.saveEdit();$("#editModal").onclick=e=>{if(e.target===$("#editModal"))closeEdit()};
-function tick(){$("#utcNow").textContent=`UTC Now: ${utc(new Date())}`}setInterval(tick,1000);tick();
+const utcNowLabels={en:"UTC Now",ar:"توقيت UTC الآن",fr:"UTC maintenant",es:"UTC ahora",de:"UTC jetzt",tr:"UTC şimdi",ko:"현재 UTC",ja:"現在のUTC",zh:"当前 UTC"};
+function tick(){$("#utcNow").textContent=`${utcNowLabels[currentLanguage]||utcNowLabels.en}: ${utc(new Date())}`}setInterval(tick,1000);tick();
 teams=[...document.querySelectorAll("[data-team]")].map(el=>new TeamTool(el,el.dataset.team));applyLanguage();
 
 const dashCopy={
