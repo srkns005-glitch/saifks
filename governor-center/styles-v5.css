@@ -925,3 +925,33 @@ h1{font-size:clamp(38px,5.4vw,64px);line-height:.98;background:linear-gradient(1
   #gearPanel .summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
   #charmsPanel .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+
+/* V16 — stable charm rows and header/footer shared with the other calculators */
+.charm-compact-row.enabled .charm-inline-result{display:none!important}
+.charm-compact-row.enabled .charm-index{
+  color:#211505!important;border-color:var(--gold-soft)!important;
+  background:linear-gradient(180deg,#ffe08a,#d99a2b)!important;
+  box-shadow:0 5px 14px rgba(217,154,43,.20)!important
+}
+.home-header-button{
+  width:96px;min-width:96px;height:42px;display:inline-flex;align-items:center;justify-content:center;
+  padding:0 10px;border:1px solid rgba(255,255,255,.11);border-radius:11px;
+  background:rgba(13,28,47,.86);color:var(--text);font-size:13px;font-weight:850;text-decoration:none;
+  box-shadow:inset 0 1px rgba(255,255,255,.035);transition:.18s ease
+}
+.home-header-button:hover{border-color:rgba(255,212,107,.48);background:#122640;transform:translateY(-1px)}
+.final-footer{
+  display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  margin-top:auto;padding:26px 16px 38px;border-top:1px solid rgba(255,255,255,.09);
+  background:rgba(4,10,18,.78);color:var(--muted);font-size:14px;text-align:center
+}
+.final-footer a{color:var(--gold-soft);font-weight:850;text-decoration:none}.final-footer a:hover{color:#fff}
+@media(max-width:620px){
+  .home-header-button{width:74px;min-width:74px;height:44px;padding:0 6px;font-size:12px}
+  .brand-copy strong{max-width:170px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .final-footer{padding:22px 12px 30px;font-size:12px}
+}
+@media(max-width:390px){
+  .home-header-button{width:66px;min-width:66px;font-size:11px}
+  .brand-copy strong{max-width:125px}
+}
