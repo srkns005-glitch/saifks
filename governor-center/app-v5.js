@@ -410,7 +410,8 @@ document.getElementById("resetCharms").addEventListener("click",(event)=>{
   saveState();
   requestAnimationFrame(()=>window.scrollTo({top:y,left:0,behavior:"instant"}));
 });
-document.getElementById("homeBtn").addEventListener("click",()=>{
+document.getElementById("homeBtn").addEventListener("click",(event)=>{
+  event.preventDefault();
   localStorage.setItem(langKey,state.language);
   location.href="../index.html?lang="+encodeURIComponent(state.language);
 });
