@@ -9,6 +9,7 @@ on:
       - 'event-center/**'
       - 'hero-center/**'
       - 'hero-gear-center/**'
+      - 'assets/hero-gear/**'
       - 'governor-center/**'
       - 'research/**'
       - 'masters/**'
@@ -44,6 +45,10 @@ jobs:
               cp -R "$dir" "public-site/$dir"
             fi
           done
+          if [ -d assets/hero-gear ]; then
+            mkdir -p public-site/assets
+            cp -R assets/hero-gear public-site/assets/hero-gear
+          fi
           if [ -f logo.png ]; then cp logo.png public-site/logo.png; fi
       - uses: actions/upload-pages-artifact@v3
         with:
