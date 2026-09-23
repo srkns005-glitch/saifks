@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="saifks-build" content="governor-center-v10-edge-cases-20260923">
+  <meta name="saifks-build" content="governor-center-v11-unified-design-20260923">
   <title>Governor Center | SaifKS</title>
   <script>
     (()=>{
@@ -20,7 +20,7 @@
     })();
   </script>
   <style>html:not(.app-ready) body{visibility:hidden}html{background:#10141d}</style>
-  <link rel="stylesheet" href="styles-v5.css?v=10-edge-cases">
+  <link rel="stylesheet" href="styles-v5.css?v=11-unified-design">
 <link rel="icon" href="../logo.png">
 
 <style id="saifks-unified-brand-style">
@@ -33,17 +33,20 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home">
-        <img class="brand-mark" src="../logo.png" alt="SaifKS logo"><span>SaifKS</span>
-      </a>
-      <div class="top-actions">
-        <button id="homeBtn" class="event-home-btn hero-home-icon" type="button" data-i18n-aria="home" aria-label="Home" title="Home">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2v8.3a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5z"/></svg>
-        </button>
-        <div class="language-picker" id="languagePicker">
-          <button id="languageButton" class="language-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="languageButtonText">English</span><span class="language-chevron">⌄</span></button>
-          <div id="languageMenu" class="language-menu" role="listbox" hidden>
-            <button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button><button type="button" data-lang="tr">Türkçe</button><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="de">Deutsch</button><button type="button" data-lang="ko">한국어</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="zh">简体中文</button>
+      <div class="topbar-inner">
+        <a class="brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home">
+          <img class="brand-mark" src="../logo.png" alt="SaifKS logo">
+          <span class="brand-copy"><strong>SaifKS</strong><small>KINGSHOT TOOLS</small></span>
+        </a>
+        <div class="top-actions">
+          <button id="homeBtn" class="event-home-btn hero-home-icon" type="button" data-i18n-aria="home" aria-label="Home" title="Home">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2v8.3a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5z"/></svg>
+          </button>
+          <div class="language-picker" id="languagePicker">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="languageButtonText">English</span><span class="language-chevron">⌄</span></button>
+            <div id="languageMenu" class="language-menu" role="listbox" hidden>
+              <button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button><button type="button" data-lang="tr">Türkçe</button><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="de">Deutsch</button><button type="button" data-lang="ko">한국어</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="zh">简体中文</button>
+            </div>
           </div>
         </div>
       </div>
@@ -51,7 +54,7 @@
 
     <main class="page">
       <section class="hero">
-        <div>
+        <div class="hero-copy">
           <p class="eyebrow">KINGSHOT · SAIFKS</p>
           <h1 data-i18n="title">Governor Center</h1>
           <p data-i18n="subtitle">Plan Governor Gear and Charms, calculate remaining materials, and save your progress locally.</p>
@@ -132,10 +135,15 @@
 
     </main>
 
-    <footer>SaifKS.com | Built by Saif &nbsp; ▶ YouTube</footer>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>SaifKS.com</strong><span>Built by Saif</span></div>
+        <a class="footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener">▶ YouTube</a>
+      </div>
+    </footer>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app-v5.js?v=10-edge-cases"></script>
+  <script src="app-v5.js?v=11-unified-design"></script>
 </body>
 </html>
