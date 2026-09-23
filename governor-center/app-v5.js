@@ -173,7 +173,10 @@ function buildCharmCards(){
     group.dataset.slot=slot.id;
     group.innerHTML=`
       <div class="charm-compact-head">
-        <h3>${nameOf(slot.id,slot.name)}</h3>
+        <div class="charm-head-identity">
+          <div class="item-icon small">${gearIcons[slot.id]||"◆"}</div>
+          <h3>${nameOf(slot.id,slot.name)}</h3>
+        </div>
         <span class="charm-active-count">0 / 3</span>
       </div>
       <div class="charm-compact-list"></div>`;
@@ -185,7 +188,7 @@ function buildCharmCards(){
       row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <strong class="charm-simple-name">${tr("charm")} ${index+1}</strong>
+        <div class="charm-row-identity"><span class="charm-index">${index+1}</span><strong>${tr("charm")}</strong></div>
         <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
         <label class="charm-level-box"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
         <div class="charm-inline-result"></div>`;
