@@ -58,6 +58,7 @@ async function init(){
   buildCharmCards();
   bindOwnedInputs();
   renderAll();
+  document.documentElement.classList.add("app-ready");
 }
 function setupLanguage(){
   const picker=document.getElementById("languagePicker");
@@ -408,6 +409,7 @@ window.addEventListener("storage",(event)=>{
 
 init().catch(err=>{
   console.error(err);
+  document.documentElement.classList.add("app-ready");
   document.body.innerHTML=`<main style="padding:30px;color:white">${tr("loadError")}</main>`;
 });
 
