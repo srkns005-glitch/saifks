@@ -607,7 +607,25 @@ html[dir="rtl"] .event-modal-topbar{direction:rtl}
 .brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
 @media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
 </style>
-</head><body>
+
+<style id="event-center-upgrade-style">
+.event-search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch}
+.favorites-filter{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 15px;border:1px solid #36516a;border-radius:14px;background:#0d2134;color:#dbe8f5;font:inherit;font-weight:850;cursor:pointer;white-space:nowrap;transition:.18s ease}
+.favorites-filter:hover,.favorites-filter.active{border-color:#e4b94f;background:linear-gradient(135deg,#2a2416,#17273a);color:#ffd86c;box-shadow:0 8px 22px rgba(222,177,64,.13)}
+.favorites-filter b{display:grid;place-items:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#071522;color:#fff;font-size:.78rem}
+.favorite-card-btn{position:absolute;z-index:4;top:12px;inset-inline-end:12px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:13px;background:rgba(5,16,27,.76);color:#fff;font-size:1.25rem;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.18s ease}
+.favorite-card-btn.active{color:#ffd65e;border-color:#e4b94f;background:rgba(63,49,18,.92);box-shadow:0 7px 20px rgba(228,185,79,.2)}
+.prep-progress{display:flex!important;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px!important;margin-bottom:9px;border-color:rgba(228,185,79,.32)!important;background:rgba(228,185,79,.08)!important}
+.prep-progress span{font-weight:850;color:#f6d26c}
+.prep-progress b{font-size:.84rem;color:#b7c8d9}
+.prep-check{display:flex!important;align-items:center;gap:12px;min-height:50px;cursor:pointer;transition:.18s ease}
+.prep-check input{appearance:none;-webkit-appearance:none;width:24px;height:24px;flex:0 0 24px;margin:0;border:2px solid #54718c;border-radius:8px;background:#071522;display:grid;place-items:center;cursor:pointer}
+.prep-check input:checked{border-color:#43bd7b;background:#238b57}
+.prep-check input:checked:after{content:"✓";color:#fff;font-size:16px;font-weight:900;line-height:1}
+.prep-check:has(input:checked){border-color:rgba(67,189,123,.4)!important;background:rgba(35,139,87,.09)!important}
+.prep-check span{font-weight:750}
+@media(max-width:620px){.event-search-row{grid-template-columns:1fr}.favorites-filter{width:100%}.favorite-card-btn{width:40px;height:40px}.prep-progress{align-items:flex-start}}
+</style></head><body>
 <header><div class="head"><div class="header-actions"><a class="small-btn" href="../index.html">Home</a><select id="lang"><option value="en">English</option>
 <option value="ar">العربية</option>
 <option value="fr">Français</option>
@@ -617,7 +635,7 @@ html[dir="rtl"] .event-modal-topbar{direction:rtl}
 <option value="ko">한국어</option>
 <option value="ja">日本語</option>
 <option value="zh">简体中文</option></select></div><div class="brand"><img class="saifks-brand-logo" src="../logo.png" alt="SaifKS logo"><span>SaifKS</span><h1>Event Center</h1><p>Everything you need for every Kingshot event.</p></div></div></header>
-<main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button"><span class="tab-label">Solo Events</span><span class="tab-count">40</span></button><button id="allianceTab" class="event-tab" data-group="alliance" type="button"><span class="tab-label">Alliance Events</span><span class="tab-count">12</span></button></div><div class="tools"><input id="search" placeholder="Search events..."><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
+<main><div class="event-tabs" role="tablist"><button id="soloTab" class="event-tab active" data-group="solo" type="button"><span class="tab-label">Solo Events</span><span class="tab-count">40</span></button><button id="allianceTab" class="event-tab" data-group="alliance" type="button"><span class="tab-label">Alliance Events</span><span class="tab-count">12</span></button></div><div class="tools"><div class="event-search-row"><input id="search" placeholder="Search events..."><button id="favoritesFilter" class="favorites-filter" type="button" aria-pressed="false"><span class="favorite-symbol">★</span><span id="favoritesFilterText">Favorites</span><b id="favoritesCount">0</b></button></div><div id="filters"></div></div><section id="grid"></section><p id="empty" hidden>No events found</p></main>
 <div id="modal" class="hidden">
   <div class="shade" data-close></div>
   <article class="event-dialog" role="dialog" aria-modal="true">
@@ -695,6 +713,24 @@ const mistakesAr={"strongest-governor":["استخدام التسريعات قب�
 const saifTipAr={"strongest-governor":"ادخر الترقيات الكبيرة حتى المرحلة اليومية المناسبة.","kingdom-transfer":"تأكد من حد القوة وتكلفة تصاريح النقل قبل الخروج من التحالف.","roulette-hero":"ادخر جواهر تكفي للوصول إلى مرحلة مضمونة بدل اللفات العشوائية.","mystic-divination":"لا تصرف بكثرة إلا إذا كانت الجوائز الجانبية في الجولة قوية.","windward-voyage":"حافظ على عمل جميع فرق الرحلات المتاحة لزيادة الصناديق.","treasure-raiders":"ادخر المعاول إذا لم تكن قادرًا على الوصول للطابق المميز التالي.","eternitys-reach":"لا تضيع الوقت على المركز إلا إذا كنت قادرًا على الاحتفاظ به بكفاءة.","fishing-tournament":"لا تترك الطُعم عند الحد الأقصى 10، وطوّر المعدات مبكرًا.","hall-of-governors":"راجع مرحلة اليوم قبل استخدام الشظايا أو التسريعات أو مواد العتاد.","champions-way":"أكمل حشود المراحل العشرة ثم ادخر Weapon Scraps الإضافية.","hall-of-heroes":"Spend Marks only on heroes or widgets that strengthen your main march.","desert-trial":"Finish the 10 required rallies first, then decide whether extra rallies are worth the stamina.","dawn-expedition":"Daily consistency gives better value than buying levels with Gems.","truegold-refinement":"Save Lesser Truegold until the exchange pack matches your account needs.","armament-competition":"Always verify the active Armament mission type before spending materials.","champagne-fair":"Use vouchers on rare materials that directly improve your account.","buccaneer-bounty":"Choose your target reward first, then decide how many Corsair Keys to spend.","all-out":"Do not chase points when troop losses are worth more than the rewards.","call-of-the-sovereign":"Finish every free task before deciding whether the last chest is worth spending for.","beast-whisperer":"Use rewards on the pets that give the strongest immediate benefit.","arcane-trove":"Review the full reward path before buying the first pack.","burst-of-life":"Combine several upgrade types instead of relying on one expensive source of power.","city-development":"Use planned city upgrades during the event instead of creating unnecessary upgrades for rank.","defeat-nearby-beasts":"For equal points, one Terror rally is more stamina-efficient than three beasts.","develop-new-tech":"Save Research Speedups for this event and overlapping scoring opportunities.","golden-glaives":"Claim Intel regularly and spend Goldstones before they convert to Bread.","grow-your-heroes":"Do not spend valuable Mythic Shards only for a small ranking improvement.","hero-rally":"Use Gems to finish levels only after completing all free daily progress.","imperial-consortium":"Choose one upgrade route and compare its full value before starting.","moonlit-promise":"Complete daily missions consistently and spend all event currency before the month ends.","oasis-and-beyond":"Daily login consistency is enough to gain strong early heroes without spending.","officer-project":"Never spend gear materials until you confirm which Officer Project tasks are active.","path-of-growth":"Follow the daily mission order instead of rushing upgrades before their tasks unlock.","plan-your-city":"Use already planned city upgrades during the event instead of forcing unnecessary construction.","power-up":"Build power efficiently across several systems instead of spending everything on one upgrade.","stand-of-arms":"Coordinate Charm and Forgehammer upgrades so both progression and event rewards benefit you.","steel-edge":"Choose resource nodes by march efficiency, because equal gathering time gives equal event points.","treasure-cove":"Claim the free chest even if you do not plan to purchase any packs.","war-preparation-event":"Use the event to complete upgrades you already need for combat, not unnecessary power spending.","working-overtime":"Complete useful account upgrades during the event instead of spending only for rank."};
 const eventMetaAr={"strongest-governor":{"duration":"7 أيام","frequency":"شهريًا"},"kingdom-transfer":{"duration":"7 أيام","frequency":"تقريبًا كل 30–45 يومًا"},"roulette-hero":{"duration":"3 أيام","frequency":"كل أسبوعين"},"mystic-divination":{"duration":"يومان","frequency":"كل 4 أسابيع"},"windward-voyage":{"duration":"5 أيام + يوم جمع","frequency":"حدث دوري"},"treasure-raiders":{"duration":"3 أيام","frequency":"غير منتظم"},"eternitys-reach":{"duration":"30 دقيقة","frequency":"كل أسبوعين"},"fishing-tournament":{"duration":"حدث محدود","frequency":"غير محدد"},"hall-of-governors":{"duration":"عدة أيام","frequency":"كل أسبوعين"},"champions-way":{"duration":"3 أيام","frequency":"كل أسبوعين"},"hall-of-heroes":{"duration":"3 أيام","frequency":"أسبوعيًا"},"desert-trial":{"duration":"3 أيام","frequency":"كل أسبوعين"},"dawn-expedition":{"duration":"7 أيام","frequency":"بداية المملكة"},"truegold-refinement":{"duration":"غير منتظم","frequency":"يتزامن مع All Out"},"armament-competition":{"duration":"يومان","frequency":"كل أسبوعين"},"champagne-fair":{"duration":"يومان","frequency":"تقريبًا شهريًا"},"buccaneer-bounty":{"duration":"7 أيام","frequency":"كل 4–6 أسابيع"},"all-out":{"duration":"يومان","frequency":"كل عدة أسابيع"},"call-of-the-sovereign":{"duration":"3 أيام","frequency":"دوري"},"beast-whisperer":{"duration":"7 أيام","frequency":"مرة واحدة"},"arcane-trove":{"duration":"5 أيام","frequency":"عرض خاص"},"burst-of-life":{"duration":"7 أيام","frequency":"بداية المملكة"},"city-development":{"duration":"يومان","frequency":"غير منتظم"},"defeat-nearby-beasts":{"duration":"يومان","frequency":"دوري"},"develop-new-tech":{"duration":"يومان","frequency":"غير منتظم"},"golden-glaives":{"duration":"3 أيام","frequency":"مع SG أو KvK"},"grow-your-heroes":{"duration":"يومان","frequency":"غير منتظم"},"hero-rally":{"duration":"غير محدد","frequency":"كل أسبوعين"},"imperial-consortium":{"duration":"يومان","frequency":"عرض خاص"},"moonlit-promise":{"duration":"شهر واحد","frequency":"حدث رمضان"},"oasis-and-beyond":{"duration":"30 يومًا","frequency":"حدث تسجيل دخول لمرة واحدة"},"officer-project":{"duration":"يومان","frequency":"الأربعاء أو الأحد"},"path-of-growth":{"duration":"7 أيام","frequency":"يبدأ في اليوم الأول"},"plan-your-city":{"duration":"يومان","frequency":"غير منتظم"},"power-up":{"duration":"يومان","frequency":"غير منتظم"},"stand-of-arms":{"duration":"يومان","frequency":"غير منتظم"},"steel-edge":{"duration":"يومان","frequency":"غير منتظم"},"treasure-cove":{"duration":"7 أيام","frequency":"عرض خاص"},"war-preparation-event":{"duration":"يومان","frequency":"غير منتظم"},"working-overtime":{"duration":"يومان","frequency":"غير منتظم"}};
 const uiTranslations={"fr":{"Home":"Accueil","Event Center":"Centre des événements","Everything you need for every Kingshot event.":"Tout ce qu’il faut pour les événements Kingshot.","Search events...":"Rechercher un événement...","All":"Tous","View Guide →":"Voir le guide →","Reading Time":"Temps de lecture","Duration":"Durée","Frequency":"Fréquence","Overview":"Aperçu","Main Rewards":"Récompenses principales","Best Tips":"Meilleurs conseils","Preparation":"Préparation","Quick Facts":"Infos rapides","Difficulty":"Difficulté","Mode":"Mode","Generation":"Génération","Common Mistakes":"Erreurs fréquentes","Recommended Heroes":"Héros recommandés","Saif Tip":"Conseil de Saif","Related Events":"Événements liés","Close Event":"Fermer","Previous":"Précédent","Next":"Suivant","Copy Tips":"Copier les conseils","No events found":"Aucun événement trouvé","Solo Events":"Événements solo","Alliance Events":"Événements d’alliance","Alliance":"Alliance","Kingdom":"Royaume","Cross-Kingdom":"Inter-royaumes","Alliance PvE":"PvE d’alliance"},"de":{"Home":"Startseite","Event Center":"Event-Center","Everything you need for every Kingshot event.":"Alles für Kingshot-Events.","Search events...":"Event suchen...","All":"Alle","View Guide →":"Guide ansehen →","Reading Time":"Lesezeit","Duration":"Dauer","Frequency":"Häufigkeit","Overview":"Übersicht","Main Rewards":"Hauptbelohnungen","Best Tips":"Beste Tipps","Preparation":"Vorbereitung","Quick Facts":"Schnellinfos","Difficulty":"Schwierigkeit","Mode":"Modus","Generation":"Generation","Common Mistakes":"Häufige Fehler","Recommended Heroes":"Empfohlene Helden","Saif Tip":"Saifs Tipp","Related Events":"Ähnliche Events","Close Event":"Schließen","Previous":"Zurück","Next":"Weiter","Copy Tips":"Tipps kopieren","No events found":"Keine Events gefunden","Solo Events":"Solo-Events","Alliance Events":"Allianz-Events","Alliance":"Allianz","Kingdom":"Königreich","Cross-Kingdom":"Königreichsübergreifend","Alliance PvE":"Allianz-PvE"},"es":{"Home":"Inicio","Event Center":"Centro de eventos","Everything you need for every Kingshot event.":"Todo para los eventos de Kingshot.","Search events...":"Buscar evento...","All":"Todos","View Guide →":"Ver guía →","Reading Time":"Tiempo de lectura","Duration":"Duración","Frequency":"Frecuencia","Overview":"Resumen","Main Rewards":"Recompensas principales","Best Tips":"Mejores consejos","Preparation":"Preparación","Quick Facts":"Datos rápidos","Difficulty":"Dificultad","Mode":"Modo","Generation":"Generación","Common Mistakes":"Errores comunes","Recommended Heroes":"Héroes recomendados","Saif Tip":"Consejo de Saif","Related Events":"Eventos relacionados","Close Event":"Cerrar","Previous":"Anterior","Next":"Siguiente","Copy Tips":"Copiar consejos","No events found":"No se encontraron eventos","Solo Events":"Eventos individuales","Alliance Events":"Eventos de alianza","Alliance":"Alianza","Kingdom":"Reino","Cross-Kingdom":"Entre reinos","Alliance PvE":"PvE de alianza"},"tr":{"Home":"Ana Sayfa","Event Center":"Etkinlik Merkezi","Everything you need for every Kingshot event.":"Kingshot etkinlik bilgileri.","Search events...":"Etkinlik ara...","All":"Tümü","View Guide →":"Rehberi Gör →","Reading Time":"Okuma süresi","Duration":"Süre","Frequency":"Sıklık","Overview":"Genel Bakış","Main Rewards":"Ana Ödüller","Best Tips":"En İyi İpuçları","Preparation":"Hazırlık","Quick Facts":"Hızlı Bilgiler","Difficulty":"Zorluk","Mode":"Mod","Generation":"Nesil","Common Mistakes":"Yaygın Hatalar","Recommended Heroes":"Önerilen Kahramanlar","Saif Tip":"Saif’in İpucu","Related Events":"İlgili Etkinlikler","Close Event":"Kapat","Previous":"Önceki","Next":"Sonraki","Copy Tips":"İpuçlarını Kopyala","No events found":"Etkinlik bulunamadı","Solo Events":"Solo Etkinlikler","Alliance Events":"İttifak Etkinlikleri","Alliance":"İttifak","Kingdom":"Krallık","Cross-Kingdom":"Krallıklar Arası","Alliance PvE":"İttifak PvE"},"ko":{"Home":"홈","Event Center":"이벤트 센터","Everything you need for every Kingshot event.":"Kingshot 이벤트 정보.","Search events...":"이벤트 검색...","All":"전체","View Guide →":"가이드 보기 →","Reading Time":"읽는 시간","Duration":"기간","Frequency":"주기","Overview":"개요","Main Rewards":"주요 보상","Best Tips":"핵심 팁","Preparation":"준비","Quick Facts":"빠른 정보","Difficulty":"난이도","Mode":"유형","Generation":"세대","Common Mistakes":"흔한 실수","Recommended Heroes":"추천 영웅","Saif Tip":"Saif 팁","Related Events":"관련 이벤트","Close Event":"닫기","Previous":"이전","Next":"다음","Copy Tips":"팁 복사","No events found":"이벤트가 없습니다","Solo Events":"솔로 이벤트","Alliance Events":"연맹 이벤트","Alliance":"연맹","Kingdom":"왕국","Cross-Kingdom":"왕국 간","Alliance PvE":"연맹 PvE"},"ja":{"Home":"ホーム","Event Center":"イベントセンター","Everything you need for every Kingshot event.":"Kingshotイベント情報。","Search events...":"イベントを検索...","All":"すべて","View Guide →":"ガイドを見る →","Reading Time":"読了時間","Duration":"期間","Frequency":"頻度","Overview":"概要","Main Rewards":"主な報酬","Best Tips":"おすすめのコツ","Preparation":"準備","Quick Facts":"基本情報","Difficulty":"難易度","Mode":"モード","Generation":"世代","Common Mistakes":"よくあるミス","Recommended Heroes":"おすすめ英雄","Saif Tip":"Saifのヒント","Related Events":"関連イベント","Close Event":"閉じる","Previous":"前へ","Next":"次へ","Copy Tips":"ヒントをコピー","No events found":"イベントが見つかりません","Solo Events":"ソロイベント","Alliance Events":"同盟イベント","Alliance":"同盟","Kingdom":"王国","Cross-Kingdom":"王国間","Alliance PvE":"同盟PvE"},"zh":{"Home":"主页","Event Center":"活动中心","Everything you need for every Kingshot event.":"Kingshot 活动信息。","Search events...":"搜索活动...","All":"全部","View Guide →":"查看攻略 →","Reading Time":"阅读时间","Duration":"持续时间","Frequency":"频率","Overview":"概览","Main Rewards":"主要奖励","Best Tips":"最佳技巧","Preparation":"准备","Quick Facts":"快速信息","Difficulty":"难度","Mode":"类型","Generation":"代数","Common Mistakes":"常见错误","Recommended Heroes":"推荐英雄","Saif Tip":"Saif 提示","Related Events":"相关活动","Close Event":"关闭","Previous":"上一个","Next":"下一个","Copy Tips":"复制技巧","No events found":"未找到活动","Solo Events":"单人活动","Alliance Events":"联盟活动","Alliance":"联盟","Kingdom":"王国","Cross-Kingdom":"跨王国","Alliance PvE":"联盟PvE"}};let lang=localStorage.getItem("saifRallyLang")||"en";const supportedLangs=["en","ar","fr","de","es","tr","ko","ja","zh"];if(!supportedLangs.includes(lang))lang="en";let cat="All";let activeGroup=localStorage.getItem("saifEventGroup")||"solo";let currentEventId=null,pageScrollY=0;const q=s=>document.querySelector(s),grid=q("#grid"),filters=q("#filters"),search=q("#search"),modal=q("#modal");const t=k=>lang==="ar"?(ar[k]||k):((uiTranslations[lang]&&uiTranslations[lang][k])||k);const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
+const EVENT_FAVORITES_KEY="saifksEventFavoritesV1",EVENT_PREP_KEY="saifksEventPrepV1";
+const upgradeLabels={
+  en:{favorites:"Favorites",prepared:"Preparation progress",done:"ready"},
+  ar:{favorites:"المفضلة",prepared:"تقدم التجهيز",done:"جاهز"},
+  fr:{favorites:"Favoris",prepared:"Préparation",done:"prêt"},
+  de:{favorites:"Favoriten",prepared:"Vorbereitung",done:"bereit"},
+  es:{favorites:"Favoritos",prepared:"Preparación",done:"listo"},
+  tr:{favorites:"Favoriler",prepared:"Hazırlık",done:"hazır"},
+  ko:{favorites:"즐겨찾기",prepared:"준비 진행",done:"준비됨"},
+  ja:{favorites:"お気に入り",prepared:"準備状況",done:"準備完了"},
+  zh:{favorites:"收藏",prepared:"准备进度",done:"已准备"}
+};
+const readStored=(key,fallback)=>{try{const value=JSON.parse(localStorage.getItem(key));return value??fallback}catch(err){return fallback}};
+let favoriteIds=new Set(readStored(EVENT_FAVORITES_KEY,[])),favoritesOnly=false;
+let prepChecks=readStored(EVENT_PREP_KEY,{});
+const upgradeText=key=>(upgradeLabels[lang]||upgradeLabels.en)[key]||key;
+const saveFavorites=()=>localStorage.setItem(EVENT_FAVORITES_KEY,JSON.stringify([...favoriteIds]));
+const savePrep=()=>localStorage.setItem(EVENT_PREP_KEY,JSON.stringify(prepChecks));
 
 const preparationLabels={"en":{"Gems":"Gems","Speedups":"Speedups","Hero Shards":"Hero Shards","Widgets":"Widgets","Resources":"Resources","empty":"No special preparation required."},"ar":{"Gems":"الجواهر","Speedups":"التسريعات","Hero Shards":"شظايا الأبطال","Widgets":"القطع الخاصة","Resources":"الموارد","empty":"لا يحتاج تجهيزًا خاصًا."},"fr":{"Gems":"Gemmes","Speedups":"Accélérations","Hero Shards":"Fragments de héros","Widgets":"Composants exclusifs","Resources":"Ressources","empty":"Aucune préparation particulière requise."},"de":{"Gems":"Edelsteine","Speedups":"Beschleuniger","Hero Shards":"Heldensplitter","Widgets":"Exklusive Komponenten","Resources":"Ressourcen","empty":"Keine besondere Vorbereitung erforderlich."},"es":{"Gems":"Gemas","Speedups":"Aceleradores","Hero Shards":"Fragmentos de héroe","Widgets":"Componentes exclusivos","Resources":"Recursos","empty":"No se requiere preparación especial."},"tr":{"Gems":"Mücevherler","Speedups":"Hızlandırmalar","Hero Shards":"Kahraman Parçaları","Widgets":"Özel Parçalar","Resources":"Kaynaklar","empty":"Özel bir hazırlık gerekmez."},"ko":{"Gems":"보석","Speedups":"가속","Hero Shards":"영웅 조각","Widgets":"전용 부품","Resources":"자원","empty":"특별한 준비가 필요하지 않습니다."},"ja":{"Gems":"ジェム","Speedups":"加速","Hero Shards":"英雄の欠片","Widgets":"専用部品","Resources":"資源","empty":"特別な準備は必要ありません。"},"zh":{"Gems":"宝石","Speedups":"加速","Hero Shards":"英雄碎片","Widgets":"专属组件","Resources":"资源","empty":"无需特殊准备。"}};
 function eventText(e){
@@ -724,12 +760,21 @@ function relatedTitle(id){
   return rel?eventText(rel).title:id;
 }
 
-function renderFilters(){const groupEvents=events.filter(e=>(e.eventGroup||"solo")===activeGroup);const cats=["All",...new Set(groupEvents.map(e=>e.category))];filters.innerHTML=cats.map(c=>`<button class="filter ${cat===c?"active":""}" data-cat="${c}">${t(c)}</button>`).join("")}
+function renderFavoriteFilter(){
+  const button=q("#favoritesFilter"),label=q("#favoritesFilterText"),count=q("#favoritesCount");
+  if(!button)return;
+  label.textContent=upgradeText("favorites");
+  count.textContent=String(favoriteIds.size);
+  button.classList.toggle("active",favoritesOnly);
+  button.setAttribute("aria-pressed",String(favoritesOnly));
+}
+function renderFilters(){const groupEvents=events.filter(e=>(e.eventGroup||"solo")===activeGroup);const cats=["All",...new Set(groupEvents.map(e=>e.category))];filters.innerHTML=cats.map(c=>`<button class="filter ${cat===c?"active":""}" data-cat="${c}">${t(c)}</button>`).join("");renderFavoriteFilter()}
 function render(){
   const s=search.value.trim().toLocaleLowerCase(lang);
   const list=events.filter(e=>{
     const x=eventText(e);
     return (e.eventGroup||"solo")===activeGroup && (cat==="All"||e.category===cat) &&
+      (!favoritesOnly||favoriteIds.has(e.id)) &&
       (x.title.toLocaleLowerCase(lang).includes(s) ||
        x.summary.toLocaleLowerCase(lang).includes(s) ||
        (x.tags||[]).join(" ").toLocaleLowerCase(lang).includes(s));
@@ -738,6 +783,7 @@ function render(){
     const x=eventText(e);
     return `<article class="card">
       <div class="event-banner banner-${e.id}">
+        <button class="favorite-card-btn ${favoriteIds.has(e.id)?"active":""}" type="button" data-favorite-id="${e.id}" aria-label="${upgradeText("favorites")}" aria-pressed="${favoriteIds.has(e.id)}">★</button>
         <div class="banner-glow"></div>
         <div class="banner-icon">${e.icon}</div>
         <span class="pill">${t(e.category)}</span>
@@ -774,7 +820,13 @@ function openEvent(id){
   q("#mRewards").textContent=x.rewards;
   q("#mTips").innerHTML=x.tips.map(v=>`<li>${v}</li>`).join("");
   const prep=Object.entries(e.prep).filter(([,v])=>v);
-  const pLang=preparationLabels[lang]||preparationLabels.en;q("#mPrep").innerHTML=prep.length?prep.map(([k])=>`<div><span>✔ ${pLang[k]||k}</span></div>`).join(""):`<div class="prep-empty">${pLang.empty}</div>`;
+  const pLang=preparationLabels[lang]||preparationLabels.en;
+  const eventPrep=prepChecks[e.id]||{};
+  const completed=prep.filter(([k])=>eventPrep[k]).length;
+  q("#mPrep").innerHTML=prep.length
+    ? `<div class="prep-progress"><span>${upgradeText("prepared")}</span><b>${completed}/${prep.length} ${upgradeText("done")}</b></div>`+
+      prep.map(([k])=>`<label class="prep-check"><input type="checkbox" data-prep-event="${e.id}" data-prep-key="${k}" ${eventPrep[k]?"checked":""}><span>${pLang[k]||k}</span></label>`).join("")
+    : `<div class="prep-empty">${pLang.empty}</div>`;
   q("#modalTags").innerHTML=(x.tags||e.tags).map(tag=>`<span>${t(tag)}</span>`).join("");
   q("#quickFacts").innerHTML=`
     <div><span>${t("Duration")}</span><b>${x.duration}</b></div>
@@ -859,8 +911,28 @@ if(nextBtn)nextBtn.textContent=t("Next")+" →";
 if(q("#backEventsText"))q("#backEventsText").textContent=EVENT_BACK_LABELS[lang]||EVENT_BACK_LABELS.en;
 if(q("#eventTopText"))q("#eventTopText").textContent=EVENT_TOP_LABELS[lang]||EVENT_TOP_LABELS.en;
 if(q("#copyTipsText"))q("#copyTipsText").textContent=t("Copy Tips");
+renderFavoriteFilter();
 localStorage.setItem("saifRallyLang",lang);q("#soloTab").classList.toggle("active",activeGroup==="solo");q("#allianceTab").classList.toggle("active",activeGroup==="alliance");renderFilters();render();if(!modal.classList.contains("hidden"))closeModal()}
-q(".event-tabs").onclick=e=>{const b=e.target.closest("[data-group]");if(b){activeGroup=b.dataset.group;cat="All";search.value="";localStorage.setItem("saifEventGroup",activeGroup);q("#soloTab").classList.toggle("active",activeGroup==="solo");q("#allianceTab").classList.toggle("active",activeGroup==="alliance");renderFilters();render()}};filters.onclick=e=>{const b=e.target.closest("[data-cat]");if(b){cat=b.dataset.cat;renderFilters();render()}};grid.onclick=e=>{const b=e.target.closest("[data-id]");if(b)openEvent(b.dataset.id)};search.oninput=render;q("#lang").onchange=e=>{lang=e.target.value;applyLang()};modal.onclick=e=>{if(e.target.closest("[data-close]"))closeModal()};
+q(".event-tabs").onclick=e=>{const b=e.target.closest("[data-group]");if(b){activeGroup=b.dataset.group;cat="All";search.value="";localStorage.setItem("saifEventGroup",activeGroup);q("#soloTab").classList.toggle("active",activeGroup==="solo");q("#allianceTab").classList.toggle("active",activeGroup==="alliance");renderFilters();render()}};filters.onclick=e=>{const b=e.target.closest("[data-cat]");if(b){cat=b.dataset.cat;renderFilters();render()}};
+q("#favoritesFilter").onclick=()=>{favoritesOnly=!favoritesOnly;renderFavoriteFilter();render()};
+grid.onclick=e=>{
+  const favorite=e.target.closest("[data-favorite-id]");
+  if(favorite){
+    const id=favorite.dataset.favoriteId;
+    favoriteIds.has(id)?favoriteIds.delete(id):favoriteIds.add(id);
+    saveFavorites();renderFavoriteFilter();render();return;
+  }
+  const b=e.target.closest("[data-id]");if(b)openEvent(b.dataset.id)
+};
+q("#mPrep").onchange=e=>{
+  const input=e.target.closest("[data-prep-event][data-prep-key]");
+  if(!input)return;
+  const eventId=input.dataset.prepEvent,key=input.dataset.prepKey;
+  prepChecks[eventId]=prepChecks[eventId]||{};
+  prepChecks[eventId][key]=input.checked;
+  savePrep();openEvent(eventId);
+};
+search.oninput=render;q("#lang").onchange=e=>{lang=e.target.value;applyLang()};modal.onclick=e=>{if(e.target.closest("[data-close]"))closeModal()};
 if(q("#relatedEvents")) q("#relatedEvents").onclick=e=>{const b=e.target.closest("[data-related]");if(b)openEvent(b.dataset.related)};
 document.onkeydown=e=>{if(e.key==="Escape")closeModal()};
 try{applyLang();}catch(err){
@@ -906,5 +978,5 @@ if(next)next.onclick=()=>{let i=currentIndex();if(i<events.length-1)openEvent(ev
 },100);
 })();
 
-</script><!-- Build: event-center-fixed-v2602-20260715221947 -->
+</script><!-- Build: event-center-upgrade-v1-20260923 -->
 </body></html>
