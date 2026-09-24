@@ -155,8 +155,8 @@ function gearCurrentOptions(selected){
 function gearTargetOptions(current,selected){
   if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
   let html=current===-1
-    ? `<option value="-1" disabled ${selected===-1?"selected":""}>${tr("disabled")}</option>`
-    : `<option value="${current}" disabled ${selected===current?"selected":""}>${gearDB.levels[current].display_name}</option>`;
+    ? `<option value="-1" ${selected===-1?"selected":""}>${tr("disabled")}</option>`
+    : `<option value="${current}" ${selected===current?"selected":""}>${gearDB.levels[current].display_name}</option>`;
   gearDB.levels.forEach((x,i)=>{if(i>current) html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`;});
   return html;
 }
@@ -173,7 +173,7 @@ function charmCurrentOptions(selected){
 function charmTargetOptions(current,selected){
   const last=charmDB.levels.at(-1)?.level||0;
   if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
-  let html=`<option value="${current}" disabled ${selected===current?"selected":""}>${current}</option>`;
+  let html=`<option value="${current}" ${selected===current?"selected":""}>${current}</option>`;
   charmDB.levels.forEach(x=>{if(x.level>current) html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`;});
   return html;
 }
