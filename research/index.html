@@ -1446,7 +1446,11 @@ function save(){localStorage.setItem("saifksResearchV3",JSON.stringify(state))}
 function fmt(n){if(!Number.isFinite(n))return"0";if(Math.abs(n)>=1e9)return(n/1e9).toFixed(2).replace(/\.?0+$/,"")+"B";if(Math.abs(n)>=1e6)return(n/1e6).toFixed(2).replace(/\.?0+$/,"")+"M";if(Math.abs(n)>=1e3)return(n/1e3).toFixed(1).replace(/\.?0+$/,"")+"K";return Math.round(n).toLocaleString("en-US")}
 function duration(sec){sec=Math.max(0,Math.round(sec));if(!sec)return"0 "+tr("minutes");const d=Math.floor(sec/86400);sec%=86400;const h=Math.floor(sec/3600);sec%=3600;const m=Math.floor(sec/60);return[d?d+" "+tr("days"):"",h?h+" "+tr("hours"):"",m?m+" "+tr("minutes"):""].filter(Boolean).join(" ")}
 function romanStage(name){const m=name.match(/\s([IVX]+)$/);if(!m)return 0;const map={I:1,V:5,X:10};let total=0,last=0;[...m[1]].reverse().forEach(ch=>{let v=map[ch]||0;total+=v<last?-v:v;last=Math.max(last,v)});return total}
-function effectNumber(str){const m=String(str||"").match(/-?\d+(?:\.\d+)?/);return m?Number(m[0]):0}
+function effectNumber(str){
+ const m=String(str||"").match(/^\s*([+-]?\d[\d,]*(?:\.\d+)?)\s*([KMB])?/i);
+ if(!m)return 0;
+ return Number(m[1].replace(/,/g,""))*({K:1e3,M:1e6,B:1e9}[m[2]?.toUpperCase()]||1)
+}
 function effectUnit(str){return String(str||"").includes("%")?"%":""}
 function config(id){return state.levels[id]||{current:0,target:0}}
 function getEffect(t,lvl){if(!lvl)return 0;const row=t.levels.find(x=>x.level===lvl);return row?effectNumber(row.effect):0}
@@ -1457,7 +1461,8 @@ function effectLabel(t){
 }
 function deltaText(t,c,tg){
  const d=getEffect(t,tg)-getEffect(t,c);
- return d>0?effectLabel(t)+": +"+d.toFixed(2).replace(/\.?0+$/,"")+effectUnit(t.levels[0]?.effect):effectLabel(t)+": 0"
+ const amount=new Intl.NumberFormat("en-US",{maximumFractionDigits:2}).format(d);
+ return d>0?effectLabel(t)+": +"+amount+effectUnit(t.levels[0]?.effect):effectLabel(t)+": 0"
 }
 function isPlanned(id){return state.plan.includes(id)}
 function toast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
