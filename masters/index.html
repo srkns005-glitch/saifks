@@ -1689,16 +1689,17 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
     [
       ['summaryAffHave','affHave'],['summaryAffNeed','affNeed'],
       ['summaryEmblemHave','emblemHave'],['summaryEmblemNeed','emblemNeed'],
-      ['summaryBooksHave','booksOwned'],['summaryBooksNeed','booksNeed']
+      ['summaryBooksHave','booksOwned']
     ].forEach(([target,source])=>{
       const el=get(target);
       if(el) el.textContent=text(source);
     });
+    get('summaryBooksNeed').textContent=fmt(totals().books);
     ['totalAff','totalEmblems','totalBooks'].forEach(id=>{
       const el=get(id);
       if(!el) return;
       const value=Number(String(el.textContent).replace(/[^\d.-]/g,''))||0;
-      el.classList.toggle('summary-missing',value>0);
+      el.classList.toggle('summary-missing',value<0);
       el.classList.toggle('summary-complete',value===0);
     });
   };
