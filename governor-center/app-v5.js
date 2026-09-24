@@ -45,6 +45,18 @@ function n(v){
 }
 function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
 const charmLabels={en:"Charm",ar:"تميمة",tr:"Tılsım",fr:"Charme",es:"Amuleto",de:"Talisman",ko:"부적",ja:"チャーム",zh:"饰品"};
+const gainedStatLabels={
+  en:{attack:"Attack gained",defense:"Defense gained",health:"Health gained",lethality:"Lethality gained"},
+  ar:{attack:"الهجوم المكتسب",defense:"الدفاع المكتسب",health:"الصحة المكتسبة",lethality:"الفتك المكتسب"},
+  tr:{attack:"Kazanılan saldırı",defense:"Kazanılan savunma",health:"Kazanılan sağlık",lethality:"Kazanılan öldürücülük"},
+  fr:{attack:"Attaque gagnée",defense:"Défense gagnée",health:"Santé gagnée",lethality:"Létalité gagnée"},
+  es:{attack:"Ataque ganado",defense:"Defensa ganada",health:"Salud ganada",lethality:"Letalidad ganada"},
+  de:{attack:"Gewonnener Angriff",defense:"Gewonnene Verteidigung",health:"Gewonnene Gesundheit",lethality:"Gewonnene Tödlichkeit"},
+  ko:{attack:"획득 공격",defense:"획득 방어",health:"획득 체력",lethality:"획득 치명성"},
+  ja:{attack:"獲得攻撃",defense:"獲得防御",health:"獲得体力",lethality:"獲得殺傷力"},
+  zh:{attack:"攻击提升",defense:"防御提升",health:"生命提升",lethality:"杀伤提升"}
+};
+function gainedStatLabel(stat){return gainedStatLabels[state.language]?.[stat]||gainedStatLabels.en[stat]||stat;}
 function tr(k){
   if(k==="charm") return charmLabels[state.language]||charmLabels.en;
   return (i18n[state.language]||i18n.en)[k] ?? i18n.en[k] ?? k;
@@ -188,7 +200,7 @@ function buildCharmCards(){
       row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <div class="charm-row-identity"><span class="charm-index">${index+1}</span><strong>${tr("charm")}</strong></div>
+        <div class="charm-row-identity"><span class="charm-index">${index+1}</span><span class="charm-row-copy"><strong>${tr("charm")} ${index+1}</strong><small>${tr(type.troop)}</small></span></div>
         <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
         <label class="charm-level-box"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
         <div class="charm-inline-result"></div>`;
@@ -297,7 +309,8 @@ function renderGear(){
     summaryDetailed(tr("threads"),rem.threads,total.threads,state.gearOwned.threads,rem.threads===0&&total.threads>0)+
     summaryDetailed(tr("visionMaterial"),rem.vision,total.vision,state.gearOwned.vision,rem.vision===0&&total.vision>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
-    summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
+    summaryBox(gainedStatLabel("attack"),`${total.stat.toFixed(2)}%`)+
+    summaryBox(gainedStatLabel("defense"),`${total.stat.toFixed(2)}%`);
 }
 function renderCharms(){
   let total={guides:0,designs:0,power:0,stat:0,count:0};
@@ -323,7 +336,8 @@ function renderCharms(){
     summaryDetailed(tr("guides"),rem.guides,total.guides,state.charmOwned.guides,rem.guides===0&&total.guides>0)+
     summaryDetailed(tr("designs"),rem.designs,total.designs,state.charmOwned.designs,rem.designs===0&&total.designs>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
-    summaryBox(tr("statGain"),`${total.stat.toFixed(2)}%`);
+    summaryBox(gainedStatLabel("health"),`${total.stat.toFixed(2)}%`)+
+    summaryBox(gainedStatLabel("lethality"),`${total.stat.toFixed(2)}%`);
 }
 function renderAll(){applyLanguage();renderGear();renderCharms()}
 function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1700)}
