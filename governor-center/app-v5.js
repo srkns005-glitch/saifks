@@ -6,6 +6,7 @@ const i18n = {"en":{"eyebrow":"KINGSHOT · SAIFKS","title":"Governor Center","su
 
 const defaultState = {
   activeTab:"gear",
+  smartTargetsV1:true,
   language: (() => { const q = new URLSearchParams(location.search).get("lang"); return ["en","ar","tr","fr","es","de","ko","ja","zh"].includes(q) ? q : (localStorage.getItem(langKey) || "en"); })(),
   gearOwned:{satin:0,threads:0,vision:0},
   charmOwned:{guides:0,designs:0},
@@ -29,6 +30,16 @@ function loadState(){
       gear:objectOrEmpty(parsed.gear),
       charms:objectOrEmpty(parsed.charms)
     };
+    if(parsed.smartTargetsV1!==true){
+      Object.values(saved.gear).forEach(item=>{
+        if(item?.current===-1&&item?.target===-1){item.current=-2;item.target=-2;}
+      });
+      Object.values(saved.charms).forEach(group=>Object.values(objectOrEmpty(group)).forEach(item=>{
+        if(item?.current===0&&item?.target===0){item.current=-1;item.target=-1;}
+      }));
+      saved.smartTargetsV1=true;
+      localStorage.setItem(stateKey,JSON.stringify(saved));
+    }
     if(!["gear","charms"].includes(saved.activeTab)) saved.activeTab="gear";
     if(!i18n[saved.language]) saved.language="en";
     const queryLanguage=new URLSearchParams(location.search).get("lang");
@@ -45,6 +56,18 @@ function n(v){
 }
 function fmt(v){ return Math.max(0,Math.round(v)).toLocaleString(); }
 const charmLabels={en:"Charm",ar:"تميمة",tr:"Tılsım",fr:"Charme",es:"Amuleto",de:"Talisman",ko:"부적",ja:"チャーム",zh:"饰品"};
+const selectionLabels={
+  en:{chooseCurrent:"Choose current",chooseTarget:"Choose target",chooseCurrentFirst:"Choose current first",levelComplete:"Level complete"},
+  ar:{chooseCurrent:"اختر الحالي",chooseTarget:"اختر الهدف",chooseCurrentFirst:"حدد الحالي أولًا",levelComplete:"المستوى مكتمل"},
+  tr:{chooseCurrent:"Mevcut seviyeyi seç",chooseTarget:"Hedefi seç",chooseCurrentFirst:"Önce mevcut seviyeyi seç",levelComplete:"Seviye tamamlandı"},
+  fr:{chooseCurrent:"Choisir l’actuel",chooseTarget:"Choisir la cible",chooseCurrentFirst:"Choisissez d’abord l’actuel",levelComplete:"Niveau terminé"},
+  es:{chooseCurrent:"Elegir actual",chooseTarget:"Elegir objetivo",chooseCurrentFirst:"Elige primero el actual",levelComplete:"Nivel completado"},
+  de:{chooseCurrent:"Aktuell wählen",chooseTarget:"Ziel wählen",chooseCurrentFirst:"Zuerst aktuell wählen",levelComplete:"Stufe abgeschlossen"},
+  ko:{chooseCurrent:"현재 선택",chooseTarget:"목표 선택",chooseCurrentFirst:"현재를 먼저 선택",levelComplete:"최고 레벨 완료"},
+  ja:{chooseCurrent:"現在を選択",chooseTarget:"目標を選択",chooseCurrentFirst:"先に現在を選択",levelComplete:"レベル完了"},
+  zh:{chooseCurrent:"选择当前等级",chooseTarget:"选择目标等级",chooseCurrentFirst:"请先选择当前等级",levelComplete:"等级已完成"}
+};
+function selectionLabel(key){return selectionLabels[state.language]?.[key]||selectionLabels.en[key];}
 const gainedStatLabels={
   en:{attack:"Attack gained",defense:"Defense gained",health:"Health gained",lethality:"Lethality gained"},
   ar:{attack:"الهجوم المكتسب",defense:"الدفاع المكتسب",health:"الصحة المكتسبة",lethality:"الفتك المكتسب"},
@@ -123,22 +146,48 @@ function setTab(tab){
   document.getElementById("gearPanel").classList.toggle("active",tab==="gear");
   document.getElementById("charmsPanel").classList.toggle("active",tab==="charms");
 }
-function gearOptions(selected){
-  let html=`<option value="-1">${tr("disabled")}</option>`;
+function gearCurrentOptions(selected){
+  let html=`<option value="-2" disabled ${selected===-2?"selected":""}>${selectionLabel("chooseCurrent")}</option>`;
+  html+=`<option value="-1" ${selected===-1?"selected":""}>${tr("disabled")}</option>`;
   gearDB.levels.forEach((x,i)=> html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`);
   return html;
 }
-function charmOptions(selected, includeZero=true){
-  let html=includeZero?`<option value="0">0</option>`:"";
+function gearTargetOptions(current,selected){
+  if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
+  let html=`<option value="-2" disabled ${selected===-2?"selected":""}>${selectionLabel("chooseTarget")}</option>`;
+  gearDB.levels.forEach((x,i)=>{if(i>current) html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`;});
+  return html;
+}
+function gearTargetControl(current,selected){
+  if(current>=gearDB.levels.length-1) return `<div class="stage-select target target-status" role="status">${selectionLabel("levelComplete")}</div>`;
+  return `<select class="stage-select target" ${current===-2?"disabled":""}>${gearTargetOptions(current,selected)}</select>`;
+}
+function charmCurrentOptions(selected){
+  let html=`<option value="-1" disabled ${selected===-1?"selected":""}>${selectionLabel("chooseCurrent")}</option>`;
+  html+=`<option value="0" ${selected===0?"selected":""}>0</option>`;
   charmDB.levels.forEach(x=>html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`);
   return html;
+}
+function charmTargetOptions(current,selected){
+  const last=charmDB.levels.at(-1)?.level||0;
+  if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
+  let html=`<option value="-1" disabled ${selected===-1?"selected":""}>${selectionLabel("chooseTarget")}</option>`;
+  charmDB.levels.forEach(x=>{if(x.level>current) html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`;});
+  return html;
+}
+function charmTargetControl(current,selected){
+  const last=charmDB.levels.at(-1)?.level||0;
+  if(current>=last) return `<div class="stage-select target target-status" role="status">${selectionLabel("levelComplete")}</div>`;
+  return `<select class="stage-select target" ${current===-1?"disabled":""}>${charmTargetOptions(current,selected)}</select>`;
 }
 function buildGearCards(){
   const wrap=document.getElementById("gearCards");
   wrap.innerHTML="";
   gearDB.slots.forEach(slot=>{
-    if(!state.gear[slot.id]) state.gear[slot.id]={enabled:false,current:-1,target:-1};
+    if(!state.gear[slot.id]) state.gear[slot.id]={enabled:false,current:-2,target:-2};
     const s=state.gear[slot.id];
+    if(s.current<-2||s.current>=gearDB.levels.length) s.current=-2;
+    if(s.target<=s.current||s.target>=gearDB.levels.length) s.target=-2;
     const card=document.createElement("section");
     card.className="gear-compact-card";
     card.dataset.id=slot.id;
@@ -151,23 +200,23 @@ function buildGearCards(){
         </div>
       </div>
       <div class="gear-compact-row">
-        <label class="gear-level-box"><span>${tr("current")}</span><select class="stage-select current">${gearOptions(s.current)}</select></label>
-        <label class="gear-level-box"><span>${tr("target")}</span><select class="stage-select target">${gearOptions(s.target)}</select></label>
+        <label class="gear-level-box"><span>${tr("current")}</span><select class="stage-select current">${gearCurrentOptions(s.current)}</select></label>
+        <label class="gear-level-box ${s.current>=gearDB.levels.length-1?"level-complete":""}"><span>${tr("target")}</span>${gearTargetControl(s.current,s.target)}</label>
         <div class="gear-inline-result"></div>
       </div>`;
     wrap.appendChild(card);
     card.querySelector(".current").addEventListener("change",e=>{
       s.current=+e.target.value;
-      s.target=-1;
+      s.target=-2;
       s.enabled=false;
-      card.querySelector(".target").value="-1";
-      saveState();renderGear();
+      saveState();buildGearCards();renderGear();
     });
-    card.querySelector(".target").addEventListener("change",e=>{
-      s.target=+e.target.value;
-      s.enabled=s.target>s.current;
-      saveState();renderGear();
-    });
+    const targetSelect=card.querySelector("select.target");
+    if(targetSelect) targetSelect.addEventListener("change",e=>{
+        s.target=+e.target.value;
+        s.enabled=s.target>s.current;
+        saveState();renderGear();
+      });
   });
 }
 function buildCharmCards(){
@@ -177,7 +226,7 @@ function buildCharmCards(){
   gearDB.slots.forEach(slot=>{
     if(!state.charms[slot.id]) state.charms[slot.id]={};
     charmDB.types.forEach(type=>{
-      if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={current:0,target:0};
+      if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={current:-1,target:-1};
     });
 
     const group=document.createElement("section");
@@ -196,25 +245,28 @@ function buildCharmCards(){
     const list=group.querySelector(".charm-compact-list");
     charmDB.types.forEach((type,index)=>{
       const s=state.charms[slot.id][type.id];
+      const lastCharmLevel=charmDB.levels.at(-1)?.level||0;
+      if(s.current<-1||s.current>lastCharmLevel) s.current=-1;
+      if(s.target<=s.current||s.target>lastCharmLevel) s.target=-1;
       const row=document.createElement("article");
       row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
         <div class="charm-row-identity"><span class="charm-index">${index+1}</span><span class="charm-row-copy"><strong>${tr("charm")} ${index+1}</strong><small>${tr(type.troop)}</small></span></div>
-        <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmOptions(s.current)}</select></label>
-        <label class="charm-level-box"><span>${tr("target")}</span><select class="stage-select target">${charmOptions(s.target)}</select></label>
+        <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmCurrentOptions(s.current)}</select></label>
+        <label class="charm-level-box ${s.current>=lastCharmLevel?"level-complete":""}"><span>${tr("target")}</span>${charmTargetControl(s.current,s.target)}</label>
         <div class="charm-inline-result"></div>`;
       list.appendChild(row);
 
       row.querySelector(".current").addEventListener("change",e=>{
         s.current=+e.target.value;
-        s.target=0;
-        row.querySelector(".target").value="0";
-        saveState(); renderCharms();
+        s.target=-1;
+        saveState(); buildCharmCards(); renderCharms();
       });
-      row.querySelector(".target").addEventListener("change",e=>{
-        s.target=+e.target.value; saveState(); renderCharms();
-      });
+      const targetSelect=row.querySelector("select.target");
+      if(targetSelect) targetSelect.addEventListener("change",e=>{
+          s.target=+e.target.value; saveState(); renderCharms();
+        });
     });
     wrap.appendChild(group);
   });
@@ -235,7 +287,7 @@ function bindOwnedInputs(){
   });
 }
 function gearCalc(s){
-  if(s.target<0 || s.target<=s.current) return null;
+  if(s.current<-1 || s.target<0 || s.target<=s.current) return null;
   const rows=gearDB.levels.slice(s.current+1,s.target+1);
   const req=rows.reduce((a,x)=>({
     satin:a.satin+x.materials.satin,threads:a.threads+x.materials.gilded_threads,vision:a.vision+x.materials.artisans_vision
@@ -245,7 +297,7 @@ function gearCalc(s){
   return {req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent};
 }
 function charmCalc(s){
-  if(s.target<=s.current) return null;
+  if(s.current<0 || s.target<=s.current) return null;
   const rows=charmDB.levels.filter(x=>x.level>s.current&&x.level<=s.target);
   const req=rows.reduce((a,x)=>({guides:a.guides+x.materials.charm_guides,designs:a.designs+x.materials.charm_designs}),{guides:0,designs:0});
   const cur=s.current>0?charmDB.levels.find(x=>x.level===s.current):{power_total:0,stat_total_percent:0};
@@ -285,8 +337,7 @@ function renderGear(){
     s.enabled=active;
     card.classList.toggle("enabled",active);
     const box=card.querySelector(".gear-inline-result");
-    if(s.target<0){box.innerHTML="";return;}
-    if(!calc){box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`;return;}
+    if(!calc){box.innerHTML="";return;}
     total.count++;Object.keys(calc.req).forEach(k=>total[k]+=calc.req[k]);total.power+=calc.power;total.stat+=calc.stat;
     box.innerHTML=`
       <span class="gear-result-title">${tr("required")}</span>
@@ -319,8 +370,7 @@ function renderCharms(){
     const s=state.charms[group.dataset.slot][card.dataset.type],calc=charmCalc(s);
     card.classList.toggle("enabled",s.target>s.current);
     const box=card.querySelector(".charm-inline-result");
-    if(s.target===s.current){ box.innerHTML=""; return; }
-    if(!calc){ box.innerHTML=`<span class="charm-status warning">${tr("invalidTarget")}</span>`; return; }
+    if(!calc){ box.innerHTML=""; return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
     box.innerHTML=`<span class="result-label">${tr("required")}</span><span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
   });
