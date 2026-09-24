@@ -1303,6 +1303,15 @@ html[lang="ar"] .selector-grid .field{
 @media(max-width:760px){.plan-list{gap:8px !important;padding:10px !important}.plan-item{padding:10px 11px}.plan-item b{font-size:12px}.plan-item-details{margin-top:6px}}
 </style>
 <style id="research-responsive-sizing">
+/* Two related inputs share one consistent row on wider screens. */
+.control-row{grid-template-columns:minmax(165px,220px) minmax(0,1fr) auto;gap:12px;align-items:end}
+.control-row .field:has(#researchBonus){width:100% !important;min-width:0 !important}
+.control-row .speedup-field{min-width:0}
+.control-row #researchBonus{width:100% !important;max-width:none !important;min-width:0 !important}
+.control-row #bonusLabel{white-space:normal !important}
+.control-row .field input,.speedup-time-grid input{height:46px !important;font-size:16px !important}
+.control-row .ghost-btn{min-height:46px}
+.speedup-time-grid{gap:9px;max-width:660px}
 /* Summary values remain legible when a translated duration wraps. */
 .summary-grid,.resources,.metric,.resource{min-width:0}
 .metric{min-height:78px;display:flex;flex-direction:column;justify-content:space-between;gap:7px}
@@ -1318,6 +1327,9 @@ html[lang="ar"] .selector-grid .field{
 }
 @media(min-width:761px) and (max-width:1000px){.sidebar{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){
+  .control-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:10px}
+  .control-row .field:first-child{grid-column:auto}
+  .control-row .ghost-btn{grid-column:1/-1}
   .control-row .speedup-field{grid-column:1/-1;min-width:0}
   .control-row .field:has(#researchBonus){width:100% !important}
   .control-row #researchBonus{width:100% !important;max-width:none !important;min-width:0 !important}
@@ -1326,6 +1338,16 @@ html[lang="ar"] .selector-grid .field{
   .metric span{font-size:10px}.metric strong{font-size:clamp(12px,3.4vw,16px)}
   .resource{min-height:44px;padding:8px 9px}.resource span{font-size:10px}.resource b{font-size:13px}
   .plan-list{overflow:visible !important}
+}
+@media(min-width:481px) and (max-width:760px){
+  .control-row .speedup-field{grid-column:auto}
+}
+@media(max-width:480px){
+  .control-row{grid-template-columns:minmax(0,1fr)}
+  .control-row .field:first-child{display:grid;grid-template-columns:minmax(0,1fr) minmax(106px,132px);align-items:center;gap:8px}
+  .control-row #bonusLabel{margin:0}
+  .control-row .speedup-field,.control-row .ghost-btn{grid-column:1/-1}
+  .speedup-time-grid{gap:6px}
 }
 @media(max-width:360px){.summary-grid,.resources{gap:6px}.metric{padding:8px}.metric strong{font-size:12px}}
 </style>
