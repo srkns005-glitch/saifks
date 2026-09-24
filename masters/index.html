@@ -1262,145 +1262,7 @@ footer{
   .footer,footer{margin-top:7px!important}
 }
 </style>
-<style id="masters-summary-no-scroll-all-screens">
-/* Fit summary resource rows within the summary card at every viewport width. */
 
-  .summary-card{
-    width:100%!important;
-    max-width:100%!important;
-    min-width:0!important;
-    overflow:hidden!important;
-    padding:12px!important;
-  }
-
-  .summary-table-wrap{
-    width:100%!important;
-    max-width:100%!important;
-    min-width:0!important;
-    overflow:visible!important;
-    border:0!important;
-    background:transparent!important;
-  }
-
-  .summary-table{
-    display:block!important;
-    width:100%!important;
-    min-width:0!important;
-    max-width:100%!important;
-    table-layout:auto!important;
-    border-collapse:separate!important;
-  }
-
-  .summary-table thead{
-    display:none!important;
-  }
-
-  .summary-table tbody{
-    display:grid!important;
-    grid-template-columns:1fr!important;
-    gap:8px!important;
-    width:100%!important;
-  }
-
-  .summary-table tr{
-    display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-    gap:6px!important;
-    width:100%!important;
-    min-width:0!important;
-    padding:9px!important;
-    border:1px solid rgba(255,255,255,.09)!important;
-    border-radius:12px!important;
-    background:rgba(3,14,26,.42)!important;
-  }
-
-  .summary-table td{
-    display:block!important;
-    width:auto!important;
-    min-width:0!important;
-    padding:7px 5px!important;
-    border:1px solid rgba(255,255,255,.06)!important;
-    border-radius:8px!important;
-    background:rgba(255,255,255,.025)!important;
-    white-space:normal!important;
-    overflow-wrap:anywhere!important;
-    text-align:center!important;
-    font-size:10px!important;
-    line-height:1.3!important;
-  }
-
-  .summary-table td:first-child{
-    grid-column:1/-1!important;
-    padding:0 2px 6px!important;
-    border:0!important;
-    background:transparent!important;
-    text-align:start!important;
-    font-size:12px!important;
-    font-weight:900!important;
-  }
-
-  .summary-table td:nth-child(2)::before,
-  .summary-table td:nth-child(3)::before,
-  .summary-table td:nth-child(4)::before{
-    display:block!important;
-    margin-bottom:4px!important;
-    color:var(--muted)!important;
-    font-size:8px!important;
-    font-weight:800!important;
-    line-height:1.15!important;
-  }
-
-  .summary-table td:nth-child(2)::before{content:"Available";}
-  .summary-table td:nth-child(3)::before{content:"Required";}
-  .summary-table td:nth-child(4)::before{content:"Remaining";}
-
-  html[lang="ar"] .summary-table td:nth-child(2)::before{content:"المتوفر";}
-  html[lang="ar"] .summary-table td:nth-child(3)::before{content:"المطلوب";}
-  html[lang="ar"] .summary-table td:nth-child(4)::before{content:"المتبقي";}
-
-  html[lang="fr"] .summary-table td:nth-child(2)::before{content:"Disponible";}
-  html[lang="fr"] .summary-table td:nth-child(3)::before{content:"Requis";}
-  html[lang="fr"] .summary-table td:nth-child(4)::before{content:"Restant";}
-
-  html[lang="es"] .summary-table td:nth-child(2)::before{content:"Disponible";}
-  html[lang="es"] .summary-table td:nth-child(3)::before{content:"Requerido";}
-  html[lang="es"] .summary-table td:nth-child(4)::before{content:"Restante";}
-
-  html[lang="de"] .summary-table td:nth-child(2)::before{content:"Verfügbar";}
-  html[lang="de"] .summary-table td:nth-child(3)::before{content:"Benötigt";}
-  html[lang="de"] .summary-table td:nth-child(4)::before{content:"Fehlend";}
-
-  html[lang="tr"] .summary-table td:nth-child(2)::before{content:"Mevcut";}
-  html[lang="tr"] .summary-table td:nth-child(3)::before{content:"Gerekli";}
-  html[lang="tr"] .summary-table td:nth-child(4)::before{content:"Kalan";}
-
-  html[lang="ko"] .summary-table td:nth-child(2)::before{content:"보유";}
-  html[lang="ko"] .summary-table td:nth-child(3)::before{content:"필요";}
-  html[lang="ko"] .summary-table td:nth-child(4)::before{content:"부족";}
-
-  html[lang="ja"] .summary-table td:nth-child(2)::before{content:"所持";}
-  html[lang="ja"] .summary-table td:nth-child(3)::before{content:"必要";}
-  html[lang="ja"] .summary-table td:nth-child(4)::before{content:"不足";}
-
-  html[lang="zh"] .summary-table td:nth-child(2)::before{content:"现有";}
-  html[lang="zh"] .summary-table td:nth-child(3)::before{content:"需要";}
-  html[lang="zh"] .summary-table td:nth-child(4)::before{content:"缺少";}
-
-  .summary-remaining{
-    direction:ltr!important;
-    unicode-bidi:isolate!important;
-  }
-
-  .summary-card .actions{
-    grid-template-columns:1fr!important;
-    width:100%!important;
-  }
-
-  .summary-card .copy,
-  .summary-card .reset{
-    width:100%!important;
-  }
-</style>
 <style id="cassia-size-fix">
 .expert-tab[data-expert="cassia"] img{
   transform:scale(1.18)!important;
@@ -1519,7 +1381,7 @@ html.app-booting .app{visibility:hidden!important}
 <section class="card glass atlas-section atlas-affinity"><div class="head"><div class="atlas-number">02</div><h2 data-i18n="affinity">Affinity</h2><span class="hint" data-i18n="startsZero">Starts from level 0</span></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curA"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarA"></select></div></div><div class="level-meta"><div class="meta"><span data-i18n="currentAtk">Current Squad ATK</span><b id="curAtk">0.00%</b></div><div class="meta"><span data-i18n="targetAtk">Target Squad ATK</span><b id="tarAtk">0.00%</b></div></div>
 <div class="metrics"><div class="metric"><span data-i18n="required">Required</span><b id="affNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="affHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="affLeft">0</b></div></div><div class="emblem-box"><img alt="Master Emblem" src="master-emblem.png"/><div class="emblem-grid"><div class="metric"><span data-i18n="required">Required</span><b id="emblemNeed">0</b></div><div class="metric"><span data-i18n="available">Available</span><b id="emblemHave">0</b></div><div class="metric"><span data-i18n="remaining">Remaining</span><b class="green" id="emblemLeft">0</b></div></div></div></section>
 <section class="card glass atlas-section atlas-skills"><div class="head"><div class="atlas-number">03</div><h2 data-i18n="skills">Skills</h2><span class="hint" data-i18n="allSkills">All four skills can be added</span></div><div class="tabs" id="tabs"></div><div class="skill-detail"><h3 id="skillName">—</h3><p id="skillDescription">—</p><div class="gain-box"><span data-i18n="gainFromUpgrade">Gain from selected upgrade</span><b id="skillGain">—</b></div></div><div class="two"><div class="field"><label data-i18n="currentLevel">Current level</label><select id="curS"></select></div><div class="field"><label data-i18n="targetLevel">Target level</label><select id="tarS"></select></div></div><div class="resource" style="margin-top:11px"><img alt="Master's Manuscript" src="masters-manuscript.png"/><div><div class="metrics"><div class="metric"><span data-i18n="manuscripts">Master's Manuscripts</span><b id="booksNeed">0</b></div><div class="metric"><span data-i18n="currentEffect">Current effect</span><b id="currentSkillEffect">0</b></div><div class="metric"><span data-i18n="targetEffect">Target effect</span><b id="skillEffect">0</b></div></div></div></div></section>
-</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><section class="quick-remaining glass" aria-live="polite"><div class="quick-heading"><h2 id="quickHeading">Materials still needed for upgrade</h2></div><div class="quick-grid"><div class="quick-item"><span data-i18n="affinityPoints">Affinity Points</span><strong id="quickAff">0</strong></div><div class="quick-item"><span data-i18n="masterEmblems">Master Emblems</span><strong id="quickEmblems">0</strong></div><div class="quick-item"><span data-i18n="manuscripts">Master's Manuscripts</span><strong id="quickBooks">0</strong></div></div></section><div class="summary-table-wrap"><table aria-label="Summary resources" class="summary-table"><thead><tr><th data-i18n="material">Material</th><th data-i18n="available">Available</th><th data-i18n="required">Required</th><th data-i18n="remaining">Remaining</th></tr></thead><tbody><tr><td data-i18n="affinityPoints">Affinity Points</td><td id="summaryAffHave">0</td><td id="summaryAffNeed">0</td><td class="summary-remaining"><b id="totalAff">0</b></td></tr><tr><td data-i18n="masterEmblems">Master Emblems</td><td id="summaryEmblemHave">0</td><td id="summaryEmblemNeed">0</td><td class="summary-remaining"><b id="totalEmblems">0</b></td></tr><tr><td data-i18n="manuscripts">Master's Manuscripts</td><td id="summaryBooksHave">0</td><td id="summaryBooksNeed">0</td><td class="summary-remaining"><b id="totalBooks">0</b></td></tr></tbody></table></div><input id="affinityOwned" type="hidden" value="0"/><div class="actions"><button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button><button class="reset" data-i18n="reset" id="reset">Reset</button></div></section></aside></div><footer class="site-footer" aria-label="SaifKS footer"><div class="site-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
+</main><aside class="side"><section class="summary-card glass atlas-section atlas-summary"><div class="head"><div class="atlas-number">04</div><h2 data-i18n="summary">Summary</h2><span class="hint" id="planCount">0</span></div><div class="plans" id="plans"><div class="empty" data-i18n="emptySummary">Add affinity or skill levels to see all requirements.</div></div><div class="resource-summary-grid"><section class="resource-summary-card"><h3 data-i18n="affinityPoints">Affinity Points</h3><div class="resource-summary-values"><div><span data-i18n="available">Available</span><strong id="summaryAffHave">0</strong></div><div><span data-i18n="required">Required</span><strong id="summaryAffNeed">0</strong></div><div class="resource-shortfall"><span data-i18n="remaining">Remaining</span><strong id="totalAff">0</strong></div></div></section><section class="resource-summary-card"><h3 data-i18n="masterEmblems">Master Emblems</h3><div class="resource-summary-values"><div><span data-i18n="available">Available</span><strong id="summaryEmblemHave">0</strong></div><div><span data-i18n="required">Required</span><strong id="summaryEmblemNeed">0</strong></div><div class="resource-shortfall"><span data-i18n="remaining">Remaining</span><strong id="totalEmblems">0</strong></div></div></section><section class="resource-summary-card"><h3 data-i18n="manuscripts">Master's Manuscripts</h3><div class="resource-summary-values"><div><span data-i18n="available">Available</span><strong id="summaryBooksHave">0</strong></div><div><span data-i18n="required">Required</span><strong id="summaryBooksNeed">0</strong></div><div class="resource-shortfall"><span data-i18n="remaining">Remaining</span><strong id="totalBooks">0</strong></div></div></section></div><input id="affinityOwned" type="hidden" value="0"/><div class="actions"><button class="copy" data-i18n="copySummary" id="copy">Copy Summary</button><button class="reset" data-i18n="reset" id="reset">Reset</button></div></section></aside></div><footer class="site-footer" aria-label="SaifKS footer"><div class="site-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
 </div>
 <script>
 
@@ -1671,7 +1533,7 @@ function rebuildPlans(){
 function update(){let c=num(curA.value),t=num(tarA.value);if(t<c){t=c;tarA.value=t}let an=affinityCost(c,t,'affinity'),en=affinityCost(c,t,'advancement'),ah=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;affNeed.textContent=fmt(an);affHave.textContent=fmt(ah);setRemaining(affLeft,an-ah);affinityOwned.value=fmt(ah);emblemNeed.textContent=fmt(en);emblemHave.textContent=fmt(num(emblemsOwned.value));setRemaining(emblemLeft,en-num(emblemsOwned.value));if(activeExpert==='isnor'||activeExpert==='aena'){curAtk.textContent=affinityEffectLabel(c);tarAtk.textContent=affinityEffectLabel(t)}else if(activeExpert==='roman'){curAtk.textContent=`${romanTr('attackShort')} ${atk(c).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${romanTr('attackShort')} ${atk(t).toFixed(2)}% · ${romanTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='cassia'){curAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(c).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(c).toFixed(1)}%`;tarAtk.textContent=`${cassiaTr('lethalityShort')} ${atk(t).toFixed(1)}% · ${cassiaTr('healthShort')} ${atk(t).toFixed(1)}%`}else if(activeExpert==='wilson'){curAtk.textContent=`${wilsonTr('attackShort')} ${atk(c).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${wilsonTr('attackShort')} ${atk(t).toFixed(2)}% · ${wilsonTr('defenseShort')} ${atk(t).toFixed(2)}%`}else if(activeExpert==='guinevere'){curAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(c).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(c).toFixed(2)}%`;tarAtk.textContent=`${guinevereTr('lethalityShort')} ${atk(t).toFixed(2)}% · ${guinevereTr('healthShort')} ${atk(t).toFixed(2)}%`}else{curAtk.textContent=atk(c).toFixed(2)+'%';tarAtk.textContent=atk(t).toFixed(2)+'%';}let cs=num(curS.value),ts=num(tarS.value);if(ts<cs){ts=cs;tarS.value=ts}skillSelections[skillIndex]={c:cs,t:ts};const skill=SKILLS[skillIndex],cv=targetEffect(cs),tv=targetEffect(ts),csv=targetSecondaryEffect(cs),tsv=targetSecondaryEffect(ts),gain=Math.max(0,tv-cv),gainSecondary=Math.max(0,tsv-csv);booksNeed.textContent=fmt(skillCost(cs,ts,'books'));currentSkillEffect.textContent=effectLabel(skill,cv,csv);skillEffect.textContent=effectLabel(skill,tv,tsv);skillGain.textContent=(gain||gainSecondary)?effectLabel(skill,gain,gainSecondary):'—';$('skillName').textContent=skillName(skill);skillDescription.textContent=skillDesc(skill);rebuildPlans()}
 function renderTabs(){tabs.innerHTML='';SKILLS.forEach((sk,i)=>{let b=document.createElement('button');b.className='tab'+(i===skillIndex?' active':'');b.textContent=skillName(sk);b.onclick=()=>{skillSelections[skillIndex]={c:num(curS.value),t:num(tarS.value)};skillIndex=i;fillSkill();renderTabs();update()};tabs.appendChild(b)})}
 function totals(){return planItems.reduce((a,p)=>({aff:a.aff+(p.aff||0),emblems:a.emblems+(p.emblems||0),books:a.books+(p.books||0)}),{aff:0,emblems:0,books:0})}
-function renderTotals(){let t=totals();let gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;setRemaining(totalAff,t.aff-gift);setRemaining(totalEmblems,t.emblems-num(emblemsOwned.value));setRemaining(totalBooks,t.books-num(booksOwned.value))}
+function renderTotals(){let t=totals();let gift=num(horn.value)*10+num(goblet.value)*100+num(spices.value)*1000;const show=(el,v)=>{let missing=Math.max(0,Number(v)||0);el.textContent=fmt(missing);el.classList.toggle('remaining-negative',missing>0)};show(totalAff,t.aff-gift);show(totalEmblems,t.emblems-num(emblemsOwned.value));show(totalBooks,t.books-num(booksOwned.value))}
 function affinityEffectLabel(level){const v=atk(level);if(activeExpert==='isnor'||activeExpert==='aena'){const d=newMasterTr(),first=activeExpert==='isnor'?d.leth:d.attack,second=activeExpert==='isnor'?d.health:d.defense;return `${first} ${v.toFixed(2)}% · ${second} ${v.toFixed(2)}%`}if(activeExpert==='roman')return `${romanTr('attackShort')} ${v.toFixed(2)}% · ${romanTr('defenseShort')} ${v.toFixed(2)}%`;if(activeExpert==='cassia')return `${cassiaTr('lethalityShort')} ${v.toFixed(1)}% · ${cassiaTr('healthShort')} ${v.toFixed(1)}%`;if(activeExpert==='wilson')return `${wilsonTr('attackShort')} ${v.toFixed(2)}% · ${wilsonTr('defenseShort')} ${v.toFixed(2)}%`;if(activeExpert==='guinevere')return `${guinevereTr('lethalityShort')} ${v.toFixed(2)}% · ${guinevereTr('healthShort')} ${v.toFixed(2)}%`;return `${v.toFixed(2)}%`}
 function summaryWord(key){const words={before:{en:'Before',ar:'قبل',fr:'Avant',es:'Antes',de:'Vorher',tr:'Önce',ko:'이전',ja:'変更前',zh:'之前'},after:{en:'After',ar:'بعد',fr:'Après',es:'Después',de:'Nachher',tr:'Sonra',ko:'이후',ja:'変更後',zh:'之后'},level:{en:'Lv.',ar:'مستوى',fr:'Niv.',es:'Nv.',de:'St.',tr:'Sv.',ko:'레벨',ja:'Lv.',zh:'等级'}};return words[key]?.[lang]||words[key]?.en||key}
 function renderPlans(){let box=$('plans');box.innerHTML='';if(!planItems.length){box.innerHTML=`<div class="empty">${tr('emptySummary')}</div>`}else planItems.forEach(p=>{let d=document.createElement('div');d.className='plan';let sk=p.type==='skill'?SKILLS[p.skill]:null;let title=p.type==='affinity'?tr('affinity'):skillName(sk);let before=p.type==='affinity'?affinityEffectLabel(p.c):effectLabel(sk,targetEffectFor(p.skill,p.c),targetSecondaryEffectFor(p.skill,p.c));let after=p.type==='affinity'?affinityEffectLabel(p.t):effectLabel(sk,targetEffectFor(p.skill,p.t),targetSecondaryEffectFor(p.skill,p.t));let costs=p.type==='affinity'?`<span class="cost-chip">${tr('affinityPoints')} <strong>${fmt(p.aff)}</strong></span><span class="cost-chip">${tr('masterEmblems')} <strong>${fmt(p.emblems)}</strong></span>`:`<span class="cost-chip">${tr('manuscripts')} <strong>${fmt(p.books)}</strong></span><span class="cost-chip gain">${tr('gainFromUpgrade')} <strong>${effectLabel(sk,p.gain||0,p.gainSecondary||0)}</strong></span>`;d.innerHTML=`<div class="plan-top"><b>${title} · ${summaryWord('level')} ${summaryRange(p.c,p.t)}</b></div><div class="plan-route"><div class="plan-state"><span>${summaryWord('before')}</span><b>${before}</b></div><div class="plan-arrow">→</div><div class="plan-state target"><span>${summaryWord('after')}</span><b>${after}</b></div></div><div class="plan-cost">${costs}</div>`;box.appendChild(d)});planCount.textContent=`${planItems.length} ${tr('plans')}`;renderTotals()}
@@ -1685,7 +1547,7 @@ function updateExpertChrome(){const p=PROFILE_DATA[activeExpert];expertHeroImage
 function applyLang(){lang=normalizeLang(lang);const saved=window.__savedAffinity;let ac=saved?num(saved.c):num(curA.value),at=saved?num(saved.t):num(tarA.value);window.__savedAffinity=null;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=tr(e.dataset.i18n));languageSelect.value=lang;document.querySelector('.brand').setAttribute('aria-label',tr('home'));document.getElementById('mastersPageTitle').textContent=UI_TEXT[lang].pageTitle;const homeLink=document.getElementById('homeLink');homeLink.textContent=UI_TEXT[lang].homeButton;homeLink.setAttribute('aria-label',UI_TEXT[lang].homeButton);homeLink.title=UI_TEXT[lang].homeButton;languageSelect.setAttribute('aria-label',tr('language'));document.querySelector('.expert-switch').setAttribute('aria-label',tr('selector'));document.querySelector('.summary-table').setAttribute('aria-label',tr('summaryResources'));document.getElementById('atlasStageTitle').textContent=STAGE_COPY[lang][0];document.getElementById('atlasStageStatus').textContent=STAGE_COPY[lang][1];storageSet('saifRallyLang',lang);storageSet('saifksLanguage',lang);storageSet('saifks_lang',lang);storageSet('language',lang);fillAffinity();curA.value=ac;tarA.value=Math.max(ac,at);fillSkill();renderTabs();updateExpertChrome();update();document.documentElement.classList.remove('app-booting');document.getElementById('appBootShell')?.remove()}
 document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEventListener('input',update));document.querySelectorAll('.expert-tab').forEach(b=>b.addEventListener('click',()=>switchExpert(b.dataset.expert)));languageSelect.addEventListener('change',()=>{lang=languageSelect.value;applyLang()});copy.onclick=async()=>{try{await navigator.clipboard.writeText(summaryText())}catch{let ta=document.createElement('textarea');ta.value=summaryText();document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}copy.textContent=tr('copied');setTimeout(()=>copy.textContent=tr('copySummary'),1000)};reset.onclick=()=>{planItems=[];skillSelections=SKILLS.map(()=>({c:0,t:0}));document.querySelectorAll('input:not([readonly])').forEach(x=>x.value='');curA.value=tarA.value=curS.value=tarS.value=0;save();update()};window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});loadMaterials();load();applyLang();
 </script>
-<script id="stable-summary-table">
+<script id="stable-summary-cards">
 (function(){
   const get=id=>document.getElementById(id);
   const text=id=>{
@@ -1708,7 +1570,7 @@ document.querySelectorAll('input,#curA,#tarA,#curS,#tarS').forEach(e=>e.addEvent
       const el=get(id);
       if(!el) return;
       const value=Number(String(el.textContent).replace(/[^\d.-]/g,''))||0;
-      el.classList.toggle('summary-missing',value<0);
+      el.classList.toggle('summary-missing',value>0);
       el.classList.toggle('summary-complete',value===0);
     });
   };
@@ -1753,13 +1615,6 @@ html body .atlas-stage .hero-sub{font-size:13px!important;line-height:1.5!import
 html body .atlas-stage .expert-switch{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;align-content:center!important;margin:0!important;padding:12px!important;border-radius:22px!important;background:#101f31!important;border:1px solid rgba(126,166,200,.24)!important}
 html body .atlas-stage .expert-switch .expert-tab{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:4px!important;min-width:0!important;min-height:78px!important;height:auto!important;padding:7px 4px!important;text-align:center!important;border-radius:13px!important;font-size:12px!important;line-height:1.1!important;overflow-wrap:anywhere!important}
 html body .atlas-stage .expert-switch .expert-tab img{width:42px!important;height:42px!important;flex:0 0 42px!important;object-fit:contain!important;transform:none!important}
-html body .quick-remaining{display:grid!important;grid-template-columns:minmax(140px,.55fr) minmax(0,1.45fr)!important;gap:14px!important;align-items:center!important;padding:13px 16px!important;margin:0 0 14px!important;border:1px solid rgba(250,198,103,.3)!important;border-radius:18px!important;background:linear-gradient(100deg,rgba(253,192,86,.12),rgba(18,40,57,.95))!important;box-shadow:none!important}
-html body .quick-heading h2{margin:0!important;font-size:17px!important}
-html body .quick-heading span{display:block!important;margin-top:3px!important;color:#a9b8c9!important;font-size:11px!important;line-height:1.25!important}
-html body .quick-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
-html body .quick-item{min-width:0!important;padding:9px 12px!important;border-radius:12px!important;background:#12273a!important;border:1px solid rgba(162,190,212,.14)!important}
-html body .quick-item span{display:block!important;color:#acbbcd!important;font-size:11px!important;line-height:1.3!important}
-html body .quick-item strong{display:block!important;margin-top:3px!important;color:#ffcf72!important;font-size:19px!important;font-variant-numeric:tabular-nums!important}
 html body .materials-panel,html body .atlas-affinity,html body .atlas-skills,html body .summary-card{width:100%!important;max-width:none!important;margin:0!important;padding:18px!important;border-radius:20px!important;background:#102033!important;border:1px solid rgba(130,165,193,.23)!important;box-shadow:none!important}
 html body .materials-panel{margin-bottom:14px!important}
 html body .materials-panel .materials-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:9px!important}
@@ -1801,14 +1656,6 @@ html body .site-footer{margin-top:22px!important}
  html body .atlas-stage .expert-switch{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;padding:7px!important;border-radius:16px!important}
  html body .atlas-stage .expert-switch .expert-tab{flex-direction:row!important;justify-content:flex-start!important;min-height:49px!important;padding:5px 8px!important;gap:7px!important;text-align:start!important;font-size:12px!important}
  html body .atlas-stage .expert-switch .expert-tab img{width:32px!important;height:32px!important;flex-basis:32px!important}
- html body .quick-remaining{grid-template-columns:1fr!important;gap:8px!important;margin-bottom:10px!important;padding:11px!important}
- html body .quick-heading{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:7px!important}
- html body .quick-heading h2{font-size:14px!important;white-space:nowrap!important}
- html body .quick-heading span{margin:0!important;text-align:end!important;font-size:10px!important}
- html body .quick-grid{gap:5px!important}
- html body .quick-item{padding:7px!important}
- html body .quick-item span{font-size:10px!important;min-height:25px!important}
- html body .quick-item strong{font-size:16px!important;overflow-wrap:anywhere!important}
  html body .materials-panel,html body .atlas-affinity,html body .atlas-skills,html body .summary-card{padding:12px!important;border-radius:16px!important}
  html body .materials-panel{margin-bottom:10px!important}
  html body .materials-panel .materials-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
@@ -1826,30 +1673,18 @@ html body .site-footer{margin-top:22px!important}
  html body .summary-card .actions{grid-template-columns:minmax(0,1fr) auto!important}
  html body .summary-card .actions button{min-width:0!important;padding:8px!important;font-size:13px!important}
 }
-@media(max-width:355px){
- html body .quick-grid{grid-template-columns:1fr!important}
- html body .quick-item{display:flex!important;justify-content:space-between!important;align-items:center!important}
- html body .quick-item span{min-height:0!important}
- html body .quick-item strong{margin:0!important}
-}
+
 
 /* Resource shortfall belongs to the plan result, after the selected upgrades. */
 html body .layout .side{position:static!important;top:auto!important}
-html body .summary-card .quick-remaining{display:block!important;width:100%!important;margin:12px 0!important;padding:12px!important;border-radius:14px!important;background:linear-gradient(135deg,rgba(255,201,99,.12),rgba(17,36,54,.96))!important;border:1px solid rgba(255,201,99,.26)!important;box-shadow:none!important}
-html body .summary-card .quick-heading{display:block!important;margin-bottom:9px!important}
-html body .summary-card .quick-heading h2{margin:0!important;color:#f8dfae!important;font-size:14px!important;line-height:1.4!important;white-space:normal!important}
-html body .summary-card .quick-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
-html body .summary-card .quick-item{display:block!important;min-width:0!important;padding:8px 6px!important;text-align:center!important;border:1px solid rgba(162,190,212,.14)!important;border-radius:10px!important;background:#12273a!important}
-html body .summary-card .quick-item span{display:block!important;min-height:34px!important;font-size:10px!important;line-height:1.25!important;overflow-wrap:anywhere!important}
-html body .summary-card .quick-item strong{display:block!important;margin:4px 0 0!important;font-size:17px!important;line-height:1.2!important;font-variant-numeric:tabular-nums!important;overflow-wrap:anywhere!important}
-@media(max-width:355px){html body .summary-card .quick-grid{grid-template-columns:1fr!important}html body .summary-card .quick-item{display:flex!important;align-items:center!important;justify-content:space-between!important;text-align:start!important}html body .summary-card .quick-item span{min-height:0!important}html body .summary-card .quick-item strong{margin:0!important}}
-</style><script id="masters-quick-remaining-sync">(function(){
-const ids=[['totalAff','quickAff'],['totalEmblems','quickEmblems'],['totalBooks','quickBooks']];
-const titles={en:'Materials still needed for upgrade',ar:'المواد المتبقية للترقية',fr:'Matériaux encore nécessaires pour améliorer',es:'Materiales que faltan para mejorar',de:'Noch benötigte Materialien für das Upgrade',tr:'Yükseltme için kalan malzemeler',ko:'업그레이드에 더 필요한 재료',ja:'アップグレードに必要な残りの素材',zh:'升级还需的材料'};
-let queued=false;
-function heading(){const lang=(document.documentElement.lang||'en').toLowerCase().split('-')[0],target=document.getElementById('quickHeading');if(target)target.textContent=titles[lang]||titles.en}
-function sync(){queued=false;for(const [from,to] of ids){const source=document.getElementById(from),target=document.getElementById(to);if(source&&target)target.textContent=source.textContent.replace(/[\u2066-\u2069]/g,'').trim().replace(/^[−-]\s*/,'')||'0'}}
-function schedule(){if(!queued){queued=true;requestAnimationFrame(sync)}}
-function start(){for(const [from] of ids){const source=document.getElementById(from);if(source)new MutationObserver(schedule).observe(source,{subtree:true,childList:true,characterData:true})}new MutationObserver(heading).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});document.addEventListener('input',schedule,true);document.addEventListener('change',schedule,true);heading();schedule()}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()
-})();</script></body></html>
+html body .summary-card .resource-summary-grid{display:grid!important;grid-template-columns:1fr!important;gap:9px!important;margin:12px 0!important}
+html body .summary-card .resource-summary-card{min-width:0!important;padding:11px!important;border:1px solid rgba(148,177,200,.23)!important;border-radius:13px!important;background:#13283b!important}
+html body .summary-card .resource-summary-card h3{margin:0 0 8px!important;font-size:13px!important;line-height:1.4!important;color:#f5f7fb!important}
+html body .summary-card .resource-summary-values{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+html body .summary-card .resource-summary-values>div{min-width:0!important;display:grid!important;align-content:center!important;gap:5px!important;padding:8px 5px!important;border:1px solid rgba(164,192,214,.12)!important;border-radius:9px!important;background:#0e2032!important;text-align:center!important}
+html body .summary-card .resource-summary-values span{font-size:10px!important;line-height:1.3!important;color:#aebcd0!important;overflow-wrap:anywhere!important}
+html body .summary-card .resource-summary-values strong{font-size:14px!important;line-height:1.2!important;font-variant-numeric:tabular-nums!important;overflow-wrap:anywhere!important}
+html body .summary-card .resource-shortfall strong{color:#77dfb5!important}
+html body .summary-card .resource-shortfall strong.summary-missing{color:#ffd078!important}
+@media(max-width:355px){html body .summary-card .resource-summary-values{gap:4px!important}html body .summary-card .resource-summary-values>div{padding:6px 3px!important}html body .summary-card .resource-summary-values strong{font-size:12px!important}}
+</style></body></html>
