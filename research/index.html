@@ -1241,6 +1241,41 @@ html[lang="ar"] .selector-grid .field{
 .brand:has(.saifks-brand-logo) span,.brand:has(.saifks-brand-logo) small{min-width:0}
 @media(max-width:620px){.saifks-brand-logo,.brand img.logo,img.brand-mark{width:38px;height:38px;flex-basis:38px;border-radius:11px}}
 </style>
+<style id="research-card-polish">
+/* Refine research cards without changing the existing grid. */
+.node{
+  padding:16px !important;
+  gap:11px !important;
+  background:linear-gradient(155deg,#192d43 0%,#101f32 58%,#0d1929 100%) !important;
+  border:1px solid rgba(157,190,220,.28) !important;
+  border-radius:16px !important;
+  box-shadow:0 9px 20px rgba(0,0,0,.19),inset 0 1px rgba(255,255,255,.07) !important;
+}
+.node::before{background:linear-gradient(180deg,#d9b66b,#8d6937) !important;width:3px !important;inset:12px auto 12px 0 !important;border-radius:3px !important;opacity:1 !important}
+.node::after{display:none !important}
+.node.in-progress::before{background:#6da9e9 !important}
+.node.in-plan::before{background:#42cb8c !important}
+.node.is-max::before{background:#e6bc65 !important}
+.node.in-plan{border-color:rgba(66,203,140,.55) !important}
+.node.is-max{border-color:rgba(230,188,101,.45) !important}
+.node-name{font-size:14px !important;line-height:1.45 !important;color:#f7f3e8 !important;overflow-wrap:anywhere}
+.node-top{padding-bottom:9px;border-bottom:1px solid rgba(190,211,235,.13)}
+.node .inline-levels{gap:8px !important}
+.node .inline-levels small{font-size:11px !important;color:#b8c9dd !important;font-weight:700}
+.node .inline-levels select{height:42px !important;min-width:0;font-size:16px !important;border-radius:9px !important;background:#0c1c2e !important;border-color:rgba(157,190,220,.32) !important;color:#fff !important}
+.node .inline-levels select:focus-visible{outline:2px solid #e6bc65;outline-offset:2px}
+.node .inline-levels .arrow{font-size:15px !important;color:#e6bc65 !important}
+.node .effect-delta:not(:empty){font-size:11px !important;line-height:1.45 !important;padding:7px 9px !important;min-height:0 !important;margin-top:auto !important;background:rgba(66,203,140,.08);border-color:rgba(66,203,140,.18)}
+@media(max-width:760px){
+  .node{padding:10px 6px !important;gap:7px !important}
+  .node-name{font-size:11px !important}
+  .node .inline-levels{gap:3px !important}
+  .node .inline-levels small{font-size:9px !important}
+  .node .inline-levels select{height:38px !important;font-size:15px !important;padding-inline:0 !important}
+  .node .inline-levels .arrow{font-size:11px !important}
+  .node .effect-delta:not(:empty){font-size:9px !important;padding:5px 3px !important}
+}
+</style>
 </head>
 <body>
 <div class="app">
