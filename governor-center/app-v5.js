@@ -154,7 +154,9 @@ function gearCurrentOptions(selected){
 }
 function gearTargetOptions(current,selected){
   if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
-  let html=`<option value="-2" disabled ${selected===-2?"selected":""}>${selectionLabel("chooseTarget")}</option>`;
+  let html=current===-1
+    ? `<option value="-1" disabled ${selected===-1?"selected":""}>${tr("disabled")}</option>`
+    : `<option value="${current}" disabled ${selected===current?"selected":""}>${gearDB.levels[current].display_name}</option>`;
   gearDB.levels.forEach((x,i)=>{if(i>current) html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`;});
   return html;
 }
@@ -171,7 +173,7 @@ function charmCurrentOptions(selected){
 function charmTargetOptions(current,selected){
   const last=charmDB.levels.at(-1)?.level||0;
   if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
-  let html=`<option value="-1" disabled ${selected===-1?"selected":""}>${selectionLabel("chooseTarget")}</option>`;
+  let html=`<option value="${current}" disabled ${selected===current?"selected":""}>${current}</option>`;
   charmDB.levels.forEach(x=>{if(x.level>current) html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`;});
   return html;
 }
@@ -187,7 +189,8 @@ function buildGearCards(){
     if(!state.gear[slot.id]) state.gear[slot.id]={enabled:false,current:-2,target:-2};
     const s=state.gear[slot.id];
     if(s.current<-2||s.current>=gearDB.levels.length) s.current=-2;
-    if(s.target<=s.current||s.target>=gearDB.levels.length) s.target=-2;
+    if(s.current===-2) s.target=-2;
+    else if(s.target<s.current||s.target>=gearDB.levels.length) s.target=s.current;
     const card=document.createElement("section");
     card.className="gear-compact-card";
     card.dataset.id=slot.id;
@@ -206,8 +209,9 @@ function buildGearCards(){
       </div>`;
     wrap.appendChild(card);
     card.querySelector(".current").addEventListener("change",e=>{
-      s.current=+e.target.value;
-      s.target=-2;
+      const nextCurrent=+e.target.value;
+      if(s.target<nextCurrent||s.target===-2) s.target=nextCurrent;
+      s.current=nextCurrent;
       s.enabled=false;
       saveState();buildGearCards();renderGear();
     });
@@ -247,7 +251,8 @@ function buildCharmCards(){
       const s=state.charms[slot.id][type.id];
       const lastCharmLevel=charmDB.levels.at(-1)?.level||0;
       if(s.current<-1||s.current>lastCharmLevel) s.current=-1;
-      if(s.target<=s.current||s.target>lastCharmLevel) s.target=-1;
+      if(s.current===-1) s.target=-1;
+      else if(s.target<s.current||s.target>lastCharmLevel) s.target=s.current;
       const row=document.createElement("article");
       row.className="charm-compact-row";
       row.dataset.type=type.id;
@@ -259,8 +264,9 @@ function buildCharmCards(){
       list.appendChild(row);
 
       row.querySelector(".current").addEventListener("change",e=>{
-        s.current=+e.target.value;
-        s.target=-1;
+        const nextCurrent=+e.target.value;
+        if(s.target<nextCurrent||s.target===-1) s.target=nextCurrent;
+        s.current=nextCurrent;
         saveState(); buildCharmCards(); renderCharms();
       });
       const targetSelect=row.querySelector("select.target");
