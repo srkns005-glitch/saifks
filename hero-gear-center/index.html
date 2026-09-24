@@ -626,12 +626,21 @@ body{
 /* Keep the always-visible inventory immediately below the site header. */
 .wrap>.inventory-hub{margin:14px 0 12px}
 .wrap>.inventory-hub .inventory-hub-body{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
-.wrap>.inventory-hub .inventory-hub-body>.card{min-width:0}
+.wrap>.inventory-hub .inventory-hub-body>.card{display:flex;flex-direction:column;min-width:0}
+.wrap>.inventory-hub .inventory-hub-body>.card>.pad{display:flex;flex:1;flex-direction:column}
+.wrap>.inventory-hub .xp-total{margin:9px 10px 0!important;min-height:50px;padding:9px 12px!important}
+.wrap>.inventory-hub .resource-inputs,.wrap>.inventory-hub .xp-grid{flex:1;grid-auto-rows:minmax(0,1fr)}
+.wrap>.inventory-hub .resource-inputs>.item,.wrap>.inventory-hub .xp-grid>.item{display:flex;flex-direction:column;min-width:0;min-height:110px!important}
+.wrap>.inventory-hub .item input{flex:none;margin-top:auto;position:relative;z-index:1}
+.wrap>.inventory-hub .inventory-resource-card .item label,.wrap>.inventory-hub .inventory-xp-card .item label{min-height:2.6em;margin-bottom:3px}
+.wrap>.inventory-hub .inventory-xp-card .item small{min-height:2.5em;margin-bottom:5px}
 .wrap>.inventory-hub .item label{font-size:.7rem!important;line-height:1.3}
 .wrap>.inventory-hub .item small{font-size:.61rem!important}
 @media(max-width:720px){
  .wrap>.inventory-hub{margin:10px 8px 12px}
  .wrap>.inventory-hub .inventory-hub-body{grid-template-columns:minmax(0,1fr)}
+ .wrap>.inventory-hub .xp-total{margin:7px 7px 0!important}
+ .wrap>.inventory-hub .resource-inputs>.item,.wrap>.inventory-hub .xp-grid>.item{min-height:104px!important}
  .wrap>.inventory-hub .item label{font-size:.67rem!important}
  .wrap>.inventory-hub .item small{font-size:.6rem!important}
 }
@@ -743,7 +752,7 @@ document.querySelector('#lang')?.addEventListener('change',()=>setTimeout(sync,0
 
 (()=>{const left=document.querySelector('.stack.left'),optional=document.querySelector('#optionalWrap'),toggle=document.querySelector('#optionalToggle'),upgradeCard=[...left?.querySelectorAll(':scope > .card')||[]].find(card=>card.querySelector('#levelC'));if(!left||!upgradeCard||!optional||optional.dataset.moved==='true')return;const cards=[...optional.querySelectorAll(':scope > .card')],xpCard=cards[0],resourceCard=cards[1];if(!xpCard||!resourceCard)return;
 const words={en:['My current resources','Saved automatically'],ar:['مواردي الحالية','يُحفظ تلقائيًا'],fr:['Mes ressources actuelles','Enregistrement automatique'],es:['Mis recursos actuales','Guardado automático'],de:['Meine aktuellen Ressourcen','Automatisch gespeichert'],tr:['Mevcut kaynaklarım','Otomatik kaydedilir'],ko:['현재 보유 자원','자동 저장'],ja:['現在の所持資源','自動保存'],zh:['当前资源','自动保存']};Object.entries(words).forEach(([code,v])=>{if(UX[code]){UX[code].inventoryTitle=v[0];UX[code].savedAutomatically=v[1]}});
-const hub=document.createElement('section');hub.className='inventory-hub';hub.innerHTML='<div class="inventory-hub-head"><h3 id="inventoryHubTitle"></h3><span id="inventorySaveBadge" class="inventory-save-badge"></span></div><div class="inventory-hub-body"></div>';const body=hub.querySelector('.inventory-hub-body');resourceCard.classList.add('inventory-resource-card');xpCard.classList.add('inventory-xp-card');const xpTotal=xpCard.querySelector('.xp-total'),resourcePad=resourceCard.querySelector('.pad');if(xpTotal&&resourcePad)resourcePad.insertBefore(xpTotal,resourcePad.firstChild);body.append(resourceCard,xpCard);document.querySelector('.unified-header').after(hub);optional.dataset.moved='true';optional.classList.add('open');if(toggle)toggle.setAttribute('aria-hidden','true');
+const hub=document.createElement('section');hub.className='inventory-hub';hub.innerHTML='<div class="inventory-hub-head"><h3 id="inventoryHubTitle"></h3><span id="inventorySaveBadge" class="inventory-save-badge"></span></div><div class="inventory-hub-body"></div>';const body=hub.querySelector('.inventory-hub-body');resourceCard.classList.add('inventory-resource-card');xpCard.classList.add('inventory-xp-card');const xpTotal=xpCard.querySelector('.xp-total');if(xpTotal)hub.querySelector('.inventory-hub-head').after(xpTotal);body.append(resourceCard,xpCard);document.querySelector('.unified-header').after(hub);optional.dataset.moved='true';optional.classList.add('open');if(toggle)toggle.setAttribute('aria-hidden','true');
 const sync=()=>{document.querySelector('#inventoryHubTitle').textContent=UX[lang]?.inventoryTitle||UX.en.inventoryTitle;document.querySelector('#inventorySaveBadge').textContent=UX[lang]?.savedAutomatically||UX.en.savedAutomatically};document.querySelector('#lang')?.addEventListener('change',()=>setTimeout(sync,0));sync()})();
 
 </script><!-- Build: hero-gear-chrome-language-cleanup-v27-20260924 --></body></html>
