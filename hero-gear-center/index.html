@@ -637,10 +637,18 @@ body{
 .wrap>.inventory-hub .item label{font-size:.7rem!important;line-height:1.3}
 .wrap>.inventory-hub .item small{font-size:.61rem!important}
 @media(max-width:720px){
- .wrap>.inventory-hub{margin:10px 8px 12px}
- .wrap>.inventory-hub .inventory-hub-body{grid-template-columns:minmax(0,1fr)}
- .wrap>.inventory-hub .xp-total{margin:7px 7px 0!important}
- .wrap>.inventory-hub .resource-inputs>.item,.wrap>.inventory-hub .xp-grid>.item{min-height:104px!important}
+ .wrap>.inventory-hub{margin:8px 8px 10px}
+ .wrap>.inventory-hub .inventory-hub-body{grid-template-columns:minmax(0,1fr);gap:6px!important;padding:6px!important}
+ .wrap>.inventory-hub .xp-total{min-height:42px!important;margin:6px 6px 0!important;padding:6px 9px!important}
+ .wrap>.inventory-hub .head{min-height:34px!important;padding:6px 8px!important}
+ .wrap>.inventory-hub .pad{padding:6px!important}
+ .wrap>.inventory-hub .resource-inputs,.wrap>.inventory-hub .xp-grid{gap:5px!important}
+ .wrap>.inventory-hub .resource-inputs>.item{min-height:78px!important;padding:6px!important}
+ .wrap>.inventory-hub .xp-grid>.item{min-height:96px!important;padding:6px!important}
+ .wrap>.inventory-hub .item input{height:34px!important}
+ .wrap>.inventory-hub .inventory-resource-card .item label{min-height:2.4em;line-height:1.2}
+ .wrap>.inventory-hub .inventory-xp-card .item label{min-height:2.2em;line-height:1.2}
+ .wrap>.inventory-hub .inventory-xp-card .item small{min-height:2.2em;margin-bottom:3px;line-height:1.2}
  .wrap>.inventory-hub .item label{font-size:.67rem!important}
  .wrap>.inventory-hub .item small{font-size:.6rem!important}
 }
