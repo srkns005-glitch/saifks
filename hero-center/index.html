@@ -150,9 +150,10 @@ function syncHomeLanguageLink(){
 
 function applyLanguage(){
  document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ const url=new URL(location.href);if(url.searchParams.get("lang")!==lang){url.searchParams.set("lang",lang);history.replaceState(null,"",url)}
  $("#brandSub").textContent=tr("brandSub");$("#homeBtn").title=tr("home");$("#homeBtn").setAttribute("aria-label",tr("home"));$("#langSelect").value=lang;
  $("#title").textContent=tr("title");$("#subtitle").textContent=tr("subtitle");$("#search").placeholder=tr("search");
- $("#backBtn").textContent=tr("back");$("#noticeTitle").textContent=tr("noticeTitle");$("#noticeText").textContent=tr("noticeText");$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
+ $("#backBtn").textContent=tr("back");$("#closeBtn").setAttribute("aria-label",tr("back"));$("#noticeTitle").textContent=tr("noticeTitle");$("#noticeText").textContent=tr("noticeText");$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
  syncHomeLanguageLink();renderTabs();render();
 
  if(current&&!$("#modal").classList.contains("hidden"))loadTranslatedHeroSections(current);
@@ -271,7 +272,7 @@ let heroReturnFocus=null;
 function openHero(id){
  heroReturnFocus=document.activeElement;
  current=heroes.find(h=>h.id===id);if(!current)return;
- $("#mImg").src=current.image;$("#mName").textContent=current.name;
+ $("#mImg").src=current.image;$("#mImg").alt=current.name;$("#mName").textContent=current.name;
  $("#mMeta").innerHTML=`<span class="class-identity"><img class="class-logo" src="${classIconPath(current.class)}" alt="">${tr("class")}: ${clsLabel(current.class)}</span> ${current.generation?` · ${tr("generation")} ${current.generation}`:""} · ${lang==="ar"&&current.rarity==="Mythic"?tr("mythic"):current.rarity}`;
  $("#mStars").textContent=current.rarity==="Mythic"?"★★★★★":current.rarity==="Epic"?"★★★★":"★★★";
  loadTranslatedHeroSections(current);
