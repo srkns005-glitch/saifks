@@ -7,7 +7,7 @@
 <title>SaifKS Hero Center</title>
 
 <link rel="icon" href="../logo.png">
-<link rel="stylesheet" href="hero-center.css?v=9">
+<link rel="stylesheet" href="hero-center.css?v=10">
 
 </head>
 <body>
@@ -96,7 +96,7 @@ function filtered(){
 function heroCard(h){return `<article class="card" data-rarity="${h.rarity}">
  <div class="portrait"><img src="${h.image}" alt="${h.name}" loading="lazy"><span class="badge rarity">${tr(h.rarity.toLowerCase())}</span></div><div class="cardbody"><h3>${h.name}</h3><div class="hero-meta">
  ${classBadgeHTML(h.class)}${h.generation?`<span class="meta-generation">${tr("generation")} ${h.generation}</span>`:""}</div>
- <button class="open" data-id="${h.id}">${tr("view")}</button></div></article>`}
+ <span class="open" aria-hidden="true">${tr("view")}</span></div><button class="card-hit" type="button" data-id="${h.id}" aria-label="${tr("view")} ${h.name}"></button></article>`}
 function render(){
  const list=filtered();
  $("#sectionTitle").textContent=query.trim()?tr("search"):rarity==="Mythic"?(sub==="All"?tr("mythic"):`${tr("generation")} ${sub}`):(sub==="All"?tr(rarity.toLowerCase()):clsLabel(sub));
@@ -108,7 +108,7 @@ function render(){
   list.forEach(h=>{const key=h.generation?`gen-${h.generation}`:h.rarity;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(h)});
   $("#grid").innerHTML=[...groups].map(([key,members])=>`<section class="generation-group"><div class="generation-heading"><div><span class="generation-rule"></span><h3>${key.startsWith("gen-")?`${tr("generation")} ${key.slice(4)}`:tr(key.toLowerCase())}</h3></div><span>${members.length} ${tr("heroes")}</span></div><div class="generation-grid">${members.map(heroCard).join("")}</div></section>`).join("");
  }else $("#grid").innerHTML=list.length?list.map(heroCard).join(""):`<div class="empty">${tr("none")}</div>`;
- $("#grid").querySelectorAll(".open").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
+ $("#grid").querySelectorAll(".card-hit").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
  $("#clearSearch").classList.toggle("hidden",!query);
 }
 
