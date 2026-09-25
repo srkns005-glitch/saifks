@@ -84,6 +84,78 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 @keyframes translationSpin{to{transform:rotate(360deg)}}
 
 .saif-tip{margin:0;line-height:1.65;padding:15px 17px;border-inline-start:3px solid var(--gold);border-radius:10px;background:rgba(255,212,107,.08);color:var(--text)}
+
+/* Shared SaifKS page structure */
+:root{--bg:#07121f;--panel:#0c2033;--panel2:#112b42;--line:#263f54;--muted:#a9bacb;--gold:#f6d16b}
+html,body{background:radial-gradient(circle at 50% -260px,rgba(52,96,122,.23),transparent 600px),#07121f}
+.wrap{width:min(1180px,calc(100% - 32px))}
+.site-header{padding:0;background:rgba(6,18,30,.97);border-bottom:1px solid #263b50}
+.site-header-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-brand{display:inline-flex;align-items:center;gap:11px;min-width:0;color:#fff;text-decoration:none}
+.site-brand .logo{width:44px;height:44px;flex:none;border:1px solid rgba(255,205,92,.45);border-radius:13px;object-fit:cover;background:#10243c}
+.site-brand-copy{min-width:0;display:grid;gap:3px}
+.site-brand-copy strong{font-size:1.05rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-brand-copy small{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.04em}
+.site-actions{display:flex;align-items:center;gap:9px;flex:none}
+.site-home,.site-language{height:41px;border:1px solid #3b5368;border-radius:11px;background:#0e2438;color:#f7fbff;font-weight:800}
+.site-home{min-width:78px;padding:0 12px;display:grid;place-items:center;text-decoration:none}
+.site-language{min-width:118px;padding:0 11px}
+.hero{position:relative;text-align:start;padding:45px 0 30px;border-bottom:1px solid rgba(197,221,238,.12)}
+.hero .eyebrow{margin:0 0 12px;color:var(--gold);font-size:.74rem;letter-spacing:.2em;font-weight:900}
+.hero h1{color:#f7fbff;font-size:clamp(2.2rem,5.2vw,3.9rem);line-height:1.08;letter-spacing:-.035em}
+.hero>p:last-child{margin:13px 0 0;max-width:650px;font-size:1rem;color:#aebed0}
+.toolbar{position:relative;top:auto;z-index:5;margin:22px 0 0;padding:16px;border-radius:18px;background:linear-gradient(145deg,#0e2539,#0a1c2e);border:1px solid #2b455b;box-shadow:0 12px 32px rgba(0,0,0,.15)}
+.search{min-height:50px;border-color:#37516a;background:#071725}
+.search:focus-visible,.site-language:focus-visible,.site-home:focus-visible,.tab:focus-visible,.subtab:focus-visible,.open:focus-visible,.back:focus-visible,.x:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.tabs,.subtabs{gap:8px;padding-top:12px}
+.tab,.subtab{min-height:40px;padding:8px 16px}
+.summarybar{margin:26px 0 16px;align-items:center}
+.summarybar h2{font-size:clamp(1.3rem,3vw,1.7rem)}
+.summarybar span{font-size:.84rem;white-space:nowrap}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:50px}
+.card{display:flex;flex-direction:column;border-radius:17px;background:#0d2134;border-color:#294258;box-shadow:0 10px 28px rgba(0,0,0,.16)}
+.card:hover{transform:translateY(-2px);border-color:#ba9750}
+.card img{aspect-ratio:4/3;object-fit:cover;object-position:center 30%}
+.cardbody{display:flex;flex:1;flex-direction:column;padding:15px}
+.card h3{font-size:1.2rem;line-height:1.25}
+.badges{gap:5px}
+.badge{font-size:.7rem}
+.open{margin-top:auto;transform:translateY(10px);min-height:44px;border:1px solid #e8c168;border-radius:10px;background:#d9b250;color:#172131;box-shadow:none}
+.modal .panel{background:#0b1e30}
+.modal .banner{background:linear-gradient(130deg,#1c3b57,#3c3a2b 75%);border-bottom:1px solid #38526a}
+.modal .notice{background:#112b3d;border-color:#36556b;text-align:start}
+.modal .notice b{color:#f6d16b}
+.modal details{background:#0d2235;border-color:#304b62}
+.modal summary{padding-inline:17px 56px}
+html[dir="rtl"] .modal summary{padding:16px 17px 16px 56px}
+html[dir="rtl"] .modal summary:after{right:auto;left:14px}
+.final-footer{min-height:72px;padding:18px max(16px,calc((100vw - 1180px)/2));border-top:1px solid #2b4154;background:#071320;color:#a9bacb;display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:.88rem}
+.final-footer a{color:#fff;text-decoration:none;font-weight:800}
+@media(max-width:860px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){
+ .wrap{width:calc(100% - 24px)}
+ .site-header-inner{min-height:68px;gap:7px}
+ .site-brand{gap:7px}
+ .site-brand .logo{width:36px;height:36px;border-radius:10px}
+ .site-brand-copy strong{font-size:.88rem;max-width:135px}
+ .site-brand-copy small{font-size:.66rem}
+ .site-actions{gap:6px}
+ .site-home{min-width:54px;height:38px;padding:0 7px;font-size:.78rem}
+ .site-language{min-width:88px;max-width:106px;height:38px;padding:0 5px;font-size:.76rem}
+ .hero{padding:29px 0 24px}
+ .hero h1{font-size:clamp(2rem,9vw,2.7rem)}
+ .hero>p:last-child{font-size:.9rem;line-height:1.5}
+ .toolbar{margin-top:16px;padding:11px;border-radius:15px}
+ .tab,.subtab{min-height:38px;padding:7px 13px;font-size:.84rem}
+ .summarybar{margin:23px 0 13px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card img{aspect-ratio:1/1}
+ .cardbody{padding:11px}
+ .card h3{font-size:1.06rem}
+ .open{min-height:42px}
+ .final-footer{min-height:70px;padding:16px 12px;font-size:.76rem}
+}
+@media(max-width:355px){.site-brand-copy strong{max-width:98px}.site-language{min-width:78px;max-width:82px}.site-home{min-width:48px}.site-brand .logo{width:32px;height:32px}}
 </style>
 <link rel="icon" href="../logo.png">
 
@@ -95,19 +167,9 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 </style>
 </head>
 <body>
-<header><div class="wrap"><nav>
-<div class="brand"><img class="logo" src="../logo.png" alt="SaifKS logo"><div><b>SaifKS Hero Center</b><small id="brandSub">All Heroes Database</small></div></div>
-<div class="actions event-controls">
-<a class="event-home-btn" href="../index.html" id="homeBtn" aria-label="Home" title="Home">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2v8.3a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5z"/></svg>
-</a>
-<select class="event-lang-select" id="langSelect" aria-label="Language">
-<option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option>
-<option value="de">Deutsch</option><option value="es">Español</option><option value="tr">Türkçe</option>
-<option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option>
-</select></div></nav></div></header>
+<header class="site-header"><div class="wrap site-header-inner"><a class="site-brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home"><img class="logo" src="../logo.png" alt="SaifKS logo"><span class="site-brand-copy"><strong id="brandTitle">Hero Center</strong><small>SaifKS.com</small></span></a><div class="site-actions"><a class="site-home" href="../index.html" id="homeBtn">Home</a><select class="site-language" id="langSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></div></header>
 <main class="wrap">
-<section class="hero"><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></section>
+<section class="hero"><p class="eyebrow">KINGSHOT · SAIFKS</p><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></section>
 <section class="toolbar">
 <input id="search" class="search" placeholder="Search heroes...">
 <div class="tabs" id="rarityTabs"></div><div class="subtabs" id="subTabs"></div>
@@ -115,7 +177,7 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 <div class="summarybar"><h2 id="sectionTitle"></h2><span id="count"></span></div>
 <section class="grid" id="grid"></section>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><a href="https://www.youtube.com/" target="_blank">YouTube ▶</a><strong>SaifKS.com</strong><span>| Built by Saif</span></div></footer>
+<footer class="final-footer"><div>SaifKS.com | Built by Saif</div><a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer">▶ YouTube</a></footer>
 <div class="modal hidden" id="modal"><article class="panel" role="dialog" aria-modal="true" aria-labelledby="mName">
 <div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn" type="button" aria-label="Close">✕</button></div>
 <div class="scroll" id="scroll"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
@@ -151,12 +213,13 @@ function clsLabel(c){return tr(c.toLowerCase())||c}
 function syncHomeLanguageLink(){
   const home=document.getElementById("homeBtn");
   if(home) home.href="../index.html?lang="+encodeURIComponent(lang);
+ const brand=document.getElementById("brandHomeLink");if(brand)brand.href="../index.html?lang="+encodeURIComponent(lang);
 }
 
 function applyLanguage(){
  document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
  const url=new URL(location.href);if(url.searchParams.get("lang")!==lang){url.searchParams.set("lang",lang);history.replaceState(null,"",url)}
- $("#brandSub").textContent=tr("brandSub");$("#homeBtn").title=tr("home");$("#homeBtn").setAttribute("aria-label",tr("home"));$("#langSelect").value=lang;
+ $("#brandTitle").textContent=tr("title");$("#homeBtn").textContent=tr("home");$("#homeBtn").title=tr("home");$("#homeBtn").setAttribute("aria-label",tr("home"));$("#langSelect").value=lang;
  $("#title").textContent=tr("title");$("#subtitle").textContent=tr("subtitle");$("#search").placeholder=tr("search");
  $("#backBtn").textContent=tr("back");$("#closeBtn").setAttribute("aria-label",tr("back"));$("#noticeTitle").textContent=tr("noticeTitle");$("#noticeText").textContent=tr("noticeText");$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
  syncHomeLanguageLink();renderTabs();render();
