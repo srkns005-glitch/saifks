@@ -199,8 +199,7 @@
 /* v1.6 quick facts, mistakes, heroes and tools */
 .quick-facts-section,
 .mistakes-section,
-.heroes-section,
-.tool-section{
+.heroes-section{
   margin-top:18px!important;
   padding-top:15px!important;
   border-top:1px solid rgba(255,255,255,.08)!important;
@@ -245,15 +244,6 @@
   padding:7px 11px;
   font-weight:800;
   font-size:.82rem;
-}
-.tool-coming{
-  width:100%;
-  min-height:44px;
-  border:1px dashed rgba(255,216,107,.5);
-  border-radius:12px;
-  background:rgba(255,216,107,.06);
-  color:#ffd86b;
-  font-weight:900;
 }
 @media(max-width:620px){
   .quick-facts-grid{grid-template-columns:1fr}
@@ -460,7 +450,6 @@
   background:rgba(8,24,42,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-top:1px solid #274158;padding:12px
 }
-#copyGuideBtn{background:#142a40;color:#fff;border:1px solid #31506d}
 @media(max-width:620px){
   .event-tabs{top:6px}
   .card-body h2{padding-right:0}
@@ -1005,37 +994,6 @@ function openEvent(id){
   document.body.style.top=`-${pageScrollY}px`;
   if(openingFromPage)q("#quickCloseBtn").focus({preventScroll:true});
 }
-
-  const copyGuide=q("#copyGuideBtn");
-  if(copyGuide)copyGuide.onclick=()=>{
-    const e=events.find(x=>x.id===currentId);
-    if(!e)return;
-    const x=eventText(e);
-    const text=[
-      x.title,
-      "",
-      t("Overview")+":",
-      x.summary,
-      "",
-      t("Main Rewards")+":",
-      x.rewards,
-      "",
-      t("Best Tips")+":",
-      ...x.tips.map(v=>"• "+v),
-      "",
-      t("Common Mistakes")+":",
-      ...(x.mistakes||[]).map(v=>"• "+v),
-      "",
-      "Saif Tip:",
-      x.saifTip,
-      "",
-      "Source: SaifKS.com",
-      "Built by Saif | K1437"
-    ].join("\n");
-    navigator.clipboard.writeText(text);
-  };
-
-
 
 const quickCloseBtn=q("#quickCloseBtn");
 const backEventsBtn=q("#backEventsBtn");
