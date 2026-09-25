@@ -977,7 +977,7 @@ function render(){
   q("#empty").hidden=!!list.length;
   renderDashboard(list.length);
 }
-const eventSourceLabels={"en":"Event source: Kingshot Wiki","ar":"مصدر بيانات الحدث: ويكي Kingshot","fr":"Source de l’événement : Wiki Kingshot","de":"Eventquelle: Kingshot Wiki","es":"Fuente del evento: Wiki de Kingshot","tr":"Etkinlik kaynağı: Kingshot Wiki","ko":"이벤트 출처: Kingshot Wiki","ja":"イベントの出典: Kingshot Wiki","zh":"活动来源：Kingshot Wiki"};
+const eventSourceLabels={"en":"Event reference: Kingshot Wiki","ar":"مرجع الحدث: ويكي Kingshot","fr":"Source de l’événement : Wiki Kingshot","de":"Eventquelle: Kingshot Wiki","es":"Fuente del evento: Wiki de Kingshot","tr":"Etkinlik kaynağı: Kingshot Wiki","ko":"이벤트 출처: Kingshot Wiki","ja":"イベントの出典: Kingshot Wiki","zh":"活动来源：Kingshot Wiki"};
 function openEvent(id){
   currentEventId=id;
   const e=events.find(x=>x.id===id);
