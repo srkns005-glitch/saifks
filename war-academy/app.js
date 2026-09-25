@@ -37,7 +37,7 @@
   const duration = seconds => {
     const minutes = Math.max(0,Math.ceil(seconds/60));
     const day=Math.floor(minutes/1440),hour=Math.floor(minutes%1440/60),minute=minutes%60;
-    return [day&&`${format(day)}${tr('day')}`,hour&&`${format(hour)}${tr('hour')}`,minute&&`${format(minute)}${tr('minute')}`].filter(Boolean).join(' ') || `${format(0)}${tr('minute')}`;
+    return [day&&`${format(day)} ${tr('dayUnit')}`,hour&&`${format(hour)} ${tr('hourUnit')}`,minute&&`${format(minute)} ${tr('minuteUnit')}`].filter(Boolean).join(' ') || `${format(0)} ${tr('minuteUnit')}`;
   };
   const parseAmount = value => {
     if(typeof value==='number')return value;
@@ -131,7 +131,7 @@
     $('summaryResources').innerHTML=keys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong></div>`).join('');
     const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));
     const needed=total.seconds/(1+speed/100);
-    $('summaryTimes').innerHTML=`<div><span>${esc(tr('baseTime'))}</span><strong class="dir-ltr">${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong class="dir-ltr">${esc(duration(needed))}</strong></div>`;
+    $('summaryTimes').innerHTML=`<div><span>${esc(tr('baseTime'))}</span><strong>${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div>`;
     $('summaryNote').textContent=tr(basic?'basicSummaryNote':'advancedSummaryNote')+' '+tr('estimateNote');
   };
   const render = () => {
@@ -165,7 +165,7 @@
       $('detailBody').innerHTML = `<p class="detailNote">${esc(tr('advancedNote'))}</p><h3 class="subHeading">${esc(tr('totalCost'))}</h3>${summaries(item.total,true)}<p class="detailFooter">${esc(tr('approx'))}</p>`;
     } else {
       const selects = `<div class="levelControls"><label>${esc(tr('myLevel'))}<select id="fromLevel">${Array.from({length:item.maxLevel+1},(_,i)=>`<option value="${i}" ${i===current(item)?'selected':''}>${format(i)}</option>`).join('')}</select></label><label>${esc(tr('toLevel'))}<select id="toLevel">${Array.from({length:item.maxLevel+1},(_,i)=>`<option value="${i}" ${i<current(item)?'disabled':''} ${i===target(item)?'selected':''}>${format(i)}</option>`).join('')}</select></label></div>`;
-      const lines = item.levels.map(level=>`<div class="levelLine"><b>${esc(tr('level'))} ${format(level.level)}</b><span>${['dust','bread','wood','stone','iron','gold'].map(k=>`${esc(resourceName(k))}: <span class="dir-ltr">${format(level[k])}</span>`).join(' · ')} · ${esc(tr('baseTime'))}: <span class="dir-ltr">${esc(duration(level.seconds))}</span></span></div>`).join('');
+      const lines = item.levels.map(level=>`<div class="levelLine"><b>${esc(tr('level'))} ${format(level.level)}</b><span>${['dust','bread','wood','stone','iron','gold'].map(k=>`${esc(resourceName(k))}: <span class="dir-ltr">${format(level[k])}</span>`).join(' · ')} · ${esc(tr('baseTime'))}: <span>${esc(duration(level.seconds))}</span></span></div>`).join('');
       $('detailBody').innerHTML = `<p class="detailNote">${esc(tr('basicNote'))}</p>${selects}<h3 class="subHeading">${esc(tr('selectedCost'))}</h3><div id="selectionSummary"></div><h3 class="subHeading">${esc(tr('perLevel'))}</h3><div class="levelList">${lines}</div>`;
       const update = () => {
         const from = Number($('fromLevel').value), to = Number($('toLevel').value);
@@ -173,7 +173,7 @@
         if(to<from){$('toLevel').value=String(from);saveTarget(item,from)}
         const a=Number($('fromLevel').value),b=Number($('toLevel').value);
         const total={}; for(const lvl of item.levels.filter(x=>x.level>a&&x.level<=b)) for(const key of [...resourceKeys,'seconds']) total[key]=(total[key]||0)+(lvl[key]||0);
-        $('selectionSummary').innerHTML=b===a?`<p class="detailNote">${esc(tr('noPlan'))}</p>`:summaries(total,false)+`<div class="detailTime">${esc(tr('baseTime'))}: <strong class="dir-ltr">${esc(duration(total.seconds))}</strong></div>`;
+        $('selectionSummary').innerHTML=b===a?`<p class="detailNote">${esc(tr('noPlan'))}</p>`:summaries(total,false)+`<div class="detailTime">${esc(tr('baseTime'))}: <strong>${esc(duration(total.seconds))}</strong></div>`;
       };
       $('fromLevel').addEventListener('change',()=>{saveProgress(item,$('fromLevel').value);update()});$('toLevel').addEventListener('change',()=>{saveTarget(item,$('toLevel').value);update()});update();
     }
