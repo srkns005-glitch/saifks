@@ -197,7 +197,7 @@ html,body{background:#07101d;color:var(--text)}
 <footer class="research-footer" aria-label="SaifKS footer"><div class="research-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="research-footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
 <div class="modal hidden" id="modal"><article class="panel" role="dialog" aria-modal="true" aria-labelledby="mName">
 <div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn" type="button" aria-label="Close">✕</button></div>
-<div class="scroll" id="scroll"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
+<div class="scroll" id="scroll"><div class="banner"><div class="banner-portrait"><img id="mImg"></div><div class="banner-copy"><div class="profile-kicker">KINGSHOT <span>◆</span> SAIFKS HERO PROFILE</div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
 
 <nav class="modal-jump" id="modalJump" aria-label="Hero sections"></nav><div class="sections" id="sections"></div></div>
 <div class="bottom"><button class="topbtn" id="topBtn">↑ Top</button><button class="copy" id="copyBtn">Copy Hero Summary</button></div>
@@ -270,8 +270,7 @@ function render(){
  $("#sectionTitle").textContent=query.trim()?tr("search"):rarity==="Mythic"?(sub==="All"?tr("mythic"):`${tr("generation")} ${sub}`):(sub==="All"?tr(rarity.toLowerCase()):clsLabel(sub));
  $("#count").textContent=`${list.length} ${tr("heroes")}`;
  $("#grid").innerHTML=list.length?list.map(h=>`<article class="card" data-rarity="${h.rarity}">
- <span class="badge rarity">${tr(h.rarity.toLowerCase())}</span>
- <img src="${h.image}" alt="${h.name}" loading="lazy"><div class="cardbody"><h3>${h.name}</h3><div class="badges">
+ <div class="portrait"><img src="${h.image}" alt="${h.name}" loading="lazy"><span class="badge rarity">${tr(h.rarity.toLowerCase())}</span></div><div class="cardbody"><h3>${h.name}</h3><div class="badges">
  ${classBadgeHTML(h.class)}${h.generation?`<span class="badge">${tr("generation")} ${h.generation}</span>`:""}</div>
  <button class="open" data-id="${h.id}">${tr("view")}</button></div></article>`).join(""):`<div class="empty">${tr("none")}</div>`;
  $("#grid").querySelectorAll(".open").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
@@ -331,12 +330,12 @@ function renderTranslatedHeroSections(h,translated,untranslated=false){
  $("#modalJump").innerHTML=jumpSections.map(([id,label])=>`<button type="button" data-jump="${id}">${label}</button>`).join("");
  $("#modalJump").querySelectorAll("button").forEach(button=>button.onclick=()=>{const target=$("#hero-"+button.dataset.jump);if(target){target.open=true;target.scrollIntoView({block:"start",behavior:"smooth"});target.querySelector("summary")?.focus({preventScroll:true})}});
  $("#sections").innerHTML=
-  details("📘 "+tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>`,true,"hero-overview")+
-  details("✦ "+SAIF_TIP_LABELS[lang],`<p class="saif-tip">${localized.saifTip?.[0]||SAIF_TIPS[h.id]}</p>`,true)+
-  details("📍 "+tr("sources"),translatedSourcesHTML(h),true)+
-  details("📊 "+tr("stats"),`<div class="stats">${translatedStatsHTML(h)||"—"}</div>`,true)+
-  details("⚔️ "+tr("conquest"),skillLines("conquest",localized.conquest),false,"hero-conquest")+
-  details("🛡️ "+tr("expedition"),skillLines("expedition",localized.expedition),false,"hero-expedition")+
+  details(""+tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>`,true,"hero-overview")+
+  details(SAIF_TIP_LABELS[lang],`<p class="saif-tip">${localized.saifTip?.[0]||SAIF_TIPS[h.id]}</p>`,true)+
+  details(""+tr("sources"),translatedSourcesHTML(h),true)+
+  details(""+tr("stats"),`<div class="stats">${translatedStatsHTML(h)||"—"}</div>`,true)+
+  details(""+tr("conquest"),skillLines("conquest",localized.conquest),false,"hero-conquest")+
+  details(""+tr("expedition"),skillLines("expedition",localized.expedition),false,"hero-expedition")+
   gearSection;
 }
 function loadTranslatedHeroSections(h){
