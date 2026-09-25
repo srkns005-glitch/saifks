@@ -8,6 +8,13 @@
   const tr = key => WAR_I18N[lang][key] ?? WAR_I18N.en[key] ?? key;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const format = value => new Intl.NumberFormat(lang === 'zh' ? 'zh-CN' : lang).format(Number(value) || 0);
+  const cost = value => {
+    if (typeof value === 'number') return format(value);
+    const short = /^(\d+(?:\.\d+)?)([KMB])$/.exec(String(value));
+    if (!short) return String(value);
+    const factor = {K:1e3,M:1e6,B:1e9}[short[2]];
+    return new Intl.NumberFormat(lang === 'zh' ? 'zh-CN' : lang,{notation:'compact',maximumFractionDigits:1}).format(Number(short[1])*factor);
+  };
   const resourceKeys = ['dust','ttg','bread','wood','stone','iron','gold'];
   const symbols = {infantry:'⌑',cavalry:'♘',archer:'⌁',special:'✧',economy:'◈',capacity:'▤',combat:'✦'};
   const names = (item, kind) => {
@@ -60,14 +67,14 @@
     $('results').innerHTML = visible.length ? visible.map(item => {
       const group = tree==='basic' ? item.category : item.group;
       const amount = item.total.dust;
-      const marker = amount && amount !== '—' ? esc(typeof amount==='number' ? format(amount) : amount) : '—';
+      const marker = amount && amount !== '—' ? esc(cost(amount)) : '—';
       return `<button type="button" class="researchItem" data-item="${esc(item.id)}"><span class="itemSymbol" aria-hidden="true">${symbols[group]}</span><span class="itemText"><strong>${esc(names(item,tree))}</strong><small>${esc(effect(item))}</small></span><span class="itemAside"><strong class="dir-ltr">${marker}</strong><small>${esc(tr('dust'))}</small></span><span class="itemArrow" aria-hidden="true">↗</span></button>`;
     }).join('') : `<div class="empty">${esc(tr('noResults'))}</div>`;
     $('showMore').hidden = visible.length >= items.length;
   };
   const summaries = (total, advanced) => {
     const keys = advanced ? resourceKeys : ['dust','bread','wood','stone','iron','gold','seconds'];
-    return `<div class="summaryGrid">${keys.filter(k => total[k] !== undefined && total[k] !== null && total[k] !== '—').map(k=>`<div><small>${esc(k==='seconds' ? tr('duration') : resourceName(k))}</small><strong class="dir-ltr">${k==='seconds' ? esc(duration(total[k])) : esc(typeof total[k]==='number' ? format(total[k]) : total[k])}</strong></div>`).join('')}</div>`;
+    return `<div class="summaryGrid">${keys.filter(k => total[k] !== undefined && total[k] !== null && total[k] !== '—').map(k=>`<div><small>${esc(k==='seconds' ? tr('duration') : resourceName(k))}</small><strong class="dir-ltr">${k==='seconds' ? esc(duration(total[k])) : esc(cost(total[k]))}</strong></div>`).join('')}</div>`;
   };
   const showDetail = item => {
     $('detailTitle').textContent = names(item,tree);
