@@ -378,7 +378,7 @@ function arabicSkillSection(h,section){
 }
 function renderTranslatedHeroSections(h,translated,untranslated=false){
  const localGuide=window.HERO_OTHER_GUIDES?.[lang];
- const localized=lang==="ar"?{...translated,overview:[AR_HERO_OVERVIEWS[h.id]],saifTip:[AR_SAIF_TIPS[h.id]]}:localGuide?{...translated,overview:[localGuide.overview[h.id]],saifTip:[localGuide.tip[h.id]]}:translated;
+ const localized=lang==="ar"?{...translated,overview:[AR_HERO_OVERVIEWS[h.id]],saifTip:[AR_SAIF_TIPS[h.id]]}:localGuide?{...translated,overview:translated.overview?.[0]===h.overview?[localGuide.overview[h.id]]:translated.overview,saifTip:translated.saifTip?.[0]===SAIF_TIPS[h.id]?[localGuide.tip[h.id]]:translated.saifTip}:translated;
  const skillLines=(section,lines)=>lang==="ar"?arabicSkillSection(h,section):translatedLinesHTML(lines);
  const gearSection=h.rarity==="Mythic"?details("✨ "+tr("gear"),skillLines("gear",localized.gear)):"";
  $("#sections").innerHTML=
