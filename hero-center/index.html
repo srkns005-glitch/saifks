@@ -56,6 +56,7 @@ const AUX_TEXT={
  ja:{credit:"サイフ制作",language:"言語",sections:"英雄のセクション",close:"閉じる",clear:"検索を消去",footer:"SaifKS フッター"},
  zh:{credit:"赛夫制作",language:"语言",sections:"英雄内容",close:"关闭",clear:"清除搜索",footer:"SaifKS 页脚"}
 };
+const GEN8_LEVEL_NOTE={en:"Skill values shown at maximum level.",ar:"قيم المهارات المعروضة عند المستوى الأقصى.",fr:"Valeurs des compétences au niveau maximal.",de:"Fähigkeitswerte auf der höchsten Stufe.",es:"Valores de habilidades al nivel máximo.",tr:"Beceri değerleri en yüksek seviyededir.",ko:"스킬 수치는 최고 레벨 기준입니다.",ja:"スキルの数値は最大レベル時のものです。",zh:"技能数值为满级时的数值。"};
 const SOURCE_TRANSLATIONS={"Hall of Heroes":{"ar":"قاعة الأبطال","fr":"Panthéon des héros","de":"Halle der Helden","es":"Salón de Héroes","tr":"Kahramanlar Salonu","ko":"영웅의 전당","ja":"英雄の殿堂","zh":"英雄殿堂"},"Swordland Showdown Shop":{"ar":"متجر مواجهة أرض السيف","fr":"Boutique Swordland Showdown","de":"Swordland-Showdown-Shop","es":"Tienda de Swordland Showdown","tr":"Swordland Showdown Mağazası","ko":"소드랜드 결전 상점","ja":"ソードランド決戦ショップ","zh":"剑域对决商店"},"Hero Roulette":{"ar":"روليت الأبطال","fr":"Roulette des héros","de":"Heldenroulette","es":"Ruleta de héroes","tr":"Kahraman Ruleti","ko":"영웅 룰렛","ja":"英雄ルーレット","zh":"英雄转盘"},"Hero Rally":{"ar":"حشد الأبطال","fr":"Ralliement des héros","de":"Helden-Rallye","es":"Rally de héroes","tr":"Kahraman Toplanması","ko":"영웅 집결","ja":"英雄集結","zh":"英雄集结"},"Daily Deals":{"ar":"العروض اليومية","fr":"Offres quotidiennes","de":"Tägliche Angebote","es":"Ofertas diarias","tr":"Günlük Fırsatlar","ko":"일일 특가","ja":"デイリーセール","zh":"每日特惠"},"Strongest Governor Event":{"ar":"حدث أقوى حاكم","fr":"Événement du gouverneur le plus puissant","de":"Event „Stärkster Gouverneur“","es":"Evento del Gobernador más fuerte","tr":"En Güçlü Vali Etkinliği","ko":"최강 영주 이벤트","ja":"最強領主イベント","zh":"最强领主活动"},"Kingdom of Power Event":{"ar":"حدث مملكة القوة","fr":"Événement Royaume de puissance","de":"Event „Königreich der Macht“","es":"Evento Reino del Poder","tr":"Güç Krallığı Etkinliği","ko":"힘의 왕국 이벤트","ja":"力の王国イベント","zh":"力量王国活动"},"VIP Special Packs":{"ar":"باقات VIP الخاصة","fr":"Packs VIP spéciaux","de":"VIP-Spezialpakete","es":"Paquetes VIP especiales","tr":"Özel VIP Paketleri","ko":"VIP 특별 패키지","ja":"VIP特別パック","zh":"VIP特惠礼包"},"Hall of Governors (Generation 1)":{"ar":"قاعة الحكام (الجيل الأول)","fr":"Panthéon des gouverneurs (Génération 1)","de":"Halle der Gouverneure (Generation 1)","es":"Salón de Gobernadores (Generación 1)","tr":"Valiler Salonu (1. Nesil)","ko":"영주 전당 (1세대)","ja":"領主の殿堂（第1世代）","zh":"领主殿堂（第1代）"}};
 const urlLang=new URLSearchParams(location.search).get("lang");
 let lang=LANGS.includes(urlLang)?urlLang:
@@ -110,16 +111,17 @@ function heroCard(h){return `<article class="card" data-rarity="${h.rarity}" dat
  <div class="portrait"><img src="${h.image}" alt="${h.name}" loading="lazy"><span class="badge rarity">${tr(h.rarity.toLowerCase())}</span></div><div class="cardbody"><h3>${h.name}</h3><div class="hero-meta">
  ${classBadgeHTML(h.class)}${h.generation?`<span class="meta-generation">${tr("generation")} ${h.generation}</span>`:""}</div>
  <span class="open" aria-hidden="true">${tr("view")}</span></div><button class="card-hit" type="button" data-id="${h.id}" aria-label="${tr("view")} ${h.name}"></button></article>`}
+function heroCount(n){return lang==="ar"?`${n} ${n===1?"بطل":n===2?"بطلان":n<=10?"أبطال":"بطل"}`:`${n} ${tr("heroes")}`}
 function render(){
  const list=filtered();
  $("#sectionTitle").textContent=query.trim()?tr("search"):rarity==="Mythic"?(sub==="All"?tr("mythic"):`${tr("generation")} ${sub}`):(sub==="All"?tr(rarity.toLowerCase()):clsLabel(sub));
- $("#count").textContent=`${list.length} ${tr("heroes")}`;
+ $("#count").textContent=heroCount(list.length);
  const groupByGeneration=list.length && (query.trim() || (rarity==="Mythic"&&sub==="All"));
  $("#grid").classList.toggle("grouped",!!groupByGeneration);
  if(groupByGeneration){
   const groups=new Map();
   list.forEach(h=>{const key=h.generation?`gen-${h.generation}`:h.rarity;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(h)});
-  $("#grid").innerHTML=[...groups].map(([key,members])=>`<section class="generation-group"><div class="generation-heading"><div><span class="generation-rule"></span><h3>${key.startsWith("gen-")?`${tr("generation")} ${key.slice(4)}`:tr(key.toLowerCase())}</h3></div><span>${members.length} ${tr("heroes")}</span></div><div class="generation-grid">${members.map(heroCard).join("")}</div></section>`).join("");
+  $("#grid").innerHTML=[...groups].map(([key,members])=>`<section class="generation-group"><div class="generation-heading"><div><span class="generation-rule"></span><h3>${key.startsWith("gen-")?`${tr("generation")} ${key.slice(4)}`:tr(key.toLowerCase())}</h3></div><span>${heroCount(members.length)}</span></div><div class="generation-grid">${members.map(heroCard).join("")}</div></section>`).join("");
  }else $("#grid").innerHTML=list.length?list.map(heroCard).join(""):`<div class="empty">${tr("none")}</div>`;
  $("#grid").querySelectorAll(".card-hit").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
  $("#clearSearch").classList.toggle("hidden",!query);
@@ -178,7 +180,7 @@ function renderTranslatedHeroSections(h,translated){
  $("#modalJump").innerHTML=jumpSections.map(([id,label])=>`<button type="button" data-jump="${id}">${label}</button>`).join("");
  $("#modalJump").querySelectorAll("button").forEach(button=>button.onclick=()=>{const target=$("#hero-"+button.dataset.jump);if(target){target.open=true;target.scrollIntoView({block:"start",behavior:"smooth"});target.querySelector("summary")?.focus({preventScroll:true})}});
  $("#sections").innerHTML=
-  details(tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>`,true,"hero-overview")+
+  details(tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>${h.generation===8?`<p class="level-note">${GEN8_LEVEL_NOTE[lang]}</p>`:""}`,true,"hero-overview")+
   details(SAIF_TIP_LABELS[lang],`<p class="saif-tip">${localized.saifTip?.[0]||SAIF_TIPS[h.id]}</p>`,true)+
   details(tr("sources"),translatedSourcesHTML(h),true)+
   details(tr("stats"),`<div class="stats">${translatedStatsHTML(h)||"—"}</div>`,true)+
