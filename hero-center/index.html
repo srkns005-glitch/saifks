@@ -392,7 +392,7 @@ function renderTranslatedHeroSections(h,translated,untranslated=false){
 function loadTranslatedHeroSections(h){
  renderTranslatedHeroSections(h,buildTranslationPayload(h));
  const guide=window.HERO_OTHER_GUIDES?.[lang];
- if(guide)$("#sections").insertAdjacentHTML("beforeend",`<p class="original-language-note" role="note">${guide.partial}</p>`);
+ if(guide)$("#sections").insertAdjacentHTML("afterbegin",`<p class="original-language-note" role="note">${guide.partial}</p>`);
 }
 
 function listHTML(lines){
