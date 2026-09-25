@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1423">
   <meta name="description" content="دليل أبحاث أكاديمية الحرب في Kingshot، التقنيات الأساسية والمتقدمة وتكاليف تطويرها.">
   <title>أكاديمية الحرب | SaifKS</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="topbar">
@@ -20,14 +20,13 @@
     </section>
     <div class="metrics" aria-label="Research summary"><div><strong>122</strong><span data-t="totalResearch">تقنية في الدليل</span></div><div><strong>30</strong><span data-t="basicResearch">بحثًا أساسيًا</span></div><div><strong>92</strong><span data-t="advancedResearch">بحثًا متقدمًا</span></div><div class="metricsNote"><span class="pulse"></span><span data-t="reference">بيانات مرجعية للعبة KINGSHOT</span></div></div>
     <section id="catalogue" class="catalogue" aria-labelledby="catalogueTitle">
-      <div class="catalogueHeading"><div><div class="sectionKicker" data-t="database">قاعدة البيانات / 01</div><h2 id="catalogueTitle" data-t="catalogue">خريطة الأبحاث</h2><p data-t="catalogueDesc">اختر مسارًا أو ابحث عن تقنية للوصول إلى تفاصيلها.</p></div><div class="segmented" role="group" aria-label="Research tree"><button type="button" class="isActive" data-tree="basic" data-t="basic">الأساسية</button><button type="button" data-tree="advanced" data-t="advanced">المتقدمة</button></div></div>
+      <div class="catalogueHeading"><div><div class="sectionKicker" data-t="database">قاعدة البيانات / 01</div><h2 id="catalogueTitle" data-t="catalogue">خريطة الأبحاث</h2><p data-t="catalogueDesc">اختر مسارًا أو ابحث عن تقنية للوصول إلى تفاصيلها.</p></div><div class="catalogueControls"><div class="segmented" role="group" aria-label="Research tree"><button type="button" class="isActive" data-tree="basic" data-t="basic">الأساسية</button><button type="button" data-tree="advanced" data-t="advanced">المتقدمة</button></div><div id="viewSwitch" class="viewSwitch" role="group" aria-label="View"><button type="button" data-view="map" data-t="mapView">الخريطة</button><button type="button" data-view="list" data-t="listView">القائمة</button></div></div></div>
       <div class="toolbar"><div id="filters" class="filters" role="group" aria-label="Filters"></div><label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search" type="search" autocomplete="off" placeholder="ابحث عن بحث..." aria-label="ابحث عن بحث"></label></div>
       <div class="listMeta"><span id="resultCount" aria-live="polite"></span><span id="dataHint" data-t="basicHint">افتح أي بحث لرؤية تكلفة كل مستوى.</span></div>
-      <div id="results" class="results"></div><button id="showMore" class="showMore" type="button" hidden data-t="showMore">عرض المزيد</button>
+      <div id="map" class="mapHost" aria-live="polite" hidden></div><div id="results" class="results"></div><button id="showMore" class="showMore" type="button" hidden data-t="showMore">عرض المزيد</button>
     </section>
-    <section class="guide"><div><span class="sectionKicker" data-t="pathKicker">مسار التطوير / 02</span><h2 data-t="pathTitle">الطريق إلى جنود المستوى 11</h2><p data-t="pathDesc">ثلاثة تخصصات، ولكل تخصص بحث نهائي لفتح جنوده. افتح المسار المناسب لتتبع الأبحاث والتكاليف.</p></div><div class="pathGrid"><button type="button" data-path="infantry"><span class="pathGlyph">⌑</span><span class="pathName" data-t="infantry">المشاة</span><span class="pathAction" data-t="viewPath">عرض المسار ↗</span></button><button type="button" data-path="cavalry"><span class="pathGlyph">♘</span><span class="pathName" data-t="cavalry">الفرسان</span><span class="pathAction" data-t="viewPath">عرض المسار ↗</span></button><button type="button" data-path="archer"><span class="pathGlyph">⌁</span><span class="pathName" data-t="archer">الرماة</span><span class="pathAction" data-t="viewPath">عرض المسار ↗</span></button></div></section>
     <footer class="sources"><div><strong data-t="sources">المصادر ودقة البيانات</strong><p data-t="sourceNote">تكاليف المستويات الأساسية دقيقة بحسب مجموعة البيانات المذكورة. تكاليف الأبحاث المتقدمة إجماليات تقريبية بعد التقريب في المصدر، ولا تتوفر لها تفاصيل موثوقة لكل مستوى هنا. قد تتغير بيانات اللعبة.</p></div><div class="sourceLinks"><a href="https://kingshotpro.com/data/war-academy.json" target="_blank" rel="noopener">KingshotPro · CC BY 4.0 ↗</a><a href="https://kingshotoptimizer.com/data/advanced-truegold-research/" target="_blank" rel="noopener">Kingshot Optimizer ↗</a><a href="https://kingshot.net/war-academy-research/" target="_blank" rel="noopener">Kingshot.net ↗</a></div></footer>
   </main>
   <dialog id="detail" aria-labelledby="detailTitle"><div class="dialogHead"><div><span id="detailType" class="sectionKicker"></span><h2 id="detailTitle"></h2><p id="detailEffect"></p></div><button type="button" id="closeDetail" class="closeDetail" aria-label="Close">×</button></div><div id="detailBody" class="dialogBody"></div></dialog>
-  <script src="translations.js?v=2"></script><script src="app.js?v=2"></script>
+  <script src="translations.js?v=3"></script><script src="app.js?v=3"></script>
 </body></html>
