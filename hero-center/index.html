@@ -114,8 +114,8 @@ header{padding:15px 0}nav{display:flex;align-items:center;justify-content:space-
 <section class="grid" id="grid"></section>
 </main>
 <footer class="footer"><div class="wrap footer-inner"><a href="https://www.youtube.com/" target="_blank">YouTube ▶</a><strong>SaifKS.com</strong><span>| Built by Saif</span></div></footer>
-<div class="modal hidden" id="modal"><article class="panel">
-<div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn">✕</button></div>
+<div class="modal hidden" id="modal"><article class="panel" role="dialog" aria-modal="true" aria-labelledby="mName">
+<div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn" type="button" aria-label="Close">✕</button></div>
 <div class="scroll" id="scroll"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
 <div class="notice"><b id="noticeTitle">👇 Open the sections below 👇</b><span id="noticeText">Tap any section to view all hero information.</span></div>
 <div class="sections" id="sections"></div></div>
@@ -267,18 +267,30 @@ function listHTML(lines){
  return `<ul class="lines">${lines.map(x=>`<li>${x}</li>`).join("")}</ul>`;
 }
 function details(title,body,open=false){return `<details ${open?"open":""}><summary>${title}</summary><div class="content">${body}</div></details>`}
+let heroReturnFocus=null;
 function openHero(id){
+ heroReturnFocus=document.activeElement;
  current=heroes.find(h=>h.id===id);if(!current)return;
  $("#mImg").src=current.image;$("#mName").textContent=current.name;
  $("#mMeta").innerHTML=`<span class="class-identity"><img class="class-logo" src="${classIconPath(current.class)}" alt="">${tr("class")}: ${clsLabel(current.class)}</span> ${current.generation?` · ${tr("generation")} ${current.generation}`:""} · ${lang==="ar"&&current.rarity==="Mythic"?tr("mythic"):current.rarity}`;
  $("#mStars").textContent=current.rarity==="Mythic"?"★★★★★":current.rarity==="Epic"?"★★★★":"★★★";
  loadTranslatedHeroSections(current);
- $("#modal").classList.remove("hidden");document.body.style.overflow="hidden";$("#scroll").scrollTop=0;
+ $("#modal").classList.remove("hidden");document.body.style.overflow="hidden";$("#scroll").scrollTop=0;$("#closeBtn").focus({preventScroll:true});
 }
-function closeModal(){$("#modal").classList.add("hidden");document.body.style.overflow="";}
+function closeModal(){if($("#modal").classList.contains("hidden"))return;$("#modal").classList.add("hidden");document.body.style.overflow="";if(heroReturnFocus?.isConnected)heroReturnFocus.focus({preventScroll:true});heroReturnFocus=null;}
 $("#closeBtn").onclick=closeModal;$("#backBtn").onclick=closeModal;$("#topBtn").onclick=()=>$("#scroll").scrollTo({top:0,behavior:"smooth"});
 $("#modal").onclick=e=>{if(e.target===$("#modal"))closeModal()};
-$("#langSelect").onchange=e=>{lang=e.target.value;localStorage.setItem("saifks-lang",lang);localStorage.setItem("saifRallyLang",lang);applyLanguage()};
+document.addEventListener("keydown",e=>{
+ const dialog=$("#modal");if(dialog.classList.contains("hidden"))return;
+ if(e.key==="Escape"){e.preventDefault();closeModal();return}
+ if(e.key!=="Tab")return;
+ const focusables=[...dialog.querySelectorAll("button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex='-1'])")].filter(el=>el.getClientRects().length);
+ if(!focusables.length)return;
+ const first=focusables[0],last=focusables[focusables.length-1];
+ if(e.shiftKey&&(document.activeElement===first||!dialog.contains(document.activeElement))){e.preventDefault();last.focus()}
+ else if(!e.shiftKey&&(document.activeElement===last||!dialog.contains(document.activeElement))){e.preventDefault();first.focus()}
+});
+$("#langSelect").onchange=e=>{query="";$("#search").value="";lang=e.target.value;localStorage.setItem("saifks-lang",lang);localStorage.setItem("saifRallyLang",lang);applyLanguage()};
 $("#search").oninput=e=>{query=e.target.value;render()};
 $("#copyBtn").onclick=async()=>{
  if(!current)return;
