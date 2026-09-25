@@ -113,100 +113,65 @@ html[dir="rtl"] .sections>details>summary{padding:16px 18px 16px 56px}
 @media(max-width:365px){.research-brand-copy strong{max-width:98px}.research-home{width:52px}.research-language-control{width:90px}.banner{grid-template-columns:74px minmax(0,1fr)}.banner img{width:74px;height:74px}.banner h2{font-size:1.45rem}}
 @media(prefers-reduced-motion:reduce){html,.scroll{scroll-behavior:auto}.card{transition:none}}
 
-/* Editorial hero index: visual landing, horizontal dossiers, and reading rail */
-body{background:#09151f}
-main.wrap{width:min(1250px,calc(100% - 44px))}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);align-items:center;gap:35px;min-height:390px;margin:26px 0 0;padding:44px clamp(32px,4.5vw,64px);border-radius:24px;background:radial-gradient(circle at 72% 18%,rgba(237,198,123,.19),transparent 43%),linear-gradient(125deg,#10283a 2%,#192b36 68%,#211f2b)}
-.hero:after{display:none}
-.hero-copy{min-width:0;position:relative;z-index:1}
-.hero .eyebrow{margin-bottom:20px;letter-spacing:.25em}
-.hero h1{max-width:530px;font-size:clamp(3.3rem,6vw,5.3rem);line-height:.98}
-.hero>p:last-child{margin:0}
-.hero-copy>p:last-child{max-width:480px;margin:24px 0 0;color:#d8e0e4;line-height:1.75}
-.hero-feature{height:300px;min-width:0;display:grid;grid-template-columns:1.1fr .76fr;gap:12px;transform:rotate(-2deg)}
-.feature-stack{min-height:0;display:grid;grid-template-rows:1fr 1fr;gap:12px}
-.feature-tile{position:relative;min-height:0;overflow:hidden;border:1px solid rgba(242,213,149,.43);border-radius:18px;background:#263f4e;box-shadow:0 18px 32px rgba(0,0,0,.23)}
-.feature-tile img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 24%}
-.feature-tile:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(3,13,21,.82))}
-.feature-tile span{position:absolute;z-index:1;inset-inline-start:15px;bottom:13px;color:#f9e5bc;font-size:.73rem;font-weight:900;letter-spacing:.19em}
-.feature-main span{font-size:1rem}
-.toolbar{margin-top:22px;padding:18px 20px;background:#13283a;border-color:#40586a}
-.summarybar{margin-top:36px;padding-bottom:13px;border-bottom:1px solid #43586a}
-.summarybar h2{font-size:1.9rem}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.card{display:grid;grid-template-columns:170px minmax(0,1fr);grid-template-rows:minmax(176px,auto);min-height:176px;border-radius:15px;background:#142a3c}
-.card img{grid-column:1;grid-row:1;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 22%;border-inline-end:1px solid #415a6a}
-.cardbody{grid-column:2;grid-row:1;align-items:flex-start;padding:19px 19px 16px}
-.card h3{font-size:1.45rem}
-.card .rarity{top:10px;inset-inline-start:10px}
-.card .badges{gap:6px}
-.card .open{width:auto;min-width:145px;margin-top:auto;padding:9px 17px}
-.modal{padding:clamp(0px,2vh,22px) 14px}
-.panel{width:min(1180px,100%);border-radius:18px}
-.scroll{display:grid;grid-template-columns:280px minmax(0,1fr);align-items:start;gap:0;overflow-y:auto;background:#0e1f2f}
-.profile-rail{position:sticky;top:0;align-self:start;min-height:100%;border-inline-end:1px solid #3a5364;background:#122a3d}
-.banner{display:block;padding:25px 21px 19px;border:0;background:linear-gradient(180deg,#1d3c52,#132b3f)}
-.banner img{width:100%;height:auto;aspect-ratio:1/1;max-height:275px;object-position:center 22%;border-radius:14px}
-.banner h2{margin:19px 0 12px;font-size:2rem}
-.banner p{margin:10px 0;font-size:.89rem}
-.class-identity{border-radius:8px}
-.modal-jump{display:flex;flex-direction:column;gap:7px;padding:15px 19px 24px;border:0;background:transparent;overflow:visible}
-.modal-jump button{width:100%;min-height:42px;text-align:start;background:#203a4e;border:1px solid #4b6375;border-radius:9px;white-space:normal;line-height:1.3}
-.sections{display:block;min-width:0;padding:26px clamp(18px,3vw,38px) 60px}
-.sections>details,.original-language-note{margin:0 0 12px}
-.sections>details>summary{font-size:1.02rem}
-.sections>details[open]{box-shadow:0 10px 22px rgba(0,0,0,.10)}
-.content{font-size:.99rem;line-height:1.85}
-.arabic-skills{gap:13px}
-@media(max-width:1000px){
-.hero{grid-template-columns:1fr .75fr;gap:22px;min-height:330px}
-.hero-feature{height:235px}
-.card{grid-template-columns:132px minmax(0,1fr);min-height:162px}
-.cardbody{padding:15px}
-.card h3{font-size:1.25rem}
-.card .open{min-width:0;width:100%}
-.scroll{grid-template-columns:230px minmax(0,1fr)}
-.banner{padding:19px 15px}
-.banner h2{font-size:1.55rem}
-}
-@media(max-width:720px){
-main.wrap{width:calc(100% - 24px)}
-.hero{grid-template-columns:1fr;gap:26px;min-height:0;margin-top:13px;padding:31px 23px 23px}
-.hero h1{font-size:clamp(2.8rem,11vw,4rem)}
-.hero-copy>p:last-child{margin-top:14px;font-size:.94rem}
-.hero-feature{height:153px;width:100%;grid-template-columns:1.2fr 1fr;gap:8px;transform:none}
-.feature-stack{grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:8px}
-.feature-tile{border-radius:11px}
-.feature-tile span{font-size:.64rem;bottom:8px;inset-inline-start:10px}
-.feature-main span{font-size:.75rem}
-.grid{grid-template-columns:1fr;gap:10px}
-.card{grid-template-columns:120px minmax(0,1fr);grid-template-rows:minmax(145px,auto);min-height:145px}
-.cardbody{padding:13px}
+/* Research Center visual language */
+:root{color-scheme:dark;--bg:#07101d;--surface:#0d1828;--surface-2:#111f33;--line:#243a58;--text:#f5f8fc;--muted:#91a4bd;--gold:#ffc857;--green:#45d3a2}
+html,body{background:#07101d;color:var(--text)}
+.research-header{background:rgba(7,16,29,.94);border-bottom-color:#243a58}
+.research-home,.research-language-control{background:#111f33;border-color:#2a4563}
+.research-home:hover,.research-language-control:hover{border-color:#5aa9ff}
+.hero{margin:24px 0 0;padding:32px clamp(23px,4vw,48px);border-radius:18px;border:1px solid #29405c;background:linear-gradient(125deg,#101e31,#0d1828);box-shadow:none}
+.hero::after{display:none}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;letter-spacing:-.04em}
+.hero .eyebrow{color:#45d3a2;letter-spacing:.13em}
+.hero>p:last-child{max-width:700px;color:#aebfd0}
+.toolbar{margin-top:16px;padding:15px 17px;border-color:#29405c;border-radius:16px;background:#0d1828;box-shadow:none}
+.search{background:#091625;border-color:#34506f}
+.search:focus{border-color:#45d3a2;box-shadow:0 0 0 3px rgba(69,211,162,.13)}
+.clear-search{border-color:#34506f;background:#14253b}
+.tab,.subtab{border-color:#2c4663;border-radius:9px;background:#13243a;color:#c5d4e3}
+.tab.active{background:#45d3a2;border-color:#45d3a2;color:#08291f}
+.subtab.active{background:#174c54;border-color:#45d3a2;color:#d9fff3}
+.summarybar{margin:30px 1px 14px;align-items:center}
+.summarybar h2{font-size:clamp(1.3rem,2.5vw,1.7rem)}
+.summarybar span{color:#91a4bd}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{border:1px solid #29405c;border-radius:14px;background:#0d1b2d;box-shadow:none}
+.card:hover,.card:focus-within{transform:translateY(-2px);border-color:#4e7f9d;box-shadow:0 12px 26px rgba(0,0,0,.18)}
+.card img{aspect-ratio:1/1;object-position:center 24%;background:#13283e}
+.cardbody{padding:14px;gap:9px}
 .card h3{font-size:1.2rem}
-.card .open{min-height:38px}
-.modal{padding:0}
-.panel{height:100dvh;border:0;border-radius:0}
-.scroll{display:block}
-.profile-rail{position:relative;top:auto;min-height:0;border-inline-end:0;border-bottom:1px solid #3a5364}
-.banner{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:center;gap:14px;padding:18px 15px;background:linear-gradient(110deg,#1d3c52,#132b3f)}
-.banner img{width:92px;height:92px;aspect-ratio:1;border-radius:12px}
-.banner h2{margin:0 0 8px;font-size:1.6rem}
-.banner p{margin:4px 0;font-size:.83rem}
-.modal-jump{flex-direction:row;gap:8px;overflow-x:auto;padding:10px 12px 12px}
-.modal-jump button{width:auto;min-width:max-content;min-height:38px;white-space:nowrap;text-align:center;padding:8px 12px;font-size:.8rem}
-.sections{padding:16px 12px 35px}
-}
-@media(max-width:390px){
-.hero{padding:26px 16px 17px}
-.hero-feature{height:125px}
-.card{grid-template-columns:104px minmax(0,1fr)}
-.cardbody{padding:10px}
-.card h3{font-size:1.07rem}
-.badge{font-size:.64rem}
-.banner{grid-template-columns:75px minmax(0,1fr)}
-.banner img{width:75px;height:75px}
-.banner h2{font-size:1.4rem}
-}
+.badge{background:#132740;border-color:#314b68;color:#c5d4e3}
+.badge.rarity{background:rgba(9,21,34,.92);border-color:#57677b}
+.open{border-color:#35b98e;background:#45d3a2;color:#09281f}
+.open:hover{background:#79e8c0}
+.modal{background:rgba(2,8,17,.8);backdrop-filter:blur(7px)}
+.panel{border:1px solid #2e4763;border-radius:16px;background:#0d1828;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.topbar,.bottom{background:#0b1829;border-color:#273f59}
+.back,.x,.topbtn{background:#14283d;border-color:#36536e}
+.scroll{background:#0d1828}
+.banner{padding:23px 28px;background:#111f33;border-bottom:1px solid #2b4561}
+.banner img{border:2px solid #496984;border-radius:14px;box-shadow:none}
+.banner h2{font-size:clamp(1.8rem,3.3vw,2.5rem)}
+.class-identity{background:#172b42;border-color:#3b5771}
+.modal-jump{background:#0e1b2e;border-color:#29405c}
+.modal-jump button{background:#14283e;border-color:#34516d}
+.modal-jump button:hover{border-color:#45d3a2;color:#45d3a2}
+.sections>details{background:#111f33;border-color:#2b4561;border-radius:12px}
+.sections>details[open]{border-color:#426080;box-shadow:none}
+.sections>details>summary{color:#f0f5fa}
+.sections>details>summary::after{background:#183149;border-color:#3b5a77}
+.sections>details[open]>summary::after{background:#19574b;border-color:#45d3a2}
+.content{color:#cfdeeb}
+.stat,.sourcechips span{background:#142840;border-color:#2c4968}
+.stat small{color:#9eb4c9}
+.saif-tip{background:#18352f;border-color:#45d3a2;color:#e3f7f0}
+.arabic-skill{background:#14263b;border-color:#2d4b67}
+.arabic-skill h4{color:#b8e8d9}
+.arabic-values li{background:#162d44;border-color:#365570}
+.copy{background:#208563;border-color:#45d3a2}
+.research-footer{color:#91a4bd}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero{margin-top:12px;padding:26px 19px}.hero h1{font-size:2.3rem}.cardbody{padding:11px}.card h3{font-size:1.07rem}.banner{padding:17px 15px}.panel{border:0;border-radius:0}}
 </style>
 <link rel="icon" href="../logo.png">
 
@@ -220,7 +185,7 @@ main.wrap{width:calc(100% - 24px)}
 <body>
 <header class="research-header"><div class="research-header-inner"><a class="research-brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home"><img class="logo" src="../logo.png" alt="SaifKS logo"><span class="research-brand-copy"><strong id="brandTitle">Hero Center</strong><small>SaifKS.com</small></span></a><div class="research-header-actions"><a class="research-home" href="../index.html" id="homeBtn">Home</a><div class="research-language-control"><select class="research-language-select" id="langSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></div></div></header>
 <main class="wrap">
-<section class="hero"><div class="hero-copy"><p class="eyebrow">KINGSHOT · SAIFKS</p><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></div><div class="hero-feature" aria-hidden="true"><div class="feature-tile feature-main"><img src="assets/heroes/helga.webp" alt=""><span>HELGA</span></div><div class="feature-stack"><div class="feature-tile"><img src="assets/heroes/jabel.webp" alt=""><span>JABEL</span></div><div class="feature-tile"><img src="assets/heroes/saul.webp" alt=""><span>SAUL</span></div></div></div></section>
+<section class="hero"><p class="eyebrow">KINGSHOT · SAIFKS</p><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></section>
 <section class="toolbar">
 <div class="search-wrap"><input id="search" class="search" type="search" autocomplete="off" placeholder="Search heroes..." aria-label="Search heroes"><button class="clear-search hidden" id="clearSearch" type="button" aria-label="Clear search">✕</button></div>
 <div class="tabs" id="rarityTabs"></div><div class="subtabs" id="subTabs"></div>
@@ -231,7 +196,9 @@ main.wrap{width:calc(100% - 24px)}
 <footer class="research-footer" aria-label="SaifKS footer"><div class="research-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="research-footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
 <div class="modal hidden" id="modal"><article class="panel" role="dialog" aria-modal="true" aria-labelledby="mName">
 <div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn" type="button" aria-label="Close">✕</button></div>
-<div class="scroll" id="scroll"><aside class="profile-rail"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div><nav class="modal-jump" id="modalJump" aria-label="Hero sections"></nav></aside><div class="sections" id="sections"></div></div>
+<div class="scroll" id="scroll"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
+
+<nav class="modal-jump" id="modalJump" aria-label="Hero sections"></nav><div class="sections" id="sections"></div></div>
 <div class="bottom"><button class="topbtn" id="topBtn">↑ Top</button><button class="copy" id="copyBtn">Copy Hero Summary</button></div>
 </article></div>
 <script src="translations-local.js"></script>
