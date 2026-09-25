@@ -179,6 +179,56 @@ html[dir="rtl"] .modal summary:after{right:auto;left:14px}
 .english-skill-note{margin:0 0 10px;color:#f2d48c;font-size:.9rem}.sections [lang="en"][dir="ltr"]{text-align:left;unicode-bidi:isolate}
 
 .arabic-skills{display:grid;gap:12px}.arabic-skill{border:1px solid #334d62;border-radius:13px;background:#0c2639;padding:14px 16px}.arabic-skill h4{margin:0 0 9px;color:#f6d16b;font-size:1.03rem;text-align:start}.arabic-skill p{margin:0;line-height:1.7}.arabic-values{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:10px 0 0}.arabic-values li{padding:7px 10px;border:1px solid #31516a;border-radius:9px;background:#102e44;font-size:.84rem;line-height:1.5}.original-skill{margin:12px 0 0;border:0;background:none}.original-skill summary{padding:4px 0;color:#aabccc;font-size:.8rem}.original-skill summary:after{display:none}.original-skill p{padding:5px 0;color:#acbdcc;font-size:.85rem}
+
+/* Hero Center · refreshed catalog and dossier */
+:root{--bg:#08121f;--panel:#101f31;--panel2:#182a3e;--line:#32455b;--text:#f6f5f1;--muted:#bac6d2;--gold:#eac882}
+html,body{background:#08121f;color:var(--text)}
+main.wrap{width:min(1180px,calc(100% - 36px))}
+.hero{margin:22px 0 0;padding:clamp(34px,6vw,72px) clamp(23px,5vw,64px);border:1px solid #34465b;border-radius:28px;background:radial-gradient(circle at 85% 28%,rgba(214,159,70,.22),transparent 34%),linear-gradient(125deg,#16314a,#101e30 66%,#1b2030);box-shadow:0 25px 60px rgba(0,0,0,.17);overflow:hidden}
+.hero:after{content:"✦";position:absolute;inset-inline-end:6%;top:10%;font-size:clamp(90px,19vw,220px);line-height:1;color:rgba(236,197,116,.085);pointer-events:none}
+.hero .eyebrow{color:#f0ce86;letter-spacing:.23em}
+.hero h1{max-width:650px;font-size:clamp(2.5rem,6vw,4.7rem);line-height:1.02}
+.hero>p:last-child{max-width:570px;margin-top:20px;color:#d2dbe4;font-size:clamp(.98rem,1.5vw,1.12rem);line-height:1.75}
+.toolbar{margin:22px 0 0;padding:18px 19px;border-radius:20px;background:#102237;border:1px solid #344a61;box-shadow:none}
+.search{min-height:54px;border-radius:12px;border-color:#486077;background:#0a1929;padding-inline:18px;font-size:1rem}
+.tabs{padding-top:16px}.subtabs{padding-top:12px}
+.tab,.subtab{border-radius:10px;min-height:41px;background:#182c40;border-color:#395068;color:#d9e1e9;font-weight:750}
+.tab.active{background:#eac882;border-color:#eac882;color:#172034}.subtab.active{background:#315273;border-color:#6284a4}
+.summarybar{margin:38px 0 18px;padding-inline:2px}.summarybar h2{font-size:clamp(1.4rem,3vw,2rem)}.summarybar span{color:#c3cdd6}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-bottom:60px}
+.card{border:1px solid #35495e;border-radius:18px;background:#112336;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);border-color:#e0bb70;box-shadow:0 20px 38px rgba(0,0,0,.24)}
+.card img{aspect-ratio:1/1;object-fit:cover;object-position:center;background:radial-gradient(circle at 50% 35%,#405b72,#1b2b3d 70%)}
+.cardbody{padding:17px;gap:9px}.card h3{font-size:1.3rem;margin:0}.badge{font-size:.72rem;border-color:#41576b;background:#192e42;color:#e3eaf1}
+.card .rarity{inset-inline-start:12px;top:12px;border-color:rgba(255,255,255,.15);background:rgba(10,22,34,.85);padding:7px 11px}
+.open{margin-top:auto;transform:none;border:1px solid #a98546;background:#dbba77;color:#152030;min-height:44px;font-weight:850}
+.open:hover{background:#f2d392}
+.modal{background:rgba(2,8,15,.85);padding:clamp(0px,2.5vh,28px) 16px;backdrop-filter:blur(9px)}
+.modal .panel{width:min(1020px,100%);height:100%;max-height:100%;border:1px solid #45546a;border-radius:22px;background:#0c1929;overflow:hidden;box-shadow:0 35px 90px rgba(0,0,0,.5)}
+.topbar{padding:12px 19px;background:#0e1d2f;border-bottom:1px solid #31445a}.back,.x{background:#1c3148;border-color:#48627a;color:#f5f7f8}.x{background:#314054;width:43px}
+.scroll{background:#0c1929}
+.banner{grid-template-columns:150px minmax(0,1fr);gap:24px;padding:26px 29px;background:radial-gradient(circle at 85% 0%,rgba(227,178,88,.22),transparent 42%),linear-gradient(120deg,#203b55,#151f30);border-bottom:1px solid #3b5063}
+.banner img{width:150px;height:150px;border-radius:20px;border:3px solid #e6c887;box-shadow:0 15px 30px rgba(0,0,0,.25)}
+.banner h2{font-size:clamp(2.1rem,4vw,3rem);line-height:1.1}
+.banner p{line-height:1.7}.class-identity{background:#192c40}
+.sections{padding:24px 28px 40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+.sections>details{margin:0;border:1px solid #344b62;border-radius:16px;background:#12263a;min-width:0}
+.sections>details:nth-of-type(n+5){grid-column:1/-1}
+.sections>details[open]{box-shadow:0 12px 24px rgba(0,0,0,.09)}
+.sections>details>summary{color:#f1d493;font-size:1rem;padding:17px 55px 17px 18px;line-height:1.5}
+html[dir="rtl"] .sections>details>summary{padding:17px 18px 17px 55px}
+.sections .content{padding:2px 18px 20px;line-height:1.8;color:#e1e8ef;overflow-wrap:anywhere}
+.sections .content>p{margin:0}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat{background:#1c3249;border-color:#425b73}.stat small{color:#bdcede}
+.saif-tip{background:#203547;border-color:#eac882}
+.lines li{margin:10px 0}.original-language-note{grid-column:1/-1;margin:1px 0;color:#e7c787;background:#1b3042;border:1px solid #5f5842;border-radius:12px;padding:12px 16px;line-height:1.6}
+.bottom{grid-template-columns:1fr auto;gap:10px;padding:12px 19px calc(12px + env(safe-area-inset-bottom));background:#0e1d2f;border-top-color:#31445a}
+.copy{grid-column:1;grid-row:1;background:#1d8a64;border-color:#36a77f}.topbtn{grid-column:2;grid-row:1;background:#213b54;border-color:#48627a;padding:0 18px}
+.research-footer{margin-top:10px}
+@media(max-width:860px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sections{grid-template-columns:1fr}.sections>details:nth-of-type(n+5){grid-column:auto}}
+@media(max-width:640px){main.wrap{width:calc(100% - 24px)}.hero{margin-top:12px;padding:32px 22px;border-radius:18px}.hero:after{opacity:.5}.toolbar{margin-top:14px;padding:12px}.summarybar{margin:27px 0 13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card img{aspect-ratio:1/1}.cardbody{padding:12px;gap:7px}.card h3{font-size:1.08rem}.badge{font-size:.68rem}.modal{padding:0}.modal .panel{width:100%;height:100dvh;border:0;border-radius:0}.topbar{padding:calc(8px + env(safe-area-inset-top)) 12px 8px}.banner{grid-template-columns:94px minmax(0,1fr);gap:15px;padding:20px 16px}.banner img{width:94px;height:94px;border-radius:16px}.banner h2{font-size:1.75rem}.banner p{font-size:.86rem}.sections{padding:15px 12px 28px;gap:10px}.sections>details>summary{font-size:.96rem}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom{padding:9px 12px calc(9px + env(safe-area-inset-bottom))}.topbtn{padding:0 10px}}
+@media(max-width:390px){.banner{grid-template-columns:74px minmax(0,1fr)}.banner img{width:74px;height:74px}.banner h2{font-size:1.5rem}.card .class-badge .class-logo{width:18px;height:18px;flex-basis:18px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 <link rel="icon" href="../logo.png">
 
@@ -204,7 +254,7 @@ html[dir="rtl"] .modal summary:after{right:auto;left:14px}
 <div class="modal hidden" id="modal"><article class="panel" role="dialog" aria-modal="true" aria-labelledby="mName">
 <div class="topbar"><button class="back" id="backBtn">← Back to Heroes</button><button class="x" id="closeBtn" type="button" aria-label="Close">✕</button></div>
 <div class="scroll" id="scroll"><div class="banner"><img id="mImg"><div><h2 id="mName"></h2><p id="mMeta"></p><p id="mStars"></p></div></div>
-<div class="notice"><b id="noticeTitle">👇 Open the sections below 👇</b><span id="noticeText">Tap any section to view all hero information.</span></div>
+
 <div class="sections" id="sections"></div></div>
 <div class="bottom"><button class="topbtn" id="topBtn">↑ Top</button><button class="copy" id="copyBtn">Copy Hero Summary</button></div>
 </article></div>
@@ -249,7 +299,7 @@ function applyLanguage(){
  const url=new URL(location.href);if(url.searchParams.get("lang")!==lang){url.searchParams.set("lang",lang);history.replaceState(null,"",url)}
  $("#brandTitle").textContent=tr("title");$("#homeBtn").textContent=tr("home");$("#homeBtn").title=tr("home");$("#homeBtn").setAttribute("aria-label",tr("home"));$("#langSelect").value=lang;
  $("#title").textContent=tr("title");$("#subtitle").textContent=tr("subtitle");$("#search").placeholder=tr("search");
- $("#backBtn").textContent=tr("back");$("#closeBtn").setAttribute("aria-label",tr("back"));$("#noticeTitle").textContent=tr("noticeTitle");$("#noticeText").textContent=tr("noticeText");$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
+ $("#backBtn").textContent=tr("back");$("#closeBtn").setAttribute("aria-label",tr("back"));$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
  syncHomeLanguageLink();renderTabs();render();
 
  if(current&&!$("#modal").classList.contains("hidden"))loadTranslatedHeroSections(current);
@@ -281,64 +331,13 @@ function render(){
  $("#grid").querySelectorAll(".open").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
 }
 
-const TRANSLATION_CACHE_VERSION="saifks-hero-translation-v5";
-const translationMemory=new Map();
 function localizedSource(source){return lang==="en"?source:(SOURCE_TRANSLATIONS[source]?.[lang]||source)}
 function statLabel(key){
  const normalized=key.toLowerCase().replace(/\s+/g,"");
  const map={attack:"attack",defense:"defense",health:"health",power:"power",escortattack:"escortAttack",escortdefense:"escortDefense",escorthealth:"escortHealth",heroattack:"heroAttack",herodefense:"heroDefense",herohealth:"heroHealth"};
  return tr(map[normalized]||key);
 }
-function translationCacheKey(heroId,targetLang){return `${TRANSLATION_CACHE_VERSION}:${heroId}:${targetLang}`}
-function getCachedHeroTranslation(heroId,targetLang){
- const key=translationCacheKey(heroId,targetLang);
- if(translationMemory.has(key))return translationMemory.get(key);
- try{const saved=localStorage.getItem(key);if(saved){const parsed=JSON.parse(saved);translationMemory.set(key,parsed);return parsed}}catch{}
- return null;
-}
-function setCachedHeroTranslation(heroId,targetLang,value){
- const key=translationCacheKey(heroId,targetLang);translationMemory.set(key,value);
- try{localStorage.setItem(key,JSON.stringify(value))}catch{}
-}
 function buildTranslationPayload(h){return {overview:[h.overview||""],conquest:h.conquest||[],expedition:h.expedition||[],gear:h.rarity==="Mythic"?(h.gear||[]):[],saifTip:[SAIF_TIPS[h.id]]}}
-function flattenPayload(payload){const rows=[];for(const section of ["overview","conquest","expedition","gear","saifTip"])payload[section].forEach((text,index)=>rows.push({section,index,text}));return rows}
-function rebuildPayload(rows,translated){const result={overview:[],conquest:[],expedition:[],gear:[],saifTip:[]};rows.forEach((row,index)=>result[row.section][row.index]=translated[index]||row.text);return result}
-async function translateTextBatch(texts,targetLang){
- if(targetLang==="en")return texts;
- const translated=[];
- for(let index=0;index<texts.length;index+=4){
-  const batch=texts.slice(index,index+4);
-  let parts;
-  try{
-   const response=await fetch("https://saifks.com/.netlify/functions/hero-translate",{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({texts:batch,targetLang}),cache:"no-store"
-   });
-   if(!response.ok)throw new Error("Translation HTTP "+response.status);
-   const data=await response.json();
-   if(!Array.isArray(data.translated)||data.translated.length!==batch.length)throw new Error("Invalid translation response");
-   parts=data.translated;
-  }catch(proxyError){
-   parts=await Promise.all(batch.map(async text=>{
-    if(!text.trim())return text;
-    const url="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl="+encodeURIComponent(targetLang)+"&dt=t&q="+encodeURIComponent(text);
-    const response=await fetch(url,{mode:"cors",cache:"no-store"});
-    if(!response.ok)throw new Error("Translation unavailable");
-    const data=await response.json();
-    return (data?.[0]||[]).map(part=>part?.[0]||"").join("")||text;
-   }));
-  }
-  translated.push(...parts);
- }
- return translated;
-}
-async function getFullHeroTranslation(h,targetLang,force=false){
- if(targetLang==="en")return buildTranslationPayload(h);
- if(!force){const cached=getCachedHeroTranslation(h.id,targetLang);if(cached)return cached}
- const payload=buildTranslationPayload(h),rows=flattenPayload(payload);
- const translated=await translateTextBatch(rows.map(row=>row.text),targetLang);
- const rebuilt=rebuildPayload(rows,translated);setCachedHeroTranslation(h.id,targetLang,rebuilt);return rebuilt;
-}
 function localizedSkillLine(line){
  if(lang!=="ar")return line;
  const terms=window.HERO_LOCAL_TRANSLATIONS?.ar?.terms||{};
@@ -390,26 +389,10 @@ function renderTranslatedHeroSections(h,translated,untranslated=false){
   details("🛡️ "+tr("expedition"),skillLines("expedition",localized.expedition))+
   gearSection;
 }
-async function loadTranslatedHeroSections(h,force=false){
- const requestedLang=lang;
- if(requestedLang==="en"){renderTranslatedHeroSections(h,buildTranslationPayload(h));return}
- if(requestedLang==="ar"){renderTranslatedHeroSections(h,buildTranslationPayload(h),true);return}
- const cached=force?null:getCachedHeroTranslation(h.id,requestedLang);
- renderTranslatedHeroSections(h,cached||buildTranslationPayload(h),!cached);
- if(cached)return;
- $("#sections").insertAdjacentHTML("afterbegin",`<div class="translation-loading" role="status">${tr("loadingTranslation")}</div>`);
- try{
-  const translated=await getFullHeroTranslation(h,requestedLang,force);
-  if(current?.id!==h.id||lang!==requestedLang)return;
-  renderTranslatedHeroSections(h,translated);
- }catch(error){
-  console.error(error);
-  if(current?.id!==h.id||lang!==requestedLang)return;
-  $("#sections").querySelector(".translation-loading")?.remove();
-  const guide=window.HERO_OTHER_GUIDES?.[requestedLang];
-  if(guide)$("#sections").insertAdjacentHTML("afterbegin",`<div class="translation-loading" role="status">${guide.partial}</div>`);
-  else{$("#sections").insertAdjacentHTML("afterbegin",`<button class="translation-error" id="retryTranslation" type="button">${tr("translationError")}</button>`);$("#retryTranslation").onclick=()=>loadTranslatedHeroSections(h,true)}
- }
+function loadTranslatedHeroSections(h){
+ renderTranslatedHeroSections(h,buildTranslationPayload(h));
+ const guide=window.HERO_OTHER_GUIDES?.[lang];
+ if(guide)$("#sections").insertAdjacentHTML("beforeend",`<p class="original-language-note" role="note">${guide.partial}</p>`);
 }
 
 function listHTML(lines){
