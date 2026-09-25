@@ -896,6 +896,8 @@ const saveFavorites=()=>localStorage.setItem(EVENT_FAVORITES_KEY,JSON.stringify(
 const savePrep=()=>localStorage.setItem(EVENT_PREP_KEY,JSON.stringify(prepChecks));
 
 const preparationLabels={"en":{"Gems":"Gems","Speedups":"Speedups","Hero Shards":"Hero Shards","Widgets":"Widgets","Resources":"Resources","empty":"No special preparation required."},"ar":{"Gems":"الجواهر","Speedups":"التسريعات","Hero Shards":"شظايا الأبطال","Widgets":"القطع الخاصة","Resources":"الموارد","empty":"لا يحتاج تجهيزًا خاصًا."},"fr":{"Gems":"Gemmes","Speedups":"Accélérations","Hero Shards":"Fragments de héros","Widgets":"Composants exclusifs","Resources":"Ressources","empty":"Aucune préparation particulière requise."},"de":{"Gems":"Edelsteine","Speedups":"Beschleuniger","Hero Shards":"Heldensplitter","Widgets":"Exklusive Komponenten","Resources":"Ressourcen","empty":"Keine besondere Vorbereitung erforderlich."},"es":{"Gems":"Gemas","Speedups":"Aceleradores","Hero Shards":"Fragmentos de héroe","Widgets":"Componentes exclusivos","Resources":"Recursos","empty":"No se requiere preparación especial."},"tr":{"Gems":"Mücevherler","Speedups":"Hızlandırmalar","Hero Shards":"Kahraman Parçaları","Widgets":"Özel Parçalar","Resources":"Kaynaklar","empty":"Özel bir hazırlık gerekmez."},"ko":{"Gems":"보석","Speedups":"가속","Hero Shards":"영웅 조각","Widgets":"전용 부품","Resources":"자원","empty":"특별한 준비가 필요하지 않습니다."},"ja":{"Gems":"ジェム","Speedups":"加速","Hero Shards":"英雄の欠片","Widgets":"専用部品","Resources":"資源","empty":"特別な準備は必要ありません。"},"zh":{"Gems":"宝石","Speedups":"加速","Hero Shards":"英雄碎片","Widgets":"专属组件","Resources":"资源","empty":"无需特殊准备。"}};
+const eventChromeLabels={"en":["min","Language","Close event"],"ar":["دقيقة","اللغة","إغلاق الحدث"],"fr":["min","Langue","Fermer l’événement"],"de":["Min.","Sprache","Event schließen"],"es":["min","Idioma","Cerrar evento"],"tr":["dk","Dil","Etkinliği kapat"],"ko":["분","언어","이벤트 닫기"],"ja":["分","言語","イベントを閉じる"],"zh":["分钟","语言","关闭活动"]};
+const localizedReadingTime=value=>String(value).replace(/\bmin\b/g,(eventChromeLabels[lang]||eventChromeLabels.en)[0]);
 const legacyArabicTitles={"arcane-trove":"الكنز الغامض","burst-of-life":"نبضة الحياة","city-development":"تطوير المدينة","defeat-nearby-beasts":"هزيمة الوحوش القريبة","develop-new-tech":"تطوير تقنية جديدة","golden-glaives":"الرماح الذهبية","grow-your-heroes":"تطوير أبطالك","hero-rally":"حشد الأبطال","imperial-consortium":"الائتلاف الإمبراطوري","moonlit-promise":"الوعد تحت ضوء القمر","oasis-and-beyond":"الواحة وما بعدها","officer-project":"مشروع الضباط","path-of-growth":"طريق النمو","plan-your-city":"خطط لمدينتك","power-up":"زيادة القوة","stand-of-arms":"الاستعداد للسلاح","steel-edge":"النصل الفولاذي","treasure-cove":"خليج الكنوز","war-preparation-event":"حدث الاستعداد للحرب","working-overtime":"العمل الإضافي"};
 const legacyArabicFields={"tags":{"Paid":"مدفوع","Deal":"عرض","5 Days":"5 أيام","Growth":"النمو","Early Game":"بداية اللعبة","City Skin":"مظهر المدينة","Gen 1":"الجيل الأول","Ranking":"التصنيف","PvE":"ضد الوحوش","Beasts":"الوحوش","Terrors":"الإرهاب","Research":"البحث","Intel":"المهام الاستخبارية","Exchange":"الاستبدال","Hero":"الأبطال","Shards":"الشظايا","Pass":"التذكرة","Biweekly":"كل أسبوعين","Packs":"الباقات","2 Days":"يومان","Ramadan":"رمضان","Seasonal":"موسمي","Login":"تسجيل الدخول","30 Days":"30 يومًا","Beginner":"للمبتدئين","Gear":"العتاد","7 Days":"7 أيام","Missions":"المهام","City":"المدينة","Power":"القوة","Charms":"التمائم","Gathering":"الجمع","Resources":"الموارد","Free Chest":"صندوق مجاني","War Prep":"الاستعداد للحرب"},"difficulty":{"Easy":"سهل","Intermediate":"متوسط"},"mode":{"Paid Deal":"عرض مدفوع","Power Growth":"نمو القوة","City Growth":"نمو المدينة","PvE Milestones":"مراحل قتال الوحوش","Research Growth":"تطوير الأبحاث","Intel Exchange":"استبدال مكافآت المهام الاستخبارية","Hero Growth":"تطوير الأبطال","Progression Pass":"تذكرة التقدم","Paid Pack Ladder":"باقات مدفوعة متدرجة","Seasonal PvE":"حدث موسمي لقتال الوحوش","Login Rewards":"مكافآت تسجيل الدخول","Growth Ranking":"تصنيف التطوير","Beginner Missions":"مهام المبتدئين","City Planning":"تخطيط المدينة","Gear Growth":"تطوير العتاد","Resource Gathering":"جمع الموارد","War Growth":"التطوير للحرب","Growth Missions":"مهام التطوير"},"generation":{"Server-Dependent":"بحسب عمر المملكة","Early Kingdom":"بداية المملكة","Gen 1":"الجيل الأول","All Kingdoms":"جميع الممالك","Generation-Based":"بحسب جيل الأبطال","New Account":"حساب جديد","New Server":"مملكة جديدة"},"heroes":{"Featured Generation Hero":"بطل الجيل المميز","Gathering Heroes":"أبطال الجمع"}};
 function eventText(e){
@@ -969,7 +971,7 @@ function render(){
           <span class="stat-chip gold">★ ${e.rating}/5</span>
           <span class="stat-chip">🛡 ${t(x.difficulty)}</span>
           <span class="stat-chip">🌱 F2P ${e.f2p}/5</span>
-          <span class="stat-chip">⏱ ${e.readingTime}</span>
+          <span class="stat-chip">⏱ ${localizedReadingTime(e.readingTime)}</span>
         </div>
         <p>${x.summary}</p>
         <button class="open" data-id="${e.id}">${t("View Guide →")}</button>
@@ -989,7 +991,7 @@ function openEvent(id){
   q("#mTitle").textContent=x.title;
   q("#mDuration").textContent=x.duration;
   q("#mFrequency").textContent=x.frequency;
-  q("#mF2p").textContent=`⏱ ${t("Reading Time")}: ${e.readingTime}`;
+  q("#mF2p").textContent=`⏱ ${t("Reading Time")}: ${localizedReadingTime(e.readingTime)}`;
   q("#mSummary").textContent=x.summary;
   q("#mRewards").textContent=x.rewards;
   q("#mTips").innerHTML=x.tips.map(v=>`<li>${v}</li>`).join("");
@@ -1073,7 +1075,7 @@ eventTopBtn?.addEventListener("click",()=>{
   else if(scroller)scroller.scrollTop=0;
 });
 
-function applyLang(){document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
+function applyLang(){document.title=t("Event Center")+" | SaifKS";q("#lang").setAttribute("aria-label",(eventChromeLabels[lang]||eventChromeLabels.en)[1]);q("#quickCloseBtn").setAttribute("aria-label",(eventChromeLabels[lang]||eventChromeLabels.en)[2]);document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
 q(".brand p").textContent="SaifKS.com";q("#soloTab .tab-label").textContent=t("Solo Events");q("#allianceTab .tab-label").textContent=t("Alliance Events");
 search.placeholder=t("Search events...");
 q("#empty").textContent=t("No events found");
