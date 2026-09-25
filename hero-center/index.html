@@ -174,6 +174,7 @@ html,body{background:#07101d;color:var(--text)}
 @media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero{margin-top:12px;padding:26px 19px}.hero h1{font-size:2.3rem}.cardbody{padding:11px}.card h3{font-size:1.07rem}.banner{padding:17px 15px}.panel{border:0;border-radius:0}}
 </style>
 <link rel="icon" href="../logo.png">
+<link rel="stylesheet" href="hero-center.css">
 
 <style id="saifks-unified-brand-style">
 .saifks-brand-logo,.brand img.logo,img.brand-mark{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
@@ -185,12 +186,12 @@ html,body{background:#07101d;color:var(--text)}
 <body>
 <header class="research-header"><div class="research-header-inner"><a class="research-brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home"><img class="logo" src="../logo.png" alt="SaifKS logo"><span class="research-brand-copy"><strong id="brandTitle">Hero Center</strong><small>SaifKS.com</small></span></a><div class="research-header-actions"><a class="research-home" href="../index.html" id="homeBtn">Home</a><div class="research-language-control"><select class="research-language-select" id="langSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></div></div></div></header>
 <main class="wrap">
-<section class="hero"><p class="eyebrow">KINGSHOT · SAIFKS</p><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></section>
+<section class="hero"><div class="hero-content"><p class="eyebrow"><span class="eyebrow-line"></span> KINGSHOT · SAIFKS</p><h1 id="title">Hero Center</h1><p id="subtitle">Explore Mythic heroes by generation, and browse Epic and Rare heroes by class.</p></div><div class="hero-art" aria-hidden="true"><span>✦</span><span>HERO<br>CENTER</span><i>01 / DATABASE</i></div></section>
 <section class="toolbar">
 <div class="search-wrap"><input id="search" class="search" type="search" autocomplete="off" placeholder="Search heroes..." aria-label="Search heroes"><button class="clear-search hidden" id="clearSearch" type="button" aria-label="Clear search">✕</button></div>
 <div class="tabs" id="rarityTabs"></div><div class="subtabs" id="subTabs"></div>
 </section>
-<div class="summarybar"><h2 id="sectionTitle"></h2><span id="count"></span></div>
+<div class="summarybar"><div><p class="roster-kicker">SAIFKS / KINGSHOT</p><h2 id="sectionTitle"></h2></div><span id="count"></span></div>
 <section class="grid" id="grid"></section>
 </main>
 <footer class="research-footer" aria-label="SaifKS footer"><div class="research-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="research-footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
