@@ -250,7 +250,10 @@ function renderTranslatedHeroSections(h,translated){
 async function loadTranslatedHeroSections(h,force=false){
  const requestedLang=lang;
  if(requestedLang==="en"){renderTranslatedHeroSections(h,buildTranslationPayload(h));return}
- $("#sections").innerHTML=`<div class="translation-loading">${tr("loadingTranslation")}</div>`;
+ const cached=force?null:getCachedHeroTranslation(h.id,requestedLang);
+ renderTranslatedHeroSections(h,cached||buildTranslationPayload(h));
+ if(cached)return;
+ $("#sections").insertAdjacentHTML("afterbegin",`<div class="translation-loading" role="status">${tr("loadingTranslation")}</div>`);
  try{
   const translated=await getFullHeroTranslation(h,requestedLang,force);
   if(current?.id!==h.id||lang!==requestedLang)return;
@@ -258,7 +261,8 @@ async function loadTranslatedHeroSections(h,force=false){
  }catch(error){
   console.error(error);
   if(current?.id!==h.id||lang!==requestedLang)return;
-  $("#sections").innerHTML=`<button class="translation-error" id="retryTranslation">${tr("translationError")}</button>`;
+  $("#sections").querySelector(".translation-loading")?.remove();
+  $("#sections").insertAdjacentHTML("afterbegin",`<button class="translation-error" id="retryTranslation" type="button">${tr("translationError")} · English</button>`);
   $("#retryTranslation").onclick=()=>loadTranslatedHeroSections(h,true);
  }
 }
