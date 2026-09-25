@@ -330,12 +330,12 @@ function renderTranslatedHeroSections(h,translated,untranslated=false){
  $("#modalJump").innerHTML=jumpSections.map(([id,label])=>`<button type="button" data-jump="${id}">${label}</button>`).join("");
  $("#modalJump").querySelectorAll("button").forEach(button=>button.onclick=()=>{const target=$("#hero-"+button.dataset.jump);if(target){target.open=true;target.scrollIntoView({block:"start",behavior:"smooth"});target.querySelector("summary")?.focus({preventScroll:true})}});
  $("#sections").innerHTML=
-  details(""+tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>`,true,"hero-overview")+
+  details(tr("overview"),`<p>${localized.overview?.[0]||h.overview}</p>`,true,"hero-overview")+
   details(SAIF_TIP_LABELS[lang],`<p class="saif-tip">${localized.saifTip?.[0]||SAIF_TIPS[h.id]}</p>`,true)+
-  details(""+tr("sources"),translatedSourcesHTML(h),true)+
-  details(""+tr("stats"),`<div class="stats">${translatedStatsHTML(h)||"—"}</div>`,true)+
-  details(""+tr("conquest"),skillLines("conquest",localized.conquest),false,"hero-conquest")+
-  details(""+tr("expedition"),skillLines("expedition",localized.expedition),false,"hero-expedition")+
+  details(tr("sources"),translatedSourcesHTML(h),true)+
+  details(tr("stats"),`<div class="stats">${translatedStatsHTML(h)||"—"}</div>`,true)+
+  details(tr("conquest"),skillLines("conquest",localized.conquest),false,"hero-conquest")+
+  details(tr("expedition"),skillLines("expedition",localized.expedition),false,"hero-expedition")+
   gearSection;
 }
 function loadTranslatedHeroSections(h){
