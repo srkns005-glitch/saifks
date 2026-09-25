@@ -3,9 +3,10 @@
   const languages = Object.keys(WAR_I18N);
   const requested = new URLSearchParams(location.search).get('lang');
   let lang = languages.includes(requested) ? requested : (languages.includes(localStorage.getItem('saifksLanguage')) ? localStorage.getItem('saifksLanguage') : 'ar');
-  let tree = 'basic', filter = 'infantry', viewMode = 'map', page = 1, data;
-  let progress = {};
+  let tree = 'basic', filter = 'infantry', viewMode = 'map', summaryScope = 'current', page = 1, data;
+  let progress = {}, targets = {};
   try {progress = JSON.parse(localStorage.getItem('saifWarAcademyProgress') || '{}') || {}} catch {progress = {}};
+  try {targets = JSON.parse(localStorage.getItem('saifWarAcademyTargets') || '{}') || {}} catch {targets = {}};
   const $ = id => document.getElementById(id);
   const tr = key => WAR_I18N[lang][key] ?? WAR_I18N.en[key] ?? key;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -30,7 +31,19 @@
   const effect = item => lang === 'en' ? item.effect : (tr('names')['effect:' + item.effect] || item.effect);
   const resourceName = k => tr(k === 'ttg' ? 'truegold' : k);
   const current = item => Math.max(0,Math.min(item.maxLevel,Number(progress[item.id]) || 0));
-  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));render()};
+  const target = item => Math.max(current(item),Math.min(item.maxLevel,Number.isFinite(Number(targets[item.id])) ? Number(targets[item.id]) : item.maxLevel));
+  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}render()};
+  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));render()};
+  const duration = seconds => {
+    const minutes = Math.max(0,Math.ceil(seconds/60));
+    const day=Math.floor(minutes/1440),hour=Math.floor(minutes%1440/60),minute=minutes%60;
+    return [day&&`${format(day)}${tr('day')}`,hour&&`${format(hour)}${tr('hour')}`,minute&&`${format(minute)}${tr('minute')}`].filter(Boolean).join(' ') || `${format(0)}${tr('minute')}`;
+  };
+  const parseAmount = value => {
+    if(typeof value==='number')return value;
+    const match=/^(\d+(?:\.\d+)?)([KMB])?$/.exec(String(value));
+    return match ? Math.round(Number(match[1])*({K:1e3,M:1e6,B:1e9}[match[2]]||1)) : 0;
+  };
   const setLanguage = next => {
     lang = next;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
@@ -87,9 +100,39 @@
     const nodes = items.map((item,i)=>{
       const [x,y]=positions[i],level=current(item),complete=level===item.maxLevel;
       const icon=`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[i]}</svg>`;
-      return `<button type="button" class="mapNode ${complete?'isComplete':''} ${i===6?'isUnlock':''}" data-item="${esc(item.id)}" style="--x:${x}%;--y:${y}px" aria-label="${esc(names(item,'basic'))}: ${format(level)} / ${format(item.maxLevel)}"><span class="mapIcon">${icon}<span class="nodeProgress dir-ltr">${complete?esc(tr('maxLabel')):`${format(level)}/${format(item.maxLevel)}`}</span></span><span class="nodeName">${esc(names(item,'basic'))}</span></button>`;
+      return `<button type="button" class="mapNode ${complete?'isComplete':''} ${i===6?'isUnlock':''}" data-item="${esc(item.id)}" style="--x:${x}%;--y:${y}px" aria-label="${esc(names(item,'basic'))}: ${esc(tr('myLevel'))} ${format(level)}, ${esc(tr('toLevel'))} ${format(target(item))}"><span class="mapIcon">${icon}<span class="nodeProgress dir-ltr">${format(level)} / ${format(target(item))}</span></span><span class="nodeName">${esc(names(item,'basic'))}</span></button>`;
     }).join('');
-    $('map').innerHTML=`<div class="mapTop"><div class="mapTitle"><span class="mapEmblem" aria-hidden="true">${symbols[filter]}</span><span><small>${esc(tr('pathLabel'))} / ${esc(tr(filter))}</small><strong>${esc(tr(filter))}</strong></span></div><div class="mapProgress"><strong class="dir-ltr">${format(done)} / ${format(items.length)}</strong><small>${esc(tr('completedCount'))}</small></div></div><div class="mapCanvas" data-branch="${filter}"><svg class="mapConnections" viewBox="0 0 600 980" preserveAspectRatio="none" aria-hidden="true">${lines}</svg>${nodes}</div><div class="mapFoot"><span class="pulse"></span>${esc(tr('savedLocally'))}</div>`;
+    $('map').innerHTML=`<div class="mapTop"><div class="mapTitle"><span class="mapEmblem" aria-hidden="true">${symbols[filter]}</span><span><small>${esc(tr('pathLabel'))} / ${esc(tr(filter))}</small><strong>${esc(tr(filter))}</strong></span></div><div class="mapProgress"><strong class="dir-ltr">${format(done)} / ${format(items.length)}</strong><small>${esc(tr('completedCount'))}</small></div></div><div class="mapCanvas" data-branch="${filter}"><svg class="mapConnections" viewBox="0 0 600 980" preserveAspectRatio="none" aria-hidden="true">${lines}</svg>${nodes}</div><div class="mapFoot"><span class="pulse"></span>${esc(tr('currentTargetLegend'))} · ${esc(tr('savedLocally'))}</div>`;
+  };
+  const renderSummary = () => {
+    if(!data)return;
+    const basic=tree==='basic';
+    const items=data[tree].filter(item=>summaryScope==='all'||filter==='all'||(basic?item.category:item.group)===filter);
+    const total={bread:0,wood:0,stone:0,iron:0,gold:0,dust:0,ttg:0,seconds:0};
+    let planned=0;
+    for(const item of items){
+      if(basic){
+        const from=current(item),to=target(item);
+        if(to>from)planned++;
+        for(const level of item.levels)if(level.level>from&&level.level<=to){
+          for(const key of ['bread','wood','stone','iron','gold','dust'])total[key]+=level[key]||0;
+          total.seconds+=level.seconds||0;
+        }
+      }else{
+        planned++;
+        for(const key of resourceKeys)total[key]+=parseAmount(item.total[key]);
+        total.seconds+=item.total.timeApproxSeconds||0;
+      }
+    }
+    const context=summaryScope==='all'?tr(basic?'allBasic':'allAdvanced'):(filter==='all'?tr(basic?'allBasic':'allAdvanced'):tr('currentGroup').replace('{group}',tr(filter)));
+    $('summaryContext').textContent=`${context} · ${format(planned)} ${tr('selectedResearch')}`;
+    document.querySelectorAll('[data-scope]').forEach(el=>{const active=el.dataset.scope===summaryScope;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active))});
+    const keys=basic?['dust','bread','wood','stone','iron','gold']:['ttg','dust','bread','wood','stone','iron','gold'];
+    $('summaryResources').innerHTML=keys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong></div>`).join('');
+    const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));
+    const needed=total.seconds/(1+speed/100);
+    $('summaryTimes').innerHTML=`<div><span>${esc(tr('baseTime'))}</span><strong class="dir-ltr">${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong class="dir-ltr">${esc(duration(needed))}</strong></div>`;
+    $('summaryNote').textContent=tr(basic?'basicSummaryNote':'advancedSummaryNote')+' '+tr('estimateNote');
   };
   const render = () => {
     if (!data) return;
@@ -97,6 +140,7 @@
     const q = $('search').value.trim().toLocaleLowerCase();
     const items = data[tree].filter(item => (filter === 'all' || (tree === 'basic' ? item.category : item.group) === filter) && (!q || [names(item,tree),effect(item),item.name,item.effect].some(x => x.toLocaleLowerCase().includes(q))));
     $('resultCount').textContent = `${format(items.length)} ${tr('results')}`;
+    renderSummary();
     const mapVisible=tree==='basic'&&viewMode==='map'&&!q;
     $('map').hidden=!mapVisible;$('results').hidden=mapVisible;
     if(mapVisible){renderMap();$('showMore').hidden=true;return;}
@@ -120,17 +164,18 @@
     if (tree === 'advanced') {
       $('detailBody').innerHTML = `<p class="detailNote">${esc(tr('advancedNote'))}</p><h3 class="subHeading">${esc(tr('totalCost'))}</h3>${summaries(item.total,true)}<p class="detailFooter">${esc(tr('approx'))}</p>`;
     } else {
-      const selects = `<div class="levelControls"><label>${esc(tr('myLevel'))}<select id="fromLevel">${Array.from({length:item.maxLevel+1},(_,i)=>`<option value="${i}" ${i===current(item)?'selected':''}>${format(i)}</option>`).join('')}</select></label><label>${esc(tr('toLevel'))}<select id="toLevel">${Array.from({length:item.maxLevel},(_,i)=>`<option value="${i+1}" ${i+1===item.maxLevel?'selected':''}>${format(i+1)}</option>`).join('')}</select></label></div>`;
-      const lines = item.levels.map(level=>`<div class="levelLine"><b>${esc(tr('level'))} ${format(level.level)}</b><span>${['dust','bread','wood','stone','iron','gold'].map(k=>`${esc(resourceName(k))}: <span class="dir-ltr">${format(level[k])}</span>`).join(' · ')}</span></div>`).join('');
+      const selects = `<div class="levelControls"><label>${esc(tr('myLevel'))}<select id="fromLevel">${Array.from({length:item.maxLevel+1},(_,i)=>`<option value="${i}" ${i===current(item)?'selected':''}>${format(i)}</option>`).join('')}</select></label><label>${esc(tr('toLevel'))}<select id="toLevel">${Array.from({length:item.maxLevel+1},(_,i)=>`<option value="${i}" ${i<current(item)?'disabled':''} ${i===target(item)?'selected':''}>${format(i)}</option>`).join('')}</select></label></div>`;
+      const lines = item.levels.map(level=>`<div class="levelLine"><b>${esc(tr('level'))} ${format(level.level)}</b><span>${['dust','bread','wood','stone','iron','gold'].map(k=>`${esc(resourceName(k))}: <span class="dir-ltr">${format(level[k])}</span>`).join(' · ')} · ${esc(tr('baseTime'))}: <span class="dir-ltr">${esc(duration(level.seconds))}</span></span></div>`).join('');
       $('detailBody').innerHTML = `<p class="detailNote">${esc(tr('basicNote'))}</p>${selects}<h3 class="subHeading">${esc(tr('selectedCost'))}</h3><div id="selectionSummary"></div><h3 class="subHeading">${esc(tr('perLevel'))}</h3><div class="levelList">${lines}</div>`;
       const update = () => {
         const from = Number($('fromLevel').value), to = Number($('toLevel').value);
-        if(to<=from){$('toLevel').value=String(Math.min(item.maxLevel,from+1));}
+        for(const option of $('toLevel').options)option.disabled=Number(option.value)<from;
+        if(to<from){$('toLevel').value=String(from);saveTarget(item,from)}
         const a=Number($('fromLevel').value),b=Number($('toLevel').value);
-        const total={}; for(const lvl of item.levels.filter(x=>x.level>a&&x.level<=b)) for(const key of resourceKeys) total[key]=(total[key]||0)+(lvl[key]||0);
-        $('selectionSummary').innerHTML=a===item.maxLevel?`<p class="detailNote">${esc(tr('completedCount'))}</p>`:summaries(total,false);
+        const total={}; for(const lvl of item.levels.filter(x=>x.level>a&&x.level<=b)) for(const key of [...resourceKeys,'seconds']) total[key]=(total[key]||0)+(lvl[key]||0);
+        $('selectionSummary').innerHTML=b===a?`<p class="detailNote">${esc(tr('noPlan'))}</p>`:summaries(total,false)+`<div class="detailTime">${esc(tr('baseTime'))}: <strong class="dir-ltr">${esc(duration(total.seconds))}</strong></div>`;
       };
-      $('fromLevel').addEventListener('change',()=>{saveProgress(item,$('fromLevel').value);update()});$('toLevel').addEventListener('change',update);update();
+      $('fromLevel').addEventListener('change',()=>{saveProgress(item,$('fromLevel').value);update()});$('toLevel').addEventListener('change',()=>{saveTarget(item,$('toLevel').value);update()});update();
     }
     $('detail').showModal();
   };
@@ -140,9 +185,12 @@
   $('results').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data[tree].find(x=>x.id===button.dataset.item);if(item)showDetail(item);});
   $('map').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data.basic.find(x=>x.id===button.dataset.item);if(item)showDetail(item);});
   $('showMore').addEventListener('click',()=>{page++;render();});
+  $('summaryScope').addEventListener('click',e=>{const button=e.target.closest('[data-scope]');if(!button)return;summaryScope=button.dataset.scope;renderSummary()});
+  $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
   $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic')viewMode='list';render();});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
   $('closeDetail').addEventListener('click',()=>$('detail').close());
   $('detail').addEventListener('click',e=>{if(e.target===$('detail'))$('detail').close();});
+  $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
   fetch('data.json').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
 })();
