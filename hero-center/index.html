@@ -339,8 +339,8 @@ function statLabel(key){
 }
 function buildTranslationPayload(h){return {overview:[h.overview||""],conquest:h.conquest||[],expedition:h.expedition||[],gear:h.rarity==="Mythic"?(h.gear||[]):[],saifTip:[SAIF_TIPS[h.id]]}}
 function localizedSkillLine(line){
- if(lang!=="ar")return line;
- const terms=window.HERO_LOCAL_TRANSLATIONS?.ar?.terms||{};
+ const terms=window.HERO_LOCAL_TRANSLATIONS?.[lang]?.terms||{};
+ if(lang==="en")return line;
  const match=line.match(/^([^:]+):\s*(.*)$/);
  if(match&&terms[match[1]])return terms[match[1]]+": "+match[2];
  return terms[line]||`<span lang="en" dir="ltr">${line}</span>`;
