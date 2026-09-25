@@ -228,7 +228,7 @@ function classIconPath(c){
          "assets/classes/cavalry.png";
 }
 function classBadgeHTML(c){
-  return `<span class="badge class-badge"><img class="class-logo" src="${classIconPath(c)}" alt="">${clsLabel(c)}</span>`;
+  return `<span class="meta-class"><img class="class-logo" src="${classIconPath(c)}" alt="">${clsLabel(c)}</span>`;
 }
 
 function clsLabel(c){return tr(c.toLowerCase())||c}
@@ -270,8 +270,8 @@ function render(){
  $("#sectionTitle").textContent=query.trim()?tr("search"):rarity==="Mythic"?(sub==="All"?tr("mythic"):`${tr("generation")} ${sub}`):(sub==="All"?tr(rarity.toLowerCase()):clsLabel(sub));
  $("#count").textContent=`${list.length} ${tr("heroes")}`;
  $("#grid").innerHTML=list.length?list.map(h=>`<article class="card" data-rarity="${h.rarity}">
- <div class="portrait"><img src="${h.image}" alt="${h.name}" loading="lazy"><span class="badge rarity">${tr(h.rarity.toLowerCase())}</span></div><div class="cardbody"><h3>${h.name}</h3><div class="badges">
- ${classBadgeHTML(h.class)}${h.generation?`<span class="badge">${tr("generation")} ${h.generation}</span>`:""}</div>
+ <div class="portrait"><img src="${h.image}" alt="${h.name}" loading="lazy"><span class="badge rarity">${tr(h.rarity.toLowerCase())}</span></div><div class="cardbody"><h3>${h.name}</h3><div class="hero-meta">
+ ${classBadgeHTML(h.class)}${h.generation?`<span class="meta-generation">${tr("generation")} ${h.generation}</span>`:""}</div>
  <button class="open" data-id="${h.id}">${tr("view")}</button></div></article>`).join(""):`<div class="empty">${tr("none")}</div>`;
  $("#grid").querySelectorAll(".open").forEach(b=>b.onclick=()=>openHero(b.dataset.id));
  $("#clearSearch").classList.toggle("hidden",!query);
