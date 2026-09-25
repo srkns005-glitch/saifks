@@ -803,7 +803,7 @@ main.container{max-width:none!important;padding:16px 0 34px!important}
       </div>
 
       <div class="event-modal-content">
-        <div class="modal-title-wrap"><h2 id="mTitle"></h2><div id="modalTags" class="modal-tags"></div></div>
+        <div class="modal-title-wrap"><h2 id="mTitle" tabindex="-1"></h2><div id="modalTags" class="modal-tags"></div></div>
         <div class="quick">
           <div><small>Duration</small><b id="mDuration"></b></div>
           <div><small>Frequency</small><b id="mFrequency"></b></div>
@@ -841,8 +841,8 @@ main.container{max-width:none!important;padding:16px 0 34px!important}
         </section>
 
         <div class="nav-actions">
-          <button id="prevEventBtn" class="nav-btn">← Previous</button>
-          <button id="nextEventBtn" class="nav-btn">Next →</button>
+          <button id="prevEventBtn" class="nav-btn" type="button">← Previous</button>
+          <button id="nextEventBtn" class="nav-btn" type="button">Next →</button>
         </div>
       </div>
     </div>
@@ -989,11 +989,20 @@ function openEvent(id){
   }).join("");
   modal.classList.remove("hidden");
   const eventScroller=q("#eventModalScroll");
-  if(eventScroller)eventScroller.scrollTop=0;
+  if(eventScroller)eventScroller.scrollTo({top:0,behavior:"instant"});
   document.body.classList.add("event-modal-open");
   document.body.style.top=`-${pageScrollY}px`;
   if(openingFromPage)q("#quickCloseBtn").focus({preventScroll:true});
 }
+
+function navigateEvent(direction){
+  const ids=visibleEventIds(),index=ids.indexOf(currentEventId),target=ids[index+direction];
+  if(index<0||!target)return;
+  openEvent(target);
+  requestAnimationFrame(()=>q("#mTitle").focus({preventScroll:true}));
+}
+q("#prevEventBtn").addEventListener("click",event=>{event.preventDefault();navigateEvent(-1)});
+q("#nextEventBtn").addEventListener("click",event=>{event.preventDefault();navigateEvent(1)});
 
 const quickCloseBtn=q("#quickCloseBtn");
 const backEventsBtn=q("#backEventsBtn");
@@ -1099,8 +1108,7 @@ if(copy)copy.onclick=async()=>{
     setTimeout(()=>{label.textContent=original;copy.classList.remove("copy-success");copy.disabled=false},1500);
   }
 };
-if(prev)prev.onclick=()=>{const ids=visibleEventIds(),index=ids.indexOf(currentEventId);if(index>0)openEvent(ids[index-1]);}
-if(next)next.onclick=()=>{const ids=visibleEventIds(),index=ids.indexOf(currentEventId);if(index>=0&&index<ids.length-1)openEvent(ids[index+1]);}
+
 },100);
 })();
 
