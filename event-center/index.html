@@ -786,6 +786,7 @@ main.container{max-width:none!important;padding:16px 0 34px!important}
  #favoritesFilterText{display:none!important}
  .favorites-filter{width:48px!important;padding:0!important}
 }
+#prevEventBtn:disabled,#nextEventBtn:disabled{opacity:.45;cursor:not-allowed}
 </style></head><body>
 <header class="header"><div class="container header-row"><div class="brand-block brand"><img class="brand-logo" src="../logo.png" alt="SaifKS logo"><h1>Event Center</h1><p>SaifKS.com</p></div><a class="home-header-button small-btn" href="../index.html">Home</a><select id="lang" class="lang-toggle" aria-label="Language"><option value="en">English</option>
 <option value="ar">العربية</option>
@@ -955,8 +956,11 @@ function render(){
   q("#empty").hidden=!!list.length;
   renderDashboard(list.length);
 }
+function visibleEventIds(){return [...grid.querySelectorAll(".card[data-id]")].map(card=>card.dataset.id)}
+function updateEventNavigation(){const ids=visibleEventIds(),index=ids.indexOf(currentEventId);q("#prevEventBtn").disabled=index<=0;q("#nextEventBtn").disabled=index<0||index>=ids.length-1}
 function openEvent(id){
   currentEventId=id;
+  updateEventNavigation();
   const e=events.find(x=>x.id===id);
   const x=eventText(e);
   q("#modalBanner").className=`modal-banner banner-${e.id}`;
@@ -1082,7 +1086,7 @@ q("#mPrep").onchange=e=>{
   prepChecks[eventId][key]=input.checked;
   savePrep();openEvent(eventId);
 };
-search.oninput=render;q("#lang").onchange=e=>{lang=e.target.value;const currentUrl=new URL(location.href);currentUrl.searchParams.set("lang",lang);history.replaceState(null,"",currentUrl);applyLang()};modal.onclick=e=>{if(e.target.closest("[data-close]"))closeModal()};
+search.oninput=render;q("#lang").onchange=e=>{lang=e.target.value;search.value="";const currentUrl=new URL(location.href);currentUrl.searchParams.set("lang",lang);history.replaceState(null,"",currentUrl);applyLang()};modal.onclick=e=>{if(e.target.closest("[data-close]"))closeModal()};
 if(q("#relatedEvents")) q("#relatedEvents").onclick=e=>{const b=e.target.closest("[data-related]");if(b)openEvent(b.dataset.related)};
 document.onkeydown=e=>{if(e.key==="Escape")closeModal()};
 try{applyLang();}catch(err){
@@ -1091,7 +1095,6 @@ try{applyLang();}catch(err){
 }
 (function(){
 const byId=id=>document.getElementById(id);
-function currentIndex(){return events.findIndex(e=>e.id===currentEventId)}
 setTimeout(()=>{
 const copy=byId("copyTipsBtn"),prev=byId("prevEventBtn"),next=byId("nextEventBtn");
 if(copy)copy.onclick=async()=>{
@@ -1123,8 +1126,8 @@ if(copy)copy.onclick=async()=>{
     setTimeout(()=>{label.textContent=original;copy.classList.remove("copy-success");copy.disabled=false},1500);
   }
 };
-if(prev)prev.onclick=()=>{let i=currentIndex();if(i>0)openEvent(events[i-1].id);}
-if(next)next.onclick=()=>{let i=currentIndex();if(i<events.length-1)openEvent(events[i+1].id);}
+if(prev)prev.onclick=()=>{const ids=visibleEventIds(),index=ids.indexOf(currentEventId);if(index>0)openEvent(ids[index-1]);}
+if(next)next.onclick=()=>{const ids=visibleEventIds(),index=ids.indexOf(currentEventId);if(index>=0&&index<ids.length-1)openEvent(ids[index+1]);}
 },100);
 })();
 
