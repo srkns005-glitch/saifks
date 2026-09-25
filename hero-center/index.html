@@ -4,11 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="class-icons-20260716134953">
 <title>SaifKS Hero Center</title>
 
 <link rel="icon" href="../logo.png">
-<link rel="stylesheet" href="hero-center.css?v=8">
+<link rel="stylesheet" href="hero-center.css?v=9">
 
 </head>
 <body>
@@ -76,7 +75,7 @@ function applyLanguage(){
  $("#backBtn").textContent=tr("back");$("#closeBtn").setAttribute("aria-label",tr("back"));$("#topBtn").textContent=tr("top");$("#copyBtn").textContent=tr("copy");
  syncHomeLanguageLink();renderTabs();render();
 
- if(current&&!$("#modal").classList.contains("hidden"))loadTranslatedHeroSections(current);
+ if(current&&!$("#modal").classList.contains("hidden")){renderHeroIdentity(current);loadTranslatedHeroSections(current)}
 }
 function renderTabs(){
  const rt=[["Mythic",tr("mythic")],["Epic",tr("epic")],["Rare",tr("rare")]];
@@ -179,13 +178,17 @@ function loadTranslatedHeroSections(h){
 
 function details(title,body,open=false,id=""){return `<details ${id?`id="${id}"`:""} ${open?"open":""}><summary tabindex="0">${title}</summary><div class="content">${body}</div></details>`}
 let heroReturnFocus=null;
-function openHero(id){
- heroReturnFocus=document.activeElement;
- current=heroes.find(h=>h.id===id);if(!current)return;
+function renderHeroIdentity(h){
+ const current=h;
  $("#mImg").src=current.image;$("#mImg").alt=current.name;$("#mName").textContent=current.name;
  $("#mCode").textContent="#"+String(heroes.indexOf(current)+1).padStart(3,"0");
  $("#mMeta").innerHTML=`<span class="id-field"><small>${tr("class")}</small><b><img class="class-logo" src="${classIconPath(current.class)}" alt="">${clsLabel(current.class)}</b></span><span class="id-field"><small>${tr("rarity")}</small><b>${tr(current.rarity.toLowerCase())}</b></span>${current.generation?`<span class="id-field"><small>${tr("generation")}</small><b>${current.generation}</b></span>`:""}`;
  $("#mStars").textContent=current.rarity==="Mythic"?"★★★★★":current.rarity==="Epic"?"★★★★":"★★★";
+}
+function openHero(id){
+ heroReturnFocus=document.activeElement;
+ current=heroes.find(h=>h.id===id);if(!current)return;
+ renderHeroIdentity(current);
  loadTranslatedHeroSections(current);
  $("#modal").classList.remove("hidden");document.body.style.overflow="hidden";$("#scroll").scrollTop=0;$("#closeBtn").focus({preventScroll:true});
 }
@@ -219,5 +222,4 @@ window.addEventListener("storage",event=>{
 });
 applyLanguage();
 </script>
-<!-- Build: class-icons-20260716134953 -->
 </body></html>
