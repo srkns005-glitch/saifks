@@ -4,21 +4,15 @@
   const requested = new URLSearchParams(location.search).get('lang');
   let lang = languages.includes(requested) ? requested : (languages.includes(localStorage.getItem('saifksLanguage')) ? localStorage.getItem('saifksLanguage') : 'ar');
   let tree = 'basic', filter = 'infantry', viewMode = 'map', summaryScope = 'current', page = 1, data, latestSummary = '';
-  let progress = {}, targets = {}, selectedId = null, advancedSelected = {};
+  let progress = {}, targets = {}, selectedId = null, advancedSelected = {}, inventory = {};
   try {progress = JSON.parse(localStorage.getItem('saifWarAcademyProgress') || '{}') || {}} catch {progress = {}};
   try {targets = JSON.parse(localStorage.getItem('saifWarAcademyTargets') || '{}') || {}} catch {targets = {}};
   try {advancedSelected = JSON.parse(localStorage.getItem('saifWarAdvancedSelected') || '{}') || {}} catch {advancedSelected = {}};
+  try {inventory = JSON.parse(localStorage.getItem('saifWarInventory') || '{}') || {}} catch {inventory = {}};
   const $ = id => document.getElementById(id);
   const tr = key => WAR_I18N[lang][key] ?? WAR_I18N.en[key] ?? key;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const format = value => new Intl.NumberFormat(lang === 'zh' ? 'zh-CN' : lang).format(Number(value) || 0);
-  const cost = value => {
-    if (typeof value === 'number') return format(value);
-    const short = /^(\d+(?:\.\d+)?)([KMB])$/.exec(String(value));
-    if (!short) return String(value);
-    const factor = {K:1e3,M:1e6,B:1e9}[short[2]];
-    return new Intl.NumberFormat(lang === 'zh' ? 'zh-CN' : lang,{notation:'compact',maximumFractionDigits:1}).format(Number(short[1])*factor);
-  };
   const resourceKeys = ['dust','ttg','bread','wood','stone','iron','gold'];
   const symbols = {infantry:'⌑',cavalry:'♘',archer:'⌁',special:'✧',economy:'◈',capacity:'▤',combat:'✦'};
   const names = (item, kind) => {
@@ -30,11 +24,11 @@
     return translated + (parts ? ' ' + format(['I','II','III','IV','V','VI'].indexOf(parts[2]) + 1) : '');
   };
   const effect = item => lang === 'en' ? item.effect : (tr('names')['effect:' + item.effect] || item.effect);
-  const resourceName = k => tr(k === 'ttg' ? 'truegold' : k);
+  const resourceName = k => tr(k === 'ttg' ? 'temperedTruegold' : k);
   const current = item => Math.max(0,Math.min(item.maxLevel,Number(progress[item.id]) || 0));
-  const target = item => Math.max(current(item),Math.min(item.maxLevel,targets[item.id] === undefined ? current(item) : (Number(targets[item.id])||0)));
+  const target = item => Math.max(current(item),Math.min(item.maxLevel,targets[item.id] === undefined ? (item.group && advancedSelected[item.id] ? item.maxLevel : current(item)) : (Number(targets[item.id])||0)));
   const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}};
-  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))};
+  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));if(item.group){advancedSelected[item.id]=targets[item.id]>current(item);localStorage.setItem('saifWarAdvancedSelected',JSON.stringify(advancedSelected))}};
   const duration = seconds => {
     const minutes = Math.max(0,Math.ceil(seconds/60));
     const day=Math.floor(minutes/1440),hour=Math.floor(minutes%1440/60),minute=minutes%60;
@@ -44,6 +38,24 @@
     if(typeof value==='number')return value;
     const match=/^(\d+(?:\.\d+)?)([KMB])?$/.exec(String(value));
     return match ? Math.round(Number(match[1])*({K:1e3,M:1e6,B:1e9}[match[2]]||1)) : 0;
+  };
+  const inventoryAmount = value => {
+    const digits=String(value??'').replace(/[٠-٩]/g,ch=>String(ch.charCodeAt(0)-1632)).replace(/[۰-۹]/g,ch=>String(ch.charCodeAt(0)-1776)).replace(/[٬,\s]/g,'').replace('٫','.').trim().toUpperCase();
+    return Math.max(0,parseAmount(digits));
+  };
+  const requirementDetails = item => (item.requirements||[]).map(req=>{
+    if(req.kind==='building'){
+      const input=$(req.name==='War Academy TG'?'academyTG':'academyLevel');
+      const value=Number(input.value);
+      return {label:`${tr(req.name==='War Academy TG'?'academyTG':'academyLevel')} ${format(req.level)}`,state:input.value===''?'unknown':value>=req.level?'met':'unmet'};
+    }
+    const source=[...data.basic,...data.advanced].find(x=>x.id===req.id);
+    return {label:`${names(source,source.group?'advanced':'basic')} ${format(req.level)}`,state:current(source)>=req.level?'met':target(source)>=req.level?'planned':'unmet'};
+  });
+  const hasUnmet = item => requirementDetails(item).some(req=>req.state==='unmet');
+  const requirementsHTML = item => {
+    const reqs=requirementDetails(item);
+    return reqs.length?`<div class="requirements"><small>${esc(tr('requirements'))}</small>${reqs.map(x=>`<span class="requirement ${x.state}"><b aria-hidden="true">${{met:'✓',planned:'◷',unmet:'!',unknown:'?' }[x.state]}</b>${esc(x.label)}</span>`).join('')}</div>`:'';
   };
   const setLanguage = next => {
     lang = next;
@@ -62,6 +74,7 @@
     $('researchLink').href = '../research/index.html?lang=' + lang;
     localStorage.setItem('saifksLanguage',lang);
     const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
+    renderInventory();
     render();
   };
   const renderFilters = () => {
@@ -70,6 +83,8 @@
     $('dataHint').textContent = tr(tree === 'basic' ? (viewMode === 'map' ? 'mapHint' : 'basicHint') : 'advancedHint');
     document.querySelectorAll('[data-tree]').forEach(el => {const active = el.dataset.tree === tree;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));});
     $('viewSwitch').hidden = tree !== 'basic';
+    $('academyLevel').closest('label').hidden=tree!=='basic';
+    $('academyTG').closest('label').hidden=tree!=='advanced';
     document.querySelectorAll('[data-view]').forEach(el => {const active = el.dataset.view===viewMode;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));});
   };
   const iconPaths = [
@@ -100,7 +115,8 @@
       const [x,y]=positions[i],level=current(item),complete=level===item.maxLevel;
       const icon=`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[i]}</svg>`;
       const options=(kind)=>Array.from({length:item.maxLevel+1},(_,n)=>`<option value="${n}" ${kind==='target'&&n<level?'disabled':''} ${n===(kind==='current'?level:target(item))?'selected':''}>${format(n)}</option>`).join('');
-      return `<div class="mapNode ${complete?'isComplete':''} ${i===6?'isUnlock':''} ${selectedId===item.id?'isSelected':''}" style="--x:${x}%;--y:${y}px"><button type="button" class="mapIcon" data-item="${esc(item.id)}" aria-label="${esc(names(item,'basic'))}">${icon}</button><div class="nodeControls"><label><span>${esc(tr('currentShort'))}</span><select data-current="${esc(item.id)}" aria-label="${esc(tr('myLevel'))}: ${esc(names(item,'basic'))}">${options('current')}</select></label><label><span>${esc(tr('targetShort'))}</span><select data-target="${esc(item.id)}" aria-label="${esc(tr('toLevel'))}: ${esc(names(item,'basic'))}">${options('target')}</select></label></div><span class="nodeName">${esc(names(item,'basic'))}</span></div>`;
+      const blocked=hasUnmet(item);
+      return `<div class="mapNode ${complete?'isComplete':''} ${blocked?'hasUnmet':''} ${i===6?'isUnlock':''} ${selectedId===item.id?'isSelected':''}" style="--x:${x}%;--y:${y}px"><button type="button" class="mapIcon" data-item="${esc(item.id)}" aria-label="${esc(names(item,'basic'))}${blocked?' · '+esc(tr('requiresPrior')):''}">${icon}</button><div class="nodeControls"><label><span>${esc(tr('currentShort'))}</span><select data-current="${esc(item.id)}" aria-label="${esc(tr('myLevel'))}: ${esc(names(item,'basic'))}">${options('current')}</select></label><label><span>${esc(tr('targetShort'))}</span><select data-target="${esc(item.id)}" aria-label="${esc(tr('toLevel'))}: ${esc(names(item,'basic'))}">${options('target')}</select></label></div><span class="nodeName">${esc(names(item,'basic'))}</span></div>`;
     }).join('');
     $('map').innerHTML=`<div class="mapTop"><div class="mapTitle"><span class="mapEmblem" aria-hidden="true">${symbols[filter]}</span><span><small>${esc(tr('pathLabel'))} / ${esc(tr(filter))}</small><strong>${esc(tr(filter))}</strong></span></div><div class="mapProgress"><strong class="dir-ltr">${format(done)} / ${format(items.length)}</strong><small>${esc(tr('completedCount'))}</small></div></div><div class="mapCanvas" data-branch="${filter}"><svg class="mapConnections" viewBox="0 0 600 980" preserveAspectRatio="none" aria-hidden="true">${lines}</svg>${nodes}</div><div class="mapFoot"><span class="pulse"></span>${esc(tr('currentTargetLegend'))} · ${esc(tr('savedLocally'))}</div>`;
   };
@@ -112,19 +128,12 @@
     let planned=0;
     const plannedNames=[];
     for(const item of items){
-      if(basic){
-        const from=current(item),to=target(item);
-        if(to>from){planned++;plannedNames.push(`${names(item,tree)} (${format(from)} → ${format(to)})`)}
-        for(const level of item.levels)if(level.level>from&&level.level<=to){
-          for(const key of ['bread','wood','stone','iron','gold','dust'])total[key]+=level[key]||0;
-          total.seconds+=level.seconds||0;
-        }
-      }else{
-        if(!advancedSelected[item.id])continue;
-        planned++;
-        plannedNames.push(names(item,tree));
-        for(const key of resourceKeys)total[key]+=parseAmount(item.total[key]);
-        total.seconds+=item.total.timeApproxSeconds||0;
+      const from=current(item),to=target(item);
+      if(to<=from)continue;
+      planned++;plannedNames.push(`${names(item,tree)} (${format(from)} → ${format(to)})`);
+      for(const level of item.levels)if(level.level>from&&level.level<=to){
+        for(const key of resourceKeys)total[key]+=level[key]||0;
+        total.seconds+=level.seconds||0;
       }
     }
     const context=summaryScope==='all'?tr(basic?'allBasic':'allAdvanced'):(filter==='all'?tr(basic?'allBasic':'allAdvanced'):tr('currentGroup').replace('{group}',tr(filter)));
@@ -132,22 +141,26 @@
     document.querySelectorAll('[data-scope]').forEach(el=>{const active=el.dataset.scope===summaryScope;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active))});
     const keys=basic?['dust','bread','wood','stone','iron','gold']:['ttg','dust','bread','wood','stone','iron','gold'];
     const usedKeys=keys.filter(key=>total[key]>0);
-    $('summaryResources').innerHTML=planned?usedKeys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong></div>`).join(''):`<p class="emptyPlan">${esc(tr('emptyPlan'))}</p>`;
+    $('summaryResources').innerHTML=planned?usedKeys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong><small>${esc(tr('resourceShortage'))}: <b class="dir-ltr">${format(Math.max(0,total[key]-inventoryAmount(inventory[key])))}</b></small></div>`).join(''):`<p class="emptyPlan">${esc(tr('emptyPlan'))}</p>`;
     const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));
     const needed=total.seconds/(1+speed/100);
     const available=(Number($('speedDays').value)||0)*86400+(Number($('speedHours').value)||0)*3600+(Number($('speedMinutes').value)||0)*60;
     $('summaryTimes').innerHTML=planned?`<div><span>${esc(tr('baseTime'))}</span><strong>${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div><div><span>${esc(tr('speedupsShortage'))}</span><strong>${esc(duration(Math.max(0,needed-available)))}</strong></div>`:'';
-    $('summaryNote').textContent=planned?tr(basic?'basicSummaryNote':'advancedSummaryNote')+' '+tr('estimateNote')+' '+tr('speedupsResourceNote'):'';
-    latestSummary=[tr('planTitle'),`${context} · ${format(planned)} ${tr('selectedResearch')}`,...plannedNames, ...(planned?usedKeys.map(key=>`${resourceName(key)}: ${format(total[key])}`):[tr('emptyPlan')]), ...(planned?[`${tr('baseTime')}: ${duration(total.seconds)}`,`${tr('speedupsNeeded')}: ${duration(needed)}`,`${tr('availableSpeedups')}: ${duration(available)}`,`${tr('speedupsShortage')}: ${duration(Math.max(0,needed-available))}`]:[])].join('\n');
+    $('summaryNote').textContent=planned?tr('exactNote')+' '+tr('speedupsResourceNote'):'';
+    latestSummary=[tr('planTitle'),`${context} · ${format(planned)} ${tr('selectedResearch')}`,...plannedNames, ...(planned?usedKeys.map(key=>`${resourceName(key)}: ${format(total[key])} · ${tr('resourceShortage')}: ${format(Math.max(0,total[key]-inventoryAmount(inventory[key])))}`):[tr('emptyPlan')]), ...(planned?[`${tr('baseTime')}: ${duration(total.seconds)}`,`${tr('speedupsNeeded')}: ${duration(needed)}`,`${tr('availableSpeedups')}: ${duration(available)}`,`${tr('speedupsShortage')}: ${duration(Math.max(0,needed-available))}`]:[])].join('\n');
+    $('quickSummary').hidden=!planned;
+    $('quickSummary').innerHTML=planned?`<span>${format(planned)} ${esc(tr('selectedResearch'))}</span><span>${esc(tr('dust'))}: <b>${format(total.dust)}</b></span><span>${esc(tr('speedupsNeeded'))}: <b>${esc(duration(needed))}</b></span><strong>${esc(tr('openSummary'))} ↗</strong>`:'';
+  };
+  const renderInventory = () => {
+    $('inventoryResources').innerHTML=resourceKeys.map(key=>`<label><span>${esc(resourceName(key))}</span><input type="text" inputmode="decimal" autocomplete="off" data-inventory="${key}" value="${esc(inventory[key]||'')}" placeholder="0" aria-label="${esc(resourceName(key))}"></label>`).join('');
   };
   const renderSelected = item => {
-    const advanced=tree==='advanced', from=advanced?0:current(item), to=advanced?item.maxLevel:target(item);
+    const advanced=tree==='advanced', from=current(item), to=target(item);
     const total={dust:0,ttg:0,bread:0,wood:0,stone:0,iron:0,gold:0,seconds:0};
-    if(advanced){for(const key of resourceKeys)total[key]=parseAmount(item.total[key]);total.seconds=item.total.timeApproxSeconds||0}
-    else for(const level of item.levels)if(level.level>from&&level.level<=to){for(const key of resourceKeys)total[key]+=level[key]||0;total.seconds+=level.seconds||0}
+    for(const level of item.levels)if(level.level>from&&level.level<=to){for(const key of resourceKeys)total[key]+=level[key]||0;total.seconds+=level.seconds||0}
     const keys=advanced?resourceKeys:['dust','bread','wood','stone','iron','gold'];
-    const included=advanced?!!advancedSelected[item.id]:to>from;
-    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}${advanced?' · '+esc(tr('estimatedShort')):''}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${advanced?esc(tr('totalCost')):`${esc(tr('level'))} ${format(from)} → ${format(to)}`}</span></div>${included?`<div class="selectedCosts">${keys.filter(key=>total[key]>0).map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr">${format(total[key])}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr(advanced?'chooseAdvanced':'chooseLevels'))}</p>`}`;
+    const included=to>from;
+    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${esc(tr('level'))} ${format(from)} → ${format(to)}</span></div>${included?`<div class="selectedCosts">${keys.filter(key=>total[key]>0).map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr">${format(total[key])}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr('chooseLevels'))}</p>`}${requirementsHTML(item)}`;
   };
   const syncMapLevels = item => {
     const node=Array.from($('map').querySelectorAll('.mapNode')).find(el=>el.querySelector('.mapIcon')?.dataset.item===item.id);
@@ -157,7 +170,7 @@
       const goalSelect=node.querySelector('[data-target]');goalSelect.value=String(goal);
       for(const option of goalSelect.options)option.disabled=Number(option.value)<level;
       node.classList.toggle('isComplete',level===item.maxLevel);
-      $('map').querySelectorAll('.mapNode').forEach(el=>el.classList.toggle('isSelected',el===node));
+      $('map').querySelectorAll('.mapNode').forEach(el=>{el.classList.toggle('isSelected',el===node);const entry=data.basic.find(x=>x.id===el.querySelector('.mapIcon')?.dataset.item);if(entry)el.classList.toggle('hasUnmet',hasUnmet(entry))});
       const items=data.basic.filter(x=>x.category===filter);
       const count=items.filter(x=>current(x)===x.maxLevel).length;
       $('map').querySelector('.mapProgress strong').textContent=`${format(count)} / ${format(items.length)}`;
@@ -174,6 +187,7 @@
       for(const option of goal.options)option.disabled=Number(option.value)<current(item);
       row.classList.toggle('isSelected',true);
     });
+    $('results').querySelectorAll('.researchItem').forEach(row=>{const id=row.querySelector('[data-current]')?.dataset.current;const entry=data[tree].find(x=>x.id===id);if(entry)row.classList.toggle('hasUnmet',hasUnmet(entry))});
     renderSelected(item);
     renderSummary();
   };
@@ -193,18 +207,15 @@
     const visible = items.slice(0,page*24);
     $('results').innerHTML = visible.length ? visible.map(item => {
       const group = tree==='basic' ? item.category : item.group;
-      const amount = item.total.dust;
-      const marker = amount && amount !== '—' ? esc(cost(amount)) : '—';
-      if(tree==='advanced')return `<button type="button" class="researchItem ${advancedSelected[item.id]?'isSelected':''}" data-item="${esc(item.id)}" aria-pressed="${!!advancedSelected[item.id]}"><span class="itemSymbol" aria-hidden="true">${symbols[group]}</span><span class="itemText"><strong>${esc(names(item,tree))}</strong><small>${esc(effect(item))}</small></span><span class="itemAside"><strong class="dir-ltr">${marker}</strong><small>${esc(tr(advancedSelected[item.id]?'included':'addToPlan'))}</small></span><span class="itemArrow" aria-hidden="true">${advancedSelected[item.id]?'✓':'+'}</span></button>`;
       const options=(kind)=>Array.from({length:item.maxLevel+1},(_,n)=>`<option value="${n}" ${kind==='target'&&n<current(item)?'disabled':''} ${n===(kind==='current'?current(item):target(item))?'selected':''}>${format(n)}</option>`).join('');
-      return `<div class="researchItem ${selectedId===item.id?'isSelected':''}"><button type="button" class="researchPick" data-item="${esc(item.id)}"><span class="itemSymbol" aria-hidden="true">${symbols[group]}</span><span class="itemText"><strong>${esc(names(item,tree))}</strong><small>${esc(effect(item))}</small></span></button><div class="listLevelControls"><label><span>${esc(tr('currentShort'))}</span><select data-current="${esc(item.id)}" aria-label="${esc(tr('myLevel'))}: ${esc(names(item,tree))}">${options('current')}</select></label><label><span>${esc(tr('targetShort'))}</span><select data-target="${esc(item.id)}" aria-label="${esc(tr('toLevel'))}: ${esc(names(item,tree))}">${options('target')}</select></label></div></div>`;
+      return `<div class="researchItem ${selectedId===item.id?'isSelected':''} ${hasUnmet(item)?'hasUnmet':''}"><button type="button" class="researchPick" data-item="${esc(item.id)}"><span class="itemSymbol" aria-hidden="true">${symbols[group]}</span><span class="itemText"><strong>${esc(names(item,tree))}</strong><small>${esc(effect(item))}</small></span></button><div class="listLevelControls"><label><span>${esc(tr('currentShort'))}</span><select data-current="${esc(item.id)}" aria-label="${esc(tr('myLevel'))}: ${esc(names(item,tree))}">${options('current')}</select></label><label><span>${esc(tr('targetShort'))}</span><select data-target="${esc(item.id)}" aria-label="${esc(tr('toLevel'))}: ${esc(names(item,tree))}">${options('target')}</select></label></div></div>`;
     }).join('') : `<div class="empty">${esc(tr('noResults'))}</div>`;
     $('showMore').hidden = visible.length >= items.length;
   };
   document.querySelectorAll('[data-tree]').forEach(el => el.addEventListener('click',()=>{tree=el.dataset.tree;filter=tree==='basic'&&viewMode==='map'?'infantry':'all';page=1;$('search').value='';render();}));
   document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>{viewMode=el.dataset.view;if(viewMode==='map'&&filter==='all')filter='infantry';page=1;$('search').value='';render()}));
   $('filters').addEventListener('click',e=>{const button=e.target.closest('[data-filter]');if(!button)return;filter=button.dataset.filter;page=1;render();});
-  $('results').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data[tree].find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;if(tree==='advanced'){advancedSelected[item.id]=!advancedSelected[item.id];localStorage.setItem('saifWarAdvancedSelected',JSON.stringify(advancedSelected))}render();}});
+  $('results').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data[tree].find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
   $('map').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data.basic.find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
   $('showMore').addEventListener('click',()=>{page++;render();});
   $('summaryScope').addEventListener('click',e=>{const button=e.target.closest('[data-scope]');if(!button)return;summaryScope=button.dataset.scope;renderSummary()});
@@ -219,13 +230,16 @@
     }catch{$('copySummary').textContent=tr('copyFailed')}
   });
   $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
+  $('inventoryResources').addEventListener('input',e=>{const input=e.target.closest('[data-inventory]');if(!input)return;inventory[input.dataset.inventory]=input.value;localStorage.setItem('saifWarInventory',JSON.stringify(inventory));renderSummary()});
+  for(const id of ['academyLevel','academyTG'])$(id).addEventListener('change',()=>{const input=$(id),max=id==='academyTG'?10:5;input.value=input.value===''?'':String(Math.max(1,Math.min(max,Number(input.value)||1)));localStorage.setItem('saifWar'+(id==='academyTG'?'AcademyTG':'AcademyLevel'),input.value);render()});
   $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic')viewMode='list';render();});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
-  const changeLevel=e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data.basic.find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)};
+  const changeLevel=e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data[tree].find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)};
   $('map').addEventListener('change',changeLevel);
   $('results').addEventListener('change',changeLevel);
   for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
   $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
+  for(const id of ['academyLevel','academyTG'])$(id).value=localStorage.getItem('saifWar'+(id==='academyTG'?'AcademyTG':'AcademyLevel'))||'';
   try{const saved=JSON.parse(localStorage.getItem('saifWarAvailableSpeedups')||'{}');for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
-  fetch('data.json').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
+  fetch('data.json?v=11').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
 })();
