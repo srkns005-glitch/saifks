@@ -6,7 +6,7 @@
   let tree = 'basic', filter = 'infantry', viewMode = 'map', summaryScope = 'all', page = 1, data, latestSummary = '';
   let lastEditedId = localStorage.getItem('saifWarLastEdited') || null;
   let progress = {}, targets = {}, selectedId = null, advancedSelected = {}, inventory = {};
-  let showAllResources = false, clearedPlan = null;
+  let showAllResources = true, clearedPlan = null;
   try {progress = JSON.parse(localStorage.getItem('saifWarAcademyProgress') || '{}') || {}} catch {progress = {}};
   try {targets = JSON.parse(localStorage.getItem('saifWarAcademyTargets') || '{}') || {}} catch {targets = {}};
   try {advancedSelected = JSON.parse(localStorage.getItem('saifWarAdvancedSelected') || '{}') || {}} catch {advancedSelected = {}};
