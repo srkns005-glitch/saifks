@@ -111,6 +111,7 @@
     const {totals,selected}=getPlan();
     $('plannedHeroCount').textContent=num(selected.length);
     $('planContext').textContent=t('plannedPets')+': '+num(selected.length);
+    $('jumpSummary').hidden=selected.length===0;
     $('emptyPlan').hidden=selected.length>0;
     $('summaryContent').hidden=selected.length===0;
     $('plannedPets').innerHTML=selected.map(({pet,p,c})=>`<div class="planned-pet"><b>${safe(name(pet))}</b><small>${num(p.current)} → ${num(p.target)}${c.milestones.length?' · '+safe(t('advancement'))+' '+c.milestones.map(num).join(', '):''}</small></div>`).join('');
