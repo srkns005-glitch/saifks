@@ -102,6 +102,16 @@
 .mapNode:hover .mapIcon{transform:translateX(-50%) translateY(-3px)}
 .mapNode.isUnlock .mapIcon{transform:translateX(-50%) rotate(45deg)}
 .mapNode.isUnlock:hover .mapIcon{transform:translateX(-50%) rotate(45deg) translateY(-3px)}
+/* Keep artwork within view when a level picker is touched or a node is completed. */
+.mapNode{overflow:visible}
+.mapNode:hover .mapIcon{transform:translateX(-50%)}
+.mapNode.isUnlock:hover .mapIcon{transform:translateX(-50%) rotate(45deg)}
+.mapNode.isComplete .mapIcon,.mapNode.isPlanned .mapIcon{outline:none}
+.mapNode.isComplete .mapIcon{border-color:#8ecba9;box-shadow:inset 0 0 0 3px #f9e0ad2b,0 5px 13px #0008}
+.mapNode.isPlanned .mapIcon{border-color:#e8c386}
+.mapNode.isSelected .mapIcon{border-color:#ffdf9c;box-shadow:inset 0 0 0 3px #f9e0ad2b,0 5px 13px #0008}
+.mapNode:hover .mapIcon,.mapNode:focus-visible .mapIcon{box-shadow:inset 0 0 0 3px #f9e0ad2b,0 5px 13px #0008}
+.mapNode .mapIcon:focus-visible{outline:2px solid #ffe2a2;outline-offset:3px}
 /* Tablet and desktop: keep the level pickers fully below the artwork. */
 @media(min-width:681px){
   .nodeControls{top:67px;width:98px;height:50px;padding:2px;gap:2px}
