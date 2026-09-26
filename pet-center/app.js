@@ -4,6 +4,7 @@
   const LANGUAGE_KEY = 'saifksLanguage';
   const TYPES = ['food', 'manual', 'potion', 'medallion'];
   const SYMBOLS = {food:'✦', manual:'▤', potion:'◈', medallion:'✧'};
+  const LANGUAGE_LABELS = {en:'Language',ar:'اللغة',tr:'Dil',ko:'언어',ja:'言語',zh:'语言',es:'Idioma',de:'Sprache',fr:'Langue'};
   const $ = id => document.getElementById(id);
   const safe = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const initialLanguage = new URLSearchParams(location.search).get('lang') || localStorage.getItem(LANGUAGE_KEY) || 'ar';
@@ -56,7 +57,7 @@
     document.documentElement.dir=language === 'ar' ? 'rtl' : 'ltr';
     document.title=t('title')+' | SaifKS';
     $('language').value=language;
-    $('language').setAttribute('aria-label',t('language') || 'Language');
+    $('language').setAttribute('aria-label',LANGUAGE_LABELS[language]);
     document.querySelectorAll('[data-t]').forEach(el => el.textContent=t(el.dataset.t));
     document.querySelectorAll('[data-placeholder]').forEach(el => el.placeholder=t(el.dataset.placeholder));
     $('homeLink').href=$('homeButton').href='../index.html?lang='+encodeURIComponent(language);
@@ -101,10 +102,10 @@
   function renderSummary() {
     const {totals,selected}=getPlan();
     $('plannedHeroCount').textContent=num(selected.length);
-    $('planContext').textContent=num(selected.length)+' '+t('plannedPets');
+    $('planContext').textContent=t('plannedPets')+': '+num(selected.length);
     $('emptyPlan').hidden=selected.length>0;
     $('summaryContent').hidden=selected.length===0;
-    $('plannedPets').innerHTML=selected.map(({pet,p,c})=>`<div class="planned-pet"><b>${safe(name(pet))}</b><small>${num(p.current)} → ${num(p.target)}${c.milestones.length?' · '+num(c.milestones.length)+' '+safe(t('milestones')):''}</small></div>`).join('');
+    $('plannedPets').innerHTML=selected.map(({pet,p,c})=>`<div class="planned-pet"><b>${safe(name(pet))}</b><small>${num(p.current)} → ${num(p.target)}${c.milestones.length?' · '+safe(t('advancement'))+' '+c.milestones.map(num).join(', '):''}</small></div>`).join('');
     $('resourceSummary').innerHTML=TYPES.filter(type=>totals[type]>0).map(type=>{
       const available=parseStock(state.stock[type]), remaining=Math.max(0,totals[type]-available);
       return `<div class="resource-row ${remaining?'short':''}"><span class="resource-title">${SYMBOLS[type]} ${safe(t(type))}</span><div class="resource-values"><div><span>${safe(t('required'))}</span><strong>${num(totals[type])}</strong></div><div><span>${safe(t('available'))}</span><strong>${num(available)}</strong></div><div><span>${safe(t('remaining'))}</span><strong>${num(remaining)}</strong></div></div></div>`;
@@ -114,7 +115,7 @@
   function summaryText() {
     const {totals,selected}=getPlan();
     if (!selected.length) return t('emptyPlan');
-    const lines=[t('title')+' | SaifKS',num(selected.length)+' '+t('plannedPets'),''];
+    const lines=[t('title')+' | SaifKS',t('plannedPets')+': '+num(selected.length),''];
     for (const {pet,p,c} of selected) {
       lines.push(name(pet)+': '+t('level')+' '+num(p.current)+' → '+num(p.target)+(c.milestones.length?' · '+t('advancement')+' '+c.milestones.map(num).join(', '):''));
       lines.push('  '+TYPES.filter(type=>c[type]>0).map(type=>t(type)+' '+num(c[type])).join(' · '));
