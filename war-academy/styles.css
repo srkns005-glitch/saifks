@@ -96,3 +96,9 @@
   .resourceBreakdown small{font-size:11px}
   .plannerStat{padding:12px 14px}
 }
+/* Anchor the artwork, level controls and caption to the same node center. */
+.mapNode{display:block}
+.mapNode .mapIcon{position:absolute;top:0;left:50%;transform:translateX(-50%)}
+.mapNode:hover .mapIcon{transform:translateX(-50%) translateY(-3px)}
+.mapNode.isUnlock .mapIcon{transform:translateX(-50%) rotate(45deg)}
+.mapNode.isUnlock:hover .mapIcon{transform:translateX(-50%) rotate(45deg) translateY(-3px)}
