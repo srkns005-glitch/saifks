@@ -155,7 +155,7 @@
     for(const level of item.levels)if(level.level>from&&level.level<=to){for(const key of resourceKeys)total[key]+=level[key]||0;total.seconds+=level.seconds||0}
     const keys=advanced?resourceKeys:['dust','bread','wood','stone','iron','gold'];
     const included=to>from;
-    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${esc(tr('level'))} ${format(from)} → ${format(to)}</span></div>${included?`<div class="selectedCosts">${keys.filter(key=>total[key]>0).map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr" ${exact(total[key])}>${esc(compact(total[key]))}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr('chooseLevels'))}</p>`}`;
+    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${esc(tr('level'))} ${format(from)} → ${format(to)}</span></div>${included?`<div class="selectedCosts">${keys.filter(key=>total[key]>0).map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr" ${exact(total[key])}>${esc(compact(total[key]))}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr(from>=item.maxLevel?'completedStatus':'chooseLevels'))}</p>`}`;
   };
   const syncMapLevels = item => {
     const node=Array.from($('map').querySelectorAll('.mapNode')).find(el=>el.querySelector('.mapIcon')?.dataset.item===item.id);
