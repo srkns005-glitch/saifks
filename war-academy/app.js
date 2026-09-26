@@ -131,13 +131,14 @@
     $('summaryContext').textContent=`${context} · ${format(planned)} ${tr('selectedResearch')}`;
     document.querySelectorAll('[data-scope]').forEach(el=>{const active=el.dataset.scope===summaryScope;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active))});
     const keys=basic?['dust','bread','wood','stone','iron','gold']:['ttg','dust','bread','wood','stone','iron','gold'];
-    $('summaryResources').innerHTML=keys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong></div>`).join('');
+    const usedKeys=keys.filter(key=>total[key]>0);
+    $('summaryResources').innerHTML=planned?usedKeys.map(key=>`<div class="plannerStat"><span>${esc(resourceName(key))}</span><strong class="dir-ltr">${esc(format(total[key]))}</strong></div>`).join(''):`<p class="emptyPlan">${esc(tr('emptyPlan'))}</p>`;
     const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));
     const needed=total.seconds/(1+speed/100);
     const available=(Number($('speedDays').value)||0)*86400+(Number($('speedHours').value)||0)*3600+(Number($('speedMinutes').value)||0)*60;
-    $('summaryTimes').innerHTML=`<div><span>${esc(tr('baseTime'))}</span><strong>${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div><div><span>${esc(tr('speedupsShortage'))}</span><strong>${esc(duration(Math.max(0,needed-available)))}</strong></div>`;
-    $('summaryNote').textContent=tr(basic?'basicSummaryNote':'advancedSummaryNote')+' '+tr('estimateNote')+' '+tr('speedupsResourceNote');
-    latestSummary=[tr('planTitle'),`${context} · ${format(planned)} ${tr('selectedResearch')}`,...plannedNames, ...keys.map(key=>`${resourceName(key)}: ${format(total[key])}`),`${tr('baseTime')}: ${duration(total.seconds)}`,`${tr('speedupsNeeded')}: ${duration(needed)}`,`${tr('availableSpeedups')}: ${duration(available)}`,`${tr('speedupsShortage')}: ${duration(Math.max(0,needed-available))}`].join('\n');
+    $('summaryTimes').innerHTML=planned?`<div><span>${esc(tr('baseTime'))}</span><strong>${esc(duration(total.seconds))}</strong></div><div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div><div><span>${esc(tr('speedupsShortage'))}</span><strong>${esc(duration(Math.max(0,needed-available)))}</strong></div>`:'';
+    $('summaryNote').textContent=planned?tr(basic?'basicSummaryNote':'advancedSummaryNote')+' '+tr('estimateNote')+' '+tr('speedupsResourceNote'):'';
+    latestSummary=[tr('planTitle'),`${context} · ${format(planned)} ${tr('selectedResearch')}`,...plannedNames, ...(planned?usedKeys.map(key=>`${resourceName(key)}: ${format(total[key])}`):[tr('emptyPlan')]), ...(planned?[`${tr('baseTime')}: ${duration(total.seconds)}`,`${tr('speedupsNeeded')}: ${duration(needed)}`,`${tr('availableSpeedups')}: ${duration(available)}`,`${tr('speedupsShortage')}: ${duration(Math.max(0,needed-available))}`]:[])].join('\n');
   };
   const renderSelected = item => {
     const advanced=tree==='advanced', from=advanced?0:current(item), to=advanced?item.maxLevel:target(item);
@@ -146,7 +147,7 @@
     else for(const level of item.levels)if(level.level>from&&level.level<=to){for(const key of resourceKeys)total[key]+=level[key]||0;total.seconds+=level.seconds||0}
     const keys=advanced?resourceKeys:['dust','bread','wood','stone','iron','gold'];
     const included=advanced?!!advancedSelected[item.id]:to>from;
-    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}${advanced?' · '+esc(tr('estimatedShort')):''}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${advanced?esc(tr('totalCost')):`${esc(tr('level'))} ${format(from)} → ${format(to)}`}</span></div>${included?`<div class="selectedCosts">${keys.map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr">${format(total[key])}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr(advanced?'chooseAdvanced':'chooseLevels'))}</p>`}`;
+    $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}${advanced?' · '+esc(tr('estimatedShort')):''}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${advanced?esc(tr('totalCost')):`${esc(tr('level'))} ${format(from)} → ${format(to)}`}</span></div>${included?`<div class="selectedCosts">${keys.filter(key=>total[key]>0).map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr">${format(total[key])}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`:`<p class="selectedPrompt">${esc(tr(advanced?'chooseAdvanced':'chooseLevels'))}</p>`}`;
   };
   const syncMapLevels = item => {
     const node=Array.from($('map').querySelectorAll('.mapNode')).find(el=>el.querySelector('.mapIcon')?.dataset.item===item.id);
