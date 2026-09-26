@@ -10,12 +10,19 @@
   const initialLanguage = new URLSearchParams(location.search).get('lang') || localStorage.getItem(LANGUAGE_KEY) || 'ar';
   let language = Object.prototype.hasOwnProperty.call(PET_I18N, initialLanguage) ? initialLanguage : 'ar';
   let pets = [], activeGeneration = 0, search = '';
-  let state = {pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};
+  let state = {version:2,pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};
   try {
     const saved = JSON.parse(localStorage.getItem(KEY));
     if (saved && typeof saved === 'object') {
       state.pets = saved.pets && typeof saved.pets === 'object' ? saved.pets : {};
       state.stock = {...state.stock,...(saved.stock || {})};
+      // The first version preselected advancement at the exact target level.
+      // Clear that old automatic choice once, while retaining levels and inventory.
+      if (!Number.isFinite(Number(saved.version)) || Number(saved.version) < 2) {
+        for (const progress of Object.values(state.pets)) {
+          if (progress && typeof progress === 'object') progress.targetAdvanced=false;
+        }
+      }
     }
   } catch (_) { /* Corrupt local storage should not block the planner. */ }
   const t = key => PET_I18N[language][key] || PET_I18N.en[key] || key;
@@ -80,7 +87,7 @@
     const checkTarget=p.target>0 && p.target%10===0 && !(p.target===p.current && p.currentAdvanced);
     const preview=TYPES.filter(type=>c[type]>0).map(type=>`<span class="cost-chip">${safe(t(type))} ${num(c[type])}</span>`).join('');
     const both=[checkCurrent?`<label><input type="checkbox" data-action="currentAdvanced" data-pet="${pet.id}"${p.currentAdvanced?' checked':''}>${safe(t('currentAdvanced'))}</label>`:'',checkTarget?`<label><input type="checkbox" data-action="targetAdvanced" data-pet="${pet.id}"${p.targetAdvanced?' checked':''}>${safe(t('targetAdvanced'))}</label>`:''].join('');
-    return `<article class="pet-card ${c.planned?'is-planned':''} ${p.current===pet.maxLevel&&p.currentAdvanced?'is-complete':''}" id="pet-${pet.id}"><div class="card-top"><img class="pet-art" src="assets/${pet.id}.webp" alt="${safe(name(pet))}" loading="lazy"><div class="pet-identity"><small>${safe(t('generation'))} ${num(pet.generation)}</small><h4>${safe(name(pet))}</h4><p>${safe(effect(pet))}</p></div>${p.current===pet.maxLevel&&p.currentAdvanced?`<span class="pet-state">${safe(t('completed'))}</span>`:c.planned?`<span class="pet-state">${safe(t('planned'))}</span>`:''}</div><div class="card-bottom"><div class="level-fields"><label class="level-field"><span>${safe(t('current'))}</span><select data-action="current" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('current'))}">${options(pet.maxLevel,p.current,0)}</select></label><span class="level-arrow" aria-hidden="true">→</span><label class="level-field"><span>${safe(t('target'))}</span><select data-action="target" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('target'))}">${options(pet.maxLevel,p.target,p.current)}</select></label></div><div class="milestone-options">${both}</div><div class="refinement"><span class="refinement-title">${safe(t('refinementTitle'))}</span><div class="refinement-fields">${['commonMark','advancedMark'].map(type=>`<label><span>${safe(t(type))}</span><input type="text" inputmode="numeric" data-action="${type}" data-pet="${pet.id}" value="${p[type]||''}" placeholder="0" aria-label="${safe(name(pet)+' · '+t(type))}"></label>`).join('')}</div></div><div class="cost-preview">${preview}</div></div></article>`;
+    return `<article class="pet-card ${c.planned?'is-planned':''} ${p.current===pet.maxLevel&&p.currentAdvanced?'is-complete':''}" id="pet-${pet.id}"><div class="card-top"><img class="pet-art" src="assets/${pet.id}.webp" alt="${safe(name(pet))}" loading="lazy"><div class="pet-identity"><small>${safe(t('generation'))} ${num(pet.generation)}</small><h4>${safe(name(pet))}</h4><p>${safe(effect(pet))}</p></div>${p.current===pet.maxLevel&&p.currentAdvanced?`<span class="pet-state">${safe(t('completed'))}</span>`:c.planned?`<span class="pet-state">${safe(t('planned'))}</span>`:''}</div><div class="card-bottom"><div class="level-fields"><label class="level-field"><span>${safe(t('current'))}</span><select data-action="current" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('current'))}">${options(pet.maxLevel,p.current,0)}</select></label><span class="level-arrow" aria-hidden="true">→</span><label class="level-field"><span>${safe(t('target'))}</span><select data-action="target" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('target'))}">${options(pet.maxLevel,p.target,p.current)}</select></label></div><div class="milestone-options">${both}</div><details class="refinement" ${p.commonMark||p.advancedMark?'open':''}><summary class="refinement-title">${safe(t('refinementTitle'))}</summary><div class="refinement-fields">${['commonMark','advancedMark'].map(type=>`<label><span>${safe(t(type))}</span><input type="text" inputmode="numeric" data-action="${type}" data-pet="${pet.id}" value="${p[type]||''}" placeholder="0" aria-label="${safe(name(pet)+' · '+t(type))}"></label>`).join('')}</div></details><div class="cost-preview">${preview}</div></div></article>`;
   }
   function renderCatalogue() {
     $('generationTabs').innerHTML=`<button type="button" data-generation="0" class="${activeGeneration===0?'is-active':''}">${safe(t('all'))}</button>`+[1,2,3,4,5,6,7].map(g=>`<button type="button" data-generation="${g}" class="${activeGeneration===g?'is-active':''}">${safe(t('generation'))} ${num(g)}</button>`).join('');
@@ -146,7 +153,7 @@
       if (p.current===p.target && p.currentAdvanced) p.targetAdvanced=false;
     } else if (el.dataset.action==='target') {
       const next=Math.max(p.current,clamp(el.value,pet.maxLevel));
-      if (next!==p.target) p.targetAdvanced=next>0&&next%10===0&&!(next===p.current&&p.currentAdvanced);
+      if (next!==p.target) p.targetAdvanced=false;
       p.target=next;
     } else if (el.dataset.action==='currentAdvanced') {
       p.currentAdvanced=el.checked;
@@ -174,8 +181,9 @@
     } catch (_) {flash(t('copyFailed'));}
   });
   $('clearPlan').addEventListener('click',()=>{for(const pet of pets){const p=progress(pet);state.pets[pet.id]={current:p.current,currentAdvanced:p.currentAdvanced,target:p.current,targetAdvanced:false,commonMark:0,advancedMark:0};}save();renderCatalogue();renderSummary();flash(t('cleared'));});
-  $('resetAll').addEventListener('click',()=>{if(!confirm(t('confirmReset')))return;state={pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};save();renderStock();renderCatalogue();renderSummary();flash(t('resetDone'));});
+  $('resetAll').addEventListener('click',()=>{if(!confirm(t('confirmReset')))return;state={version:2,pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};save();renderStock();renderCatalogue();renderSummary();flash(t('resetDone'));});
   applyLanguage();
+  save();
   renderStock();
   fetch('data.json?v=1').then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(data=>{
     if(!Array.isArray(data.pets)||!data.pets.length)throw new Error('Invalid pet data');
