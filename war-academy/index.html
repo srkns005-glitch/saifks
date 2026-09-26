@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1423">
   <meta name="description" content="دليل أبحاث أكاديمية الحرب في Kingshot، التقنيات الأساسية والمتقدمة وتكاليف تطويرها.">
   <title>أكاديمية الحرب | SaifKS</title>
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
   <header class="topbar">
@@ -25,18 +25,19 @@
       <div class="listMeta"><span id="resultCount" aria-live="polite"></span><span id="dataHint" data-t="basicHint">افتح أي بحث لرؤية تكلفة كل مستوى.</span></div>
       <div id="selectedResult" class="selectedResult" aria-live="polite"></div>
       <div id="map" class="mapHost" aria-live="polite" hidden></div><div id="results" class="results"></div><button id="showMore" class="showMore" type="button" hidden data-t="showMore">عرض المزيد</button>
-      <a id="quickSummary" class="quickSummary" href="#planningSummary" hidden aria-live="polite"></a>
+      <a id="quickSummary" class="quickSummary" href="#planningSummary" hidden data-t="openSummary">عرض ملخص الخطة ↗</a>
     </section>
     <section id="planningSummary" class="planner" aria-labelledby="summaryTitle">
       <div class="plannerHead"><div><div class="sectionKicker" data-t="planKicker">خطة الأبحاث / 02</div><h2 id="summaryTitle" data-t="planTitle">ملخص الموارد والتسريعات</h2><p id="summaryContext"></p></div><div class="plannerActions"><div id="summaryScope" class="summaryScope" role="group" aria-label="Summary scope"><button type="button" data-scope="current" data-t="currentScope">المسار الحالي</button><button type="button" data-scope="all" data-t="allScope">كل المسارات</button></div><button type="button" id="copySummary" class="copySummary" data-t="copySummary">نسخ الملخص</button></div></div>
+      <div class="planActions"><button type="button" id="exportPlan" data-t="exportPlan">حفظ نسخة من الخطة</button><button type="button" id="importPlan" data-t="importPlan">استعادة خطة</button><input type="file" id="planFile" accept="application/json,.json" hidden><button type="button" id="clearPlan" data-t="clearPlan">مسح الخطة</button><button type="button" id="undoClear" data-t="undoClear" hidden>تراجع</button><span id="planFeedback" role="status" aria-live="polite"></span></div>
       <div class="plannerSettings"><label><span data-t="researchSpeed">مكافأة سرعة البحث</span><span class="speedInput"><input id="researchSpeed" type="number" min="0" max="1000" step="1" value="0" inputmode="numeric" aria-label="مكافأة سرعة البحث"><span>%</span></span></label><span data-t="speedHelp">أدخل مكافأة سرعة البحث من اللعبة لتقدير التسريعات اللازمة.</span></div>
-      <div class="academySettings"><label><span data-t="academyLevel">مستوى أكاديمية الحرب</span><input id="academyLevel" type="number" min="1" max="5" step="1" inputmode="numeric" placeholder="—"></label><label><span data-t="academyTG">مستوى الذهب الحقيقي للأكاديمية</span><input id="academyTG" type="number" min="1" max="10" step="1" inputmode="numeric" placeholder="—"></label></div>
       <fieldset class="availableSpeedups"><legend data-t="availableSpeedups">التسريعات المتوفرة</legend><label><span data-t="daysAvailable">أيام</span><input id="speedDays" type="number" min="0" step="1" value="0" inputmode="numeric"></label><label><span data-t="hoursAvailable">ساعات</span><input id="speedHours" type="number" min="0" step="1" value="0" inputmode="numeric"></label><label><span data-t="minutesAvailable">دقائق</span><input id="speedMinutes" type="number" min="0" step="1" value="0" inputmode="numeric"></label></fieldset>
       <fieldset class="inventory"><legend data-t="inventoryTitle">الموارد المتوفرة لديك</legend><p data-t="inventoryHelp">اكتب العدد المتوفر؛ يمكنك استخدام K وM مثل 2.5M.</p><div id="inventoryResources" class="inventoryResources"></div></fieldset>
       <div id="summaryResources" class="plannerResources" aria-live="polite"></div>
+      <button type="button" id="toggleResources" class="toggleResources" data-t="allResources" hidden aria-expanded="false">عرض كل الموارد</button>
       <div id="summaryTimes" class="plannerTimes"></div><p id="summaryNote" class="plannerNote"></p>
     </section>
-    <footer class="sources"><div><strong data-t="sources">المصادر ودقة البيانات</strong><p data-t="sourceNote">بيانات الأبحاث الأساسية ومستويات المتقدمة ومتطلبات الفتح مأخوذة من المصادر أدناه. قد تتغير بيانات اللعبة.</p></div><div class="sourceLinks"><a href="https://kingshotpro.com/data/war-academy.json" target="_blank" rel="noopener">KingshotPro · CC BY 4.0 ↗</a><a href="https://www.kingshotguide.org/calculator/advanced-truegold-research" target="_blank" rel="noopener">Kingshot Guide · Advanced levels ↗</a><a href="https://kingshot.net/database/war-academy/truegold-battalion" target="_blank" rel="noopener">Kingshot.net · Requirements ↗</a></div></footer>
+    <footer class="dataCredit"><a href="https://kingshotpro.com/data/war-academy.json" target="_blank" rel="noopener license">KingshotPro · <span>CC BY 4.0</span></a><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener license" aria-label="Creative Commons Attribution 4.0">↗</a></footer>
   </main>
-  <script src="translations.js?v=11"></script><script src="app.js?v=11"></script>
+  <script src="translations.js?v=12"></script><script src="app.js?v=12"></script>
 </body></html>
