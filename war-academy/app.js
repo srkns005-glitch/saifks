@@ -32,8 +32,8 @@
   const resourceName = k => tr(k === 'ttg' ? 'truegold' : k);
   const current = item => Math.max(0,Math.min(item.maxLevel,Number(progress[item.id]) || 0));
   const target = item => Math.max(current(item),Math.min(item.maxLevel,Number.isFinite(Number(targets[item.id])) ? Number(targets[item.id]) : item.maxLevel));
-  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}render()};
-  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));render()};
+  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}};
+  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))};
   const duration = seconds => {
     const minutes = Math.max(0,Math.ceil(seconds/60));
     const day=Math.floor(minutes/1440),hour=Math.floor(minutes%1440/60),minute=minutes%60;
@@ -142,6 +142,27 @@
     const keys=advanced?resourceKeys:['dust','bread','wood','stone','iron','gold'];
     $('selectedResult').innerHTML=`<div class="selectedHeading"><div><small>${esc(tr('selectedCostTitle'))}${advanced?' · '+esc(tr('estimatedShort')):''}</small><strong>${esc(names(item,tree))}</strong></div><span class="selectedRange">${advanced?esc(tr('totalCost')):`${esc(tr('level'))} ${format(from)} → ${format(to)}`}</span></div><div class="selectedCosts">${keys.map(key=>`<span><small>${esc(resourceName(key))}</small><b class="dir-ltr">${format(total[key])}</b></span>`).join('')}<span><small>${esc(tr('baseTime'))}</small><b>${esc(duration(total.seconds))}</b></span></div>`;
   };
+  const syncMapLevels = item => {
+    const node=Array.from($('map').querySelectorAll('.mapNode')).find(el=>el.querySelector('.mapIcon')?.dataset.item===item.id);
+    if(node){
+      const level=current(item),goal=target(item);
+      node.querySelector('[data-current]').value=String(level);
+      const goalSelect=node.querySelector('[data-target]');goalSelect.value=String(goal);
+      for(const option of goalSelect.options)option.disabled=Number(option.value)<level;
+      node.classList.toggle('isComplete',level===item.maxLevel);
+      $('map').querySelectorAll('.mapNode').forEach(el=>el.classList.toggle('isSelected',el===node));
+      const items=data.basic.filter(x=>x.category===filter);
+      const count=items.filter(x=>current(x)===x.maxLevel).length;
+      $('map').querySelector('.mapProgress strong').textContent=`${format(count)} / ${format(items.length)}`;
+      $('map').querySelectorAll('.mapEdge').forEach((edge,index)=>{
+        const [a,b]=edges[index];
+        edge.classList.toggle('isStarted',!!(current(items[a])&&current(items[b])));
+        edge.classList.toggle('isComplete',current(items[a])===items[a].maxLevel&&current(items[b])===items[b].maxLevel);
+      });
+    }
+    renderSelected(item);
+    renderSummary();
+  };
   const render = () => {
     if (!data) return;
     renderFilters();
@@ -174,7 +195,7 @@
   $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
   $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic')viewMode='list';render();});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
-  $('map').addEventListener('change',e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data.basic.find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value)});
+  $('map').addEventListener('change',e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data.basic.find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)});
   for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
   $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
   try{const saved=JSON.parse(localStorage.getItem('saifWarAvailableSpeedups')||'{}');for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
