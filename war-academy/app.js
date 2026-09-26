@@ -3,7 +3,7 @@
   const languages = Object.keys(WAR_I18N);
   const requested = new URLSearchParams(location.search).get('lang');
   let lang = languages.includes(requested) ? requested : (languages.includes(localStorage.getItem('saifksLanguage')) ? localStorage.getItem('saifksLanguage') : 'ar');
-  let tree = 'basic', filter = 'infantry', viewMode = 'map', summaryScope = 'all', page = 1, data, latestSummary = '';
+  let tree = 'basic', filter = 'infantry', basicBranch = 'infantry', viewMode = 'map', summaryScope = 'all', page = 1, data, latestSummary = '';
   let progress = {}, targets = {}, selectedId = null, advancedSelected = {}, inventory = {};
   let showAllResources = true;
   try {progress = JSON.parse(localStorage.getItem('saifWarAcademyProgress') || '{}') || {}} catch {progress = {}};
@@ -77,8 +77,6 @@
     const groups = tree === 'basic' ? (viewMode === 'map' ? ['infantry','cavalry','archer'] : ['all','infantry','cavalry','archer']) : ['all','special','economy','capacity','combat'];
     $('filters').innerHTML = groups.map(x => {const count=plannedItems(tree).filter(item=>x==='all'||(tree==='basic'?item.category:item.group)===x).length;return `<button type="button" data-filter="${x}" class="${filter===x?'isActive':''}" aria-pressed="${filter===x}">${esc(tr(x))}${count?` <span class="filterCount" aria-label="${esc(tr('plannedCount'))}">${format(count)}</span>`:''}</button>`}).join('');
     document.querySelectorAll('[data-tree]').forEach(el => {const active = el.dataset.tree === tree;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));const count=plannedItems(el.dataset.tree).length;el.innerHTML=`${esc(tr(el.dataset.tree))}${count?` <span class="filterCount" aria-label="${esc(tr('plannedCount'))}">${format(count)}</span>`:''}`;});
-    $('viewSwitch').hidden = tree !== 'basic';
-    document.querySelectorAll('[data-view]').forEach(el => {const active = el.dataset.view===viewMode;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));});
   };
   const iconPaths = [
     '<path d="M7 22h34M10 20l4-12h20l4 12M16 8l4 8h8l4-8M20 29h8M24 24v13M14 37h20"/>',
@@ -218,9 +216,8 @@
     }).join('') : `<div class="empty">${esc(tr('noResults'))}</div>`;
     $('showMore').hidden = visible.length >= items.length;
   };
-  document.querySelectorAll('[data-tree]').forEach(el => el.addEventListener('click',()=>{tree=el.dataset.tree;if($('search').value.trim())viewMode='list';filter=tree==='basic'&&viewMode==='map'?'infantry':'all';page=1;render();}));
-  document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>{viewMode=el.dataset.view;if(viewMode==='map'&&filter==='all')filter='infantry';page=1;render()}));
-  $('filters').addEventListener('click',e=>{const button=e.target.closest('[data-filter]');if(!button)return;filter=button.dataset.filter;page=1;render();});
+  document.querySelectorAll('[data-tree]').forEach(el => el.addEventListener('click',()=>{tree=el.dataset.tree;viewMode=tree==='basic'&&!$('search').value.trim()?'map':'list';filter=tree==='basic'&&viewMode==='map'?basicBranch:'all';page=1;render();}));
+  $('filters').addEventListener('click',e=>{const button=e.target.closest('[data-filter]');if(!button)return;filter=button.dataset.filter;if(tree==='basic'&&filter!=='all')basicBranch=filter;page=1;render();});
   $('results').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data[tree].find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
   $('map').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data.basic.find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
   $('showMore').addEventListener('click',()=>{page++;render();});
@@ -254,8 +251,8 @@
   });
   $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
   $('inventoryResources').addEventListener('input',e=>{const input=e.target.closest('[data-inventory]');if(!input)return;inventory[input.dataset.inventory]=input.value;localStorage.setItem('saifWarInventory',JSON.stringify(inventory));renderSummary()});
-  $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic'){viewMode='list';filter='all'}render();});
-  $('clearSearch').addEventListener('click',()=>{$('search').value='';page=1;render();$('search').focus()});
+  $('search').addEventListener('input',()=>{page=1;if(tree==='basic'){viewMode=$('search').value.trim()?'list':'map';filter=viewMode==='map'?basicBranch:'all'}render();});
+  $('clearSearch').addEventListener('click',()=>{$('search').value='';page=1;if(tree==='basic'){viewMode='map';filter=basicBranch}render();$('search').focus()});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
   const changeLevel=e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data[tree].find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;$('planFeedback').textContent='';if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)};
   $('map').addEventListener('change',changeLevel);
