@@ -15,6 +15,7 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const format = value => new Intl.NumberFormat(lang === 'zh' ? 'zh-CN' : lang).format(Number(value) || 0);
   const resourceKeys = ['dust','ttg','bread','wood','stone','iron','gold'];
+  const plannedItems = kind => data[kind].filter(item=>target(item)>current(item));
   const symbols = {infantry:'⌑',cavalry:'♘',archer:'⌁',special:'✧',economy:'◈',capacity:'▤',combat:'✦'};
   const names = (item, kind) => {
     if (lang === 'en') return item.name;
@@ -58,7 +59,7 @@
     });
     $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
     $('homeLink').href = '../index.html?lang=' + lang;
-    $('researchLink').href = '../research/index.html?lang=' + lang;
+    $('homeBtn').href = '../index.html?lang=' + lang;
     localStorage.setItem('saifksLanguage',lang);
     const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
     renderInventory();
@@ -66,9 +67,8 @@
   };
   const renderFilters = () => {
     const groups = tree === 'basic' ? (viewMode === 'map' ? ['infantry','cavalry','archer'] : ['all','infantry','cavalry','archer']) : ['all','special','economy','capacity','combat'];
-    $('filters').innerHTML = groups.map(x => `<button type="button" data-filter="${x}" class="${filter===x?'isActive':''}" aria-pressed="${filter===x}">${esc(tr(x))}</button>`).join('');
-    $('dataHint').textContent = tr(tree === 'basic' ? (viewMode === 'map' ? 'mapHint' : 'basicHint') : 'advancedHint');
-    document.querySelectorAll('[data-tree]').forEach(el => {const active = el.dataset.tree === tree;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));});
+    $('filters').innerHTML = groups.map(x => {const count=plannedItems(tree).filter(item=>x==='all'||(tree==='basic'?item.category:item.group)===x).length;return `<button type="button" data-filter="${x}" class="${filter===x?'isActive':''}" aria-pressed="${filter===x}">${esc(tr(x))}${count?` <span class="filterCount" aria-label="${esc(tr('plannedCount'))}">${format(count)}</span>`:''}</button>`}).join('');
+    document.querySelectorAll('[data-tree]').forEach(el => {const active = el.dataset.tree === tree;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));const count=plannedItems(el.dataset.tree).length;el.innerHTML=`${esc(tr(el.dataset.tree))}${count?` <span class="filterCount" aria-label="${esc(tr('plannedCount'))}">${format(count)}</span>`:''}`;});
     $('viewSwitch').hidden = tree !== 'basic';
     document.querySelectorAll('[data-view]').forEach(el => {const active = el.dataset.view===viewMode;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active));});
   };
@@ -106,24 +106,23 @@
   };
   const renderSummary = () => {
     if(!data)return;
-    const basic=tree==='basic';
-    const items=data[tree].filter(item=>summaryScope==='all'||filter==='all'||(basic?item.category:item.group)===filter);
+    const items=summaryScope==='all'?[...data.basic,...data.advanced]:data[tree].filter(item=>filter==='all'||(tree==='basic'?item.category:item.group)===filter);
     const total={bread:0,wood:0,stone:0,iron:0,gold:0,dust:0,ttg:0,seconds:0};
     let planned=0;
     const plannedNames=[];
     for(const item of items){
       const from=current(item),to=target(item);
       if(to<=from)continue;
-      planned++;plannedNames.push(`${names(item,tree)} (${format(from)} → ${format(to)})`);
+      planned++;plannedNames.push(`${names(item,item.group?'advanced':'basic')}${item.id.startsWith('truegold-battalion')||item.id.startsWith('truegold-legionaries')?' · '+tr(item.category):''} (${format(from)} → ${format(to)})`);
       for(const level of item.levels)if(level.level>from&&level.level<=to){
         for(const key of resourceKeys)total[key]+=level[key]||0;
         total.seconds+=level.seconds||0;
       }
     }
-    const context=summaryScope==='all'?tr(basic?'allBasic':'allAdvanced'):(filter==='all'?tr(basic?'allBasic':'allAdvanced'):tr('currentGroup').replace('{group}',tr(filter)));
+    const context=summaryScope==='all'?tr('allResearch'):(filter==='all'?tr(tree==='basic'?'allBasic':'allAdvanced'):tr('currentGroup').replace('{group}',tr(filter)));
     $('summaryContext').textContent=`${context} · ${format(planned)} ${tr('selectedResearch')}`;
     document.querySelectorAll('[data-scope]').forEach(el=>{const active=el.dataset.scope===summaryScope;el.classList.toggle('isActive',active);el.setAttribute('aria-pressed',String(active))});
-    const keys=basic?['dust','bread','wood','stone','iron','gold']:['ttg','dust','bread','wood','stone','iron','gold'];
+    const keys=['ttg','dust','bread','wood','stone','iron','gold'];
     const usedKeys=keys.filter(key=>total[key]>0);
     const shortageKeys=usedKeys.filter(key=>total[key]>inventoryAmount(inventory[key]));
     const visibleKeys=showAllResources?usedKeys:shortageKeys;
@@ -134,7 +133,8 @@
     const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));
     const needed=total.seconds/(1+speed/100);
     const available=(Number($('speedDays').value)||0)*86400+(Number($('speedHours').value)||0)*3600+(Number($('speedMinutes').value)||0)*60;
-    $('summaryTimes').innerHTML=planned?`<div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div><div><span>${esc(tr('speedupsShortage'))}</span><strong>${esc(duration(Math.max(0,needed-available)))}</strong></div>`:'';
+    $('summaryLead').innerHTML=planned?`<div><span>${esc(tr('missingResourcesCount'))}</span><strong>${format(shortageKeys.length)}</strong></div><div><span>${esc(tr('speedupsShortage'))}</span><strong>${esc(duration(Math.max(0,needed-available)))}</strong></div>`:'';
+    $('summaryTimes').innerHTML=planned?`<div class="speedupStat"><span>${esc(tr('speedupsNeeded'))}</span><strong>${esc(duration(needed))}</strong></div>`:'';
     $('summaryNote').textContent=planned?tr('exactNote')+' '+tr('speedupsResourceNote'):'';
     latestSummary=[tr('planTitle'),`${context} · ${format(planned)} ${tr('selectedResearch')}`,...plannedNames, ...(planned?usedKeys.map(key=>`${resourceName(key)}: ${format(total[key])} · ${tr('resourceShortage')}: ${format(Math.max(0,total[key]-inventoryAmount(inventory[key])))}`):[tr('emptyPlan')]), ...(planned?[`${tr('baseTime')}: ${duration(total.seconds)}`,`${tr('speedupsNeeded')}: ${duration(needed)}`,`${tr('availableSpeedups')}: ${duration(available)}`,`${tr('speedupsShortage')}: ${duration(Math.max(0,needed-available))}`]:[])].join('\n');
     $('quickSummary').hidden=!planned;
@@ -177,6 +177,8 @@
       row.classList.toggle('isSelected',true);
     });
     renderSelected(item);
+    renderFilters();
+    $('planFilterCount').textContent=`${format(plannedItems(tree).filter(entry=>filter==='all'||(tree==='basic'?entry.category:entry.group)===filter).length)} ${tr('plannedCount')}`;
     renderSummary();
   };
   const render = () => {
@@ -185,6 +187,9 @@
     const q = $('search').value.trim().toLocaleLowerCase();
     const items = data[tree].filter(item => (filter === 'all' || (tree === 'basic' ? item.category : item.group) === filter) && (!q || [names(item,tree),effect(item),item.name,item.effect].some(x => x.toLocaleLowerCase().includes(q))));
     $('resultCount').textContent = `${format(items.length)} ${tr('results')}`;
+    const inSection=plannedItems(tree).filter(item=>filter==='all'||(tree==='basic'?item.category:item.group)===filter).length;
+    $('planFilterCount').textContent=`${format(inSection)} ${tr('plannedCount')}`;
+    $('clearSearch').hidden=!$('search').value;
     if(!items.some(item=>item.id===selectedId))selectedId=items[0]?.id||null;
     $('selectedResult').hidden=!selectedId;
     if(selectedId)renderSelected(items.find(item=>item.id===selectedId));
@@ -200,8 +205,8 @@
     }).join('') : `<div class="empty">${esc(tr('noResults'))}</div>`;
     $('showMore').hidden = visible.length >= items.length;
   };
-  document.querySelectorAll('[data-tree]').forEach(el => el.addEventListener('click',()=>{tree=el.dataset.tree;filter=tree==='basic'&&viewMode==='map'?'infantry':'all';page=1;$('search').value='';render();}));
-  document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>{viewMode=el.dataset.view;if(viewMode==='map'&&filter==='all')filter='infantry';page=1;$('search').value='';render()}));
+  document.querySelectorAll('[data-tree]').forEach(el => el.addEventListener('click',()=>{tree=el.dataset.tree;if($('search').value.trim())viewMode='list';filter=tree==='basic'&&viewMode==='map'?'infantry':'all';page=1;render();}));
+  document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>{viewMode=el.dataset.view;if(viewMode==='map'&&filter==='all')filter='infantry';page=1;render()}));
   $('filters').addEventListener('click',e=>{const button=e.target.closest('[data-filter]');if(!button)return;filter=button.dataset.filter;page=1;render();});
   $('results').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data[tree].find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
   $('map').addEventListener('click',e=>{const button=e.target.closest('[data-item]');if(!button)return;const item=data.basic.find(x=>x.id===button.dataset.item);if(item){selectedId=item.id;render();}});
@@ -219,39 +224,6 @@
     if(!clearedPlan)return;
     targets=clearedPlan.targets;advancedSelected=clearedPlan.advancedSelected;clearedPlan=null;persistPlan();$('undoClear').hidden=true;feedback('planRestored');render();
   });
-  $('exportPlan').addEventListener('click',()=>{
-    if(!data)return;
-    const snapshot={type:'saifks-war-academy-plan',version:1,progress,targets,advancedSelected,inventory,researchSpeed:$('researchSpeed').value,speedups:Object.fromEntries(['speedDays','speedHours','speedMinutes'].map(id=>[id,$(id).value]))};
-    const url=URL.createObjectURL(new Blob([JSON.stringify(snapshot,null,2)],{type:'application/json'}));
-    const link=document.createElement('a');link.href=url;link.download='saifks-war-academy-plan.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);feedback('planExported');
-  });
-  $('importPlan').addEventListener('click',()=>$('planFile').click());
-  $('planFile').addEventListener('change',async e=>{
-    const file=e.target.files?.[0];e.target.value='';if(!file)return;
-    try{
-      if(file.size>1024*1024)throw Error('size');
-      const snapshot=JSON.parse(await file.text());
-      if(snapshot?.type!=='saifks-war-academy-plan'||snapshot.version!==1)throw Error('format');
-      const entries=[...data.basic,...data.advanced],allowed=new Map(entries.map(item=>[item.id,item.maxLevel]));
-      const readLevels=value=>{
-        if(!value||typeof value!=='object'||Array.isArray(value))throw Error('levels');
-        const out={};for(const [id,n] of Object.entries(value))if(allowed.has(id)){
-          if(!Number.isInteger(n)||n<0||n>allowed.get(id))throw Error('level');out[id]=n;
-        }return out;
-      };
-      const nextProgress=readLevels(snapshot.progress),nextTargets=readLevels(snapshot.targets);
-      for(const [id,n] of Object.entries(nextTargets))nextTargets[id]=Math.max(n,nextProgress[id]||0);
-      if(!snapshot.inventory||typeof snapshot.inventory!=='object'||Array.isArray(snapshot.inventory)||!snapshot.speedups||typeof snapshot.speedups!=='object')throw Error('settings');
-      const nextSelected={};for(const item of data.advanced)nextSelected[item.id]=(nextTargets[item.id]??(snapshot.advancedSelected?.[item.id]===true?item.maxLevel:(nextProgress[item.id]??0)))>(nextProgress[item.id]??0);
-      const nextInventory={};for(const key of resourceKeys)nextInventory[key]=String(snapshot.inventory[key]??'').slice(0,32);
-      const speed=Math.max(0,Math.min(1000,Number(snapshot.researchSpeed)||0));
-      const speedups={};for(const id of ['speedDays','speedHours','speedMinutes'])speedups[id]=Math.max(0,Math.min(1000000,Number(snapshot.speedups[id])||0));
-      progress=nextProgress;targets=nextTargets;advancedSelected=nextSelected;inventory=nextInventory;clearedPlan=null;$('undoClear').hidden=true;
-      localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));persistPlan();localStorage.setItem('saifWarInventory',JSON.stringify(inventory));
-      localStorage.setItem('saifWarResearchSpeed',String(speed));localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(speedups));
-      $('researchSpeed').value=String(speed);for(const id of Object.keys(speedups))$(id).value=String(speedups[id]);renderInventory();render();feedback('planImported');
-    }catch{feedback('importFailed')}
-  });
   $('copySummary').addEventListener('click',async()=>{
     try{
       if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(latestSummary);
@@ -264,7 +236,8 @@
   });
   $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
   $('inventoryResources').addEventListener('input',e=>{const input=e.target.closest('[data-inventory]');if(!input)return;inventory[input.dataset.inventory]=input.value;localStorage.setItem('saifWarInventory',JSON.stringify(inventory));renderSummary()});
-  $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic')viewMode='list';render();});
+  $('search').addEventListener('input',()=>{page=1;if($('search').value.trim()&&tree==='basic'){viewMode='list';filter='all'}render();});
+  $('clearSearch').addEventListener('click',()=>{$('search').value='';page=1;render();$('search').focus()});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
   const changeLevel=e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data[tree].find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)};
   $('map').addEventListener('change',changeLevel);
@@ -272,5 +245,5 @@
   for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
   $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
   try{const saved=JSON.parse(localStorage.getItem('saifWarAvailableSpeedups')||'{}');for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
-  fetch('data.json?v=12').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
+  fetch('data.json?v=13').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
 })();
