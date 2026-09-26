@@ -2,6 +2,7 @@
   'use strict';
   const KEY = 'saifksPetCenterV1';
   const LANGUAGE_KEY = 'saifksLanguage';
+  const GENERATION_KEY = 'saifksPetGenerationV1';
   const TYPES = ['food', 'manual', 'potion', 'medallion'];
   const SYMBOLS = {food:'✦', manual:'▤', potion:'◈', medallion:'✧'};
   const LANGUAGE_LABELS = {en:'Language',ar:'اللغة',tr:'Dil',ko:'언어',ja:'言語',zh:'语言',es:'Idioma',de:'Sprache',fr:'Langue'};
@@ -10,6 +11,10 @@
   const initialLanguage = new URLSearchParams(location.search).get('lang') || localStorage.getItem(LANGUAGE_KEY) || 'ar';
   let language = Object.prototype.hasOwnProperty.call(PET_I18N, initialLanguage) ? initialLanguage : 'ar';
   let pets = [], activeGeneration = 0, search = '';
+  try {
+    const savedGeneration = Number(localStorage.getItem(GENERATION_KEY));
+    if (Number.isInteger(savedGeneration) && savedGeneration >= 0 && savedGeneration <= 7) activeGeneration = savedGeneration;
+  } catch (_) { /* Storage may be unavailable; the catalogue still works. */ }
   let state = {version:3,pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};
   try {
     const saved = JSON.parse(localStorage.getItem(KEY));
@@ -167,7 +172,7 @@
   }
   $('language').addEventListener('change',event=>{ language=event.target.value;applyLanguage();renderStock();renderCatalogue();renderSummary(); });
   $('stockInputs').addEventListener('input',event=>{const type=event.target.dataset.stock;if (!TYPES.includes(type))return;state.stock[type]=event.target.value;save();renderSummary();});
-  $('generationTabs').addEventListener('click',event=>{const button=event.target.closest('[data-generation]');if(!button)return;activeGeneration=Number(button.dataset.generation);renderCatalogue();});
+  $('generationTabs').addEventListener('click',event=>{const button=event.target.closest('[data-generation]');if(!button)return;activeGeneration=Number(button.dataset.generation);try{localStorage.setItem(GENERATION_KEY,String(activeGeneration));}catch(_){}renderCatalogue();});
   $('search').addEventListener('input',event=>{search=event.target.value.trim().toLocaleLowerCase();renderCatalogue();});
   $('petGroups').addEventListener('change',event=>{if(event.target.dataset.action)onCardChange(event.target);});
   $('copySummary').addEventListener('click',async()=>{
