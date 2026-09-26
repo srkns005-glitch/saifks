@@ -62,7 +62,6 @@
     document.querySelectorAll('[data-t]').forEach(el => {
       const value = tr(el.dataset.t);
       if (el.id === 'pageTitle') {const split=value.lastIndexOf(' ');el.innerHTML=split>0?`${esc(value.slice(0,split))} <em>${esc(value.slice(split+1))}</em>`:`<em>${esc(value)}</em>`;}
-      else if (el.classList.contains('primaryLink')) el.innerHTML = `${esc(tr('explore').replace(/\s*↗/g,''))} <span aria-hidden="true">↗</span>`;
       else el.textContent = value;
     });
     $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
