@@ -47,11 +47,33 @@
     const targetAdvanced = target > 0 && target % 10 === 0 && !!state.pets[pet.id]?.targetAdvanced;
     return {current,target,currentAdvanced,targetAdvanced};
   }
-  function parseStock(value) {
-    const raw = String(value ?? '').trim().replace(/[\u0660-\u0669]/g,c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[\u06f0-\u06f9]/g,c => '۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[\s,٬]/g,'').replace(/٫/g,'.');
-    const match = raw.match(/^(\d+(?:\.\d+)?)([kKmMbB]?)$/);
-    return match ? Math.floor(Number(match[1]) * ({'':1,k:1e3,m:1e6,b:1e9}[match[2].toLowerCase()])) : 0;
+  function stockValue(value) {
+    const raw = String(value ?? '').trim().replace(/[\u0660-\u0669]/g,c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[\u06f0-\u06f9]/g,c => '۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[\s\u00a0\u202f]/g,'').replace(/٬/g,',').replace(/٫/g,'.');
+    if (!raw) return {valid:true,amount:0};
+    const match = raw.match(/^([\d.,]+)([kKmMbB]?)$/);
+    if (!match) return {valid:false,amount:0};
+    const input=match[1], suffix=match[2].toLowerCase(), comma=input.lastIndexOf(','), dot=input.lastIndexOf('.');
+    let number=input;
+    if (comma>=0 && dot>=0) {
+      const last=Math.max(comma,dot), whole=input.slice(0,last), fraction=input.slice(last+1);
+      if (!/^\d{1,3}(?:[,.]\d{3})+$/.test(whole) || !/^\d+$/.test(fraction)) return {valid:false,amount:0};
+      number=whole.replace(/[,.]/g,'')+'.'+fraction;
+    } else if (comma>=0 || dot>=0) {
+      const separator=comma>=0?',':'.', parts=input.split(separator);
+      if (parts.length>2) {
+        if (!/^\d{1,3}(?:[,.]\d{3})+$/.test(input)) return {valid:false,amount:0};
+        number=parts.join('');
+      } else if (parts[0] && parts[1] && /^\d+$/.test(parts[0]) && /^\d+$/.test(parts[1])) {
+        const grouped=parts[0].length<=3 && parts[1].length===3 && !(separator==='.' && suffix);
+        number=grouped?parts.join(''):parts.join('.');
+      } else return {valid:false,amount:0};
+    }
+    if (!/^\d+(?:\.\d+)?$/.test(number)) return {valid:false,amount:0};
+    const amount=Number(number)*({'':1,k:1e3,m:1e6,b:1e9}[suffix]);
+    return Number.isFinite(amount) && amount>=0 && amount<=Number.MAX_SAFE_INTEGER
+      ? {valid:true,amount:Math.floor(amount+1e-8)} : {valid:false,amount:0};
   }
+  const parseStock = value => stockValue(value).amount;
   function cost(pet) {
     const p = progress(pet), totals = zero();
     for (let level=p.current+1;level<=p.target;level++) totals.food += Number(pet.food[level] || 0);
@@ -82,7 +104,7 @@
     history.replaceState(null,'',url.pathname+url.search+url.hash);
   }
   function renderStock() {
-    $('stockInputs').innerHTML=TYPES.map(type=>`<div class="stock-field"><span class="stock-symbol" aria-hidden="true">${SYMBOLS[type]}</span><label><span>${safe(t(type))}</span><input data-stock="${type}" type="text" inputmode="decimal" autocomplete="off" aria-label="${safe(t(type))}" value="${safe(state.stock[type] || '')}" placeholder="0"></label></div>`).join('');
+    $('stockInputs').innerHTML=TYPES.map(type=>{const invalid=!stockValue(state.stock[type]).valid;return `<div class="stock-field${invalid?' is-invalid':''}"><span class="stock-symbol" aria-hidden="true">${SYMBOLS[type]}</span><label><span>${safe(t(type))}</span><input data-stock="${type}" type="text" inputmode="decimal" autocomplete="off" aria-label="${safe(t(type))}" aria-describedby="stock-error-${type}" aria-invalid="${invalid}" value="${safe(state.stock[type] || '')}" placeholder="0"><small id="stock-error-${type}" class="stock-error"${invalid?'':' hidden'}>${safe(t('invalidStock'))}</small></label></div>`;}).join('');
   }
   function options(max,selected,minimum) {
     let html='';
@@ -175,7 +197,7 @@
     renderSummary();
   }
   $('language').addEventListener('change',event=>{ language=event.target.value;applyLanguage();renderStock();renderCatalogue();renderSummary(); });
-  $('stockInputs').addEventListener('input',event=>{const type=event.target.dataset.stock;if (!TYPES.includes(type))return;state.stock[type]=event.target.value;save();renderSummary();});
+  $('stockInputs').addEventListener('input',event=>{const type=event.target.dataset.stock;if (!TYPES.includes(type))return;state.stock[type]=event.target.value;const invalid=!stockValue(event.target.value).valid;event.target.closest('.stock-field').classList.toggle('is-invalid',invalid);event.target.setAttribute('aria-invalid',String(invalid));$('stock-error-'+type).hidden=!invalid;save();renderSummary();});
   $('generationTabs').addEventListener('click',event=>{const button=event.target.closest('[data-generation]');if(!button)return;activeGeneration=Number(button.dataset.generation);try{localStorage.setItem(GENERATION_KEY,String(activeGeneration));}catch(_){}renderCatalogue();});
   $('search').addEventListener('input',event=>{search=event.target.value.trim().toLocaleLowerCase();renderCatalogue();});
   $('petGroups').addEventListener('change',event=>{if(event.target.dataset.action)onCardChange(event.target);});
