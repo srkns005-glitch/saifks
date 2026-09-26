@@ -8,7 +8,9 @@
   const LANGUAGE_LABELS = {en:'Language',ar:'اللغة',tr:'Dil',ko:'언어',ja:'言語',zh:'语言',es:'Idioma',de:'Sprache',fr:'Langue'};
   const $ = id => document.getElementById(id);
   const safe = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const initialLanguage = new URLSearchParams(location.search).get('lang') || localStorage.getItem(LANGUAGE_KEY) || 'ar';
+  let storedLanguage = 'ar';
+  try { storedLanguage = localStorage.getItem(LANGUAGE_KEY) || 'ar'; } catch (_) { /* Keep the page usable without storage. */ }
+  const initialLanguage = new URLSearchParams(location.search).get('lang') || storedLanguage;
   let language = Object.prototype.hasOwnProperty.call(PET_I18N, initialLanguage) ? initialLanguage : 'ar';
   let pets = [], activeGeneration = 0, search = '';
   try {
@@ -74,8 +76,10 @@
     document.querySelectorAll('[data-t]').forEach(el => el.textContent=t(el.dataset.t));
     document.querySelectorAll('[data-placeholder]').forEach(el => el.placeholder=t(el.dataset.placeholder));
     $('homeLink').href=$('homeButton').href='../index.html?lang='+encodeURIComponent(language);
-    localStorage.setItem(LANGUAGE_KEY,language);
-    history.replaceState(null,'',location.pathname+'?lang='+encodeURIComponent(language));
+    try { localStorage.setItem(LANGUAGE_KEY,language); } catch (_) { /* The selected language still works in this tab. */ }
+    const url = new URL(location.href);
+    url.searchParams.set('lang',language);
+    history.replaceState(null,'',url.pathname+url.search+url.hash);
   }
   function renderStock() {
     $('stockInputs').innerHTML=TYPES.map(type=>`<div class="stock-field"><span class="stock-symbol" aria-hidden="true">${SYMBOLS[type]}</span><label><span>${safe(t(type))}</span><input data-stock="${type}" type="text" inputmode="decimal" autocomplete="off" aria-label="${safe(t(type))}" value="${safe(state.stock[type] || '')}" placeholder="0"></label></div>`).join('');
