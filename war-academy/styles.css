@@ -67,3 +67,11 @@
 #planFeedback{display:block;font-size:12px;color:#a6c8b7}
 #planFeedback:empty{display:none}
 @media(max-width:680px){.plannerHead{gap:13px}.plannerActions{gap:9px}.summaryScope{width:100%;flex:1 0 100%}.summaryScope button{flex:1;padding:9px 7px}.summaryButtons{width:100%;display:grid;grid-template-columns:1fr 1fr}.summaryButtons button{width:100%;min-width:0}}
+/* Keep long translated labels and level pickers inside narrow research nodes. */
+.mapNode,.nodeControls,.nodeControls label{min-width:0}
+.nodeControls label span{display:block;min-width:0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mapFoot{max-width:100%;min-width:0;overflow-wrap:anywhere;line-height:1.6}
+.resetHint{display:block;color:#aebdca;font-size:11px;line-height:1.6}
+.resetAll{background:transparent;color:#e2b9ae;border:1px solid #aa7970;border-radius:8px;padding:9px 13px;font-size:12px;font-weight:750}
+.resetAll:hover{border-color:#ecb3a6;background:#a5685a1c}
+@media(max-width:680px){.mapCanvas{width:100%}.mapNode{width:100px}.nodeControls,.mapNode.isUnlock .nodeControls{width:92px;left:50%;max-width:calc(100% - 4px);gap:1px;padding:1px 2px}.nodeControls label{font-size:9px;line-height:14px}.nodeControls select{min-width:0;width:100%;font-size:13px}.nodeName{width:100%;max-width:100px;overflow-wrap:anywhere}.mapFoot{display:block;text-align:center;padding:12px 14px}.mapFoot .pulse{display:inline-block;vertical-align:middle;margin-inline-end:6px}.summaryButtons .copySummary{grid-column:1/-1}.summaryButtons button{white-space:normal;overflow-wrap:anywhere;line-height:1.35;min-height:44px;padding:8px 6px}.resetHint{font-size:10px}}
