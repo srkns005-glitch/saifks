@@ -59,7 +59,7 @@
     $('finishDay').innerHTML=dayOpt(state.finishDay);$('useDay').innerHTML=dayOpt(state.useDay);
     const troop=state.finishDay===4?total.points:0;
     const speed=[1,2,5].includes(state.useDay)?Math.floor(applied/60)*numeric(state.speedRate,1e8):0;
-    $('kvkResults').innerHTML=`<div class="kvk-result"><span>${esc(t('troopPoints'))}</span><strong>${fmt(troop)}</strong><small>${esc(t('day'))} ${fmt(state.finishDay)} ${troop?'':`· ${esc(t('noPoints'))}`}</small></div><div class="kvk-result"><span>${esc(t('speedPoints'))}</span><strong>${fmt(speed)}</strong><small>${esc(t('day'))} ${fmt(state.useDay)} ${speed?'':`· ${esc(t('noPoints'))}`}</small></div><div class="kvk-result highlighted"><span>${esc(t('totalPoints'))}</span><strong>${fmt(troop+speed)}</strong><small>${esc(t('dailyTotal'))}</small></div>`;
+    $('kvkResults').innerHTML=`<div class="kvk-result"><span>${esc(t('troopPoints'))}</span><strong>${fmt(troop)}</strong><small>${esc(t('day'))} ${fmt(state.finishDay)} ${state.finishDay===4?'':`· ${esc(t('noPoints'))}`}</small></div><div class="kvk-result"><span>${esc(t('speedPoints'))}</span><strong>${fmt(speed)}</strong><small>${esc(t('day'))} ${fmt(state.useDay)} ${[1,2,5].includes(state.useDay)?'':`· ${esc(t('noPoints'))}`}</small></div><div class="kvk-result highlighted"><span>${esc(t('totalPoints'))}</span><strong>${fmt(troop+speed)}</strong><small>${esc(t('dailyTotal'))}</small></div>`;
   }
   function render(){renderPicker();renderPreview();renderOperations();renderInventory();renderPoints();renderSummary();}
   function feedback(k){$('feedback').textContent=t(k);setTimeout(()=>{if($('feedback').textContent===t(k))$('feedback').textContent='';},3500);}
