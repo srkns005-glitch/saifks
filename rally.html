@@ -282,6 +282,45 @@ body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16p
  .reinforce-settings{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  .reinforce-settings>button{grid-column:1 / -1!important}
 }
+@media(min-width:1000px){
+ .site-header-row,body>.site-header+main.container{width:min(1120px,calc(100% - 48px))}
+ .app-dashboard{padding:18px!important}
+ .dashboard-head h2{font-size:1.8rem}.dashboard-head p{font-size:.86rem}
+ .teams-grid{max-width:1120px}
+ .team-card.dashboard-active{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  grid-template-areas:
+   "title title"
+   "prep add"
+   "prepdesc form"
+   "quick form"
+   "buffer form"
+   "schedule schedule"
+   "generate generate"
+   "summary summary"
+   "countdown countdown"
+   "list list"
+   "buttons buttons";
+  column-gap:24px;
+  row-gap:8px;
+  align-items:start;
+ }
+ .team-card>.team-title{grid-area:title}
+ .team-card>h2[data-i18n="prepTitle"]{grid-area:prep;margin:2px 0 0}
+ .team-card>p.muted{grid-area:prepdesc}
+ .team-card>.quick-buttons{grid-area:quick;margin:3px 0}
+ .team-card>.two-cols{grid-area:buffer;margin:3px 0;max-width:none}
+ .team-card>h2[data-i18n="addTitle"]{grid-area:add;margin:2px 0 0}
+ .team-card>form{grid-area:form;max-width:none;padding:12px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.025)}
+ .team-card>.title-row{grid-area:schedule;margin-top:8px!important;padding-top:10px;border-top:1px solid var(--border)}
+ .team-card>button[data-role="generate"]{grid-area:generate}
+ .team-card>[data-role="summary"]{grid-area:summary}
+ .team-card>[data-role="countdownBox"]{grid-area:countdown}
+ .team-card>[data-role="list"]{grid-area:list;max-width:none}
+ .team-card>.button-grid{grid-area:buttons}
+ .reinforce-panel{padding:18px!important}
+}
 </style><style id="rally-arabic-polish">html[lang="ar"] .team-card .team-title:after{content:"الجدول اليدوي للقادة"!important;letter-spacing:0!important}</style></head>
 <body>
 <header class="site-header"><div class="site-header-row">
