@@ -242,6 +242,46 @@ body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16p
  .home-header-button,#langToggle{width:66px;min-width:66px;font-size:10px}
  body>.site-header+main.container{width:calc(100% - 16px)}
 }
+
+/* Compact desktop layout and evenly aligned reinforcement controls */
+@media(min-width:721px){
+ .site-header-row{width:min(1000px,calc(100% - 36px));min-height:64px;padding:6px 0}
+ .site-brand-logo{width:34px;height:34px;border-radius:10px}
+ .site-brand h1{font-size:19px}.site-brand p{font-size:9px;margin-top:2px}
+ .home-header-button,#langToggle{width:88px;min-width:88px;height:38px;font-size:12px}
+ body>.site-header+main.container{width:min(1000px,calc(100% - 36px));padding:12px 0 26px}
+ .planner-status{margin-bottom:10px;padding:10px 12px;border-radius:12px}
+ .planner-status p{font-size:.82rem}.planner-status .clock{padding:7px 10px;font-size:.79rem}
+ .app-dashboard{margin-bottom:12px;padding:16px!important;border-radius:16px!important}
+ .dashboard-head{gap:12px}.dashboard-kicker{font-size:.64rem}.dashboard-head h2{margin-top:5px;font-size:1.65rem}.dashboard-head p{margin-top:5px;font-size:.82rem}
+ .dashboard-time{min-width:112px;padding:9px 10px;border-radius:12px}.dashboard-time span{margin-top:3px;font-size:.92rem}
+ .team-switcher{gap:8px;margin-top:13px}.team-switch{min-height:64px;padding:9px 11px!important}.team-switch small{margin-top:4px}
+ .teams-grid{max-width:840px}.team-card{padding:16px!important}
+ .team-card .team-title{margin-bottom:11px!important;padding-bottom:10px;font-size:1.15rem!important}
+ .team-card h2{margin-bottom:8px}.team-card .muted{margin:0 0 8px;font-size:.82rem}
+ .quick-buttons{gap:7px;margin:9px 0}.quick-buttons button{min-height:40px;padding:7px 5px}
+ .two-cols{gap:9px;margin:9px 0}.team-card label{gap:5px;font-size:.8rem}
+ .team-card input{height:42px;padding:9px 11px}.team-card .primary{padding:11px}
+ .title-row[style]{margin-top:13px!important}
+ .reinforce-panel{margin-bottom:12px;padding:16px!important;border-radius:16px!important}
+ .reinforce-head{gap:12px}.reinforce-head h2{margin:5px 0 3px;font-size:1.18rem}.reinforce-head p{font-size:.8rem}
+ .reinforce-badge{padding:6px 9px;font-size:.68rem}
+ .castle-rally-note{margin-top:12px;padding:9px 11px;border-radius:12px}.castle-icon{width:32px;height:32px;border-radius:10px}
+ .reinforce-settings{margin-top:12px;gap:8px!important;align-items:stretch!important}
+ .reinforce-block{display:flex;min-height:104px!important;padding:9px!important;flex-direction:column;border-radius:11px!important}
+ .reinforce-block>b{min-height:32px!important;margin:0 0 6px!important;font-size:.7rem;line-height:1.35}
+ .reinforce-toggle{min-height:18px;margin:0 0 5px;font-size:.65rem}
+ .reinforce-time{margin-top:auto;gap:5px}.reinforce-time input{height:40px!important;padding:7px 4px}
+ .reinforce-time.one{grid-template-columns:1fr!important}.reinforce-time.one span{font-size:.68rem}
+ .reinforce-settings>button{min-height:40px!important}
+ .reinforce-enemy-result{margin-top:8px;padding:10px;font-size:.78rem;line-height:1.5}
+ .reinforce-member-form{margin-top:10px!important;padding:9px!important;gap:7px!important}.reinforce-member-form input{height:40px;padding:8px 9px}.reinforce-member-form button{min-height:40px}
+ .reinforce-actions{margin-top:9px}.final-footer{margin-top:18px;padding:18px 14px;font-size:13px}
+}
+@media(min-width:721px) and (max-width:920px){
+ .reinforce-settings{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .reinforce-settings>button{grid-column:1 / -1!important}
+}
 </style><style id="rally-arabic-polish">html[lang="ar"] .team-card .team-title:after{content:"الجدول اليدوي للقادة"!important;letter-spacing:0!important}</style></head>
 <body>
 <header class="site-header"><div class="site-header-row">
