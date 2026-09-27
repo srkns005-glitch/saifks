@@ -84,19 +84,16 @@
   }
   let activeFilter = 'all';
   function filterTools(){
-    const query = (document.getElementById('toolSearch')?.value || '').trim().toLocaleLowerCase(lang);
-    let visibleCards = 0;
     document.querySelectorAll('.group').forEach(group => {
       const allowed = activeFilter === 'all' || group.dataset.group === activeFilter;
       let groupVisible = 0;
       group.querySelectorAll('.tool-card').forEach(card => {
-        const visible = allowed && (!query || card.textContent.toLocaleLowerCase(lang).includes(query));
+        const visible = allowed;
         card.hidden = !visible;
-        if(visible){groupVisible++;visibleCards++;}
+        if(visible){groupVisible++;}
       });
       group.hidden = groupVisible === 0;
     });
-    document.getElementById('noResults').hidden = visibleCards !== 0;
   }
   function apply(){
     const text = translations[lang];
@@ -122,7 +119,6 @@
     history.replaceState(null,'',url.pathname + url.search + url.hash);
     apply();
   });
-  document.getElementById('toolSearch').addEventListener('input',filterTools);
   document.querySelectorAll('.filter-pills button').forEach(button => button.addEventListener('click',() => {
     activeFilter = button.dataset.filter;
     document.querySelectorAll('.filter-pills button').forEach(item => item.classList.toggle('active',item === button));
