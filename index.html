@@ -11,11 +11,10 @@
   <meta property="og:image" content="https://srkns005-glitch.github.io/saifks/logo.png">
   <meta property="og:url" content="https://srkns005-glitch.github.io/saifks/">
   <link rel="icon" href="icon-192.png">
-  <link rel="stylesheet" href="home.css?v=20260928-5">
+  <link rel="stylesheet" href="home.css?v=20260928-6">
   <title>SaifKS | KINGSHOT Tools</title>
   <script defer src="home-translations.js"></script>
-  <script defer src="home-profile.js"></script>
-  <script defer src="home.js?v=20260928-2"></script>
+  <script defer src="home.js?v=20260928-3"></script>
 </head>
 <body>
 <a class="skip-link" href="#tools" data-i18n="skip">Skip to tools</a>
@@ -41,14 +40,13 @@
 </svg>
 <div class="page-shell">
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="SaifKS"><img src="logo.png" alt="" width="48" height="48"><span><strong>SaifKS</strong><small data-i18n="brandSub">KINGSHOT TOOLS</small></span></a>
-      <nav class="header-links" aria-label="Site"><a href="#tools" data-i18n="navTools">Tools</a><a href="#channel" data-i18n="navYoutube">YouTube</a></nav>
-      <label class="lang-wrap"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></label>
-      <a class="header-cta" href="#tools"><span data-i18n="explore">Explore Tools</span><svg><use href="#i-arrow"/></svg></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+    <div class="header-inner unified-home-header">
+      <a class="brand" href="index.html" aria-label="SaifKS"><img src="logo.png" alt="" width="40" height="40"><span><strong>SaifKS</strong><small>SaifKS.com</small></span></a>
+      <div class="header-actions">
+        <a class="home-tools-link" href="#tools" data-i18n="navTools">Tools</a>
+        <label class="lang-wrap"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">简体中文</option></select></label>
+      </div>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"><a href="#tools" data-i18n="navTools">Tools</a><a href="#channel" data-i18n="navYoutube">YouTube</a><a href="#tools" data-i18n="explore">Explore Tools</a></nav>
   </header>
   <main>
     <section class="hero container" aria-labelledby="hero-title">
@@ -57,26 +55,12 @@
         <div class="eyebrow"><span class="status-dot"></span><span data-i18n="heroMeta">KINGSHOT • PLAYER TOOLS</span></div>
         <h1 id="hero-title" data-i18n-html="title">Smarter tools.<span>Better rallies.</span></h1>
         <p class="hero-description" data-i18n="description">Simple, reliable tools designed to help KINGSHOT players and alliance leaders organize activities, coordinate teams, and save time.</p>
-        <div class="hero-actions"><a class="button button-gold" href="#tools"><span data-i18n="explore">Explore Tools</span><svg><use href="#i-arrow"/></svg></a><a class="button button-quiet" href="#channel"><svg><use href="#i-play"/></svg><span data-i18n="youtubeCta">Visit YouTube</span></a></div>
+        <div class="hero-actions"><a class="button button-gold" href="#tools"><span data-i18n="explore">Explore Tools</span><svg><use href="#i-arrow"/></svg></a></div>
       </div>
-      <aside class="command-panel" aria-labelledby="quick-title">
-        <div class="command-head"><span><i></i> SAIFKS CONTROL</span><small>04 / 11</small></div>
-        <div class="command-title"><span data-i18n="quickHeading" id="quick-title">Where do you want to start?</span><svg><use href="#i-bolt"/></svg></div>
-        <nav class="command-links">
-          <a data-page="rally.html" href="rally.html"><span><svg><use href="#i-clock"/></svg></span><strong data-i18n="quickOne">Plan a rally</strong><svg><use href="#i-arrow"/></svg></a>
-          <a data-page="hero-center/index.html" href="hero-center/index.html"><span><svg><use href="#i-hero"/></svg></span><strong data-i18n="quickTwo">Explore heroes</strong><svg><use href="#i-arrow"/></svg></a>
-          <a data-page="gold-calculator/index.html" href="gold-calculator/index.html"><span><svg><use href="#i-gold"/></svg></span><strong data-i18n="quickThree">Plan upgrades</strong><svg><use href="#i-arrow"/></svg></a>
-          <a data-page="war-academy/index.html" href="war-academy/index.html"><span><svg><use href="#i-swords"/></svg></span><strong data-i18n="quickFour">War Academy</strong><svg><use href="#i-arrow"/></svg></a>
-        </nav>
-        <a class="command-all" href="#tools"><span data-i18n="explore">Explore Tools</span><span>11</span></a>
-      </aside>
     </section>
-    <section id="tools" class="toolkit container reveal" aria-labelledby="tools-title"><div class="section-heading"><span class="section-eyebrow" data-i18n="sectionLabel">THE TOOLKIT</span><div class="heading-line"><div><h2 id="tools-title" data-i18n="toolsTitle">Player Tools</h2><p data-i18n="toolsText">Choose a tool and get started.</p></div><span class="heading-count">11 / SAIFKS</span></div></div><div class="tools-toolbar"><label class="search-box"><svg><use href="#i-search"/></svg><span class="sr-only" data-extra="search">Search tools</span><input id="toolSearch" type="search" autocomplete="off" data-extra-placeholder="searchPlaceholder" placeholder="Search tools..."></label><div class="filter-pills" role="group" aria-label="Tool filters"><button class="active" type="button" data-filter="all" data-extra="filterAll">All</button><button type="button" data-filter="0" data-i18n="groupPlan">Events & coordination</button><button type="button" data-filter="1" data-i18n="groupBuild">Upgrades & resources</button><button type="button" data-filter="2" data-i18n="groupHeroes">Heroes & gear</button></div></div><div id="toolGroups"></div><p class="no-results" id="noResults" hidden data-extra="noResults">No tools match your search.</p></section>
-    <section class="benefits container reveal" aria-labelledby="benefits-title"><div class="benefits-intro"><span class="section-eyebrow" data-extra="whyLabel">WHY SAIFKS</span><h2 id="benefits-title" data-extra="whyTitle">Everything you need to plan with confidence.</h2><p data-extra="whyText">Built for players who value clear decisions, accurate calculations, and faster alliance coordination.</p></div><div class="benefit-grid"><article><span><svg><use href="#i-bolt"/></svg></span><div><h3 data-extra="benefitFast">Fast by design</h3><p data-extra="benefitFastText">Get to the right answer without unnecessary steps.</p></div></article><article><span><svg><use href="#i-check"/></svg></span><div><h3 data-extra="benefitPractical">Built for real play</h3><p data-extra="benefitPracticalText">Practical tools shaped around everyday KINGSHOT decisions.</p></div></article><article><span><svg><use href="#i-globe"/></svg></span><div><h3 data-extra="benefitGlobal">Nine languages</h3><p data-extra="benefitGlobalText">A consistent experience for alliances around the world.</p></div></article></div></section>
-    <section id="channel" class="channel container" aria-labelledby="channel-title"><div class="channel-panel"><div class="channel-copy"><span class="section-eyebrow channel-eyebrow" data-i18n="youtubeLabel">THE SAIFKS CHANNEL</span><h2 id="channel-title" data-i18n="youtubeTitle">The strategy continues on YouTube.</h2><p data-i18n="youtubeText">Explore KINGSHOT guides, battle strategy and practical account-building tips from Saif. Use the tools here as you follow along.</p><a class="button button-gold" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer"><span data-i18n="youtubeButton">Watch the channel</span><svg><use href="#i-arrow"/></svg></a></div><div class="channel-art" aria-hidden="true"><span class="channel-glow"></span><span class="channel-play"><svg><use href="#i-play"/></svg></span><span class="channel-handle" data-i18n="youtubeHandle">@saifkshot</span></div></div></section>
-    <section class="profile-section container" aria-labelledby="profile-title"><details class="profile-details"><summary><span class="profile-label" data-i18n="profileLabel">YOUR SPACE</span><strong id="profile-title" data-i18n="profileTitle">Keep your setup ready</strong><span class="profile-chevron">⌄</span></summary><div class="profile-content"><p data-i18n="profileHelp">Optional details saved on this device for your next visit.</p><div class="profile-fields"><label><span data-profile="player">Player name</span><input id="commandPlayer" data-profile-placeholder="playerHint" autocomplete="off" maxlength="32"></label><label><span data-profile="alliance">Alliance</span><input id="commandAlliance" data-profile-placeholder="allianceHint" autocomplete="off" maxlength="16"></label><label><span data-profile="kingdom">Kingdom</span><input id="commandKingdom" data-profile-placeholder="kingdomHint" autocomplete="off" inputmode="numeric" maxlength="8"></label></div><div class="profile-actions"><button type="button" id="saveCommandProfile" data-profile="save">Save on this device</button><span id="commandStatus" role="status"></span></div></div></details></section>
+    <section id="tools" class="toolkit container reveal" aria-labelledby="tools-title"><div class="section-heading"><span class="section-eyebrow" data-i18n="sectionLabel">THE TOOLKIT</span><div class="heading-line"><div><h2 id="tools-title" data-i18n="toolsTitle">Player Tools</h2><p data-i18n="toolsText">Choose a tool and get started.</p></div><span class="heading-count">10 / SAIFKS</span></div></div><div class="tools-toolbar"><label class="search-box"><svg><use href="#i-search"/></svg><span class="sr-only" data-extra="search">Search tools</span><input id="toolSearch" type="search" autocomplete="off" data-extra-placeholder="searchPlaceholder" placeholder="Search tools..."></label><div class="filter-pills" role="group" aria-label="Tool filters"><button class="active" type="button" data-filter="all" data-extra="filterAll">All</button><button type="button" data-filter="0" data-i18n="groupPlan">Events & coordination</button><button type="button" data-filter="1" data-i18n="groupBuild">Upgrades & resources</button><button type="button" data-filter="2" data-i18n="groupHeroes">Heroes & gear</button></div></div><div id="toolGroups"></div><p class="no-results" id="noResults" hidden data-extra="noResults">No tools match your search.</p></section>
   </main>
-  <footer class="footer"><div class="container footer-main"><a class="brand footer-brand" href="index.html" aria-label="SaifKS"><img src="logo.png" alt="" width="48" height="48"><span><strong>SaifKS</strong><small data-i18n="brandSub">KINGSHOT TOOLS</small></span></a><p data-i18n="description">Simple, reliable tools designed to help KINGSHOT players and alliance leaders organize activities, coordinate teams, and save time.</p><nav><a href="#tools" data-i18n="navTools">Tools</a><a href="#channel" data-i18n="navYoutube">YouTube</a><a data-page="hero-center/index.html" href="hero-center/index.html" data-i18n="quickTwo">Explore heroes</a></nav></div><div class="container footer-bottom"><span><strong>SaifKS.com</strong> · Built by Saif</span><span>© <span id="year"></span> SAIFKS</span></div></footer>
+  <footer class="research-footer" aria-label="SaifKS footer"><div class="research-footer-inner"><div><strong>SaifKS.com</strong> <span aria-hidden="true">|</span> <span>Built by Saif</span></div><a class="research-footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer">▶ YouTube</a></div></footer>
 </div>
 </body>
 </html>

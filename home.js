@@ -1,7 +1,6 @@
 (() => {
   'use strict';
   const translations = window.homeTranslations;
-  const profiles = window.homeProfiles;
   const extras = {
     ar:{statTools:'أداة',statLanguages:'لغات',statReady:'جاهز',tactical:'مجموعة الأدوات التكتيكية',battlePlan:'خطة المعركة',allSystems:'كل الأنظمة جاهزة',search:'البحث في الأدوات',searchPlaceholder:'ابحث عن أداة...',filterAll:'الكل',noResults:'لا توجد أدوات مطابقة لبحثك.',whyLabel:'لماذا SAIFKS',whyTitle:'كل ما تحتاجه لتخطط بثقة.',whyText:'صُممت للاعبين الذين يهتمون بالقرارات الواضحة والحسابات الدقيقة والتنسيق الأسرع للتحالف.',benefitFast:'سرعة من البداية',benefitFastText:'صل إلى الإجابة المناسبة دون خطوات غير ضرورية.',benefitPractical:'مصممة للعب الحقيقي',benefitPracticalText:'أدوات عملية مبنية حول قرارات KINGSHOT اليومية.',benefitGlobal:'تسع لغات',benefitGlobalText:'تجربة موحدة للتحالفات حول العالم.'},
     en:{statTools:'Tools',statLanguages:'Languages',statReady:'Ready',tactical:'Tactical toolkit',battlePlan:'Battle plan',allSystems:'All systems ready',search:'Search tools',searchPlaceholder:'Search tools...',filterAll:'All',noResults:'No tools match your search.',whyLabel:'WHY SAIFKS',whyTitle:'Everything you need to plan with confidence.',whyText:'Built for players who value clear decisions, accurate calculations, and faster alliance coordination.',benefitFast:'Fast by design',benefitFastText:'Get to the right answer without unnecessary steps.',benefitPractical:'Built for real play',benefitPracticalText:'Practical tools shaped around everyday KINGSHOT decisions.',benefitGlobal:'Nine languages',benefitGlobalText:'A consistent experience for alliances around the world.'},
@@ -16,7 +15,6 @@
   const groups = [
     {title:'groupPlan',description:'groupPlanDesc',tools:[
       {name:'rallyTitle',description:'rallyDesc',action:'launch',icon:'clock',path:'rally.html'},
-      {name:'bearTitle',description:'bearDesc',action:'launch',icon:'bear',path:'bear.html'},
       {name:'eventsTitle',description:'eventsDesc',action:'openGuide',icon:'calendar',path:'event-center/index.html'}
     ]},
     {title:'groupBuild',description:'groupBuildDesc',tools:[
@@ -102,14 +100,11 @@
   }
   function apply(){
     const text = translations[lang];
-    const profile = profiles[lang];
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-i18n]').forEach(element => {element.textContent = text[element.dataset.i18n];});
     // title contains a single trusted span in the translation catalogue.
     document.querySelectorAll('[data-i18n-html]').forEach(element => {element.innerHTML = text[element.dataset.i18nHtml];});
-    document.querySelectorAll('[data-profile]').forEach(element => {element.textContent = profile[element.dataset.profile];});
-    document.querySelectorAll('[data-profile-placeholder]').forEach(element => {element.placeholder = profile[element.dataset.profilePlaceholder];});
     document.querySelectorAll('[data-page]').forEach(element => {element.href = localLink(element.dataset.page);});
     const extra = extras[lang] || extras.en;
     document.querySelectorAll('[data-extra]').forEach(element => {element.textContent = extra[element.dataset.extra] || extras.en[element.dataset.extra] || '';});
@@ -120,15 +115,6 @@
     renderTools();
     try{localStorage.setItem('saifRallyLang',lang);localStorage.setItem('saifksLanguage',lang);localStorage.setItem('language',lang);}catch{}
   }
-  const fields = ['commandPlayer','commandAlliance','commandKingdom'];
-  try{
-    const saved = JSON.parse(localStorage.getItem('saifksCommandProfile') || '{}');
-    fields.forEach((id,index) => {document.getElementById(id).value = saved[['player','alliance','kingdom'][index]] || '';});
-  }catch{}
-  document.getElementById('saveCommandProfile').addEventListener('click',() => {
-    const values = Object.fromEntries(fields.map((id,index) => [['player','alliance','kingdom'][index],document.getElementById(id).value.trim()]));
-    try{localStorage.setItem('saifksCommandProfile',JSON.stringify(values));document.getElementById('commandStatus').textContent = profiles[lang].saved;}catch{document.getElementById('commandStatus').textContent = '';}
-  });
   document.getElementById('languageSelect').addEventListener('change',event => {
     lang = event.target.value;
     const url = new URL(location.href);
@@ -143,12 +129,6 @@
     filterTools();
   }));
   const header = document.querySelector('.site-header');
-  const menuButton = document.querySelector('.menu-toggle');
-  menuButton.addEventListener('click',() => {
-    const open = header.classList.toggle('menu-open');
-    menuButton.setAttribute('aria-expanded',String(open));
-  });
-  document.querySelectorAll('.mobile-nav a').forEach(link => link.addEventListener('click',() => {header.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');}));
   const updateHeader = () => header.classList.toggle('scrolled',scrollY > 12);
   addEventListener('scroll',updateHeader,{passive:true});
   updateHeader();
@@ -156,7 +136,6 @@
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
   }else{document.querySelectorAll('.reveal').forEach(element => element.classList.add('visible'));}
-  document.getElementById('year').textContent = new Date().getFullYear();
   window.addEventListener('storage',event => {
     if(['saifRallyLang','saifksLanguage','language'].includes(event.key) && supported.includes(event.newValue)){
       lang = event.newValue;
