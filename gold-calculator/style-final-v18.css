@@ -60,7 +60,8 @@ main.container{padding-block:16px 30px}
 .planner-guide{
   margin-top:14px;padding:14px 16px;border:1px solid var(--line-soft);border-radius:13px;background:#0a1929
 }
-.planner-guide strong{display:block;margin-bottom:7px;color:var(--gold);font-size:13px}
+.planner-guide summary{color:var(--gold);font-size:13px;font-weight:850;cursor:pointer;list-style-position:inside}
+.planner-guide[open] summary{margin-bottom:7px}
 .planner-guide ol{padding-inline-start:20px;color:#c2ceda;font-size:13px}
 .planner-guide li+li{margin-top:4px}
 .planner-grid,.planner-actions,.grid,.building-grid,.results-grid,.resource-grid{display:grid;gap:12px}
@@ -72,6 +73,10 @@ input:not([type="checkbox"]),select{
   width:100%;height:50px;padding:0 13px;border:1px solid var(--line);border-radius:11px;
   outline:none;background:var(--field);color:var(--text);font-size:16px;font-weight:650;color-scheme:dark;
   transition:border-color .16s,box-shadow .16s,background .16s
+}
+input[type="number"],#plannerCurrent,#plannerTarget,[id$="Current"],[id$="Target"],
+.result-row strong,.resource-item strong,.power-value strong{
+  direction:ltr;unicode-bidi:isolate;text-align:left
 }
 input:not([type="checkbox"]):focus,select:focus{
   border-color:var(--gold);background:#0a1b2d;box-shadow:0 0 0 3px rgba(244,198,91,.1)
@@ -152,11 +157,35 @@ html[dir="rtl"] .result-row strong{text-align:left}
   main.container{padding-top:10px}
   .card{padding:16px;border-radius:15px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
   .card>h2,.planner-heading h2{font-size:19px}
-  .planner-grid,.planner-actions,.grid-2,.grid-3,.building-grid,.results-grid,#buildings{grid-template-columns:1fr}
+  .planner-grid,.planner-actions,.grid-2,.grid-3,.results-grid,#buildings{grid-template-columns:1fr}
+  .building-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .building{padding:14px}
   input:not([type="checkbox"]),select{height:49px}
   .actions{grid-template-columns:1.25fr .75fr}
+}
+
+@media(min-width:900px){
+  main.container{
+    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);
+    grid-template-areas:
+      "planner saved"
+      "buildings inventory"
+      "buildings bonuses"
+      "results results"
+      "actions actions";
+    gap:14px;align-items:start
+  }
+  main.container>.card{margin-top:0}
+  .planner-card{grid-area:planner}
+  .saved-plans-card{grid-area:saved}
+  .buildings-card{grid-area:buildings}
+  .inventory-card{grid-area:inventory}
+  .bonuses-card{grid-area:bonuses}
+  .results-card{grid-area:results}
+  main.container>.actions{grid-area:actions;margin-top:2px}
+  #buildings{grid-template-columns:1fr}
+  .saved-plans-create,.saved-plans-manage{grid-template-columns:1fr}
 }
 @media(max-width:410px){
   .container{width:calc(100% - 16px)}
@@ -215,4 +244,8 @@ html[dir="rtl"] .result-row strong{text-align:left}
 @media(max-width:720px){
   .saved-plans-manage{grid-template-columns:1fr}
   .saved-plans-actions{grid-template-columns:1fr 1fr}
+}
+@media(min-width:900px){
+  .saved-plans-create,.saved-plans-manage{grid-template-columns:1fr}
+  .saved-plans-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

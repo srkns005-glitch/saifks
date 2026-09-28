@@ -119,6 +119,8 @@ function applyLanguage(language){
     if(text[key]) element.placeholder=text[key];
   });
 
+  document.querySelector(".home-header-button")?.setAttribute("aria-label",text.home);
+
   const savedPlansStatus=document.getElementById("savedPlansStatus");
   if(savedPlansStatus?.dataset.messageKey && text[savedPlansStatus.dataset.messageKey]){
     savedPlansStatus.textContent=text[savedPlansStatus.dataset.messageKey];
@@ -456,6 +458,7 @@ function restoreState(){
 
 function clearSavedState(){
   localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(SAVED_PLANS_KEY);
 }
 
 
@@ -862,13 +865,26 @@ document.querySelectorAll('input:not(#planName),select:not(#languageSelect):not(
 });
 
 const resetDialog=document.getElementById("resetDialog");
+let resetReturnFocus=null;
+
+function closeResetDialog(){
+  resetDialog.hidden=true;
+  resetReturnFocus?.focus();
+}
 
 document.getElementById("resetCalculator").addEventListener("click",()=>{
+  resetReturnFocus=document.activeElement;
   resetDialog.hidden=false;
+  document.getElementById("cancelReset").focus();
 });
 
 document.getElementById("cancelReset").addEventListener("click",()=>{
-  resetDialog.hidden=true;
+  closeResetDialog();
+});
+
+document.querySelector(".reset-dialog-backdrop").addEventListener("click",closeResetDialog);
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&!resetDialog.hidden) closeResetDialog();
 });
 
 document.getElementById("confirmReset").addEventListener("click",()=>{
@@ -907,6 +923,11 @@ document.getElementById("confirmReset").addEventListener("click",()=>{
   refreshPlannerTargetOptions();
 
   clearSavedState();
+  renderSavedPlans();
+  document.getElementById("planName").value="";
+  const savedPlansStatus=document.getElementById("savedPlansStatus");
+  savedPlansStatus.textContent="";
+  delete savedPlansStatus.dataset.messageKey;
   resetDialog.hidden=true;
   calculate();
 });
@@ -969,7 +990,6 @@ setupPlanner();
 setupSavedPlans();
 restoreState();
 if(typeof refreshPlannerTargetOptions==="function") refreshPlannerTargetOptions();
-currentLanguage=localStorage.getItem("saifRallyLang")||"en";
 applyLanguage(currentLanguage);
 
 
