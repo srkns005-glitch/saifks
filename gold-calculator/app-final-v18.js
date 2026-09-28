@@ -138,7 +138,11 @@ function applyLanguage(language){
 }
 
 document.getElementById("languageSelect").addEventListener("change",function(){
-  applyLanguage(this.value);
+  const nextLanguage=this.value;
+  const nextUrl=new URL(location.href);
+  nextUrl.searchParams.set("lang",nextLanguage);
+  history.replaceState(null,"",nextUrl);
+  applyLanguage(nextLanguage);
   saveState();
 });
 
@@ -664,7 +668,15 @@ applyLanguage(currentLanguage);
 
 
 window.addEventListener("storage",function(event){
-  if(event.key==="saifRallyLang" && event.newValue && translations[event.newValue]){
+  const urlLanguage=new URLSearchParams(location.search).get("lang");
+  if(!urlLanguage && event.key==="saifRallyLang" && event.newValue && translations[event.newValue]){
     applyLanguage(event.newValue);
   }
 });
+
+const brandLogo=document.querySelector(".brand-logo");
+if(brandLogo){
+  const showLogoFallback=()=>brandLogo.classList.add("is-missing");
+  brandLogo.addEventListener("error",showLogoFallback,{once:true});
+  if(brandLogo.complete&&!brandLogo.naturalWidth) showLogoFallback();
+}

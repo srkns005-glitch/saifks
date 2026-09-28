@@ -195,15 +195,22 @@ html[dir="rtl"] .result-row strong{text-align:left}
 /* Unified SaifKS brand */
 .brand-block{display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;align-items:center;padding-inline-start:0!important}
 .brand-block::before{display:none!important}
-.brand-logo{grid-row:1 / span 2;width:38px;height:38px;display:block;border:1px solid rgba(244,198,91,.5);border-radius:11px;background:#14263b;object-fit:cover}
+.brand-logo-shell{
+  grid-row:1 / span 2;position:relative;width:38px;height:38px;display:grid;place-items:center;
+  overflow:hidden;border:1px solid rgba(244,198,91,.5);border-radius:11px;background:#14263b;
+  color:var(--gold);font-size:10px;font-weight:950
+}
+.brand-logo-shell::before{content:"KS";position:absolute;inset:0;display:grid;place-items:center}
+.brand-logo{position:relative;z-index:1;width:100%;height:100%;display:block;border:0;border-radius:inherit;background:#14263b;object-fit:cover}
+.brand-logo.is-missing{display:none}
 .brand-block h1,.brand-block p{grid-column:2}
 @media(max-width:720px){
   .brand-block{grid-template-columns:34px minmax(0,1fr);column-gap:8px}
-  .brand-logo{width:34px;height:34px;border-radius:10px}
+  .brand-logo-shell{width:34px;height:34px;border-radius:10px}
 }
 @media(max-width:410px){
   .brand-block{grid-template-columns:30px minmax(0,1fr);column-gap:7px}
-  .brand-logo{width:30px;height:30px;border-radius:9px}
+  .brand-logo-shell{width:30px;height:30px;border-radius:9px}
 }
 /* Desktop workspace: compact cards with clear, balanced columns. */
 @media(min-width:1080px){
