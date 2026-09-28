@@ -117,8 +117,8 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetchJson("data/governor_gear.json?v=21-audit-fixes-20260929"),
-    fetchJson("data/governor_charms.json?v=21-audit-fixes-20260929")
+    fetchJson("data/governor_gear.json?v=22-visual-polish-20260929"),
+    fetchJson("data/governor_charms.json?v=22-visual-polish-20260929")
   ]);
   if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
   document.getElementById("gearStageCount").textContent=String(gearDB.levels.length);
@@ -280,8 +280,8 @@ function buildGearCards(){
         </div>
       </div>
       <div class="gear-compact-row">
-        <label class="gear-level-box"><span>${tr("current")}</span><select class="stage-select current">${gearCurrentOptions(s.current)}</select></label>
-        <label class="gear-level-box ${s.current>=gearDB.levels.length-1?"level-complete":""}"><span>${tr("target")}</span>${gearTargetControl(s.current,s.target)}</label>
+        <label class="gear-level-box current-box"><span>${tr("current")}</span><select class="stage-select current">${gearCurrentOptions(s.current)}</select></label>
+        <label class="gear-level-box target-box ${s.current>=gearDB.levels.length-1?"level-complete":""}"><span>${tr("target")}</span>${gearTargetControl(s.current,s.target)}</label>
         <div class="gear-inline-result"></div>
       </div>`;
     wrap.appendChild(card);
@@ -346,8 +346,8 @@ function buildCharmCards(){
       row.dataset.type=type.id;
       row.innerHTML=`
         <div class="charm-row-identity"><span class="charm-index">${index+1}</span><span class="charm-row-copy"><strong>${h(tr("charm"))} ${index+1}</strong><small>${h(tr(type.troop))}</small></span></div>
-        <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmCurrentOptions(s.current)}</select></label>
-        <label class="charm-level-box ${s.current>=lastCharmLevel?"level-complete":""}"><span>${tr("target")}</span>${charmTargetControl(s.current,s.target)}</label>
+        <label class="charm-level-box current-box"><span>${tr("current")}</span><select class="stage-select current">${charmCurrentOptions(s.current)}</select></label>
+        <label class="charm-level-box target-box ${s.current>=lastCharmLevel?"level-complete":""}"><span>${tr("target")}</span>${charmTargetControl(s.current,s.target)}</label>
         <div class="charm-inline-result"></div>`;
       list.appendChild(row);
 
@@ -423,6 +423,23 @@ function summaryDetailed(label,remaining,total,owned=0,complete=false){
     <div class="summary-number-line remaining-line"><small>${h(summaryText("remaining"))}</small><strong>${fmt(remaining)}</strong></div>`:""}
   </div>`;
 }
+const emptySummaryLabels={
+  en:"Choose a current level and a higher target to see your requirements.",
+  ar:"اختر المستوى الحالي ثم هدفًا أعلى لعرض المتطلبات.",
+  tr:"Gereksinimleri görmek için mevcut seviyeyi ve daha yüksek bir hedefi seçin.",
+  fr:"Choisissez un niveau actuel puis une cible supérieure pour afficher les besoins.",
+  es:"Elige el nivel actual y un objetivo superior para ver los requisitos.",
+  de:"Wähle die aktuelle Stufe und ein höheres Ziel, um den Bedarf zu sehen.",
+  ko:"현재 레벨과 더 높은 목표를 선택하면 필요한 재료가 표시됩니다.",
+  ja:"現在のレベルとより高い目標を選ぶと必要素材が表示されます。",
+  zh:"选择当前等级和更高目标后即可查看所需材料。"
+};
+function emptySummary(){return `<div class="summary-empty"><span aria-hidden="true">↗</span><p>${h(emptySummaryLabels[state.language]||emptySummaryLabels.en)}</p></div>`;}
+function setSummaryState(id,count){
+  const grid=document.getElementById(id);
+  grid.closest(".summary-card")?.classList.toggle("has-results",count>0);
+  return grid;
+}
 function renderGear(){
   if(!built.gear) return;
   let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};
@@ -450,7 +467,8 @@ function renderGear(){
     threads:Math.max(0,total.threads-state.gearOwned.threads),
     vision:Math.max(0,total.vision-state.gearOwned.vision)
   };
-  document.getElementById("gearSummary").innerHTML=
+  const gearSummary=setSummaryState("gearSummary",total.count);
+  gearSummary.innerHTML=total.count===0?emptySummary():
     summaryDetailed(tr("satin"),rem.satin,total.satin,state.gearOwned.satin,rem.satin===0&&total.satin>0)+
     summaryDetailed(tr("threads"),rem.threads,total.threads,state.gearOwned.threads,rem.threads===0&&total.threads>0)+
     summaryDetailed(tr("visionMaterial"),rem.vision,total.vision,state.gearOwned.vision,rem.vision===0&&total.vision>0)+
@@ -478,7 +496,8 @@ function renderCharms(){
   document.getElementById("charmSelectedCount").textContent=`${total.count} / 18`;
   document.getElementById("copyCharms").disabled=total.count===0;
   const rem={guides:Math.max(0,total.guides-state.charmOwned.guides),designs:Math.max(0,total.designs-state.charmOwned.designs)};
-  document.getElementById("charmSummary").innerHTML=
+  const charmSummary=setSummaryState("charmSummary",total.count);
+  charmSummary.innerHTML=total.count===0?emptySummary():
     summaryDetailed(tr("guides"),rem.guides,total.guides,state.charmOwned.guides,rem.guides===0&&total.guides>0)+
     summaryDetailed(tr("designs"),rem.designs,total.designs,state.charmOwned.designs,rem.designs===0&&total.designs>0)+
     summaryBox(tr("powerGain"),fmt(total.power))+
