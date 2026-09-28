@@ -1,0 +1,73 @@
+name: Deploy SaifKS production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: saifks-production-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+
+      - name: Verify production pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            index.html
+            home.css
+            home.js
+            rally.html
+            event-center/index.html
+            gold-calculator/index.html
+            governor-center/index.html
+            hero-center/index.html
+            hero-gear-center/index.html
+            research/index.html
+            masters/index.html
+            pet-center/index.html
+            war-academy/index.html
+          )
+          for file in "${required[@]}"; do
+            test -s "$file" || { echo "Missing production file: $file"; exit 1; }
+          done
+          test ! -e .github/workflows/publish-mobile-preview.yml
+          if grep -R --include='*.html' -n 'MOBILE PREVIEW' . --exclude-dir=.git --exclude-dir=preview; then
+            echo "Preview markup found in production files"
+            exit 1
+          fi
+
+      - name: Build production artifact
+        shell: bash
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='preview/' \
+            --exclude='*.zip' \
+            --exclude='.DS_Store' \
+            ./ _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
