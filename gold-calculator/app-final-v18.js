@@ -121,11 +121,6 @@ function applyLanguage(language){
 
   document.querySelector(".home-header-button")?.setAttribute("aria-label",text.home);
 
-  const savedPlansStatus=document.getElementById("savedPlansStatus");
-  if(savedPlansStatus?.dataset.messageKey && text[savedPlansStatus.dataset.messageKey]){
-    savedPlansStatus.textContent=text[savedPlansStatus.dataset.messageKey];
-  }
-
   document.querySelectorAll(".building").forEach(block=>{
     const name=block.dataset.building;
     block.querySelector(".building-name").textContent=buildingLabels[language][name];
@@ -380,7 +375,6 @@ function setupPlanner(){
 }
 
 const STORAGE_KEY="saifksGoldCalculatorV7";
-const SAVED_PLANS_KEY="saifksGoldSavedPlansV1";
 
 function collectState(){
   const state={
@@ -458,321 +452,6 @@ function restoreState(){
 
 function clearSavedState(){
   localStorage.removeItem(STORAGE_KEY);
-  localStorage.removeItem(SAVED_PLANS_KEY);
-}
-
-
-function readSavedPlans(){
-  try{
-    const plans=JSON.parse(localStorage.getItem(SAVED_PLANS_KEY)||"[]");
-    return Array.isArray(plans)?plans:[];
-  }catch{
-    return [];
-  }
-}
-
-function writeSavedPlans(plans){
-  localStorage.setItem(SAVED_PLANS_KEY,JSON.stringify(plans));
-}
-
-function showSavedPlanStatus(key,isError=false){
-  const status=document.getElementById("savedPlansStatus");
-  status.dataset.messageKey=key;
-  status.textContent=translations[currentLanguage][key]||"";
-  status.classList.toggle("error",isError);
-}
-
-function renderSavedPlans(selectedId=""){
-  const select=document.getElementById("savedPlansSelect");
-  const plans=readSavedPlans();
-  const previous=selectedId||select.value;
-  select.innerHTML="";
-  select.add(new Option("—",""));
-  plans.sort((a,b)=>(b.savedAt||0)-(a.savedAt||0)).forEach(plan=>{
-    select.add(new Option(plan.name,plan.id));
-  });
-  select.value=plans.some(plan=>plan.id===previous)?previous:"";
-  document.getElementById("savedPlansCount").textContent=String(plans.length);
-  const disabled=!select.value;
-  document.getElementById("loadNamedPlan").disabled=disabled;
-  document.getElementById("shareNamedPlan").disabled=disabled;
-  document.getElementById("exportPlanImage").disabled=disabled;
-  document.getElementById("deleteNamedPlan").disabled=disabled;
-}
-
-function applyNamedPlan(state){
-  Object.entries(state.fields||{}).forEach(([id,value])=>{
-    const element=document.getElementById(id);
-    if(element) element.value=value;
-  });
-
-  document.getElementById("doubleTime").checked=Boolean(state.doubleTime);
-
-  if(state.planner){
-    const plannerCurrent=document.getElementById("plannerCurrent");
-    const plannerTarget=document.getElementById("plannerTarget");
-    plannerCurrent.value=state.planner.current||"Base";
-    refreshPlannerTargetOptions();
-    const target=state.planner.target||"";
-    plannerTarget.value=Array.from(plannerTarget.options).some(option=>option.value===target)?target:"";
-  }
-
-  buildingNames.forEach(name=>{
-    const saved=state.buildings?.[name];
-    if(!saved) return;
-    const checkbox=document.getElementById(name);
-    const current=document.getElementById(name+"Current");
-    const target=document.getElementById(name+"Target");
-    const block=checkbox.closest(".building");
-    checkbox.checked=Boolean(saved.enabled);
-    block.classList.toggle("active",checkbox.checked);
-    current.disabled=!checkbox.checked;
-    target.disabled=!checkbox.checked;
-    current.value=saved.current||"Base";
-    target.value=saved.target||"";
-  });
-
-  calculate();
-  saveState();
-}
-
-
-function getSelectedSavedPlan(){
-  const selectedId=document.getElementById("savedPlansSelect").value;
-  return readSavedPlans().find(item=>item.id===selectedId)||null;
-}
-
-function buildPlanShareSummary(plan){
-  const text=translations[currentLanguage];
-  const lines=[`SaifKS — ${text.title}`,`${text.planName}: ${plan.name}`,"",text.buildings];
-  const zeroTimes=["0d 0h 0m","0ي 0س 0د","0j 0h 0min","0d 0h 0min","0T 0Std 0Min","0g 0s 0dk","0일 0시간 0분","0日 0時間 0分","0天 0小时 0分"];
-
-  buildingNames.forEach(name=>{
-    if(!document.getElementById(name).checked) return;
-    const current=document.getElementById(name+"Current").value;
-    const target=document.getElementById(name+"Target").value;
-    if(current&&target) lines.push(`${buildingLabels[currentLanguage][name]}: ${displayLevel(current)} → ${displayLevel(target)}`);
-  });
-
-  const addResult=(label,id)=>{
-    const value=document.getElementById(id).textContent.trim();
-    if(value!=="0"&&!zeroTimes.includes(value)) lines.push(`${label}: ${value}`);
-  };
-
-  lines.push("");
-  addResult(text.requiredTempered,"requiredTemperedGold");
-  addResult(text.requiredTrue,"requiredTrueGold");
-
-  const resources=[];
-  [["food","foodAfterSaul"],["wood","woodAfterSaul"],["stone","stoneAfterSaul"],["iron","ironAfterSaul"]].forEach(([key,id])=>{
-    const value=document.getElementById(id).textContent.trim();
-    if(value!=="0") resources.push(`${text[key]}: ${value}`);
-  });
-  if(resources.length) lines.push("",text.resourcesRequired,...resources);
-
-  addResult(text.power,"powerGain");
-  addResult(text.remainingTime,"remainingTime");
-  lines.push("","SaifKS.com");
-  return lines.join("\n");
-}
-
-function wrapCanvasLine(context,value,maxWidth){
-  if(!value) return [""];
-  const useWords=/\s/.test(value);
-  const parts=useWords?value.split(/\s+/):Array.from(value);
-  const separator=useWords?" ":"";
-  const rows=[];
-  let row="";
-  parts.forEach(part=>{
-    const candidate=row?row+separator+part:part;
-    if(row&&context.measureText(candidate).width>maxWidth){
-      rows.push(row);
-      row=part;
-    }else{
-      row=candidate;
-    }
-  });
-  if(row) rows.push(row);
-  return rows.length?rows:[""];
-}
-
-async function createPlanImageBlob(summary){
-  const canvas=document.createElement("canvas");
-  const context=canvas.getContext("2d");
-  const width=1200;
-  const padding=82;
-  context.font="600 30px Arial";
-  const visualLines=[];
-  summary.split("\n").forEach((line,index)=>{
-    wrapCanvasLine(context,line,width-padding*2).forEach(wrapped=>visualLines.push({text:wrapped,source:index}));
-  });
-  canvas.width=width;
-  canvas.height=Math.max(720,220+visualLines.length*48+120);
-  context.fillStyle="#07111e";
-  context.fillRect(0,0,canvas.width,canvas.height);
-  const glow=context.createRadialGradient(width-120,0,20,width-120,0,520);
-  glow.addColorStop(0,"rgba(244,198,91,.22)");
-  glow.addColorStop(1,"rgba(244,198,91,0)");
-  context.fillStyle=glow;
-  context.fillRect(0,0,canvas.width,canvas.height);
-
-  context.direction=currentLanguage==="ar"?"rtl":"ltr";
-  context.textAlign=currentLanguage==="ar"?"right":"left";
-  const x=currentLanguage==="ar"?width-padding:padding;
-
-  try{
-    const logo=new Image();
-    logo.src="../logo.png";
-    await logo.decode();
-    context.save();
-    context.beginPath();
-    context.roundRect(currentLanguage==="ar"?width-padding-64:padding,54,64,64,16);
-    context.clip();
-    context.drawImage(logo,currentLanguage==="ar"?width-padding-64:padding,54,64,64);
-    context.restore();
-  }catch{}
-
-  let y=170;
-  visualLines.forEach((line,index)=>{
-    if(index===0){
-      context.font="800 42px Arial";
-      context.fillStyle="#f4c65b";
-    }else if(line.source===1){
-      context.font="700 30px Arial";
-      context.fillStyle="#ffffff";
-    }else{
-      context.font="600 27px Arial";
-      context.fillStyle=line.text===translations[currentLanguage].buildings||line.text===translations[currentLanguage].resourcesRequired?"#61d6a0":"#d8e1eb";
-    }
-    context.fillText(line.text,x,y);
-    y+=48;
-  });
-
-  context.strokeStyle="rgba(244,198,91,.35)";
-  context.lineWidth=2;
-  context.strokeRect(28,28,canvas.width-56,canvas.height-56);
-  return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error("image")),"image/png",.96));
-}
-
-async function shareSelectedPlan(){
-  const plan=getSelectedSavedPlan();
-  if(!plan){
-    showSavedPlanStatus("choosePlan",true);
-    return;
-  }
-  applyNamedPlan(plan.state||{});
-  const summary=buildPlanShareSummary(plan);
-  try{
-    if(navigator.share){
-      await navigator.share({title:plan.name,text:summary});
-      showSavedPlanStatus("planShared");
-    }else{
-      await navigator.clipboard.writeText(summary);
-      showSavedPlanStatus("summaryCopied");
-    }
-  }catch(error){
-    if(error?.name==="AbortError") return;
-    try{
-      await navigator.clipboard.writeText(summary);
-      showSavedPlanStatus("summaryCopied");
-    }catch{
-      alert(summary);
-    }
-  }
-}
-
-async function exportSelectedPlanImage(){
-  const plan=getSelectedSavedPlan();
-  if(!plan){
-    showSavedPlanStatus("choosePlan",true);
-    return;
-  }
-  applyNamedPlan(plan.state||{});
-  try{
-    const blob=await createPlanImageBlob(buildPlanShareSummary(plan));
-    const safeName=plan.name.replace(/[^\p{L}\p{N}._-]+/gu,"-").replace(/^-+|-+$/g,"")||"plan";
-    const file=new File([blob],`SaifKS-${safeName}.png`,{type:"image/png"});
-    if(navigator.canShare&&navigator.canShare({files:[file]})){
-      await navigator.share({title:plan.name,files:[file]});
-    }else{
-      const url=URL.createObjectURL(blob);
-      const link=document.createElement("a");
-      link.href=url;
-      link.download=file.name;
-      link.click();
-      setTimeout(()=>URL.revokeObjectURL(url),1000);
-    }
-    showSavedPlanStatus("imageReady");
-  }catch(error){
-    if(error?.name==="AbortError") return;
-    showSavedPlanStatus("imageFailed",true);
-  }
-}
-
-function setupSavedPlans(){
-  const nameInput=document.getElementById("planName");
-  const select=document.getElementById("savedPlansSelect");
-
-  document.getElementById("saveNamedPlan").addEventListener("click",()=>{
-    const name=nameInput.value.trim();
-    if(!name){
-      showSavedPlanStatus("enterPlanName",true);
-      nameInput.focus();
-      return;
-    }
-
-    const plans=readSavedPlans();
-    let plan=plans.find(item=>item.name.toLocaleLowerCase()===name.toLocaleLowerCase());
-    if(plan){
-      plan.state=collectState();
-      plan.savedAt=Date.now();
-    }else{
-      plan={id:Date.now().toString(36),name,state:collectState(),savedAt:Date.now()};
-      plans.push(plan);
-    }
-    writeSavedPlans(plans);
-    renderSavedPlans(plan.id);
-    nameInput.value="";
-    showSavedPlanStatus("planSaved");
-  });
-
-  document.getElementById("loadNamedPlan").addEventListener("click",()=>{
-    const plan=readSavedPlans().find(item=>item.id===select.value);
-    if(!plan){
-      showSavedPlanStatus("choosePlan",true);
-      return;
-    }
-    applyNamedPlan(plan.state||{});
-    showSavedPlanStatus("planLoaded");
-  });
-
-  document.getElementById("shareNamedPlan").addEventListener("click",shareSelectedPlan);
-  document.getElementById("exportPlanImage").addEventListener("click",exportSelectedPlanImage);
-
-  document.getElementById("deleteNamedPlan").addEventListener("click",()=>{
-    if(!select.value){
-      showSavedPlanStatus("choosePlan",true);
-      return;
-    }
-    writeSavedPlans(readSavedPlans().filter(item=>item.id!==select.value));
-    renderSavedPlans();
-    showSavedPlanStatus("planDeleted");
-  });
-
-  select.addEventListener("change",()=>{
-    const disabled=!select.value;
-    document.getElementById("loadNamedPlan").disabled=disabled;
-    document.getElementById("shareNamedPlan").disabled=disabled;
-    document.getElementById("exportPlanImage").disabled=disabled;
-    document.getElementById("deleteNamedPlan").disabled=disabled;
-    if(disabled) return;
-    const plan=readSavedPlans().find(item=>item.id===select.value);
-    if(!plan) return;
-    applyNamedPlan(plan.state||{});
-    showSavedPlanStatus("planLoaded");
-  });
-
-  renderSavedPlans();
 }
 
 function calculate(){
@@ -853,7 +532,7 @@ function calculate(){
   setResult("powerGain",totals.power);
 }
 
-document.querySelectorAll('input:not(#planName),select:not(#languageSelect):not(#savedPlansSelect)').forEach(element=>{
+document.querySelectorAll('input,select:not(#languageSelect)').forEach(element=>{
   element.addEventListener("input",()=>{
     calculate();
     saveState();
@@ -908,9 +587,6 @@ document.getElementById("confirmReset").addEventListener("click",()=>{
     }else if(element.id==="languageSelect"){
       element.value=currentLanguage;
       element.disabled=false;
-    }else if(element.id==="savedPlansSelect"){
-      element.value="";
-      element.disabled=false;
     }else{
       element.value="0";
     }
@@ -923,11 +599,6 @@ document.getElementById("confirmReset").addEventListener("click",()=>{
   refreshPlannerTargetOptions();
 
   clearSavedState();
-  renderSavedPlans();
-  document.getElementById("planName").value="";
-  const savedPlansStatus=document.getElementById("savedPlansStatus");
-  savedPlansStatus.textContent="";
-  delete savedPlansStatus.dataset.messageKey;
   resetDialog.hidden=true;
   calculate();
 });
@@ -987,7 +658,6 @@ try{
 });
 
 setupPlanner();
-setupSavedPlans();
 restoreState();
 if(typeof refreshPlannerTargetOptions==="function") refreshPlannerTargetOptions();
 applyLanguage(currentLanguage);
