@@ -50,13 +50,9 @@ main.container{padding-block:16px 30px}
   content:"";width:4px;height:22px;flex:0 0 auto;border-radius:10px;background:var(--gold)
 }
 .planner-card{border-color:rgba(244,198,91,.38)}
-.planner-heading{position:relative;display:block;padding-inline-end:72px;margin-bottom:18px}
+.planner-heading{position:relative;display:block;margin-bottom:18px}
 .planner-heading h2{margin-bottom:6px}
 .planner-heading p{color:var(--muted);font-size:14px}
-.beta-badge{
-  position:absolute;inset-inline-end:0;top:0;padding:6px 10px;border:1px solid rgba(244,198,91,.35);
-  border-radius:999px;background:rgba(244,198,91,.08);color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.7px
-}
 .planner-guide{
   margin-top:14px;padding:14px 16px;border:1px solid var(--line-soft);border-radius:13px;background:#0a1929
 }
@@ -190,7 +186,6 @@ html[dir="rtl"] .result-row strong{text-align:left}
   .brand-block{padding-inline-start:37px}.brand-block::before{width:30px;height:30px;font-size:10px}
   .brand-block h1{font-size:14px}.brand-block p{display:none}
   .home-header-button,#languageSelect{width:66px;min-width:66px;font-size:10px}
-  .planner-heading{padding-inline-end:60px}
   .resource-grid{grid-template-columns:1fr}
   .result-row strong{min-width:68px;font-size:16px}
 }
@@ -210,20 +205,22 @@ html[dir="rtl"] .result-row strong{text-align:left}
   .brand-block{grid-template-columns:30px minmax(0,1fr);column-gap:7px}
   .brand-logo{width:30px;height:30px;border-radius:9px}
 }
-/* Desktop workspace: a clear top-to-bottom flow without uneven side columns. */
+/* Desktop workspace: compact cards with clear, balanced columns. */
 @media(min-width:1080px){
   .container{width:min(1040px,calc(100% - 56px))}
   main.container{
-    grid-template-columns:minmax(0,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
     grid-template-areas:
-      "planner"
-      "buildings"
-      "inventory"
-      "bonuses"
-      "results"
-      "actions";
+      "planner planner"
+      "buildings buildings"
+      "inventory bonuses"
+      "results results"
+      "actions actions";
     gap:16px;padding-top:20px
   }
+
+  main.container>.card{padding:20px}
+  .card>h2{margin-bottom:14px}
 
   .planner-card{
     display:grid;
@@ -234,13 +231,14 @@ html[dir="rtl"] .result-row strong{text-align:left}
       "planner-message planner-message";
     column-gap:28px;align-items:start
   }
-  .planner-heading{grid-area:planner-heading;margin-bottom:0;padding-inline-end:72px}
+  .planner-heading{grid-area:planner-heading;margin-bottom:0}
   .planner-grid{grid-area:planner-fields;align-self:end}
   .planner-actions{grid-area:planner-actions}
   .planner-message{grid-area:planner-message;margin-bottom:-8px}
 
-  #buildings{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .bonuses-card .grid-2{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #buildings{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .building{padding:13px}
+  .inventory-card .grid-3,.bonuses-card .grid-2{grid-template-columns:1fr}
   .results-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 
 }
