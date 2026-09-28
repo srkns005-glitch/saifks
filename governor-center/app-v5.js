@@ -118,8 +118,8 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetchJson("data/governor_gear.json?v=25-fixed-gear-height-20260929"),
-    fetchJson("data/governor_charms.json?v=25-fixed-gear-height-20260929")
+    fetchJson("data/governor_gear.json?v=26-refined-gear-cards-20260929"),
+    fetchJson("data/governor_charms.json?v=26-refined-gear-cards-20260929")
   ]);
   if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
   setupLanguage();
@@ -277,12 +277,12 @@ function buildGearCards(){
           <h3>${h(nameOf(slot.id,slot.name))}</h3>
           <p>${h(tr(slot.troop))} · ${h(slot.stats.map(tr).join(" & "))}</p>
         </div>
-        <div class="gear-inline-result"></div>
       </div>
       <div class="gear-compact-row">
         <label class="gear-level-box current-box"><span>${tr("current")}</span><select class="stage-select current">${gearCurrentOptions(s.current)}</select></label>
         <label class="gear-level-box target-box ${s.current>=gearDB.levels.length-1?"level-complete":""}"><span>${tr("target")}</span>${gearTargetControl(s.current,s.target)}</label>
-      </div>`;
+      </div>
+      <div class="gear-result-slot"><div class="gear-inline-result"></div></div>`;
     wrap.appendChild(card);
     card.querySelector(".current").addEventListener("change",e=>{
       const nextCurrent=+e.target.value;
