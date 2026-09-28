@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
+<html lang="en" dir="ltr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
@@ -321,29 +320,48 @@ body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16p
  .team-card>.button-grid{grid-area:buttons}
  .reinforce-panel{padding:18px!important}
 }
-</style><style id="rally-arabic-polish">html[lang="ar"] .team-card .team-title:after{content:"الجدول اليدوي للقادة"!important;letter-spacing:0!important}</style></head>
+</style><style id="rally-arabic-polish">html[lang="ar"] .team-card .team-title:after{content:"الجدول اليدوي للقادة"!important;letter-spacing:0!important}</style>
+<style id="reinforcement-visual-v2">
+.reinforce-panel{background:linear-gradient(145deg,#122b43 0%,#0c1e31 58%,#07131f 100%)!important;border-color:rgba(245,196,81,.3)!important;box-shadow:0 18px 46px rgba(0,0,0,.26)!important}
+.reinforce-kicker{display:inline-flex;align-items:center;gap:7px;color:var(--gold)!important;font-size:.69rem!important;letter-spacing:.04em!important}.reinforce-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(245,196,81,.1)}
+.reinforce-head h2{margin-top:8px!important}.reinforce-badge{border-color:rgba(245,196,81,.28)!important;background:rgba(245,196,81,.08)!important;color:var(--gold)!important}
+.castle-rally-note{margin-top:14px!important;padding:9px 12px!important;border-radius:12px!important}.castle-icon{width:31px!important;height:31px!important;border-radius:9px!important;font-size:1rem!important}.castle-rally-note strong{font-size:.85rem}
+.reinforce-section-label{display:flex;align-items:center;gap:9px;margin:16px 0 9px;color:#fff;font-size:.82rem;font-weight:950}.reinforce-section-label span{display:grid;place-items:center;width:24px;height:24px;border:1px solid rgba(245,196,81,.35);border-radius:8px;background:rgba(245,196,81,.1);color:var(--gold);font-size:.72rem}.reinforce-section-label:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,.12),transparent)}
+.reinforce-settings{margin-top:0!important}.reinforce-settings>.reinforce-section-label{grid-column:1 / -1;margin-top:16px;margin-bottom:0}.reinforce-block{border-color:rgba(174,211,255,.13)!important;background:rgba(3,14,24,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+.reinforce-settings>#reinforceRecalculate{border:0!important;background:linear-gradient(135deg,#f6cb62,#d89a2b)!important;color:#241704!important;font-weight:1000!important;box-shadow:0 9px 22px rgba(216,154,43,.2)}
+.reinforce-settings>#reinforceRecalculate:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.reinforce-enemy-result{padding:13px!important;border-color:rgba(245,196,81,.22)!important;background:rgba(5,16,28,.52)!important}
+.reinforce-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.reinforce-event{position:relative;min-width:0;padding:11px;border:1px solid rgba(174,211,255,.12);border-radius:11px;background:rgba(255,255,255,.025)}.reinforce-event span{display:block;margin-bottom:5px;color:var(--muted);font-size:.68rem;font-weight:800}.reinforce-event b,.reinforce-event strong{display:block;color:#fff!important;font-size:.91rem!important;font-variant-numeric:tabular-nums;white-space:nowrap}.reinforce-event.target{border-color:rgba(245,196,81,.42);background:linear-gradient(145deg,rgba(245,196,81,.17),rgba(245,196,81,.05))}.reinforce-event.target strong{color:var(--gold)!important;font-size:1.04rem!important}.reinforce-event:not(:last-child):after{content:"›";position:absolute;z-index:2;inset-inline-end:-9px;top:50%;width:17px;height:17px;display:grid;place-items:center;border-radius:50%;background:#142940;color:var(--gold);transform:translateY(-50%);font-size:.85rem;font-weight:1000}
+html[dir="rtl"] .reinforce-event:not(:last-child):after{content:"‹"}
+.reinforce-detail{margin-top:8px;color:var(--muted);font-size:.7rem;text-align:center}.reinforce-detail b{color:#dce6f3!important}
+.reinforce-member-form{margin-top:0!important}.reinforce-list:empty{display:none}.reinforce-actions{grid-template-columns:1fr auto!important}.reinforce-actions .danger{padding-inline:18px}
+.reinforce-row{border-color:rgba(174,211,255,.14)!important;background:rgba(3,14,24,.55)!important}.reinforce-line{display:grid;grid-template-columns:minmax(120px,.7fr) minmax(180px,1fr);align-items:center;gap:10px}.reinforce-line>strong{font-size:.92rem}.reinforce-send-card{padding:9px 12px;border:1px solid rgba(245,196,81,.34);border-radius:10px;background:rgba(245,196,81,.09)}.reinforce-send-card span{margin:0 0 3px!important;color:var(--muted)!important;font-size:.66rem!important}.reinforce-send-card b{display:block;color:var(--gold)!important;font-size:1.04rem!important}.reinforce-send-card small{display:block;margin-top:3px;color:var(--muted);font-size:.67rem}.reinforce-march{grid-column:1 / -1;margin-top:0!important}.reinforce-line>em{grid-column:1 / -1}
+@media(min-width:921px){.reinforce-settings{grid-template-columns:repeat(4,minmax(0,1fr))!important}.reinforce-settings>#reinforceRecalculate{grid-column:1 / -1!important}.reinforce-member-form{grid-template-columns:minmax(220px,1.5fr) minmax(110px,.65fr) minmax(110px,.65fr) auto!important}}
+@media(max-width:720px){.reinforce-section-label{margin-top:14px}.reinforce-timeline{grid-template-columns:1fr}.reinforce-event:not(:last-child):after{content:"⌄"!important;inset-inline-end:14px;top:auto;bottom:-12px;transform:none}.reinforce-event b,.reinforce-event strong{font-size:.88rem!important}.reinforce-event.target strong{font-size:1rem!important}.reinforce-line{grid-template-columns:1fr}.reinforce-send-card{grid-row:2}.reinforce-march{grid-column:1}.castle-rally-note small{line-height:1.4}}
+@media(max-width:420px){.reinforce-head{display:grid;grid-template-columns:1fr auto}.reinforce-head p{grid-column:1 / -1}.reinforce-badge{grid-column:2;grid-row:1}.castle-rally-note{align-items:flex-start}.castle-rally-note strong{white-space:nowrap}.reinforce-member-form{grid-template-columns:1fr!important}.reinforce-member-form label,.reinforce-member-form button{grid-column:1!important}}
+</style></head>
 <body>
 <header class="site-header"><div class="site-header-row">
-<div class="site-brand"><img class="site-brand-logo" src="logo.png" alt="SaifKS logo"><div><h1 id="plannerPageTitle">Rally Planner</h1><p>SaifKS.com</p></div></div>
-<a class="home-header-button home-link" href="index.html"><span data-i18n="home">Home</span></a>
+<div class="site-brand"><img class="site-brand-logo" src="logo.png" alt="SaifKS logo"><div><h1 id="plannerPageTitle">مخطط الحشود</h1><p>SaifKS.com</p></div></div>
+<a class="home-header-button home-link" href="index.html?lang=ar"><span data-i18n="home">الرئيسية</span></a>
 <select id="langToggle" class="lang-toggle" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh">中文</option></select>
 </div></header>
 <main class="container">
-<section class="planner-status"><p id="subtitle">Create synchronized UTC rally schedules quickly and accurately.</p></section>
+<section class="planner-status"><p id="subtitle">أنشئ جدول حشود متزامن بتوقيت UTC بسرعة ودقة.</p></section>
 <section class="app-dashboard" aria-label="Rally dashboard">
   <div class="dashboard-head">
     <div>
-      <div class="dashboard-kicker" data-dash="kicker">RALLY OPERATIONS</div>
-      <h2 data-dash="title">Your alliance rally command board</h2>
-      <p data-dash="description">Choose a team, add leaders manually, then generate precise UTC launch times for every player.</p>
+      <div class="dashboard-kicker" data-dash="kicker">إدارة الحشود</div>
+      <h2 data-dash="title">لوحة قيادة حشود التحالف</h2>
+      <p data-dash="description">اختر فريقًا، وأدخل القادة يدويًا، ثم أنشئ توقيت إطلاق UTC الدقيق لكل قائد.</p>
     </div>
-    <div class="dashboard-time"><b data-dash="server">UTC TIME</b><span id="dashboardUtc">--:--:--</span></div>
+    <div class="dashboard-time"><b data-dash="server">توقيت UTC</b><span id="dashboardUtc">00:08:39</span></div>
   </div>
   <div class="team-switcher" role="tablist">
-    <button class="team-switch active" type="button" data-focus-team="A"><strong>Team A</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
-    <button class="team-switch" type="button" data-focus-team="B"><strong>Team B</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
-    <button class="team-switch" type="button" data-focus-team="C"><strong>Team C</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
-    <button class="team-switch" type="button" data-focus-team="D"><strong>Team D</strong><small class="switch-status">0 <span data-dash="leaders">leaders</span></small></button>
+    <button class="team-switch active" type="button" data-focus-team="A"><strong>الفريق A</strong><small class="switch-status">0 <span data-dash="leaders">قادة</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="B"><strong>الفريق B</strong><small class="switch-status">0 <span data-dash="leaders">قادة</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="C"><strong>الفريق C</strong><small class="switch-status">0 <span data-dash="leaders">قادة</span></small></button>
+    <button class="team-switch" type="button" data-focus-team="D"><strong>الفريق D</strong><small class="switch-status">0 <span data-dash="leaders">قادة</span></small></button>
   </div>
 </section>
 
@@ -364,91 +382,94 @@ body>.site-header+main.container{width:min(1080px,calc(100% - 32px));padding:16p
 </section>
 
 <div class="teams-grid">
-<section class="card team-card" data-team="A">
-<h2 class="team-title">Team A</h2>
-<h2 data-i18n="prepTitle">1. Preparation Time</h2>
-<p class="muted" data-i18n="prepDesc">Choose how much time you need to copy and send the schedule.</p>
+<section class="card team-card dashboard-active" data-team="A">
+<h2 class="team-title">الفريق A <span class="team-count">0</span></h2>
+<h2 data-i18n="prepTitle">1. وقت التحضير</h2>
+<p class="muted" data-i18n="prepDesc">حدد المدة التي تحتاجها لنسخ الجدول وإرساله.</p>
 <div class="quick-buttons">
-<button data-buffer="20">20 sec</button><button data-buffer="30" class="selected">30 sec</button><button data-buffer="45">45 sec</button><button data-buffer="60">1 min</button><button data-buffer="120">2 min</button>
+<button data-buffer="20">20 ث</button><button data-buffer="30" class="selected">30 ث</button><button data-buffer="45">45 ث</button><button data-buffer="60">1 د</button><button data-buffer="120">2 د</button>
 </div>
-<div class="two-cols"><label><span data-i18n="minutes">Minutes</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">Seconds</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
-<h2 data-i18n="addTitle">2. Add Rally Leader</h2>
-<form data-role="form"><label><span data-i18n="playerName">Player Name</span><input data-role="name" type="text" placeholder="Saif" required></label><div class="two-cols"><label><span data-i18n="marchMinutes">March Minutes</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">March Seconds</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ Add Player</button></form>
-<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. UTC Schedule</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">Clear</button></div>
-<button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
-<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
+<div class="two-cols"><label><span data-i18n="minutes">الدقائق</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">الثواني</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
+<h2 data-i18n="addTitle">2. إضافة قائد حشد</h2>
+<form data-role="form"><label><span data-i18n="playerName">اسم اللاعب</span><input data-role="name" type="text" placeholder="Saif" required=""></label><div class="two-cols"><label><span data-i18n="marchMinutes">دقائق المسير</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">ثواني المسير</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ إضافة لاعب</button></form>
+<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. جدول UTC</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">مسح الكل</button></div>
+<button data-role="generate" class="primary" disabled="" data-i18n="generate">إنشاء جدول UTC ونسخه</button>
+<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">يبدأ أول حشد بعد</span><strong data-role="countdown">00:00</strong></div>
 <div data-role="list" class="list"></div>
 </section>
 <section class="card team-card" data-team="B">
-<h2 class="team-title">Team B</h2>
-<h2 data-i18n="prepTitle">1. Preparation Time</h2>
-<p class="muted" data-i18n="prepDesc">Choose how much time you need to copy and send the schedule.</p>
+<h2 class="team-title">الفريق B <span class="team-count">0</span></h2>
+<h2 data-i18n="prepTitle">1. وقت التحضير</h2>
+<p class="muted" data-i18n="prepDesc">حدد المدة التي تحتاجها لنسخ الجدول وإرساله.</p>
 <div class="quick-buttons">
-<button data-buffer="20">20 sec</button><button data-buffer="30" class="selected">30 sec</button><button data-buffer="45">45 sec</button><button data-buffer="60">1 min</button><button data-buffer="120">2 min</button>
+<button data-buffer="20">20 ث</button><button data-buffer="30" class="selected">30 ث</button><button data-buffer="45">45 ث</button><button data-buffer="60">1 د</button><button data-buffer="120">2 د</button>
 </div>
-<div class="two-cols"><label><span data-i18n="minutes">Minutes</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">Seconds</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
-<h2 data-i18n="addTitle">2. Add Rally Leader</h2>
-<form data-role="form"><label><span data-i18n="playerName">Player Name</span><input data-role="name" type="text" placeholder="Saif" required></label><div class="two-cols"><label><span data-i18n="marchMinutes">March Minutes</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">March Seconds</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ Add Player</button></form>
-<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. UTC Schedule</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">Clear</button></div>
-<button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
-<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
+<div class="two-cols"><label><span data-i18n="minutes">الدقائق</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">الثواني</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
+<h2 data-i18n="addTitle">2. إضافة قائد حشد</h2>
+<form data-role="form"><label><span data-i18n="playerName">اسم اللاعب</span><input data-role="name" type="text" placeholder="Saif" required=""></label><div class="two-cols"><label><span data-i18n="marchMinutes">دقائق المسير</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">ثواني المسير</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ إضافة لاعب</button></form>
+<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. جدول UTC</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">مسح الكل</button></div>
+<button data-role="generate" class="primary" disabled="" data-i18n="generate">إنشاء جدول UTC ونسخه</button>
+<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">يبدأ أول حشد بعد</span><strong data-role="countdown">00:00</strong></div>
 <div data-role="list" class="list"></div>
 </section><section class="card team-card" data-team="C">
-<h2 class="team-title">Team C</h2>
-<h2 data-i18n="prepTitle">1. Preparation Time</h2>
-<p class="muted" data-i18n="prepDesc">Choose how much time you need to copy and send the schedule.</p>
+<h2 class="team-title">الفريق C <span class="team-count">0</span></h2>
+<h2 data-i18n="prepTitle">1. وقت التحضير</h2>
+<p class="muted" data-i18n="prepDesc">حدد المدة التي تحتاجها لنسخ الجدول وإرساله.</p>
 <div class="quick-buttons">
-<button data-buffer="20">20 sec</button><button data-buffer="30" class="selected">30 sec</button><button data-buffer="45">45 sec</button><button data-buffer="60">1 min</button><button data-buffer="120">2 min</button>
+<button data-buffer="20">20 ث</button><button data-buffer="30" class="selected">30 ث</button><button data-buffer="45">45 ث</button><button data-buffer="60">1 د</button><button data-buffer="120">2 د</button>
 </div>
-<div class="two-cols"><label><span data-i18n="minutes">Minutes</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">Seconds</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
-<h2 data-i18n="addTitle">2. Add Rally Leader</h2>
-<form data-role="form"><label><span data-i18n="playerName">Player Name</span><input data-role="name" type="text" placeholder="Saif" required></label><div class="two-cols"><label><span data-i18n="marchMinutes">March Minutes</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">March Seconds</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ Add Player</button></form>
-<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. UTC Schedule</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">Clear</button></div>
-<button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
-<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
+<div class="two-cols"><label><span data-i18n="minutes">الدقائق</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">الثواني</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
+<h2 data-i18n="addTitle">2. إضافة قائد حشد</h2>
+<form data-role="form"><label><span data-i18n="playerName">اسم اللاعب</span><input data-role="name" type="text" placeholder="Saif" required=""></label><div class="two-cols"><label><span data-i18n="marchMinutes">دقائق المسير</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">ثواني المسير</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ إضافة لاعب</button></form>
+<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. جدول UTC</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">مسح الكل</button></div>
+<button data-role="generate" class="primary" disabled="" data-i18n="generate">إنشاء جدول UTC ونسخه</button>
+<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">يبدأ أول حشد بعد</span><strong data-role="countdown">00:00</strong></div>
 <div data-role="list" class="list"></div>
 </section><section class="card team-card" data-team="D">
-<h2 class="team-title">Team D</h2>
-<h2 data-i18n="prepTitle">1. Preparation Time</h2>
-<p class="muted" data-i18n="prepDesc">Choose how much time you need to copy and send the schedule.</p>
+<h2 class="team-title">الفريق D <span class="team-count">0</span></h2>
+<h2 data-i18n="prepTitle">1. وقت التحضير</h2>
+<p class="muted" data-i18n="prepDesc">حدد المدة التي تحتاجها لنسخ الجدول وإرساله.</p>
 <div class="quick-buttons">
-<button data-buffer="20">20 sec</button><button data-buffer="30" class="selected">30 sec</button><button data-buffer="45">45 sec</button><button data-buffer="60">1 min</button><button data-buffer="120">2 min</button>
+<button data-buffer="20">20 ث</button><button data-buffer="30" class="selected">30 ث</button><button data-buffer="45">45 ث</button><button data-buffer="60">1 د</button><button data-buffer="120">2 د</button>
 </div>
-<div class="two-cols"><label><span data-i18n="minutes">Minutes</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">Seconds</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
-<h2 data-i18n="addTitle">2. Add Rally Leader</h2>
-<form data-role="form"><label><span data-i18n="playerName">Player Name</span><input data-role="name" type="text" placeholder="Saif" required></label><div class="two-cols"><label><span data-i18n="marchMinutes">March Minutes</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">March Seconds</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ Add Player</button></form>
-<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. UTC Schedule</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">Clear</button></div>
-<button data-role="generate" class="primary" disabled data-i18n="generate">Generate Schedule From UTC Now</button>
-<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">First rally starts in</span><strong data-role="countdown">00:00</strong></div>
+<div class="two-cols"><label><span data-i18n="minutes">الدقائق</span><input data-role="bufferMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="seconds">الثواني</span><input data-role="bufferSec" type="number" min="0" max="59" value="30"></label></div>
+<h2 data-i18n="addTitle">2. إضافة قائد حشد</h2>
+<form data-role="form"><label><span data-i18n="playerName">اسم اللاعب</span><input data-role="name" type="text" placeholder="Saif" required=""></label><div class="two-cols"><label><span data-i18n="marchMinutes">دقائق المسير</span><input data-role="marchMin" type="number" min="0" max="59" value="0"></label><label><span data-i18n="marchSeconds">ثواني المسير</span><input data-role="marchSec" type="number" min="0" max="59" value="30"></label></div><button class="primary" type="submit" data-i18n="addPlayer">+ إضافة لاعب</button></form>
+<div class="title-row" style="margin-top:18px"><h2 data-i18n="scheduleTitle">3. جدول UTC</h2><button data-role="clear" class="danger" type="button" data-i18n="clear">مسح الكل</button></div>
+<button data-role="generate" class="primary" disabled="" data-i18n="generate">إنشاء جدول UTC ونسخه</button>
+<div data-role="summary" class="summary hidden"></div><div data-role="countdownBox" class="countdown hidden"><span data-i18n="firstStartsIn">يبدأ أول حشد بعد</span><strong data-role="countdown">00:00</strong></div>
 <div data-role="list" class="list"></div>
 </section>
 </div>
 
 <section class="reinforce-panel" aria-label="Rally reinforcements">
-<div class="reinforce-head"><div><span class="reinforce-kicker">CASTLE REINFORCEMENTS</span><h2 data-rein="title">تعزيزات الرالي قبل المنافس</h2><p data-rein="intro">ضع وقت ومدة حشد المنافس، ثم أضف لاعبيك. نحسب وقت الإرسال ووصول كل تعزيز تلقائيًا.</p></div><span class="reinforce-badge">UTC</span></div>
+<div class="reinforce-head"><div><span class="reinforce-kicker" data-rein="kicker">حاسبة تعزيزات الرالي</span><h2 data-rein="title">عزّز قبل وصول المنافس</h2><p data-rein="intro">أدخل توقيت حشد المنافس، وسنحدد وقت الإرسال المناسب لكل لاعب.</p></div><span class="reinforce-badge">UTC</span></div>
 <div class="castle-rally-note"><span class="castle-icon">♜</span><div><b data-rein="castle">قلعة الملك</b><small data-rein="castleNote">زمن فتح الحشد ثابت: 05:00، ثم تضاف مدة زحف المنافس.</small></div><strong>+ 05:00</strong></div><div class="reinforce-settings">
-<div class="reinforce-block"><b data-rein="start">وقت بدء حشد المنافس</b><div class="reinforce-time"><input id="reinforceStartHour" data-time-part="hour" type="number" min="0" max="23" placeholder="HH"><input id="reinforceStartMinute" data-time-part="minute" type="number" min="0" max="59" placeholder="MM"><input id="reinforceStartSecond" data-time-part="second" type="number" min="0" max="59" placeholder="SS"></div></div>
-<div class="reinforce-block"><b data-rein="enemyMarch">مدة مسيرة المنافس</b><div class="reinforce-time"><input id="reinforceEnemyMin" data-time-part="minute" type="number" min="0" max="59" value="0" placeholder="MM"><input id="reinforceEnemySec" data-time-part="second" type="number" min="0" max="59" value="30" placeholder="SS"></div></div>
-<div class="reinforce-block"><b data-rein="arrival">وصول تعزيزاتنا</b><label class="reinforce-toggle"><input id="reinforceManualArrival" type="checkbox"><span data-rein="manual">تعديل يدوي</span></label><div class="reinforce-time"><input id="reinforceArrivalHour" data-time-part="hour" type="number" min="0" max="23" placeholder="HH" disabled><input id="reinforceArrivalMinute" data-time-part="minute" type="number" min="0" max="59" placeholder="MM" disabled><input id="reinforceArrivalSecond" data-time-part="second" type="number" min="0" max="59" placeholder="SS" disabled></div></div>
-<div class="reinforce-block"><b data-rein="lead">الوصول قبله</b><div class="reinforce-time one"><input id="reinforceLead" data-time-part="second" type="number" min="0" max="300" value="15"><span data-rein="seconds">ثانية</span></div></div>
+<div class="reinforce-section-label"><span>1</span><b data-rein="stepTiming">حدد توقيت المنافس</b></div>
+<div class="reinforce-block"><b data-rein="start">وقت بدء حشد المنافس</b><div class="reinforce-time"><input id="reinforceStartHour" data-time-part="hour" type="number" min="0" max="23" placeholder="HH" aria-label="الساعة" title="الساعة"><input id="reinforceStartMinute" data-time-part="minute" type="number" min="0" max="59" placeholder="MM" aria-label="الدقيقة" title="الدقيقة"><input id="reinforceStartSecond" data-time-part="second" type="number" min="0" max="59" placeholder="SS" aria-label="الثانية" title="الثانية"></div></div>
+<div class="reinforce-block"><b data-rein="enemyMarch">مدة مسيرة المنافس</b><div class="reinforce-time"><input id="reinforceEnemyMin" data-time-part="minute" type="number" min="0" max="59" value="0" placeholder="MM" aria-label="الدقيقة" title="الدقيقة"><input id="reinforceEnemySec" data-time-part="second" type="number" min="0" max="59" value="30" placeholder="SS" aria-label="الثانية" title="الثانية"></div></div>
+<div class="reinforce-block"><b data-rein="arrival">وصول تعزيزاتنا</b><label class="reinforce-toggle"><input id="reinforceManualArrival" type="checkbox"><span data-rein="manual">تعديل يدوي</span></label><div class="reinforce-time"><input id="reinforceArrivalHour" data-time-part="hour" type="number" min="0" max="23" placeholder="HH" disabled="" aria-label="الساعة" title="الساعة"><input id="reinforceArrivalMinute" data-time-part="minute" type="number" min="0" max="59" placeholder="MM" disabled="" aria-label="الدقيقة" title="الدقيقة"><input id="reinforceArrivalSecond" data-time-part="second" type="number" min="0" max="59" placeholder="SS" disabled="" aria-label="الثانية" title="الثانية"></div></div>
+<div class="reinforce-block"><b data-rein="lead">الوصول قبله</b><div class="reinforce-time one"><input id="reinforceLead" data-time-part="second" type="number" min="0" max="300" value="15" aria-label="الثانية" title="الثانية"><span data-rein="seconds">ثانية</span></div></div>
 <button id="reinforceRecalculate" class="secondary" type="button" data-rein="calculate">احسب التوقيت</button></div>
-<div id="reinforceEnemyResult" class="reinforce-enemy-result"></div>
-<form id="reinforceForm" class="reinforce-member-form"><label><span data-rein="player">اسم لاعب التعزيز</span><input id="reinforceName" type="text" placeholder="Saif" required maxlength="32"></label><label><span data-rein="marchMin">دقائق مسيرته</span><input id="reinforceMyMin" type="number" min="0" max="59" value="0"></label><label><span data-rein="marchSec">ثوانٍ مسيرته</span><input id="reinforceMySec" type="number" min="0" max="59" value="30"></label><button class="primary" type="submit" data-rein="add">أضف تعزيز</button></form>
+<div id="reinforceEnemyResult" class="reinforce-enemy-result"><div class="reinforce-timeline"><div class="reinforce-event"><span>بدء حشد المنافس</span><b>00:08:24 UTC</b></div><div class="reinforce-event"><span>وصول المنافس</span><strong>00:13:54 UTC</strong></div><div class="reinforce-event target"><span>وصول تعزيزاتنا</span><strong>00:13:39 UTC</strong></div></div><div class="reinforce-detail">فتح الحشد: <b>05:00</b> · مدة المسير: <b>00:30</b></div></div>
+<div class="reinforce-section-label"><span>2</span><b data-rein="stepPlayers">أضف لاعبي التعزيز</b></div>
+<form id="reinforceForm" class="reinforce-member-form"><label><span data-rein="player">اسم لاعب التعزيز</span><input id="reinforceName" type="text" placeholder="Saif" required="" maxlength="32"></label><label><span data-rein="marchMin">دقائق مسيرته</span><input id="reinforceMyMin" type="number" min="0" max="59" value="0"></label><label><span data-rein="marchSec">ثوانٍ مسيرته</span><input id="reinforceMySec" type="number" min="0" max="59" value="30"></label><button class="primary" type="submit" data-rein="add">أضف تعزيز</button></form>
+<div class="reinforce-section-label"><span>3</span><b data-rein="stepSend">أوقات إرسال التعزيزات</b></div>
 <div id="reinforceList" class="reinforce-list"></div><div class="reinforce-actions"><button id="reinforceCopy" class="secondary hidden" type="button" data-rein="copy">نسخ كل التعليمات</button><button id="reinforceClear" class="danger" type="button" data-rein="clear">مسح التعزيزات</button></div></section>
 <footer class="final-footer"><div>SaifKS.com | Built by Saif</div><a href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer">▶ YouTube</a></footer>
 </main>
 
 <div id="editModal" class="modal hidden">
 <div class="modal-card">
-<h2 data-i18n="editPlayer">Edit Player</h2>
-<label><span data-i18n="playerName">Player Name</span><input id="editName" type="text"></label>
+<h2 data-i18n="editPlayer">تعديل اللاعب</h2>
+<label><span data-i18n="playerName">اسم اللاعب</span><input id="editName" type="text"></label>
 <div class="two-cols">
-<label><span data-i18n="marchMinutes">March Minutes</span><input id="editMarchMin" type="number" min="0" max="59"></label>
-<label><span data-i18n="marchSeconds">March Seconds</span><input id="editMarchSec" type="number" min="0" max="59"></label>
+<label><span data-i18n="marchMinutes">دقائق المسير</span><input id="editMarchMin" type="number" min="0" max="59"></label>
+<label><span data-i18n="marchSeconds">ثواني المسير</span><input id="editMarchSec" type="number" min="0" max="59"></label>
 </div>
 <div class="modal-actions">
-<button id="cancelEdit" class="secondary" type="button" data-i18n="cancel">Cancel</button>
-<button id="saveEdit" class="primary" type="button" data-i18n="saveChanges">Save Changes</button>
+<button id="cancelEdit" class="secondary" type="button" data-i18n="cancel">إلغاء</button>
+<button id="saveEdit" class="primary" type="button" data-i18n="saveChanges">حفظ التعديلات</button>
 </div>
 </div>
 </div>
@@ -629,12 +650,27 @@ loadCommandSettings();$("#standardBuffer").onclick=setStandardBuffer;$("#saveCom
 
 const reinforceCopy={ar:{title:"تعزيزات الرالي قبل المنافس",intro:"ضع وقت ومدة حشد المنافس، ثم أضف لاعبيك. نحسب وقت الإرسال ووصول كل تعزيز تلقائيًا.",start:"وقت بدء حشد المنافس",enemyMarch:"مدة مسيرة المنافس",arrival:"وصول تعزيزاتنا",manual:"تعديل يدوي",lead:"الوصول قبله",seconds:"ثانية",calculate:"احسب التوقيت",player:"اسم لاعب التعزيز",marchMin:"دقائق مسيرته",marchSec:"ثوانٍ مسيرته",add:"أضف تعزيز",copy:"نسخ كل التعليمات",clear:"مسح التعزيزات",enemyStart:"بدء حشد المنافس",enemyArrival:"وصول المنافس",target:"وصول تعزيزاتنا",send:"أرسل",march:"مدة المسير",late:"وقت الإرسال فات",need:"أدخل وقت الحشد ومدة المسير بشكل صحيح."},en:{title:"Rally reinforcements before the enemy",intro:"Enter the enemy rally timing, then add your players. Send and arrival times are calculated automatically.",start:"Enemy rally start",enemyMarch:"Enemy march duration",arrival:"Our reinforcement arrival",manual:"Manual override",lead:"Arrive before by",seconds:"seconds",calculate:"Calculate timing",player:"Reinforcement player",marchMin:"March minutes",marchSec:"March seconds",add:"Add reinforcement",copy:"Copy all instructions",clear:"Clear reinforcements",enemyStart:"Enemy rally start",enemyArrival:"Enemy arrival",target:"Our reinforcement arrival",send:"Send at",march:"March",late:"Send time has passed",need:"Enter a valid rally time and march duration."}};
 Object.assign(reinforceCopy,{"fr":{"title":"Renforts avant l’ennemi","intro":"Saisissez l’heure du rallye ennemi, puis ajoutez vos joueurs.","start":"Début du rallye ennemi","enemyMarch":"Marche ennemie","arrival":"Arrivée de nos renforts","manual":"Réglage manuel","lead":"Arriver avant de","seconds":"secondes","calculate":"Calculer","player":"Joueur de renfort","marchMin":"Minutes de marche","marchSec":"Secondes de marche","add":"Ajouter","copy":"Copier les instructions","clear":"Effacer les renforts","enemyStart":"Début ennemi","enemyArrival":"Arrivée ennemie","target":"Arrivée de nos renforts","send":"Envoyer à","march":"Marche","late":"Heure d’envoi dépassée","need":"Saisissez une heure et une marche valides.","castle":"Château du Roi","castleNote":"Ouverture fixe : 05:00, puis ajout de la marche ennemie.","opening":"Ouverture du rallye"},"es":{"title":"Refuerzos antes del enemigo","intro":"Introduce el horario enemigo y añade tus jugadores.","start":"Inicio del rally enemigo","enemyMarch":"Marcha enemiga","arrival":"Llegada de nuestros refuerzos","manual":"Ajuste manual","lead":"Llegar antes por","seconds":"segundos","calculate":"Calcular","player":"Jugador de refuerzo","marchMin":"Minutos de marcha","marchSec":"Segundos de marcha","add":"Añadir","copy":"Copiar instrucciones","clear":"Borrar refuerzos","enemyStart":"Inicio enemigo","enemyArrival":"Llegada enemiga","target":"Llegada de refuerzos","send":"Enviar a","march":"Marcha","late":"La hora de envío pasó","need":"Introduce una hora y marcha válidas.","castle":"Castillo del Rey","castleNote":"Apertura fija: 05:00, luego se añade la marcha enemiga.","opening":"Apertura del rally"},"de":{"title":"Verstärkung vor dem Gegner","intro":"Gegnerische Rallyezeit eingeben und Spieler hinzufügen.","start":"Start der gegnerischen Rallye","enemyMarch":"Gegnermarsch","arrival":"Ankunft unserer Verstärkung","manual":"Manuell ändern","lead":"Früher ankommen um","seconds":"Sekunden","calculate":"Berechnen","player":"Verstärkungsspieler","marchMin":"Marschminuten","marchSec":"Marschsekunden","add":"Hinzufügen","copy":"Anweisungen kopieren","clear":"Verstärkungen löschen","enemyStart":"Gegnerstart","enemyArrival":"Gegnerankunft","target":"Ankunft unserer Verstärkung","send":"Senden um","march":"Marsch","late":"Sendezeit verpasst","need":"Gültige Zeit und Marschdauer eingeben.","castle":"Königsschloss","castleNote":"Feste Öffnung: 05:00, danach kommt der Gegnermarsch hinzu.","opening":"Rallyeöffnung"},"tr":{"title":"Düşmandan önce takviye","intro":"Düşman ralli zamanını girin ve oyuncularınızı ekleyin.","start":"Düşman rallisi başlangıcı","enemyMarch":"Düşman yürüyüşü","arrival":"Takviyelerimizin varışı","manual":"Elle değiştir","lead":"Şu kadar önce var","seconds":"saniye","calculate":"Hesapla","player":"Takviye oyuncusu","marchMin":"Yürüyüş dakikası","marchSec":"Yürüyüş saniyesi","add":"Ekle","copy":"Talimatları kopyala","clear":"Takviyeleri temizle","enemyStart":"Düşman başlangıcı","enemyArrival":"Düşman varışı","target":"Takviye varışı","send":"Gönder","march":"Yürüyüş","late":"Gönderme zamanı geçti","need":"Geçerli zaman ve yürüyüş girin.","castle":"Kral Kalesi","castleNote":"Sabit açılış: 05:00, ardından düşman yürüyüşü eklenir.","opening":"Ralli açılışı"},"ko":{"title":"적보다 먼저 도착하는 지원군","intro":"적 집결 시간을 입력하고 플레이어를 추가하세요.","start":"적 집결 시작","enemyMarch":"적 행군","arrival":"아군 지원 도착","manual":"수동 조정","lead":"먼저 도착","seconds":"초","calculate":"계산","player":"지원 플레이어","marchMin":"행군 분","marchSec":"행군 초","add":"추가","copy":"지시 복사","clear":"지원 삭제","enemyStart":"적 시작","enemyArrival":"적 도착","target":"아군 지원 도착","send":"보낼 시간","march":"행군","late":"전송 시간이 지났습니다","need":"올바른 시간과 행군을 입력하세요.","castle":"왕의 성","castleNote":"집결 준비 05:00 후 적 행군 시간이 추가됩니다.","opening":"집결 준비"},"ja":{"title":"敵より先に到着する援軍","intro":"敵の集結時刻を入力し、プレイヤーを追加します。","start":"敵集結の開始","enemyMarch":"敵の行軍","arrival":"味方援軍の到着","manual":"手動変更","lead":"先に到着","seconds":"秒","calculate":"計算","player":"援軍プレイヤー","marchMin":"行軍（分）","marchSec":"行軍（秒）","add":"追加","copy":"指示をコピー","clear":"援軍を消去","enemyStart":"敵の開始","enemyArrival":"敵の到着","target":"味方援軍の到着","send":"送信時刻","march":"行軍","late":"送信時刻を過ぎました","need":"正しい時刻と行軍時間を入力してください。","castle":"王城","castleNote":"集結準備は固定05:00、その後に敵の行軍時間を加算します。","opening":"集結準備"},"zh":{"title":"在敌军前到达的增援","intro":"输入敌方集结时间，然后添加玩家。","start":"敌方集结开始","enemyMarch":"敌方行军","arrival":"我方增援到达","manual":"手动调整","lead":"提前到达","seconds":"秒","calculate":"计算","player":"增援玩家","marchMin":"行军分钟","marchSec":"行军秒数","add":"添加","copy":"复制指令","clear":"清除增援","enemyStart":"敌方开始","enemyArrival":"敌方到达","target":"我方增援到达","send":"发送时间","march":"行军","late":"已错过发送时间","need":"请输入有效时间和行军时长。","castle":"王城","castleNote":"集结准备固定为05:00，然后加上敌方行军时间。","opening":"集结准备"}});Object.assign(reinforceCopy.ar,{castle:"قلعة الملك",castleNote:"زمن فتح الحشد ثابت: 05:00، ثم تضاف مدة زحف المنافس.",opening:"فتح الحشد"});Object.assign(reinforceCopy.en,{castle:"King Castle",castleNote:"The rally opening time is fixed at 05:00, then the enemy march time is added.",opening:"Rally opening"});const rt=k=>(reinforceCopy[currentLanguage]||reinforceCopy.en)[k]||k;function applyReinforcementCopy(){document.querySelectorAll("[data-rein]").forEach(e=>e.textContent=rt(e.dataset.rein))}
+Object.assign(reinforceCopy.ar,{kicker:"حاسبة تعزيزات الرالي",title:"عزّز قبل وصول المنافس",intro:"أدخل توقيت حشد المنافس، وسنحدد وقت الإرسال المناسب لكل لاعب.",stepTiming:"حدد توقيت المنافس",stepPlayers:"أضف لاعبي التعزيز",stepSend:"أوقات إرسال التعزيزات"});
+Object.assign(reinforceCopy.en,{kicker:"RALLY REINFORCEMENT CALCULATOR",title:"Reinforce before the enemy arrives",intro:"Enter the enemy rally timing and get the right send time for every player.",stepTiming:"Set enemy timing",stepPlayers:"Add reinforcement players",stepSend:"Reinforcement send times"});
+Object.assign(reinforceCopy.fr,{kicker:"CALCULATEUR DE RENFORTS",stepTiming:"Définir l’heure ennemie",stepPlayers:"Ajouter les joueurs",stepSend:"Heures d’envoi"});Object.assign(reinforceCopy.es,{kicker:"CALCULADORA DE REFUERZOS",stepTiming:"Define el horario enemigo",stepPlayers:"Añade jugadores",stepSend:"Horas de envío"});Object.assign(reinforceCopy.de,{kicker:"VERSTÄRKUNGSRECHNER",stepTiming:"Gegnerzeit festlegen",stepPlayers:"Spieler hinzufügen",stepSend:"Sendezeiten"});Object.assign(reinforceCopy.tr,{kicker:"TAKVİYE HESAPLAYICI",stepTiming:"Düşman zamanını ayarla",stepPlayers:"Oyuncuları ekle",stepSend:"Gönderim zamanları"});Object.assign(reinforceCopy.ko,{kicker:"지원군 계산기",stepTiming:"적 시간 설정",stepPlayers:"플레이어 추가",stepSend:"지원군 전송 시간"});Object.assign(reinforceCopy.ja,{kicker:"援軍計算機",stepTiming:"敵の時刻を設定",stepPlayers:"プレイヤーを追加",stepSend:"援軍送信時刻"});Object.assign(reinforceCopy.zh,{kicker:"增援计算器",stepTiming:"设置敌方时间",stepPlayers:"添加玩家",stepSend:"增援发送时间"});
 let reinforcementRows=readStoredArray("saifRallyReinforcements");function partDate(h,m,sec){let n=new Date(),d=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),Number(h),Number(m),Number(sec)));if(d.getTime()<Date.now()-1000)d.setUTCDate(d.getUTCDate()+1);return d}function val(id){return Number(document.getElementById(id).value)}function setParts(d,a,b,c){document.getElementById(a).value=d.getUTCHours();document.getElementById(b).value=d.getUTCMinutes();document.getElementById(c).value=d.getUTCSeconds()}function reinforcementPlan(){let h=val("reinforceStartHour"),m=val("reinforceStartMinute"),z=val("reinforceStartSecond"),enemy=sec(val("reinforceEnemyMin"),val("reinforceEnemySec")),lead=val("reinforceLead");if(!Number.isInteger(h)||h<0||h>23||m<0||m>59||z<0||z>59||enemy<=0||lead<0)return null;let begin=partDate(h,m,z),enemyArrival=new Date(begin.getTime()+(300+enemy)*1000),manual=document.getElementById("reinforceManualArrival").checked,ourArrival;if(manual){let ah=val("reinforceArrivalHour"),am=val("reinforceArrivalMinute"),as=val("reinforceArrivalSecond");if(ah<0||ah>23||am<0||am>59||as<0||as>59)return null;ourArrival=partDate(ah,am,as)}else{ourArrival=new Date(enemyArrival.getTime()-lead*1000);setParts(ourArrival,"reinforceArrivalHour","reinforceArrivalMinute","reinforceArrivalSecond")}return {begin:begin,enemy:enemy,lead:lead,enemyArrival:enemyArrival,ourArrival:ourArrival}}
-function renderReinforcements(){let plan=reinforcementPlan(),summary=document.getElementById("reinforceEnemyResult"),list=document.getElementById("reinforceList"),copy=document.getElementById("reinforceCopy");if(plan)summary.innerHTML=rt("enemyStart")+": <b>"+utc(plan.begin)+"</b><br>"+rt("opening")+": <b>05:00</b> · "+rt("march")+": <b>"+dur(plan.enemy)+"</b><br>"+rt("enemyArrival")+": <strong>"+utc(plan.enemyArrival)+"</strong><br>"+rt("target")+": <strong>"+utc(plan.ourArrival)+"</strong>";else summary.textContent=rt("need");list.innerHTML=reinforcementRows.map(x=>{if(!plan)return "<div class=\"reinforce-row\"><div class=\"reinforce-line\"><strong>"+esc(x.name)+"</strong><span>"+rt("march")+": "+dur(x.march)+"</span></div><button class=\"danger\" data-reinforce-delete=\""+x.id+"\" type=\"button\">×</button></div>";let send=new Date(plan.ourArrival.getTime()-x.march*1000),late=send<=Date.now();return "<div class=\"reinforce-row"+(late?" late":"")+"\"><div class=\"reinforce-line\"><strong>"+esc(x.name)+":</strong> "+rt("send")+" <b>"+utc(send)+"</b> — "+rt("target")+" <b>"+utc(plan.ourArrival)+"</b><span class=\"reinforce-march\">"+rt("march")+": <button data-reinforce-adjust=\""+x.id+"\" data-delta=\"-1\" type=\"button\">−1s</button><b>"+dur(x.march)+"</b><button data-reinforce-adjust=\""+x.id+"\" data-delta=\"1\" type=\"button\">+1s</button></span>"+(late?"<em>"+rt("late")+"</em>":"")+"</div><button class=\"danger\" data-reinforce-delete=\""+x.id+"\" type=\"button\">×</button></div>"}).join("");copy.classList.toggle("hidden",!reinforcementRows.length||!plan);localStorage.setItem("saifRallyReinforcements",JSON.stringify(reinforcementRows))}
+function renderReinforcements(){
+ let plan=reinforcementPlan(),summary=document.getElementById("reinforceEnemyResult"),list=document.getElementById("reinforceList"),copy=document.getElementById("reinforceCopy");
+ if(plan){
+  summary.innerHTML="<div class=\"reinforce-timeline\"><div class=\"reinforce-event\"><span>"+rt("enemyStart")+"</span><b>"+utc(plan.begin)+"</b></div><div class=\"reinforce-event\"><span>"+rt("enemyArrival")+"</span><strong>"+utc(plan.enemyArrival)+"</strong></div><div class=\"reinforce-event target\"><span>"+rt("target")+"</span><strong>"+utc(plan.ourArrival)+"</strong></div></div><div class=\"reinforce-detail\">"+rt("opening")+": <b>05:00</b> · "+rt("march")+": <b>"+dur(plan.enemy)+"</b></div>";
+ }else summary.textContent=rt("need");
+ list.innerHTML=reinforcementRows.map(x=>{
+  if(!plan)return "<div class=\"reinforce-row\"><div class=\"reinforce-line\"><strong>"+esc(x.name)+"</strong><span class=\"reinforce-march\">"+rt("march")+": <b>"+dur(x.march)+"</b></span></div><button class=\"danger\" data-reinforce-delete=\""+x.id+"\" type=\"button\">×</button></div>";
+  let send=new Date(plan.ourArrival.getTime()-x.march*1000),late=send<=Date.now();
+  return "<div class=\"reinforce-row"+(late?" late":"")+"\"><div class=\"reinforce-line\"><strong>"+esc(x.name)+"</strong><div class=\"reinforce-send-card\"><span>"+rt("send")+"</span><b>"+utc(send)+"</b><small>"+rt("target")+": "+utc(plan.ourArrival)+"</small></div><span class=\"reinforce-march\">"+rt("march")+": <button data-reinforce-adjust=\""+x.id+"\" data-delta=\"-1\" type=\"button\">−1s</button><b>"+dur(x.march)+"</b><button data-reinforce-adjust=\""+x.id+"\" data-delta=\"1\" type=\"button\">+1s</button></span>"+(late?"<em>"+rt("late")+"</em>":"")+"</div><button class=\"danger\" data-reinforce-delete=\""+x.id+"\" type=\"button\">×</button></div>";
+ }).join("");
+ copy.classList.toggle("hidden",!reinforcementRows.length||!plan);localStorage.setItem("saifRallyReinforcements",JSON.stringify(reinforcementRows));
+}
 function setupReinforcements(){let n=new Date();setParts(n,"reinforceStartHour","reinforceStartMinute","reinforceStartSecond");document.getElementById("reinforceRecalculate").onclick=renderReinforcements;document.getElementById("reinforceManualArrival").onchange=e=>{document.querySelectorAll("#reinforceArrivalHour,#reinforceArrivalMinute,#reinforceArrivalSecond").forEach(x=>x.disabled=!e.target.checked);renderReinforcements()};document.getElementById("reinforceForm").onsubmit=e=>{e.preventDefault();let name=document.getElementById("reinforceName").value.trim(),march=sec(val("reinforceMyMin"),val("reinforceMySec"));if(!name||march<=0){showToast(rt("need"));return}reinforcementRows.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),name,march});document.getElementById("reinforceName").value="";renderReinforcements()};document.getElementById("reinforceList").onclick=e=>{let b=e.target.closest("[data-reinforce-delete]");if(b){reinforcementRows=reinforcementRows.filter(x=>x.id!==b.dataset.reinforceDelete);renderReinforcements();return}let a=e.target.closest("[data-reinforce-adjust]");if(a){let row=reinforcementRows.find(x=>x.id===a.dataset.reinforceAdjust);if(row){row.march=Math.max(1,row.march+Number(a.dataset.delta));renderReinforcements()}}};document.getElementById("reinforceClear").onclick=()=>{if(!reinforcementRows.length)return;if(!confirm(message("clearReinforcements")))return;reinforcementRows=[];renderReinforcements()};document.getElementById("reinforceCopy").onclick=async()=>{let p=reinforcementPlan();if(!p)return;await copyText(reinforcementRows.map(x=>{let send=new Date(p.ourArrival.getTime()-x.march*1000);return x.name+": "+rt("send")+" "+utc(send)}).join("\n"));showToast(t("copied"))};applyReinforcementCopy();renderReinforcements()}
 setupReinforcements();
 document.getElementById("langToggle").addEventListener("change",()=>{applyDashboardLanguage();applyReinforcementCopy();renderReinforcements()});
 
 </script>
-</body>
-</html>
+
+
+</body></html>
