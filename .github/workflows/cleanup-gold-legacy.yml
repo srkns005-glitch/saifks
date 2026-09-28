@@ -1,0 +1,68 @@
+name: Cleanup Gold Calculator legacy assets
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove unused legacy files
+        run: |
+          rm -- gold-calculator/app-auto-planner-v11.js
+          rm -- gold-calculator/app-auto-planner-v12.js
+          rm -- gold-calculator/app-complete-v10.js
+          rm -- gold-calculator/app-language-ar-v19.js
+          rm -- gold-calculator/app-language-final-v20.js
+          rm -- gold-calculator/app-language-v17.js
+          rm -- gold-calculator/app-planner-mobile-v16.js
+          rm -- gold-calculator/app-planner-mobile-v17.js
+          rm -- gold-calculator/app-planner-reset-fix-v15.js
+          rm -- gold-calculator/app-shared-language-compact-v5.js
+          rm -- gold-calculator/app-shared-language-v4.js
+          rm -- gold-calculator/app-v10.js
+          rm -- gold-calculator/app-v21.js
+          rm -- gold-calculator/building-data-auto-planner-v11.js
+          rm -- gold-calculator/building-data-auto-planner-v12.js
+          rm -- gold-calculator/building-data-complete-v10.js
+          rm -- gold-calculator/building-data-language-ar-v19.js
+          rm -- gold-calculator/building-data-language-final-v20.js
+          rm -- gold-calculator/building-data-language-v17.js
+          rm -- gold-calculator/building-data-planner-mobile-v16.js
+          rm -- gold-calculator/building-data-planner-mobile-v17.js
+          rm -- gold-calculator/building-data-planner-reset-fix-v15.js
+          rm -- gold-calculator/building-data-shared-language-compact-v5.js
+          rm -- gold-calculator/building-data-shared-language-v4.js
+          rm -- gold-calculator/building-data-v10.js
+          rm -- gold-calculator/building-data-v21.js
+          rm -- gold-calculator/style-auto-planner-v11.css
+          rm -- gold-calculator/style-auto-planner-v12.css
+          rm -- gold-calculator/style-complete-v10.css
+          rm -- gold-calculator/style-home-header-v2.css
+          rm -- gold-calculator/style-home-language-v3.css
+          rm -- gold-calculator/style-language-ar-v19.css
+          rm -- gold-calculator/style-language-final-v20.css
+          rm -- gold-calculator/style-language-v17.css
+          rm -- gold-calculator/style-planner-mobile-v16.css
+          rm -- gold-calculator/style-planner-mobile-v17.css
+          rm -- gold-calculator/style-planner-reset-fix-v15.css
+          rm -- gold-calculator/style-shared-language-compact-v5.css
+          rm -- gold-calculator/style-shared-language-v4.css
+          rm -- gold-calculator/style-v10.css
+          rm -- gold-calculator/style-v21.css
+          rm -- gold-calculator/lang/ar.js
+          rm -- gold-calculator/lang/en.js
+          rm -- .github/workflows/cleanup-gold-legacy.yml
+
+      - name: Commit cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Remove legacy Gold Calculator assets"
+          git push
