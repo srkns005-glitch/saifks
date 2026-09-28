@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07101d">
+  <meta name="description" content="Plan Governor Gear and Charms, calculate required materials, and save your progress locally with SaifKS.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="saifks-build" content="governor-center-v20-selectable-current-target-20260924">
+  <meta name="saifks-build" content="governor-center-v21-audit-fixes-20260929">
   <title>Governor Center | SaifKS</title>
   <script>
     (()=>{
@@ -20,8 +21,10 @@
     })();
   </script>
   <style>html:not(.app-ready) body{visibility:hidden}html{background:#10141d}</style>
-  <link rel="stylesheet" href="styles-v5.css?v=18-guided-target-selection">
-<link rel="icon" href="../logo.png">
+  <script>setTimeout(()=>document.documentElement.classList.add("app-ready"),3000)</script>
+  <noscript><style>body{visibility:visible!important}</style></noscript>
+  <link rel="stylesheet" href="styles-v5.css?v=21-audit-fixes-20260929">
+<link rel="icon" href="../logo.png?v=21-audit-fixes-20260929">
 
 <style id="saifks-unified-brand-style">
 .saifks-brand-logo,.brand img.logo,img.brand-mark{width:44px;height:44px;display:block;flex:0 0 44px;border:1px solid rgba(255,205,92,.45);border-radius:13px;background:#10243c;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.22)}
@@ -35,15 +38,15 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" id="brandHomeLink" href="../index.html" aria-label="SaifKS Home">
-          <img class="brand-mark" src="../logo.png" alt="SaifKS logo">
+          <img class="brand-mark" src="../logo.png?v=21-audit-fixes-20260929" alt="SaifKS logo" width="46" height="46">
           <span class="brand-copy"><strong data-i18n="title">Governor Center</strong><small>SaifKS.com</small></span>
         </a>
         <div class="top-actions">
-          <a id="homeBtn" class="home-header-button" href="../index.html" data-i18n="home" aria-label="Home">Home</a>
+          <a id="homeBtn" class="home-header-button" href="../index.html" data-i18n="home" data-i18n-aria="home" aria-label="Home">Home</a>
           <div class="language-picker" id="languagePicker">
-            <button id="languageButton" class="language-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="languageButtonText">English</span><span class="language-chevron">⌄</span></button>
-            <div id="languageMenu" class="language-menu" role="listbox" hidden>
-              <button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button><button type="button" data-lang="tr">Türkçe</button><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="de">Deutsch</button><button type="button" data-lang="ko">한국어</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="zh">简体中文</button>
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="menu" aria-controls="languageMenu" aria-expanded="false"><span id="languageButtonText">English</span><span class="language-chevron" aria-hidden="true">⌄</span></button>
+            <div id="languageMenu" class="language-menu" role="menu" hidden>
+              <button type="button" role="menuitemradio" aria-checked="false" data-lang="en">English</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="ar">العربية</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="tr">Türkçe</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="fr">Français</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="es">Español</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="de">Deutsch</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="ko">한국어</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="ja">日本語</button><button type="button" role="menuitemradio" aria-checked="false" data-lang="zh">简体中文</button>
             </div>
           </div>
         </div>
@@ -58,17 +61,17 @@
           <p data-i18n="subtitle">Plan Governor Gear and Charms, calculate remaining materials, and save your progress locally.</p>
         </div>
         <div class="hero-badge">
-          <strong>58</strong><span data-i18n="gearStages">Gear stages</span>
-          <strong>22</strong><span data-i18n="charmLevels">Charm levels</span>
+          <strong id="gearStageCount">58</strong><span data-i18n="gearStages">Gear stages</span>
+          <strong id="charmLevelCount">22</strong><span data-i18n="charmLevels">Charm levels</span>
         </div>
       </section>
 
-      <nav class="tabs" aria-label="Governor Center sections">
-        <button class="tab active" data-tab="gear" type="button" data-i18n="gearTab">Governor Gear</button>
-        <button class="tab" data-tab="charms" type="button" data-i18n="charmsTab">Governor Charms</button>
+      <nav class="tabs" role="tablist" aria-label="Governor Center sections">
+        <button id="gearTab" class="tab active" data-tab="gear" type="button" role="tab" aria-controls="gearPanel" aria-selected="true" data-i18n="gearTab">Governor Gear</button>
+        <button id="charmsTab" class="tab" data-tab="charms" type="button" role="tab" aria-controls="charmsPanel" aria-selected="false" tabindex="-1" data-i18n="charmsTab">Governor Charms</button>
       </nav>
 
-      <section id="gearPanel" class="panel active">
+      <section id="gearPanel" class="panel active" role="tabpanel" aria-labelledby="gearTab">
         <div class="section-head">
           <div>
             <h2 data-i18n="gearPlanner">Governor Gear Planner</h2>
@@ -100,7 +103,7 @@
         </div>
       </section>
 
-      <section id="charmsPanel" class="panel">
+      <section id="charmsPanel" class="panel" role="tabpanel" aria-labelledby="charmsTab" hidden>
         <div class="section-head">
           <div>
             <h2 data-i18n="charmPlanner">Governor Charm Planner</h2>
@@ -140,6 +143,6 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app-v5.js?v=20-selectable-current-target"></script>
+  <script src="app-v5.js?v=21-audit-fixes-20260929"></script>
 </body>
 </html>

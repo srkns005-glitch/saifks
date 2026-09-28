@@ -1,8 +1,13 @@
 # Governor Center
 
-Updated from the stable V3 build.
+## Current build
 
-- Home button now matches the Hero Center button style.
+- Responsive desktop, tablet, and mobile layout with no horizontal overflow.
 - Complete interface translation for all 9 supported languages.
-- Dynamic gear names, charm names, troop types, stats, copied summaries, document title, and error text all change with the selected language.
-- Existing calculations, database, charms layout, and saved state remain unchanged.
+- An explicit `?lang=` URL is authoritative and cannot be overridden by another tab.
+- Gear levels are grouped by tier for faster selection.
+- Governor Charms load only when opened; mobile charm groups are collapsible.
+- Gear and Charm progress is saved locally in the browser.
+- Reset actions require confirmation, and clipboard failures show a clear message.
+- Keyboard-accessible tabs and language menu, including arrow keys and Escape.
+- Versioned assets and logo prevent older cached designs from returning.

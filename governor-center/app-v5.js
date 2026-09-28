@@ -10,13 +10,15 @@ const defaultState = {
   language: (() => { const q = new URLSearchParams(location.search).get("lang"); return ["en","ar","tr","fr","es","de","ko","ja","zh"].includes(q) ? q : (localStorage.getItem(langKey) || "en"); })(),
   gearOwned:{satin:0,threads:0,vision:0},
   charmOwned:{guides:0,designs:0},
-  gear:{}, charms:{}
+  gear:{}, charms:{}, charmOpen:{}
 };
 let state = loadState();
 let gearDB, charmDB;
+const built={gear:false,charms:false};
 
 const gearIcons = {hood:"♜",necklace:"◈",cloak:"◆",breeches:"▥",ring:"◉",staff:"⚚"};
 const charmIcons = {keenness:"✦",protection:"⬢",vision:"◉"};
+const languageNames={en:"English",ar:"العربية",tr:"Türkçe",fr:"Français",es:"Español",de:"Deutsch",ko:"한국어",ja:"日本語",zh:"简体中文"};
 
 function loadState(){
   try {
@@ -28,7 +30,8 @@ function loadState(){
       gearOwned:{...defaultState.gearOwned,...objectOrEmpty(parsed.gearOwned)},
       charmOwned:{...defaultState.charmOwned,...objectOrEmpty(parsed.charmOwned)},
       gear:objectOrEmpty(parsed.gear),
-      charms:objectOrEmpty(parsed.charms)
+      charms:objectOrEmpty(parsed.charms),
+      charmOpen:objectOrEmpty(parsed.charmOpen)
     };
     if(parsed.smartTargetsV1!==true){
       Object.values(saved.gear).forEach(item=>{
@@ -49,6 +52,9 @@ function loadState(){
   catch { return structuredClone(defaultState); }
 }
 function saveState(){ localStorage.setItem(stateKey,JSON.stringify(state)); }
+function h(value){
+  return String(value ?? "").replace(/[&<>'"]/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[char]);
+}
 function n(v){
   const value=Number(v);
   if(!Number.isFinite(value)) return 0;
@@ -68,6 +74,18 @@ const selectionLabels={
   zh:{chooseCurrent:"选择当前等级",chooseTarget:"选择目标等级",chooseCurrentFirst:"请先选择当前等级",levelComplete:"等级已完成"}
 };
 function selectionLabel(key){return selectionLabels[state.language]?.[key]||selectionLabels.en[key];}
+const uiMessages={
+  en:{confirmGear:"Reset all Governor Gear selections and owned materials?",confirmCharms:"Reset all Governor Charm selections and owned materials?",copyFailed:"Copy failed. Please try again.",toggleCharms:"Expand or collapse this charm group"},
+  ar:{confirmGear:"هل تريد مسح جميع اختيارات عتاد الحاكم والمواد الموجودة؟",confirmCharms:"هل تريد مسح جميع اختيارات تمائم الحاكم والمواد الموجودة؟",copyFailed:"تعذر النسخ. حاول مرة أخرى.",toggleCharms:"فتح أو إغلاق مجموعة التمائم"},
+  tr:{confirmGear:"Tüm Vali Ekipmanı seçimleri ve malzemeleri sıfırlansın mı?",confirmCharms:"Tüm Vali Tılsımı seçimleri ve malzemeleri sıfırlansın mı?",copyFailed:"Kopyalama başarısız. Tekrar deneyin.",toggleCharms:"Tılsım grubunu aç veya kapat"},
+  fr:{confirmGear:"Réinitialiser tous les choix et matériaux d’équipement ?",confirmCharms:"Réinitialiser tous les choix et matériaux de charmes ?",copyFailed:"Échec de la copie. Réessayez.",toggleCharms:"Développer ou réduire ce groupe de charmes"},
+  es:{confirmGear:"¿Restablecer todas las selecciones y materiales de equipo?",confirmCharms:"¿Restablecer todas las selecciones y materiales de amuletos?",copyFailed:"No se pudo copiar. Inténtalo de nuevo.",toggleCharms:"Expandir o contraer este grupo de amuletos"},
+  de:{confirmGear:"Alle Ausrüstungswahlen und Materialien zurücksetzen?",confirmCharms:"Alle Talismanwahlen und Materialien zurücksetzen?",copyFailed:"Kopieren fehlgeschlagen. Bitte erneut versuchen.",toggleCharms:"Diese Talisman-Gruppe ein- oder ausklappen"},
+  ko:{confirmGear:"모든 장비 선택과 보유 재료를 초기화할까요?",confirmCharms:"모든 부적 선택과 보유 재료를 초기화할까요?",copyFailed:"복사하지 못했습니다. 다시 시도하세요.",toggleCharms:"부적 그룹 펼치기 또는 접기"},
+  ja:{confirmGear:"装備の選択と所持素材をすべてリセットしますか？",confirmCharms:"チャームの選択と所持素材をすべてリセットしますか？",copyFailed:"コピーできませんでした。もう一度お試しください。",toggleCharms:"チャームグループを開閉"},
+  zh:{confirmGear:"要重置所有装备选择和已有材料吗？",confirmCharms:"要重置所有饰品选择和已有材料吗？",copyFailed:"复制失败，请重试。",toggleCharms:"展开或收起饰品组"}
+};
+function uiText(key){return uiMessages[state.language]?.[key]||uiMessages.en[key];}
 const gainedStatLabels={
   en:{attack:"Attack gained",defense:"Defense gained",health:"Health gained",lethality:"Lethality gained"},
   ar:{attack:"الهجوم المكتسب",defense:"الدفاع المكتسب",health:"الصحة المكتسبة",lethality:"الفتك المكتسب"},
@@ -99,33 +117,51 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetch("data/governor_gear.json?v=20260719-1", {cache:"no-store"}).then(r=>r.json()),
-    fetch("data/governor_charms.json?v=20260719-1", {cache:"no-store"}).then(r=>r.json())
+    fetchJson("data/governor_gear.json?v=21-audit-fixes-20260929"),
+    fetchJson("data/governor_charms.json?v=21-audit-fixes-20260929")
   ]);
+  if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
+  document.getElementById("gearStageCount").textContent=String(gearDB.levels.length);
+  document.getElementById("charmLevelCount").textContent=String(charmDB.levels.length);
   setupLanguage();
-  setupTabs();
-  buildGearCards();
-  buildCharmCards();
   bindOwnedInputs();
-  renderAll();
+  setupTabs();
   document.documentElement.classList.add("app-ready");
+}
+async function fetchJson(url){
+  const response=await fetch(url,{cache:"no-store"});
+  if(!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+  return response.json();
 }
 function setupLanguage(){
   const picker=document.getElementById("languagePicker");
   const button=document.getElementById("languageButton");
   const menu=document.getElementById("languageMenu");
-  const labels={en:"English",ar:"العربية",tr:"Türkçe",fr:"Français",es:"Español",de:"Deutsch",ko:"한국어",ja:"日本語",zh:"简体中文"};
-  const closeMenu=()=>{menu.hidden=true;button.setAttribute("aria-expanded","false")};
-  const updateLabel=()=>{document.getElementById("languageButtonText").textContent=labels[state.language]||labels.en};
-  button.addEventListener("click",e=>{e.stopPropagation();const open=menu.hidden;menu.hidden=!open;button.setAttribute("aria-expanded",String(open))});
-  menu.querySelectorAll("[data-lang]").forEach(option=>option.addEventListener("click",()=>{
+  const options=[...menu.querySelectorAll("[data-lang]")];
+  const closeMenu=(restoreFocus=false)=>{menu.hidden=true;button.setAttribute("aria-expanded","false");if(restoreFocus)button.focus()};
+  const updateLabel=()=>{
+    document.getElementById("languageButtonText").textContent=languageNames[state.language]||languageNames.en;
+    options.forEach(option=>option.setAttribute("aria-checked",String(option.dataset.lang===state.language)));
+  };
+  const openMenu=()=>{menu.hidden=false;button.setAttribute("aria-expanded","true");(options.find(x=>x.dataset.lang===state.language)||options[0])?.focus()};
+  button.addEventListener("click",e=>{e.stopPropagation();menu.hidden?openMenu():closeMenu()});
+  button.addEventListener("keydown",e=>{if(["ArrowDown","Enter"," "].includes(e.key)&&menu.hidden){e.preventDefault();openMenu()}});
+  options.forEach(option=>option.addEventListener("click",()=>{
     state.language=option.dataset.lang;
     const url=new URL(location.href);
     url.searchParams.set("lang",state.language);
     history.replaceState(null,"",url);
     localStorage.setItem(langKey,state.language);
-    saveState();updateLabel();closeMenu();applyLanguage();buildGearCards();buildCharmCards();renderAll();
+    saveState();updateLabel();closeMenu(true);applyLanguage();rebuildVisibleCards();renderAll();
   }));
+  menu.addEventListener("keydown",e=>{
+    const index=Math.max(0,options.indexOf(document.activeElement));
+    if(e.key==="Escape"){e.preventDefault();closeMenu(true);return;}
+    if(e.key==="ArrowDown"){e.preventDefault();options[(index+1)%options.length].focus();}
+    if(e.key==="ArrowUp"){e.preventDefault();options[(index-1+options.length)%options.length].focus();}
+    if(e.key==="Home"){e.preventDefault();options[0].focus();}
+    if(e.key==="End"){e.preventDefault();options.at(-1).focus();}
+  });
   document.addEventListener("click",e=>{if(!picker.contains(e.target))closeMenu()});
   updateLabel();applyLanguage();
 }
@@ -134,31 +170,72 @@ function applyLanguage(){
   document.documentElement.dir=state.language==="ar"?"rtl":"ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));
   document.querySelectorAll("[data-i18n-aria]").forEach(el=>el.setAttribute("aria-label",tr(el.dataset.i18nAria)));
+  const languageText=document.getElementById("languageButtonText");
+  if(languageText) languageText.textContent=languageNames[state.language]||languageNames.en;
+  document.querySelectorAll("#languageMenu [data-lang]").forEach(option=>option.setAttribute("aria-checked",String(option.dataset.lang===state.language)));
   document.title=`${tr("title")} | SaifKS`;
 }
 function setupTabs(){
-  document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>setTab(btn.dataset.tab)));
+  document.querySelectorAll(".tab").forEach(btn=>{
+    btn.addEventListener("click",()=>setTab(btn.dataset.tab));
+    btn.addEventListener("keydown",event=>{
+      if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key)) return;
+      event.preventDefault();
+      const tabs=[...document.querySelectorAll(".tab")];
+      const current=tabs.indexOf(btn);
+      const next=event.key==="Home"?0:event.key==="End"?tabs.length-1:event.key==="ArrowRight"?(current+1)%tabs.length:(current-1+tabs.length)%tabs.length;
+      tabs[next].focus();setTab(tabs[next].dataset.tab);
+    });
+  });
   setTab(state.activeTab||"gear");
 }
 function setTab(tab){
+  if(!["gear","charms"].includes(tab)) tab="gear";
   state.activeTab=tab; saveState();
-  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
-  document.getElementById("gearPanel").classList.toggle("active",tab==="gear");
-  document.getElementById("charmsPanel").classList.toggle("active",tab==="charms");
+  document.querySelectorAll(".tab").forEach(button=>{
+    const active=button.dataset.tab===tab;
+    button.classList.toggle("active",active);
+    button.setAttribute("aria-selected",String(active));
+    button.tabIndex=active?0:-1;
+  });
+  ["gear","charms"].forEach(name=>{
+    const panel=document.getElementById(`${name}Panel`),active=name===tab;
+    panel.classList.toggle("active",active);panel.hidden=!active;
+  });
+  ensureTabBuilt(tab);
+  tab==="gear"?renderGear():renderCharms();
+}
+function ensureTabBuilt(tab){
+  if(tab==="gear"&&!built.gear){buildGearCards();built.gear=true;}
+  if(tab==="charms"&&!built.charms){buildCharmCards();built.charms=true;}
+}
+function rebuildVisibleCards(){
+  if(built.gear) buildGearCards();
+  if(built.charms) buildCharmCards();
 }
 function gearCurrentOptions(selected){
   let html=`<option value="-2" disabled ${selected===-2?"selected":""}>${selectionLabel("chooseCurrent")}</option>`;
   html+=`<option value="-1" ${selected===-1?"selected":""}>${tr("disabled")}</option>`;
-  gearDB.levels.forEach((x,i)=> html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`);
+  html+=groupedGearOptions(0,selected);
   return html;
 }
 function gearTargetOptions(current,selected){
   if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
   let html=current===-1
     ? `<option value="-1" ${selected===-1?"selected":""}>${tr("disabled")}</option>`
-    : `<option value="${current}" ${selected===current?"selected":""}>${gearDB.levels[current].display_name}</option>`;
-  gearDB.levels.forEach((x,i)=>{if(i>current) html+=`<option value="${i}" ${i===selected?"selected":""}>${x.display_name}</option>`;});
+    : "";
+  html+=groupedGearOptions(Math.max(0,current),selected);
   return html;
+}
+function groupedGearOptions(startIndex,selected){
+  let html="",openTier=null;
+  gearDB.levels.forEach((level,index)=>{
+    if(index<startIndex) return;
+    const tier=level.tier||level.display_name.split(/\s+\d/)[0];
+    if(tier!==openTier){if(openTier!==null) html+="</optgroup>";html+=`<optgroup label="${h(tier)}">`;openTier=tier;}
+    html+=`<option value="${index}" ${index===selected?"selected":""}>${h(level.display_name)}</option>`;
+  });
+  return html+(openTier!==null?"</optgroup>":"");
 }
 function gearTargetControl(current,selected){
   if(current>=gearDB.levels.length-1) return `<div class="stage-select target target-status" role="status">${selectionLabel("levelComplete")}</div>`;
@@ -198,8 +275,8 @@ function buildGearCards(){
       <div class="gear-compact-head">
         <div class="item-icon small" data-image-slot="${slot.id}">${gearIcons[slot.id]||"◆"}</div>
         <div class="item-title">
-          <h3>${nameOf(slot.id,slot.name)}</h3>
-          <p>${tr(slot.troop)} · ${slot.stats.map(tr).join(" & ")}</p>
+          <h3>${h(nameOf(slot.id,slot.name))}</h3>
+          <p>${h(tr(slot.troop))} · ${h(slot.stats.map(tr).join(" & "))}</p>
         </div>
       </div>
       <div class="gear-compact-row">
@@ -227,7 +304,7 @@ function buildCharmCards(){
   const wrap=document.getElementById("charmCards");
   wrap.innerHTML="";
 
-  gearDB.slots.forEach(slot=>{
+  gearDB.slots.forEach((slot,slotIndex)=>{
     if(!state.charms[slot.id]) state.charms[slot.id]={};
     charmDB.types.forEach(type=>{
       if(!state.charms[slot.id][type.id]) state.charms[slot.id][type.id]={current:-1,target:-1};
@@ -236,15 +313,26 @@ function buildCharmCards(){
     const group=document.createElement("section");
     group.className="charm-equipment-card charm-compact-card";
     group.dataset.slot=slot.id;
+    const hasActive=charmDB.types.some(type=>state.charms[slot.id][type.id].target>state.charms[slot.id][type.id].current);
+    const compact=matchMedia("(max-width: 560px)").matches;
+    const open=hasActive || (compact ? (state.charmOpen[slot.id] ?? slotIndex===0) : true);
+    group.classList.toggle("collapsed",!open);
     group.innerHTML=`
       <div class="charm-compact-head">
         <div class="charm-head-identity">
           <div class="item-icon small">${gearIcons[slot.id]||"◆"}</div>
-          <h3>${nameOf(slot.id,slot.name)}</h3>
+          <h3>${h(nameOf(slot.id,slot.name))}</h3>
         </div>
-        <span class="charm-active-count">0 / 3</span>
+        <div class="charm-head-actions"><span class="charm-active-count">0 / 3</span><button class="charm-toggle" type="button" aria-expanded="${String(open)}" aria-label="${h(uiText("toggleCharms"))}"><span aria-hidden="true">⌄</span></button></div>
       </div>
       <div class="charm-compact-list"></div>`;
+    group.querySelector(".charm-toggle").addEventListener("click",event=>{
+      event.stopPropagation();
+      const nextOpen=group.classList.contains("collapsed");
+      group.classList.toggle("collapsed",!nextOpen);
+      event.currentTarget.setAttribute("aria-expanded",String(nextOpen));
+      state.charmOpen[slot.id]=nextOpen;saveState();
+    });
 
     const list=group.querySelector(".charm-compact-list");
     charmDB.types.forEach((type,index)=>{
@@ -257,7 +345,7 @@ function buildCharmCards(){
       row.className="charm-compact-row";
       row.dataset.type=type.id;
       row.innerHTML=`
-        <div class="charm-row-identity"><span class="charm-index">${index+1}</span><span class="charm-row-copy"><strong>${tr("charm")} ${index+1}</strong><small>${tr(type.troop)}</small></span></div>
+        <div class="charm-row-identity"><span class="charm-index">${index+1}</span><span class="charm-row-copy"><strong>${h(tr("charm"))} ${index+1}</strong><small>${h(tr(type.troop))}</small></span></div>
         <label class="charm-level-box"><span>${tr("current")}</span><select class="stage-select current">${charmCurrentOptions(s.current)}</select></label>
         <label class="charm-level-box ${s.current>=lastCharmLevel?"level-complete":""}"><span>${tr("target")}</span>${charmTargetControl(s.current,s.target)}</label>
         <div class="charm-inline-result"></div>`;
@@ -310,8 +398,8 @@ function charmCalc(s){
   const tar=charmDB.levels.find(x=>x.level===s.target);
   return {req,power:tar.power_total-cur.power_total,stat:tar.stat_total_percent-cur.stat_total_percent};
 }
-function metric(label,value){return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`}
-function summaryBox(label,value,complete=false){return `<div class="summary-box ${complete?"complete":""}"><span>${label}</span><strong>${value}</strong></div>`}
+function metric(label,value){return `<div class="metric"><span>${h(label)}</span><strong>${h(value)}</strong></div>`}
+function summaryBox(label,value,complete=false){return `<div class="summary-box ${complete?"complete":""}"><span>${h(label)}</span><strong>${h(value)}</strong></div>`}
 function summaryText(key){
   const terms={
     en:{total:"Total Required",owned:"Owned",remaining:"Remaining"},
@@ -329,13 +417,14 @@ function summaryText(key){
 function summaryDetailed(label,remaining,total,owned=0,complete=false){
   const hasOwned=Number(owned)>0;
   return `<div class="summary-box summary-detailed ${complete?"complete":""}">
-    <div class="summary-material-title">${label}</div>
-    <div class="summary-number-line total-line"><small>${summaryText("total")}</small><strong>${fmt(total)}</strong></div>
-    ${hasOwned?`<div class="summary-number-line owned-line"><small>${summaryText("owned")}</small><strong>${fmt(owned)}</strong></div>
-    <div class="summary-number-line remaining-line"><small>${summaryText("remaining")}</small><strong>${fmt(remaining)}</strong></div>`:""}
+    <div class="summary-material-title">${h(label)}</div>
+    <div class="summary-number-line total-line"><small>${h(summaryText("total"))}</small><strong>${fmt(total)}</strong></div>
+    ${hasOwned?`<div class="summary-number-line owned-line"><small>${h(summaryText("owned"))}</small><strong>${fmt(owned)}</strong></div>
+    <div class="summary-number-line remaining-line"><small>${h(summaryText("remaining"))}</small><strong>${fmt(remaining)}</strong></div>`:""}
   </div>`;
 }
 function renderGear(){
+  if(!built.gear) return;
   let total={satin:0,threads:0,vision:0,power:0,stat:0,count:0};
   document.querySelectorAll("#gearCards .gear-compact-card").forEach(card=>{
     const s=state.gear[card.dataset.id],calc=gearCalc(s);
@@ -370,6 +459,7 @@ function renderGear(){
     summaryBox(gainedStatLabel("defense"),`${total.stat.toFixed(2)}%`);
 }
 function renderCharms(){
+  if(!built.charms) return;
   let total={guides:0,designs:0,power:0,stat:0,count:0};
   document.querySelectorAll("#charmCards .charm-compact-row").forEach(card=>{
     const group=card.closest(".charm-equipment-card");
@@ -378,7 +468,7 @@ function renderCharms(){
     const box=card.querySelector(".charm-inline-result");
     if(!calc){ box.innerHTML=""; return; }
     total.count++; total.guides+=calc.req.guides;total.designs+=calc.req.designs;total.power+=calc.power;total.stat+=calc.stat;
-    box.innerHTML=`<span class="result-label">${tr("required")}</span><span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${tr("guides")}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${tr("designs")}</small></span>`;
+    box.innerHTML=`<span class="result-label">${h(tr("required"))}</span><span class="inline-material"><strong>${fmt(calc.req.guides)}</strong><small>${h(tr("guides"))}</small></span><span class="inline-material"><strong>${fmt(calc.req.designs)}</strong><small>${h(tr("designs"))}</small></span>`;
   });
   document.querySelectorAll("#charmCards .charm-equipment-card").forEach(group=>{
     const active=charmDB.types.filter(type=>state.charms[group.dataset.slot][type.id].target>state.charms[group.dataset.slot][type.id].current).length;
@@ -397,6 +487,10 @@ function renderCharms(){
 }
 function renderAll(){applyLanguage();renderGear();renderCharms()}
 function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1700)}
+async function copyText(text){
+  try{await navigator.clipboard.writeText(text);toast(tr("copied"));}
+  catch(error){console.error("Clipboard write failed",error);toast(uiText("copyFailed"));}
+}
 function copyGear(){
   const lines=[`SaifKS.com | ${tr("gearCopyTitle")}`];
   let req={satin:0,threads:0,vision:0};
@@ -421,7 +515,7 @@ function copyGear(){
     }
   });
   if(gearMaterials.some(([,total,left,owned])=>total>0&&Number(owned)>0&&left===0)) lines.push(tr("completed"));
-  navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
+  copyText(lines.join("\n"));
 }
 function copyCharms(){
   const lines=[`SaifKS.com | ${tr("charmsCopyTitle")}`];
@@ -448,12 +542,13 @@ function copyCharms(){
     }
   });
   if(charmMaterials.some(([,total,left,owned])=>total>0&&Number(owned)>0&&left===0)) lines.push(tr("completed"));
-  navigator.clipboard.writeText(lines.join("\n")).then(()=>toast(tr("copied")));
+  copyText(lines.join("\n"));
 }
 document.getElementById("copyGear").addEventListener("click",copyGear);
 document.getElementById("copyCharms").addEventListener("click",copyCharms);
 document.getElementById("resetGear").addEventListener("click",(event)=>{
   event.preventDefault();
+  if(!window.confirm(uiText("confirmGear"))) return;
   const y=window.scrollY;
   state.gear={};
   state.gearOwned={satin:0,threads:0,vision:0};
@@ -468,8 +563,10 @@ document.getElementById("resetGear").addEventListener("click",(event)=>{
 });
 document.getElementById("resetCharms").addEventListener("click",(event)=>{
   event.preventDefault();
+  if(!window.confirm(uiText("confirmCharms"))) return;
   const y=window.scrollY;
   state.charms={};
+  state.charmOpen={};
   state.charmOwned={guides:0,designs:0};
   ["ownedGuides","ownedDesigns"].forEach(id=>{
     const el=document.getElementById(id);
@@ -498,7 +595,11 @@ if(brandHomeLink){
 
 window.addEventListener("storage",(event)=>{
   if(event.key===langKey && event.newValue && i18n[event.newValue] && event.newValue!==state.language){
+    const explicitLanguage=new URLSearchParams(location.search).get("lang");
+    if(i18n[explicitLanguage]) return;
     state.language=event.newValue;
+    saveState();
+    rebuildVisibleCards();
     renderAll();
   }
 });
@@ -509,15 +610,11 @@ init().catch(err=>{
   document.body.innerHTML=`<main style="padding:30px;color:white">${tr("loadError")}</main>`;
 });
 
-// V5: prevent focus zoom / accidental number changes on every device.
+// Keep form text large enough to avoid automatic focus zoom on mobile.
 document.querySelectorAll('input, select, textarea').forEach((el)=>{
   el.style.fontSize='16px';
   el.addEventListener('focus',()=>{ el.style.fontSize='16px'; },{passive:true});
 });
-document.addEventListener('gesturestart',(e)=>e.preventDefault(),{passive:false});
-document.addEventListener('dblclick',(e)=>{
-  if(e.target.closest('input,select,textarea')) e.preventDefault();
-},{passive:false});
 document.addEventListener('wheel',(e)=>{
   const active=document.activeElement;
   if(active && active.matches('input[type="number"]')) active.blur();
