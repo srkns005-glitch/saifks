@@ -794,7 +794,7 @@ main.container{max-width:none!important;padding:16px 0 34px!important}
 .card-body{padding:14px 15px 15px!important}
 .card-body .meta{margin-bottom:7px!important}
 .card-tags{margin:0 0 11px!important}
-.card .open{min-height:42px!important;border:1px solid rgba(244,198,91,.5)!important;background:rgba(244,198,91,.075)!important;color:#f7cf6d!important;transition:background .18s ease,color .18s ease,border-color .18s ease!important}
+.card .open{min-height:44px!important;border:1px solid rgba(244,198,91,.5)!important;background:rgba(244,198,91,.075)!important;color:#f7cf6d!important;transition:background .18s ease,color .18s ease,border-color .18s ease!important}
 .card:hover .open,.card .open:focus-visible{border-color:var(--clean-gold)!important;background:var(--clean-gold)!important;color:#172131!important}
 .card:focus-within{border-color:rgba(244,198,91,.55)!important;box-shadow:0 0 0 3px rgba(244,198,91,.1),0 14px 32px rgba(0,0,0,.24)!important}
 .favorite-card-btn{width:36px!important;height:36px!important;font-size:1.08rem!important}
@@ -1067,7 +1067,7 @@ eventTopBtn?.addEventListener("click",()=>{
 
 function applyLang(){document.title=t("Event Center")+" | SaifKS";q("#lang").setAttribute("aria-label",(eventChromeLabels[lang]||eventChromeLabels.en)[1]);q("#quickCloseBtn").setAttribute("aria-label",(eventChromeLabels[lang]||eventChromeLabels.en)[2]);document.documentElement.lang=lang;document.body.classList.toggle("rtl",lang==="ar");document.documentElement.dir=lang==="ar"?"rtl":"ltr";q("#lang").value=lang;q(".small-btn").textContent=t("Home");q(".brand h1").textContent=t("Event Center");
 q(".brand p").textContent="SaifKS.com";q("#soloTab .tab-label").textContent=t("Solo Events");q("#allianceTab .tab-label").textContent=t("Alliance Events");
-search.placeholder=t("Search events...");
+search.placeholder=t("Search events...");search.setAttribute("aria-label",t("Search events..."));
 q("#empty").textContent=t("No events found");
 document.querySelectorAll("#modal h3[data-label]").forEach(el=>el.textContent=t(el.dataset.label));
 const quickLabels=[t("Duration"),t("Frequency"),t("F2P")];
