@@ -118,8 +118,8 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetchJson("data/governor_gear.json?v=26-refined-gear-cards-20260929"),
-    fetchJson("data/governor_charms.json?v=26-refined-gear-cards-20260929")
+    fetchJson("data/governor_gear.json?v=27-clean-charm-layout-20260929"),
+    fetchJson("data/governor_charms.json?v=27-clean-charm-layout-20260929")
   ]);
   if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
   setupLanguage();
