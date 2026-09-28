@@ -117,12 +117,10 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetchJson("data/governor_gear.json?v=22-visual-polish-20260929"),
-    fetchJson("data/governor_charms.json?v=22-visual-polish-20260929")
+    fetchJson("data/governor_gear.json?v=23-charm-compact-20260929"),
+    fetchJson("data/governor_charms.json?v=23-charm-compact-20260929")
   ]);
   if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
-  document.getElementById("gearStageCount").textContent=String(gearDB.levels.length);
-  document.getElementById("charmLevelCount").textContent=String(charmDB.levels.length);
   setupLanguage();
   bindOwnedInputs();
   setupTabs();
@@ -220,7 +218,7 @@ function gearCurrentOptions(selected){
   return html;
 }
 function gearTargetOptions(current,selected){
-  if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
+  if(current===-2) return `<option value="-2" selected>${selectionLabel("chooseTarget")}</option>`;
   let html=current===-1
     ? `<option value="-1" ${selected===-1?"selected":""}>${tr("disabled")}</option>`
     : "";
@@ -249,7 +247,7 @@ function charmCurrentOptions(selected){
 }
 function charmTargetOptions(current,selected){
   const last=charmDB.levels.at(-1)?.level||0;
-  if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseCurrentFirst")}</option>`;
+  if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseTarget")}</option>`;
   let html=`<option value="${current}" ${selected===current?"selected":""}>${current}</option>`;
   charmDB.levels.forEach(x=>{if(x.level>current) html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`;});
   return html;
