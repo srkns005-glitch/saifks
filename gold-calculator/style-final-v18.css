@@ -252,7 +252,7 @@ html[dir="rtl"] .result-row strong{text-align:left}
 
 /* Desktop workspace: a clear top-to-bottom flow without uneven side columns. */
 @media(min-width:1080px){
-  .container{width:min(1180px,calc(100% - 48px))}
+  .container{width:min(1040px,calc(100% - 56px))}
   main.container{
     grid-template-columns:minmax(0,1fr);
     grid-template-areas:
