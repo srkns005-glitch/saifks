@@ -1,10 +1,10 @@
-const CACHE_NAME="saifks-gold-v12";
+const CACHE_NAME="saifks-gold-v13";
 const APP_SHELL=[
   "./index.html",
   "./style-final-v18.css",
   "./building-data-final-v18.js",
   "./app-final-v18.js",
-  "../logo.png?v=6.12.0"
+  "../logo.png?v=6.13.0"
 ];
 
 self.addEventListener("install",event=>{

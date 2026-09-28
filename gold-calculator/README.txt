@@ -1,7 +1,5 @@
-Stable Home + Shared Language
-- Built from the last stable multilingual calculator.
-- Preserves original CSS/JS filenames to avoid missing-style problems.
-- Adds only a compact Home button beside the existing language control.
-- Uses the shared language key saifRallyLang with the main page.
-- Calculator autosave no longer overrides the main-page language.
-- Existing calculator design and features remain unchanged.
+SaifKS Gold Calculator
+- The active page is index.html.
+- The active assets are style-final-v18.css, app-final-v18.js and building-data-final-v18.js.
+- Language selection is synchronized with the URL and local storage.
+- sw.js provides the current offline cache; legacy assets have been removed.
