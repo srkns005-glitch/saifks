@@ -249,3 +249,54 @@ html[dir="rtl"] .result-row strong{text-align:left}
   .saved-plans-create,.saved-plans-manage{grid-template-columns:1fr}
   .saved-plans-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Desktop workspace: a clear top-to-bottom flow without uneven side columns. */
+@media(min-width:1080px){
+  .container{width:min(1180px,calc(100% - 48px))}
+  main.container{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:
+      "planner"
+      "buildings"
+      "inventory"
+      "bonuses"
+      "results"
+      "saved"
+      "actions";
+    gap:16px;padding-top:20px
+  }
+
+  .planner-card{
+    display:grid;
+    grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr);
+    grid-template-areas:
+      "planner-heading planner-fields"
+      "planner-heading planner-actions"
+      "planner-message planner-message";
+    column-gap:28px;align-items:start
+  }
+  .planner-heading{grid-area:planner-heading;margin-bottom:0;padding-inline-end:72px}
+  .planner-grid{grid-area:planner-fields;align-self:end}
+  .planner-actions{grid-area:planner-actions}
+  .planner-message{grid-area:planner-message;margin-bottom:-8px}
+
+  #buildings{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bonuses-card .grid-2{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .results-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+  .saved-plans-card{
+    display:grid;
+    grid-template-columns:minmax(250px,.75fr) minmax(280px,1fr) minmax(380px,1.25fr);
+    grid-template-areas:
+      "saved-heading saved-create saved-manage"
+      "saved-status saved-status saved-status";
+    gap:18px 20px;align-items:end
+  }
+  .saved-plans-heading{grid-area:saved-heading;align-self:start;margin-bottom:0}
+  .saved-plans-create{grid-area:saved-create}
+  .saved-plans-manage{grid-area:saved-manage;margin-top:0}
+  .saved-plans-status{grid-area:saved-status;margin:0;min-height:0}
+  .saved-plans-create,.saved-plans-manage{grid-template-columns:1fr}
+  .saved-plans-actions{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .saved-plans-actions .danger-outline{grid-column:auto}
+}
