@@ -74,6 +74,7 @@ const selectionLabels={
   zh:{chooseCurrent:"选择当前等级",chooseTarget:"选择目标等级",chooseCurrentFirst:"请先选择当前等级",levelComplete:"等级已完成"}
 };
 function selectionLabel(key){return selectionLabels[state.language]?.[key]||selectionLabels.en[key];}
+function charmSelectionLabel(key){return state.language==="ar"?"اختر":selectionLabel(key);}
 const uiMessages={
   en:{confirmGear:"Reset all Governor Gear selections and owned materials?",confirmCharms:"Reset all Governor Charm selections and owned materials?",copyFailed:"Copy failed. Please try again.",toggleCharms:"Expand or collapse this charm group"},
   ar:{confirmGear:"هل تريد مسح جميع اختيارات عتاد الحاكم والمواد الموجودة؟",confirmCharms:"هل تريد مسح جميع اختيارات تمائم الحاكم والمواد الموجودة؟",copyFailed:"تعذر النسخ. حاول مرة أخرى.",toggleCharms:"فتح أو إغلاق مجموعة التمائم"},
@@ -117,8 +118,8 @@ function nameOf(id,fallback){return names[id]?.[state.language]||names[id]?.en||
 
 async function init(){
   [gearDB,charmDB] = await Promise.all([
-    fetchJson("data/governor_gear.json?v=23-charm-compact-20260929"),
-    fetchJson("data/governor_charms.json?v=23-charm-compact-20260929")
+    fetchJson("data/governor_gear.json?v=24-clean-selects-20260929"),
+    fetchJson("data/governor_charms.json?v=24-clean-selects-20260929")
   ]);
   if(!Array.isArray(gearDB?.levels)||!Array.isArray(gearDB?.slots)||!Array.isArray(charmDB?.levels)||!Array.isArray(charmDB?.types)) throw new Error("Invalid Governor Center database schema");
   setupLanguage();
@@ -240,14 +241,14 @@ function gearTargetControl(current,selected){
   return `<select class="stage-select target" ${current===-2?"disabled":""}>${gearTargetOptions(current,selected)}</select>`;
 }
 function charmCurrentOptions(selected){
-  let html=`<option value="-1" disabled ${selected===-1?"selected":""}>${selectionLabel("chooseCurrent")}</option>`;
+  let html=`<option value="-1" disabled ${selected===-1?"selected":""}>${charmSelectionLabel("chooseCurrent")}</option>`;
   html+=`<option value="0" ${selected===0?"selected":""}>0</option>`;
   charmDB.levels.forEach(x=>html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`);
   return html;
 }
 function charmTargetOptions(current,selected){
   const last=charmDB.levels.at(-1)?.level||0;
-  if(current===-1) return `<option value="-1" selected>${selectionLabel("chooseTarget")}</option>`;
+  if(current===-1) return `<option value="-1" selected>${charmSelectionLabel("chooseTarget")}</option>`;
   let html=`<option value="${current}" ${selected===current?"selected":""}>${current}</option>`;
   charmDB.levels.forEach(x=>{if(x.level>current) html+=`<option value="${x.level}" ${x.level===selected?"selected":""}>${x.level}</option>`;});
   return html;
