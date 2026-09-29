@@ -122,7 +122,10 @@
   function effectLabel(technology) {
     const summary = String(technology.buff_summary || "");
     const key = Object.keys(STATS).sort((a, b) => b.length - a.length).find(item => summary.startsWith(item));
-    return key ? translatedStat(key) : translatedName(technology);
+    if (key) return translatedStat(key);
+    const name = String(technology.name || "").replace(/\s+[IVX]+$/, "");
+    const nameAr = String(technology.name_ar || "").replace(/\s+[IVX]+$/, "");
+    return translatedName(name, nameAr);
   }
   function effectDelta(technology, current, target) {
     const currentRow = technology.levels.find(level => level.level === current);
@@ -169,10 +172,7 @@
 
   function renderTabs() {
     const tabs = document.getElementById("tabs");
-    tabs.innerHTML = CATEGORIES.map(category => {
-      const count = database.technologies.filter(technology => technology.category === category).length;
-      return `<button class="tab${state.category === category ? " active" : ""}" type="button" data-category="${category}" aria-pressed="${state.category === category}">${escapeHTML(categoryName(category))}<span class="tab-count">${count}</span></button>`;
-    }).join("");
+    tabs.innerHTML = CATEGORIES.map(category => `<button class="tab${state.category === category ? " active" : ""}" type="button" data-category="${category}" aria-pressed="${state.category === category}">${escapeHTML(categoryName(category))}</button>`).join("");
   }
 
   function researchCard(technology) {
