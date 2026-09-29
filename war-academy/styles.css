@@ -128,3 +128,17 @@
   text-align:center;
   text-align-last:center;
 }
+
+/* Show complete research names and descriptions on every screen size. */
+.researchItem,.researchPick{align-items:flex-start}
+.itemText strong,.itemText small{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  overflow-wrap:anywhere;
+}
+@media(min-width:681px) and (max-width:900px){
+  .researchPick{flex-basis:100%}
+  .listLevelControls{width:100%;justify-content:flex-end}
+  .listLevelControls label{flex:0 0 75px}
+}
