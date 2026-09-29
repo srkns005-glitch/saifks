@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#07101d">
-<meta name="saifks-build" content="hero-gear-chrome-language-cleanup-v27-20260924">
+<meta name="saifks-build" content="hero-gear-v28-audited-20260930">
 <title>SaifKS Automatic Hero Gear Calculator</title>
 <style id="hero-gear-styles-v24">
 
@@ -658,7 +658,8 @@ body{
 }
 
 </style>
-<link rel="icon" href="../logo.png">
+<link rel="icon" href="../logo.png?v=hero-gear-v28">
+<link rel="stylesheet" href="hero-gear-v28.css?v=20260930">
 
 
 
@@ -718,7 +719,7 @@ function gearTypeWords(){const maps={ar:{caption:'نوع العتاد',health:'�
 loadSavedState();syncActiveSelections();
 const levels=Object.fromEntries(DB.enhancement_levels.map(x=>[x.level,x]));const mastery=Object.fromEntries(DB.mastery_levels.map(x=>[x.mastery_level,x]));
 function fill(id,max,val){const e=$(id);if(!e)return;/* Safari fix: never clear/rebuild an open native select. */if(e.options.length!==max+1){const frag=document.createDocumentFragment();for(let i=0;i<=max;i++){const option=document.createElement('option');option.value=String(i);option.textContent=`Lv ${i}`;frag.appendChild(option)}e.replaceChildren(frag)}const safe=Math.max(0,Math.min(max,Number(val)||0));if(e.value!==String(safe))e.value=String(safe)}
-function requiredMastery(level){if(level>=200)return 15;if(level>=180)return 14;if(level>=160)return 13;if(level>=140)return 12;if(level>=120)return 11;if(level>=100)return 10;return 0}function normalize(){S.levelT=Math.max(S.levelC,S.levelT);S.masteryT=Math.max(S.masteryC,S.masteryT,requiredMastery(S.levelT));S.widgetT=Math.max(S.widgetC,S.widgetT)}
+function requiredMastery(level){if(level>=200)return 15;if(level>=180)return 14;if(level>=160)return 13;if(level>=140)return 12;if(level>=120)return 11;if(level>=101)return 10;return 0}function normalize(){S.levelT=Math.max(S.levelC,S.levelT);S.masteryT=Math.max(S.masteryC,S.masteryT,requiredMastery(S.levelT));S.widgetT=Math.max(S.widgetC,S.widgetT)}
 function statFormula(level){if(level<=100)return (.15+level*.0035)*100;return (.50+(level-100)*.005)*100}
 function multiplier(m){return 1+m*.1}function effective(level,m){return statFormula(level)*multiplier(m)}
 function enhancementCost(profile=S){let xp=0,mi=0,my=0;for(let l=profile.levelC+1;l<=profile.levelT;l++){const r=levels[l];xp+=r?.xp_incremental||0;mi+=r?.mithril||0;my+=r?.mythic_gear||0}return{xp,mi,my}}
@@ -764,4 +765,4 @@ const words={en:['My current resources','Saved automatically'],ar:['مواردي
 const hub=document.createElement('section');hub.className='inventory-hub';hub.innerHTML='<div class="inventory-hub-head"><h3 id="inventoryHubTitle"></h3><span id="inventorySaveBadge" class="inventory-save-badge"></span></div><div class="inventory-hub-body"></div>';const body=hub.querySelector('.inventory-hub-body');resourceCard.classList.add('inventory-resource-card');xpCard.classList.add('inventory-xp-card');const xpTotal=xpCard.querySelector('.xp-total');if(xpTotal)hub.querySelector('.inventory-hub-head').after(xpTotal);body.append(resourceCard,xpCard);document.querySelector('.unified-header').after(hub);optional.dataset.moved='true';optional.classList.add('open');if(toggle)toggle.setAttribute('aria-hidden','true');
 const sync=()=>{document.querySelector('#inventoryHubTitle').textContent=UX[lang]?.inventoryTitle||UX.en.inventoryTitle;document.querySelector('#inventorySaveBadge').textContent=UX[lang]?.savedAutomatically||UX.en.savedAutomatically};document.querySelector('#lang')?.addEventListener('change',()=>setTimeout(sync,0));sync()})();
 
-</script><!-- Build: hero-gear-chrome-language-cleanup-v27-20260924 --></body></html>
+</script><script src="hero-gear-v28.js?v=20260930"></script><!-- Build: hero-gear-v28-audited-20260930 --></body></html>
