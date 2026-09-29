@@ -35,6 +35,17 @@
   };
   const effect = item => lang === 'en' ? item.effect : (tr('names')['effect:' + item.effect] || item.effect);
   const resourceName = k => tr(k === 'ttg' ? 'temperedTruegold' : k);
+  const clearPlanPrompt = () => ({
+    ar:'هل تريد مسح الأهداف المخطط لها مع إبقاء المستويات الحالية؟',
+    en:'Clear the planned targets while keeping current levels?',
+    fr:'Effacer les objectifs planifiés tout en conservant les niveaux actuels ?',
+    es:'¿Borrar los objetivos planificados y conservar los niveles actuales?',
+    de:'Geplante Ziele löschen und aktuelle Stufen beibehalten?',
+    tr:'Mevcut seviyeleri koruyarak planlanan hedefler silinsin mi?',
+    ko:'현재 레벨은 유지하고 계획한 목표를 지울까요?',
+    ja:'現在のレベルを残して、計画した目標を消去しますか？',
+    zh:'清除计划目标并保留当前等级吗？'
+  })[lang] || 'Clear the planned targets while keeping current levels?';
   const current = item => Math.max(0,Math.min(item.maxLevel,Number(progress[item.id]) || 0));
   const target = item => Math.max(current(item),Math.min(item.maxLevel,targets[item.id] === undefined ? (item.group && advancedSelected[item.id] ? item.maxLevel : current(item)) : (Number(targets[item.id])||0)));
   const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}};
@@ -225,7 +236,7 @@
   const feedback = key => {$('planFeedback').textContent=tr(key)};
   const persistPlan=()=>{localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));localStorage.setItem('saifWarAdvancedSelected',JSON.stringify(advancedSelected))};
   $('clearPlan').addEventListener('click',()=>{
-    if(!data)return;
+    if(!data||!window.confirm(clearPlanPrompt()))return;
     targets={};advancedSelected={};persistPlan();feedback('planCleared');render();
   });
   $('resetAll').addEventListener('click',()=>{
