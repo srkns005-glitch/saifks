@@ -1,15 +1,21 @@
-SaifKS Hero Center — All Heroes V1
-Build: all-heroes-v1-20260715235205
+SaifKS Hero Center
+Build: hero-center-20260930-1
 
-Included:
-- Mythic tabs for Generations 1–7
-- Epic and Rare tabs
+Current scope:
+- 37 heroes: 25 Mythic, 8 Epic, and 4 Rare
+- Mythic generations 1–8
 - Class filters and global hero search
-- 34 hero cards with portraits extracted from the supplied official wiki PDFs
-- Full scrollable hero modal with fixed top and bottom controls
-- Sources, Conquest stats, Conquest details, Expedition details, and Exclusive Gear
-- Arabic/English interface and language persistence
-- Cache-busting build marker
-- Unified one-line SaifKS footer
+- Full hero details: overview, sources, stats, Conquest, Expedition, and Exclusive Gear
+- Nine interface languages with persistent language selection
+- Responsive layout for desktop, iPad, and mobile
 
-Upload/replace the complete hero-center folder.
+Data and assets:
+- The inline `heroes` collection in index.html is the single authoritative hero-data source.
+- Translation dictionaries remain split into the translation JavaScript files.
+- Build-version query strings are applied to page scripts and dynamic images to prevent stale cached files.
+- Class icons use lightweight SVG assets.
+- Large Generation 8 portraits use optimized WebP assets.
+
+Deployment:
+- Upload or replace the complete hero-center folder.
+- Keep index.html and its versioned assets from the same build together.
