@@ -38,6 +38,7 @@
 .resourceBreakdown>div{min-width:0;padding:8px 3px;border-radius:7px;text-align:center;background:#ffffff08}
 .resourceBreakdown small{display:block;font-size:10px;color:#95aabc;white-space:nowrap;margin:0 0 5px}
 .resourceBreakdown strong{display:block;font-size:clamp(11px,1.2vw,15px);white-space:nowrap;color:#d9e2ea;word-break:normal}
+.resourceBreakdown .exactAmount{max-width:100%;font-size:clamp(10px,1.05vw,14px);font-variant-numeric:tabular-nums;letter-spacing:-.025em}
 .resourceBreakdown .resourceMissing{background:#dbad6822}
 .resourceBreakdown .resourceMissing strong{color:#f4ce93}
 .resourceBreakdown .resourceCovered strong{color:#9bd6bd}
@@ -49,7 +50,7 @@
 .researchItem.isComplete .stateBadge{color:#a8dfc0}
 .stateBadge:empty{display:none}
 .mapIcon,.researchPick{scroll-margin-top:145px}
-@media(max-width:680px){.resourceBreakdown{gap:2px}.resourceBreakdown small{font-size:9px}.resourceBreakdown strong{font-size:11px}.plannerStat{padding:10px 7px}}
+@media(max-width:680px){.resourceBreakdown{gap:2px}.resourceBreakdown small{font-size:9px}.resourceBreakdown strong{font-size:11px}.resourceBreakdown .exactAmount{font-size:clamp(9px,2.6vw,11px)}.plannerStat{padding:10px 7px}}
 /* Summary hierarchy: heading, context, then one compact action row. */
 .plannerHead{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
 .plannerHeading h2{font-size:clamp(23px,2.7vw,32px);line-height:1.35;margin:7px 0 4px}
@@ -113,4 +114,13 @@
 /* Keep the mobile summary from covering research nodes or controls. */
 @media(max-width:680px){
   .quickSummary{position:static;width:100%;max-width:none;margin:12px 0 0;min-height:44px}
+}
+
+/* Center advanced research levels without the native select arrow offset. */
+.results .listLevelControls select{
+  appearance:none;
+  -webkit-appearance:none;
+  padding-inline:0;
+  text-align:center;
+  text-align-last:center;
 }
