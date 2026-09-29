@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'saifksPetCenterV1';
   const LANGUAGE_KEY = 'saifksLanguage';
-  const GENERATION_KEY = 'saifksPetGenerationV1';
+  const BUILD = document.querySelector('meta[name="build-version"]')?.content || 'dev';
   const TYPES = ['food', 'manual', 'potion', 'medallion'];
   const SYMBOLS = {food:'✦', manual:'▤', potion:'◈', medallion:'✧'};
   const LANGUAGE_LABELS = {en:'Language',ar:'اللغة',tr:'Dil',ko:'언어',ja:'言語',zh:'语言',es:'Idioma',de:'Sprache',fr:'Langue'};
@@ -12,11 +12,8 @@
   try { storedLanguage = localStorage.getItem(LANGUAGE_KEY) || 'ar'; } catch (_) { /* Keep the page usable without storage. */ }
   const initialLanguage = new URLSearchParams(location.search).get('lang') || storedLanguage;
   let language = Object.prototype.hasOwnProperty.call(PET_I18N, initialLanguage) ? initialLanguage : 'ar';
-  let pets = [], activeGeneration = 0, search = '';
-  try {
-    const savedGeneration = Number(localStorage.getItem(GENERATION_KEY));
-    if (Number.isInteger(savedGeneration) && savedGeneration >= 0 && savedGeneration <= 7) activeGeneration = savedGeneration;
-  } catch (_) { /* Storage may be unavailable; the catalogue still works. */ }
+  let pets = [], generations = [], activeGeneration = 0, search = '';
+  try { localStorage.removeItem('saifksPetGenerationV1'); } catch (_) { /* Old filter state is optional. */ }
   let state = {version:3,pets:{},stock:Object.fromEntries(TYPES.map(type=>[type,'']))};
   try {
     const saved = JSON.parse(localStorage.getItem(KEY));
@@ -35,6 +32,7 @@
   } catch (_) { /* Corrupt local storage should not block the planner. */ }
   const t = key => PET_I18N[language][key] || PET_I18N.en[key] || key;
   const num = n => new Intl.NumberFormat(language === 'ar' ? 'ar' : language).format(n);
+  const twoDigitNum = n => new Intl.NumberFormat(language === 'ar' ? 'ar' : language,{minimumIntegerDigits:2,useGrouping:false}).format(n);
   const name = (pet) => PET_NAMES[language]?.[pets.indexOf(pet)] || pet.name;
   const effect = (pet) => PET_EFFECTS[language]?.[pets.indexOf(pet)] || pet.skill;
   const zero = () => Object.fromEntries(TYPES.map(type=>[type,0]));
@@ -95,6 +93,8 @@
     document.title=t('title')+' | SaifKS';
     $('language').value=language;
     $('language').setAttribute('aria-label',LANGUAGE_LABELS[language]);
+    $('search').setAttribute('aria-label',t('search'));
+    $('generationTabs').setAttribute('aria-label',t('generations'));
     document.querySelectorAll('[data-t]').forEach(el => el.textContent=t(el.dataset.t));
     document.querySelectorAll('[data-placeholder]').forEach(el => el.placeholder=t(el.dataset.placeholder));
     $('homeLink').href=$('homeButton').href='../index.html?lang='+encodeURIComponent(language);
@@ -111,19 +111,29 @@
     for (let level=minimum;level<=max;level++) html+=`<option value="${level}"${level===selected?' selected':''}>${num(level)}</option>`;
     return html;
   }
+  function compactOption(selected) {
+    return `<option value="${selected}" selected>${num(selected)}</option>`;
+  }
+  function hydrateLevelSelect(select) {
+    if (!select?.matches('select[data-action="current"],select[data-action="target"]') || select.dataset.hydrated==='true') return;
+    const selected=Number(select.value), minimum=Number(select.dataset.minimum), maximum=Number(select.dataset.maximum);
+    select.innerHTML=options(maximum,selected,minimum);
+    select.value=String(selected);
+    select.dataset.hydrated='true';
+  }
   function renderCard(pet) {
     const p=progress(pet), c=cost(pet);
     const checkCurrent=p.current>0 && p.current%10===0;
     const checkTarget=p.target>0 && p.target%10===0 && !(p.target===p.current && p.currentAdvanced);
     const preview=TYPES.filter(type=>c[type]>0).map(type=>`<span class="cost-chip">${safe(t(type))} ${num(c[type])}</span>`).join('');
     const both=[checkCurrent?`<label><input type="checkbox" data-action="currentAdvanced" data-pet="${pet.id}"${p.currentAdvanced?' checked':''}>${safe(t('currentAdvanced'))}</label>`:'',checkTarget?`<label><input type="checkbox" data-action="targetAdvanced" data-pet="${pet.id}"${p.targetAdvanced?' checked':''}>${safe(t('targetAdvanced'))}</label>`:''].join('');
-    return `<article class="pet-card ${c.planned?'is-planned':''} ${p.current===pet.maxLevel&&p.currentAdvanced?'is-complete':''}" id="pet-${pet.id}"><div class="card-top"><img class="pet-art" src="assets/${pet.id}.webp" alt="${safe(name(pet))}" loading="lazy"><div class="pet-identity"><small>${safe(t('generation'))} ${num(pet.generation)}</small><h4>${safe(name(pet))}</h4><p>${safe(effect(pet))}</p></div>${p.current===pet.maxLevel&&p.currentAdvanced?`<span class="pet-state">${safe(t('completed'))}</span>`:c.planned?`<span class="pet-state">${safe(t('planned'))}</span>`:''}</div><div class="card-bottom"><div class="level-fields"><label class="level-field"><span>${safe(t('current'))}</span><select data-action="current" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('current'))}">${options(pet.maxLevel,p.current,0)}</select></label><span class="level-arrow" aria-hidden="true">→</span><label class="level-field"><span>${safe(t('target'))}</span><select data-action="target" data-pet="${pet.id}" aria-label="${safe(name(pet)+' · '+t('target'))}">${options(pet.maxLevel,p.target,p.current)}</select></label></div><div class="milestone-options">${both}</div><div class="cost-preview">${preview}</div></div></article>`;
+    return `<article class="pet-card ${c.planned?'is-planned':''} ${p.current===pet.maxLevel&&p.currentAdvanced?'is-complete':''}" id="pet-${pet.id}"><div class="card-top"><img class="pet-art" src="assets/${pet.id}.webp" alt="${safe(name(pet))}" loading="lazy"><div class="pet-identity"><small>${safe(t('generation'))} ${num(pet.generation)}</small><h4>${safe(name(pet))}</h4><p>${safe(effect(pet))}</p></div>${p.current===pet.maxLevel&&p.currentAdvanced?`<span class="pet-state">${safe(t('completed'))}</span>`:c.planned?`<span class="pet-state">${safe(t('planned'))}</span>`:''}</div><div class="card-bottom"><div class="level-fields"><label class="level-field"><span>${safe(t('current'))}</span><select data-action="current" data-pet="${pet.id}" data-minimum="0" data-maximum="${pet.maxLevel}" aria-label="${safe(name(pet)+' · '+t('current'))}">${compactOption(p.current)}</select></label><span class="level-arrow" aria-hidden="true">→</span><label class="level-field"><span>${safe(t('target'))}</span><select data-action="target" data-pet="${pet.id}" data-minimum="${p.current}" data-maximum="${pet.maxLevel}" aria-label="${safe(name(pet)+' · '+t('target'))}">${compactOption(p.target)}</select></label></div><div class="milestone-options">${both}</div><div class="cost-preview">${preview}</div></div></article>`;
   }
   function renderCatalogue() {
-    $('generationTabs').innerHTML=`<button type="button" data-generation="0" class="${activeGeneration===0?'is-active':''}">${safe(t('all'))}</button>`+[1,2,3,4,5,6,7].map(g=>`<button type="button" data-generation="${g}" class="${activeGeneration===g?'is-active':''}">${safe(t('generation'))} ${num(g)}</button>`).join('');
+    $('generationTabs').innerHTML=`<button type="button" data-generation="0" class="${activeGeneration===0?'is-active':''}">${safe(t('all'))}</button>`+generations.map(g=>`<button type="button" data-generation="${g}" class="${activeGeneration===g?'is-active':''}">${safe(t('generation'))} ${num(g)}</button>`).join('');
     const match=pets.filter(p=> (!activeGeneration||p.generation===activeGeneration) && (!search|| (name(p)+' '+p.name+' '+effect(p)).toLocaleLowerCase().includes(search)));
     $('catalogueCount').textContent=num(match.length)+' '+t('shown');
-    $('petGroups').innerHTML=match.length?[1,2,3,4,5,6,7].map(g=>{
+    $('petGroups').innerHTML=match.length?generations.map(g=>{
       const group=match.filter(p=>p.generation===g);
       return group.length?`<section class="generation-group" aria-label="${safe(t('generation'))} ${num(g)}"><div class="group-header"><h3>${safe(t('generation'))} ${num(g)}</h3><small>${num(group.length)} ${safe(t('pets'))}</small></div><div class="pet-grid">${group.map(renderCard).join('')}</div></section>`:'';
     }).join(''):`<div class="no-results">${safe(t('noResults'))}</div>`;
@@ -198,9 +208,11 @@
   }
   $('language').addEventListener('change',event=>{ language=event.target.value;applyLanguage();renderStock();renderCatalogue();renderSummary(); });
   $('stockInputs').addEventListener('input',event=>{const type=event.target.dataset.stock;if (!TYPES.includes(type))return;state.stock[type]=event.target.value;const invalid=!stockValue(event.target.value).valid;event.target.closest('.stock-field').classList.toggle('is-invalid',invalid);event.target.setAttribute('aria-invalid',String(invalid));$('stock-error-'+type).hidden=!invalid;save();renderSummary();});
-  $('generationTabs').addEventListener('click',event=>{const button=event.target.closest('[data-generation]');if(!button)return;activeGeneration=Number(button.dataset.generation);try{localStorage.setItem(GENERATION_KEY,String(activeGeneration));}catch(_){}renderCatalogue();});
+  $('generationTabs').addEventListener('click',event=>{const button=event.target.closest('[data-generation]');if(!button)return;activeGeneration=Number(button.dataset.generation);renderCatalogue();});
   $('search').addEventListener('input',event=>{search=event.target.value.trim().toLocaleLowerCase();renderCatalogue();});
   $('petGroups').addEventListener('change',event=>{if(event.target.dataset.action)onCardChange(event.target);});
+  $('petGroups').addEventListener('focusin',event=>hydrateLevelSelect(event.target));
+  $('petGroups').addEventListener('pointerdown',event=>hydrateLevelSelect(event.target));
   $('copySummary').addEventListener('click',async()=>{
     try {
       const value=summaryText();
@@ -214,10 +226,19 @@
   applyLanguage();
   save();
   renderStock();
-  fetch('data.json?v=1').then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(data=>{
+  fetch('data.json?v='+encodeURIComponent(BUILD),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(data=>{
     if(!Array.isArray(data.pets)||!data.pets.length)throw new Error('Invalid pet data');
     pets=data.pets;
+    const ids=new Set();
+    for (const pet of pets) {
+      const validFood=Array.isArray(pet?.food) && pet.food.length===pet.maxLevel+1 && pet.food.every(value=>Number.isFinite(value)&&value>=0);
+      const validAdvance=pet?.advance && typeof pet.advance==='object' && Object.entries(pet.advance).every(([level,items])=>Number.isInteger(Number(level))&&Number(level)>0&&Number(level)<=pet.maxLevel&&Number(level)%10===0&&Array.isArray(items)&&items.length===3&&items.every(value=>Number.isFinite(value)&&value>=0));
+      if (!pet || typeof pet.id!=='string' || !/^[a-z0-9-]+$/.test(pet.id) || ids.has(pet.id) || !Number.isInteger(pet.generation) || pet.generation<1 || !Number.isInteger(pet.maxLevel) || pet.maxLevel<1 || !validFood || !validAdvance) throw new Error('Invalid pet entry');
+      ids.add(pet.id);
+    }
+    generations=[...new Set(pets.map(pet=>pet.generation))].sort((a,b)=>a-b);
     $('petCount').textContent=num(pets.length);
+    $('generationCount').textContent=twoDigitNum(generations.length);
     renderCatalogue();renderSummary();
   }).catch(()=>{$('petGroups').innerHTML=`<div class="no-results">${safe(t('loadingError'))}</div>`;});
 })();
