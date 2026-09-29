@@ -1,5 +1,5 @@
 SaifKS Hero Center
-Build: hero-center-20260930-1
+Build: hero-center-20260930-2
 
 Current scope:
 - 37 heroes: 25 Mythic, 8 Epic, and 4 Rare
