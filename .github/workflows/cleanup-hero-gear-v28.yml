@@ -1,0 +1,38 @@
+name: Cleanup Hero Gear v28 legacy files
+
+on:
+  push:
+    paths:
+      - .github/workflows/cleanup-hero-gear-v28.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Remove unused Hero Gear files
+        run: |
+          rm -rf hero-gear-center/assets
+          rm -rf hero-gear-center/data
+          rm -f hero-gear-center/Q.hrml
+          rm -f hero-gear-center/_headers
+          rm -f .github/workflows/cleanup-hero-gear-v28.yml
+
+      - name: Commit cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- hero-gear-center .github/workflows/cleanup-hero-gear-v28.yml
+          if git diff --cached --quiet; then
+            echo "Nothing to clean"
+            exit 0
+          fi
+          git commit -m "Remove unused Hero Gear legacy files"
+          git push origin main
