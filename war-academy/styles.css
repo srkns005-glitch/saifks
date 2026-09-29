@@ -51,6 +51,10 @@
 .stateBadge:empty{display:none}
 .mapIcon,.researchPick{scroll-margin-top:145px}
 @media(max-width:680px){.resourceBreakdown{gap:2px}.resourceBreakdown small{font-size:9px}.resourceBreakdown strong{font-size:11px}.resourceBreakdown .exactAmount{font-size:clamp(9px,2.6vw,11px)}.plannerStat{padding:10px 7px}}
+@media(min-width:681px) and (max-width:1024px){
+  .plannerResources{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resourceBreakdown .exactAmount{font-size:clamp(10px,1.45vw,13px)}
+}
 /* Summary hierarchy: heading, context, then one compact action row. */
 .plannerHead{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
 .plannerHeading h2{font-size:clamp(23px,2.7vw,32px);line-height:1.35;margin:7px 0 4px}
