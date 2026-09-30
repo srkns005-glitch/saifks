@@ -1,6 +1,6 @@
 /* SaifKS Hero Gear v28: audited calculations, independent exclusive weapon and UI hardening. */
 (() => {
-  const BUILD = 'hero-gear-v28-audited-20260930';
+  const BUILD = 'hero-gear-v29-auto-summary-20260930';
 
   /* Correct the current red-gear XP table (levels 121-139 were each 50 XP high). */
   DB.enhancement_levels.forEach(row => {
@@ -121,15 +121,35 @@
     exclusivePanel.classList.add('exclusive-weapon-panel');
   }
 
+  const automaticSummaryText = {
+    ar: 'تتحدث النتائج والملخص تلقائيًا عند تغيير أي مستوى.',
+    en: 'Results and summary update automatically when any level changes.',
+    fr: 'Les résultats et le résumé se mettent à jour automatiquement.',
+    es: 'Los resultados y el resumen se actualizan automáticamente.',
+    de: 'Ergebnisse und Zusammenfassung werden automatisch aktualisiert.',
+    tr: 'Sonuçlar ve özet her seviye değişikliğinde otomatik güncellenir.',
+    ko: '레벨을 변경하면 결과와 요약이 자동으로 업데이트됩니다.',
+    ja: 'レベルを変更すると結果と概要が自動更新されます。',
+    zh: '更改任意等级后，结果和汇总会自动更新。'
+  };
+
   const legacyRender = render;
   render = () => {
+    normalize();
+    saveCurrentGearProfile();
+    if (gearSelectionReady) {
+      const selected = gearProfiles[troop][piece];
+      selected.planned = selected.levelT > selected.levelC || selected.masteryT > selected.masteryC;
+    }
     legacyRender();
     const plans = activePlans();
     const weaponActive = S.widgetT > S.widgetC;
     ['#widgetC', '#widgetT'].forEach(selector => { $(selector).disabled = false; });
     const validGear = S.levelT > S.levelC || S.masteryT > S.masteryC;
-    $('#addPlan').disabled = !gearSelectionReady || !validGear;
-    if (gearSelectionReady && !validGear) $('#planActionHint').textContent = ux('chooseHigher');
+    $('#addPlan').disabled = true;
+    $('#planActionHint').textContent = gearSelectionReady
+      ? (automaticSummaryText[lang] || automaticSummaryText.en)
+      : ux('tapGear');
     $('#overviewPlans').textContent = plans.length + (weaponActive ? 1 : 0);
     if (weaponActive) {
       $('#savedPlans .saved-plan-empty')?.remove();
@@ -143,6 +163,17 @@
       state.textContent = ux('upgradeCost');
       state.className = 'result-state';
     }
+    $('#savedPlans').querySelectorAll('.delete-saved').forEach(button => {
+      button.onclick = event => {
+        event.stopPropagation();
+        const row = button.closest('.saved-plan');
+        const profile = gearProfiles[row.dataset.troop][row.dataset.piece];
+        Object.assign(profile, { levelC: 0, levelT: 0, masteryC: 0, masteryT: 0, planned: false });
+        if (row.dataset.troop === troop && row.dataset.piece === piece) loadCurrentGearProfile();
+        render();
+        showToast(ux('gearRemoved'));
+      };
+    });
     saveState();
   };
 
