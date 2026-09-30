@@ -84,7 +84,7 @@
       renderInventory();
       render();
     }
-    requestAnimationFrame(() => document.documentElement.classList.remove('i18n-pending'));
+    document.documentElement.classList.remove('i18n-pending');
   };
   const renderFilters = () => {
     const groups = tree === 'basic' ? (viewMode === 'map' ? ['infantry','cavalry','archer'] : ['all','infantry','cavalry','archer']) : ['all','special','economy','capacity','combat'];
