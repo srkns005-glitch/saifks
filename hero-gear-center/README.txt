@@ -1,5 +1,5 @@
 SaifKS Hero Gear & Exclusive Weapon Calculator
-Build: hero-gear-v28-audited-20260930
+Build: hero-gear-v29-auto-summary-20260930
 
 Runtime files:
 - index.html: stable page, translations and the single embedded gear database.
@@ -12,6 +12,7 @@ Verified behavior:
 - XP total 101-200: 501,050.
 - Level 100 requires no mastery; mastery 10 begins at level 101.
 - Exclusive weapon widgets are calculated once in an independent plan.
+- Changing any gear or mastery level updates the summary automatically; no add/update action is required.
 - Existing saved plans migrate automatically to the v28 state format.
 - Nine languages, persistent language selection and RTL support.
 - Keyboard-accessible reset dialog and labelled form controls.
