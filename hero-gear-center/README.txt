@@ -5,6 +5,7 @@ Runtime files:
 - index.html: stable page, translations and the single embedded gear database.
 - hero-gear-v31.js: audited calculations, state migration, accessibility and interaction fixes.
 - hero-gear-v31.css: responsive visual refinements.
+- hero-gear-v28.js/css: compatibility bridges that forward cached older pages to v31.
 
 Verified behavior:
 - Hero Gear Enhancement levels 0-200.
