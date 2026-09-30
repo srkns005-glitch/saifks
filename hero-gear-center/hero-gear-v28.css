@@ -18,6 +18,17 @@
 .inventory-hub.open .inventory-hub-head::after{transform:rotate(180deg)}
 .inventory-hub:not(.open) .inventory-hub-body,
 .inventory-hub:not(.open)>.xp-total{display:none!important}
+#addPlan,#removePlan,.mobile-plan-action{display:none!important}
+.plan-actions{display:none!important}
+.plan-action-hint{
+  margin-top:10px!important;
+  padding:9px 11px;
+  border:1px solid rgba(79,211,154,.22);
+  border-radius:10px;
+  background:rgba(79,211,154,.07);
+  color:#93dfbd!important;
+  text-align:center;
+}
 
 @media (min-width:1024px){
   .layout{grid-template-columns:minmax(0,1.03fr) minmax(430px,.97fr)!important;gap:18px!important}
