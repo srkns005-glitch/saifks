@@ -27,7 +27,7 @@
     {title:'groupHeroes',description:'groupHeroesDesc',tools:[
       {name:'heroTitle',description:'heroDesc',action:'openHeroes',icon:'hero',path:'hero-center/index.html'},
       {name:'heroGearTitle',description:'heroGearDesc',action:'openHeroGear',icon:'shield',path:'hero-gear-center/index.html?v=hero-gear-v31-whole-number-inputs-20260930'},
-      {name:'mastersTitle',description:'mastersDesc',action:'openMasters',icon:'star',path:'masters/index.html'}
+      {name:'mastersTitle',description:'mastersDesc',action:'openMasters',icon:'star',path:'masters/index.html?v=masters-20260930-final'}
     ]}
   ];
   const supported = Object.keys(translations);
@@ -35,7 +35,10 @@
   const requested = params.get('lang');
   function savedLanguage(){try{return localStorage.getItem('saifRallyLang') || localStorage.getItem('saifksLanguage') || localStorage.getItem('language');}catch{return null;}}
   let lang = supported.includes(requested) ? requested : (supported.includes(savedLanguage()) ? savedLanguage() : 'en');
-  function localLink(path){return path + '?lang=' + encodeURIComponent(lang);}
+  function localLink(path){
+    const separator = path.includes('?') ? '&' : '?';
+    return path + separator + 'lang=' + encodeURIComponent(lang);
+  }
   function svg(name){return `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;}
   function renderTools(){
     const text = translations[lang];
