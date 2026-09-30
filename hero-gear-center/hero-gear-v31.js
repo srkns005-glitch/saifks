@@ -1,6 +1,6 @@
 /* SaifKS Hero Gear v31: translations, stable language routing and automatic summary. */
 (() => {
-  const BUILD = 'hero-gear-v31-stable-language-20260930';
+  const BUILD = 'hero-gear-v31-whole-number-inputs-20260930';
 
   requiredMastery = level => {
     if (level >= 200) return 15;
@@ -255,6 +255,29 @@
   $('#lang')?.addEventListener('change', () => setTimeout(syncAccessibility));
   $('#advancedToggle')?.addEventListener('click', () => setTimeout(syncAccessibility));
   $('#optionalToggle')?.addEventListener('click', () => setTimeout(syncAccessibility));
+
+  /* Resource inventories accept whole, non-negative values only. */
+  const sanitizeResourceInput = input => {
+    const raw = input.value.trim();
+    if (raw === '') return;
+    const numeric = Number(raw);
+    input.value = Number.isFinite(numeric) ? String(Math.max(0, Math.floor(numeric))) : '';
+  };
+  INPUT_IDS.forEach(id => {
+    const input = $('#' + id);
+    if (!input) return;
+    input.min = '0';
+    input.step = '1';
+    input.inputMode = 'numeric';
+    input.onkeydown = event => {
+      if (['e', 'E', '+', '-', '.', ','].includes(event.key)) event.preventDefault();
+    };
+    input.oninput = () => {
+      sanitizeResourceInput(input);
+      render();
+    };
+    sanitizeResourceInput(input);
+  });
 
   const resetDialog = $('#resetConfirm');
   document.addEventListener('keydown', event => {
