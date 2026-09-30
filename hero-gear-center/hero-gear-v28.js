@@ -1,20 +1,6 @@
-/* SaifKS Hero Gear v28: audited calculations, independent exclusive weapon and UI hardening. */
+/* SaifKS Hero Gear v30: source-correct XP data, generated level options and automatic summary. */
 (() => {
-  const BUILD = 'hero-gear-v29-auto-summary-20260930';
-
-  /* Correct the current red-gear XP table (levels 121-139 were each 50 XP high). */
-  DB.enhancement_levels.forEach(row => {
-    if (row.level >= 121 && row.level <= 139) row.xp_incremental -= 50;
-  });
-  let cumulativeXp = 0;
-  DB.enhancement_levels.forEach(row => {
-    cumulativeXp += row.xp_incremental;
-    row.xp_cumulative = cumulativeXp;
-  });
-  DB.meta.schema_version = '1.1.0';
-  DB.meta.generated_date = '2026-09-30';
-  DB.meta.verification_status = 'audited against current reference tables';
-  DB.meta.known_discrepancy = null;
+  const BUILD = 'hero-gear-v30-source-data-20260930';
 
   requiredMastery = level => {
     if (level >= 200) return 15;
