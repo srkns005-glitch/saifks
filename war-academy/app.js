@@ -1,15 +1,28 @@
 (() => {
   'use strict';
+  const finishBoot = () => document.documentElement.classList.remove('i18n-pending');
+  if (typeof WAR_I18N !== 'object' || !WAR_I18N) { finishBoot(); return; }
+  const storage = {
+    get(key, fallback = null) {
+      try { const value = localStorage.getItem(key); return value === null ? fallback : value; }
+      catch { return fallback; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, value); return true; }
+      catch { return false; }
+    }
+  };
   const languages = Object.keys(WAR_I18N);
   const requested = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
-  let lang = languages.includes(requested) ? requested : (languages.includes(localStorage.getItem('saifksLanguage')) ? localStorage.getItem('saifksLanguage') : 'ar');
+  const savedLanguage = storage.get('saifksLanguage');
+  let lang = languages.includes(requested) ? requested : (languages.includes(savedLanguage) ? savedLanguage : 'ar');
   let tree = 'basic', filter = 'infantry', basicBranch = 'infantry', viewMode = 'map', summaryScope = 'all', page = 1, data, latestSummary = '';
   let progress = {}, targets = {}, selectedId = null, advancedSelected = {}, inventory = {};
   let showAllResources = true;
-  try {progress = JSON.parse(localStorage.getItem('saifWarAcademyProgress') || '{}') || {}} catch {progress = {}};
-  try {targets = JSON.parse(localStorage.getItem('saifWarAcademyTargets') || '{}') || {}} catch {targets = {}};
-  try {advancedSelected = JSON.parse(localStorage.getItem('saifWarAdvancedSelected') || '{}') || {}} catch {advancedSelected = {}};
-  try {inventory = JSON.parse(localStorage.getItem('saifWarInventory') || '{}') || {}} catch {inventory = {}};
+  try {progress = JSON.parse(storage.get('saifWarAcademyProgress','{}')) || {}} catch {progress = {}};
+  try {targets = JSON.parse(storage.get('saifWarAcademyTargets','{}')) || {}} catch {targets = {}};
+  try {advancedSelected = JSON.parse(storage.get('saifWarAdvancedSelected','{}')) || {}} catch {advancedSelected = {}};
+  try {inventory = JSON.parse(storage.get('saifWarInventory','{}')) || {}} catch {inventory = {}};
   const $ = id => document.getElementById(id);
   const tr = key => WAR_I18N[lang][key] ?? WAR_I18N.en[key] ?? key;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -48,8 +61,8 @@
   })[lang] || 'Clear the planned targets while keeping current levels?';
   const current = item => Math.max(0,Math.min(item.maxLevel,Number(progress[item.id]) || 0));
   const target = item => Math.max(current(item),Math.min(item.maxLevel,targets[item.id] === undefined ? (item.group && advancedSelected[item.id] ? item.maxLevel : current(item)) : (Number(targets[item.id])||0)));
-  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets))}};
-  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));if(item.group){advancedSelected[item.id]=targets[item.id]>current(item);localStorage.setItem('saifWarAdvancedSelected',JSON.stringify(advancedSelected))}};
+  const saveProgress = (item,level) => {progress[item.id]=Math.max(0,Math.min(item.maxLevel,Number(level)||0));storage.set('saifWarAcademyProgress',JSON.stringify(progress));if(Number(targets[item.id])<current(item)){targets[item.id]=current(item);storage.set('saifWarAcademyTargets',JSON.stringify(targets))}};
+  const saveTarget = (item,level) => {targets[item.id]=Math.max(current(item),Math.min(item.maxLevel,Number(level)||0));storage.set('saifWarAcademyTargets',JSON.stringify(targets));if(item.group){advancedSelected[item.id]=targets[item.id]>current(item);storage.set('saifWarAdvancedSelected',JSON.stringify(advancedSelected))}};
   const duration = seconds => {
     const minutes = Math.max(0,Math.ceil(seconds/60));
     const day=Math.floor(minutes/1440),hour=Math.floor(minutes%1440/60),minute=minutes%60;
@@ -65,26 +78,34 @@
     return Math.max(0,parseAmount(digits));
   };
   const setLanguage = next => {
-    lang = languages.includes(next) ? next : 'ar';
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.title = `${tr('title')} | SaifKS`;
-    $('language').value = lang;
-    document.querySelectorAll('[data-t]').forEach(el => {
-      const value = tr(el.dataset.t);
-      if (el.id === 'pageTitle') {const split=value.lastIndexOf(' ');el.innerHTML=split>0?`${esc(value.slice(0,split))} <em>${esc(value.slice(split+1))}</em>`:`<em>${esc(value)}</em>`;}
-      else el.textContent = value;
-    });
-    $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
-    $('homeLink').href = '../index.html?lang=' + lang;
-    $('homeBtn').href = '../index.html?lang=' + lang;
-    localStorage.setItem('saifksLanguage',lang);
-    const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
-    if (data) {
-      renderInventory();
-      render();
+    try {
+      lang = languages.includes(next) ? next : 'ar';
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.title = `${tr('title')} | SaifKS`;
+      $('language').value = lang;
+      $('language').setAttribute('aria-label',tr('language'));
+      document.querySelector('[data-tree="basic"]')?.parentElement?.setAttribute('aria-label',tr('catalogue'));
+      $('filters').setAttribute('aria-label',tr('catalogueDesc'));
+      $('summaryScope').setAttribute('aria-label',tr('planTitle'));
+      $('researchSpeed').setAttribute('aria-label',tr('researchSpeed'));
+      document.querySelectorAll('[data-t]').forEach(el => {
+        const value = tr(el.dataset.t);
+        if (el.id === 'pageTitle') {const split=value.lastIndexOf(' ');el.innerHTML=split>0?`${esc(value.slice(0,split))} <em>${esc(value.slice(split+1))}</em>`:`<em>${esc(value)}</em>`;}
+        else el.textContent = value;
+      });
+      $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
+      $('homeLink').href = '../index.html?lang=' + lang;
+      $('homeBtn').href = '../index.html?lang=' + lang;
+      storage.set('saifksLanguage',lang);
+      const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
+      if (data) {
+        renderInventory();
+        render();
+      }
+    } finally {
+      finishBoot();
     }
-    document.documentElement.classList.remove('i18n-pending');
   };
   const renderFilters = () => {
     const groups = tree === 'basic' ? (viewMode === 'map' ? ['infantry','cavalry','archer'] : ['all','infantry','cavalry','archer']) : ['all','special','economy','capacity','combat'];
@@ -237,7 +258,7 @@
   $('summaryScope').addEventListener('click',e=>{const button=e.target.closest('[data-scope]');if(!button)return;summaryScope=button.dataset.scope;renderSummary()});
   $('toggleResources').addEventListener('click',()=>{showAllResources=!showAllResources;renderSummary()});
   const feedback = key => {$('planFeedback').textContent=tr(key)};
-  const persistPlan=()=>{localStorage.setItem('saifWarAcademyTargets',JSON.stringify(targets));localStorage.setItem('saifWarAdvancedSelected',JSON.stringify(advancedSelected))};
+  const persistPlan=()=>{storage.set('saifWarAcademyTargets',JSON.stringify(targets));storage.set('saifWarAdvancedSelected',JSON.stringify(advancedSelected))};
   $('clearPlan').addEventListener('click',()=>{
     if(!data||!window.confirm(clearPlanPrompt()))return;
     targets={};advancedSelected={};persistPlan();feedback('planCleared');render();
@@ -245,9 +266,9 @@
   $('resetAll').addEventListener('click',()=>{
     if(!data||!window.confirm(tr('confirmResetAll')))return;
     progress={};targets={};advancedSelected={};inventory={};
-    localStorage.setItem('saifWarAcademyProgress','{}');persistPlan();
-    localStorage.setItem('saifWarInventory','{}');localStorage.setItem('saifWarResearchSpeed','0');
-    localStorage.setItem('saifWarAvailableSpeedups','{}');
+    storage.set('saifWarAcademyProgress','{}');persistPlan();
+    storage.set('saifWarInventory','{}');storage.set('saifWarResearchSpeed','0');
+    storage.set('saifWarAvailableSpeedups','{}');
     $('researchSpeed').value='0';
     for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value='0';
     renderInventory();render();feedback('everythingCleared');
@@ -262,17 +283,17 @@
       setTimeout(()=>$('copySummary').textContent=tr('copySummary'),2200);
     }catch{$('copySummary').textContent=tr('copyFailed')}
   });
-  $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);localStorage.setItem('saifWarResearchSpeed',String(speed));renderSummary()});
-  $('inventoryResources').addEventListener('input',e=>{const input=e.target.closest('[data-inventory]');if(!input)return;inventory[input.dataset.inventory]=input.value;localStorage.setItem('saifWarInventory',JSON.stringify(inventory));renderSummary()});
+  $('researchSpeed').addEventListener('input',()=>{const speed=Math.max(0,Math.min(1000,Number($('researchSpeed').value)||0));if(Number($('researchSpeed').value)>1000||Number($('researchSpeed').value)<0)$('researchSpeed').value=String(speed);storage.set('saifWarResearchSpeed',String(speed));renderSummary()});
+  $('inventoryResources').addEventListener('input',e=>{const input=e.target.closest('[data-inventory]');if(!input)return;inventory[input.dataset.inventory]=input.value;storage.set('saifWarInventory',JSON.stringify(inventory));renderSummary()});
   $('search').addEventListener('input',()=>{page=1;if(tree==='basic'){viewMode=$('search').value.trim()?'list':'map';filter=viewMode==='map'?basicBranch:'all'}render();});
   $('clearSearch').addEventListener('click',()=>{$('search').value='';page=1;if(tree==='basic'){viewMode='map';filter=basicBranch}render();$('search').focus()});
   $('language').addEventListener('change',e=>setLanguage(e.target.value));
   const changeLevel=e=>{const control=e.target.closest('[data-current],[data-target]');if(!control)return;const item=data[tree].find(x=>x.id===(control.dataset.current||control.dataset.target));if(!item)return;selectedId=item.id;$('planFeedback').textContent='';if(control.dataset.current)saveProgress(item,control.value);else saveTarget(item,control.value);syncMapLevels(item)};
   $('map').addEventListener('change',changeLevel);
   $('results').addEventListener('change',changeLevel);
-  for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
-  $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
-  try{const saved=JSON.parse(localStorage.getItem('saifWarAvailableSpeedups')||'{}');for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
+  for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}storage.set('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
+  $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(storage.get('saifWarResearchSpeed','0'))||0)));
+  try{const saved=JSON.parse(storage.get('saifWarAvailableSpeedups','{}'));for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
   setLanguage(lang);
   fetch('data.json?v=17').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;renderInventory();render()}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
 })();
