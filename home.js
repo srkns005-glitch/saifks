@@ -27,7 +27,7 @@
     {title:'groupHeroes',description:'groupHeroesDesc',tools:[
       {name:'heroTitle',description:'heroDesc',action:'openHeroes',icon:'hero',path:'hero-center/index.html'},
       {name:'heroGearTitle',description:'heroGearDesc',action:'openHeroGear',icon:'shield',path:'hero-gear-center/index.html?v=hero-gear-v31-whole-number-inputs-20260930'},
-      {name:'mastersTitle',description:'mastersDesc',action:'openMasters',icon:'star',path:'masters/index.html?v=masters-20260930-final'}
+      {name:'mastersTitle',description:'mastersDesc',action:'openMasters',icon:'star',path:'masters/index.html?v=masters-20260930-cleanup-1'}
     ]}
   ];
   const supported = Object.keys(translations);
