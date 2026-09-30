@@ -1,6 +1,6 @@
 {
   "project": "SaifKS Masters Planner",
-  "build": "masters-20260930-final",
+  "build": "masters-20260930-cleanup-1",
   "updated": "2026-09-30",
   "entry": "index.html",
   "assets": {
@@ -46,6 +46,9 @@
     "Home link uses a versioned page URL",
     "CSS and application code are separated from index.html",
     "Legacy forced CSS overrides were removed after responsive regression testing",
+    "Retired V2 and V3 preview layers were removed and active rules consolidated",
+    "Arabic percentage values are isolated so their visual order stays correct",
+    "GitHub Pages actions were updated to Node.js 24-compatible major versions",
     "Material images are resized for web delivery",
     "Unused legacy images and empty placeholder files are removed"
   ]
