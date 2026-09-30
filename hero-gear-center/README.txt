@@ -1,10 +1,10 @@
 SaifKS Hero Gear & Exclusive Weapon Calculator
-Build: hero-gear-v30-source-data-20260930
+Build: hero-gear-v31-stable-language-20260930
 
 Runtime files:
 - index.html: stable page, translations and the single embedded gear database.
-- hero-gear-v28.js: audited calculations, state migration, accessibility and interaction fixes.
-- hero-gear-v28.css: responsive visual refinements.
+- hero-gear-v31.js: audited calculations, state migration, accessibility and interaction fixes.
+- hero-gear-v31.css: responsive visual refinements.
 
 Verified behavior:
 - Hero Gear Enhancement levels 0-200.
@@ -15,8 +15,9 @@ Verified behavior:
 - Changing any gear or mastery level updates the summary automatically; no add/update action is required.
 - Correct XP values are stored directly in the embedded database; no runtime correction is applied.
 - Level options are generated from each field's maximum instead of being repeated in the HTML.
-- Existing saved plans migrate automatically to the v28 state format.
+- Existing saved plans migrate automatically to the current state format.
 - Nine languages, persistent language selection and RTL support.
+- A language set in the page URL remains stable and is not changed by another open tab.
 - Keyboard-accessible reset dialog and labelled form controls.
 - Responsive layout for desktop, iPad and mobile.
 

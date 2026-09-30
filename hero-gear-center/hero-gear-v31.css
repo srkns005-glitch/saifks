@@ -1,0 +1,61 @@
+/* Hero Gear v31 — compact, responsive refinement layered over the stable base. */
+.exclusive-weapon-panel{
+  position:relative;
+  border-color:rgba(239,190,86,.42)!important;
+  background:linear-gradient(135deg,rgba(78,57,22,.22),rgba(8,28,45,.78))!important;
+}
+.exclusive-weapon-panel::before{
+  content:"⚙";
+  position:absolute;
+  inset-inline-end:12px;
+  top:10px;
+  color:#efbe56;
+  opacity:.85;
+}
+.exclusive-weapon-plan{border-color:rgba(239,190,86,.42)!important}
+.inventory-hub-head{cursor:pointer;user-select:none}
+.inventory-hub-head::after{content:"⌄";font-size:1.1rem;color:#efbe56;transition:transform .2s ease}
+.inventory-hub.open .inventory-hub-head::after{transform:rotate(180deg)}
+.inventory-hub:not(.open) .inventory-hub-body,
+.inventory-hub:not(.open)>.xp-total{display:none!important}
+#addPlan,#removePlan,.mobile-plan-action{display:none!important}
+.plan-actions{display:none!important}
+.plan-action-hint{
+  margin-top:10px!important;
+  padding:9px 11px;
+  border:1px solid rgba(79,211,154,.22);
+  border-radius:10px;
+  background:rgba(79,211,154,.07);
+  color:#93dfbd!important;
+  text-align:center;
+}
+
+@media (min-width:1024px){
+  .layout{grid-template-columns:minmax(0,1.03fr) minmax(430px,.97fr)!important;gap:18px!important}
+  .stack.left,.stack.right{min-width:0}
+  .upgrade-sections{gap:12px!important}
+  .inventory-hub .inventory-hub-body{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+@media (max-width:900px){
+  .layout{gap:12px!important}
+  .upgrade-sections{gap:9px!important}
+  .exclusive-weapon-panel{grid-column:1/-1}
+}
+
+@media (max-width:720px){
+  .hero{padding-block:18px!important}
+  .hero h1{font-size:clamp(1.4rem,7vw,2rem)!important}
+  .workflow{margin-block:8px 12px!important}
+  .inventory-hub{order:3;margin:4px 0 10px!important}
+  .inventory-hub-head{min-height:48px!important}
+  .inventory-hub-body{grid-template-columns:1fr!important}
+  .exclusive-weapon-panel{padding:12px!important}
+  .exclusive-weapon-panel .pair{grid-template-columns:1fr 28px 1fr!important}
+  .card .pad{padding:12px!important}
+}
+
+@media (max-width:380px){
+  .exclusive-weapon-panel .pair{grid-template-columns:1fr!important}
+  .exclusive-weapon-panel .arrow{transform:rotate(90deg)}
+}
