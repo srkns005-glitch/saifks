@@ -1,156 +1,52 @@
 {
-  "project": "SaifKS Masters Complete Professional",
-  "all_files_in_one_folder": true,
-  "files": [
-    "copper-horn.png",
-    "elite-spices.png",
-    "guinevere.png",
-    "hero-cassia.png",
-    "hero-wilson.png",
-    "index.html",
-    "master-emblem.png",
-    "masters-manuscript.png",
-    "pan.png",
-    "roman.png",
-    "silver-goblet.png",
-    "valora.png"
-  ],
-  "removed_unused_files": [
-    "profiles.html",
-    "hero-guinevere.png",
-    "cassia.html",
-    "hero-pan.png",
-    "valora.html",
-    "wilson.html",
-    "guinevere.html",
-    "hero-roman.png",
-    "hero-valora.png",
-    "pan.html",
-    "index2.html",
-    "roman.html"
-  ],
-  "javascript_errors": [],
-  "missing_local_references": [],
-  "duplicate_ids": [],
-  "preserved": {
-    "masters": 6,
+  "project": "SaifKS Masters Planner",
+  "build": "masters-20260930-final",
+  "updated": "2026-09-30",
+  "entry": "index.html",
+  "assets": {
+    "styles": "styles.css",
+    "application": "app.js",
+    "portraits": 8,
+    "material_images": 5,
+    "removed_unused_legacy_images": 6,
+    "removed_empty_files": ["Q.html"]
+  },
+  "content": {
+    "masters": 8,
+    "skills": 32,
     "affinity_levels_per_master": 100,
-    "skills_per_master": 4,
-    "languages": 9,
+    "languages": 9
+  },
+  "verified": {
+    "all_master_calculations": true,
+    "all_skill_calculations": true,
     "persistence": true,
-    "copy_summary": true,
-    "reset": true
+    "language_refresh": true,
+    "desktop_layout": true,
+    "tablet_layout": true,
+    "mobile_layout": true,
+    "duplicate_ids": 0,
+    "missing_local_references": 0,
+    "console_errors": 0
   },
-  "fixed": [
-    "floating summary removed",
-    "summary made static",
-    "summary converted to table",
-    "two master tabs per row",
-    "language blank refresh removed",
-    "saved master restored before first paint",
-    "Cassia and Wilson image paths fixed",
-    "unused duplicate pages and assets removed",
-    "responsive glass design added"
-  ],
-  "layoutFix": {
-    "summaryBeforeFooter": true,
-    "largeGapRemoved": true,
-    "javascriptErrors": [],
-    "missingReferences": [],
-    "duplicateIds": []
-  },
-  "layoutFixV2": {
-    "summaryInsideLayoutAfterMain": true,
-    "footerAfterLayout": true,
-    "largeVerticalGapRemoved": true,
-    "order": [
-      "main",
-      "summary",
-      "footer"
+  "data_review": {
+    "valora_skill_sequences": "verified",
+    "reviewed_on": "2026-09-30",
+    "references": [
+      "https://kingshotdata.com/masters/valora/",
+      "https://www.kingshot.wiki/masters/valora"
     ]
   },
-  "romanMaterialsFix": {
-    "fixed": true,
-    "details": "Roman now uses the same translated +10, +100 and +1,000 Affinity labels as the other masters."
-  },
-  "iphoneSummaryFix": {
-    "horizontalScrollRemoved": true,
-    "mobileLayout": "Each material appears as a compact card with Available, Required and Remaining columns.",
-    "languagesSupported": 9
-  },
-  "footerFix": {
-    "youtubeUrl": "https://www.youtube.com/@Saifkshot",
-    "compactHeight": true,
-    "singleLine": true
-  },
-  "refreshFlickerAudit": {
-    "before": {
-      "lang_loading_add_calls": 0,
-      "lang_loading_opacity_zero_rules": 0,
-      "timeouts": 1,
-      "mutation_observers": 1,
-      "dom_content_loaded": 1,
-      "pageshow_listeners": 1,
-      "expert_default_valora_refs": 4
-    },
-    "after": {
-      "lang_loading_add_calls": 0,
-      "lang_loading_opacity_zero_rules": 0,
-      "timeouts": 1,
-      "mutation_observers": 1,
-      "refresh_bootstrap_count": 1,
-      "ready_marker_count": 1
-    },
-    "fixed": [
-      "body is never hidden during refresh",
-      "saved language is applied before first paint",
-      "saved master is restored before visible rendering",
-      "first-render transitions are temporarily disabled",
-      "obsolete language fallback timer removed",
-      "duplicate identical script blocks removed"
-    ],
-    "javascriptErrors": [],
-    "duplicateIds": []
-  },
-  "refreshFlickerFixV2": {
-    "singleBootstrap": true,
-    "singleBootShell": true,
-    "stackedRefreshScriptsRemoved": true,
-    "languageAppliedBeforeBody": true,
-    "pageRevealedAfterMainApplyLang": true,
-    "whiteBlankPrevented": true
-  },
-  "singleInitFix": {
-    "before": {
-      "applyLang_calls": 3,
-      "fillAffinity_calls": 1,
-      "fillSkill_calls": 2,
-      "renderTabs_calls": 2,
-      "updateExpertChrome_calls": 1,
-      "update_calls": 3
-    },
-    "after": {
-      "applyLang_calls": 3,
-      "fillAffinity_calls": 0,
-      "fillSkill_calls": 1,
-      "renderTabs_calls": 1,
-      "updateExpertChrome_calls": 0,
-      "update_calls": 2,
-      "init_calls": 1
-    },
-    "applyLangTranslationOnly": true,
-    "singleGuardedInit": true,
-    "bootShellRemoved": true
-  },
-  "singleInitFixV2": {
-    "single_init_call": true,
-    "guarded_init": true,
-    "applyLang_has_no_fillAffinity": true,
-    "applyLang_has_no_fillSkill": true,
-    "applyLang_has_no_renderTabs": true,
-    "applyLang_has_no_updateExpertChrome": true,
-    "applyLang_has_no_update": true,
-    "init_has_render_sequence": true,
-    "javascript_errors": 0
-  }
+  "fixes": [
+    "Narrow mobile header no longer clips or overlaps",
+    "Material inputs accept non-negative whole numbers only",
+    "Arabic and Persian digits are normalized",
+    "Language remains visible in the URL after refresh and switching",
+    "All level selectors have explicit accessible labels",
+    "Home link uses a versioned page URL",
+    "CSS and application code are separated from index.html",
+    "Legacy forced CSS overrides were removed after responsive regression testing",
+    "Material images are resized for web delivery",
+    "Unused legacy images and empty placeholder files are removed"
+  ]
 }
