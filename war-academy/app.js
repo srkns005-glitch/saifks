@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const languages = Object.keys(WAR_I18N);
-  const requested = new URLSearchParams(location.search).get('lang');
+  const requested = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
   let lang = languages.includes(requested) ? requested : (languages.includes(localStorage.getItem('saifksLanguage')) ? localStorage.getItem('saifksLanguage') : 'ar');
   let tree = 'basic', filter = 'infantry', basicBranch = 'infantry', viewMode = 'map', summaryScope = 'all', page = 1, data, latestSummary = '';
   let progress = {}, targets = {}, selectedId = null, advancedSelected = {}, inventory = {};
@@ -65,7 +65,7 @@
     return Math.max(0,parseAmount(digits));
   };
   const setLanguage = next => {
-    lang = next;
+    lang = languages.includes(next) ? next : 'ar';
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.title = `${tr('title')} | SaifKS`;
@@ -80,8 +80,10 @@
     $('homeBtn').href = '../index.html?lang=' + lang;
     localStorage.setItem('saifksLanguage',lang);
     const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
-    renderInventory();
-    render();
+    if (data) {
+      renderInventory();
+      render();
+    }
   };
   const renderFilters = () => {
     const groups = tree === 'basic' ? (viewMode === 'map' ? ['infantry','cavalry','archer'] : ['all','infantry','cavalry','archer']) : ['all','special','economy','capacity','combat'];
@@ -270,5 +272,6 @@
   for(const id of ['speedDays','speedHours','speedMinutes'])$(id).addEventListener('input',()=>{const values={};for(const field of ['speedDays','speedHours','speedMinutes']){const input=$(field);if(Number(input.value)<0)input.value='0';values[field]=Math.max(0,Number(input.value)||0)}localStorage.setItem('saifWarAvailableSpeedups',JSON.stringify(values));renderSummary()});
   $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(localStorage.getItem('saifWarResearchSpeed'))||0)));
   try{const saved=JSON.parse(localStorage.getItem('saifWarAvailableSpeedups')||'{}');for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
-  fetch('data.json?v=17').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;setLanguage(lang)}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
+  setLanguage(lang);
+  fetch('data.json?v=17').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;renderInventory();render()}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
 })();
