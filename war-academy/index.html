@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1423">
   <meta name="description" content="دليل أبحاث أكاديمية الحرب في Kingshot، التقنيات الأساسية والمتقدمة وتكاليف تطويرها.">
-  <meta name="saifks-build" content="war-academy-complete-tree-names-20260930">
+  <meta name="saifks-build" content="war-academy-stable-refresh-20261001">
   <script>
     (() => {
+      document.documentElement.classList.add('i18n-pending');
+      try { history.scrollRestoration = 'manual'; } catch {}
+      window.scrollTo(0, 0);
       const supported = ['en','ar','fr','es','de','tr','ko','ja','zh'];
-      const requested = new URLSearchParams(location.search).get('lang');
-      const saved = localStorage.getItem('saifksLanguage');
+      const requested = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
+      let saved = null;
+      try { saved = localStorage.getItem('saifksLanguage'); } catch {}
       const language = supported.includes(requested) ? requested : (supported.includes(saved) ? saved : 'ar');
       document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
       document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     })();
   </script>
+  <style>
+    html{background:#0b1423}
+    html.i18n-pending body{visibility:hidden}
+  </style>
+  <noscript><style>html.i18n-pending body{visibility:visible}</style></noscript>
   <title>أكاديمية الحرب | SaifKS</title>
   <link rel="icon" href="../logo.png">
   <link rel="stylesheet" href="styles.css?v=31-complete-tree-names-20260930">
@@ -46,5 +55,5 @@
     </section>
   </main>
   <footer class="research-footer" aria-label="SaifKS footer"><div class="research-footer-inner"><div><strong>SaifKS.com</strong> | <span>Built by Saif</span></div><a class="research-footer-youtube" href="https://www.youtube.com/@saifkshot" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶ YouTube</a></div></footer>
-  <script src="translations.js?v=19"></script><script src="app.js?v=28-stable-language-20260930"></script>
+  <script src="translations.js?v=19"></script><script src="app.js?v=29-stable-refresh-20261001"></script>
 </body></html>
