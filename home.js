@@ -26,7 +26,7 @@
     ]},
     {title:'groupHeroes',description:'groupHeroesDesc',tools:[
       {name:'heroTitle',description:'heroDesc',action:'openHeroes',icon:'hero',path:'hero-center/index.html'},
-      {name:'heroGearTitle',description:'heroGearDesc',action:'openHeroGear',icon:'shield',path:'hero-gear-center/index.html?v=hero-gear-v31-translations-20260930'},
+      {name:'heroGearTitle',description:'heroGearDesc',action:'openHeroGear',icon:'shield',path:'hero-gear-center/index.html?v=hero-gear-v31-stable-language-20260930'},
       {name:'mastersTitle',description:'mastersDesc',action:'openMasters',icon:'star',path:'masters/index.html'}
     ]}
   ];
