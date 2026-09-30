@@ -78,33 +78,29 @@
     return Math.max(0,parseAmount(digits));
   };
   const setLanguage = next => {
-    try {
-      lang = languages.includes(next) ? next : 'ar';
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.title = `${tr('title')} | SaifKS`;
-      $('language').value = lang;
-      $('language').setAttribute('aria-label',tr('language'));
-      document.querySelector('[data-tree="basic"]')?.parentElement?.setAttribute('aria-label',tr('catalogue'));
-      $('filters').setAttribute('aria-label',tr('catalogueDesc'));
-      $('summaryScope').setAttribute('aria-label',tr('planTitle'));
-      $('researchSpeed').setAttribute('aria-label',tr('researchSpeed'));
-      document.querySelectorAll('[data-t]').forEach(el => {
-        const value = tr(el.dataset.t);
-        if (el.id === 'pageTitle') {const split=value.lastIndexOf(' ');el.innerHTML=split>0?`${esc(value.slice(0,split))} <em>${esc(value.slice(split+1))}</em>`:`<em>${esc(value)}</em>`;}
-        else el.textContent = value;
-      });
-      $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
-      $('homeLink').href = '../index.html?lang=' + lang;
-      $('homeBtn').href = '../index.html?lang=' + lang;
-      storage.set('saifksLanguage',lang);
-      const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
-      if (data) {
-        renderInventory();
-        render();
-      }
-    } finally {
-      finishBoot();
+    lang = languages.includes(next) ? next : 'ar';
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = `${tr('title')} | SaifKS`;
+    $('language').value = lang;
+    $('language').setAttribute('aria-label',tr('language'));
+    document.querySelector('[data-tree="basic"]')?.parentElement?.setAttribute('aria-label',tr('catalogue'));
+    $('filters').setAttribute('aria-label',tr('catalogueDesc'));
+    $('summaryScope').setAttribute('aria-label',tr('planTitle'));
+    $('researchSpeed').setAttribute('aria-label',tr('researchSpeed'));
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const value = tr(el.dataset.t);
+      if (el.id === 'pageTitle') {const split=value.lastIndexOf(' ');el.innerHTML=split>0?`${esc(value.slice(0,split))} <em>${esc(value.slice(split+1))}</em>`:`<em>${esc(value)}</em>`;}
+      else el.textContent = value;
+    });
+    $('search').placeholder = tr('search'); $('search').setAttribute('aria-label',tr('search'));
+    $('homeLink').href = '../index.html?lang=' + lang;
+    $('homeBtn').href = '../index.html?lang=' + lang;
+    storage.set('saifksLanguage',lang);
+    const url = new URL(location.href); url.searchParams.set('lang',lang); history.replaceState(null,'',url);
+    if (data) {
+      renderInventory();
+      render();
     }
   };
   const renderFilters = () => {
@@ -295,5 +291,5 @@
   $('researchSpeed').value=String(Math.max(0,Math.min(1000,Number(storage.get('saifWarResearchSpeed','0'))||0)));
   try{const saved=JSON.parse(storage.get('saifWarAvailableSpeedups','{}'));for(const id of ['speedDays','speedHours','speedMinutes'])$(id).value=String(Math.max(0,Number(saved[id])||0))}catch{}
   setLanguage(lang);
-  fetch('data.json?v=17').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;renderInventory();render()}).catch(()=>{$('results').innerHTML='<div class="empty">Unable to load research data.</div>'});
+  fetch('data.json?v=18-atomic-render').then(response=>{if(!response.ok)throw new Error(response.status);return response.json()}).then(json=>{data=json;renderInventory();render()}).catch(()=>{$('results').innerHTML=`<div class="empty">${esc(tr('loadError') === 'loadError' ? 'Unable to load research data.' : tr('loadError'))}</div>`}).finally(finishBoot);
 })();
