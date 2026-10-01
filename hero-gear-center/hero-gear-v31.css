@@ -65,7 +65,12 @@ input[type="number"]::-webkit-outer-spin-button{
   .card .pad{padding:12px!important}
 }
 
+@media (max-width:640px){
+  [dir="rtl"] .pair .arrow{transform:rotate(-90deg)!important}
+}
+
 @media (max-width:380px){
   .exclusive-weapon-panel .pair{grid-template-columns:1fr!important}
   .exclusive-weapon-panel .arrow{transform:rotate(90deg)}
+  [dir="rtl"] .exclusive-weapon-panel .arrow{transform:rotate(-90deg)!important}
 }

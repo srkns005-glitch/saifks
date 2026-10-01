@@ -659,7 +659,7 @@ body{
 
 </style>
 <link rel="icon" href="../logo.png?v=hero-gear-v31">
-<link rel="stylesheet" href="hero-gear-v31.css?v=20260930-no-number-spinners">
+<link rel="stylesheet" href="hero-gear-v31.css?v=20261002-gear-mastery-sync">
 
 
 
@@ -768,4 +768,4 @@ const words={en:['My current resources','Saved automatically'],ar:['مواردي
 const hub=document.createElement('section');hub.className='inventory-hub';hub.innerHTML='<div class="inventory-hub-head"><h3 id="inventoryHubTitle"></h3><span id="inventorySaveBadge" class="inventory-save-badge"></span></div><div class="inventory-hub-body"></div>';const body=hub.querySelector('.inventory-hub-body');resourceCard.classList.add('inventory-resource-card');xpCard.classList.add('inventory-xp-card');const xpTotal=xpCard.querySelector('.xp-total');if(xpTotal)hub.querySelector('.inventory-hub-head').after(xpTotal);body.append(resourceCard,xpCard);document.querySelector('.unified-header').after(hub);optional.dataset.moved='true';optional.classList.add('open');if(toggle)toggle.setAttribute('aria-hidden','true');
 const sync=()=>{document.querySelector('#inventoryHubTitle').textContent=UX[lang]?.inventoryTitle||UX.en.inventoryTitle;document.querySelector('#inventorySaveBadge').textContent=UX[lang]?.savedAutomatically||UX.en.savedAutomatically};document.querySelector('#lang')?.addEventListener('change',()=>setTimeout(sync,0));sync()})();
 
-</script><script src="hero-gear-v31.js?v=20260930-whole-number-inputs"></script><!-- Build: hero-gear-v31-whole-number-inputs-20260930 --></body></html>
+</script><script src="hero-gear-v31.js?v=20261002-gear-mastery-sync"></script><!-- Build: hero-gear-v31-gear-mastery-sync-20261002 --></body></html>

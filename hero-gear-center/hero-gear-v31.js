@@ -1,6 +1,6 @@
 /* SaifKS Hero Gear v31: translations, stable language routing and automatic summary. */
 (() => {
-  const BUILD = 'hero-gear-v31-whole-number-inputs-20260930';
+  const BUILD = 'hero-gear-v31-gear-mastery-sync-20261002';
 
   requiredMastery = level => {
     if (level >= 200) return 15;
@@ -10,6 +10,19 @@
     if (level >= 120) return 11;
     if (level >= 101) return 10;
     return 0;
+  };
+
+  /* Use the in-game Arabic names for the two battle-stat scopes. */
+  Object.assign(T.ar, {
+    expedition: 'الحملة الاستكشافية',
+    conquest: 'الغزو'
+  });
+
+  /* A red gear level cannot have a forging level below its unlock gate. */
+  const legacyNormalize = normalize;
+  normalize = () => {
+    S.masteryC = Math.max(S.masteryC, requiredMastery(S.levelC));
+    legacyNormalize();
   };
 
   /* Migrate the old per-piece weapon values to one independent weapon plan. */
@@ -128,6 +141,10 @@
       selected.planned = selected.levelT > selected.levelC || selected.masteryT > selected.masteryC;
     }
     legacyRender();
+    document.querySelectorAll('.pair > .arrow').forEach(arrow => {
+      arrow.textContent = lang === 'ar' ? '←' : '→';
+      arrow.setAttribute('aria-hidden', 'true');
+    });
     const plans = activePlans();
     const weaponActive = S.widgetT > S.widgetC;
     ['#widgetC', '#widgetT'].forEach(selector => { $(selector).disabled = false; });
@@ -161,6 +178,15 @@
       };
     });
     saveState();
+  };
+
+  /* Selecting the current gear level also selects its minimum valid forging gate.
+     The player can still raise forging manually after that automatic value is set. */
+  $('#levelC').onchange = event => {
+    S.levelC = Number(event.target.value) || 0;
+    S.masteryC = requiredMastery(S.levelC);
+    S.masteryT = Math.max(S.masteryC, requiredMastery(S.levelT), S.masteryT);
+    render();
   };
 
   $('#addPlan').onclick = event => {
