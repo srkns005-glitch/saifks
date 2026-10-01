@@ -39,6 +39,14 @@ input[type="number"]::-webkit-outer-spin-button{
   color:#93dfbd!important;
   text-align:center;
 }
+#advancedToggle{display:none!important}
+#advancedBlock{display:block!important}
+#milestoneStatsRows:empty{display:none}
+.milestone-stat-row strong{display:grid;gap:3px}
+.milestone-stat-row strong span{font:inherit;text-align:start}
+.milestone-stat-row strong small{color:var(--muted);font-size:.56rem;font-weight:850;text-align:start}
+.milestone-stat-row[data-scope="expedition"] strong small{color:#79d8b0}
+.milestone-stat-row[data-scope="conquest"] strong small{color:#e7c66d}
 
 @media (min-width:1024px){
   .layout{grid-template-columns:minmax(0,1.03fr) minmax(430px,.97fr)!important;gap:18px!important}

@@ -1,6 +1,6 @@
 /* SaifKS Hero Gear v31: translations, stable language routing and automatic summary. */
 (() => {
-  const BUILD = 'hero-gear-v31-gear-mastery-sync-20261002';
+  const BUILD = 'hero-gear-v31-complete-stats-20261002';
 
   requiredMastery = level => {
     if (level >= 200) return 15;
@@ -120,6 +120,70 @@
     exclusivePanel.classList.add('exclusive-weapon-panel');
   }
 
+  /* Forging is part of the normal gear flow, so it must never be collapsed. */
+  const masteryPanel = $('#advancedBlock');
+  const masteryToggle = $('#advancedToggle');
+  const keepMasteryVisible = () => {
+    masteryPanel?.classList.add('open');
+    if (masteryToggle) {
+      masteryToggle.hidden = true;
+      masteryToggle.setAttribute('aria-hidden', 'true');
+      masteryToggle.setAttribute('tabindex', '-1');
+      masteryToggle.setAttribute('aria-expanded', 'true');
+    }
+  };
+  keepMasteryVisible();
+
+  /* Stage bonuses have different scopes and cannot be folded into Health or
+     Lethality. Show each accumulated bonus as its own total-stat row. */
+  const milestoneStatTotals = plans => {
+    const totals = new Map();
+    plans.forEach(plan => {
+      const currentPlus = Math.max(0, Number(plan.profile.levelC) - 100);
+      const targetPlus = Math.max(0, Number(plan.profile.levelT) - 100);
+      DB.imbuement_bonuses
+        .filter(bonus => bonus.troop_type === plan.troop && bonus.slot === plan.piece)
+        .forEach(bonus => {
+          const key = `${bonus.scope}|${bonus.stat}`;
+          const entry = totals.get(key) || {
+            scope: bonus.scope,
+            stat: bonus.stat,
+            troop: plan.troop,
+            current: 0,
+            target: 0
+          };
+          if (bonus.imbuement_plus <= currentPlus) entry.current += Number(bonus.bonus_percent) || 0;
+          if (bonus.imbuement_plus <= targetPlus) entry.target += Number(bonus.bonus_percent) || 0;
+          totals.set(key, entry);
+        });
+    });
+    return [...totals.values()].filter(entry => entry.current > 0 || entry.target > 0);
+  };
+
+  const renderMilestoneStatTotals = plans => {
+    const table = document.querySelector('.stats-total-table');
+    if (!table) return;
+    let host = $('#milestoneStatsRows');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'milestoneStatsRows';
+      table.appendChild(host);
+    }
+    const totals = milestoneStatTotals(plans);
+    host.innerHTML = totals.map(entry => {
+      const scope = entry.scope === 'expedition' ? tr('expedition') : tr('conquest');
+      const stat = statLabelFor(entry.stat, entry.troop);
+      const label = entry.scope === 'expedition' ? `${tr(entry.troop)} · ${stat}` : stat;
+      const gain = entry.target - entry.current;
+      return `<div class="stats-total-row milestone-stat-row" data-scope="${entry.scope}">
+        <strong><span>${label}</span><small>${scope}</small></strong>
+        <b>${fmt(entry.current)}%</b>
+        <b>${fmt(entry.target)}%</b>
+        <b class="stats-gain">+${fmt(gain)}%</b>
+      </div>`;
+    }).join('');
+  };
+
   const automaticSummaryText = {
     ar: 'تتحدث النتائج والملخص تلقائيًا عند تغيير أي مستوى.',
     en: 'Results and summary update automatically when any level changes.',
@@ -134,6 +198,7 @@
 
   const legacyRender = render;
   render = () => {
+    keepMasteryVisible();
     normalize();
     saveCurrentGearProfile();
     if (gearSelectionReady) {
@@ -141,11 +206,13 @@
       selected.planned = selected.levelT > selected.levelC || selected.masteryT > selected.masteryC;
     }
     legacyRender();
+    keepMasteryVisible();
     document.querySelectorAll('.pair > .arrow').forEach(arrow => {
       arrow.textContent = lang === 'ar' ? '←' : '→';
       arrow.setAttribute('aria-hidden', 'true');
     });
     const plans = activePlans();
+    renderMilestoneStatTotals(plans);
     const weaponActive = S.widgetT > S.widgetC;
     ['#widgetC', '#widgetT'].forEach(selector => { $(selector).disabled = false; });
     const validGear = S.levelT > S.levelC || S.masteryT > S.masteryC;

@@ -1,5 +1,5 @@
 SaifKS Hero Gear & Exclusive Weapon Calculator
-Build: hero-gear-v31-gear-mastery-sync-20261002
+Build: hero-gear-v31-complete-stats-20261002
 
 Runtime files:
 - index.html: stable page, translations and the single embedded gear database.
@@ -13,8 +13,10 @@ Verified behavior:
 - XP total 101-200: 501,050.
 - Level 100 requires no mastery; mastery 10 begins at level 101.
 - The current forging level automatically follows the minimum gate required by the selected current gear level.
+- The forging controls remain visible at all times and cannot be collapsed.
 - Arabic upgrade arrows follow the RTL reading direction.
 - Arabic milestone scopes use the in-game terms: الحملة الاستكشافية and الغزو.
+- Expedition and conquest milestone bonuses are included as separate rows in the total statistics preview.
 - Exclusive weapon widgets are calculated once in an independent plan.
 - Changing any gear or mastery level updates the summary automatically; no add/update action is required.
 - Correct XP values are stored directly in the embedded database; no runtime correction is applied.
