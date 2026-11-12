@@ -8,7 +8,7 @@
     "governor_charms_town_center_level": 25
   },
   "files": [
-    "governor_gear.json",
-    "governor_charms.json"
+    "governor_gear-v2.json",
+    "governor_charms-v2.json"
   ]
 }
