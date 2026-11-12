@@ -1,9 +1,9 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "game": "Kingshot",
   "dataset": "governor_charms",
   "generated_for": "SaifKS",
-  "source_note": "Transcribed from the user-provided Kingshot Wiki PDF/screenshots dated 2026-07-19.",
+  "source_note": "Upgrade stages cross-checked against Kingshot Optimizer and KingShot Toolkit on 2026-11-12.",
   "cost_interpretation": "Each level stores the material quantities displayed for upgrading to that level. Planner logic should sum levels after the current level through the target level.",
   "materials": {
     "charm_guides": {
@@ -50,7 +50,7 @@
         "charm_guides": 5,
         "charm_designs": 5
       },
-      "stat_total_percent": 9.0,
+      "stat_total_percent": 9,
       "power_total": 205700
     },
     {
@@ -60,7 +60,7 @@
         "charm_guides": 40,
         "charm_designs": 15
       },
-      "stat_total_percent": 12.0,
+      "stat_total_percent": 12,
       "power_total": 288000
     },
     {
@@ -70,7 +70,7 @@
         "charm_guides": 60,
         "charm_designs": 40
       },
-      "stat_total_percent": 16.0,
+      "stat_total_percent": 16,
       "power_total": 370000
     },
     {
@@ -80,7 +80,7 @@
         "charm_guides": 80,
         "charm_designs": 100
       },
-      "stat_total_percent": 19.0,
+      "stat_total_percent": 19,
       "power_total": 452000
     },
     {
@@ -90,178 +90,862 @@
         "charm_guides": 100,
         "charm_designs": 200
       },
-      "stat_total_percent": 25.0,
+      "stat_total_percent": 25,
       "power_total": 576000
+    },
+    {
+      "level": 5.1,
+      "id": "charm_05_step_1",
+      "materials": {
+        "charm_guides": 24,
+        "charm_designs": 60
+      },
+      "stat_total_percent": 26,
+      "power_total": 600800
+    },
+    {
+      "level": 5.2,
+      "id": "charm_05_step_2",
+      "materials": {
+        "charm_guides": 24,
+        "charm_designs": 60
+      },
+      "stat_total_percent": 27,
+      "power_total": 625600
+    },
+    {
+      "level": 5.3,
+      "id": "charm_05_step_3",
+      "materials": {
+        "charm_guides": 24,
+        "charm_designs": 60
+      },
+      "stat_total_percent": 28,
+      "power_total": 650400
+    },
+    {
+      "level": 5.4,
+      "id": "charm_05_step_4",
+      "materials": {
+        "charm_guides": 24,
+        "charm_designs": 60
+      },
+      "stat_total_percent": 29,
+      "power_total": 675200
     },
     {
       "level": 6,
       "id": "charm_06",
       "materials": {
-        "charm_guides": 120,
-        "charm_designs": 300
+        "charm_guides": 24,
+        "charm_designs": 60
       },
-      "stat_total_percent": 30.0,
+      "stat_total_percent": 30,
       "power_total": 700000
+    },
+    {
+      "level": 6.1,
+      "id": "charm_06_step_1",
+      "materials": {
+        "charm_guides": 28,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 31,
+      "power_total": 724800
+    },
+    {
+      "level": 6.2,
+      "id": "charm_06_step_2",
+      "materials": {
+        "charm_guides": 28,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 32,
+      "power_total": 749600
+    },
+    {
+      "level": 6.3,
+      "id": "charm_06_step_3",
+      "materials": {
+        "charm_guides": 28,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 33,
+      "power_total": 774400
+    },
+    {
+      "level": 6.4,
+      "id": "charm_06_step_4",
+      "materials": {
+        "charm_guides": 28,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 34,
+      "power_total": 799200
     },
     {
       "level": 7,
       "id": "charm_07",
       "materials": {
-        "charm_guides": 140,
-        "charm_designs": 400
+        "charm_guides": 28,
+        "charm_designs": 80
       },
-      "stat_total_percent": 35.0,
+      "stat_total_percent": 35,
       "power_total": 824000
+    },
+    {
+      "level": 7.1,
+      "id": "charm_07_step_1",
+      "materials": {
+        "charm_guides": 40,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 36,
+      "power_total": 848800
+    },
+    {
+      "level": 7.2,
+      "id": "charm_07_step_2",
+      "materials": {
+        "charm_guides": 40,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 37,
+      "power_total": 873600
+    },
+    {
+      "level": 7.3,
+      "id": "charm_07_step_3",
+      "materials": {
+        "charm_guides": 40,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 38,
+      "power_total": 898400
+    },
+    {
+      "level": 7.4,
+      "id": "charm_07_step_4",
+      "materials": {
+        "charm_guides": 40,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 39,
+      "power_total": 923200
     },
     {
       "level": 8,
       "id": "charm_08",
       "materials": {
-        "charm_guides": 200,
-        "charm_designs": 400
+        "charm_guides": 40,
+        "charm_designs": 80
       },
-      "stat_total_percent": 40.0,
+      "stat_total_percent": 40,
       "power_total": 948000
+    },
+    {
+      "level": 8.1,
+      "id": "charm_08_step_1",
+      "materials": {
+        "charm_guides": 60,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 41,
+      "power_total": 972800
+    },
+    {
+      "level": 8.2,
+      "id": "charm_08_step_2",
+      "materials": {
+        "charm_guides": 60,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 42,
+      "power_total": 997600
+    },
+    {
+      "level": 8.3,
+      "id": "charm_08_step_3",
+      "materials": {
+        "charm_guides": 60,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 43,
+      "power_total": 1022400
+    },
+    {
+      "level": 8.4,
+      "id": "charm_08_step_4",
+      "materials": {
+        "charm_guides": 60,
+        "charm_designs": 80
+      },
+      "stat_total_percent": 44,
+      "power_total": 1047200
     },
     {
       "level": 9,
       "id": "charm_09",
       "materials": {
-        "charm_guides": 300,
-        "charm_designs": 400
+        "charm_guides": 60,
+        "charm_designs": 80
       },
-      "stat_total_percent": 45.0,
+      "stat_total_percent": 45,
       "power_total": 1072000
+    },
+    {
+      "level": 9.1,
+      "id": "charm_09_step_1",
+      "materials": {
+        "charm_guides": 84,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 46,
+      "power_total": 1096800
+    },
+    {
+      "level": 9.2,
+      "id": "charm_09_step_2",
+      "materials": {
+        "charm_guides": 84,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 47,
+      "power_total": 1121600
+    },
+    {
+      "level": 9.3,
+      "id": "charm_09_step_3",
+      "materials": {
+        "charm_guides": 84,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 48,
+      "power_total": 1146400
+    },
+    {
+      "level": 9.4,
+      "id": "charm_09_step_4",
+      "materials": {
+        "charm_guides": 84,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 49,
+      "power_total": 1171200
     },
     {
       "level": 10,
       "id": "charm_10",
       "materials": {
-        "charm_guides": 420,
-        "charm_designs": 420
+        "charm_guides": 84,
+        "charm_designs": 84
       },
-      "stat_total_percent": 50.0,
+      "stat_total_percent": 50,
       "power_total": 1196000
+    },
+    {
+      "level": 10.1,
+      "id": "charm_10_step_1",
+      "materials": {
+        "charm_guides": 112,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 51,
+      "power_total": 1220800
+    },
+    {
+      "level": 10.2,
+      "id": "charm_10_step_2",
+      "materials": {
+        "charm_guides": 112,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 52,
+      "power_total": 1245600
+    },
+    {
+      "level": 10.3,
+      "id": "charm_10_step_3",
+      "materials": {
+        "charm_guides": 112,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 53,
+      "power_total": 1270400
+    },
+    {
+      "level": 10.4,
+      "id": "charm_10_step_4",
+      "materials": {
+        "charm_guides": 112,
+        "charm_designs": 84
+      },
+      "stat_total_percent": 54,
+      "power_total": 1295200
     },
     {
       "level": 11,
       "id": "charm_11",
       "materials": {
-        "charm_guides": 560,
-        "charm_designs": 420
+        "charm_guides": 112,
+        "charm_designs": 84
       },
-      "stat_total_percent": 55.0,
+      "stat_total_percent": 55,
       "power_total": 1320000
+    },
+    {
+      "level": 11.1,
+      "id": "charm_11_step_1",
+      "materials": {
+        "charm_guides": 116,
+        "charm_designs": 120
+      },
+      "stat_total_percent": 55.8,
+      "power_total": 1339200
+    },
+    {
+      "level": 11.2,
+      "id": "charm_11_step_2",
+      "materials": {
+        "charm_guides": 116,
+        "charm_designs": 120
+      },
+      "stat_total_percent": 56.6,
+      "power_total": 1358400
+    },
+    {
+      "level": 11.3,
+      "id": "charm_11_step_3",
+      "materials": {
+        "charm_guides": 116,
+        "charm_designs": 120
+      },
+      "stat_total_percent": 57.4,
+      "power_total": 1377600
+    },
+    {
+      "level": 11.4,
+      "id": "charm_11_step_4",
+      "materials": {
+        "charm_guides": 116,
+        "charm_designs": 120
+      },
+      "stat_total_percent": 58.2,
+      "power_total": 1396800
     },
     {
       "level": 12,
       "id": "charm_12",
       "materials": {
-        "charm_guides": 580,
-        "charm_designs": 600
+        "charm_guides": 116,
+        "charm_designs": 120
       },
-      "stat_total_percent": 59.0,
+      "stat_total_percent": 59,
       "power_total": 1416000
+    },
+    {
+      "level": 12.1,
+      "id": "charm_12_step_1",
+      "materials": {
+        "charm_guides": 122,
+        "charm_designs": 156
+      },
+      "stat_total_percent": 59.8,
+      "power_total": 1435200
+    },
+    {
+      "level": 12.2,
+      "id": "charm_12_step_2",
+      "materials": {
+        "charm_guides": 122,
+        "charm_designs": 156
+      },
+      "stat_total_percent": 60.6,
+      "power_total": 1454400
+    },
+    {
+      "level": 12.3,
+      "id": "charm_12_step_3",
+      "materials": {
+        "charm_guides": 122,
+        "charm_designs": 156
+      },
+      "stat_total_percent": 61.4,
+      "power_total": 1473600
+    },
+    {
+      "level": 12.4,
+      "id": "charm_12_step_4",
+      "materials": {
+        "charm_guides": 122,
+        "charm_designs": 156
+      },
+      "stat_total_percent": 62.2,
+      "power_total": 1492800
     },
     {
       "level": 13,
       "id": "charm_13",
       "materials": {
-        "charm_guides": 610,
-        "charm_designs": 780
+        "charm_guides": 122,
+        "charm_designs": 156
       },
-      "stat_total_percent": 63.0,
+      "stat_total_percent": 63,
       "power_total": 1512000
+    },
+    {
+      "level": 13.1,
+      "id": "charm_13_step_1",
+      "materials": {
+        "charm_guides": 129,
+        "charm_designs": 192
+      },
+      "stat_total_percent": 63.8,
+      "power_total": 1531200
+    },
+    {
+      "level": 13.2,
+      "id": "charm_13_step_2",
+      "materials": {
+        "charm_guides": 129,
+        "charm_designs": 192
+      },
+      "stat_total_percent": 64.6,
+      "power_total": 1550400
+    },
+    {
+      "level": 13.3,
+      "id": "charm_13_step_3",
+      "materials": {
+        "charm_guides": 129,
+        "charm_designs": 192
+      },
+      "stat_total_percent": 65.4,
+      "power_total": 1569600
+    },
+    {
+      "level": 13.4,
+      "id": "charm_13_step_4",
+      "materials": {
+        "charm_guides": 129,
+        "charm_designs": 192
+      },
+      "stat_total_percent": 66.2,
+      "power_total": 1588800
     },
     {
       "level": 14,
       "id": "charm_14",
       "materials": {
-        "charm_guides": 645,
-        "charm_designs": 960
+        "charm_guides": 129,
+        "charm_designs": 192
       },
-      "stat_total_percent": 67.0,
+      "stat_total_percent": 67,
       "power_total": 1608000
+    },
+    {
+      "level": 14.1,
+      "id": "charm_14_step_1",
+      "materials": {
+        "charm_guides": 137,
+        "charm_designs": 228
+      },
+      "stat_total_percent": 67.8,
+      "power_total": 1627200
+    },
+    {
+      "level": 14.2,
+      "id": "charm_14_step_2",
+      "materials": {
+        "charm_guides": 137,
+        "charm_designs": 228
+      },
+      "stat_total_percent": 68.6,
+      "power_total": 1646400
+    },
+    {
+      "level": 14.3,
+      "id": "charm_14_step_3",
+      "materials": {
+        "charm_guides": 137,
+        "charm_designs": 228
+      },
+      "stat_total_percent": 69.4,
+      "power_total": 1665600
+    },
+    {
+      "level": 14.4,
+      "id": "charm_14_step_4",
+      "materials": {
+        "charm_guides": 137,
+        "charm_designs": 228
+      },
+      "stat_total_percent": 70.2,
+      "power_total": 1684800
     },
     {
       "level": 15,
       "id": "charm_15",
       "materials": {
-        "charm_guides": 685,
-        "charm_designs": 1140
+        "charm_guides": 137,
+        "charm_designs": 228
       },
-      "stat_total_percent": 71.0,
+      "stat_total_percent": 71,
       "power_total": 1704000
+    },
+    {
+      "level": 15.1,
+      "id": "charm_15_step_1",
+      "materials": {
+        "charm_guides": 146,
+        "charm_designs": 264
+      },
+      "stat_total_percent": 71.8,
+      "power_total": 1723200
+    },
+    {
+      "level": 15.2,
+      "id": "charm_15_step_2",
+      "materials": {
+        "charm_guides": 146,
+        "charm_designs": 264
+      },
+      "stat_total_percent": 72.6,
+      "power_total": 1742400
+    },
+    {
+      "level": 15.3,
+      "id": "charm_15_step_3",
+      "materials": {
+        "charm_guides": 146,
+        "charm_designs": 264
+      },
+      "stat_total_percent": 73.4,
+      "power_total": 1761600
+    },
+    {
+      "level": 15.4,
+      "id": "charm_15_step_4",
+      "materials": {
+        "charm_guides": 146,
+        "charm_designs": 264
+      },
+      "stat_total_percent": 74.2,
+      "power_total": 1780800
     },
     {
       "level": 16,
       "id": "charm_16",
       "materials": {
-        "charm_guides": 730,
-        "charm_designs": 1320
+        "charm_guides": 146,
+        "charm_designs": 264
       },
-      "stat_total_percent": 75.0,
+      "stat_total_percent": 75,
       "power_total": 1800000
+    },
+    {
+      "level": 16.1,
+      "id": "charm_16_step_1",
+      "materials": {
+        "charm_guides": 156,
+        "charm_designs": 300
+      },
+      "stat_total_percent": 75.8,
+      "power_total": 1819200
+    },
+    {
+      "level": 16.2,
+      "id": "charm_16_step_2",
+      "materials": {
+        "charm_guides": 156,
+        "charm_designs": 300
+      },
+      "stat_total_percent": 76.6,
+      "power_total": 1838400
+    },
+    {
+      "level": 16.3,
+      "id": "charm_16_step_3",
+      "materials": {
+        "charm_guides": 156,
+        "charm_designs": 300
+      },
+      "stat_total_percent": 77.4,
+      "power_total": 1857600
+    },
+    {
+      "level": 16.4,
+      "id": "charm_16_step_4",
+      "materials": {
+        "charm_guides": 156,
+        "charm_designs": 300
+      },
+      "stat_total_percent": 78.2,
+      "power_total": 1876800
     },
     {
       "level": 17,
       "id": "charm_17",
       "materials": {
-        "charm_guides": 780,
-        "charm_designs": 1500
+        "charm_guides": 156,
+        "charm_designs": 300
       },
-      "stat_total_percent": 79.0,
+      "stat_total_percent": 79,
       "power_total": 1896000
+    },
+    {
+      "level": 17.1,
+      "id": "charm_17_step_1",
+      "materials": {
+        "charm_guides": 167,
+        "charm_designs": 336
+      },
+      "stat_total_percent": 79.8,
+      "power_total": 1915200
+    },
+    {
+      "level": 17.2,
+      "id": "charm_17_step_2",
+      "materials": {
+        "charm_guides": 167,
+        "charm_designs": 336
+      },
+      "stat_total_percent": 80.6,
+      "power_total": 1934400
+    },
+    {
+      "level": 17.3,
+      "id": "charm_17_step_3",
+      "materials": {
+        "charm_guides": 167,
+        "charm_designs": 336
+      },
+      "stat_total_percent": 81.4,
+      "power_total": 1953600
+    },
+    {
+      "level": 17.4,
+      "id": "charm_17_step_4",
+      "materials": {
+        "charm_guides": 167,
+        "charm_designs": 336
+      },
+      "stat_total_percent": 82.2,
+      "power_total": 1972800
     },
     {
       "level": 18,
       "id": "charm_18",
       "materials": {
-        "charm_guides": 835,
-        "charm_designs": 1680
+        "charm_guides": 167,
+        "charm_designs": 336
       },
-      "stat_total_percent": 83.0,
+      "stat_total_percent": 83,
       "power_total": 1992000
+    },
+    {
+      "level": 18.1,
+      "id": "charm_18_step_1",
+      "materials": {
+        "charm_guides": 179,
+        "charm_designs": 372
+      },
+      "stat_total_percent": 83.8,
+      "power_total": 2011200
+    },
+    {
+      "level": 18.2,
+      "id": "charm_18_step_2",
+      "materials": {
+        "charm_guides": 179,
+        "charm_designs": 372
+      },
+      "stat_total_percent": 84.6,
+      "power_total": 2030400
+    },
+    {
+      "level": 18.3,
+      "id": "charm_18_step_3",
+      "materials": {
+        "charm_guides": 179,
+        "charm_designs": 372
+      },
+      "stat_total_percent": 85.4,
+      "power_total": 2049600
+    },
+    {
+      "level": 18.4,
+      "id": "charm_18_step_4",
+      "materials": {
+        "charm_guides": 179,
+        "charm_designs": 372
+      },
+      "stat_total_percent": 86.2,
+      "power_total": 2068800
     },
     {
       "level": 19,
       "id": "charm_19",
       "materials": {
-        "charm_guides": 895,
-        "charm_designs": 1860
+        "charm_guides": 179,
+        "charm_designs": 372
       },
-      "stat_total_percent": 87.0,
+      "stat_total_percent": 87,
       "power_total": 2088000
+    },
+    {
+      "level": 19.1,
+      "id": "charm_19_step_1",
+      "materials": {
+        "charm_guides": 192,
+        "charm_designs": 408
+      },
+      "stat_total_percent": 87.8,
+      "power_total": 2107200
+    },
+    {
+      "level": 19.2,
+      "id": "charm_19_step_2",
+      "materials": {
+        "charm_guides": 192,
+        "charm_designs": 408
+      },
+      "stat_total_percent": 88.6,
+      "power_total": 2126400
+    },
+    {
+      "level": 19.3,
+      "id": "charm_19_step_3",
+      "materials": {
+        "charm_guides": 192,
+        "charm_designs": 408
+      },
+      "stat_total_percent": 89.4,
+      "power_total": 2145600
+    },
+    {
+      "level": 19.4,
+      "id": "charm_19_step_4",
+      "materials": {
+        "charm_guides": 192,
+        "charm_designs": 408
+      },
+      "stat_total_percent": 90.2,
+      "power_total": 2164800
     },
     {
       "level": 20,
       "id": "charm_20",
       "materials": {
-        "charm_guides": 960,
-        "charm_designs": 2040
+        "charm_guides": 192,
+        "charm_designs": 408
       },
-      "stat_total_percent": 91.0,
+      "stat_total_percent": 91,
       "power_total": 2184000
+    },
+    {
+      "level": 20.1,
+      "id": "charm_20_step_1",
+      "materials": {
+        "charm_guides": 206,
+        "charm_designs": 444
+      },
+      "stat_total_percent": 91.8,
+      "power_total": 2203200
+    },
+    {
+      "level": 20.2,
+      "id": "charm_20_step_2",
+      "materials": {
+        "charm_guides": 206,
+        "charm_designs": 444
+      },
+      "stat_total_percent": 92.6,
+      "power_total": 2222400
+    },
+    {
+      "level": 20.3,
+      "id": "charm_20_step_3",
+      "materials": {
+        "charm_guides": 206,
+        "charm_designs": 444
+      },
+      "stat_total_percent": 93.4,
+      "power_total": 2241600
+    },
+    {
+      "level": 20.4,
+      "id": "charm_20_step_4",
+      "materials": {
+        "charm_guides": 206,
+        "charm_designs": 444
+      },
+      "stat_total_percent": 94.2,
+      "power_total": 2260800
     },
     {
       "level": 21,
       "id": "charm_21",
       "materials": {
-        "charm_guides": 1030,
-        "charm_designs": 2220
+        "charm_guides": 206,
+        "charm_designs": 444
       },
-      "stat_total_percent": 95.0,
+      "stat_total_percent": 95,
       "power_total": 2280000
+    },
+    {
+      "level": 21.1,
+      "id": "charm_21_step_1",
+      "materials": {
+        "charm_guides": 221,
+        "charm_designs": 480
+      },
+      "stat_total_percent": 95.8,
+      "power_total": 2299200
+    },
+    {
+      "level": 21.2,
+      "id": "charm_21_step_2",
+      "materials": {
+        "charm_guides": 221,
+        "charm_designs": 480
+      },
+      "stat_total_percent": 96.6,
+      "power_total": 2318400
+    },
+    {
+      "level": 21.3,
+      "id": "charm_21_step_3",
+      "materials": {
+        "charm_guides": 221,
+        "charm_designs": 480
+      },
+      "stat_total_percent": 97.4,
+      "power_total": 2337600
+    },
+    {
+      "level": 21.4,
+      "id": "charm_21_step_4",
+      "materials": {
+        "charm_guides": 221,
+        "charm_designs": 480
+      },
+      "stat_total_percent": 98.2,
+      "power_total": 2356800
     },
     {
       "level": 22,
       "id": "charm_22",
       "materials": {
-        "charm_guides": 1105,
-        "charm_designs": 2400
+        "charm_guides": 221,
+        "charm_designs": 480
       },
-      "stat_total_percent": 99.0,
+      "stat_total_percent": 99,
       "power_total": 2376000
     }
+  ],
+  "sources": [
+    "https://kingshotoptimizer.com/charms/references/",
+    "https://ks-toolkit.com/data/gear/governor-charms/"
   ]
 }
