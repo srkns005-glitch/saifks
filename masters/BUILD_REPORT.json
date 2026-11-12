@@ -4,8 +4,8 @@
   "updated": "2026-11-12",
   "entry": "index.html",
   "assets": {
-    "styles": "styles.css",
-    "application": "app.js",
+    "styles": "styles-20261112.css",
+    "application": "app-20261112.js",
     "portraits": 10,
     "material_images": 5,
     "removed_unused_legacy_images": 6,
