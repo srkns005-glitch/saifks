@@ -1178,3 +1178,5 @@ button.copy:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.5);box-shado
   html body .header-actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:7px}
   html body .home-svg-btn,html body .language-control{width:100%;min-width:0}
 }
+
+.atlas-affinity .meta small:not([hidden]){display:block;margin-top:5px;color:var(--muted);line-height:1.45;overflow-wrap:anywhere}
