@@ -1,0 +1,3057 @@
+{
+  "schema_version": "2.0.0",
+  "game": "Kingshot",
+  "dataset": "governor_gear",
+  "generated_for": "SaifKS",
+  "source_note": "Upgrade stages cross-checked against Kingshot Optimizer and KingShot Toolkit on 2026-11-12.",
+  "cost_interpretation": "Each row stores the material quantities displayed for that upgrade state. Planner logic should sum rows after the current state through the target state.",
+  "materials": {
+    "satin": {
+      "name": "Satin"
+    },
+    "gilded_threads": {
+      "name": "Gilded Threads"
+    },
+    "artisans_vision": {
+      "name": "Artisan's Vision"
+    }
+  },
+  "slots": [
+    {
+      "id": "hood",
+      "name": "Hood",
+      "troop": "cavalry",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    },
+    {
+      "id": "necklace",
+      "name": "Necklace",
+      "troop": "cavalry",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    },
+    {
+      "id": "cloak",
+      "name": "Cloak",
+      "troop": "infantry",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    },
+    {
+      "id": "breeches",
+      "name": "Breeches",
+      "troop": "infantry",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    },
+    {
+      "id": "ring",
+      "name": "Ring",
+      "troop": "archer",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    },
+    {
+      "id": "staff",
+      "name": "Staff",
+      "troop": "archer",
+      "stats": [
+        "attack",
+        "defense"
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "order": 1,
+      "id": "gear_01",
+      "tier": "Green",
+      "stars": 0,
+      "display_name": "Green 0★",
+      "materials": {
+        "satin": 1500,
+        "gilded_threads": 15,
+        "artisans_vision": 0
+      },
+      "stat_total_percent": 9.35,
+      "power_total": 224400,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 2,
+      "id": "gear_02",
+      "tier": "Green",
+      "stars": 1,
+      "display_name": "Green 1★",
+      "materials": {
+        "satin": 3800,
+        "gilded_threads": 40,
+        "artisans_vision": 0
+      },
+      "stat_total_percent": 12.75,
+      "power_total": 306000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 3,
+      "id": "gear_03",
+      "tier": "Blue",
+      "stars": 0,
+      "display_name": "Blue 0★",
+      "materials": {
+        "satin": 7000,
+        "gilded_threads": 70,
+        "artisans_vision": 0
+      },
+      "stat_total_percent": 17,
+      "power_total": 408000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 4,
+      "id": "gear_04",
+      "tier": "Blue",
+      "stars": 1,
+      "display_name": "Blue 1★",
+      "materials": {
+        "satin": 9700,
+        "gilded_threads": 95,
+        "artisans_vision": 0
+      },
+      "stat_total_percent": 21.25,
+      "power_total": 510000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 5,
+      "id": "gear_05",
+      "tier": "Blue",
+      "stars": 2,
+      "display_name": "Blue 2★",
+      "materials": {
+        "satin": 1000,
+        "gilded_threads": 10,
+        "artisans_vision": 45
+      },
+      "stat_total_percent": 25.5,
+      "power_total": 612000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 6,
+      "id": "gear_06",
+      "tier": "Blue",
+      "stars": 3,
+      "display_name": "Blue 3★",
+      "materials": {
+        "satin": 1000,
+        "gilded_threads": 10,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 29.75,
+      "power_total": 714000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 7,
+      "id": "gear_07",
+      "tier": "Purple",
+      "stars": 0,
+      "display_name": "Purple 0★",
+      "materials": {
+        "satin": 1500,
+        "gilded_threads": 15,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 34,
+      "power_total": 816000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 8,
+      "id": "gear_08",
+      "tier": "Purple",
+      "stars": 1,
+      "display_name": "Purple 1★",
+      "materials": {
+        "satin": 1500,
+        "gilded_threads": 15,
+        "artisans_vision": 70
+      },
+      "stat_total_percent": 36.89,
+      "power_total": 885360,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 9,
+      "id": "gear_09",
+      "tier": "Purple",
+      "stars": 2,
+      "display_name": "Purple 2★",
+      "materials": {
+        "satin": 6500,
+        "gilded_threads": 65,
+        "artisans_vision": 40
+      },
+      "stat_total_percent": 39.78,
+      "power_total": 954720,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 10,
+      "id": "gear_10",
+      "tier": "Purple",
+      "stars": 3,
+      "display_name": "Purple 3★",
+      "materials": {
+        "satin": 8000,
+        "gilded_threads": 80,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 42.67,
+      "power_total": 1024080,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 11,
+      "id": "gear_11",
+      "tier": "Purple T1",
+      "stars": 0,
+      "display_name": "Purple T1 0★",
+      "materials": {
+        "satin": 10000,
+        "gilded_threads": 95,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 45.56,
+      "power_total": 1093440,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 12,
+      "id": "gear_12",
+      "tier": "Purple T1",
+      "stars": 1,
+      "display_name": "Purple T1 1★",
+      "materials": {
+        "satin": 11000,
+        "gilded_threads": 110,
+        "artisans_vision": 70
+      },
+      "stat_total_percent": 48.45,
+      "power_total": 1162800,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 13,
+      "id": "gear_13",
+      "tier": "Purple T1",
+      "stars": 2,
+      "display_name": "Purple T1 2★",
+      "materials": {
+        "satin": 13000,
+        "gilded_threads": 130,
+        "artisans_vision": 85
+      },
+      "stat_total_percent": 51.34,
+      "power_total": 1232160,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 14,
+      "id": "gear_14",
+      "tier": "Purple T1",
+      "stars": 3,
+      "display_name": "Purple T1 3★",
+      "materials": {
+        "satin": 15000,
+        "gilded_threads": 160,
+        "artisans_vision": 100
+      },
+      "stat_total_percent": 54.23,
+      "power_total": 1301520,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 15,
+      "id": "gear_15",
+      "tier": "Gold",
+      "stars": 0,
+      "display_name": "Gold 0★",
+      "materials": {
+        "satin": 22000,
+        "gilded_threads": 220,
+        "artisans_vision": 40
+      },
+      "stat_total_percent": 56.78,
+      "power_total": 1362720,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 16,
+      "id": "gear_16",
+      "tier": "Gold",
+      "stars": 1,
+      "display_name": "Gold 1★",
+      "materials": {
+        "satin": 23000,
+        "gilded_threads": 230,
+        "artisans_vision": 40
+      },
+      "stat_total_percent": 59.33,
+      "power_total": 1423920,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 17,
+      "id": "gear_17",
+      "tier": "Gold",
+      "stars": 2,
+      "display_name": "Gold 2★",
+      "materials": {
+        "satin": 25000,
+        "gilded_threads": 250,
+        "artisans_vision": 45
+      },
+      "stat_total_percent": 61.88,
+      "power_total": 1485120,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 18,
+      "id": "gear_18",
+      "tier": "Gold",
+      "stars": 3,
+      "display_name": "Gold 3★",
+      "materials": {
+        "satin": 26000,
+        "gilded_threads": 260,
+        "artisans_vision": 45
+      },
+      "stat_total_percent": 64.43,
+      "power_total": 1546320,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 19,
+      "id": "gear_19",
+      "tier": "Gold T1",
+      "stars": 0,
+      "display_name": "Gold T1 0★",
+      "materials": {
+        "satin": 28000,
+        "gilded_threads": 280,
+        "artisans_vision": 45
+      },
+      "stat_total_percent": 66.98,
+      "power_total": 1607520,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 20,
+      "id": "gear_20",
+      "tier": "Gold T1",
+      "stars": 1,
+      "display_name": "Gold T1 1★",
+      "materials": {
+        "satin": 30000,
+        "gilded_threads": 300,
+        "artisans_vision": 55
+      },
+      "stat_total_percent": 69.53,
+      "power_total": 1668720,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 21,
+      "id": "gear_21",
+      "tier": "Gold T1",
+      "stars": 2,
+      "display_name": "Gold T1 2★",
+      "materials": {
+        "satin": 32000,
+        "gilded_threads": 320,
+        "artisans_vision": 55
+      },
+      "stat_total_percent": 72.08,
+      "power_total": 1729920,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 22,
+      "id": "gear_22",
+      "tier": "Gold T1",
+      "stars": 3,
+      "display_name": "Gold T1 3★",
+      "materials": {
+        "satin": 35000,
+        "gilded_threads": 340,
+        "artisans_vision": 55
+      },
+      "stat_total_percent": 74.63,
+      "power_total": 1791120,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 23,
+      "id": "gear_23",
+      "tier": "Gold T2",
+      "stars": 0,
+      "display_name": "Gold T2 0★",
+      "materials": {
+        "satin": 38000,
+        "gilded_threads": 360,
+        "artisans_vision": 55
+      },
+      "stat_total_percent": 77.18,
+      "power_total": 1852320,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 24,
+      "id": "gear_24",
+      "tier": "Gold T2",
+      "stars": 1,
+      "display_name": "Gold T2 1★",
+      "materials": {
+        "satin": 43000,
+        "gilded_threads": 430,
+        "artisans_vision": 75
+      },
+      "stat_total_percent": 79.73,
+      "power_total": 1913520,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 25,
+      "id": "gear_25",
+      "tier": "Gold T2",
+      "stars": 2,
+      "display_name": "Gold T2 2★",
+      "materials": {
+        "satin": 45000,
+        "gilded_threads": 460,
+        "artisans_vision": 80
+      },
+      "stat_total_percent": 82.28,
+      "power_total": 1974720,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 26,
+      "id": "gear_26",
+      "tier": "Gold T2",
+      "stars": 3,
+      "display_name": "Gold T2 3★",
+      "materials": {
+        "satin": 48000,
+        "gilded_threads": 500,
+        "artisans_vision": 85
+      },
+      "stat_total_percent": 84.83,
+      "power_total": 2040000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 27,
+      "id": "gear_26_step_1",
+      "tier": "Gold T2",
+      "stars": 3,
+      "display_name": "Gold T2 3★ (1/5)",
+      "materials": {
+        "satin": 12000,
+        "gilded_threads": 120,
+        "artisans_vision": 24
+      },
+      "stat_total_percent": 85.34,
+      "power_total": 2051424,
+      "step": 1,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 28,
+      "id": "gear_26_step_2",
+      "tier": "Gold T2",
+      "stars": 3,
+      "display_name": "Gold T2 3★ (2/5)",
+      "materials": {
+        "satin": 12000,
+        "gilded_threads": 120,
+        "artisans_vision": 24
+      },
+      "stat_total_percent": 85.85,
+      "power_total": 2062848,
+      "step": 2,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 29,
+      "id": "gear_26_step_3",
+      "tier": "Gold T2",
+      "stars": 3,
+      "display_name": "Gold T2 3★ (3/5)",
+      "materials": {
+        "satin": 12000,
+        "gilded_threads": 120,
+        "artisans_vision": 24
+      },
+      "stat_total_percent": 86.36,
+      "power_total": 2074272,
+      "step": 3,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 30,
+      "id": "gear_26_step_4",
+      "tier": "Gold T2",
+      "stars": 3,
+      "display_name": "Gold T2 3★ (4/5)",
+      "materials": {
+        "satin": 12000,
+        "gilded_threads": 120,
+        "artisans_vision": 24
+      },
+      "stat_total_percent": 86.87,
+      "power_total": 2085696,
+      "step": 4,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 31,
+      "id": "gear_27",
+      "tier": "Gold T3",
+      "stars": 0,
+      "display_name": "Gold T3 0★",
+      "materials": {
+        "satin": 12000,
+        "gilded_threads": 120,
+        "artisans_vision": 24
+      },
+      "stat_total_percent": 87.38,
+      "power_total": 2097120,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 32,
+      "id": "gear_27_step_1",
+      "tier": "Gold T3",
+      "stars": 0,
+      "display_name": "Gold T3 0★ (1/5)",
+      "materials": {
+        "satin": 14000,
+        "gilded_threads": 140,
+        "artisans_vision": 28
+      },
+      "stat_total_percent": 87.89,
+      "power_total": 2109360,
+      "step": 1,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 33,
+      "id": "gear_27_step_2",
+      "tier": "Gold T3",
+      "stars": 0,
+      "display_name": "Gold T3 0★ (2/5)",
+      "materials": {
+        "satin": 14000,
+        "gilded_threads": 140,
+        "artisans_vision": 28
+      },
+      "stat_total_percent": 88.4,
+      "power_total": 2121600,
+      "step": 2,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 34,
+      "id": "gear_27_step_3",
+      "tier": "Gold T3",
+      "stars": 0,
+      "display_name": "Gold T3 0★ (3/5)",
+      "materials": {
+        "satin": 14000,
+        "gilded_threads": 140,
+        "artisans_vision": 28
+      },
+      "stat_total_percent": 88.91,
+      "power_total": 2133840,
+      "step": 3,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 35,
+      "id": "gear_27_step_4",
+      "tier": "Gold T3",
+      "stars": 0,
+      "display_name": "Gold T3 0★ (4/5)",
+      "materials": {
+        "satin": 14000,
+        "gilded_threads": 140,
+        "artisans_vision": 28
+      },
+      "stat_total_percent": 89.42,
+      "power_total": 2146080,
+      "step": 4,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 36,
+      "id": "gear_28",
+      "tier": "Gold T3",
+      "stars": 1,
+      "display_name": "Gold T3 1★",
+      "materials": {
+        "satin": 14000,
+        "gilded_threads": 140,
+        "artisans_vision": 28
+      },
+      "stat_total_percent": 89.93,
+      "power_total": 2158320,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 37,
+      "id": "gear_28_step_1",
+      "tier": "Gold T3",
+      "stars": 1,
+      "display_name": "Gold T3 1★ (1/5)",
+      "materials": {
+        "satin": 16000,
+        "gilded_threads": 160,
+        "artisans_vision": 32
+      },
+      "stat_total_percent": 90.44,
+      "power_total": 2170560,
+      "step": 1,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 38,
+      "id": "gear_28_step_2",
+      "tier": "Gold T3",
+      "stars": 1,
+      "display_name": "Gold T3 1★ (2/5)",
+      "materials": {
+        "satin": 16000,
+        "gilded_threads": 160,
+        "artisans_vision": 32
+      },
+      "stat_total_percent": 90.95,
+      "power_total": 2182800,
+      "step": 2,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 39,
+      "id": "gear_28_step_3",
+      "tier": "Gold T3",
+      "stars": 1,
+      "display_name": "Gold T3 1★ (3/5)",
+      "materials": {
+        "satin": 16000,
+        "gilded_threads": 160,
+        "artisans_vision": 32
+      },
+      "stat_total_percent": 91.46,
+      "power_total": 2195040,
+      "step": 3,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 40,
+      "id": "gear_28_step_4",
+      "tier": "Gold T3",
+      "stars": 1,
+      "display_name": "Gold T3 1★ (4/5)",
+      "materials": {
+        "satin": 16000,
+        "gilded_threads": 160,
+        "artisans_vision": 32
+      },
+      "stat_total_percent": 91.97,
+      "power_total": 2207280,
+      "step": 4,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 41,
+      "id": "gear_29",
+      "tier": "Gold T3",
+      "stars": 2,
+      "display_name": "Gold T3 2★",
+      "materials": {
+        "satin": 16000,
+        "gilded_threads": 160,
+        "artisans_vision": 32
+      },
+      "stat_total_percent": 92.48,
+      "power_total": 2219520,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 42,
+      "id": "gear_29_step_1",
+      "tier": "Gold T3",
+      "stars": 2,
+      "display_name": "Gold T3 2★ (1/5)",
+      "materials": {
+        "satin": 18000,
+        "gilded_threads": 180,
+        "artisans_vision": 36
+      },
+      "stat_total_percent": 92.98,
+      "power_total": 2231616,
+      "step": 1,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 43,
+      "id": "gear_29_step_2",
+      "tier": "Gold T3",
+      "stars": 2,
+      "display_name": "Gold T3 2★ (2/5)",
+      "materials": {
+        "satin": 18000,
+        "gilded_threads": 180,
+        "artisans_vision": 36
+      },
+      "stat_total_percent": 93.48,
+      "power_total": 2243712,
+      "step": 2,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 44,
+      "id": "gear_29_step_3",
+      "tier": "Gold T3",
+      "stars": 2,
+      "display_name": "Gold T3 2★ (3/5)",
+      "materials": {
+        "satin": 18000,
+        "gilded_threads": 180,
+        "artisans_vision": 36
+      },
+      "stat_total_percent": 93.98,
+      "power_total": 2255808,
+      "step": 3,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 45,
+      "id": "gear_29_step_4",
+      "tier": "Gold T3",
+      "stars": 2,
+      "display_name": "Gold T3 2★ (4/5)",
+      "materials": {
+        "satin": 18000,
+        "gilded_threads": 180,
+        "artisans_vision": 36
+      },
+      "stat_total_percent": 94.49,
+      "power_total": 2267904,
+      "step": 4,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 46,
+      "id": "gear_30",
+      "tier": "Gold T3",
+      "stars": 3,
+      "display_name": "Gold T3 3★",
+      "materials": {
+        "satin": 18000,
+        "gilded_threads": 180,
+        "artisans_vision": 36
+      },
+      "stat_total_percent": 95,
+      "power_total": 2280000,
+      "step": 0,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 47,
+      "id": "gear_30_step_1",
+      "tier": "Gold T3",
+      "stars": 3,
+      "display_name": "Gold T3 3★ (1/5)",
+      "materials": {
+        "satin": 21600,
+        "gilded_threads": 216,
+        "artisans_vision": 44
+      },
+      "stat_total_percent": 95.5,
+      "power_total": 2292000,
+      "step": 1,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 48,
+      "id": "gear_30_step_2",
+      "tier": "Gold T3",
+      "stars": 3,
+      "display_name": "Gold T3 3★ (2/5)",
+      "materials": {
+        "satin": 21600,
+        "gilded_threads": 216,
+        "artisans_vision": 44
+      },
+      "stat_total_percent": 96,
+      "power_total": 2304000,
+      "step": 2,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 49,
+      "id": "gear_30_step_3",
+      "tier": "Gold T3",
+      "stars": 3,
+      "display_name": "Gold T3 3★ (3/5)",
+      "materials": {
+        "satin": 21600,
+        "gilded_threads": 216,
+        "artisans_vision": 44
+      },
+      "stat_total_percent": 96.5,
+      "power_total": 2316000,
+      "step": 3,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 50,
+      "id": "gear_30_step_4",
+      "tier": "Gold T3",
+      "stars": 3,
+      "display_name": "Gold T3 3★ (4/5)",
+      "materials": {
+        "satin": 21600,
+        "gilded_threads": 216,
+        "artisans_vision": 44
+      },
+      "stat_total_percent": 97,
+      "power_total": 2328000,
+      "step": 4,
+      "deployment_capacity_total": 0
+    },
+    {
+      "order": 51,
+      "id": "gear_31",
+      "tier": "Red",
+      "stars": 0,
+      "display_name": "Red 0★",
+      "materials": {
+        "satin": 21600,
+        "gilded_threads": 216,
+        "artisans_vision": 44
+      },
+      "stat_total_percent": 97.5,
+      "power_total": 2340000,
+      "step": 0,
+      "deployment_capacity_total": 10
+    },
+    {
+      "order": 52,
+      "id": "gear_31_step_1",
+      "tier": "Red",
+      "stars": 0,
+      "display_name": "Red 0★ (1/5)",
+      "materials": {
+        "satin": 22800,
+        "gilded_threads": 228,
+        "artisans_vision": 46
+      },
+      "stat_total_percent": 98,
+      "power_total": 2352000,
+      "step": 1,
+      "deployment_capacity_total": 20
+    },
+    {
+      "order": 53,
+      "id": "gear_31_step_2",
+      "tier": "Red",
+      "stars": 0,
+      "display_name": "Red 0★ (2/5)",
+      "materials": {
+        "satin": 22800,
+        "gilded_threads": 228,
+        "artisans_vision": 46
+      },
+      "stat_total_percent": 98.5,
+      "power_total": 2364000,
+      "step": 2,
+      "deployment_capacity_total": 30
+    },
+    {
+      "order": 54,
+      "id": "gear_31_step_3",
+      "tier": "Red",
+      "stars": 0,
+      "display_name": "Red 0★ (3/5)",
+      "materials": {
+        "satin": 22800,
+        "gilded_threads": 228,
+        "artisans_vision": 46
+      },
+      "stat_total_percent": 99,
+      "power_total": 2376000,
+      "step": 3,
+      "deployment_capacity_total": 40
+    },
+    {
+      "order": 55,
+      "id": "gear_31_step_4",
+      "tier": "Red",
+      "stars": 0,
+      "display_name": "Red 0★ (4/5)",
+      "materials": {
+        "satin": 22800,
+        "gilded_threads": 228,
+        "artisans_vision": 46
+      },
+      "stat_total_percent": 99.5,
+      "power_total": 2388000,
+      "step": 4,
+      "deployment_capacity_total": 50
+    },
+    {
+      "order": 56,
+      "id": "gear_32",
+      "tier": "Red",
+      "stars": 1,
+      "display_name": "Red 1★",
+      "materials": {
+        "satin": 22800,
+        "gilded_threads": 228,
+        "artisans_vision": 46
+      },
+      "stat_total_percent": 100,
+      "power_total": 2400000,
+      "step": 0,
+      "deployment_capacity_total": 60
+    },
+    {
+      "order": 57,
+      "id": "gear_32_step_1",
+      "tier": "Red",
+      "stars": 1,
+      "display_name": "Red 1★ (1/5)",
+      "materials": {
+        "satin": 24200,
+        "gilded_threads": 242,
+        "artisans_vision": 48
+      },
+      "stat_total_percent": 100.5,
+      "power_total": 2412000,
+      "step": 1,
+      "deployment_capacity_total": 70
+    },
+    {
+      "order": 58,
+      "id": "gear_32_step_2",
+      "tier": "Red",
+      "stars": 1,
+      "display_name": "Red 1★ (2/5)",
+      "materials": {
+        "satin": 24200,
+        "gilded_threads": 242,
+        "artisans_vision": 48
+      },
+      "stat_total_percent": 101,
+      "power_total": 2424000,
+      "step": 2,
+      "deployment_capacity_total": 80
+    },
+    {
+      "order": 59,
+      "id": "gear_32_step_3",
+      "tier": "Red",
+      "stars": 1,
+      "display_name": "Red 1★ (3/5)",
+      "materials": {
+        "satin": 24200,
+        "gilded_threads": 242,
+        "artisans_vision": 48
+      },
+      "stat_total_percent": 101.5,
+      "power_total": 2436000,
+      "step": 3,
+      "deployment_capacity_total": 90
+    },
+    {
+      "order": 60,
+      "id": "gear_32_step_4",
+      "tier": "Red",
+      "stars": 1,
+      "display_name": "Red 1★ (4/5)",
+      "materials": {
+        "satin": 24200,
+        "gilded_threads": 242,
+        "artisans_vision": 48
+      },
+      "stat_total_percent": 102,
+      "power_total": 2448000,
+      "step": 4,
+      "deployment_capacity_total": 100
+    },
+    {
+      "order": 61,
+      "id": "gear_33",
+      "tier": "Red",
+      "stars": 2,
+      "display_name": "Red 2★",
+      "materials": {
+        "satin": 24200,
+        "gilded_threads": 242,
+        "artisans_vision": 48
+      },
+      "stat_total_percent": 102.5,
+      "power_total": 2460000,
+      "step": 0,
+      "deployment_capacity_total": 110
+    },
+    {
+      "order": 62,
+      "id": "gear_33_step_1",
+      "tier": "Red",
+      "stars": 2,
+      "display_name": "Red 2★ (1/5)",
+      "materials": {
+        "satin": 25600,
+        "gilded_threads": 256,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 103,
+      "power_total": 2472000,
+      "step": 1,
+      "deployment_capacity_total": 120
+    },
+    {
+      "order": 63,
+      "id": "gear_33_step_2",
+      "tier": "Red",
+      "stars": 2,
+      "display_name": "Red 2★ (2/5)",
+      "materials": {
+        "satin": 25600,
+        "gilded_threads": 256,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 103.5,
+      "power_total": 2484000,
+      "step": 2,
+      "deployment_capacity_total": 130
+    },
+    {
+      "order": 64,
+      "id": "gear_33_step_3",
+      "tier": "Red",
+      "stars": 2,
+      "display_name": "Red 2★ (3/5)",
+      "materials": {
+        "satin": 25600,
+        "gilded_threads": 256,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 104,
+      "power_total": 2496000,
+      "step": 3,
+      "deployment_capacity_total": 140
+    },
+    {
+      "order": 65,
+      "id": "gear_33_step_4",
+      "tier": "Red",
+      "stars": 2,
+      "display_name": "Red 2★ (4/5)",
+      "materials": {
+        "satin": 25600,
+        "gilded_threads": 256,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 104.5,
+      "power_total": 2508000,
+      "step": 4,
+      "deployment_capacity_total": 150
+    },
+    {
+      "order": 66,
+      "id": "gear_34",
+      "tier": "Red",
+      "stars": 3,
+      "display_name": "Red 3★",
+      "materials": {
+        "satin": 25600,
+        "gilded_threads": 256,
+        "artisans_vision": 50
+      },
+      "stat_total_percent": 105,
+      "power_total": 2520000,
+      "step": 0,
+      "deployment_capacity_total": 160
+    },
+    {
+      "order": 67,
+      "id": "gear_34_step_1",
+      "tier": "Red",
+      "stars": 3,
+      "display_name": "Red 3★ (1/5)",
+      "materials": {
+        "satin": 30800,
+        "gilded_threads": 308,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 105.5,
+      "power_total": 2532000,
+      "step": 1,
+      "deployment_capacity_total": 170
+    },
+    {
+      "order": 68,
+      "id": "gear_34_step_2",
+      "tier": "Red",
+      "stars": 3,
+      "display_name": "Red 3★ (2/5)",
+      "materials": {
+        "satin": 30800,
+        "gilded_threads": 308,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 106,
+      "power_total": 2544000,
+      "step": 2,
+      "deployment_capacity_total": 180
+    },
+    {
+      "order": 69,
+      "id": "gear_34_step_3",
+      "tier": "Red",
+      "stars": 3,
+      "display_name": "Red 3★ (3/5)",
+      "materials": {
+        "satin": 30800,
+        "gilded_threads": 308,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 106.5,
+      "power_total": 2556000,
+      "step": 3,
+      "deployment_capacity_total": 190
+    },
+    {
+      "order": 70,
+      "id": "gear_34_step_4",
+      "tier": "Red",
+      "stars": 3,
+      "display_name": "Red 3★ (4/5)",
+      "materials": {
+        "satin": 30800,
+        "gilded_threads": 308,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 107,
+      "power_total": 2568000,
+      "step": 4,
+      "deployment_capacity_total": 200
+    },
+    {
+      "order": 71,
+      "id": "gear_35",
+      "tier": "Red T1",
+      "stars": 0,
+      "display_name": "Red T1 0★",
+      "materials": {
+        "satin": 30800,
+        "gilded_threads": 308,
+        "artisans_vision": 60
+      },
+      "stat_total_percent": 107.5,
+      "power_total": 2580000,
+      "step": 0,
+      "deployment_capacity_total": 300
+    },
+    {
+      "order": 72,
+      "id": "gear_35_step_1",
+      "tier": "Red T1",
+      "stars": 0,
+      "display_name": "Red T1 0★ (1/5)",
+      "materials": {
+        "satin": 32600,
+        "gilded_threads": 326,
+        "artisans_vision": 64
+      },
+      "stat_total_percent": 108,
+      "power_total": 2592000,
+      "step": 1,
+      "deployment_capacity_total": 310
+    },
+    {
+      "order": 73,
+      "id": "gear_35_step_2",
+      "tier": "Red T1",
+      "stars": 0,
+      "display_name": "Red T1 0★ (2/5)",
+      "materials": {
+        "satin": 32600,
+        "gilded_threads": 326,
+        "artisans_vision": 64
+      },
+      "stat_total_percent": 108.5,
+      "power_total": 2604000,
+      "step": 2,
+      "deployment_capacity_total": 320
+    },
+    {
+      "order": 74,
+      "id": "gear_35_step_3",
+      "tier": "Red T1",
+      "stars": 0,
+      "display_name": "Red T1 0★ (3/5)",
+      "materials": {
+        "satin": 32600,
+        "gilded_threads": 326,
+        "artisans_vision": 64
+      },
+      "stat_total_percent": 109,
+      "power_total": 2616000,
+      "step": 3,
+      "deployment_capacity_total": 330
+    },
+    {
+      "order": 75,
+      "id": "gear_35_step_4",
+      "tier": "Red T1",
+      "stars": 0,
+      "display_name": "Red T1 0★ (4/5)",
+      "materials": {
+        "satin": 32600,
+        "gilded_threads": 326,
+        "artisans_vision": 64
+      },
+      "stat_total_percent": 109.5,
+      "power_total": 2628000,
+      "step": 4,
+      "deployment_capacity_total": 340
+    },
+    {
+      "order": 76,
+      "id": "gear_36",
+      "tier": "Red T1",
+      "stars": 1,
+      "display_name": "Red T1 1★",
+      "materials": {
+        "satin": 32600,
+        "gilded_threads": 326,
+        "artisans_vision": 64
+      },
+      "stat_total_percent": 110,
+      "power_total": 2640000,
+      "step": 0,
+      "deployment_capacity_total": 350
+    },
+    {
+      "order": 77,
+      "id": "gear_36_step_1",
+      "tier": "Red T1",
+      "stars": 1,
+      "display_name": "Red T1 1★ (1/5)",
+      "materials": {
+        "satin": 34600,
+        "gilded_threads": 346,
+        "artisans_vision": 68
+      },
+      "stat_total_percent": 110.5,
+      "power_total": 2652000,
+      "step": 1,
+      "deployment_capacity_total": 360
+    },
+    {
+      "order": 78,
+      "id": "gear_36_step_2",
+      "tier": "Red T1",
+      "stars": 1,
+      "display_name": "Red T1 1★ (2/5)",
+      "materials": {
+        "satin": 34600,
+        "gilded_threads": 346,
+        "artisans_vision": 68
+      },
+      "stat_total_percent": 111,
+      "power_total": 2664000,
+      "step": 2,
+      "deployment_capacity_total": 370
+    },
+    {
+      "order": 79,
+      "id": "gear_36_step_3",
+      "tier": "Red T1",
+      "stars": 1,
+      "display_name": "Red T1 1★ (3/5)",
+      "materials": {
+        "satin": 34600,
+        "gilded_threads": 346,
+        "artisans_vision": 68
+      },
+      "stat_total_percent": 111.5,
+      "power_total": 2676000,
+      "step": 3,
+      "deployment_capacity_total": 380
+    },
+    {
+      "order": 80,
+      "id": "gear_36_step_4",
+      "tier": "Red T1",
+      "stars": 1,
+      "display_name": "Red T1 1★ (4/5)",
+      "materials": {
+        "satin": 34600,
+        "gilded_threads": 346,
+        "artisans_vision": 68
+      },
+      "stat_total_percent": 112,
+      "power_total": 2688000,
+      "step": 4,
+      "deployment_capacity_total": 390
+    },
+    {
+      "order": 81,
+      "id": "gear_37",
+      "tier": "Red T1",
+      "stars": 2,
+      "display_name": "Red T1 2★",
+      "materials": {
+        "satin": 34600,
+        "gilded_threads": 346,
+        "artisans_vision": 68
+      },
+      "stat_total_percent": 112.5,
+      "power_total": 2700000,
+      "step": 0,
+      "deployment_capacity_total": 400
+    },
+    {
+      "order": 82,
+      "id": "gear_37_step_1",
+      "tier": "Red T1",
+      "stars": 2,
+      "display_name": "Red T1 2★ (1/5)",
+      "materials": {
+        "satin": 36600,
+        "gilded_threads": 366,
+        "artisans_vision": 72
+      },
+      "stat_total_percent": 113,
+      "power_total": 2712000,
+      "step": 1,
+      "deployment_capacity_total": 410
+    },
+    {
+      "order": 83,
+      "id": "gear_37_step_2",
+      "tier": "Red T1",
+      "stars": 2,
+      "display_name": "Red T1 2★ (2/5)",
+      "materials": {
+        "satin": 36600,
+        "gilded_threads": 366,
+        "artisans_vision": 72
+      },
+      "stat_total_percent": 113.5,
+      "power_total": 2724000,
+      "step": 2,
+      "deployment_capacity_total": 420
+    },
+    {
+      "order": 84,
+      "id": "gear_37_step_3",
+      "tier": "Red T1",
+      "stars": 2,
+      "display_name": "Red T1 2★ (3/5)",
+      "materials": {
+        "satin": 36600,
+        "gilded_threads": 366,
+        "artisans_vision": 72
+      },
+      "stat_total_percent": 114,
+      "power_total": 2736000,
+      "step": 3,
+      "deployment_capacity_total": 430
+    },
+    {
+      "order": 85,
+      "id": "gear_37_step_4",
+      "tier": "Red T1",
+      "stars": 2,
+      "display_name": "Red T1 2★ (4/5)",
+      "materials": {
+        "satin": 36600,
+        "gilded_threads": 366,
+        "artisans_vision": 72
+      },
+      "stat_total_percent": 114.5,
+      "power_total": 2748000,
+      "step": 4,
+      "deployment_capacity_total": 440
+    },
+    {
+      "order": 86,
+      "id": "gear_38",
+      "tier": "Red T1",
+      "stars": 3,
+      "display_name": "Red T1 3★",
+      "materials": {
+        "satin": 36600,
+        "gilded_threads": 366,
+        "artisans_vision": 72
+      },
+      "stat_total_percent": 115,
+      "power_total": 2760000,
+      "step": 0,
+      "deployment_capacity_total": 450
+    },
+    {
+      "order": 87,
+      "id": "gear_38_step_1",
+      "tier": "Red T1",
+      "stars": 3,
+      "display_name": "Red T1 3★ (1/5)",
+      "materials": {
+        "satin": 44000,
+        "gilded_threads": 440,
+        "artisans_vision": 86
+      },
+      "stat_total_percent": 115.5,
+      "power_total": 2772000,
+      "step": 1,
+      "deployment_capacity_total": 460
+    },
+    {
+      "order": 88,
+      "id": "gear_38_step_2",
+      "tier": "Red T1",
+      "stars": 3,
+      "display_name": "Red T1 3★ (2/5)",
+      "materials": {
+        "satin": 44000,
+        "gilded_threads": 440,
+        "artisans_vision": 86
+      },
+      "stat_total_percent": 116,
+      "power_total": 2784000,
+      "step": 2,
+      "deployment_capacity_total": 470
+    },
+    {
+      "order": 89,
+      "id": "gear_38_step_3",
+      "tier": "Red T1",
+      "stars": 3,
+      "display_name": "Red T1 3★ (3/5)",
+      "materials": {
+        "satin": 44000,
+        "gilded_threads": 440,
+        "artisans_vision": 86
+      },
+      "stat_total_percent": 116.5,
+      "power_total": 2796000,
+      "step": 3,
+      "deployment_capacity_total": 480
+    },
+    {
+      "order": 90,
+      "id": "gear_38_step_4",
+      "tier": "Red T1",
+      "stars": 3,
+      "display_name": "Red T1 3★ (4/5)",
+      "materials": {
+        "satin": 44000,
+        "gilded_threads": 440,
+        "artisans_vision": 86
+      },
+      "stat_total_percent": 117,
+      "power_total": 2808000,
+      "step": 4,
+      "deployment_capacity_total": 490
+    },
+    {
+      "order": 91,
+      "id": "gear_39",
+      "tier": "Red T2",
+      "stars": 0,
+      "display_name": "Red T2 0★",
+      "materials": {
+        "satin": 44000,
+        "gilded_threads": 440,
+        "artisans_vision": 86
+      },
+      "stat_total_percent": 117.5,
+      "power_total": 2820000,
+      "step": 0,
+      "deployment_capacity_total": 590
+    },
+    {
+      "order": 92,
+      "id": "gear_39_step_1",
+      "tier": "Red T2",
+      "stars": 0,
+      "display_name": "Red T2 0★ (1/5)",
+      "materials": {
+        "satin": 46600,
+        "gilded_threads": 466,
+        "artisans_vision": 92
+      },
+      "stat_total_percent": 118,
+      "power_total": 2832000,
+      "step": 1,
+      "deployment_capacity_total": 600
+    },
+    {
+      "order": 93,
+      "id": "gear_39_step_2",
+      "tier": "Red T2",
+      "stars": 0,
+      "display_name": "Red T2 0★ (2/5)",
+      "materials": {
+        "satin": 46600,
+        "gilded_threads": 466,
+        "artisans_vision": 92
+      },
+      "stat_total_percent": 118.5,
+      "power_total": 2844000,
+      "step": 2,
+      "deployment_capacity_total": 610
+    },
+    {
+      "order": 94,
+      "id": "gear_39_step_3",
+      "tier": "Red T2",
+      "stars": 0,
+      "display_name": "Red T2 0★ (3/5)",
+      "materials": {
+        "satin": 46600,
+        "gilded_threads": 466,
+        "artisans_vision": 92
+      },
+      "stat_total_percent": 119,
+      "power_total": 2856000,
+      "step": 3,
+      "deployment_capacity_total": 620
+    },
+    {
+      "order": 95,
+      "id": "gear_39_step_4",
+      "tier": "Red T2",
+      "stars": 0,
+      "display_name": "Red T2 0★ (4/5)",
+      "materials": {
+        "satin": 46600,
+        "gilded_threads": 466,
+        "artisans_vision": 92
+      },
+      "stat_total_percent": 119.5,
+      "power_total": 2868000,
+      "step": 4,
+      "deployment_capacity_total": 630
+    },
+    {
+      "order": 96,
+      "id": "gear_40",
+      "tier": "Red T2",
+      "stars": 1,
+      "display_name": "Red T2 1★",
+      "materials": {
+        "satin": 46600,
+        "gilded_threads": 466,
+        "artisans_vision": 92
+      },
+      "stat_total_percent": 120,
+      "power_total": 2880000,
+      "step": 0,
+      "deployment_capacity_total": 640
+    },
+    {
+      "order": 97,
+      "id": "gear_40_step_1",
+      "tier": "Red T2",
+      "stars": 1,
+      "display_name": "Red T2 1★ (1/5)",
+      "materials": {
+        "satin": 49400,
+        "gilded_threads": 494,
+        "artisans_vision": 98
+      },
+      "stat_total_percent": 120.5,
+      "power_total": 2892000,
+      "step": 1,
+      "deployment_capacity_total": 650
+    },
+    {
+      "order": 98,
+      "id": "gear_40_step_2",
+      "tier": "Red T2",
+      "stars": 1,
+      "display_name": "Red T2 1★ (2/5)",
+      "materials": {
+        "satin": 49400,
+        "gilded_threads": 494,
+        "artisans_vision": 98
+      },
+      "stat_total_percent": 121,
+      "power_total": 2904000,
+      "step": 2,
+      "deployment_capacity_total": 660
+    },
+    {
+      "order": 99,
+      "id": "gear_40_step_3",
+      "tier": "Red T2",
+      "stars": 1,
+      "display_name": "Red T2 1★ (3/5)",
+      "materials": {
+        "satin": 49400,
+        "gilded_threads": 494,
+        "artisans_vision": 98
+      },
+      "stat_total_percent": 121.5,
+      "power_total": 2916000,
+      "step": 3,
+      "deployment_capacity_total": 670
+    },
+    {
+      "order": 100,
+      "id": "gear_40_step_4",
+      "tier": "Red T2",
+      "stars": 1,
+      "display_name": "Red T2 1★ (4/5)",
+      "materials": {
+        "satin": 49400,
+        "gilded_threads": 494,
+        "artisans_vision": 98
+      },
+      "stat_total_percent": 122,
+      "power_total": 2928000,
+      "step": 4,
+      "deployment_capacity_total": 680
+    },
+    {
+      "order": 101,
+      "id": "gear_41",
+      "tier": "Red T2",
+      "stars": 2,
+      "display_name": "Red T2 2★",
+      "materials": {
+        "satin": 49400,
+        "gilded_threads": 494,
+        "artisans_vision": 98
+      },
+      "stat_total_percent": 122.5,
+      "power_total": 2940000,
+      "step": 0,
+      "deployment_capacity_total": 690
+    },
+    {
+      "order": 102,
+      "id": "gear_41_step_1",
+      "tier": "Red T2",
+      "stars": 2,
+      "display_name": "Red T2 2★ (1/5)",
+      "materials": {
+        "satin": 52400,
+        "gilded_threads": 524,
+        "artisans_vision": 104
+      },
+      "stat_total_percent": 123,
+      "power_total": 2952000,
+      "step": 1,
+      "deployment_capacity_total": 700
+    },
+    {
+      "order": 103,
+      "id": "gear_41_step_2",
+      "tier": "Red T2",
+      "stars": 2,
+      "display_name": "Red T2 2★ (2/5)",
+      "materials": {
+        "satin": 52400,
+        "gilded_threads": 524,
+        "artisans_vision": 104
+      },
+      "stat_total_percent": 123.5,
+      "power_total": 2964000,
+      "step": 2,
+      "deployment_capacity_total": 710
+    },
+    {
+      "order": 104,
+      "id": "gear_41_step_3",
+      "tier": "Red T2",
+      "stars": 2,
+      "display_name": "Red T2 2★ (3/5)",
+      "materials": {
+        "satin": 52400,
+        "gilded_threads": 524,
+        "artisans_vision": 104
+      },
+      "stat_total_percent": 124,
+      "power_total": 2976000,
+      "step": 3,
+      "deployment_capacity_total": 720
+    },
+    {
+      "order": 105,
+      "id": "gear_41_step_4",
+      "tier": "Red T2",
+      "stars": 2,
+      "display_name": "Red T2 2★ (4/5)",
+      "materials": {
+        "satin": 52400,
+        "gilded_threads": 524,
+        "artisans_vision": 104
+      },
+      "stat_total_percent": 124.5,
+      "power_total": 2988000,
+      "step": 4,
+      "deployment_capacity_total": 730
+    },
+    {
+      "order": 106,
+      "id": "gear_42",
+      "tier": "Red T2",
+      "stars": 3,
+      "display_name": "Red T2 3★",
+      "materials": {
+        "satin": 52400,
+        "gilded_threads": 524,
+        "artisans_vision": 104
+      },
+      "stat_total_percent": 125,
+      "power_total": 3000000,
+      "step": 0,
+      "deployment_capacity_total": 740
+    },
+    {
+      "order": 107,
+      "id": "gear_42_step_1",
+      "tier": "Red T2",
+      "stars": 3,
+      "display_name": "Red T2 3★ (1/5)",
+      "materials": {
+        "satin": 57600,
+        "gilded_threads": 576,
+        "artisans_vision": 114
+      },
+      "stat_total_percent": 125.55,
+      "power_total": 3013200,
+      "step": 1,
+      "deployment_capacity_total": 750
+    },
+    {
+      "order": 108,
+      "id": "gear_42_step_2",
+      "tier": "Red T2",
+      "stars": 3,
+      "display_name": "Red T2 3★ (2/5)",
+      "materials": {
+        "satin": 57600,
+        "gilded_threads": 576,
+        "artisans_vision": 114
+      },
+      "stat_total_percent": 126.1,
+      "power_total": 3026400,
+      "step": 2,
+      "deployment_capacity_total": 760
+    },
+    {
+      "order": 109,
+      "id": "gear_42_step_3",
+      "tier": "Red T2",
+      "stars": 3,
+      "display_name": "Red T2 3★ (3/5)",
+      "materials": {
+        "satin": 57600,
+        "gilded_threads": 576,
+        "artisans_vision": 114
+      },
+      "stat_total_percent": 126.65,
+      "power_total": 3039600,
+      "step": 3,
+      "deployment_capacity_total": 770
+    },
+    {
+      "order": 110,
+      "id": "gear_42_step_4",
+      "tier": "Red T2",
+      "stars": 3,
+      "display_name": "Red T2 3★ (4/5)",
+      "materials": {
+        "satin": 57600,
+        "gilded_threads": 576,
+        "artisans_vision": 114
+      },
+      "stat_total_percent": 127.2,
+      "power_total": 3052800,
+      "step": 4,
+      "deployment_capacity_total": 780
+    },
+    {
+      "order": 111,
+      "id": "gear_43",
+      "tier": "Red T3",
+      "stars": 0,
+      "display_name": "Red T3 0★",
+      "materials": {
+        "satin": 57600,
+        "gilded_threads": 576,
+        "artisans_vision": 114
+      },
+      "stat_total_percent": 127.75,
+      "power_total": 3066000,
+      "step": 0,
+      "deployment_capacity_total": 880
+    },
+    {
+      "order": 112,
+      "id": "gear_43_step_1",
+      "tier": "Red T3",
+      "stars": 0,
+      "display_name": "Red T3 0★ (1/5)",
+      "materials": {
+        "satin": 60400,
+        "gilded_threads": 604,
+        "artisans_vision": 120
+      },
+      "stat_total_percent": 128.3,
+      "power_total": 3079200,
+      "step": 1,
+      "deployment_capacity_total": 890
+    },
+    {
+      "order": 113,
+      "id": "gear_43_step_2",
+      "tier": "Red T3",
+      "stars": 0,
+      "display_name": "Red T3 0★ (2/5)",
+      "materials": {
+        "satin": 60400,
+        "gilded_threads": 604,
+        "artisans_vision": 120
+      },
+      "stat_total_percent": 128.85,
+      "power_total": 3092400,
+      "step": 2,
+      "deployment_capacity_total": 900
+    },
+    {
+      "order": 114,
+      "id": "gear_43_step_3",
+      "tier": "Red T3",
+      "stars": 0,
+      "display_name": "Red T3 0★ (3/5)",
+      "materials": {
+        "satin": 60400,
+        "gilded_threads": 604,
+        "artisans_vision": 120
+      },
+      "stat_total_percent": 129.4,
+      "power_total": 3105600,
+      "step": 3,
+      "deployment_capacity_total": 910
+    },
+    {
+      "order": 115,
+      "id": "gear_43_step_4",
+      "tier": "Red T3",
+      "stars": 0,
+      "display_name": "Red T3 0★ (4/5)",
+      "materials": {
+        "satin": 60400,
+        "gilded_threads": 604,
+        "artisans_vision": 120
+      },
+      "stat_total_percent": 129.95,
+      "power_total": 3118800,
+      "step": 4,
+      "deployment_capacity_total": 920
+    },
+    {
+      "order": 116,
+      "id": "gear_44",
+      "tier": "Red T3",
+      "stars": 1,
+      "display_name": "Red T3 1★",
+      "materials": {
+        "satin": 60400,
+        "gilded_threads": 604,
+        "artisans_vision": 120
+      },
+      "stat_total_percent": 130.5,
+      "power_total": 3132000,
+      "step": 0,
+      "deployment_capacity_total": 930
+    },
+    {
+      "order": 117,
+      "id": "gear_44_step_1",
+      "tier": "Red T3",
+      "stars": 1,
+      "display_name": "Red T3 1★ (1/5)",
+      "materials": {
+        "satin": 63400,
+        "gilded_threads": 634,
+        "artisans_vision": 126
+      },
+      "stat_total_percent": 131.05,
+      "power_total": 3145200,
+      "step": 1,
+      "deployment_capacity_total": 940
+    },
+    {
+      "order": 118,
+      "id": "gear_44_step_2",
+      "tier": "Red T3",
+      "stars": 1,
+      "display_name": "Red T3 1★ (2/5)",
+      "materials": {
+        "satin": 63400,
+        "gilded_threads": 634,
+        "artisans_vision": 126
+      },
+      "stat_total_percent": 131.6,
+      "power_total": 3158400,
+      "step": 2,
+      "deployment_capacity_total": 950
+    },
+    {
+      "order": 119,
+      "id": "gear_44_step_3",
+      "tier": "Red T3",
+      "stars": 1,
+      "display_name": "Red T3 1★ (3/5)",
+      "materials": {
+        "satin": 63400,
+        "gilded_threads": 634,
+        "artisans_vision": 126
+      },
+      "stat_total_percent": 132.15,
+      "power_total": 3171600,
+      "step": 3,
+      "deployment_capacity_total": 960
+    },
+    {
+      "order": 120,
+      "id": "gear_44_step_4",
+      "tier": "Red T3",
+      "stars": 1,
+      "display_name": "Red T3 1★ (4/5)",
+      "materials": {
+        "satin": 63400,
+        "gilded_threads": 634,
+        "artisans_vision": 126
+      },
+      "stat_total_percent": 132.7,
+      "power_total": 3184800,
+      "step": 4,
+      "deployment_capacity_total": 970
+    },
+    {
+      "order": 121,
+      "id": "gear_45",
+      "tier": "Red T3",
+      "stars": 2,
+      "display_name": "Red T3 2★",
+      "materials": {
+        "satin": 63400,
+        "gilded_threads": 634,
+        "artisans_vision": 126
+      },
+      "stat_total_percent": 133.25,
+      "power_total": 3198000,
+      "step": 0,
+      "deployment_capacity_total": 980
+    },
+    {
+      "order": 122,
+      "id": "gear_45_step_1",
+      "tier": "Red T3",
+      "stars": 2,
+      "display_name": "Red T3 2★ (1/5)",
+      "materials": {
+        "satin": 66600,
+        "gilded_threads": 666,
+        "artisans_vision": 132
+      },
+      "stat_total_percent": 133.8,
+      "power_total": 3211200,
+      "step": 1,
+      "deployment_capacity_total": 990
+    },
+    {
+      "order": 123,
+      "id": "gear_45_step_2",
+      "tier": "Red T3",
+      "stars": 2,
+      "display_name": "Red T3 2★ (2/5)",
+      "materials": {
+        "satin": 66600,
+        "gilded_threads": 666,
+        "artisans_vision": 132
+      },
+      "stat_total_percent": 134.35,
+      "power_total": 3224400,
+      "step": 2,
+      "deployment_capacity_total": 1000
+    },
+    {
+      "order": 124,
+      "id": "gear_45_step_3",
+      "tier": "Red T3",
+      "stars": 2,
+      "display_name": "Red T3 2★ (3/5)",
+      "materials": {
+        "satin": 66600,
+        "gilded_threads": 666,
+        "artisans_vision": 132
+      },
+      "stat_total_percent": 134.9,
+      "power_total": 3237600,
+      "step": 3,
+      "deployment_capacity_total": 1010
+    },
+    {
+      "order": 125,
+      "id": "gear_45_step_4",
+      "tier": "Red T3",
+      "stars": 2,
+      "display_name": "Red T3 2★ (4/5)",
+      "materials": {
+        "satin": 66600,
+        "gilded_threads": 666,
+        "artisans_vision": 132
+      },
+      "stat_total_percent": 135.45,
+      "power_total": 3250800,
+      "step": 4,
+      "deployment_capacity_total": 1020
+    },
+    {
+      "order": 126,
+      "id": "gear_46",
+      "tier": "Red T3",
+      "stars": 3,
+      "display_name": "Red T3 3★",
+      "materials": {
+        "satin": 66600,
+        "gilded_threads": 666,
+        "artisans_vision": 132
+      },
+      "stat_total_percent": 136,
+      "power_total": 3264000,
+      "step": 0,
+      "deployment_capacity_total": 1030
+    },
+    {
+      "order": 127,
+      "id": "gear_46_step_1",
+      "tier": "Red T3",
+      "stars": 3,
+      "display_name": "Red T3 3★ (1/5)",
+      "materials": {
+        "satin": 73200,
+        "gilded_threads": 732,
+        "artisans_vision": 146
+      },
+      "stat_total_percent": 136.55,
+      "power_total": 3277200,
+      "step": 1,
+      "deployment_capacity_total": 1040
+    },
+    {
+      "order": 128,
+      "id": "gear_46_step_2",
+      "tier": "Red T3",
+      "stars": 3,
+      "display_name": "Red T3 3★ (2/5)",
+      "materials": {
+        "satin": 73200,
+        "gilded_threads": 732,
+        "artisans_vision": 146
+      },
+      "stat_total_percent": 137.1,
+      "power_total": 3290400,
+      "step": 2,
+      "deployment_capacity_total": 1050
+    },
+    {
+      "order": 129,
+      "id": "gear_46_step_3",
+      "tier": "Red T3",
+      "stars": 3,
+      "display_name": "Red T3 3★ (3/5)",
+      "materials": {
+        "satin": 73200,
+        "gilded_threads": 732,
+        "artisans_vision": 146
+      },
+      "stat_total_percent": 137.65,
+      "power_total": 3303600,
+      "step": 3,
+      "deployment_capacity_total": 1060
+    },
+    {
+      "order": 130,
+      "id": "gear_46_step_4",
+      "tier": "Red T3",
+      "stars": 3,
+      "display_name": "Red T3 3★ (4/5)",
+      "materials": {
+        "satin": 73200,
+        "gilded_threads": 732,
+        "artisans_vision": 146
+      },
+      "stat_total_percent": 138.2,
+      "power_total": 3316800,
+      "step": 4,
+      "deployment_capacity_total": 1070
+    },
+    {
+      "order": 131,
+      "id": "gear_47",
+      "tier": "Red T4",
+      "stars": 0,
+      "display_name": "Red T4 0★",
+      "materials": {
+        "satin": 73200,
+        "gilded_threads": 732,
+        "artisans_vision": 146
+      },
+      "stat_total_percent": 138.75,
+      "power_total": 3330000,
+      "step": 0,
+      "deployment_capacity_total": 1170
+    },
+    {
+      "order": 132,
+      "id": "gear_47_step_1",
+      "tier": "Red T4",
+      "stars": 0,
+      "display_name": "Red T4 0★ (1/5)",
+      "materials": {
+        "satin": 76800,
+        "gilded_threads": 768,
+        "artisans_vision": 154
+      },
+      "stat_total_percent": 139.3,
+      "power_total": 3343200,
+      "step": 1,
+      "deployment_capacity_total": 1180
+    },
+    {
+      "order": 133,
+      "id": "gear_47_step_2",
+      "tier": "Red T4",
+      "stars": 0,
+      "display_name": "Red T4 0★ (2/5)",
+      "materials": {
+        "satin": 76800,
+        "gilded_threads": 768,
+        "artisans_vision": 154
+      },
+      "stat_total_percent": 139.85,
+      "power_total": 3356400,
+      "step": 2,
+      "deployment_capacity_total": 1190
+    },
+    {
+      "order": 134,
+      "id": "gear_47_step_3",
+      "tier": "Red T4",
+      "stars": 0,
+      "display_name": "Red T4 0★ (3/5)",
+      "materials": {
+        "satin": 76800,
+        "gilded_threads": 768,
+        "artisans_vision": 154
+      },
+      "stat_total_percent": 140.4,
+      "power_total": 3369600,
+      "step": 3,
+      "deployment_capacity_total": 1200
+    },
+    {
+      "order": 135,
+      "id": "gear_47_step_4",
+      "tier": "Red T4",
+      "stars": 0,
+      "display_name": "Red T4 0★ (4/5)",
+      "materials": {
+        "satin": 76800,
+        "gilded_threads": 768,
+        "artisans_vision": 154
+      },
+      "stat_total_percent": 140.95,
+      "power_total": 3382800,
+      "step": 4,
+      "deployment_capacity_total": 1210
+    },
+    {
+      "order": 136,
+      "id": "gear_48",
+      "tier": "Red T4",
+      "stars": 1,
+      "display_name": "Red T4 1★",
+      "materials": {
+        "satin": 76800,
+        "gilded_threads": 768,
+        "artisans_vision": 154
+      },
+      "stat_total_percent": 141.5,
+      "power_total": 3396000,
+      "step": 0,
+      "deployment_capacity_total": 1220
+    },
+    {
+      "order": 137,
+      "id": "gear_48_step_1",
+      "tier": "Red T4",
+      "stars": 1,
+      "display_name": "Red T4 1★ (1/5)",
+      "materials": {
+        "satin": 80600,
+        "gilded_threads": 806,
+        "artisans_vision": 162
+      },
+      "stat_total_percent": 142.05,
+      "power_total": 3409200,
+      "step": 1,
+      "deployment_capacity_total": 1230
+    },
+    {
+      "order": 138,
+      "id": "gear_48_step_2",
+      "tier": "Red T4",
+      "stars": 1,
+      "display_name": "Red T4 1★ (2/5)",
+      "materials": {
+        "satin": 80600,
+        "gilded_threads": 806,
+        "artisans_vision": 162
+      },
+      "stat_total_percent": 142.6,
+      "power_total": 3422400,
+      "step": 2,
+      "deployment_capacity_total": 1240
+    },
+    {
+      "order": 139,
+      "id": "gear_48_step_3",
+      "tier": "Red T4",
+      "stars": 1,
+      "display_name": "Red T4 1★ (3/5)",
+      "materials": {
+        "satin": 80600,
+        "gilded_threads": 806,
+        "artisans_vision": 162
+      },
+      "stat_total_percent": 143.15,
+      "power_total": 3435600,
+      "step": 3,
+      "deployment_capacity_total": 1250
+    },
+    {
+      "order": 140,
+      "id": "gear_48_step_4",
+      "tier": "Red T4",
+      "stars": 1,
+      "display_name": "Red T4 1★ (4/5)",
+      "materials": {
+        "satin": 80600,
+        "gilded_threads": 806,
+        "artisans_vision": 162
+      },
+      "stat_total_percent": 143.7,
+      "power_total": 3448800,
+      "step": 4,
+      "deployment_capacity_total": 1260
+    },
+    {
+      "order": 141,
+      "id": "gear_49",
+      "tier": "Red T4",
+      "stars": 2,
+      "display_name": "Red T4 2★",
+      "materials": {
+        "satin": 80600,
+        "gilded_threads": 806,
+        "artisans_vision": 162
+      },
+      "stat_total_percent": 144.25,
+      "power_total": 3462000,
+      "step": 0,
+      "deployment_capacity_total": 1270
+    },
+    {
+      "order": 142,
+      "id": "gear_49_step_1",
+      "tier": "Red T4",
+      "stars": 2,
+      "display_name": "Red T4 2★ (1/5)",
+      "materials": {
+        "satin": 84600,
+        "gilded_threads": 846,
+        "artisans_vision": 170
+      },
+      "stat_total_percent": 144.8,
+      "power_total": 3475200,
+      "step": 1,
+      "deployment_capacity_total": 1280
+    },
+    {
+      "order": 143,
+      "id": "gear_49_step_2",
+      "tier": "Red T4",
+      "stars": 2,
+      "display_name": "Red T4 2★ (2/5)",
+      "materials": {
+        "satin": 84600,
+        "gilded_threads": 846,
+        "artisans_vision": 170
+      },
+      "stat_total_percent": 145.35,
+      "power_total": 3488400,
+      "step": 2,
+      "deployment_capacity_total": 1290
+    },
+    {
+      "order": 144,
+      "id": "gear_49_step_3",
+      "tier": "Red T4",
+      "stars": 2,
+      "display_name": "Red T4 2★ (3/5)",
+      "materials": {
+        "satin": 84600,
+        "gilded_threads": 846,
+        "artisans_vision": 170
+      },
+      "stat_total_percent": 145.9,
+      "power_total": 3501600,
+      "step": 3,
+      "deployment_capacity_total": 1300
+    },
+    {
+      "order": 145,
+      "id": "gear_49_step_4",
+      "tier": "Red T4",
+      "stars": 2,
+      "display_name": "Red T4 2★ (4/5)",
+      "materials": {
+        "satin": 84600,
+        "gilded_threads": 846,
+        "artisans_vision": 170
+      },
+      "stat_total_percent": 146.45,
+      "power_total": 3514800,
+      "step": 4,
+      "deployment_capacity_total": 1310
+    },
+    {
+      "order": 146,
+      "id": "gear_50",
+      "tier": "Red T4",
+      "stars": 3,
+      "display_name": "Red T4 3★",
+      "materials": {
+        "satin": 84600,
+        "gilded_threads": 846,
+        "artisans_vision": 170
+      },
+      "stat_total_percent": 147,
+      "power_total": 3528000,
+      "step": 0,
+      "deployment_capacity_total": 1320
+    },
+    {
+      "order": 147,
+      "id": "gear_50_step_1",
+      "tier": "Red T4",
+      "stars": 3,
+      "display_name": "Red T4 3★ (1/5)",
+      "materials": {
+        "satin": 93000,
+        "gilded_threads": 930,
+        "artisans_vision": 188
+      },
+      "stat_total_percent": 147.6,
+      "power_total": 3542400,
+      "step": 1,
+      "deployment_capacity_total": 1330
+    },
+    {
+      "order": 148,
+      "id": "gear_50_step_2",
+      "tier": "Red T4",
+      "stars": 3,
+      "display_name": "Red T4 3★ (2/5)",
+      "materials": {
+        "satin": 93000,
+        "gilded_threads": 930,
+        "artisans_vision": 188
+      },
+      "stat_total_percent": 148.2,
+      "power_total": 3556800,
+      "step": 2,
+      "deployment_capacity_total": 1340
+    },
+    {
+      "order": 149,
+      "id": "gear_50_step_3",
+      "tier": "Red T4",
+      "stars": 3,
+      "display_name": "Red T4 3★ (3/5)",
+      "materials": {
+        "satin": 93000,
+        "gilded_threads": 930,
+        "artisans_vision": 188
+      },
+      "stat_total_percent": 148.8,
+      "power_total": 3571200,
+      "step": 3,
+      "deployment_capacity_total": 1350
+    },
+    {
+      "order": 150,
+      "id": "gear_50_step_4",
+      "tier": "Red T4",
+      "stars": 3,
+      "display_name": "Red T4 3★ (4/5)",
+      "materials": {
+        "satin": 93000,
+        "gilded_threads": 930,
+        "artisans_vision": 188
+      },
+      "stat_total_percent": 149.4,
+      "power_total": 3585600,
+      "step": 4,
+      "deployment_capacity_total": 1360
+    },
+    {
+      "order": 151,
+      "id": "gear_51",
+      "tier": "Red T5",
+      "stars": 0,
+      "display_name": "Red T5 0★",
+      "materials": {
+        "satin": 93000,
+        "gilded_threads": 930,
+        "artisans_vision": 188
+      },
+      "stat_total_percent": 150,
+      "power_total": 3600000,
+      "step": 0,
+      "deployment_capacity_total": 1460
+    },
+    {
+      "order": 152,
+      "id": "gear_51_step_1",
+      "tier": "Red T5",
+      "stars": 0,
+      "display_name": "Red T5 0★ (1/5)",
+      "materials": {
+        "satin": 95800,
+        "gilded_threads": 958,
+        "artisans_vision": 194
+      },
+      "stat_total_percent": 150.6,
+      "power_total": 3614400,
+      "step": 1,
+      "deployment_capacity_total": 1470
+    },
+    {
+      "order": 153,
+      "id": "gear_51_step_2",
+      "tier": "Red T5",
+      "stars": 0,
+      "display_name": "Red T5 0★ (2/5)",
+      "materials": {
+        "satin": 95800,
+        "gilded_threads": 958,
+        "artisans_vision": 194
+      },
+      "stat_total_percent": 151.2,
+      "power_total": 3628800,
+      "step": 2,
+      "deployment_capacity_total": 1480
+    },
+    {
+      "order": 154,
+      "id": "gear_51_step_3",
+      "tier": "Red T5",
+      "stars": 0,
+      "display_name": "Red T5 0★ (3/5)",
+      "materials": {
+        "satin": 95800,
+        "gilded_threads": 958,
+        "artisans_vision": 194
+      },
+      "stat_total_percent": 151.8,
+      "power_total": 3643200,
+      "step": 3,
+      "deployment_capacity_total": 1490
+    },
+    {
+      "order": 155,
+      "id": "gear_51_step_4",
+      "tier": "Red T5",
+      "stars": 0,
+      "display_name": "Red T5 0★ (4/5)",
+      "materials": {
+        "satin": 95800,
+        "gilded_threads": 958,
+        "artisans_vision": 194
+      },
+      "stat_total_percent": 152.4,
+      "power_total": 3657600,
+      "step": 4,
+      "deployment_capacity_total": 1500
+    },
+    {
+      "order": 156,
+      "id": "gear_52",
+      "tier": "Red T5",
+      "stars": 1,
+      "display_name": "Red T5 1★",
+      "materials": {
+        "satin": 95800,
+        "gilded_threads": 958,
+        "artisans_vision": 194
+      },
+      "stat_total_percent": 153,
+      "power_total": 3672000,
+      "step": 0,
+      "deployment_capacity_total": 1510
+    },
+    {
+      "order": 157,
+      "id": "gear_52_step_1",
+      "tier": "Red T5",
+      "stars": 1,
+      "display_name": "Red T5 1★ (1/5)",
+      "materials": {
+        "satin": 98600,
+        "gilded_threads": 986,
+        "artisans_vision": 200
+      },
+      "stat_total_percent": 153.6,
+      "power_total": 3686400,
+      "step": 1,
+      "deployment_capacity_total": 1520
+    },
+    {
+      "order": 158,
+      "id": "gear_52_step_2",
+      "tier": "Red T5",
+      "stars": 1,
+      "display_name": "Red T5 1★ (2/5)",
+      "materials": {
+        "satin": 98600,
+        "gilded_threads": 986,
+        "artisans_vision": 200
+      },
+      "stat_total_percent": 154.2,
+      "power_total": 3700800,
+      "step": 2,
+      "deployment_capacity_total": 1530
+    },
+    {
+      "order": 159,
+      "id": "gear_52_step_3",
+      "tier": "Red T5",
+      "stars": 1,
+      "display_name": "Red T5 1★ (3/5)",
+      "materials": {
+        "satin": 98600,
+        "gilded_threads": 986,
+        "artisans_vision": 200
+      },
+      "stat_total_percent": 154.8,
+      "power_total": 3715200,
+      "step": 3,
+      "deployment_capacity_total": 1540
+    },
+    {
+      "order": 160,
+      "id": "gear_52_step_4",
+      "tier": "Red T5",
+      "stars": 1,
+      "display_name": "Red T5 1★ (4/5)",
+      "materials": {
+        "satin": 98600,
+        "gilded_threads": 986,
+        "artisans_vision": 200
+      },
+      "stat_total_percent": 155.4,
+      "power_total": 3729600,
+      "step": 4,
+      "deployment_capacity_total": 1550
+    },
+    {
+      "order": 161,
+      "id": "gear_53",
+      "tier": "Red T5",
+      "stars": 2,
+      "display_name": "Red T5 2★",
+      "materials": {
+        "satin": 98600,
+        "gilded_threads": 986,
+        "artisans_vision": 200
+      },
+      "stat_total_percent": 156,
+      "power_total": 3744000,
+      "step": 0,
+      "deployment_capacity_total": 1560
+    },
+    {
+      "order": 162,
+      "id": "gear_53_step_1",
+      "tier": "Red T5",
+      "stars": 2,
+      "display_name": "Red T5 2★ (1/5)",
+      "materials": {
+        "satin": 101600,
+        "gilded_threads": 1016,
+        "artisans_vision": 206
+      },
+      "stat_total_percent": 156.6,
+      "power_total": 3758400,
+      "step": 1,
+      "deployment_capacity_total": 1570
+    },
+    {
+      "order": 163,
+      "id": "gear_53_step_2",
+      "tier": "Red T5",
+      "stars": 2,
+      "display_name": "Red T5 2★ (2/5)",
+      "materials": {
+        "satin": 101600,
+        "gilded_threads": 1016,
+        "artisans_vision": 206
+      },
+      "stat_total_percent": 157.2,
+      "power_total": 3772800,
+      "step": 2,
+      "deployment_capacity_total": 1580
+    },
+    {
+      "order": 164,
+      "id": "gear_53_step_3",
+      "tier": "Red T5",
+      "stars": 2,
+      "display_name": "Red T5 2★ (3/5)",
+      "materials": {
+        "satin": 101600,
+        "gilded_threads": 1016,
+        "artisans_vision": 206
+      },
+      "stat_total_percent": 157.8,
+      "power_total": 3787200,
+      "step": 3,
+      "deployment_capacity_total": 1590
+    },
+    {
+      "order": 165,
+      "id": "gear_53_step_4",
+      "tier": "Red T5",
+      "stars": 2,
+      "display_name": "Red T5 2★ (4/5)",
+      "materials": {
+        "satin": 101600,
+        "gilded_threads": 1016,
+        "artisans_vision": 206
+      },
+      "stat_total_percent": 158.4,
+      "power_total": 3801600,
+      "step": 4,
+      "deployment_capacity_total": 1600
+    },
+    {
+      "order": 166,
+      "id": "gear_54",
+      "tier": "Red T5",
+      "stars": 3,
+      "display_name": "Red T5 3★",
+      "materials": {
+        "satin": 101600,
+        "gilded_threads": 1016,
+        "artisans_vision": 206
+      },
+      "stat_total_percent": 159,
+      "power_total": 3816000,
+      "step": 0,
+      "deployment_capacity_total": 1610
+    },
+    {
+      "order": 167,
+      "id": "gear_54_step_1",
+      "tier": "Red T5",
+      "stars": 3,
+      "display_name": "Red T5 3★ (1/5)",
+      "materials": {
+        "satin": 109800,
+        "gilded_threads": 1098,
+        "artisans_vision": 222
+      },
+      "stat_total_percent": 159.6,
+      "power_total": 3830400,
+      "step": 1,
+      "deployment_capacity_total": 1620
+    },
+    {
+      "order": 168,
+      "id": "gear_54_step_2",
+      "tier": "Red T5",
+      "stars": 3,
+      "display_name": "Red T5 3★ (2/5)",
+      "materials": {
+        "satin": 109800,
+        "gilded_threads": 1098,
+        "artisans_vision": 222
+      },
+      "stat_total_percent": 160.2,
+      "power_total": 3844800,
+      "step": 2,
+      "deployment_capacity_total": 1630
+    },
+    {
+      "order": 169,
+      "id": "gear_54_step_3",
+      "tier": "Red T5",
+      "stars": 3,
+      "display_name": "Red T5 3★ (3/5)",
+      "materials": {
+        "satin": 109800,
+        "gilded_threads": 1098,
+        "artisans_vision": 222
+      },
+      "stat_total_percent": 160.8,
+      "power_total": 3859200,
+      "step": 3,
+      "deployment_capacity_total": 1640
+    },
+    {
+      "order": 170,
+      "id": "gear_54_step_4",
+      "tier": "Red T5",
+      "stars": 3,
+      "display_name": "Red T5 3★ (4/5)",
+      "materials": {
+        "satin": 109800,
+        "gilded_threads": 1098,
+        "artisans_vision": 222
+      },
+      "stat_total_percent": 161.4,
+      "power_total": 3873600,
+      "step": 4,
+      "deployment_capacity_total": 1650
+    },
+    {
+      "order": 171,
+      "id": "gear_55",
+      "tier": "Red T6",
+      "stars": 0,
+      "display_name": "Red T6 0★",
+      "materials": {
+        "satin": 109800,
+        "gilded_threads": 1098,
+        "artisans_vision": 222
+      },
+      "stat_total_percent": 162,
+      "power_total": 3888000,
+      "step": 0,
+      "deployment_capacity_total": 1750
+    },
+    {
+      "order": 172,
+      "id": "gear_55_step_1",
+      "tier": "Red T6",
+      "stars": 0,
+      "display_name": "Red T6 0★ (1/5)",
+      "materials": {
+        "satin": 113000,
+        "gilded_threads": 1130,
+        "artisans_vision": 228
+      },
+      "stat_total_percent": 162.6,
+      "power_total": 3902400,
+      "step": 1,
+      "deployment_capacity_total": 1765
+    },
+    {
+      "order": 173,
+      "id": "gear_55_step_2",
+      "tier": "Red T6",
+      "stars": 0,
+      "display_name": "Red T6 0★ (2/5)",
+      "materials": {
+        "satin": 113000,
+        "gilded_threads": 1130,
+        "artisans_vision": 228
+      },
+      "stat_total_percent": 163.2,
+      "power_total": 3916800,
+      "step": 2,
+      "deployment_capacity_total": 1780
+    },
+    {
+      "order": 174,
+      "id": "gear_55_step_3",
+      "tier": "Red T6",
+      "stars": 0,
+      "display_name": "Red T6 0★ (3/5)",
+      "materials": {
+        "satin": 113000,
+        "gilded_threads": 1130,
+        "artisans_vision": 228
+      },
+      "stat_total_percent": 163.8,
+      "power_total": 3931200,
+      "step": 3,
+      "deployment_capacity_total": 1795
+    },
+    {
+      "order": 175,
+      "id": "gear_55_step_4",
+      "tier": "Red T6",
+      "stars": 0,
+      "display_name": "Red T6 0★ (4/5)",
+      "materials": {
+        "satin": 113000,
+        "gilded_threads": 1130,
+        "artisans_vision": 228
+      },
+      "stat_total_percent": 164.4,
+      "power_total": 3945600,
+      "step": 4,
+      "deployment_capacity_total": 1810
+    },
+    {
+      "order": 176,
+      "id": "gear_56",
+      "tier": "Red T6",
+      "stars": 1,
+      "display_name": "Red T6 1★",
+      "materials": {
+        "satin": 113000,
+        "gilded_threads": 1130,
+        "artisans_vision": 228
+      },
+      "stat_total_percent": 165,
+      "power_total": 3960000,
+      "step": 0,
+      "deployment_capacity_total": 1825
+    },
+    {
+      "order": 177,
+      "id": "gear_56_step_1",
+      "tier": "Red T6",
+      "stars": 1,
+      "display_name": "Red T6 1★ (1/5)",
+      "materials": {
+        "satin": 116400,
+        "gilded_threads": 1164,
+        "artisans_vision": 234
+      },
+      "stat_total_percent": 165.6,
+      "power_total": 3974400,
+      "step": 1,
+      "deployment_capacity_total": 1840
+    },
+    {
+      "order": 178,
+      "id": "gear_56_step_2",
+      "tier": "Red T6",
+      "stars": 1,
+      "display_name": "Red T6 1★ (2/5)",
+      "materials": {
+        "satin": 116400,
+        "gilded_threads": 1164,
+        "artisans_vision": 234
+      },
+      "stat_total_percent": 166.2,
+      "power_total": 3988800,
+      "step": 2,
+      "deployment_capacity_total": 1855
+    },
+    {
+      "order": 179,
+      "id": "gear_56_step_3",
+      "tier": "Red T6",
+      "stars": 1,
+      "display_name": "Red T6 1★ (3/5)",
+      "materials": {
+        "satin": 116400,
+        "gilded_threads": 1164,
+        "artisans_vision": 234
+      },
+      "stat_total_percent": 166.8,
+      "power_total": 4003200,
+      "step": 3,
+      "deployment_capacity_total": 1870
+    },
+    {
+      "order": 180,
+      "id": "gear_56_step_4",
+      "tier": "Red T6",
+      "stars": 1,
+      "display_name": "Red T6 1★ (4/5)",
+      "materials": {
+        "satin": 116400,
+        "gilded_threads": 1164,
+        "artisans_vision": 234
+      },
+      "stat_total_percent": 167.4,
+      "power_total": 4017600,
+      "step": 4,
+      "deployment_capacity_total": 1885
+    },
+    {
+      "order": 181,
+      "id": "gear_57",
+      "tier": "Red T6",
+      "stars": 2,
+      "display_name": "Red T6 2★",
+      "materials": {
+        "satin": 116400,
+        "gilded_threads": 1164,
+        "artisans_vision": 234
+      },
+      "stat_total_percent": 168,
+      "power_total": 4032000,
+      "step": 0,
+      "deployment_capacity_total": 1900
+    },
+    {
+      "order": 182,
+      "id": "gear_57_step_1",
+      "tier": "Red T6",
+      "stars": 2,
+      "display_name": "Red T6 2★ (1/5)",
+      "materials": {
+        "satin": 119800,
+        "gilded_threads": 1198,
+        "artisans_vision": 242
+      },
+      "stat_total_percent": 168.6,
+      "power_total": 4046400,
+      "step": 1,
+      "deployment_capacity_total": 1920
+    },
+    {
+      "order": 183,
+      "id": "gear_57_step_2",
+      "tier": "Red T6",
+      "stars": 2,
+      "display_name": "Red T6 2★ (2/5)",
+      "materials": {
+        "satin": 119800,
+        "gilded_threads": 1198,
+        "artisans_vision": 242
+      },
+      "stat_total_percent": 169.2,
+      "power_total": 4060800,
+      "step": 2,
+      "deployment_capacity_total": 1940
+    },
+    {
+      "order": 184,
+      "id": "gear_57_step_3",
+      "tier": "Red T6",
+      "stars": 2,
+      "display_name": "Red T6 2★ (3/5)",
+      "materials": {
+        "satin": 119800,
+        "gilded_threads": 1198,
+        "artisans_vision": 242
+      },
+      "stat_total_percent": 169.8,
+      "power_total": 4075200,
+      "step": 3,
+      "deployment_capacity_total": 1960
+    },
+    {
+      "order": 185,
+      "id": "gear_57_step_4",
+      "tier": "Red T6",
+      "stars": 2,
+      "display_name": "Red T6 2★ (4/5)",
+      "materials": {
+        "satin": 119800,
+        "gilded_threads": 1198,
+        "artisans_vision": 242
+      },
+      "stat_total_percent": 170.4,
+      "power_total": 4089600,
+      "step": 4,
+      "deployment_capacity_total": 1980
+    },
+    {
+      "order": 186,
+      "id": "gear_58",
+      "tier": "Red T6",
+      "stars": 3,
+      "display_name": "Red T6 3★",
+      "materials": {
+        "satin": 119800,
+        "gilded_threads": 1198,
+        "artisans_vision": 242
+      },
+      "stat_total_percent": 171,
+      "power_total": 4104000,
+      "step": 0,
+      "deployment_capacity_total": 2000
+    }
+  ],
+  "sources": [
+    "https://kingshotoptimizer.com/governor-gear/references/",
+    "https://ks-toolkit.com/data/gear/governor-gear/"
+  ]
+}

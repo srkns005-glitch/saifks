@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -46,6 +47,7 @@ jobs:
           for file in "${required[@]}"; do
             test -s "$file" || { echo "Missing production file: $file"; exit 1; }
           done
+          node .github/scripts/check-governor-upgrades.cjs
           test ! -e .github/workflows/publish-mobile-preview.yml
           if grep -R --include='*.html' -n 'MOBILE PREVIEW' . --exclude-dir=.git --exclude-dir=preview; then
             echo "Preview markup found in production files"
@@ -68,6 +70,12 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: ./_site
+
+      - name: Verify production commit is current
+        run: |
+          set -euo pipefail
+          live_head="$(git ls-remote origin refs/heads/main | cut -f1)"
+          test "$live_head" = "$GITHUB_SHA" || { echo "This run is no longer at the tip of main"; exit 1; }
 
       - id: deployment
         uses: actions/deploy-pages@v5
