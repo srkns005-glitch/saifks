@@ -1,19 +1,21 @@
 {
   "project": "SaifKS Masters Planner",
-  "build": "masters-20260930-cleanup-1",
-  "updated": "2026-09-30",
+  "build": "masters-20261112-olander-catherine",
+  "updated": "2026-11-12",
   "entry": "index.html",
   "assets": {
-    "styles": "styles.css",
-    "application": "app.js",
-    "portraits": 8,
+    "styles": "styles-20261112.css",
+    "application": "app-20261112.js",
+    "portraits": 10,
     "material_images": 5,
     "removed_unused_legacy_images": 6,
-    "removed_empty_files": ["Q.html"]
+    "removed_empty_files": [
+      "Q.html"
+    ]
   },
   "content": {
-    "masters": 8,
-    "skills": 32,
+    "masters": 10,
+    "skills": 40,
     "affinity_levels_per_master": 100,
     "languages": 9
   },
@@ -35,7 +37,32 @@
     "references": [
       "https://kingshotdata.com/masters/valora/",
       "https://www.kingshot.wiki/masters/valora"
-    ]
+    ],
+    "november_masters": {
+      "profiles": [
+        "Olander",
+        "Catherine"
+      ],
+      "reviewed_on": "2026-11-12",
+      "references": [
+        "https://kingshot.net/database/masters/olander",
+        "https://kingshot.net/database/masters/catherine",
+        "https://ks-toolkit.com/data/masters/olander/",
+        "https://ks-toolkit.com/data/masters/sarin/",
+        "https://kingshotmastery.com/masters/olander",
+        "https://kingshotmastery.com/masters/catherine"
+      ],
+      "portrait_sources": [
+        "https://kingshot.net/images/masters/olander/portrait.png",
+        "https://kingshot.net/images/masters/catherine/portrait.png"
+      ],
+      "notes": [
+        "Relationship stat totals combine the base affinity effect and the achieved class effect.",
+        "Learning XP is stored per upgrade and summed for the selected range.",
+        "Meritocracy uses the flat coin amount shown by Kingshot.net and KingShot Toolkit. Kingshot Mastery labels the same numbers as percentages.",
+        "KingShot Toolkit catalogs Catherine as Sarin. The page uses Catherine, matching Kingshot.net and Kingshot Mastery."
+      ]
+    }
   },
   "fixes": [
     "Narrow mobile header no longer clips or overlaps",

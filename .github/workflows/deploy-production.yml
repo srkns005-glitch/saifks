@@ -48,6 +48,7 @@ jobs:
             test -s "$file" || { echo "Missing production file: $file"; exit 1; }
           done
           node .github/scripts/check-governor-upgrades.cjs
+          node .github/scripts/check-masters-page.cjs
           test ! -e .github/workflows/publish-mobile-preview.yml
           if grep -R --include='*.html' -n 'MOBILE PREVIEW' . --exclude-dir=.git --exclude-dir=preview; then
             echo "Preview markup found in production files"
